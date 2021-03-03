@@ -8,6 +8,7 @@ import 'bootstrap/js/dist/util';
 import './event.js';
 
 import {generateUrl} from "@nextcloud/router";
+
 var baseUrl = generateUrl('/apps/gestion');
 
 $(window).on("load", function(){

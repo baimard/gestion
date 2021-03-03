@@ -1,6 +1,6 @@
 <?php
-style('gestion', ['style','datatables.min']);
-script('gestion', ['scriptnavigation','jquery4','datatables.min','datatables.min4','script']);
+// style('gestion', ['style','datatables.min']);
+// script('gestion', ['scriptnavigation','jquery4','datatables.min','datatables.min4','script']);
 ?>
 
 <div id="app">

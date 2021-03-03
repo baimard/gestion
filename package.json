@@ -1,0 +1,40 @@
+{
+	"name": "gestion",
+	"description": "Application pour gérer votre micro entreprise, client, facture, devis",
+	"version": "1.0.0",
+	"author": "Benjamin AIMARD",
+	"contributors": [
+		"benjamin@41m4rd.ovh"
+	],
+	"bugs": {
+		"url": "https://gitlab.com/baimard/gestion/-/issues"
+	},
+	"repository": {
+		"url": "https://gitlab.com/baimard/gestion",
+		"type": "git"
+	},
+	"homepage": "https://gitlab.com/baimard/gestion",
+	"license": "agpl",
+	"private": true,
+	"scripts": {
+        "webpack" : "webpack",
+		"build": "NODE_ENV=production webpack --config webpack.js",
+		"dev": "NODE_ENV=production webpack --config webpack.js",
+		"watch": "NODE_ENV=production webpack --watch --config webpack.js",
+		"lint": "eslint --ext .js,.vue src",
+		"lint:fix": "eslint --ext .js,.vue src --fix",
+		"stylelint": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue",
+		"stylelint:fix": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue --fix"
+	},
+	"dependencies": {
+		"@nextcloud/router": "^1.2.0",
+		"jquery": "^3.6.0"
+	},
+	"engines": {
+		"node": ">=10.0.0"
+	},
+	"devDependencies": {
+		"webpack": "^4.46.0",
+		"webpack-cli": "^3.3.12"
+	}
+}

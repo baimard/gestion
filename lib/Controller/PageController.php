@@ -15,6 +15,7 @@ class PageController extends Controller {
 		parent::__construct($AppName, $request);
 		$this->userId = $UserId;
 		$this->myDb = $myDb;
+		\OCP\Util::addScript('gestion', 'bundle');
 	}
 
 	/**

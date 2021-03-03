@@ -1,8 +1,3 @@
-<?php
-style('gestion', ['style','datatables.min']);
-script('gestion', ['scriptnavigation','jquery4','datatables.min','datatables.min4','scriptfacture']);
-?>
-
 <div id="app">
 	<div id="app-navigation">
 		<?php print_unescaped($this->inc('navigation/index')); ?>

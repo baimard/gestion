@@ -1,4 +1,5 @@
 <div id="contentTable">
+    <center><h2>Devis</h2></center>
 	<table id="devis" class="display" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>

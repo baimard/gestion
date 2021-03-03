@@ -1,5 +1,25 @@
 .bootstrap-iso {
-    width: 100px;
+    @import (less) 'bootstrap/dist/css/bootstrap.css';
+
+    width: 100%;
+
+    /* override bootstrap 5.0*/
+    ol,
+    ul,
+    dl {
+    margin-top: 0;
+    margin-bottom: 0rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+    box-sizing: content-box;
+    }
+
+    a {
+    text-decoration: none;
+    }
 }
 
 #hello {
@@ -32,22 +52,4 @@
   .bd-placeholder-img-lg {
 	font-size: 3.5rem;
   }
-}
-
-/* override bootstrap 5.0*/
-ol,
-ul,
-dl {
-  margin-top: 0;
-  margin-bottom: 0rem;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: content-box;
-}
-
-a {
-  text-decoration: none;
 }

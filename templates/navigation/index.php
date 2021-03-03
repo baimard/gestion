@@ -1,8 +1,8 @@
-    <div class="app-navigation-new">
+    <!-- <div class="app-navigation-new">
         <button type="button" class="icon-add">
             Add user
         </button>
-    </div>
+    </div> -->
 
 <ul class="app-navigation">
 	<li class="app-navigation-entry"><a href="/apps/gestion">Client</a>

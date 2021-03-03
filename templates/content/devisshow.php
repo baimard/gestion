@@ -1,5 +1,4 @@
-    <div class="container">
-        <?php //var_dump($_['devis'][0]);  ?>
+    <div class="bootstrap-iso">
         <h2 class="mt-3 mb-3 text-center"> DEVIS N° <?php echo $_['devis'][0]->num;?></h2>
         <hr/>
         <div class="row">
@@ -73,11 +72,9 @@
                 </tbody>
             </table>
         </div>
-        <div class="row">
-            <div class="col col-md mt-5 pb-0 alert alert-info text-center">
+            <div class="col m-0 pb-0 alert alert-info text-center">
                 <p>Délai de paiement le 5ième jour du mois suivant la commande. En cas de retard, une pénalité au taux annuel de 5 % sera appliquée.<p/><p>TVA non applicable, art. 293B du CGI.</p>
                 <hr/>
                 <p>Société CYBERCORP<br/> 34 avenue Blaise Pascal 33160 SAINT MEDARD EN JALLES<br/> SIREN : 891 577 470 - SIRET : 891 577 470 00018</p>
             </div>
-        </div>
     </div>

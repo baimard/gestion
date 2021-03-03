@@ -1,8 +1,9 @@
 import '../css/mycss.less';
 import 'datatables.net-dt/css/jquery.dataTables.css';
+import 'datatables.net';
 
 import $ from 'jquery';
-import dt from 'datatables.net';
+import 'bootstrap/js/dist/util';
 
 import './event.js';
 
@@ -10,11 +11,77 @@ import {generateUrl} from "@nextcloud/router";
 var baseUrl = generateUrl('/apps/gestion');
 
 $(window).on("load", function(){
-    loadDT();
-    clientInsert();
+    if($('#client').length){
+        loadClientDT();
+    }
+    if($('#devis').length){
+        loadDevisDT();
+    }
+    if($('#facture').length){
+        loadFactureDT();
+    }
+    if($('#produit').length){
+        loadProduitDT();
+    }
+
+    
 });
 
-function loadDT(){
+function loadProduitDT(){
+    $.ajax({
+        url: baseUrl+'/getProduits',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        $.each(JSON.parse(response), function(arrayID, myresp) {
+           $('#produit').DataTable().row.add([myresp.id,myresp.reference,myresp.description]);
+           //$('#client').DataTable().row.add(myresp);
+        });
+        $('#produit').DataTable().draw(false);
+    }).fail(function (response, code) {
+        console.log(code);
+    });
+}
+
+function loadFactureDT(){
+    $.ajax({
+        url: baseUrl+'/getFactures',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        $.each(JSON.parse(response), function(arrayID, myresp) {
+           $('#facture').DataTable().row.add([
+                                                myresp.id,
+                                                myresp.num,
+                                                myresp.date,
+                                                myresp.date_paiement,
+                                                myresp.type_paiement,
+                                                myresp.id_devis,
+                                                myresp.prenom+" "+myresp.nom
+                                            ]);
+        });
+        $('#facture').DataTable().draw(false);
+    }).fail(function (response, code) {
+        console.log(code);
+    });
+}
+
+function loadDevisDT(){
+    $.ajax({
+        url: baseUrl+'/getDevis',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        $.each(JSON.parse(response), function(arrayID, myresp) {
+           $('#devis').DataTable().row.add([myresp.id,myresp.date,'<a href="/apps/gestion/devis/'+myresp.id+'/show">'+myresp.num+'</a>',myresp.id_client]);
+        });
+        $('#devis').DataTable().draw(false);
+    }).fail(function (response, code) {
+        console.log(code);
+    });
+}
+
+function loadClientDT(){
     $.ajax({
         url: baseUrl+'/getClients',
         type: 'PROPFIND',
@@ -35,30 +102,3 @@ function loadDT(){
         console.log(code);
     });
 }
-
-function clientInsert(){
-    $('body').on('submit', '#clientinsert', function(e){
-        e.preventDefault();
-        var client = {
-			nom: $('#nom').val(),
-            prenom: $('#prenom').val(),
-            siret: $('#siret').val(),
-            entreprise: $('#entreprise').val(),
-			telephone: $('#telephone').val(),
-            mail: $('#mail').val(),
-            adresse: $('#adresse').val()
-		};
-        
-        $.ajax({
-			url: baseUrl + '/client/insert',
-			type: 'POST',
-			contentType: 'application/json',
-			data: JSON.stringify(client)
-		}).done(function (response) {
-			console.log(response);
-		}).fail(function (response, code) {
-			error(response);
-		});
-    });
-}
-

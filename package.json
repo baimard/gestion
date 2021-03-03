@@ -25,12 +25,14 @@
 	"dependencies": {
 		"@nextcloud/router": "^1.2.0",
 		"datatables.net": "^1.10.23",
+		"popper.js": "^1.16.1",
 		"sass": "^1.32.8"
 	},
 	"engines": {
 		"node": ">=10.0.0"
 	},
 	"devDependencies": {
+		"bootstrap": "^4.6.0",
 		"css": "^3.0.0",
 		"css-loader": "^5.1.1",
 		"datatables.net-dt": "^1.10.23",

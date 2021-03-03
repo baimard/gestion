@@ -1,5 +1,5 @@
 <div id="contentTable">
-    <h2>Clients</h2>
+    <center><h2 >Clients</h2></center>
 	<table id="client" class="display" style="table-layout: fixed; font-size:11px; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>

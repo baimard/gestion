@@ -8,6 +8,8 @@ class Bdd {
     private String $hostname;
     private String $charset = 'utf8mb4';
     private \PDO $pdo;
+    private array $whiteColumn;
+    private array $whiteTable;
 
     function __construct() {
         $this->username = "gestion";
@@ -15,6 +17,10 @@ class Bdd {
         $this->database = "gestion";
         $this->hostname = "g_db_gestion";
         
+        $this->whiteColumn = array("entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse");
+        $this->whiteTable = array("client");
+
+
         $dsn = "mysql:host=$this->hostname;dbname=$this->database;charset=$this->charset";
         try {
             $this->pdo = new \PDO($dsn,$this->username,$this->password);
@@ -46,6 +52,14 @@ class Bdd {
     public function insertClient($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse){
         $sql = "INSERT INTO `client` (`id`, `nom`, `prenom`, `siret`, `entreprise`, `telephone`, `mail`, `adresse`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);";
         return $this-> execSQL($sql, array($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse));
+    }
+
+    public function updateClient($table, $column, $data, $id){
+        if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
+            $sql = "UPDATE $table SET $column = ? WHERE `client`.`id` = ?";
+            return $this->execSQL($sql, array($data, $id));
+        }
+        return false;
     }
 
     public function getOneDevis($numdevis){

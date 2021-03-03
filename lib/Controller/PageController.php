@@ -113,4 +113,15 @@ class PageController extends Controller {
 	public function insertClient($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse) {
 		return $this->myDb->insertClient($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse);
 	}
+
+	/**
+	 * @NoCSRFRequired
+	 * @param string $table
+	 * @param string $column
+	 * @param string $data
+	 * @param string $id
+	 */
+	public function updateClient($table, $column, $data, $id) {
+		return $this->myDb->updateClient($table, $column, $data, $id);
+	}
 }

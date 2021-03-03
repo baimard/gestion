@@ -1,8 +1,3 @@
-<?php
-style('gestion', ['style']);
-script('gestion', ['scriptnavigation','insertclient']);
-?>
-
 <div id="app">
 	<div id="app-navigation">
 		<?php print_unescaped($this->inc('navigation/index')); ?>

@@ -20,11 +20,7 @@
 		"webpack": "webpack",
 		"build": "NODE_ENV=production webpack --config webpack.js",
 		"dev": "NODE_ENV=production webpack --config webpack.js",
-		"watch": "NODE_ENV=production webpack --watch --config webpack.js",
-		"lint": "eslint --ext .js,.vue src",
-		"lint:fix": "eslint --ext .js,.vue src --fix",
-		"stylelint": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue",
-		"stylelint:fix": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue --fix"
+		"watch": "NODE_ENV=production webpack --watch --config webpack.js"
 	},
 	"dependencies": {
 		"@nextcloud/router": "^1.2.0",

@@ -84,7 +84,7 @@ function loadDevisDT(){
                                         myresp.id,
                                         '<div class="editable" data-table="devis" data-column="date" data-id="'+myresp.id+'">'+myresp.date+'</div>',
                                         '<a href="/apps/gestion/devis/'+myresp.id+'/show"><i class="icon-details">           '+'</i></a>'+'<span class="editable" data-table="devis" data-column="num" data-id="'+myresp.id+'">'+myresp.num+'</span>',
-                                        '<div class="editable" data-table="devis" data-column="id_client" data-id="'+myresp.id+'">'+myresp.id_client+'</div>'
+                                        '<div class="selectableClient" data-id="'+myresp.id+'">'+myresp.prenom + " " + myresp.nom +'</div>'
                                     ]);
         });
         $('#devis').DataTable().draw(false);

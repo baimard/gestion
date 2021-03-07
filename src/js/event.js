@@ -25,6 +25,36 @@ $('body').on('blur', '.editable', function(){
     $(this).removeAttr('contenteditable');
 });
 
+$('body').on('dblclick', '.selectableClient', function(){
+    var id = $(this).data('id');
+    $(this).text("");
+    $(this).html('<select id="listClient">');
+    listClient($('#listClient'), id);
+});
+
+$('body').on('click', '#listClient', function(){
+    var id=$(this).find(':selected').data('id')
+    var val=$(this).find(':selected').data('val')
+    var column=$(this).find(':selected').data('column')
+    var table=$(this).find(':selected').data('table')
+    updateDB(table, column, val, id);
+    $(this).parent(".selectableClient").text($(this).val());
+});
+
+function listClient(lc, id){
+    $.ajax({
+        url: baseUrl+'/getClients',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        $.each(JSON.parse(response), function(arrayID, myresp) {
+            lc.append('<option data-table="devis" data-column="id_client" data-val="'+myresp.id+'" data-id="'+ id +'">'+myresp.prenom + ' ' + myresp.nom + ' ' + '</option>');
+        });
+    }).fail(function (response, code) {
+        console.log(code);
+    });
+}
+
 function updateDB(table, column, data, id){
     console.log(table)
     console.log(column)

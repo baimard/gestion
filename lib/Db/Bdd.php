@@ -35,7 +35,7 @@ class Bdd {
     }
 
     public function getDevis(){
-        $sql = "SELECT * FROM devis";
+        $sql = "SELECT devis.id, client.nom, client.prenom, client.id as cid, devis.num, devis.date FROM (devis LEFT JOIN client on id_client = client.id);";
         return $this->execSQL($sql, array());
     }
 

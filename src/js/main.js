@@ -4,6 +4,8 @@ import 'datatables.net';
 
 import $ from 'jquery';
 import 'bootstrap/js/dist/util';
+import Toast from 'bootstrap/js/dist/toast';
+
 
 import './event.js';
 
@@ -25,7 +27,6 @@ $(window).on("load", function(){
         loadProduitDT();
     }
 
-    
 });
 
 function loadProduitDT(){

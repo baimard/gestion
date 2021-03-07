@@ -1,7 +1,15 @@
 import $ from 'jquery';
+import 'bootstrap/js/dist/toast';
 
 import {generateUrl} from "@nextcloud/router";
+import 'bootstrap/js/dist/util';
+import 'bootstrap/js/dist/toast';
 var baseUrl = generateUrl('/apps/gestion');
+
+
+$(window).on("load", function(){
+    $("#liveToast").toast({animation: true, delay: 4000});
+});
 
 $('body').on('click', '.menu', function(){
     $('#menu-'+this.dataset.menu).toggleClass('open');
@@ -38,6 +46,8 @@ function updateDB(table, column, data, id){
     }).done(function (response, code) {
         console.log(response);
         console.log(code);
+        
+        $("#liveToast").toast('show');
     }).fail(function (response, code) {
         console.log(code);
     });

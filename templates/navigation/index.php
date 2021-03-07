@@ -13,7 +13,7 @@
 				<button class='menu' data-menu="client"></button>
 				<div id="menu-client" class="app-navigation-entry-menu">
 					<ul>
-						<li><a href="/apps/gestion/client/create"><span class="icon-add"></span><span>Ajouter</span></a></li>
+						<li><a href="/apps/gestion/client/create"><span class="icon-add"></span></a></li>
 					</ul>
 				</div>
 				</li>
@@ -28,7 +28,7 @@
 				<button class='menu' data-menu="devis"></button>
 				<div id="menu-devis" class="app-navigation-entry-menu">
 					<ul>
-						<li><a href="/apps/gestion/create"><span class="icon-add"></span><span>Ajouter</span></a></li>
+						<li><a id="newDevis"><span class="icon-add"></span></a></li>
 					</ul>
 				</div>
 				</li>

@@ -17,8 +17,8 @@ class Bdd {
         $this->database = "gestion";
         $this->hostname = "g_db_gestion";
         
-        $this->whiteColumn = array("entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse");
-        $this->whiteTable = array("client");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse");
+        $this->whiteTable = array("client", "devis");
 
 
         $dsn = "mysql:host=$this->hostname;dbname=$this->database;charset=$this->charset";
@@ -49,19 +49,6 @@ class Bdd {
         return $this->execSQL($sql, array());
     }
 
-    public function insertClient($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse){
-        $sql = "INSERT INTO `client` (`id`, `nom`, `prenom`, `siret`, `entreprise`, `telephone`, `mail`, `adresse`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);";
-        return $this-> execSQL($sql, array($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse));
-    }
-
-    public function updateClient($table, $column, $data, $id){
-        if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
-            $sql = "UPDATE $table SET $column = ? WHERE `client`.`id` = ?";
-            return $this->execSQL($sql, array($data, $id));
-        }
-        return false;
-    }
-
     public function getOneDevis($numdevis){
         $sql = "SELECT * FROM devis, client WHERE id_client = client.id AND devis.id = ?";
         return $this->execSQL($sql, array($numdevis));
@@ -75,6 +62,29 @@ class Bdd {
     private function getFunctionCall(){
         $trace = debug_backtrace();
         return $trace[2]['function'];
+    }
+    /**
+     * INSERT
+     */
+    public function insertClient($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse){
+        $sql = "INSERT INTO `client` (`id`, `nom`, `prenom`, `siret`, `entreprise`, `telephone`, `mail`, `adresse`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);";
+        return $this-> execSQL($sql, array($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse));
+    }
+
+    public function insertDevis(){
+        $sql = "INSERT INTO `devis` (`id`, `date`) VALUES (NULL, NOW());";
+        return $this-> execSQL($sql, array());
+    }
+
+    /**
+     * UPDATE
+     */
+    public function updateClient($table, $column, $data, $id){
+        if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
+            $sql = "UPDATE $table SET $column = ? WHERE `id` = ?";
+            return $this->execSQL($sql, array($data, $id));
+        }
+        return false;
     }
 
     /**

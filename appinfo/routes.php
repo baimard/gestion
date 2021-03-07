@@ -20,6 +20,7 @@ return [
        ['name' => 'page#getFactures', 'url' => '/getFactures', 'verb' => 'PROPFIND'],
        ['name' => 'page#getProduits', 'url' => '/getProduits', 'verb' => 'PROPFIND'],
        ['name' => 'page#insertClient', 'url' => '/client/insert', 'verb' => 'POST'],
+       ['name' => 'page#insertDevis', 'url' => '/devis/insert', 'verb' => 'POST'],
        ['name' => 'page#updateClient', 'url' => '/client/update', 'verb' => 'POST'],
     ]
 ];

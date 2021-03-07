@@ -6,7 +6,6 @@ import $ from 'jquery';
 import 'bootstrap/js/dist/util';
 import Toast from 'bootstrap/js/dist/toast';
 
-
 import './event.js';
 
 import {generateUrl} from "@nextcloud/router";
@@ -28,6 +27,11 @@ $(window).on("load", function(){
     }
 
 });
+
+$('body').on('click', '#newDevis', function(){
+    newDevis();
+    loadDevisDT();
+})
 
 function loadProduitDT(){
     $.ajax({
@@ -74,8 +78,14 @@ function loadDevisDT(){
         type: 'PROPFIND',
         contentType: 'application/json'
     }).done(function (response) {
+        $('#devis').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
-           $('#devis').DataTable().row.add([myresp.id,myresp.date,'<a href="/apps/gestion/devis/'+myresp.id+'/show">'+myresp.num+'</a>',myresp.id_client]);
+           $('#devis').DataTable().row.add([
+                                        myresp.id,
+                                        '<div class="editable" data-table="devis" data-column="date" data-id="'+myresp.id+'">'+myresp.date+'</div>',
+                                        '<a href="/apps/gestion/devis/'+myresp.id+'/show"><i class="icon-details">           '+'</i></a>'+'<span class="editable" data-table="devis" data-column="num" data-id="'+myresp.id+'">'+myresp.num+'</span>',
+                                        '<div class="editable" data-table="devis" data-column="id_client" data-id="'+myresp.id+'">'+myresp.id_client+'</div>'
+                                    ]);
         });
         $('#devis').DataTable().draw(false);
     }).fail(function (response, code) {
@@ -100,6 +110,16 @@ function loadClientDT(){
                                             '<div class="editable" data-table="client" data-column="adresse" data-id="'+myresp.id+'">'+myresp.adresse+'</div>']);
         });
         $('#client').DataTable().draw(false);
+    }).fail(function (response, code) {
+        console.log(code);
+    });
+}
+
+function newDevis(){
+    $.ajax({
+        url: baseUrl+'/devis/insert',
+        type: 'POST',
+        contentType: 'application/json'
     }).fail(function (response, code) {
         console.log(code);
     });

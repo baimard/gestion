@@ -116,6 +116,14 @@ class PageController extends Controller {
 
 	/**
 	 * @NoCSRFRequired
+	 * 
+	 */
+	public function insertDevis(){
+		return $this->myDb->insertDevis();
+	}
+
+	/**
+	 * @NoCSRFRequired
 	 * @param string $table
 	 * @param string $column
 	 * @param string $data

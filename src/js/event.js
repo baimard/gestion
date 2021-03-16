@@ -25,7 +25,7 @@ $('body').on('blur', '.editable', function(){
     $(this).removeAttr('contenteditable');
 });
 
-$('body').on('dblclick', '.selectableClient', function(){
+$('body').on('dblclick', '.selectableClient, .selectableClient_devis', function(){
     var id = $(this).data('id');
     $(this).text("");
     $(this).html('<select id="listClient">');
@@ -33,13 +33,45 @@ $('body').on('dblclick', '.selectableClient', function(){
 });
 
 $('body').on('click', '#listClient', function(){
+
+    //Récupère les variables
     var id=$(this).find(':selected').data('id')
     var val=$(this).find(':selected').data('val')
     var column=$(this).find(':selected').data('column')
     var table=$(this).find(':selected').data('table')
+    var el = $(this).parent();
+
+    //Mise à jour de la table
     updateDB(table, column, val, id);
-    $(this).parent(".selectableClient").text($(this).val());
+
+    //Modification spéciphique pour une catégorie
+    if( el.get( 0 ).className == "selectableClient_devis"){
+        getClient(val);
+    }
+
+    el.text($(this).val());
+
 });
+
+function getClient(id){
+    var myData = {id: id,};
+    $.ajax({
+        url: baseUrl+'/client',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(myData)
+    }).done(function (response, code) {
+        $.each(JSON.parse(response), function(arrayID, myresp) {
+            $("#entreprise").text(myresp.entreprise);
+            $("#adresse").text(myresp.adresse);
+            $("#mail").text(myresp.mail);
+            $("#telephone").text(myresp.telephone);
+            $("#siret").text(myresp.siret);
+        });
+    }).fail(function (response, code) {
+        console.log(code);
+    });
+}
 
 function listClient(lc, id){
     $.ajax({
@@ -56,11 +88,6 @@ function listClient(lc, id){
 }
 
 function updateDB(table, column, data, id){
-    console.log(table)
-    console.log(column)
-    console.log(data)
-    console.log(id)
-
     var myData = {
         table: table,
         column: column,
@@ -74,9 +101,6 @@ function updateDB(table, column, data, id){
         contentType: 'application/json',
         data: JSON.stringify(myData)
     }).done(function (response, code) {
-        console.log(response);
-        console.log(code);
-        
         $("#liveToast").toast('show');
     }).fail(function (response, code) {
         console.log(code);

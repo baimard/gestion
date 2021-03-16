@@ -102,6 +102,15 @@ class PageController extends Controller {
 
 	/**
 	 * @NoCSRFRequired
+	 * @param string $id
+    */
+	public function getClient($id) {
+		
+		return $this->myDb->getClient($id);
+	}
+
+	/**
+	 * @NoCSRFRequired
 	 * @param string $nom
 	 * @param string $prenom
 	 * @param string $siret

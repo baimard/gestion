@@ -83,7 +83,7 @@ function loadDevisDT(){
            $('#devis').DataTable().row.add([
                                         myresp.id,
                                         '<div class="editable" data-table="devis" data-column="date" data-id="'+myresp.id+'">'+myresp.date+'</div>',
-                                        '<a href="/apps/gestion/devis/'+myresp.id+'/show"><i class="icon-details">           '+'</i></a>'+'<span class="editable" data-table="devis" data-column="num" data-id="'+myresp.id+'">'+myresp.num+'</span>',
+                                        '<a href="/apps/gestion/devis/'+myresp.id+'/show"><i class="icon-details">            '+'</i></a>'+'<div style="display:inline" class="editable" data-table="devis" data-column="num" data-id="'+myresp.id+'">'+myresp.num+'</div>',
                                         '<div class="selectableClient" data-id="'+myresp.id+'">'+myresp.prenom + " " + myresp.nom +'</div>'
                                     ]);
         });

@@ -34,6 +34,11 @@ class Bdd {
         return $this->execSQL($sql, array());
     }
 
+    public function getClient($id){
+        $sql = "SELECT * FROM client WHERE id = ?";
+        return $this->execSQL($sql, array($id));
+    }
+
     public function getDevis(){
         $sql = "SELECT devis.id, client.nom, client.prenom, client.id as cid, devis.num, devis.date FROM (devis LEFT JOIN client on id_client = client.id);";
         return $this->execSQL($sql, array());
@@ -50,7 +55,7 @@ class Bdd {
     }
 
     public function getOneDevis($numdevis){
-        $sql = "SELECT * FROM devis, client WHERE id_client = client.id AND devis.id = ?";
+        $sql = "SELECT devis.id as devisid, date, num, id_client, client.id as clientid, nom, prenom, siret, entreprise, telephone, mail, adresse FROM devis, client WHERE id_client = client.id AND devis.id = ?";
         return $this->execSQL($sql, array($numdevis));
     }
 

@@ -1,5 +1,5 @@
     <div class="bootstrap-iso">
-        <h2 class="mt-3 mb-3 text-center"> DEVIS N° <?php echo $_['devis'][0]->num;?></h2>
+        <h2 class="mt-3 mb-3 text-center"> DEVIS N° <div style="display:inline" class="editable" data-table="devis" data-column="num" data-id="<?php echo $_['devis'][0]->devisid;?>"><?php echo $_['devis'][0]->num;?></div></h2>
         <hr/>
         <div class="row">
             <div class="col col-md">
@@ -13,13 +13,13 @@
                 </p>
             </div>
             <div class="col col-md">
-            <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark">POUR <?php echo $_['devis'][0]->entreprise;?></h6>
+            <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark">POUR <span id="entreprise"><?php echo $_['devis'][0]->entreprise; ?></span></h6>
                 <p class="p-3 mt-0 mb-4 text-center text-dark text-center border border-top-0 border-2 border-dark">
-                    <?php echo $_['devis'][0]->prenom.' '.$_['devis'][0]->nom?><br/>
-                    <?php echo $_['devis'][0]->adresse;?><br/>
-                    <?php echo $_['devis'][0]->mail;?><br/>
-                    <?php echo $_['devis'][0]->telephone;?><br/>
-                    SIRET : <?php echo $_['devis'][0]->siret;?><br/>
+                    <span class="selectableClient_devis" data-id="<?php echo $_['devis'][0]->devisid;?>"><?php echo $_['devis'][0]->prenom.' '.$_['devis'][0]->nom; ?></span><br/>
+                    <span id="adresse"><?php echo $_['devis'][0]->adresse;?></span><br/>
+                    <span id="mail"><?php echo $_['devis'][0]->mail;?></span><br/>
+                    <span id="telephone"><?php echo $_['devis'][0]->telephone;?></span><br/>
+                    SIRET : <span id="siret"><?php echo $_['devis'][0]->siret;?></span><br/>
                 </p>
             </div>
         </div>
@@ -53,6 +53,7 @@
                     ?>
                 </tbody>
             </table>
+            <button type="button" class="mb-2 btn btn-outline-success">Ajouter</button>
         </div>
         <div class="mt-0 table-responsive">
             <table class="table table-striped table-xl">

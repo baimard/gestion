@@ -17,8 +17,8 @@ class Bdd {
         $this->database = "gestion";
         $this->hostname = "g_db_gestion";
         
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse");
-        $this->whiteTable = array("client", "devis");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite");
+        $this->whiteTable = array("client", "devis", "produit_devis");
 
 
         $dsn = "mysql:host=$this->hostname;dbname=$this->database;charset=$this->charset";
@@ -60,7 +60,7 @@ class Bdd {
     }
 
     public function getListProduit($numdevis){
-        $sql = "SELECT reference, description, quantité, prix_unitaire FROM produit, devis, produit_devis WHERE produit.id = produit_id AND devis.id = devis_id AND devis.id = ?";
+        $sql = "SELECT produit_devis.id as pdid, reference, description, quantite, prix_unitaire FROM produit, devis, produit_devis WHERE produit.id = produit_id AND devis.id = devis_id AND devis.id = ?";
         return $this->execSQL($sql, array($numdevis));
     }
 
@@ -79,6 +79,11 @@ class Bdd {
     public function insertDevis(){
         $sql = "INSERT INTO `devis` (`id`, `date`) VALUES (NULL, NOW());";
         return $this-> execSQL($sql, array());
+    }
+
+    public function insertProduitDevis($id){
+        $sql = "INSERT INTO `produit_devis` (`devis_id`) VALUES (?);";
+        return $this-> execSQL($sql, array($id));
     }
 
     /**

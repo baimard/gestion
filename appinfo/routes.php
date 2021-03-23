@@ -23,5 +23,7 @@ return [
        ['name' => 'page#getDevis',      'url' => '/getDevis', 'verb' => 'PROPFIND'],
        ['name' => 'page#getFactures',   'url' => '/getFactures', 'verb' => 'PROPFIND'],
        ['name' => 'page#getProduits',   'url' => '/getProduits', 'verb' => 'PROPFIND'],
+       ['name' => 'page#getProduitsById',   'url' => '/getProduitsById', 'verb' => 'POST'],
+       ['name' => 'page#insertProduitDevis',   'url' => '/insertProduitDevis', 'verb' => 'POST'],
     ]
 ];

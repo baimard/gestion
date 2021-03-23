@@ -4,7 +4,6 @@ import 'datatables.net';
 
 import $ from 'jquery';
 import 'bootstrap/js/dist/util';
-import Toast from 'bootstrap/js/dist/toast';
 
 import './event.js';
 
@@ -99,6 +98,9 @@ function loadClientDT(){
         type: 'PROPFIND',
         contentType: 'application/json'
     }).done(function (response) {
+        $('#client').dataTable( {
+            "autoWidth": true
+          } );
         $.each(JSON.parse(response), function(arrayID, myresp) {
             $('#client').DataTable().row.add([myresp.id,
                                             '<div class="editable" data-table="client" data-column="entreprise" data-id="'+myresp.id+'">'+myresp.entreprise+'</div>',

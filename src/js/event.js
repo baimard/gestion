@@ -4,11 +4,13 @@ import 'bootstrap/js/dist/toast';
 import {generateUrl} from "@nextcloud/router";
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/toast';
+
 var baseUrl = generateUrl('/apps/gestion');
 
 
 $(window).on("load", function(){
     $("#liveToast").toast({animation: true, delay: 4000});
+    getProduitsById();
 });
 
 $('body').on('click', '.menu', function(){
@@ -21,6 +23,9 @@ $('body').on('click', '.editable', function(){
 
 $('body').on('blur', '.editable', function(){
     updateDB($(this).data('table'), $(this).data('column'), $(this).text(), $(this).data('id'));
+    if($(this).data('modifier') === "getProduitsById"){
+        getProduitsById();
+    }
     $(this).attr('contenteditable', 'false');
     $(this).removeAttr('contenteditable');
 });
@@ -32,7 +37,31 @@ $('body').on('dblclick', '.selectableClient, .selectableClient_devis', function(
     listClient($('#listClient'), id);
 });
 
-$('body').on('click', '#listClient', function(){
+$('body').on('submit', '#clientinsert', function(e){
+    e.preventDefault();
+    var client = {
+        nom: $('#nom').val(),
+        prenom: $('#prenom').val(),
+        siret: $('#siret').val(),
+        entreprise: $('#entreprise').val(),
+        telephone: $('#telephone').val(),
+        mail: $('#mail').val(),
+        adresse: $('#adresse').val()
+    };
+    
+    $.ajax({
+        url: baseUrl + '/client/insert',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(client)
+    }).done(function (response) {
+        console.log(response);
+    }).fail(function (response, code) {
+        error(response);
+    });
+});
+
+$('body').on('click', '#listClient,#listProduit', function(){
 
     //Récupère les variables
     var id=$(this).find(':selected').data('id')
@@ -45,15 +74,56 @@ $('body').on('click', '#listClient', function(){
     updateDB(table, column, val, id);
 
     //Modification spéciphique pour une catégorie
-    if( el.get( 0 ).className == "selectableClient_devis"){
-        getClient(val);
+    if( el.get( 0 ).className === "selectableClient_devis"){
+        updateClient(val);
+    }if($(this).attr('id')==="listProduit"){
+        getProduitsById();
     }
 
     el.text($(this).val());
 
 });
 
-function getClient(id){
+$('body').on('click', '#devisAdd', function(){
+    var devis_id = $('#devisid').data('id');
+    var produit_devis = {
+        id: devis_id
+    };
+    
+    $.ajax({
+        url: baseUrl + '/insertProduitDevis',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(produit_devis)
+    }).done(function (response) {
+        console.log(response);
+        getProduitsById();
+    }).fail(function (response, code) {
+        error(response);
+    });
+});
+$('body').on('dblclick', '.selectable', function(){
+    var id = $(this).data('id');
+    $(this).text("");
+    $(this).html('<select id="listProduit">');
+    listProduit($('#listProduit'), id);
+});
+
+function listProduit(lp, id){
+    $.ajax({
+        url: baseUrl+'/getProduits',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        $.each(JSON.parse(response), function(arrayID, myresp) {
+            lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="'+myresp.id+'" data-id="'+ id +'">'+myresp.reference + ' ' + myresp.description + ' ' + myresp.prix_unitaire + ' &euro;' + '</option>');
+        });
+    }).fail(function (response, code) {
+        console.log(code);
+    });
+}
+
+function updateClient(id){
     var myData = {id: id,};
     $.ajax({
         url: baseUrl+'/client',
@@ -72,6 +142,7 @@ function getClient(id){
         console.log(code);
     });
 }
+
 
 function listClient(lc, id){
     $.ajax({
@@ -98,6 +169,7 @@ function updateDB(table, column, data, id){
     $.ajax({
         url: baseUrl+'/client/update',
         type: 'POST',
+        async: false,
         contentType: 'application/json',
         data: JSON.stringify(myData)
     }).done(function (response, code) {
@@ -107,26 +179,26 @@ function updateDB(table, column, data, id){
     });
 }
 
-$('body').on('submit', '#clientinsert', function(e){
-    e.preventDefault();
-    var client = {
-        nom: $('#nom').val(),
-        prenom: $('#prenom').val(),
-        siret: $('#siret').val(),
-        entreprise: $('#entreprise').val(),
-        telephone: $('#telephone').val(),
-        mail: $('#mail').val(),
-        adresse: $('#adresse').val()
-    };
-    
+function getProduitsById(){
+    var devis_id = $('#devisid').data('id');
+    var myData = {numdevis: devis_id,};
+
     $.ajax({
-        url: baseUrl + '/client/insert',
+        url: baseUrl+'/getProduitsById',
         type: 'POST',
+        async: false,
         contentType: 'application/json',
-        data: JSON.stringify(client)
-    }).done(function (response) {
-        console.log(response);
+        data: JSON.stringify(myData)
+    }).done(function (response, code) {
+        $('#produits').empty();
+        $.each(JSON.parse(response), function(arrayID, myresp) {
+            $('#produits').append('<tr>  <td class="selectable" data-id='+myresp.pdid+'>'+myresp.reference+'</td>'+
+                                        '<td>'+myresp.description+'</td>'+
+                                        '<td class=\"text-center\"><div class="editable getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id='+myresp.pdid+'>'+myresp.quantite+'</div> </td>'+
+                                        '<td class=\"text-center\">'+myresp.prix_unitaire+' &euro;</td>'+
+                                        '<td class="text-center">'+(myresp.quantite*myresp.prix_unitaire)+' &euro;</td></tr>');
+        });
     }).fail(function (response, code) {
-        error(response);
+        console.log(code);
     });
-});
+}

@@ -1,5 +1,5 @@
     <div class="bootstrap-iso">
-        <h2 class="mt-3 mb-3 text-center"> DEVIS N° <div style="display:inline" class="editable" data-table="devis" data-column="num" data-id="<?php echo $_['devis'][0]->devisid;?>"><?php echo $_['devis'][0]->num;?></div></h2>
+        <h2 class="mt-3 mb-3 text-center"> DEVIS N° <div id="devisid" style="display:inline" class="editable" data-table="devis" data-column="num" data-id="<?php echo $_['devis'][0]->devisid;?>"><?php echo $_['devis'][0]->num;?></div></h2>
         <hr/>
         <div class="row">
             <div class="col col-md">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table class="mt-4 mb-5 table table-striped table-xl">
+            <table id="produits" class="mt-4 mb-5 table table-striped table-xl">
                 <thead>
                     <tr>
                     <th>Reference</th>
@@ -42,18 +42,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
-                        $devis = $_['devis'][0];
-                        //var_dump($devis);
-                        $produit = $_['produit'];
-                        //var_dump($produit);
-                        foreach ($produit as $p){
-                            echo "<tr><td>$p->reference</td><td>$p->description</td><td>$p->quantité</td><td class=\"text-center\">$p->prix_unitaire &euro;</td><td class='text-center'>".intval($p->quantité)*floatval($p->prix_unitaire)." &euro;</td></tr>";
-                        }
-                    ?>
                 </tbody>
             </table>
-            <button type="button" class="mb-2 btn btn-outline-success">Ajouter</button>
+            <button id="devisAdd" type="button" class="mb-2 btn btn-outline-success">Ajouter</button>
         </div>
         <div class="mt-0 table-responsive">
             <table class="table table-striped table-xl">

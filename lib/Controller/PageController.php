@@ -94,6 +94,15 @@ class PageController extends Controller {
 
 	/**
 	 * @NoCSRFRequired
+	 * @param string $numdevis
+    */
+	public function getProduitsById($numdevis) {
+		// var_dump($numdevis);
+		return $this->myDb->getListProduit($numdevis);
+	}
+
+	/**
+	 * @NoCSRFRequired
     */
 	public function getFactures() {
 		
@@ -129,6 +138,14 @@ class PageController extends Controller {
 	 */
 	public function insertDevis(){
 		return $this->myDb->insertDevis();
+	}
+
+	/**
+	 * @NoCSRFRequired
+	 * @param string $id
+	 */
+	public function insertProduitDevis($id){
+		return $this->myDb->insertProduitDevis($id);
 	}
 
 	/**

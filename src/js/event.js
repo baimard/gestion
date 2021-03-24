@@ -1,9 +1,12 @@
 import $ from 'jquery';
+
 import 'bootstrap/js/dist/toast';
 
 import {generateUrl} from "@nextcloud/router";
+
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/toast';
+
 
 var baseUrl = generateUrl('/apps/gestion');
 
@@ -37,6 +40,18 @@ $('body').on('dblclick', '.selectableClient, .selectableClient_devis', function(
     listClient($('#listClient'), id);
 });
 
+$('body').on('click', '.deleteItem', function(){
+    var id = $(this).data('id');
+    var table = $(this).data('table');
+    var modifier = $(this).data('modifier');
+
+    deleteDB(table, id);
+
+    if( modifier === "getProduitsById"){
+        getProduitsById();
+    }
+});
+
 $('body').on('submit', '#clientinsert', function(e){
     e.preventDefault();
     var client = {
@@ -55,7 +70,6 @@ $('body').on('submit', '#clientinsert', function(e){
         contentType: 'application/json',
         data: JSON.stringify(client)
     }).done(function (response) {
-        console.log(response);
     }).fail(function (response, code) {
         error(response);
     });
@@ -96,18 +110,19 @@ $('body').on('click', '#devisAdd', function(){
         contentType: 'application/json',
         data: JSON.stringify(produit_devis)
     }).done(function (response) {
-        console.log(response);
         getProduitsById();
     }).fail(function (response, code) {
         error(response);
     });
 });
+
 $('body').on('dblclick', '.selectable', function(){
     var id = $(this).data('id');
     $(this).text("");
     $(this).html('<select id="listProduit">');
     listProduit($('#listProduit'), id);
 });
+
 
 function listProduit(lp, id){
     $.ajax({
@@ -119,7 +134,6 @@ function listProduit(lp, id){
             lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="'+myresp.id+'" data-id="'+ id +'">'+myresp.reference + ' ' + myresp.description + ' ' + myresp.prix_unitaire + ' &euro;' + '</option>');
         });
     }).fail(function (response, code) {
-        console.log(code);
     });
 }
 
@@ -167,13 +181,32 @@ function updateDB(table, column, data, id){
     };
 
     $.ajax({
-        url: baseUrl+'/client/update',
+        url: baseUrl+'/update',
         type: 'POST',
         async: false,
         contentType: 'application/json',
         data: JSON.stringify(myData)
     }).done(function (response, code) {
         $("#liveToast").toast('show');
+    }).fail(function (response, code) {
+        console.log(code);
+    });
+}
+
+function deleteDB(table, id){
+    var myData = {
+        table: table,
+        id: id,
+    };
+
+    $.ajax({
+        url: baseUrl+'/delete',
+        type: 'DELETE',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(myData)
+    }).done(function (response, code) {
+        //$("#liveToast").toast('show');
     }).fail(function (response, code) {
         console.log(code);
     });
@@ -190,14 +223,19 @@ function getProduitsById(){
         contentType: 'application/json',
         data: JSON.stringify(myData)
     }).done(function (response, code) {
-        $('#produits').empty();
+        $('#produits tbody').empty();
+        var total=0;
         $.each(JSON.parse(response), function(arrayID, myresp) {
-            $('#produits').append('<tr>  <td class="selectable" data-id='+myresp.pdid+'>'+myresp.reference+'</td>'+
+            $('#produits tbody').append('<tr><td class="selectable"><div data-html2canvas-ignore data-modifier="getProduitsById" data-id=' + myresp.pdid + ' data-table="produit_devis" style="display:inline-block;margin-right:25px;" class="deleteItem icon-delete-white"></div>' + myresp.reference + '</td>'+
                                         '<td>'+myresp.description+'</td>'+
-                                        '<td class=\"text-center\"><div class="editable getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id='+myresp.pdid+'>'+myresp.quantite+'</div> </td>'+
-                                        '<td class=\"text-center\">'+myresp.prix_unitaire+' &euro;</td>'+
-                                        '<td class="text-center">'+(myresp.quantite*myresp.prix_unitaire)+' &euro;</td></tr>');
+                                        '<td><div class="editable getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id='+myresp.pdid+'>'+myresp.quantite+'</div> </td>'+
+                                        '<td>'+myresp.prix_unitaire+' &euro;</td>'+
+                                        '<td>'+(myresp.quantite*myresp.prix_unitaire)+' &euro;</td></tr>');
+            total+=(myresp.quantite*myresp.prix_unitaire);
         });
+
+        $("#totaldevis tbody").empty();
+        $('#totaldevis tbody').append('<tr><td>'+total+'</td><td>20 %</td><td>'+Math.round((total*0.2*100))/100+'</td><td>'+Math.round((total*1.2*100))/100+'</td></tr>');
     }).fail(function (response, code) {
         console.log(code);
     });

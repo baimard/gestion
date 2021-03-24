@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     mode: "production",
-    entry: './src/js/main.js',
+    entry: ['./src/js/main.js', './src/js/pdf.js'],
     output: {
       filename: '../js/bundle.js'
     },
@@ -23,12 +23,6 @@ module.exports = {
               ],
             },
             {
-                test: /\.(ttf|eot|svg|gif|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                use: [{
-                    loader: 'file-loader'
-                }]
-            },
-            {
                 test: /\.css$/i,
                 use: [
                     {
@@ -44,6 +38,12 @@ module.exports = {
                       loader: 'sass-loader',
                     },
                 ],
+              },
+              {
+                test: /\.(ttf|eot|svg|gif|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use: [{
+                    loader: 'file-loader'
+                }]
               },
           ],
       },

@@ -89,10 +89,21 @@ class Bdd {
     /**
      * UPDATE
      */
-    public function updateClient($table, $column, $data, $id){
+    public function update($table, $column, $data, $id){
         if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
             $sql = "UPDATE $table SET $column = ? WHERE `id` = ?";
             return $this->execSQL($sql, array($data, $id));
+        }
+        return false;
+    }
+
+    /**
+     * DELETE
+     */
+    public function delete($table, $id){
+        if(in_array($table, $this->whiteTable)){
+            $sql = "DELETE FROM $table WHERE `id` = ?";
+            return $this->execSQL($sql, array($id));
         }
         return false;
     }

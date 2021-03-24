@@ -9,21 +9,28 @@
  */
 return [
     'routes' => [
-	   ['name' => 'page#index',         'url' => '/', 'verb' => 'GET'],
-       ['name' => 'page#clientcreate',  'url' => '/client/create', 'verb' => 'GET'],
-       ['name' => 'page#insertClient',  'url' => '/client/insert', 'verb' => 'POST'],
-       ['name' => 'page#updateClient',  'url' => '/client/update', 'verb' => 'POST'],
-       ['name' => 'page#getClient',     'url' => '/client', 'verb' => 'POST'],
-       ['name' => 'page#devis',         'url' => '/devis', 'verb' => 'GET'],
-       ['name' => 'page#devisshow',     'url' => '/devis/{numdevis}/show', 'verb' => 'GET'],
-       ['name' => 'page#insertDevis',   'url' => '/devis/insert', 'verb' => 'POST'],
-       ['name' => 'page#facture',       'url' => '/facture', 'verb' => 'GET'],
-       ['name' => 'page#produit',       'url' => '/produit', 'verb' => 'GET'],
-	   ['name' => 'page#getClients',    'url' => '/getClients', 'verb' => 'PROPFIND'],
-       ['name' => 'page#getDevis',      'url' => '/getDevis', 'verb' => 'PROPFIND'],
-       ['name' => 'page#getFactures',   'url' => '/getFactures', 'verb' => 'PROPFIND'],
-       ['name' => 'page#getProduits',   'url' => '/getProduits', 'verb' => 'PROPFIND'],
+	   ['name' => 'page#index',             'url' => '/', 'verb' => 'GET'],
+       ['name' => 'page#devis',             'url' => '/devis', 'verb' => 'GET'],
+       ['name' => 'page#facture',           'url' => '/facture', 'verb' => 'GET'],
+       ['name' => 'page#produit',           'url' => '/produit', 'verb' => 'GET'],
+       ['name' => 'page#',                  'url' => '/client/create', 'verb' => 'GET'],
+
+	   ['name' => 'page#getClients',        'url' => '/getClients', 'verb' => 'PROPFIND'],
+       ['name' => 'page#getClient',         'url' => '/client', 'verb' => 'POST'],
+       ['name' => 'page#update',            'url' => '/update', 'verb' => 'POST'],
+       ['name' => 'page#insertClient',      'url' => '/client/insert', 'verb' => 'POST'],
+
+       ['name' => 'page#getDevis',          'url' => '/getDevis', 'verb' => 'PROPFIND'],
+       ['name' => 'page#devisshow',         'url' => '/devis/{numdevis}/show', 'verb' => 'GET'],
+       ['name' => 'page#insertDevis',       'url' => '/devis/insert', 'verb' => 'POST'],
+       ['name' => 'page#insertProduitDevis','url' => '/insertProduitDevis', 'verb' => 'POST'],
+
+       ['name' => 'page#getFactures',       'url' => '/getFactures', 'verb' => 'PROPFIND'],
+
+       ['name' => 'page#getProduits',       'url' => '/getProduits', 'verb' => 'PROPFIND'],
        ['name' => 'page#getProduitsById',   'url' => '/getProduitsById', 'verb' => 'POST'],
-       ['name' => 'page#insertProduitDevis',   'url' => '/insertProduitDevis', 'verb' => 'POST'],
+
+       ['name' => 'page#delete',            'url' => '/delete', 'verb' => 'DELETE'],
+
     ]
 ];

@@ -44,23 +44,20 @@
                 <tbody>
                 </tbody>
             </table>
-            <button id="devisAdd" type="button" class="mb-2 btn btn-outline-success">Ajouter</button>
+            <button id="devisAdd" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore>Ajouter</button>
+            <button id="pdf" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore>Generer PDF</button>
         </div>
         <div class="mt-0 table-responsive">
-            <table class="table table-striped table-xl">
+            <table id="totaldevis" class="table table-striped table-xl">
                 <thead class="bg-dark text-white">
                     <tr>
-                    <th>Total HT</th>
-                    <th>Taux TVA</th>
-                    <th>Total TVA</th>
-                    <th>Total TTC</th>
+                        <th class="text-center">Total HT</th>
+                        <th class="text-center">Taux TVA</th>
+                        <th class="text-center">Total TVA</th>
+                        <th class="text-center">Total TTC</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
                 </tbody>
             </table>
         </div>

@@ -25,6 +25,7 @@
 	"dependencies": {
 		"@nextcloud/router": "^1.2.0",
 		"datatables.net": "^1.10.23",
+		"jspdf": "^2.3.1",
 		"popper.js": "^1.16.1",
 		"sass": "^1.32.8"
 	},
@@ -33,10 +34,12 @@
 	},
 	"devDependencies": {
 		"bootstrap": "^4.6.0",
+		"bootstrap-icons": "^1.4.0",
 		"css": "^3.0.0",
 		"css-loader": "^5.1.1",
 		"datatables.net-dt": "^1.10.23",
 		"file-loader": "^6.2.0",
+		"html2canvas": "^1.0.0-rc.1",
 		"jquery": "^3.6.0",
 		"less": "^4.1.1",
 		"less-loader": "^8.0.0",

@@ -16,6 +16,9 @@ class PageController extends Controller {
 		$this->userId = $UserId;
 		$this->myDb = $myDb;
 		\OCP\Util::addScript('gestion', 'bundle');
+		\OCP\Util::addScript('gestion', '120.bundle');
+		\OCP\Util::addScript('gestion', '513.bundle');
+		\OCP\Util::addScript('gestion', '856.bundle');
 	}
 
 	/**
@@ -155,7 +158,17 @@ class PageController extends Controller {
 	 * @param string $data
 	 * @param string $id
 	 */
-	public function updateClient($table, $column, $data, $id) {
-		return $this->myDb->updateClient($table, $column, $data, $id);
+	public function update($table, $column, $data, $id) {
+		return $this->myDb->update($table, $column, $data, $id);
 	}
+
+	/**
+	 * @NoCSRFRequired
+	 * @param string $table
+	 * @param string $id
+	 */
+	public function delete($table, $id) {
+		return $this->myDb->delete($table, $id);
+	}
+
 }

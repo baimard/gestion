@@ -13,10 +13,11 @@ return [
        ['name' => 'page#devis',             'url' => '/devis', 'verb' => 'GET'],
        ['name' => 'page#facture',           'url' => '/facture', 'verb' => 'GET'],
        ['name' => 'page#produit',           'url' => '/produit', 'verb' => 'GET'],
-       ['name' => 'page#',                  'url' => '/client/create', 'verb' => 'GET'],
+       //['name' => 'page#clientcreate',      'url' => '/client/create', 'verb' => 'GET'],
 
 	   ['name' => 'page#getClients',        'url' => '/getClients', 'verb' => 'PROPFIND'],
        ['name' => 'page#getClient',         'url' => '/client', 'verb' => 'POST'],
+       ['name' => 'page#getClientbyiddevis',         'url' => '/clientbyiddevis', 'verb' => 'POST'],
        ['name' => 'page#update',            'url' => '/update', 'verb' => 'POST'],
        ['name' => 'page#insertClient',      'url' => '/client/insert', 'verb' => 'POST'],
 
@@ -26,6 +27,7 @@ return [
        ['name' => 'page#insertProduitDevis','url' => '/insertProduitDevis', 'verb' => 'POST'],
 
        ['name' => 'page#getFactures',       'url' => '/getFactures', 'verb' => 'PROPFIND'],
+       ['name' => 'page#insertFacture',      'url' => '/facture/insert', 'verb' => 'POST'],
 
        ['name' => 'page#getProduits',       'url' => '/getProduits', 'verb' => 'PROPFIND'],
        ['name' => 'page#getProduitsById',   'url' => '/getProduitsById', 'verb' => 'POST'],

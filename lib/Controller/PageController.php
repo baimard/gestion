@@ -123,6 +123,15 @@ class PageController extends Controller {
 
 	/**
 	 * @NoCSRFRequired
+	 * @param string $id
+    */
+	public function getClientbyiddevis($id) {
+		
+		return $this->myDb->getClientbyiddevis($id);
+	}
+	
+	/**
+	 * @NoCSRFRequired
 	 * @param string $nom
 	 * @param string $prenom
 	 * @param string $siret
@@ -141,6 +150,14 @@ class PageController extends Controller {
 	 */
 	public function insertDevis(){
 		return $this->myDb->insertDevis();
+	}
+
+	/**
+	 * @NoCSRFRequired
+	 * 
+	 */
+	public function insertFacture(){
+		return $this->myDb->insertFacture();
 	}
 
 	/**

@@ -17,8 +17,8 @@ class Bdd {
         $this->database = "gestion";
         $this->hostname = "g_db_gestion";
         
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite");
-        $this->whiteTable = array("client", "devis", "produit_devis");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis");
+        $this->whiteTable = array("client", "devis", "produit_devis", "facture");
 
 
         $dsn = "mysql:host=$this->hostname;dbname=$this->database;charset=$this->charset";
@@ -33,9 +33,14 @@ class Bdd {
         $sql = "SELECT * FROM client";
         return $this->execSQL($sql, array());
     }
-
+    
     public function getClient($id){
         $sql = "SELECT * FROM client WHERE id = ?";
+        return $this->execSQL($sql, array($id));
+    }
+
+    public function getClientbyiddevis($id){
+        $sql = "SELECT * FROM devis, client WHERE devis.id_client = client.id and devis.id = ?";
         return $this->execSQL($sql, array($id));
     }
 
@@ -45,7 +50,7 @@ class Bdd {
     }
 
     public function getFactures(){
-        $sql = "SELECT * FROM facture, client where id_client = client.id";
+        $sql = "SELECT facture.id, facture.num, facture.date, devis.num as dnum, date_paiement, type_paiement, id_devis, nom, prenom, entreprise FROM (facture LEFT JOIN devis on facture.id_devis = devis.id) LEFT JOIN client on devis.id_client = client.id";
         return $this->execSQL($sql, array());
     }
 
@@ -71,13 +76,23 @@ class Bdd {
     /**
      * INSERT
      */
+    // public function insertClient($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse){
+    //     $sql = "INSERT INTO `client` (`id`, `nom`, `prenom`, `siret`, `entreprise`, `telephone`, `mail`, `adresse`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);";
+    //     return $this-> execSQL($sql, array($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse));
+    // }
+
     public function insertClient($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse){
-        $sql = "INSERT INTO `client` (`id`, `nom`, `prenom`, `siret`, `entreprise`, `telephone`, `mail`, `adresse`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);";
-        return $this-> execSQL($sql, array($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse));
+        $sql = "INSERT INTO `client` (`id`) VALUES (NULL);";
+        return $this-> execSQL($sql, array());
     }
 
     public function insertDevis(){
         $sql = "INSERT INTO `devis` (`id`, `date`) VALUES (NULL, NOW());";
+        return $this-> execSQL($sql, array());
+    }
+
+    public function insertFacture(){
+        $sql = "INSERT INTO `facture` (`id`, `date`) VALUES (NULL, NOW());";
         return $this-> execSQL($sql, array());
     }
 

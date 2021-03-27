@@ -13,7 +13,8 @@
 				<button class='menu' data-menu="client"></button>
 				<div id="menu-client" class="app-navigation-entry-menu">
 					<ul>
-						<li><a href="/apps/gestion/client/create"><span class="icon-add"></span></a></li>
+						<!-- <li><a href="/apps/gestion/client/create"><span class="icon-add"></span></a></li> -->
+						<li><a id="newClient"><span class="icon-add"></span></a></li>
 					</ul>
 				</div>
 				</li>
@@ -43,7 +44,7 @@
 				<button class='menu' data-menu="facture"></button>
 				<div id="menu-facture" class="app-navigation-entry-menu">
 					<ul>
-						<li><a href="/apps/gestion/create"><span class="icon-add"></span><span>Ajouter</span></a></li>
+						<li><a id="newFacture"><span class="icon-add"></span></a></li>
 					</ul>
 				</div>
 				</li>
@@ -58,7 +59,7 @@
 				<button class='menu' data-menu="produit"></button>
 				<div id="menu-produit" class="app-navigation-entry-menu">
 					<ul>
-						<li><a href="/apps/gestion/create"><span class="icon-add"></span><span>Ajouter</span></a></li>
+						<li><a id="newProduit"><span class="icon-add"></span></a></li>
 					</ul>
 				</div>
 				</li>

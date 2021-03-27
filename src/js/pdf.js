@@ -9,6 +9,8 @@ $('body').on('click', '#pdf', function(){
 
 function capture() {
     $('.bootstrap-iso').css('width', '900px')
+    $('.bootstrap-iso').css('padding-right', '20px')
+    $('.bootstrap-iso').css('padding-left', '20px')
     html2canvas($('.bootstrap-iso')[0], {
         scrollY: -window.scrollY,
         dpi: 600,
@@ -16,6 +18,8 @@ function capture() {
         genPDF(canvas.toDataURL("image/png"), canvas);
     });
     $('.bootstrap-iso').css('width', '')
+    $('.bootstrap-iso').css('padding-right', '')
+    $('.bootstrap-iso').css('padding-left', '')
 }
 
 function genPDF(imgData, canvas){

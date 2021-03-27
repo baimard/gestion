@@ -13,13 +13,13 @@
                 </p>
             </div>
             <div class="col col-md">
-            <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark">POUR <span id="entreprise"><?php echo $_['devis'][0]->entreprise; ?></span></h6>
+            <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark">POUR <span id="entreprise"></span></h6>
                 <p class="p-3 mt-0 mb-4 text-center text-dark text-center border border-top-0 border-2 border-dark">
-                    <span class="selectableClient_devis" data-id="<?php echo $_['devis'][0]->devisid;?>"><?php echo $_['devis'][0]->prenom.' '.$_['devis'][0]->nom; ?></span><br/>
-                    <span id="adresse"><?php echo $_['devis'][0]->adresse;?></span><br/>
-                    <span id="mail"><?php echo $_['devis'][0]->mail;?></span><br/>
-                    <span id="telephone"><?php echo $_['devis'][0]->telephone;?></span><br/>
-                    SIRET : <span id="siret"><?php echo $_['devis'][0]->siret;?></span><br/>
+                    <span id="nomprenom" class="selectableClient_devis" data-id="0" data-table="devis" data-column="id_client"></span><br/>
+                    <span id="adresse"></span><br/>
+                    <span id="mail"></span><br/>
+                    <span id="telephone"></span><br/>
+                    SIRET : <span id="siret"></span><br/>
                 </p>
             </div>
         </div>

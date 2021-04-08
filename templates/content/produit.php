@@ -5,6 +5,7 @@
                 <th>Id</th>
                 <th>reference</th>
                 <th>description</th>
+                <th>prix unitaire</th>
             </tr>
         </thead>
         <tbody>

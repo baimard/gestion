@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table id="produits" class="mt-4 mb-5 table table-striped table-xl">
+            <table id="produits" class="table table-striped">
                 <thead>
                     <tr>
                     <th>Reference</th>

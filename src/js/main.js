@@ -13,6 +13,12 @@ import {generateUrl} from "@nextcloud/router";
 
 var baseUrl = generateUrl('/apps/gestion');
 
+const euro = new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2
+  });
+
 $(window).on("load", function(){
     $("#liveToast").toast({animation: true, delay: 4000});
 
@@ -105,6 +111,10 @@ $('body').on('click', '.deleteItem', function(){
     if( modifier === "facture"){
         loadFactureDT();
     }
+
+    if( modifier === "produit"){
+        loadProduitDT();
+    }
 });
 
 $('body').on('click', '#listClient,#listProduit,#listDevis', function(){
@@ -161,14 +171,37 @@ $('body').on('click', '#newFacture', function(){
     loadFactureDT();
 })
 
+$('body').on('click', '#newProduit', function(){
+    newProduit();
+    loadProduitDT();
+})
+
 function loadProduitDT(){
+    if(! $.fn.DataTable.isDataTable( '#produit' )){
+        $('#produit').dataTable({
+            "autoWidth": true,
+            "columns": [
+                { "width": "10%" },
+                { "width": "20%" },
+                { "width": "50%" },
+                { "width": "20%" },
+              ]
+          } );
+    }
+
     $.ajax({
         url: baseUrl+'/getProduits',
         type: 'PROPFIND',
         contentType: 'application/json'
     }).done(function (response) {
+        $('#produit').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
-           $('#produit').DataTable().row.add([myresp.id,myresp.reference,myresp.description]);
+           $('#produit').DataTable().row.add([
+                '<div data-modifier="produit" data-id=' + myresp.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>' +myresp.id,
+               '<div class="editable" data-table="produit" data-column="reference" data-id="'+myresp.id+'">'+ myresp.reference+'</div>',
+               '<div class="editable" data-table="produit" data-column="description" data-id="'+myresp.id+'">'+myresp.description+'</div>',
+               '<div class="editable" data-table="produit" data-column="prix_unitaire" data-id="'+myresp.id+'">'+myresp.prix_unitaire+'</div>'
+            ]);
         });
         $('#produit').DataTable().draw(false);
     }).fail(function (response, code) {
@@ -407,13 +440,13 @@ function getProduitsById(){
             $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="deleteItem icon-delete"></div><div style="display:inline;" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>'+
                                         '<td>'+myresp.description+'</td>'+
                                         '<td><div class="editable getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id='+myresp.pdid+'>'+myresp.quantite+'</div> </td>'+
-                                        '<td>'+myresp.prix_unitaire+' &euro;</td>'+
-                                        '<td>'+(myresp.quantite*myresp.prix_unitaire)+' &euro;</td></tr>');
+                                        '<td>'+euro.format(myresp.prix_unitaire)+'</td>'+
+                                        '<td>'+euro.format((myresp.quantite*myresp.prix_unitaire))+'</td></tr>');
             total+=(myresp.quantite*myresp.prix_unitaire);
         });
 
         $("#totaldevis tbody").empty();
-        $('#totaldevis tbody').append('<tr><td>'+total+'</td><td>20 %</td><td>'+Math.round((total*0.2*100))/100+'</td><td>'+Math.round((total*1.2*100))/100+'</td></tr>');
+        $('#totaldevis tbody').append('<tr><td>'+euro.format(total)+'</td><td>20 %</td><td>'+euro.format(Math.round((total*0.2*100))/100)+'</td><td>'+euro.format(Math.round((total*1.2*100))/100)+'</td></tr>');
     }).fail(function (response, code) {
         console.log(code);
     });
@@ -445,8 +478,20 @@ function newClient(){
     $.ajax({
         url: baseUrl + '/client/insert',
         type: 'POST',
+        async: false,
         contentType: 'application/json',
-        data: JSON.stringify(client)
+        //data: JSON.stringify(client)
+    }).fail(function (response, code) {
+        error(response);
+    });
+}
+
+function newProduit(){
+    $.ajax({
+        url: baseUrl + '/produit/insert',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
     }).fail(function (response, code) {
         error(response);
     });

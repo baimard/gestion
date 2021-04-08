@@ -17,8 +17,8 @@ class Bdd {
         $this->database = "gestion";
         $this->hostname = "g_db_gestion";
         
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis");
-        $this->whiteTable = array("client", "devis", "produit_devis", "facture");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire");
+        $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit");
 
 
         $dsn = "mysql:host=$this->hostname;dbname=$this->database;charset=$this->charset";
@@ -93,6 +93,11 @@ class Bdd {
 
     public function insertFacture(){
         $sql = "INSERT INTO `facture` (`id`, `date`) VALUES (NULL, NOW());";
+        return $this-> execSQL($sql, array());
+    }
+
+    public function insertProduit(){
+        $sql = "INSERT INTO `produit` (`id`) VALUES (NULL);";
         return $this-> execSQL($sql, array());
     }
 

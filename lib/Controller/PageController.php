@@ -162,6 +162,14 @@ class PageController extends Controller {
 
 	/**
 	 * @NoCSRFRequired
+	 * 
+	 */
+	public function insertProduit(){
+		return $this->myDb->insertProduit();
+	}
+
+	/**
+	 * @NoCSRFRequired
 	 * @param string $id
 	 */
 	public function insertProduitDevis($id){

@@ -31,6 +31,7 @@ return [
 
        ['name' => 'page#getProduits',       'url' => '/getProduits', 'verb' => 'PROPFIND'],
        ['name' => 'page#getProduitsById',   'url' => '/getProduitsById', 'verb' => 'POST'],
+       ['name' => 'page#insertProduit',     'url' => '/produit/insert', 'verb' => 'POST'],
 
        ['name' => 'page#delete',            'url' => '/delete', 'verb' => 'DELETE'],
 

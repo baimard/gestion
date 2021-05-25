@@ -214,10 +214,10 @@ function loadFactureDT(){
         $('#facture').dataTable({
             "autoWidth": true,
             "columns": [
-                { "width": "5%" },
-                { "width": "18%" },
-                { "width": "18%" },
-                { "width": "18%" }, 
+                { "width": "10%" },
+                { "width": "16%" },
+                { "width": "16%" },
+                { "width": "17%" }, 
                 { "width": "18%" },
                 { "width": "23%" }
               ]
@@ -232,7 +232,7 @@ function loadFactureDT(){
         $('#facture').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
            $('#facture').DataTable().row.add([
-                                                '<div data-modifier="facture" data-id=' + myresp.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>' +myresp.id,
+                                                '<div data-modifier="facture" data-id=' + myresp.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div><div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/facture/'+myresp.id+'/show"><i class="icon-details style="display:inline-block;margin-right:0px;">      </i><div style="display:inline-block;margin-right:0px;width:65%;text-align:right;">'+myresp.id+'</div></a></div>',
                                                 '<div class="editable" data-table="facture" data-column="num" data-id="'+myresp.id+'">'+myresp.num+'</div>',
                                                 '<div class="editable" data-table="facture" data-column="date" data-id="'+myresp.id+'">'+myresp.date+'</div>',
                                                 '<div class="editable" data-table="facture" data-column="date_paiement" data-id="'+myresp.id+'">'+myresp.date_paiement+'</div>',

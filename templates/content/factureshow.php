@@ -1,5 +1,5 @@
     <div class="bootstrap-iso">
-        <h2 class="mt-3 mb-3 text-center"> DEVIS N° <div id="devisid" style="display:inline" class="editable" data-table="devis" data-column="num" data-id="<?php echo $_['devis'][0]->devisid;?>"><?php echo $_['devis'][0]->num;?></div></h2>
+        <h2 class="mt-3 mb-3 text-center">FACTURE N° <div id="factureid" style="display:inline" class="editable" data-table="facture" data-column="num" data-id="<?php echo $_['facture'][0]->id;?>"><?php echo $_['facture'][0]->num;?></div></h2>
         <hr/>
         <div class="row">
             <div class="col col-md">
@@ -15,7 +15,7 @@
             <div class="col col-md">
             <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark">POUR <span id="entreprise"></span></h6>
                 <p class="p-3 mt-0 mb-4 text-center text-dark text-center border border-top-0 border-2 border-dark">
-                    <span id="nomprenom" class="selectableClient_devis" data-id="0" data-table="devis" data-column="id_client"></span><br/>
+                    <span id="nomprenom" class="selectableClient_devis" data-id="0" data-table="facture" data-column="id_client"></span><br/>
                     <span id="adresse"></span><br/>
                     <span id="mail"></span><br/>
                     <span id="telephone"></span><br/>
@@ -26,7 +26,14 @@
         <div class="row">
             <div class="col col-md">
                 <hr/>
-                <div class="col col-xl mb-3 text-center"><b><span>Offre valide 1 mois à compter du : </span><span><?php echo (new DateTime($_['devis'][0]->date))->format('d-m-Y');?></span></b></div>
+                    <div class="col col-xl mb-3 text-center">
+                        <b>
+                            <span>Application du Devis : <?php echo $_['facture'][0]->dnum;?></span><br/>
+                            <span>Date de règlement : <?php echo (new DateTime($_['facture'][0]->date_paiement))->format('d-m-Y');?></span><br/>
+                            <span>Date de prestation : <?php echo (new DateTime($_['facture'][0]->date))->format('d-m-Y');?></span><br/>
+                            <span>Payé par : <?php echo $_['facture'][0]->type_paiement;?></span><br/>
+                        </b>
+                    </div>
                 <hr/>
             </div>
         </div>
@@ -44,7 +51,6 @@
                 <tbody>
                 </tbody>
             </table>
-            <button id="devisAdd" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore>Ajouter</button>
             <button id="pdf" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore>Generer PDF</button>
         </div>
         <div class="mt-0 table-responsive">

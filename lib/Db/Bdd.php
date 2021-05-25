@@ -54,6 +54,11 @@ class Bdd {
         return $this->execSQL($sql, array());
     }
 
+    public function getOneFacture($numfacture){
+        $sql = "SELECT facture.id, facture.num, facture.date, devis.num as dnum, date_paiement, type_paiement, id_devis, nom, prenom, entreprise FROM (facture LEFT JOIN devis on facture.id_devis = devis.id) LEFT JOIN client on devis.id_client = client.id WHERE facture.id = ?";
+        return $this->execSQL($sql, array($numfacture));
+    }
+
     public function getProduits(){
         $sql = "SELECT * FROM produit";
         return $this->execSQL($sql, array());

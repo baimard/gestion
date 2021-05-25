@@ -58,7 +58,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function clientcreate() {
-		return new TemplateResponse('gestion', 'clientcreate');  // templates/index.php
+		return new TemplateResponse('gestion', 'clientcreate');
 	}
 
 	/**
@@ -68,7 +68,17 @@ class PageController extends Controller {
 	public function devisshow($numdevis) {
 		$devis = $this->myDb->getOneDevis($numdevis);
 		$produits = $this->myDb->getListProduit($numdevis);
-		return new TemplateResponse('gestion', 'devisshow', array('devis'=>json_decode($devis), 'produit'=>json_decode($produits)));  // templates/index.php
+		return new TemplateResponse('gestion', 'devisshow', array('devis'=>json_decode($devis), 'produit'=>json_decode($produits)));
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+    */
+	public function factureshow($numfacture) {
+		$facture = $this->myDb->getOneFacture($numfacture);
+		// $produits = $this->myDb->getListProduit($numdevis);
+		return new TemplateResponse('gestion', 'factureshow', array('facture'=>json_decode($facture)));
 	}
 
 	/**

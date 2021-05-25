@@ -15,7 +15,7 @@
             <div class="col col-md">
             <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark">POUR <span id="entreprise"></span></h6>
                 <p class="p-3 mt-0 mb-4 text-center text-dark text-center border border-top-0 border-2 border-dark">
-                    <span id="nomprenom" class="selectableClient_devis" data-id="0" data-table="devis" data-column="id_client"></span><br/>
+                    <span id="nomprenom" data-id="0" data-table="devis" data-column="id_client"></span><br/>
                     <span id="adresse"></span><br/>
                     <span id="mail"></span><br/>
                     <span id="telephone"></span><br/>

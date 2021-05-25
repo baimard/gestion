@@ -15,7 +15,7 @@
             <div class="col col-md">
             <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark">POUR <span id="entreprise"></span></h6>
                 <p class="p-3 mt-0 mb-4 text-center text-dark text-center border border-top-0 border-2 border-dark">
-                    <span id="nomprenom" class="selectableClient_devis" data-id="0" data-table="facture" data-column="id_client"></span><br/>
+                    <span id="nomprenom"></span><br/>
                     <span id="adresse"></span><br/>
                     <span id="mail"></span><br/>
                     <span id="telephone"></span><br/>
@@ -27,12 +27,8 @@
             <div class="col col-md">
                 <hr/>
                     <div class="col col-xl mb-3 text-center">
-                        <b>
-                            <span>Application du Devis : <?php echo $_['facture'][0]->dnum;?></span><br/>
-                            <span>Date de règlement : <?php echo (new DateTime($_['facture'][0]->date_paiement))->format('d-m-Y');?></span><br/>
-                            <span>Date de prestation : <?php echo (new DateTime($_['facture'][0]->date))->format('d-m-Y');?></span><br/>
-                            <span>Payé par : <?php echo $_['facture'][0]->type_paiement;?></span><br/>
-                        </b>
+                        <span>Date de règlement : <b><?php echo (new DateTime($_['facture'][0]->date_paiement))->format('d-m-Y');?></b>, </span><span>Date de prestation : <b><?php echo $_['facture'][0]->date;?></b></span><br/>
+                        <span id="devisid" data-id=<?php echo $_['facture'][0]->id_devis;?>>Application du Devis : <b><?php echo $_['facture'][0]->dnum;?></b>, </span><span>Payé par : <b><?php echo $_['facture'][0]->type_paiement;?></b></span><br/>
                     </div>
                 <hr/>
             </div>

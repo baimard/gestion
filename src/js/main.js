@@ -231,11 +231,18 @@ function loadFactureDT(){
     }).done(function (response) {
         $('#facture').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
+            var dtpaiement=""
+            if(myresp.date_paiement==null){
+                dtpaiement="Attente client"
+            }else{
+                dtpaiement=myresp.date_paiement
+            }
+
            $('#facture').DataTable().row.add([
                                                 '<div data-modifier="facture" data-id=' + myresp.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div><div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/facture/'+myresp.id+'/show"><i class="icon-details style="display:inline-block;margin-right:0px;">      </i><div style="display:inline-block;margin-right:0px;width:65%;text-align:right;">'+myresp.id+'</div></a></div>',
                                                 '<div class="editable" data-table="facture" data-column="num" data-id="'+myresp.id+'">'+myresp.num+'</div>',
                                                 '<div class="editable" data-table="facture" data-column="date" data-id="'+myresp.id+'">'+myresp.date+'</div>',
-                                                '<div class="editable" data-table="facture" data-column="date_paiement" data-id="'+myresp.id+'">'+myresp.date_paiement+'</div>',
+                                                '<div class="editable" data-table="facture" data-column="date_paiement" data-id="'+myresp.id+'">'+dtpaiement+'</div>',
                                                 '<div class="editable" data-table="facture" data-column="type_paiement" data-id="'+myresp.id+'">'+myresp.type_paiement+'</div>',
                                                 '<div class="selectableDevis" data-table="facture" data-column="id_devis" data-id="'+myresp.id+'">'+myresp.dnum + ' ' + myresp.prenom + " " + myresp.nom + ' - ' + myresp.entreprise + '</div>'
                                             ]);

@@ -267,9 +267,9 @@ function loadDevisDT(){
         $('#devis').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
            $('#devis').DataTable().row.add([
-                                        '<div data-modifier="devis" data-id=' + myresp.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>' +myresp.id,
+                                        '<div data-modifier="devis" data-id=' + myresp.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div><div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/devis/'+myresp.id+'/show"><i class="icon-details style="display:inline-block;margin-right:0px;">      </i><div style="display:inline-block;margin-right:0px;width:65%;text-align:right;">'+myresp.id+'</div></a></div>',
                                         '<div class="editable" data-table="devis" data-column="date" data-id="'+myresp.id+'">'+myresp.date+'</div>',
-                                        '<a href="/apps/gestion/devis/'+myresp.id+'/show"><i class="icon-details">            </i></a>'+'<div style="display:inline" class="editable" data-table="devis" data-column="num" data-id="'+myresp.id+'">'+myresp.num+'</div>',
+                                        '<a href="/apps/gestion/devis/'+myresp.id+'/show"></a>'+'<div style="display:inline" class="editable" data-table="devis" data-column="num" data-id="'+myresp.id+'">'+myresp.num+'</div>',
                                         '<div class="selectableClient" data-table="devis" data-column="id_client" data-id="'+myresp.id+'">'+myresp.prenom + " " + myresp.nom +'</div>'
                                     ]);
         });

@@ -27,6 +27,7 @@ return [
        ['name' => 'page#insertProduitDevis','url' => '/insertProduitDevis', 'verb' => 'POST'],
 
        ['name' => 'page#getFactures',       'url' => '/getFactures', 'verb' => 'PROPFIND'],
+       ['name' => 'page#factureshow',         'url' => '/facture/{numfacture}/show', 'verb' => 'GET'],
        ['name' => 'page#insertFacture',      'url' => '/facture/insert', 'verb' => 'POST'],
 
        ['name' => 'page#getProduits',       'url' => '/getProduits', 'verb' => 'PROPFIND'],

@@ -11,6 +11,7 @@ function capture() {
     $('.bootstrap-iso').css('width', '900px')
     $('.bootstrap-iso').css('padding-right', '20px')
     $('.bootstrap-iso').css('padding-left', '20px')
+    console.log(html2canvas($('.bootstrap-iso')[0]))
     html2canvas($('.bootstrap-iso')[0], {
         scrollY: -window.scrollY,
         dpi: 600,

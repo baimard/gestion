@@ -453,7 +453,9 @@ function getProduitsById(){
         });
 
         $("#totaldevis tbody").empty();
-        $('#totaldevis tbody').append('<tr><td>'+euro.format(total)+'</td><td>20 %</td><td>'+euro.format(Math.round((total*0.2*100))/100)+'</td><td>'+euro.format(Math.round((total*1.2*100))/100)+'</td></tr>');
+        // Paramètre global BDD Taux TVA
+        //$('#totaldevis tbody').append('<tr><td>'+euro.format(total)+'</td><td>0 %</td><td>'+euro.format(Math.round((total*0.2*100))/100)+'</td><td>'+euro.format(Math.round((total*1.2*100))/100)+'</td></tr>');
+        $('#totaldevis tbody').append('<tr><td>'+euro.format(total)+'</td><td>0 %</td><td>0</td><td>0</td></tr>');
     }).fail(function (response, code) {
         console.log(code);
     });

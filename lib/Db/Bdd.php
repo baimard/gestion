@@ -81,10 +81,6 @@ class Bdd {
     /**
      * INSERT
      */
-    // public function insertClient($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse){
-    //     $sql = "INSERT INTO `client` (`id`, `nom`, `prenom`, `siret`, `entreprise`, `telephone`, `mail`, `adresse`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);";
-    //     return $this-> execSQL($sql, array($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse));
-    // }
 
     public function insertClient($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse){
         $sql = "INSERT INTO `client` (`id`) VALUES (NULL);";

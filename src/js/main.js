@@ -139,6 +139,7 @@ $('body').on('click', '#listClient,#listProduit,#listDevis', function(){
 });
 
 $('body').on('click', '#devisAdd', function(){
+    console.log("ok");
     var devis_id = $('#devisid').data('id');
     var produit_devis = {
         id: devis_id

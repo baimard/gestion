@@ -3,13 +3,13 @@
         <hr/>
         <div class="row">
             <div class="col col-md">
-                <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark">PART CYBERCORP</h6>
+            <?php $res = json_decode($_['configuration'])[0]; ?>
+                <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark">PART <?php echo $res->entreprise;?></h5>
                 <p class="p-3 m-0 text-center text-dark text-center border border-top-0 border-2 border-dark">
-                    Benjamin AIMARD<br/>
-                    34 Avenue Blaise Pascal<br/>
-                    33160 SAINT MEDARD EN JALLES<br/>
-                    benjamin@cybercorp.fr<br/>
-                    06 60 51 44 86<br/>
+                <?php echo $res->prenom . " " . $res->nom; ?><br/>
+                <?php echo $res->adresse; ?><br/>
+                <?php echo $res->mail; ?><br/>
+                <?php echo $res->telephone; ?>
                 </p>
             </div>
             <div class="col col-md">
@@ -64,6 +64,6 @@
             <div class="col m-0 pb-0 alert alert-info text-center">
                 <p>Délai de paiement le 5ième jour du mois suivant la commande. En cas de retard, une pénalité au taux annuel de 5 % sera appliquée.<p/><p>TVA non applicable, art. 293B du CGI.</p>
                 <hr/>
-                <p>Société CYBERCORP<br/> 34 avenue Blaise Pascal 33160 SAINT MEDARD EN JALLES<br/> SIREN : 891 577 470 - SIRET : 891 577 470 00018</p>
+                <p>Société <?php echo $res->entreprise;?><br/><?php echo $res->adresse; ?><br/> SIREN : <?php echo $res->siren; ?> - SIRET : <?php echo $res->siret; ?></p>
             </div>
     </div>

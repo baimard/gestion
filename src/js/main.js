@@ -34,6 +34,9 @@ $(window).on("load", function(){
         loadClientDT();
     }
 
+    if($('#configuration').length){
+        loadConfigurationDT();
+    }
 
     if($('#devis').length){
         loadDevisDT();
@@ -286,6 +289,48 @@ function loadDevisDT(){
         console.log(code);
     });
 }
+
+function loadConfigurationDT(){
+    $.ajax({
+        url: baseUrl+'/getConfiguration',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        if(! $.fn.DataTable.isDataTable( '#configuration' )){
+            $('#configuration').dataTable({
+                "autoWidth": true,
+                "columns": [
+                    { "width": "6%" },
+                    { "width": "14%" },
+                    { "width": "10%" },
+                    { "width": "10%" },
+                    { "width": "10%" },
+                    { "width": "14%" },
+                    { "width": "18%" },
+                    { "width": "18%" }
+                  ]
+              } );
+        }
+        
+        $('#configuration').DataTable().clear();
+        $.each(JSON.parse(response), function(arrayID, myresp) {
+            $('#configuration').DataTable().row.add([   '<div class="editable" data-table="configuration" data-column="entreprise" data-id="'+myresp.id+'">'+myresp.entreprise+'</div>',
+                                                        '<div class="editable" data-table="configuration" data-column="nom" data-id="'+myresp.id+'">'+myresp.nom+'</div>',
+                                                        '<div class="editable" data-table="configuration" data-column="prenom" data-id="'+myresp.id+'">'+myresp.prenom+'</div>',
+                                                        '<div class="editable" data-table="configuration" data-column="siret" data-id="'+myresp.id+'">'+myresp.siret+'</div>',
+                                                        '<div class="editable" data-table="configuration" data-column="siren" data-id="'+myresp.id+'">'+myresp.siren+'</div>',
+                                                        '<div class="editable" data-table="configuration" data-column="telephone" data-id="'+myresp.id+'">'+myresp.telephone+'</div>',
+                                                        '<div class="editable" data-table="configuration" data-column="mail" data-id="'+myresp.id+'">'+myresp.mail+'</div>',
+                                                        '<div class="editable" data-table="configuration" data-column="adresse" data-id="'+myresp.id+'">'+myresp.adresse+'</div>']);
+        });
+        
+        $('#configuration').DataTable().draw();
+
+    }).fail(function (response, code) {
+        console.log(code);
+    });
+}
+
 
 function loadClientDT(){
     $.ajax({

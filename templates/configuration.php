@@ -6,7 +6,7 @@
 
 	<div id="app-content">
 		<div id="app-content-wrapper">
-			<?php print_unescaped($this->inc('content/clientcreate')); ?>
+			<?php print_unescaped($this->inc('content/configuration')); ?>
 		</div>
 	</div>
 </div>

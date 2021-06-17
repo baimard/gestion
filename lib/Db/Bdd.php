@@ -17,8 +17,8 @@ class Bdd {
         $this->database = "gestion";
         $this->hostname = "g_db_gestion";
         
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire");
-        $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren");
+        $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
 
 
         $dsn = "mysql:host=$this->hostname;dbname=$this->database;charset=$this->charset";
@@ -27,6 +27,11 @@ class Bdd {
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
+    }
+
+    public function getConfiguration($idNextcloud){
+        $sql = "SELECT * FROM `configuration` WHERE id_nextcloud = ?";
+        return $this->execSQL($sql, array($idNextcloud));
     }
 
     public function getClients($idNextcloud){
@@ -127,6 +132,19 @@ class Bdd {
             return $this->execSQL($sql, array($id, $idNextcloud));
         }
         return false;
+    }
+
+    /**
+     * Check
+     */
+    public function checkConfig($idNextcloud){
+        $sql = "SELECT count(*) as res FROM `configuration` WHERE `id_nextcloud` = ?";
+        $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
+        if ( $res < 1 ){
+            $sql = "INSERT INTO `configuration` (`id`, `entreprise`, `nom`, `prenom`, `siret`, `siren`, `mail`, `telephone`, `adresse`, `id_nextcloud`) VALUES (NULL, 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', ?);";
+            $this->execSQL($sql, array($idNextcloud));
+        }
+        return $res;
     }
 
     /**

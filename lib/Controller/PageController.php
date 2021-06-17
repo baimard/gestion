@@ -57,9 +57,18 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
     */
-	public function clientcreate() {
-		return new TemplateResponse('gestion', 'clientcreate');
+	public function config() {
+		$this->myDb->checkConfig($this->idNextcloud);
+		return new TemplateResponse('gestion', 'configuration');  // templates/index.php
 	}
+
+	// /**
+	//  * @NoAdminRequired
+	//  * @NoCSRFRequired
+    // */
+	// public function clientcreate() {
+	// 	return new TemplateResponse('gestion', 'clientcreate');
+	// }
 
 	/**
 	 * @NoAdminRequired
@@ -68,7 +77,7 @@ class PageController extends Controller {
 	public function devisshow($numdevis) {
 		$devis = $this->myDb->getOneDevis($numdevis,$this->idNextcloud);
 		$produits = $this->myDb->getListProduit($numdevis, $this->idNextcloud);
-		return new TemplateResponse('gestion', 'devisshow', array('devis'=>json_decode($devis), 'produit'=>json_decode($produits)));
+		return new TemplateResponse('gestion', 'devisshow', array('configuration'=> $this->getConfiguration(), 'devis'=>json_decode($devis), 'produit'=>json_decode($produits)));
 	}
 
 	/**
@@ -78,7 +87,7 @@ class PageController extends Controller {
 	public function factureshow($numfacture) {
 		$facture = $this->myDb->getOneFacture($numfacture,$this->idNextcloud);
 		// $produits = $this->myDb->getListProduit($numdevis);
-		return new TemplateResponse('gestion', 'factureshow', array('facture'=>json_decode($facture)));
+		return new TemplateResponse('gestion', 'factureshow', array('configuration'=> $this->getConfiguration(), 'facture'=>json_decode($facture)));
 	}
 
 	/**
@@ -88,6 +97,15 @@ class PageController extends Controller {
 	public function getClients() {
 		
 		return $this->myDb->getClients($this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+    */
+	public function getConfiguration() {
+		
+		return $this->myDb->getConfiguration($this->idNextcloud);
 	}
 
 	/**

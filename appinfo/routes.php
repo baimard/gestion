@@ -13,11 +13,13 @@ return [
        ['name' => 'page#devis',             'url' => '/devis', 'verb' => 'GET'],
        ['name' => 'page#facture',           'url' => '/facture', 'verb' => 'GET'],
        ['name' => 'page#produit',           'url' => '/produit', 'verb' => 'GET'],
+       ['name' => 'page#config',           'url' => '/config', 'verb' => 'GET'],
        //['name' => 'page#clientcreate',      'url' => '/client/create', 'verb' => 'GET'],
 
 	   ['name' => 'page#getClients',        'url' => '/getClients', 'verb' => 'PROPFIND'],
        ['name' => 'page#getClient',         'url' => '/client', 'verb' => 'POST'],
        ['name' => 'page#getClientbyiddevis',         'url' => '/clientbyiddevis', 'verb' => 'POST'],
+       ['name' => 'page#getConfiguration',         'url' => '/getConfiguration', 'verb' => 'PROPFIND'],
        ['name' => 'page#update',            'url' => '/update', 'verb' => 'POST'],
        ['name' => 'page#insertClient',      'url' => '/client/insert', 'verb' => 'POST'],
 

@@ -2,6 +2,9 @@ import $ from 'jquery';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 
+import {generateUrl} from "@nextcloud/router";
+var baseUrl = generateUrl('/apps/gestion');
+
 $('body').on('click', '#pdf', function(){
     capture();
 });
@@ -43,5 +46,19 @@ function genPDF(imgData, canvas){
         heightLeft -= pageHeight;
       }
 
-    doc.save('devis.pdf');
+      var pdf = btoa(doc.output()); 
+      var myData = {content: pdf,};
+
+      $.ajax({
+          url: baseUrl + '/savePDF',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify(myData)
+      }).done(function (response) {
+          console.log('canvas response');
+      }).fail(function (response, code) {
+          error(response);
+      });
+
+    //doc.save('devis.pdf');
 }

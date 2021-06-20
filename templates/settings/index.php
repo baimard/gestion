@@ -6,7 +6,7 @@
 	</div>
 	<div id="app-settings-content">
 		<ul>
-			<a href="/apps/gestion/config">Mon entreprise</a>
+			<span class="icon-rename"></span><a href="/apps/gestion/config">Mon entreprise</a>
 		</ul>
 	</div>
 </div>

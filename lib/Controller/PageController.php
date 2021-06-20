@@ -2,6 +2,7 @@
 namespace OCA\Gestion\Controller;
 
 use OCP\IRequest;
+use OCP\Files\IRootFolder;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
@@ -11,10 +12,15 @@ class PageController extends Controller {
 	private $idNextcloud;
 	private $myDb;
 
-	public function __construct($AppName, IRequest $request, $UserId, Bdd $myDb){
+	/** @var IRootStorage */
+	private $storage;
+
+	public function __construct($AppName, IRequest $request, $UserId, Bdd $myDb, IRootFolder $rootFolder){
 		parent::__construct($AppName, $request);
 		$this->idNextcloud = $UserId;
 		$this->myDb = $myDb;
+		$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
+
 		\OCP\Util::addScript('gestion', 'bundle');
 		\OCP\Util::addScript('gestion', '120.bundle');
 		\OCP\Util::addScript('gestion', '513.bundle');
@@ -34,7 +40,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function devis() {
-		return new TemplateResponse('gestion', 'devis');  // templates/index.php
+		return new TemplateResponse('gestion', 'devis');  // templates/devis.php
 	}
 
 	/**
@@ -42,7 +48,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function facture() {
-		return new TemplateResponse('gestion', 'facture');  // templates/index.php
+		return new TemplateResponse('gestion', 'facture');  // templates/facture.php
 	}
 
 	/**
@@ -50,7 +56,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function produit() {
-		return new TemplateResponse('gestion', 'produit');  // templates/index.php
+		return new TemplateResponse('gestion', 'produit');  // templates/produit.php
 	}
 
 	/**
@@ -59,16 +65,8 @@ class PageController extends Controller {
     */
 	public function config() {
 		$this->myDb->checkConfig($this->idNextcloud);
-		return new TemplateResponse('gestion', 'configuration');  // templates/index.php
+		return new TemplateResponse('gestion', 'configuration');  // templates/configuration.php
 	}
-
-	// /**
-	//  * @NoAdminRequired
-	//  * @NoCSRFRequired
-    // */
-	// public function clientcreate() {
-	// 	return new TemplateResponse('gestion', 'clientcreate');
-	// }
 
 	/**
 	 * @NoAdminRequired
@@ -228,6 +226,54 @@ class PageController extends Controller {
 	 */
 	public function delete($table, $id) {
 		return $this->myDb->delete($table, $id, $this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @param string $content
+	 */
+	public function savePDF($content){
+		//ça c'est ok
+		// $this->storage->newfolder('test');
+		// $this->storage->newFile('/test/myfile2.txt');
+		try {
+			try {
+				$this->storage->newFile('/test/test.pdf');
+				$file = $this->storage->get('/test/test.pdf');
+				$data = base64_decode($content);
+				$file->putContent($data);
+          	} catch(\OCP\Files\NotFoundException $e) {
+               	//$file = $this->storage->get('/myfile.txt');
+            }
+
+        } catch(\OCP\Files\NotPermittedException $e) {
+            // you have to create this exception by yourself ;)
+            throw new StorageException('Cant write to file');
+        }
+
+		//work
+		// try {
+        //     try {
+        //         $file = $this->storage->get('/test/myfile2.txt');
+        //     } catch(\OCP\Files\NotFoundException $e) {
+        //         
+        //        	$file = $this->storage->get('/myfile.txt');
+        //     }
+
+        //     // the id can be accessed by $file->getId();
+        //     $file->putContent('myfile2');
+
+        // } catch(\OCP\Files\NotPermittedException $e) {
+        //     // you have to create this exception by yourself ;)
+        //     throw new StorageException('Cant write to file');
+        // }
+
+		// //
+		// $userFolder->touch('/test/myfile2345.txt');
+		// $file = $userFolder->get('/test/myfile2345.txt');
+		// $file->putContent('test');
+		// //$file = $userFolder->get('myfile2.txt');
 	}
 
 }

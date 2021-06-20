@@ -38,5 +38,7 @@ return [
 
        ['name' => 'page#delete',            'url' => '/delete', 'verb' => 'DELETE'],
 
+       ['name' => 'page#savePDF',           'url' => '/savePDF', 'verb' => 'POST'],
+
     ]
 ];

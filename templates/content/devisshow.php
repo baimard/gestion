@@ -3,7 +3,7 @@
         <hr/>
         <div class="row">
             <div class="col col-md">
-            <?php $res = json_decode($_['configuration'])[0]; ?>
+                <?php $res = json_decode($_['configuration'])[0]; ?>
                 <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark">PART <?php echo $res->entreprise;?></h5>
                 <p class="p-3 m-0 text-center text-dark text-center border border-top-0 border-2 border-dark">
                 <?php echo $res->prenom . " " . $res->nom; ?><br/>

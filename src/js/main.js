@@ -50,6 +50,21 @@ $(window).on("load", function(){
 
 });
 
+// $('body').on('click', '#test', function(){
+//     console.log("test");
+//     $.ajax({
+//         url: baseUrl + 'remote.php/dav/files/baimard/',
+//         type: 'PROPFIND',
+//         contentType: 'application/json',
+//         //data: JSON.stringify(produit_devis)
+//     }).done(function (response) {
+//         console.log(response);
+//     }).fail(function (response, code) {
+//         error(response);
+//     });
+// });
+
+
 $('body').on('click', '.menu', function(){
     $('#menu-'+this.dataset.menu).toggleClass('open');
 });

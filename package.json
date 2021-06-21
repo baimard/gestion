@@ -23,9 +23,11 @@
 		"watch": "NODE_ENV=production webpack --watch --config webpack.js"
 	},
 	"dependencies": {
+		"@nextcloud/dialogs": "^3.1.2",
 		"@nextcloud/router": "^1.2.0",
 		"datatables.net": "^1.10.23",
 		"jspdf": "^2.3.1",
+		"nextcloud-webdav-filepicker": "^0.0.14",
 		"popper.js": "^1.16.1",
 		"sass": "^1.32.8"
 	},

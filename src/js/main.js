@@ -7,9 +7,8 @@ import $ from 'jquery';
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/toast';
 
-//import './event.js';
-
-import {generateUrl} from "@nextcloud/router";
+import { generateUrl } from "@nextcloud/router";
+import { FilePicker } from "@nextcloud/dialogs";
 
 var baseUrl = generateUrl('/apps/gestion');
 
@@ -50,20 +49,15 @@ $(window).on("load", function(){
 
 });
 
-// $('body').on('click', '#test', function(){
-//     console.log("test");
-//     $.ajax({
-//         url: baseUrl + 'remote.php/dav/files/baimard/',
-//         type: 'PROPFIND',
-//         contentType: 'application/json',
-//         //data: JSON.stringify(produit_devis)
-//     }).done(function (response) {
-//         console.log(response);
-//     }).fail(function (response, code) {
-//         error(response);
-//     });
-// });
-
+$('body').on('click', '#theFolder', function(){
+    var test = new FilePicker("Path to your recipe collection", false, [], false, 1, true, $("#theFolder").val());
+    test.pick().then(
+            function(value){
+                console.log(value);
+                $("#theFolder").val(value);
+            }
+        );
+});
 
 $('body').on('click', '.menu', function(){
     $('#menu-'+this.dataset.menu).toggleClass('open');
@@ -566,3 +560,4 @@ function newProduit(){
         error(response);
     });
 }
+

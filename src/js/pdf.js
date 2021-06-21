@@ -3,6 +3,7 @@ import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 
 import {generateUrl} from "@nextcloud/router";
+
 var baseUrl = generateUrl('/apps/gestion');
 
 $('body').on('click', '#pdf', function(){
@@ -62,3 +63,4 @@ function genPDF(imgData, canvas){
 
     //doc.save('devis.pdf');
 }
+

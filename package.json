@@ -1,0 +1,55 @@
+{
+	"name": "gestion",
+	"description": "Application pour gérer votre micro entreprise, client, facture, devis",
+	"version": "1.0.0",
+	"author": "Benjamin AIMARD",
+	"contributors": [
+		"benjamin@41m4rd.ovh"
+	],
+	"bugs": {
+		"url": "https://gitlab.com/baimard/gestion/-/issues"
+	},
+	"repository": {
+		"url": "https://gitlab.com/baimard/gestion",
+		"type": "git"
+	},
+	"homepage": "https://gitlab.com/baimard/gestion",
+	"license": "agpl",
+	"private": true,
+	"scripts": {
+		"webpack": "webpack",
+		"build": "NODE_ENV=production webpack --config webpack.js",
+		"dev": "NODE_ENV=production webpack --config webpack.js",
+		"watch": "NODE_ENV=production webpack --watch --config webpack.js"
+	},
+	"dependencies": {
+		"@nextcloud/dialogs": "^3.1.2",
+		"@nextcloud/router": "^1.2.0",
+		"datatables.net": "^1.10.23",
+		"jspdf": "^2.3.1",
+		"nextcloud-webdav-filepicker": "^0.0.14",
+		"popper.js": "^1.16.1",
+		"sass": "^1.32.8"
+	},
+	"engines": {
+		"node": ">=10.0.0"
+	},
+	"devDependencies": {
+		"bootstrap": "^4.6.0",
+		"bootstrap-icons": "^1.4.0",
+		"css": "^3.0.0",
+		"css-loader": "^5.1.1",
+		"datatables.net-dt": "^1.10.23",
+		"file-loader": "^6.2.0",
+		"html2canvas": "^1.0.0-rc.1",
+		"jquery": "^3.6.0",
+		"less": "^4.1.1",
+		"less-loader": "^8.0.0",
+		"postcss-loader": "^5.0.0",
+		"sass-loader": "^11.0.1",
+		"style": "0.0.3",
+		"style-loader": "^2.0.0",
+		"webpack": "^5.24.2",
+		"webpack-cli": "^4.5.0"
+	}
+}

@@ -1,6 +1,9 @@
 <div id="contentTable">
-    <h2>Clients</h2>
-	<table id="client" class="display" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
+    <center><h2 >Clients</h2></center>
+    <p>
+        <button id="newClient" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore>Ajouter un client</button>
+    </p>
+	<table id="client" class="display" style="table-layout: fixed; font-size:11px; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
                 <th>Id</th>

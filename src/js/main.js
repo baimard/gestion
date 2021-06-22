@@ -1,14 +1,15 @@
-import '../css/mycss.less';
-import 'datatables.net-dt/css/jquery.dataTables.css';
-
-import 'datatables.net';
 import $ from 'jquery';
 
-import 'bootstrap/js/dist/util';
-import 'bootstrap/js/dist/toast';
-
 import { generateUrl } from "@nextcloud/router";
-import { FilePicker } from "@nextcloud/dialogs";
+import { FilePicker, showMessage } from "@nextcloud/dialogs";
+import '@nextcloud/dialogs/styles/toast.scss'
+
+import '../css/mycss.less';
+import 'datatables.net-dt/css/jquery.dataTables.css';
+import 'datatables.net';
+
+
+import 'bootstrap/js/dist/util';
 
 var baseUrl = generateUrl('/apps/gestion');
 
@@ -19,7 +20,6 @@ const euro = new Intl.NumberFormat('fr-FR', {
   });
 
 $(window).on("load", function(){
-    $("#liveToast").toast({animation: true, delay: 4000});
 
     //DEVISSHOW.PHP
     if($('#devisid').length){
@@ -55,7 +55,7 @@ $('body').on('click', '#theFolder', function(){
             function(value){
                 console.log(value);
                 $("#theFolder").val(value);
-            }
+            }   
         );
 });
 
@@ -460,7 +460,8 @@ function updateDB(table, column, data, id){
         contentType: 'application/json',
         data: JSON.stringify(myData)
     }).done(function (response, code) {
-        $("#liveToast").toast('show');
+        //$("#liveToast").toast('show');
+        showMessage("Les modifications ont été enregistrées");
     }).fail(function (response, code) {
         console.log(code);
     });
@@ -479,7 +480,7 @@ function deleteDB(table, id){
         contentType: 'application/json',
         data: JSON.stringify(myData)
     }).done(function (response, code) {
-        $("#liveToast").toast('show');
+        showMessage("Les modifications ont été enregistrées");
     }).fail(function (response, code) {
         console.log(code);
     });

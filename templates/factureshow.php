@@ -6,8 +6,7 @@
 
 	<div id="app-content">
 		<div id="app-content-wrapper">
-			<?php print_unescaped($this->inc('content/produit')); ?>
+			<?php print_unescaped($this->inc('content/factureshow')); ?>
 		</div>
 	</div>
 </div>
-

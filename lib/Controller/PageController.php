@@ -2,19 +2,29 @@
 namespace OCA\Gestion\Controller;
 
 use OCP\IRequest;
+use OCP\Files\IRootFolder;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 use OCA\Gestion\Db\Bdd;
 
 class PageController extends Controller {
-	private $userId;
+	private $idNextcloud;
 	private $myDb;
 
-	public function __construct($AppName, IRequest $request, $UserId, Bdd $myDb){
+	/** @var IRootStorage */
+	private $storage;
+
+	public function __construct($AppName, IRequest $request, $UserId, Bdd $myDb, IRootFolder $rootFolder){
 		parent::__construct($AppName, $request);
-		$this->userId = $UserId;
+		$this->idNextcloud = $UserId;
 		$this->myDb = $myDb;
+		$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
+
+		\OCP\Util::addScript('gestion', 'bundle');
+		\OCP\Util::addScript('gestion', '120.bundle');
+		\OCP\Util::addScript('gestion', '513.bundle');
+		\OCP\Util::addScript('gestion', '856.bundle');
 	}
 
 	/**
@@ -30,7 +40,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function devis() {
-		return new TemplateResponse('gestion', 'devis');  // templates/index.php
+		return new TemplateResponse('gestion', 'devis');  // templates/devis.php
 	}
 
 	/**
@@ -38,7 +48,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function facture() {
-		return new TemplateResponse('gestion', 'facture');  // templates/index.php
+		return new TemplateResponse('gestion', 'facture');  // templates/facture.php
 	}
 
 	/**
@@ -46,15 +56,16 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function produit() {
-		return new TemplateResponse('gestion', 'produit');  // templates/index.php
+		return new TemplateResponse('gestion', 'produit');  // templates/produit.php
 	}
 
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
     */
-	public function clientcreate() {
-		return new TemplateResponse('gestion', 'clientcreate');  // templates/index.php
+	public function config() {
+		$this->myDb->checkConfig($this->idNextcloud);
+		return new TemplateResponse('gestion', 'configuration');  // templates/configuration.php
 	}
 
 	/**
@@ -62,54 +73,207 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function devisshow($numdevis) {
-		$devis = $this->myDb->getOneDevis($numdevis);
-		$produits = $this->myDb->getListProduit($numdevis);
-		return new TemplateResponse('gestion', 'devisshow', array('devis'=>json_decode($devis), 'produit'=>json_decode($produits)));  // templates/index.php
+		$devis = $this->myDb->getOneDevis($numdevis,$this->idNextcloud);
+		$produits = $this->myDb->getListProduit($numdevis, $this->idNextcloud);
+		return new TemplateResponse('gestion', 'devisshow', array('configuration'=> $this->getConfiguration(), 'devis'=>json_decode($devis), 'produit'=>json_decode($produits)));
 	}
 
 	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+    */
+	public function factureshow($numfacture) {
+		$facture = $this->myDb->getOneFacture($numfacture,$this->idNextcloud);
+		// $produits = $this->myDb->getListProduit($numdevis);
+		return new TemplateResponse('gestion', 'factureshow', array('configuration'=> $this->getConfiguration(), 'facture'=>json_decode($facture)));
+	}
+
+	/**
+	 * @NoAdminRequired
 	 * @NoCSRFRequired
     */
 	public function getClients() {
 		
-		return $this->myDb->getClients();
+		return $this->myDb->getClients($this->idNextcloud);
 	}
 
 	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+    */
+	public function getConfiguration() {
+		
+		return $this->myDb->getConfiguration($this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
 	 * @NoCSRFRequired
     */
 	public function getDevis() {
 		
-		return $this->myDb->getDevis();
+		return $this->myDb->getDevis($this->idNextcloud);
 	}
 
 	/**
-	 * @NoCSRFRequired
-    */
-	public function getProduits() {
-		
-		return $this->myDb->getProduits();
-	}
-
-	/**
+	 * @NoAdminRequired
 	 * @NoCSRFRequired
     */
 	public function getFactures() {
 		
-		return $this->myDb->getFactures();
+		return $this->myDb->getFactures($this->idNextcloud);
+	}
+	
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+    */
+	public function getProduits() {
+		
+		return $this->myDb->getProduits($this->idNextcloud);
 	}
 
 	/**
+	 * @NoAdminRequired
 	 * @NoCSRFRequired
-	 * @param string $nom
-	 * @param string $prenom
-	 * @param string $siret
-	 * @param string $entreprise
-	 * @param string $telephone
-	 * @param string $mail
-	 * @param string $adresse
-	 */
-	public function insertClient($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse) {
-		return $this->myDb->insertClient($nom, $prenom, $siret, $entreprise, $telephone, $mail, $adresse);
+	 * @param string $numdevis
+    */
+	public function getProduitsById($numdevis) {
+		return $this->myDb->getListProduit($numdevis, $this->idNextcloud);
 	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @param string $id
+    */
+	public function getClient($id) {
+		
+		return $this->myDb->getClient($id, $this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @param string $id
+    */
+	public function getClientbyiddevis($id) {
+		
+		return $this->myDb->getClientbyiddevis($id, $this->idNextcloud);
+	}
+	
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 */
+	public function insertClient() {
+		return $this->myDb->insertClient($this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * 
+	 */
+	public function insertDevis(){
+		return $this->myDb->insertDevis($this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * 
+	 */
+	public function insertFacture(){
+		return $this->myDb->insertFacture($this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * 
+	 */
+	public function insertProduit(){
+		return $this->myDb->insertProduit($this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @param string $id
+	 */
+	public function insertProduitDevis($id){
+		return $this->myDb->insertProduitDevis($id, $this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @param string $table
+	 * @param string $column
+	 * @param string $data
+	 * @param string $id
+	 */
+	public function update($table, $column, $data, $id) {
+		return $this->myDb->update($table, $column, $data, $id, $this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @param string $table
+	 * @param string $id
+	 */
+	public function delete($table, $id) {
+		return $this->myDb->delete($table, $id, $this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @param string $content
+	 */
+	public function savePDF($content){
+		//ça c'est ok
+		// $this->storage->newfolder('test');
+		// $this->storage->newFile('/test/myfile2.txt');
+		try {
+			try {
+				$this->storage->newFile('/test/test.pdf');
+				$file = $this->storage->get('/test/test.pdf');
+				$data = base64_decode($content);
+				$file->putContent($data);
+          	} catch(\OCP\Files\NotFoundException $e) {
+               	//$file = $this->storage->get('/myfile.txt');
+            }
+
+        } catch(\OCP\Files\NotPermittedException $e) {
+            // you have to create this exception by yourself ;)
+            throw new StorageException('Cant write to file');
+        }
+
+		//work
+		// try {
+        //     try {
+        //         $file = $this->storage->get('/test/myfile2.txt');
+        //     } catch(\OCP\Files\NotFoundException $e) {
+        //         
+        //        	$file = $this->storage->get('/myfile.txt');
+        //     }
+
+        //     // the id can be accessed by $file->getId();
+        //     $file->putContent('myfile2');
+
+        // } catch(\OCP\Files\NotPermittedException $e) {
+        //     // you have to create this exception by yourself ;)
+        //     throw new StorageException('Cant write to file');
+        // }
+
+		// //
+		// $userFolder->touch('/test/myfile2345.txt');
+		// $file = $userFolder->get('/test/myfile2345.txt');
+		// $file->putContent('test');
+		// //$file = $userFolder->get('myfile2.txt');
+	}
+
 }

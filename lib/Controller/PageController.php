@@ -32,7 +32,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function index() {
-		return new TemplateResponse('gestion', 'index');  // templates/index.php
+		return new TemplateResponse('gestion', 'index', array('path' => $this->idNextcloud));  // templates/index.php
 	}
 
 	/**
@@ -40,7 +40,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function devis() {
-		return new TemplateResponse('gestion', 'devis');  // templates/devis.php
+		return new TemplateResponse('gestion', 'devis', array('path' => $this->idNextcloud));  // templates/devis.php
 	}
 
 	/**
@@ -48,7 +48,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function facture() {
-		return new TemplateResponse('gestion', 'facture');  // templates/facture.php
+		return new TemplateResponse('gestion', 'facture', array('path' => $this->idNextcloud));  // templates/facture.php
 	}
 
 	/**
@@ -56,7 +56,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function produit() {
-		return new TemplateResponse('gestion', 'produit');  // templates/produit.php
+		return new TemplateResponse('gestion', 'produit', array('path' => $this->idNextcloud));  // templates/produit.php
 	}
 
 	/**
@@ -65,7 +65,7 @@ class PageController extends Controller {
     */
 	public function config() {
 		$this->myDb->checkConfig($this->idNextcloud);
-		return new TemplateResponse('gestion', 'configuration');  // templates/configuration.php
+		return new TemplateResponse('gestion', 'configuration', array('path' => $this->idNextcloud));  // templates/configuration.php
 	}
 
 	/**
@@ -75,7 +75,7 @@ class PageController extends Controller {
 	public function devisshow($numdevis) {
 		$devis = $this->myDb->getOneDevis($numdevis,$this->idNextcloud);
 		$produits = $this->myDb->getListProduit($numdevis, $this->idNextcloud);
-		return new TemplateResponse('gestion', 'devisshow', array('configuration'=> $this->getConfiguration(), 'devis'=>json_decode($devis), 'produit'=>json_decode($produits)));
+		return new TemplateResponse('gestion', 'devisshow', array('configuration'=> $this->getConfiguration(), 'devis'=>json_decode($devis), 'produit'=>json_decode($produits), 'path' => $this->idNextcloud));
 	}
 
 	/**
@@ -85,7 +85,7 @@ class PageController extends Controller {
 	public function factureshow($numfacture) {
 		$facture = $this->myDb->getOneFacture($numfacture,$this->idNextcloud);
 		// $produits = $this->myDb->getListProduit($numdevis);
-		return new TemplateResponse('gestion', 'factureshow', array('configuration'=> $this->getConfiguration(), 'facture'=>json_decode($facture)));
+		return new TemplateResponse('gestion', 'factureshow', array('path' => $this->idNextcloud, 'configuration'=> $this->getConfiguration(), 'facture'=>json_decode($facture)));
 	}
 
 	/**
@@ -232,23 +232,30 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @param string $content
+	 * @param string $folder
+	 * @param string $name
 	 */
-	public function savePDF($content){
-		//ça c'est ok
-		// $this->storage->newfolder('test');
-		// $this->storage->newFile('/test/myfile2.txt');
+	public function savePDF($content, $folder, $name){
+
+		try {
+			$this->storage->newFolder($folder);
+        } catch(\OCP\Files\NotPermittedException $e) {
+            
+        }
+
 		try {
 			try {
-				$this->storage->newFile('/test/test.pdf');
-				$file = $this->storage->get('/test/test.pdf');
+				$ff = $folder . $name . ".pdf";
+				$this->storage->newFile($ff);
+				$file = $this->storage->get($ff);
 				$data = base64_decode($content);
 				$file->putContent($data);
           	} catch(\OCP\Files\NotFoundException $e) {
-               	//$file = $this->storage->get('/myfile.txt');
+               	
             }
 
         } catch(\OCP\Files\NotPermittedException $e) {
-            // you have to create this exception by yourself ;)
+
             throw new StorageException('Cant write to file');
         }
 

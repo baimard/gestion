@@ -23,7 +23,7 @@ $(window).on("load", function(){
 
     //DEVISSHOW.PHP
     if($('#devisid').length){
-        console.log($('#devisid').data('id'))
+        //console.log($('#devisid').data('id'))
         getClientByIdDevis($('#devisid').data('id'));
         getProduitsById();
     }
@@ -34,7 +34,7 @@ $(window).on("load", function(){
     }
 
     if($('#configuration').length){
-        loadConfigurationDT();
+        configuration(lcdt);
     }
 
     if($('#devis').length){
@@ -47,14 +47,17 @@ $(window).on("load", function(){
         loadProduitDT();
     }
 
+    //Chargemet configuration dans les settings
+    configuration(path);
+
 });
 
 $('body').on('click', '#theFolder', function(){
     var test = new FilePicker("Path to your recipe collection", false, [], false, 1, true, $("#theFolder").val());
     test.pick().then(
             function(value){
-                console.log(value);
-                $("#theFolder").val(value);
+                updateDB($('#theFolder').data('table'), $('#theFolder').data('column'), value, $('#theFolder').data('id'));
+                configuration(path);
             }   
         );
 });
@@ -151,7 +154,7 @@ $('body').on('click', '#listClient,#listProduit,#listDevis', function(){
 });
 
 $('body').on('click', '#devisAdd', function(){
-    console.log("ok");
+    // console.log("ok");
     var devis_id = $('#devisid').data('id');
     var produit_devis = {
         id: devis_id
@@ -299,12 +302,13 @@ function loadDevisDT(){
     });
 }
 
-function loadConfigurationDT(){
-    $.ajax({
-        url: baseUrl+'/getConfiguration',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
+var lcdt = function loadConfigurationDT(response){
+    // $.ajax({
+    //     url: baseUrl+'/getConfiguration',
+    //     type: 'PROPFIND',
+    //     contentType: 'application/json'
+    // }).done(function (response) {
+
         if(! $.fn.DataTable.isDataTable( '#configuration' )){
             $('#configuration').dataTable({
                 "autoWidth": true,
@@ -335,9 +339,9 @@ function loadConfigurationDT(){
         
         $('#configuration').DataTable().draw();
 
-    }).fail(function (response, code) {
-        console.log(code);
-    });
+    // }).fail(function (response, code) {
+    //     console.log(code);
+    // });
 }
 
 
@@ -398,6 +402,13 @@ function getClientByIdDevis(id){
             $("#mail").text(myresp.mail);
             $("#telephone").text(myresp.telephone);
             $("#siret").text(myresp.siret);
+            $("#pdf").attr("data-folder", myresp.num);
+            if($("#factureid").length){
+                $("#pdf").attr("data-name", myresp.entreprise+"_"+$("#factureid").text()+"_v"+1);
+            }else{
+                $("#pdf").attr("data-name", myresp.entreprise+"_"+myresp.num+"_v"+1);
+            }
+            
         });
     }).fail(function (response, code) {
         console.log(code);
@@ -562,3 +573,21 @@ function newProduit(){
     });
 }
 
+function configuration(f1){
+    $.ajax({
+        url: baseUrl+'/getConfiguration',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        f1(response);
+    }).fail(function (response, code) {
+        console.log(code);
+    });
+}
+
+var path = function (res){
+    var myres = JSON.parse(res)[0];
+    console.log(myres.id);
+    $("#theFolder").val(myres.path);
+    $("#theFolder").attr('data-id', myres.id);
+};

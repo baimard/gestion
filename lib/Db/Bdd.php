@@ -17,7 +17,7 @@ class Bdd {
         $this->database = "gestion";
         $this->hostname = "g_db_gestion";
         
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren", "path");
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
 
 

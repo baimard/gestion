@@ -45,7 +45,7 @@
                 </tbody>
             </table>
             <button id="devisAdd" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore>Ajouter</button>
-            <button id="pdf" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore>Generer PDF</button>
+            <button id="pdf" type="button" data-name="" class="mb-2 btn btn-outline-success" data-html2canvas-ignore>Sauvegarde PDF</button>
         </div>
         <div class="mt-0 table-responsive">
             <table id="totaldevis" class="table table-striped table-xl">

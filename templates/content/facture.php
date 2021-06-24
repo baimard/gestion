@@ -1,12 +1,20 @@
 <div id="contentTable">
-    <center><h2 >Factures</h2></center>
-    <p>
-        <button id="newFacture" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore>Ajouter une facture</button>
-    </p>
-	<table id="facture" class="display" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
+    <div class="breadcrumb" data-html2canvas-ignore>
+        <div class="crumb svg crumbhome">
+            <a href="https://next.cybercorp.fr/apps/gestion/" class="icon-home">Home</a>
+            <span style="display: none;"></span>
+        </div>
+        <div class="crumb svg crumbhome">
+            <span>Facture</span>
+        </div>
+        <div class="crumb svg crumbhome">
+            <a><span id="newFacture">Ajouter un Facture</span></a>
+        </div>
+    </div>
+    <table id="facture" class="display" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Action(s)</th>
                 <th>Numero</th>
                 <th>date</th>
                 <th>date_paiement</th>
@@ -16,5 +24,5 @@
         </thead>
         <tbody>
         </tbody>
-	</table>
+    </table>
 </div>

@@ -47,7 +47,7 @@
                 <tbody>
                 </tbody>
             </table>
-            <button id="pdf" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore>Generer PDF</button>
+            <button id="pdf" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore>Sauvegarde cloud</button>
         </div>
         <div class="mt-0 table-responsive">
             <table id="totaldevis" class="table table-striped table-xl">

@@ -118,7 +118,7 @@ class Bdd {
     public function update($table, $column, $data, $id, $idNextcloud){
         if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
             $sql = "UPDATE $table SET $column = ? WHERE `id` = ? AND `id_nextcloud` = ?";
-            return $this->execSQL($sql, array($data, $id, $idNextcloud));
+            return $this->execSQL($sql, array(htmlentities($data), $id, $idNextcloud));
         }
         return false;
     }
@@ -141,10 +141,42 @@ class Bdd {
         $sql = "SELECT count(*) as res FROM `configuration` WHERE `id_nextcloud` = ?";
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
         if ( $res < 1 ){
-            $sql = "INSERT INTO `configuration` (`id`, `entreprise`, `nom`, `prenom`, `siret`, `siren`, `mail`, `telephone`, `adresse`, `id_nextcloud`) VALUES (NULL, 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', ?);";
+            $sql = "INSERT INTO `configuration` (`id`, `entreprise`, `nom`, `prenom`, `siret`, `siren`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`) VALUES (NULL, 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', 'a remplir', '/', ?);";
             $this->execSQL($sql, array($idNextcloud));
         }
         return $res;
+    }
+
+    /**
+     * Number client
+     */
+    public function numberClient(){
+        $sql = "SELECT count(*) as c from client;";
+        return $this->execSQL($sql, array());
+    }
+
+    /**
+     * Number devis
+     */
+    public function numberDevis(){
+        $sql = "SELECT count(*) as c from devis;";
+        return $this->execSQL($sql, array());
+    }
+    
+    /**
+     * Number facture
+     */
+    public function numberFacture(){
+        $sql = "SELECT count(*) as c from facture;";
+        return $this->execSQL($sql, array());
+    }
+
+    /**
+     * Number produit
+     */
+    public function numberProduit(){
+        $sql = "SELECT count(*) as c from produit;";
+        return $this->execSQL($sql, array());
     }
 
     /**

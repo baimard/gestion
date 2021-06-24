@@ -19,7 +19,12 @@ class PageController extends Controller {
 		parent::__construct($AppName, $request);
 		$this->idNextcloud = $UserId;
 		$this->myDb = $myDb;
-		$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
+		try{
+			$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
+		}catch(\OC\User\NoUserException $e){
+
+		}
+		
 
 		\OCP\Util::addScript('gestion', 'bundle');
 		\OCP\Util::addScript('gestion', '120.bundle');
@@ -281,6 +286,22 @@ class PageController extends Controller {
 		// $file = $userFolder->get('/test/myfile2345.txt');
 		// $file->putContent('test');
 		// //$file = $userFolder->get('myfile2.txt');
+	}
+
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 */
+	public function getStats(){
+		
+		$res = array();
+		$res['client'] = json_decode($this->myDb->numberClient())[0]->c;
+		$res['devis'] = json_decode($this->myDb->numberDevis())[0]->c;
+		$res['facture'] = json_decode($this->myDb->numberFacture())[0]->c;
+		$res['produit'] = json_decode($this->myDb->numberProduit())[0]->c;
+
+		return json_encode($res);
 	}
 
 }

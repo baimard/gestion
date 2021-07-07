@@ -220,7 +220,7 @@ class PageController extends Controller {
 	 * @param string $id
 	 */
 	public function update($table, $column, $data, $id) {
-		return $this->myDb->update($table, $column, $data, $id, $this->idNextcloud);
+		return $this->myDb->gestion_update($table, $column, $data, $id, $this->idNextcloud);
 	}
 
 	/**
@@ -230,7 +230,7 @@ class PageController extends Controller {
 	 * @param string $id
 	 */
 	public function delete($table, $id) {
-		return $this->myDb->delete($table, $id, $this->idNextcloud);
+		return $this->myDb->gestion_delete($table, $id, $this->idNextcloud);
 	}
 
 	/**

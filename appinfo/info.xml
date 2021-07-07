@@ -5,7 +5,7 @@
     <name>Gestion</name>
     <summary>Gestion d&#39;une autoentreprise facilement</summary>
     <description><![CDATA[Gestion d&#39;une autoentreprise facilement.]]></description>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://linkedin.com/in/benjaminaimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>

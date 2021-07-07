@@ -4,35 +4,18 @@ namespace OCA\Gestion\Db;
 use OCP\IDBConnection;
 
 class Bdd {
-    // private String $username;
-    // private String $password;
-    // private String $database;
-    // private String $hostname;
     private String $charset = 'utf8mb4';
-    // private \PDO $pdo;
     private IDbConnection $pdo;
     private array $whiteColumn;
     private array $whiteTable;
     private String $tableprefix;
 
     public function __construct(IDbConnection $db) {
-        // $this->username = "gestion";
-        // $this->password = "gestion_corp20_216b4b_0d3255";
-        // $this->database = "gestion";
-        // $this->hostname = "g_db_gestion";
         
         $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren", "path");
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->pdo = $db;
-        // $dsn = "mysql:host=$this->hostname;dbname=$this->database;charset=$this->charset";
-        // try {
-        //      = new \PDO($dsn,$this->username,$this->password);
-        // } catch (\PDOException $e) {
-        //     throw new \PDOException($e->getMessage(), (int)$e->getCode());
-        // }
-
-
     }
 
     public function getConfiguration($idNextcloud){
@@ -151,6 +134,17 @@ class Bdd {
             $this->execSQL($sql, array($idNextcloud));
         }
         return $res;
+    }
+
+    public function isConfig($idNextcloud){
+        $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
+        $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
+        if ( $res < 1 ){
+            return false;
+        }else{
+            return true;
+        }
+
     }
 
     /**

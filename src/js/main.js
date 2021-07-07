@@ -21,6 +21,7 @@ const euro = new Intl.NumberFormat('fr-FR', {
 $(window).on("load", function() {
 
     getStats();
+    isconfig();
 
     //DEVISSHOW.PHP
     if ($('#devisid').length) {
@@ -66,6 +67,11 @@ $('body').on('click', '#theFolder', function() {
 $('body').on('click', '.menu', function() {
     $('#menu-' + this.dataset.menu).toggleClass('open');
 });
+
+$('body').on('click', '.modalClose', function(){
+    var modal = document.getElementById("modalConfig");
+    modal.style.display = "none";
+})
 
 $('body').on('click', '.editable', function() {
     $(this).attr('contenteditable', 'true');
@@ -305,11 +311,6 @@ function loadDevisDT() {
 }
 
 var lcdt = function loadConfigurationDT(response) {
-    // $.ajax({
-    //     url: baseUrl+'/getConfiguration',
-    //     type: 'PROPFIND',
-    //     contentType: 'application/json'
-    // }).done(function (response) {
 
     if (!$.fn.DataTable.isDataTable('#configuration')) {
         $('#configuration').dataTable({
@@ -342,9 +343,6 @@ var lcdt = function loadConfigurationDT(response) {
 
     $('#configuration').DataTable().draw();
 
-    // }).fail(function (response, code) {
-    //     console.log(code);
-    // });
 }
 
 
@@ -596,9 +594,23 @@ function configuration(f1) {
     });
 }
 
+function isconfig() {
+    $.ajax({
+        url: baseUrl + '/isconfig',
+        type: 'GET',
+        contentType: 'application/json'
+    }).done(function(response) {
+        console.log(response)
+        if(!response){
+            var modal = document.getElementById("modalConfig");
+            modal.style.display = "block";
+        }
+    })
+}
+
 var path = function(res) {
     var myres = JSON.parse(res)[0];
-    console.log(myres.id);
+    //console.log(myres.id);
     $("#theFolder").val(myres.path);
     $("#theFolder").attr('data-id', myres.id);
 };

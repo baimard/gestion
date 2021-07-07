@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>gestion</id>
     <name>Gestion</name>
-    <summary>Gestion d&#39;une autoentreprise facilement</summary>
+    <summary>Gestion d&#39;une Micro entreprise facilement</summary>
     <description><![CDATA[Gestion d&#39;une autoentreprise facilement.]]></description>
     <version>0.0.4</version>
     <licence>agpl</licence>

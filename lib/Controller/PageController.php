@@ -11,6 +11,7 @@ use OCA\Gestion\Db\Bdd;
 class PageController extends Controller {
 	private $idNextcloud;
 	private $myDb;
+	private $UserId;
 
 	/** @var IRootStorage */
 	private $storage;
@@ -18,14 +19,15 @@ class PageController extends Controller {
 	public function __construct($AppName, IRequest $request, $UserId, Bdd $myDb, IRootFolder $rootFolder){
 		parent::__construct($AppName, $request);
 		$this->idNextcloud = $UserId;
+		$this->UserId = $UserId;
 		$this->myDb = $myDb;
+
 		try{
 			$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
 		}catch(\OC\User\NoUserException $e){
 
 		}
 		
-
 		\OCP\Util::addScript('gestion', 'bundle');
 		\OCP\Util::addScript('gestion', '120.bundle');
 		\OCP\Util::addScript('gestion', '513.bundle');
@@ -35,6 +37,7 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
+	 *
     */
 	public function index() {
 		return new TemplateResponse('gestion', 'index', array('path' => $this->idNextcloud));  // templates/index.php
@@ -71,6 +74,14 @@ class PageController extends Controller {
 	public function config() {
 		$this->myDb->checkConfig($this->idNextcloud);
 		return new TemplateResponse('gestion', 'configuration', array('path' => $this->idNextcloud));  // templates/configuration.php
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+    */
+	public function isConfig() {
+		return $this->myDb->isConfig($this->idNextcloud);
 	}
 
 	/**

@@ -1,7 +1,13 @@
 <div id="contentTable">
+    <div id="modalConfig" class="modalConfig">
+        <div class="modal-content">
+            <span class="modalClose">&times;</span>
+            <p>Veuillez configurer les informations concernant votre entreprise : <a href="/apps/gestion/config">Mon entreprise</a></p>
+        </div>
+    </div>
     <div class="breadcrumb" data-html2canvas-ignore>
         <div class="crumb svg crumbhome">
-            <a href="https://next.cybercorp.fr/apps/gestion/" class="icon-home">Home</a>
+            <a href="/apps/gestion/" class="icon-home">Home</a>
             <span style="display: none;"></span>
         </div>
         <div class="crumb svg crumbhome">

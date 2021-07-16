@@ -3,8 +3,43 @@
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>gestion</id>
     <name>Gestion</name>
-    <summary>Gestion d&#39;une Micro entreprise facilement</summary>
-    <description><![CDATA[Gestion d&#39;une Micro entreprise facilement. Possibilité de gérer clients, devis, facture, produit. On peut enregistrer les devis et facture au format pdf dans le nextcloud.]]></description>
+    <summary lang="fr">Application de gestion de facturation pour Micro-entreprise France</summary>
+    <description lang="fr">
+# Gestion de facturation
+Cette application permet la gestion de facturation de manière très simple pour une micro entreprise.
+
+Fonctionnalité :
+
+* Ajouter un client
+* Générer un devis
+* Générer une facture
+* Générer des lignes de produit pour inclure dans les devis
+* Vous pouvez générer des PDF directement depuis l'application et les enregistrer dans votre Nextcloud.
+
+Vidéo de présentation à venir
+
+[Vous aimez mon travail ? Achetez moi un café !](https://www.buymeacoffee.com/benjaminaimard)
+
+    </description>
+    <summary lang="en">Invoicing management application for Micro-Entreprise in France</summary>
+    <description lang="en">
+# Gestion Nextcloud application
+
+This application allows the management of invoicing in a very simple way for Micro-Entreprise.
+
+Functionality:
+
+* Add customer
+* Generate a quote
+* Generate an invoice
+* Generate product lines to include in quotes
+* You can generate PDFs directly from the app and save them to your Nextcloud.
+
+Video presentation coming soon
+
+[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)
+
+    </description>
     <version>1.0.1</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
@@ -13,6 +48,7 @@
     <website>https://github.com/baimard/gestion</website>
     <bugs>https://github.com/baimard/gestion/issues</bugs>
     <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png">https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png</screenshot>
     <dependencies>
         <nextcloud min-version="20" max-version="22"/>
     </dependencies>

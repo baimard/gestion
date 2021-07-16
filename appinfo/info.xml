@@ -44,7 +44,8 @@ Video presentation coming soon
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>
-    <category>tools</category>
+	<category>office</category>
+	<category>organization</category>
     <website>https://github.com/baimard/gestion</website>
     <bugs>https://github.com/baimard/gestion/issues</bugs>
     <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png">https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png</screenshot>

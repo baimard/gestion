@@ -4,15 +4,17 @@
     <id>gestion</id>
     <name>Gestion</name>
     <summary>Gestion d&#39;une Micro entreprise facilement</summary>
-    <description><![CDATA[Gestion d&#39;une autoentreprise facilement.]]></description>
-    <version>0.0.4</version>
+    <description><![CDATA[Gestion d&#39;une Micro entreprise facilement. Possibilité de gérer clients, devis, facture, produit. On peut enregistrer les devis et facture au format pdf dans le nextcloud.]]></description>
+    <version>1.0.1</version>
     <licence>agpl</licence>
-    <author mail="benjamin@cybercorp.fr" homepage="https://linkedin.com/in/benjaminaimard">Benjamin AIMARD</author>
+    <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>
     <category>tools</category>
-    <bugs>https://gitlab.com/baimard</bugs>
+    <website>https://github.com/baimard/gestion</website>
+    <bugs>https://github.com/baimard/gestion/issues</bugs>
+    <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png">https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png</screenshot>
     <dependencies>
-        <nextcloud min-version="15" max-version="20"/>
+        <nextcloud min-version="20" max-version="22"/>
     </dependencies>
     <navigations>
         <navigation>

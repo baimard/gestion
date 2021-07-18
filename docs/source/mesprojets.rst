@@ -1,4 +1,0 @@
-.. _mesprojets:
-
-Mes projets
-===========

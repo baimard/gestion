@@ -70,6 +70,9 @@ endif
 npm-init:
 	npm i
 
+write:
+	sudo chown -R www-data:$$(whoami) ../gestion ; sudo chmod -R 775 ../gestion
+
 npm-update:
 	npm update
 

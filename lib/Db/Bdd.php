@@ -97,9 +97,17 @@ class Bdd {
     }
 
     public function insertProduitDevis($id,$idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."produit_devis` (`devis_id`, `id_nextcloud`,`produit_id`,`quantite`) VALUES (?,?,1,1);";
-        return $this-> execSQL($sql, array($id,$idNextcloud));
+        $res = $this->searchMaxIdProduit($idNextcloud);
+        $sql = "INSERT INTO `".$this->tableprefix."produit_devis` (`devis_id`, `id_nextcloud`,`produit_id`,`quantite`) VALUES (?,?,?,1);";
+        return $this-> execSQL($sql, array($id,$idNextcloud,$res[0]['id']));
+
     }
+
+    public function searchMaxIdProduit($idNextcloud){
+        $sqlSearchMax = "SELECT MAX(id) as id FROM `".$this->tableprefix."produit` WHERE id_nextcloud = ?";
+        return $this-> execSQLNoJsonReturn($sqlSearchMax, array($idNextcloud));
+    }
+    
 
     /**
      * UPDATE
@@ -189,6 +197,14 @@ class Bdd {
         $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         return json_encode($data);
+    }
+
+    private function execSQLNoJsonReturn($sql, $conditions){
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($conditions);
+        $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $data;
     }
 
 }

@@ -20,7 +20,6 @@
     <table id="client" class="display" style="table-layout: fixed; font-size:11px; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
-                <th>Action(s)</th>
                 <th>Entreprise</th>
                 <th>Nom</th>
                 <th>Prenom</th>
@@ -28,6 +27,7 @@
                 <th>Telephone</th>
                 <th>Mail</th>
                 <th>Adresse</th>
+                <th>Action(s)</th>
             </tr>
         </thead>
         <tbody>

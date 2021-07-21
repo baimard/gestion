@@ -127,8 +127,8 @@ ifneq (,$(wildcard $(CURDIR)/js/package.json))
 	make npm
 endif
 
-# Installs and updates the composer dependencies. If composer is not installed
-# a copy is fetched from the web
+# # Installs and updates the composer dependencies. If composer is not installed
+# # a copy is fetched from the web
 .PHONY: composer
 composer:
 ifeq (, $(composer))

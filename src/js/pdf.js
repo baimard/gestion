@@ -12,12 +12,10 @@ $('body').on('click', '#pdf', function(){
     capture();
 });
 
-
 function capture() {
     $('.bootstrap-iso').css('width', '900px')
     $('.bootstrap-iso').css('padding-right', '20px')
     $('.bootstrap-iso').css('padding-left', '20px')
-    // console.log(html2canvas($('.bootstrap-iso')[0]))
     html2canvas($('.bootstrap-iso')[0], {
         scrollY: -window.scrollY,
         dpi: 600,
@@ -61,16 +59,15 @@ function genPDF(imgData, canvas){
       var myData = {content: pdf,folder: $("#theFolder").val()+"/"+ $("#pdf").data("folder"), name: n};
 
       $.ajax({
-          url: baseUrl + '/savePDF',
-          type: 'POST',
-          contentType: 'application/json',
-          data: JSON.stringify(myData)
+        url: baseUrl + '/savePDF',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(myData)
       }).done(function (response) {
-        //   console.log('canvas response');
-        showMessage('Sauvegarde dans : <a href="' + $("#theFolder").val()+"/"+ $("#pdf").data("folder") + '">ici</a>');
+        showMessage('Sauvegarde dans ' + $("#theFolder").val()+"/"+ $("#pdf").data("folder"));
       }).fail(function (response, code) {
         showMessage('Il y a une erreur');
-          error(response);
+        error(response);
       });
 
     //doc.save('devis.pdf');

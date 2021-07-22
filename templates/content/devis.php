@@ -11,7 +11,7 @@
             <a><span id="newDevis">Ajouter un Devis</span></a>
         </div>
     </div>
-    <table id="devis" class="display" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
+    <table id="devis" class="display tabledt" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
                 <th>date</th>

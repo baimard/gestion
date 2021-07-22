@@ -11,23 +11,23 @@
             <span style="display: none;"></span>
         </div>
         <div class="crumb svg crumbhome">
-            <span>Client</span>
+            <span><?php p($l->t('Client'));?></span>
         </div>
         <div class="crumb svg crumbhome">
-            <a><span id="newClient">Ajouter un client</span></a>
+            <a><span id="newClient"><?php p($l->t('Ajout Client'));?></span></a>
         </div>
     </div>
-    <table id="client" class="display" style="table-layout: fixed; font-size:11px; width: 100%; white-space: pre-wrap;">
+    <table id="client" class="display tabledt" style="table-layout: fixed; font-size:11px; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
-                <th>Entreprise <?php p($l->t('TEST'));?></th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Siret</th>
-                <th>Telephone</th>
-                <th>Mail</th>
-                <th>Adresse</th>
-                <th>Action(s)</th>
+                <th><?php p($l->t('Entreprise'));?></th>
+                <th><?php p($l->t('Nom'));?></th>
+                <th><?php p($l->t('Prenom'));?></th>
+                <th><?php p($l->t('Siret'));?></th>
+                <th><?php p($l->t('Telephone'));?></th>
+                <th><?php p($l->t('Mail'));?></th>
+                <th><?php p($l->t('Adresse'));?></th>
+                <th><?php p($l->t('Actions'));?></th>
             </tr>
         </thead>
         <tbody>

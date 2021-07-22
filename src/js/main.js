@@ -1,17 +1,40 @@
 import $ from 'jquery';
 import {generateUrl} from "@nextcloud/router";
 import {FilePicker,showMessage,showError} from "@nextcloud/dialogs";
+import {translate as t, translatePlural as n} from '@nextcloud/l10n'
 import '@nextcloud/dialogs/styles/toast.scss'
 import '../css/mycss.less';
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net';
 import 'bootstrap/js/dist/util';
 import { getClients, updateDB} from "./modules/ajaxRequest.mjs";
+import { configureDT, langage } from "./modules/mainFunction.mjs";
 
 var baseUrl = generateUrl('/apps/gestion');
 const euro = new Intl.NumberFormat('fr-FR', {style: 'currency',currency: 'EUR',minimumFractionDigits: 2});
 
 $(window).on("load", function() {
+
+    $('.tabledt').DataTable({
+        "autoWidth": true,
+        language: {
+            "search":           t('gestion', 'Recherche'),
+            "emptyTable":       t('gestion', 'Table vide'),
+            "info":             t('gestion', 'Voir entre'),
+            "infoEmpty":        t('gestion', 'Voir entre0'),
+            "infoFiltered":     t('gestion', 'Filtre MAX'),
+            "lengthMenu":       t('gestion', 'Voir entre Menu'),
+            "loadingRecords":   t('gestion', 'Chargement'),
+            "processing":       t('gestion', 'Traitement'),
+            "zeroRecords":      t('gestion', 'Aucune entrée correspondante'),
+            "paginate": {   
+                "first":        t('gestion', 'Premier'),
+                "last":         t('gestion', 'Dernier'),
+                "next":         t('gestion', 'Suivant'),
+                "previous":     t('gestion', 'Précédent'),
+            }   
+        }
+    });
 
     getStats();
     isconfig();
@@ -175,12 +198,7 @@ function loadProduitDT() {
     if (!$.fn.DataTable.isDataTable('#produit')) {
         $('#produit').dataTable({
             "autoWidth": true,
-            "columns": [
-                { "width": "20%" },
-                { "width": "50%" },
-                { "width": "20%" },
-                { "width": "10%" },
-            ]
+            "columns": [{ "width": "20%" },{ "width": "50%" },{ "width": "20%" },{ "width": "10%" },]
         });
     }
 
@@ -192,14 +210,15 @@ function loadProduitDT() {
         $('#produit').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
             $('#produit').DataTable().row.add([
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="produit" data-column="reference" data-id="' + myresp.id + '">' + myresp.reference + '</div>',
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="produit" data-column="description" data-id="' + myresp.id + '">' + myresp.description + '</div>',
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="produit" data-column="prix_unitaire" data-id="' + myresp.id + '">' + myresp.prix_unitaire + '</div>',
+                '<div class="editable" data-table="produit" data-column="reference" data-id="' + myresp.id + '">' + myresp.reference + '</div>',
+                '<div class="editable" data-table="produit" data-column="description" data-id="' + myresp.id + '">' + myresp.description + '</div>',
+                '<div class="editable" data-table="produit" data-column="prix_unitaire" data-id="' + myresp.id + '">' + myresp.prix_unitaire + '</div>',
                 '<div data-modifier="produit" data-id=' + myresp.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
                 
             ]);
         });
         $('#produit').DataTable().draw(false);
+        configureDT();
     }).fail(function(response, code) {
         showError(response);
     });
@@ -209,14 +228,7 @@ function loadFactureDT() {
     if (!$.fn.DataTable.isDataTable('#facture')) {
         $('#facture').dataTable({
             "autoWidth": true,
-            "columns": [
-                { "width": "16%" },
-                { "width": "16%" },
-                { "width": "17%" },
-                { "width": "18%" },
-                { "width": "23%" },
-                { "width": "10%" }
-            ]
+            "columns": [{ "width": "16%" },{ "width": "16%" },{ "width": "17%" },{ "width": "18%" },{ "width": "23%" },{ "width": "10%" }]
         });
     }
 
@@ -244,6 +256,7 @@ function loadFactureDT() {
             ]);
         });
         $('#facture').DataTable().draw(false);
+        configureDT();
     }).fail(function(response, code) {
         showError(response);
     });
@@ -253,12 +266,7 @@ function loadDevisDT() {
     if (!$.fn.DataTable.isDataTable('#devis')) {
         $('#devis').dataTable({
             "autoWidth": true,
-            "columns": [
-                { "width": "30%" },
-                { "width": "30%" },
-                { "width": "30%" },
-                { "width": "10%" }
-            ]
+            "columns": [{ "width": "30%" }, { "width": "30%" },{ "width": "30%" },{ "width": "10%" }]
         });
     }
 
@@ -270,36 +278,18 @@ function loadDevisDT() {
         $('#devis').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
             $('#devis').DataTable().row.add([
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="devis" data-column="date" data-id="' + myresp.id + '">' + myresp.date + '</div>',
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="devis" data-column="num" data-id="' + myresp.id + '" style="display:inline">' + myresp.num + '</div>',
+                '<div class="editable" data-table="devis" data-column="date" data-id="' + myresp.id + '">' + myresp.date + '</div>',
+                '<div class="editable" data-table="devis" data-column="num" data-id="' + myresp.id + '" style="display:inline">' + myresp.num + '</div>',
                 '<div data-table="devis" data-column="id_client" data-id="' + myresp.id + '"><select class="listClient" data-current="'+ myresp.cid +'"></select></div>',
                 '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/devis/' + myresp.id + '/show"><button>Voir</button></a></div><div data-modifier="devis" data-id=' + myresp.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
             ]);
         });
         loadClientList();
-        $('#devis').DataTable().draw(false);
+        $('#devis').DataTable().draw();
+        configureDT();
     }).fail(function(response, code) {
         showError(response);
     });
-}
-
-function loadClientList(){
-    getClients(function(response){
-        $.each(JSON.parse(response), function(arrayID, myresp) {     
-            $('.listClient').append("<option value='"+ myresp.id +"'>"+myresp.nom + " " + myresp.prenom+"</option>");
-        });
-        checkSelect();
-    });
-}
-
-function checkSelect(){
-    $('.listClient').each(function(arrayID, elem){
-        $(elem).find('option').each(function(){ 
-            if(this.value==$(elem).data('current')){
-                $(this).prop('selected', true)
-            }
-        })
-    })
 }
 
 var lcdt = function loadConfigurationDT(response) {
@@ -307,16 +297,7 @@ var lcdt = function loadConfigurationDT(response) {
     if (!$.fn.DataTable.isDataTable('#configuration')) {
         $('#configuration').dataTable({
             "autoWidth": true,
-            "columns": [
-                { "width": "10%" },
-                { "width": "10%" },
-                { "width": "10%" },
-                { "width": "10%" },
-                { "width": "10%" },
-                { "width": "14%" },
-                { "width": "18%" },
-                { "width": "18%" }
-            ]
+            "columns": [{ "width": "10%" }, { "width": "10%" },{ "width": "10%" },{ "width": "10%" },{ "width": "10%" },{ "width": "14%" },{ "width": "18%" }, { "width": "18%" }]
         });
     }
 
@@ -334,7 +315,7 @@ var lcdt = function loadConfigurationDT(response) {
     });
 
     $('#configuration').DataTable().draw();
-
+    configureDT();
 }
 
 function loadClientDT() {
@@ -343,39 +324,51 @@ function loadClientDT() {
         type: 'PROPFIND',
         contentType: 'application/json'
     }).done(function(response) {
-        if (!$.fn.DataTable.isDataTable('#client')) {
-            $('#client').dataTable({
-                "autoWidth": true,
-                "columns": [
-                    { "width": "14%" },
-                    { "width": "10%" },
-                    { "width": "10%" },
-                    { "width": "10%" },
-                    { "width": "14%" },
-                    { "width": "18%" },
-                    { "width": "18%" },
-                    { "width": "6%" }
-                ]
-            });
-        }
+        // if (!$.fn.DataTable.isDataTable('#client')) {
+        //     $('#client').dataTable({
+        //         "autoWidth": true,
+        //         "columns": [{ "width": "14%" },{ "width": "10%" },{ "width": "10%" },{ "width": "10%" },{ "width": "14%" },{ "width": "18%" },{ "width": "18%" },{ "width": "6%" }]
+        //     });
+        // }
 
         $('#client').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
             $('#client').DataTable().row.add([
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="client" data-column="entreprise" data-id="' + myresp.id + '">' + myresp.entreprise + '</div>',
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="client" data-column="nom" data-id="' + myresp.id + '">' + myresp.nom + '</div>',
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="client" data-column="prenom" data-id="' + myresp.id + '">' + myresp.prenom + '</div>',
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="client" data-column="siret" data-id="' + myresp.id + '">' + myresp.siret + '</div>',
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="client" data-column="telephone" data-id="' + myresp.id + '">' + myresp.telephone + '</div>',
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="client" data-column="mail" data-id="' + myresp.id + '">' + myresp.mail + '</div>',
-                '<div title="Cliquer pour modifier :)" class="editable" data-table="client" data-column="adresse" data-id="' + myresp.id + '">' + myresp.adresse + '</div>',
+                '<div class="editable" data-table="client" data-column="entreprise" data-id="' + myresp.id + '">' + myresp.entreprise + '</div>',
+                '<div class="editable" data-table="client" data-column="nom" data-id="' + myresp.id + '">' + myresp.nom + '</div>',
+                '<div class="editable" data-table="client" data-column="prenom" data-id="' + myresp.id + '">' + myresp.prenom + '</div>',
+                '<div class="editable" data-table="client" data-column="siret" data-id="' + myresp.id + '">' + myresp.siret + '</div>',
+                '<div class="editable" data-table="client" data-column="telephone" data-id="' + myresp.id + '">' + myresp.telephone + '</div>',
+                '<div class="editable" data-table="client" data-column="mail" data-id="' + myresp.id + '">' + myresp.mail + '</div>',
+                '<div class="editable" data-table="client" data-column="adresse" data-id="' + myresp.id + '">' + myresp.adresse + '</div>',
                 '<center><div data-modifier="client" data-id=' + myresp.id + ' data-table="client" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div></center>'
             ]);
         });
         $('#client').DataTable().draw();
+        configureDT();
     }).fail(function(response, code) {
         showError(response);
     });
+}
+
+function loadClientList(){
+    getClients(function(response){
+        $('.listClient').append("<option value='nothing'>Choisir un client</option>");
+        $.each(JSON.parse(response), function(arrayID, myresp) {     
+            $('.listClient').append("<option value='"+ myresp.id +"'>"+myresp.nom + " " + myresp.prenom+"</option>");
+        });
+        checkSelect();
+    });
+}
+
+function checkSelect(){
+    $('.listClient').each(function(arrayID, elem){
+        $(elem).find('option').each(function(){ 
+            if(this.value==$(elem).data('current')){
+                $(this).prop('selected', true)
+            }
+        })
+    })
 }
 
 function getClientByIdDevis(id) {

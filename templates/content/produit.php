@@ -11,13 +11,13 @@
             <a><span id="newProduit">Ajouter un Produit</span></a>
         </div>
     </div>
-	<table id="produit" class="display" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
+	<table id="produit" class="display tabledt" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
-                <th>Action(s)</th>
                 <th>reference</th>
                 <th>description</th>
                 <th>prix unitaire</th>
+                <th>Action(s)</th>
             </tr>
         </thead>
         <tbody>

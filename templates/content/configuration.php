@@ -1,6 +1,6 @@
 <div id="contentTable">
     <center><h2>Configuration</h2></center>
-	<table id="configuration" class="display" style="table-layout: fixed; font-size:11px; width: 100%; white-space: pre-wrap;">
+	<table id="configuration" class="display tabledt" style="table-layout: fixed; font-size:11px; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
                 <th>Entreprise</th>

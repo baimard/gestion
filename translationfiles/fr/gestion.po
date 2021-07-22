@@ -1,2 +1,71 @@
-msgid "TEST"
-msgstr "Ceci est un test"
+msgid "Modifiable"
+msgstr "Cliquer pour modifier"
+
+msgid "Entreprise"
+msgstr "Entreprise"
+
+msgid "Nom"
+msgstr "Nom"
+
+msgid "Prenom"
+msgstr "Prenom"
+
+msgid "Siret"
+msgstr "Siret"
+
+msgid "Téléphone"
+msgstr "Téléphone"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Adresse"
+msgstr "Adresse"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Ajout Client"
+msgstr "Ajouter un client"
+
+msgid "Client"
+msgstr "Client"
+
+msgid "Recherche"
+msgstr "Recherche : "
+
+msgid "Table vide"
+msgstr "Table vide"
+
+msgid "Voir entre"
+msgstr "Affichage de _START_ à _END_ ligne(s), sur un total de _TOTAL_ ligne(s)"
+
+msgid "Voir entre0"
+msgstr "Affichage de 0 à 0 ligne(s), sur un total de 0 ligne"
+
+msgid "Filtre MAX"
+msgstr "_MAX_ ligne(s) filtrées"
+
+msgid "Voir entre Menu"
+msgstr "Affichage _MENU_ ligne(s)"
+
+msgid "Chargement"
+msgstr "Chargement"
+
+msgid "Traitement"
+msgstr "Traitement"
+
+msgid "Aucune entrée correspondante"
+msgstr "Aucune entrée correspondante"
+
+msgid "Premier"
+msgstr "Premier"
+
+msgid "Dernier"
+msgstr "Dernier"
+
+msgid "Suivant"
+msgstr "Suivant"
+
+msgid "Précédent"
+msgstr "Précédent"

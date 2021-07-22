@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Nextcloud package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud 3.14159\n"
+"Report-Msgid-Bugs-To: translations\\@example.com\n"
+"POT-Creation-Date: 2021-07-22 12:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/js/513.bundle.js:1
+msgid "EMPTY"
+msgstr ""
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/js/513.bundle.js:1
+msgid "boolean"
+msgstr ""
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/js/513.bundle.js:1
+msgid "toPrimitive"
+msgstr ""
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/js/bundle.js:2
+msgid "top"
+msgstr ""
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/js/bundle.js:2
+msgid "_wrapper"
+msgstr ""
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/js/bundle.js:2
+msgid "_filter"
+msgstr ""
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/js/bundle.js:2
+msgid "_length"
+msgstr ""
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/js/bundle.js:2
+msgid "_processing"
+msgstr ""
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/js/bundle.js:2
+msgid " "
+msgstr ""
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/specialAppInfoFakeDummyForL10nScript.php:2
+msgid "Gestion"
+msgstr ""
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/specialAppInfoFakeDummyForL10nScript.php:3
+msgid "Invoicing management application for Micro-Entreprise in France"
+msgstr ""
+
+#: /home/baimard/Documents/dev-gestion/http/custom_apps/gestion/specialAppInfoFakeDummyForL10nScript.php:4
+msgid ""
+"# Gestion Nextcloud application\n"
+"\n"
+"This application allows the management of invoicing in a very simple way for "
+"Micro-Entreprise.\n"
+"\n"
+"Functionality:\n"
+"\n"
+"* Add customer\n"
+"* Generate a quote\n"
+"* Generate an invoice\n"
+"* Generate product lines to include in quotes\n"
+"* You can generate PDFs directly from the app and save them to your "
+"Nextcloud.\n"
+"\n"
+"Video presentation coming soon\n"
+"\n"
+"[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/"
+"benjaminaimard)"
+msgstr ""

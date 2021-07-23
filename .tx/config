@@ -1,0 +1,12 @@
+[main]
+host = https://www.transifex.com
+lang_map = bg_BG: bg, cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk, th_TH: th, ja_JP: ja
+
+[nextcloud.GESTION]
+file_filter = translationfiles/<lang>/GESTION.po
+source_file = translationfiles/templates/GESTION.pot
+source_lang = fr
+type = POccccccnjbinfjkrldnlingtcrgbjceujfuuiifjbludr
+ccccccnjbinfeldtikvetrnjefbflgnhctjjdtvffjde
+ccccccnjbinfuchvfvbhigncudcgbkijkvucvdtrcnng
+ccccccnjbinffclrlcuvhujjkjddfirttjgltgfrlver

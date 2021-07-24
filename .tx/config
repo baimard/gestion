@@ -6,7 +6,4 @@ lang_map = bg_BG: bg, cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk, th_
 file_filter = translationfiles/<lang>/GESTION.po
 source_file = translationfiles/templates/GESTION.pot
 source_lang = fr
-type = POccccccnjbinfjkrldnlingtcrgbjceujfuuiifjbludr
-ccccccnjbinfeldtikvetrnjefbflgnhctjjdtvffjde
-ccccccnjbinfuchvfvbhigncudcgbkijkvucvdtrcnng
-ccccccnjbinffclrlcuvhujjkjddfirttjgltgfrlver
+type = PO

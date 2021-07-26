@@ -7,7 +7,7 @@ import '../css/mycss.less';
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net';
 import 'bootstrap/js/dist/util';
-import { getClients, updateDB} from "./modules/ajaxRequest.mjs";
+import { getClients, getDevis, updateDB} from "./modules/ajaxRequest.mjs";
 import { configureDT, langage } from "./modules/mainFunction.mjs";
 
 var baseUrl = generateUrl('/apps/gestion');
@@ -79,14 +79,14 @@ $('body').on('keypress', '.editable' ,function(event) {
     }
 });
 
-$('body').on('dblclick', '.selectableClient, .selectableClient_devis', function() {
-    var id = $(this).data('id');
-    var table = $(this).data('table');
-    var column = $(this).data('column');
-    $(this).text("");
-    $(this).html('<select id="listClient">');
-    listClient($('#listClient'), id, table, column);
-});
+// $('body').on('dblclick', '.selectableClient, .selectableClient_devis', function() {
+//     var id = $(this).data('id');
+//     var table = $(this).data('table');
+//     var column = $(this).data('column');
+//     $(this).text("");
+//     $(this).html('<select class="listClient">');
+//     listClient($('#listClient'), id, table, column);
+// });
 
 $('body').on('dblclick', '.selectableDevis', function() {
     var id = $(this).data('id');
@@ -99,9 +99,11 @@ $('body').on('dblclick', '.selectableDevis', function() {
 
 $('body').on('dblclick', '.selectable', function() {
     var id = $(this).data('id');
+    var produitid = $(this).data('val');
+    console.log(produitid);
     $(this).text("");
     $(this).html('<select id="listProduit">');
-    listProduit($('#listProduit'), id);
+    listProduit($('#listProduit'), id, produitid);
 });
 
 $('body').on('click', '.deleteItem', function() {
@@ -116,7 +118,7 @@ $('body').on('click', '.deleteItem', function() {
     if (modifier === "produit") {loadProduitDT();}
 });
 
-$('body').on('change', '.listClient', function(){
+$('body').on('change', '.listClient,.listDevis', function(){
     var myDiv = $(this).parents( "div" );
     var id = $(myDiv).data('id');
     var val = this.value;
@@ -125,7 +127,7 @@ $('body').on('change', '.listClient', function(){
     updateDB(table, column, val, id);
 })
 
-$('body').on('click', '#listProduit,#listDevis', function() {
+$('body').on('change', '#listProduit,#listDevis', function() {
 
     var id = $(this).find(':selected').data('id')
     var val = $(this).find(':selected').data('val')
@@ -143,6 +145,7 @@ $('body').on('click', '#listProduit,#listDevis', function() {
     }
 
     el.text($(this).val());
+    el.attr('data-val', id);
 
 });
 
@@ -251,10 +254,11 @@ function loadFactureDT() {
                 '<div class="editable" data-table="facture" data-column="date" data-id="' + myresp.id + '">' + myresp.date + '</div>',
                 '<div class="editable" data-table="facture" data-column="date_paiement" data-id="' + myresp.id + '">' + dtpaiement + '</div>',
                 '<div class="editable" data-table="facture" data-column="type_paiement" data-id="' + myresp.id + '">' + myresp.type_paiement + '</div>',
-                '<div class="selectableDevis" data-table="facture" data-column="id_devis" data-id="' + myresp.id + '">' + myresp.dnum + ' ' + myresp.prenom + " " + myresp.nom + ' - ' + myresp.entreprise + '</div>',
+                '<div data-table="facture" data-column="id_devis" data-id="' + myresp.id + '"><select class="listDevis" data-current="'+ myresp.id_devis +'"></select></div>',
                 '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/facture/' + myresp.id + '/show"><button>Voir</button></a></div><div data-modifier="facture" data-id=' + myresp.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
             ]);
         });
+        loadDevisList();
         $('#facture').DataTable().draw(false);
         configureDT();
     }).fail(function(response, code) {
@@ -357,12 +361,22 @@ function loadClientList(){
         $.each(JSON.parse(response), function(arrayID, myresp) {     
             $('.listClient').append("<option value='"+ myresp.id +"'>"+myresp.nom + " " + myresp.prenom+"</option>");
         });
-        checkSelect();
+        checkSelect('.listClient');
     });
 }
 
-function checkSelect(){
-    $('.listClient').each(function(arrayID, elem){
+function loadDevisList(){
+    getDevis(function(response){
+        $('.listDevis').append("<option value='nothing'>Choisir un devis</option>");
+        $.each(JSON.parse(response), function(arrayID, myresp) {     
+            $('.listDevis').append("<option value='"+ myresp.id +"'>"+ myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom +"</option>");
+        });
+        checkSelect('.listDevis');
+    });
+}
+
+function checkSelect(el){
+    $(el).each(function(arrayID, elem){
         $(elem).find('option').each(function(){ 
             if(this.value==$(elem).data('current')){
                 $(this).prop('selected', true)
@@ -415,33 +429,38 @@ function listClient(lc, id, table, column) {
     });
 }
 
-function listProduit(lp, id) {
+function listProduit(lp, id, produitid) {
     $.ajax({
         url: baseUrl + '/getProduits',
         type: 'PROPFIND',
         contentType: 'application/json'
     }).done(function(response) {
+        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">Annuler</option>');
         $.each(JSON.parse(response), function(arrayID, myresp) {
-            lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.reference + ' ' + myresp.description + ' ' + myresp.prix_unitaire + ' &euro;' + '</option>');
+            var selected = "";
+            if(produitid == myresp.id){
+                selected = "selected";
+            }
+            lp.append('<option '+selected+' data-table="produit_devis" data-column="produit_id" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.reference + ' ' + myresp.description + ' ' + myresp.prix_unitaire + ' &euro;' + '</option>');
         });
     }).fail(function(response, code) {
         showError(response);
     });
 }
 
-function listDevis(lp, id, table, column) {
-    $.ajax({
-        url: baseUrl + '/getDevis',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function(response) {
-        $.each(JSON.parse(response), function(arrayID, myresp) {
-            lp.append('<option data-table="' + table + '" data-column="' + column + '" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom + '</option>');
-        });
-    }).fail(function(response, code) {
-        showError(response);
-    });
-}
+// function listDevis(lp, id, table, column) {
+//     $.ajax({
+//         url: baseUrl + '/getDevis',
+//         type: 'PROPFIND',
+//         contentType: 'application/json'
+//     }).done(function(response) {
+//         $.each(JSON.parse(response), function(arrayID, myresp) {
+//             lp.append('<option data-table="' + table + '" data-column="' + column + '" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom + '</option>');
+//         });
+//     }).fail(function(response, code) {
+//         showError(response);
+//     });
+// }
 
 
 
@@ -478,7 +497,7 @@ function getProduitsById() {
         $('#produits tbody').empty();
         var total = 0;
         $.each(JSON.parse(response), function(arrayID, myresp) {
-            $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="deleteItem icon-delete"></div><div style="display:inline;" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
+            $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="deleteItem icon-delete"></div><div style="display:inline;" data-val="'+ myresp.pid +'" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
                 '<td>' + myresp.description + '</td>' +
                 '<td><div class="editable getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id=' + myresp.pdid + '>' + myresp.quantite + '</div> </td>' +
                 '<td>' + euro.format(myresp.prix_unitaire) + '</td>' +

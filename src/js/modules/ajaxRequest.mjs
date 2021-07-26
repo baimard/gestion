@@ -21,6 +21,22 @@ export function getClients(callback) {
 
 /**
  * 
+ * @param callback 
+ */
+export function getDevis(callback) {
+    $.ajax({
+        url: baseUrl + '/getDevis',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function(response) {
+        callback(response);
+    }).fail(function(response, code) {
+        showError(response);
+    });
+}
+
+/**
+ * 
  * @param table 
  * @param column 
  * @param data 

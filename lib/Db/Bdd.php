@@ -64,7 +64,7 @@ class Bdd {
     }
 
     public function getListProduit($numdevis, $idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."produit_devis.id as pdid, reference, description, quantite, prix_unitaire FROM ".$this->tableprefix."produit, ".$this->tableprefix."devis, ".$this->tableprefix."produit_devis WHERE ".$this->tableprefix."produit.id = produit_id AND ".$this->tableprefix."devis.id = devis_id AND ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_nextcloud = ? AND ".$this->tableprefix."produit.id_nextcloud = ?";
+        $sql = "SELECT ".$this->tableprefix."produit.id as pid,".$this->tableprefix."produit_devis.id as pdid, reference, description, quantite, prix_unitaire FROM ".$this->tableprefix."produit, ".$this->tableprefix."devis, ".$this->tableprefix."produit_devis WHERE ".$this->tableprefix."produit.id = produit_id AND ".$this->tableprefix."devis.id = devis_id AND ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_nextcloud = ? AND ".$this->tableprefix."produit.id_nextcloud = ?";
         return $this->execSQL($sql, array($numdevis, $idNextcloud, $idNextcloud));
     }
 
@@ -104,11 +104,10 @@ class Bdd {
     }
 
     public function searchMaxIdProduit($idNextcloud){
-        $sqlSearchMax = "SELECT MAX(id) as id FROM `".$this->tableprefix."produit` WHERE id_nextcloud = ?";
+        $sqlSearchMax = "SELECT MIN(id) as id FROM `".$this->tableprefix."produit` WHERE id_nextcloud = ?";
         return $this-> execSQLNoJsonReturn($sqlSearchMax, array($idNextcloud));
     }
     
-
     /**
      * UPDATE
      */

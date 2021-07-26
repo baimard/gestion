@@ -3,9 +3,11 @@ OC.L10N.register(
     {
     "Modifiable" : "Cliquer pour modifier",
     "Entreprise" : "Entreprise",
+    "Mon entreprise" : "Mon entreprise",
     "Nom" : "Nom",
     "Prenom" : "Prenom",
     "Siret" : "Siret",
+    "Siren" : "Siren",
     "Téléphone" : "Téléphone",
     "Email" : "Email",
     "Adresse" : "Adresse",
@@ -20,6 +22,12 @@ OC.L10N.register(
     "Voir entre Menu" : "Affichage _MENU_ ligne(s)",
     "Chargement" : "Chargement",
     "Traitement" : "Traitement",
-    "Aucune entrée correspondante" : "Aucune entrée correspondante"
+    "Aucune entrée correspondante" : "Aucune entrée correspondante",
+    "Premier" : "Premier",
+    "Dernier" : "Dernier",
+    "Suivant" : "Suivant",
+    "Précédent" : "Précédent",
+    "Configuration" : "Configuration",
+    "Configuration Entreprise" : "Veuillez configurer les informations concernant votre entreprise : "
 },
 "");

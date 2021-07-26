@@ -4,6 +4,9 @@ msgstr "Cliquer pour modifier"
 msgid "Entreprise"
 msgstr "Entreprise"
 
+msgid "Mon entreprise"
+msgstr "Mon entreprise"
+
 msgid "Nom"
 msgstr "Nom"
 
@@ -12,6 +15,9 @@ msgstr "Prenom"
 
 msgid "Siret"
 msgstr "Siret"
+
+msgid "Siren"
+msgstr "Siren"
 
 msgid "Téléphone"
 msgstr "Téléphone"
@@ -69,3 +75,10 @@ msgstr "Suivant"
 
 msgid "Précédent"
 msgstr "Précédent"
+
+msgid "Configuration"
+msgstr "Configuration"
+
+msgid "Configuration Entreprise"
+msgstr "Veuillez configurer les informations concernant votre entreprise : "
+

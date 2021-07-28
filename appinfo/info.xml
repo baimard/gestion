@@ -49,7 +49,7 @@ Video in user documentation
     <repository>https://github.com/baimard/gestion</repository>
     <website>https://www.buymeacoffee.com/benjaminaimard</website>
     <documentation>
-        <user>baimard.github.io/gestion/</user>
+        <user>https://baimard.github.io/gestion/</user>
     </documentation>
     <bugs>https://github.com/baimard/gestion/issues</bugs>
     <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png">https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png</screenshot>

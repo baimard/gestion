@@ -496,8 +496,13 @@ function getProduitsById() {
     }).done(function(response, code) {
         $('#produits tbody').empty();
         var total = 0;
+        var deleteDisable = "";
+        if($('#produits').data("type")==="facture"){
+            deleteDisable="d-none";
+        }
+
         $.each(JSON.parse(response), function(arrayID, myresp) {
-            $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="deleteItem icon-delete"></div><div style="display:inline;" data-val="'+ myresp.pid +'" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
+            $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="'+ deleteDisable +' deleteItem icon-delete"></div><div style="display:inline;" data-val="'+ myresp.pid +'" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
                 '<td>' + myresp.description + '</td>' +
                 '<td><div class="editable getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id=' + myresp.pdid + '>' + myresp.quantite + '</div> </td>' +
                 '<td>' + euro.format(myresp.prix_unitaire) + '</td>' +

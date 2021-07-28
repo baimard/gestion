@@ -157,33 +157,33 @@ class Bdd {
     /**
      * Number client
      */
-    public function numberClient(){
-        $sql = "SELECT count(*) as c from ".$this->tableprefix."client;";
-        return $this->execSQL($sql, array());
+    public function numberClient($idNextcloud){
+        $sql = "SELECT count(*) as c from ".$this->tableprefix."client WHERE `id_nextcloud` = ?;";
+        return $this->execSQL($sql, array($idNextcloud));
     }
 
     /**
      * Number devis
      */
-    public function numberDevis(){
-        $sql = "SELECT count(*) as c from ".$this->tableprefix."devis;";
-        return $this->execSQL($sql, array());
+    public function numberDevis($idNextcloud){
+        $sql = "SELECT count(*) as c from ".$this->tableprefix."devis WHERE `id_nextcloud` = ?;";
+        return $this->execSQL($sql, array($idNextcloud));
     }
     
     /**
      * Number facture
      */
-    public function numberFacture(){
-        $sql = "SELECT count(*) as c from ".$this->tableprefix."facture;";
-        return $this->execSQL($sql, array());
+    public function numberFacture($idNextcloud){
+        $sql = "SELECT count(*) as c from ".$this->tableprefix."facture WHERE `id_nextcloud` = ?;";
+        return $this->execSQL($sql, array($idNextcloud));
     }
 
     /**
      * Number produit
      */
-    public function numberProduit(){
-        $sql = "SELECT count(*) as c from ".$this->tableprefix."produit;";
-        return $this->execSQL($sql, array());
+    public function numberProduit($idNextcloud){
+        $sql = "SELECT count(*) as c from ".$this->tableprefix."produit WHERE `id_nextcloud` = ?;";
+        return $this->execSQL($sql, array($idNextcloud));
     }
 
     /**

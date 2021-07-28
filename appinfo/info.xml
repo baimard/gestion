@@ -16,7 +16,7 @@ Fonctionnalité :
 * Générer des lignes de produit pour inclure dans les devis
 * Vous pouvez générer des PDF directement depuis l'application et les enregistrer dans votre Nextcloud.
 
-Vidéo de présentation à venir
+Vidéo de présentation dans la documentation utilisateur
 
 [Vous aimez mon travail ? Achetez moi un café !](https://www.buymeacoffee.com/benjaminaimard)
 
@@ -35,18 +35,22 @@ Functionality:
 * Generate product lines to include in quotes
 * You can generate PDFs directly from the app and save them to your Nextcloud.
 
-Video presentation coming soon
+Video in user documentation
 
 [Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)
 
     </description>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>
 	<category>office</category>
 	<category>organization</category>
-    <website>https://github.com/baimard/gestion</website>
+    <repository>https://github.com/baimard/gestion</repository>
+    <website>https://www.buymeacoffee.com/benjaminaimard</website>
+    <documentation>
+        <user>baimard.github.io/gestion/</user>
+    </documentation>
     <bugs>https://github.com/baimard/gestion/issues</bugs>
     <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png">https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png</screenshot>

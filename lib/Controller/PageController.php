@@ -307,10 +307,10 @@ class PageController extends Controller {
 	public function getStats(){
 		
 		$res = array();
-		$res['client'] = json_decode($this->myDb->numberClient())[0]->c;
-		$res['devis'] = json_decode($this->myDb->numberDevis())[0]->c;
-		$res['facture'] = json_decode($this->myDb->numberFacture())[0]->c;
-		$res['produit'] = json_decode($this->myDb->numberProduit())[0]->c;
+		$res['client'] = json_decode($this->myDb->numberClient($this->idNextcloud))[0]->c;
+		$res['devis'] = json_decode($this->myDb->numberDevis($this->idNextcloud))[0]->c;
+		$res['facture'] = json_decode($this->myDb->numberFacture($this->idNextcloud))[0]->c;
+		$res['produit'] = json_decode($this->myDb->numberProduit($this->idNextcloud))[0]->c;
 
 		return json_encode($res);
 	}

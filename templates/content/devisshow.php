@@ -63,8 +63,7 @@
             </table>
         </div>
         <div class="col m-0 pb-0 alert alert-info text-center">
-            <p>Délai de paiement le 5ième jour du mois suivant la commande. En cas de retard, une pénalité au taux annuel de 5 % sera appliquée.
-                <p />
+            <p>Délai de paiement le 5ième jour du mois suivant la commande. En cas de retard, une pénalité au taux annuel de 5 % sera appliquée.</p>
             <p>TVA non applicable, art. 293B du CGI.</p>
             <hr />
             <p>Société <?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /> SIREN : <?php echo $res->siren; ?> - SIRET : <?php echo $res->siret; ?></p>

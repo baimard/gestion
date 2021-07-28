@@ -5,19 +5,19 @@
             <span style="display: none;"></span>
         </div>
         <div class="crumb svg crumbhome">
-            <span>Devis</span>
+            <span><?php p($l->t('Devis'));?></span>
         </div>
         <div class="crumb svg crumbhome">
-            <a><span id="newDevis">Ajouter un Devis</span></a>
+            <a><span id="newDevis"><?php p($l->t('Ajouter un devis'));?></span></a>
         </div>
     </div>
     <table id="devis" class="display tabledt" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
-                <th>date</th>
-                <th>Numéro</th>
-                <th>Client</th>
-                <th>Action(s)</th>
+                <th><?php p($l->t('date devis'));?></th>
+                <th><?php p($l->t('numero devis'));?></th>
+                <th><?php p($l->t('devis client'));?></th>
+                <th><?php p($l->t('Actions'));?></th>
             </tr>
         </thead>
         <tbody>

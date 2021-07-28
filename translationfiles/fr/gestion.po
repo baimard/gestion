@@ -29,7 +29,7 @@ msgid "Adresse"
 msgstr "Adresse"
 
 msgid "Actions"
-msgstr "Actions"
+msgstr "Action(s)"
 
 msgid "Ajout Client"
 msgstr "Ajouter un client"
@@ -82,3 +82,38 @@ msgstr "Configuration"
 msgid "Configuration Entreprise"
 msgstr "Veuillez configurer les informations concernant votre entreprise : "
 
+msgid "Devis"
+msgstr "Devis"
+
+msgid "Ajouter un devis"
+msgstr "Ajouter un devis"
+
+msgid "date devis"
+msgstr "Date d'emission"
+
+msgid "numero devis"
+msgstr "Numéro du devis"
+
+msgid "devis client"
+msgstr "Devis du client"
+
+msgid "facture"
+msgstr "Facture"
+
+msgid "Ajouter facture"
+msgstr "Ajouter une facture"
+
+msgid "numero facture"
+msgstr "Numero de la facture"
+
+msgid "date realisation"
+msgstr "Date réalisation"
+
+msgid "date paiement"
+msgstr "Date du paiement"
+
+msgid "Moyen paiement"
+msgstr "Moyen de paiement"
+
+msgid "Devis associe"
+msgstr "Devis associe"

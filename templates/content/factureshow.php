@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table id="produits" class="table table-striped">
+            <table id="produits" data-type="facture" class="table table-striped">
                 <thead>
                     <tr>
                     <th>Reference</th>

@@ -9,7 +9,7 @@
     "Téléphone" : "Téléphone",
     "Email" : "Email",
     "Adresse" : "Adresse",
-    "Actions" : "Actions",
+    "Actions" : "Action(s)",
     "Ajout Client" : "Ajouter un client",
     "Client" : "Client",
     "Recherche" : "Recherche : ",
@@ -26,6 +26,18 @@
     "Suivant" : "Suivant",
     "Précédent" : "Précédent",
     "Configuration" : "Configuration",
-    "Configuration Entreprise" : "Veuillez configurer les informations concernant votre entreprise : "
+    "Configuration Entreprise" : "Veuillez configurer les informations concernant votre entreprise : ",
+    "Devis" : "Devis",
+    "Ajouter un devis" : "Ajouter un devis",
+    "date devis" : "Date d'emission",
+    "numero devis" : "Numéro du devis",
+    "devis client" : "Devis du client",
+    "facture" : "Facture",
+    "Ajouter facture" : "Ajouter une facture",
+    "numero facture" : "Numero de la facture",
+    "date realisation" : "Date réalisation",
+    "date paiement" : "Date du paiement",
+    "Moyen paiement" : "Moyen de paiement",
+    "Devis associe" : "Devis associe"
 },"pluralForm" :""
 }

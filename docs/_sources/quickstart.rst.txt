@@ -3,25 +3,50 @@
 Documentation utilisateur
 =========================
 
+Installer l'application dans le nextcloud
+*****************************************
+
+* Aller dans le menu application
+* Selectionner dans le menu "Organisation"
+* Rechercher l'application "Gestion"
+* Cliquer sur installer
+
+.. video:: _sources/videos/installation.webm
+  :width: 800
+  :autoplay:
+
 Démarrage rapide
 ****************
 
-Lorsque vous démarrez l'application, un message s'affiche pour vous avertir de configurer votre entreprise. Il vous suffit de cliquer sur le lien "Mon entreprise".
+Lors du premier accès à l'applicatio un message s'affiche pour vous avertir de configurer votre entreprise.
 
-La page de configuration apparait, il suffit alors de cliquer dans chaque case pour modifier vos informations.
+* Cliquer sur le lien
+* Renseignant chaque champs en cliquant dessus une fois. (Doucement)
 
-.. WARNING::
-  Ne pas appuyer sur la touche "ENTRER" de votre clavier pour valider, mais cliquer n'importe où après modification.
+.. info::
+  Vous pouvez appuyer sur la touche entrée du clavier pour valider.
 
-Une fois que vous avez rempli l'ensemble des informations concernant votre auto entreprise. Il vous suffit de cliquer sur client pour enregistrer votre premier client.
+.. video:: _sources/videos/demarrage.webm
+  :width: 800
+  :autoplay:
 
-Avant de commencer
-******************
+Vos clients/prospects
+*********************
 
 .. NOTE::
-  Pour que les devis et factures fonctionnent, vous devez préalablement créer un Client et un Produit.
+  Pour que les devis et factures fonctionnent, vous devez préalablement créer un client et un produit (au minimum).
 
-* Produit : C'est ce qui apparait dans les lignes de devis et fatures. Il y a une référence courte, une description et un prix unitaire.
+Pour créer un client : 
+* Sélectionner "client" dans le menu
+* À coté de l'icone maison, cliquer sur "ajouter un client"
+* Renseignant chaque champs en cliquant dessus une fois (Doucement)
+
+.. info::
+  Vous pouvez appuyer sur la touche entrée du clavier pour valider.
+
+.. video:: _sources/videos/client.webm
+  :width: 800
+  :autoplay:
 
 Générer un PDF (DEVIS/FACTURE)
 ******************************

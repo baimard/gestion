@@ -2,6 +2,10 @@
 
 https://apps.nextcloud.com/apps/gestion
 
+Besoin d'une fonction ? ouvrez une "issue"
+
+Need fonctionnlality ? open an issue
+
 ## Application de gestion de facturation pour Micro-entreprise *France*
 
 Cette application permet la gestion de facturation de manière très simple pour une micro entreprise.

@@ -35,12 +35,14 @@ Functionality:
 * Generate product lines to include in quotes
 * You can generate PDFs directly from the app and save them to your Nextcloud.
 
-Video in user documentation
+Presentation video in user documentation
+
+if you need to adapt this application to your country laws, please open issue.
 
 [Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)
 
     </description>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>

@@ -7,7 +7,7 @@ import '../css/mycss.less';
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net';
 import 'bootstrap/js/dist/util';
-import { getClients, getDevis, updateDB} from "./modules/ajaxRequest.mjs";
+import { getClients, getDevis, updateDB, deleteDB} from "./modules/ajaxRequest.mjs";
 import { configureDT, langage } from "./modules/mainFunction.mjs";
 
 var baseUrl = generateUrl('/apps/gestion');
@@ -18,20 +18,20 @@ $(window).on("load", function() {
     $('.tabledt').DataTable({
         "autoWidth": true,
         language: {
-            "search":           t('gestion', 'Recherche'),
-            "emptyTable":       t('gestion', 'Table vide'),
-            "info":             t('gestion', 'Voir entre'),
-            "infoEmpty":        t('gestion', 'Voir entre0'),
-            "infoFiltered":     t('gestion', 'Filtre MAX'),
-            "lengthMenu":       t('gestion', 'Voir entre Menu'),
-            "loadingRecords":   t('gestion', 'Chargement'),
-            "processing":       t('gestion', 'Traitement'),
-            "zeroRecords":      t('gestion', 'Aucune entrée correspondante'),
+            "search":           t('gestion', 'search'),
+            "emptyTable":       t('gestion', 'emptyTable'),
+            "info":             t('gestion', 'info'),
+            "infoEmpty":        t('gestion', 'infoEmpty'),
+            "infoFiltered":     t('gestion', 'infoFiltered'),
+            "lengthMenu":       t('gestion', 'lengthMenu'),
+            "loadingRecords":   t('gestion', 'loadingRecords'),
+            "processing":       t('gestion', 'processing'),
+            "zeroRecords":      t('gestion', 'zeroRecords'),
             "paginate": {   
-                "first":        t('gestion', 'Premier'),
-                "last":         t('gestion', 'Dernier'),
-                "next":         t('gestion', 'Suivant'),
-                "previous":     t('gestion', 'Précédent'),
+                "first":        t('gestion', 'first'),
+                "last":         t('gestion', 'last'),
+                "next":         t('gestion', 'next'),
+                "previous":     t('gestion', 'previous'),
             }   
         }
     });
@@ -53,7 +53,7 @@ $(window).on("load", function() {
 });
 
 $('body').on('click', '#theFolder', function() {
-    var f = new FilePicker("Path to your recipe collection", false, [], false, 1, true, $("#theFolder").val());
+    var f = new FilePicker(t('gestion', 'Choose work folder'), false, [], false, 1, true, $("#theFolder").val());
     f.pick().then(
         function(value) {
             updateDB($('#theFolder').data('table'), $('#theFolder').data('column'), value, $('#theFolder').data('id'));
@@ -255,7 +255,7 @@ function loadFactureDT() {
                 '<div class="editable" data-table="facture" data-column="date_paiement" data-id="' + myresp.id + '">' + dtpaiement + '</div>',
                 '<div class="editable" data-table="facture" data-column="type_paiement" data-id="' + myresp.id + '">' + myresp.type_paiement + '</div>',
                 '<div data-table="facture" data-column="id_devis" data-id="' + myresp.id + '"><select class="listDevis" data-current="'+ myresp.id_devis +'"></select></div>',
-                '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/facture/' + myresp.id + '/show"><button>Voir</button></a></div><div data-modifier="facture" data-id=' + myresp.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
+                '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/facture/' + myresp.id + '/show"><button>'+ t('gestion', 'Open')+'</button></a></div><div data-modifier="facture" data-id=' + myresp.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
             ]);
         });
         loadDevisList();
@@ -285,7 +285,7 @@ function loadDevisDT() {
                 '<div class="editable" data-table="devis" data-column="date" data-id="' + myresp.id + '">' + myresp.date + '</div>',
                 '<div class="editable" data-table="devis" data-column="num" data-id="' + myresp.id + '" style="display:inline">' + myresp.num + '</div>',
                 '<div data-table="devis" data-column="id_client" data-id="' + myresp.id + '"><select class="listClient" data-current="'+ myresp.cid +'"></select></div>',
-                '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/devis/' + myresp.id + '/show"><button>Voir</button></a></div><div data-modifier="devis" data-id=' + myresp.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
+                '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/devis/' + myresp.id + '/show"><button>'+ t('gestion', 'Open')+'</button></a></div><div data-modifier="devis" data-id=' + myresp.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
             ]);
         });
         loadClientList();
@@ -357,7 +357,7 @@ function loadClientDT() {
 
 function loadClientList(){
     getClients(function(response){
-        $('.listClient').append("<option value='nothing'>Choisir un client</option>");
+        $('.listClient').append("<option value='nothing'>"+ t('gestion', 'Choose customer')+"</option>");
         $.each(JSON.parse(response), function(arrayID, myresp) {     
             $('.listClient').append("<option value='"+ myresp.id +"'>"+myresp.nom + " " + myresp.prenom+"</option>");
         });
@@ -367,7 +367,7 @@ function loadClientList(){
 
 function loadDevisList(){
     getDevis(function(response){
-        $('.listDevis').append("<option value='nothing'>Choisir un devis</option>");
+        $('.listDevis').append("<option value='nothing'>"+ t('gestion', 'Choose quote')+"</option>");
         $.each(JSON.parse(response), function(arrayID, myresp) {     
             $('.listDevis').append("<option value='"+ myresp.id +"'>"+ myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom +"</option>");
         });
@@ -462,27 +462,6 @@ function listProduit(lp, id, produitid) {
 //     });
 // }
 
-
-
-function deleteDB(table, id) {
-    var myData = {
-        table: table,
-        id: id,
-    };
-
-    $.ajax({
-        url: baseUrl + '/delete',
-        type: 'DELETE',
-        async: false,
-        contentType: 'application/json',
-        data: JSON.stringify(myData)
-    }).done(function(response, code) {
-        showMessage("Les modifications ont été enregistrées");
-    }).fail(function(response, code) {
-        showError(response);
-    });
-}
-
 function getProduitsById() {
     var devis_id = $('#devisid').data('id');
     var myData = { numdevis: devis_id, };
@@ -520,7 +499,7 @@ function getProduitsById() {
 }
 
 function showDone() {
-    showMessage("C'est ajouté !");
+    showMessage(t('gestion', 'added'));
 }
 
 

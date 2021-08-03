@@ -3,14 +3,14 @@
 	<table id="configuration" class="display tabledt" style="table-layout: fixed; font-size:11px; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
-                <th><?php p($l->t('Entreprise'));?></th>
-                <th><?php p($l->t('Nom'));?></th>
-                <th><?php p($l->t('Prenom'));?></th>
-                <th><?php p($l->t('Siret'));?></th>
-                <th><?php p($l->t('Siren'));?></th>
-                <th><?php p($l->t('Telephone'));?></th>
-                <th><?php p($l->t('Mail'));?></th>
-                <th><?php p($l->t('Adresse'));?></th>
+                <th><?php p($l->t('Company'));?></th>
+                <th><?php p($l->t('name'));?></th>
+                <th><?php p($l->t('first name'));?></th>
+                <th><?php p($l->t('limited company'));?></th>
+                <th><?php p($l->t('Unique identification'));?></th>
+                <th><?php p($l->t('Phone number'));?></th>
+                <th><?php p($l->t('Email'));?></th>
+                <th><?php p($l->t('address'));?></th>
             </tr>
         </thead>
         <tbody>

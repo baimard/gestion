@@ -3,7 +3,7 @@ import {generateUrl} from "@nextcloud/router";
 var baseUrl = generateUrl('/apps/gestion');
 
 /**
- * 
+ * Get customers
  * @param baseUrl 
  * @param callback 
  */
@@ -20,7 +20,7 @@ export function getClients(callback) {
 }
 
 /**
- * 
+ * Get quote
  * @param callback 
  */
 export function getDevis(callback) {
@@ -36,7 +36,7 @@ export function getDevis(callback) {
 }
 
 /**
- * 
+ * Update data
  * @param table 
  * @param column 
  * @param data 
@@ -57,7 +57,31 @@ export function updateDB(table, column, data, id) {
         contentType: 'application/json',
         data: JSON.stringify(myData)
     }).done(function(response, code) {
-        showMessage("Les modifications ont été enregistrées");
+        showMessage(t('gestion', 'Modification saved'));
+    }).fail(function(response, code) {
+        showError(response);
+    });
+}
+
+/**
+ * Delete data
+ * @param table 
+ * @param id 
+ */
+export function deleteDB(table, id) {
+    var myData = {
+        table: table,
+        id: id,
+    };
+
+    $.ajax({
+        url: baseUrl + '/delete',
+        type: 'DELETE',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(myData)
+    }).done(function(response, code) {
+        showMessage(t('gestion', 'Modification saved'));
     }).fail(function(response, code) {
         showError(response);
     });

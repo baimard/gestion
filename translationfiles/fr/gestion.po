@@ -1,119 +1,209 @@
-msgid "Modifiable"
+msgid "Click for modification"
 msgstr "Cliquer pour modifier"
 
-msgid "Entreprise"
+msgid "Company"
 msgstr "Entreprise"
 
-msgid "Mon entreprise"
+msgid "My company"
 msgstr "Mon entreprise"
 
-msgid "Nom"
+msgid "name"
 msgstr "Nom"
 
-msgid "Prenom"
+msgid "first name"
 msgstr "Prenom"
 
-msgid "Siret"
+#https://www.startbusinessinfrance.com/blog/post/tip-what-is-a-siren-or-siret-number
+msgid "limited company"
 msgstr "Siret"
 
-msgid "Siren"
+#https://www.startbusinessinfrance.com/blog/post/tip-what-is-a-siren-or-siret-number
+msgid "Unique identification"
 msgstr "Siren"
 
-msgid "Téléphone"
+msgid "Phone number"
 msgstr "Téléphone"
 
 msgid "Email"
 msgstr "Email"
 
-msgid "Adresse"
+msgid "address"
 msgstr "Adresse"
 
 msgid "Actions"
 msgstr "Action(s)"
 
-msgid "Ajout Client"
+msgid "product"
+msgstr "Produit"
+
+msgid "Add product"
+msgstr "Ajouter produit"
+
+msgid "Save in Nextcloud"
+msgstr "Sauvegarde dans nextcloud"
+
+
+msgid "Add customer"
 msgstr "Ajouter un client"
 
-msgid "Client"
+msgid "customer"
 msgstr "Client"
 
-msgid "Recherche"
+msgid "search"
 msgstr "Recherche : "
 
-msgid "Table vide"
+msgid "Offer valid for 1 month from"
+msgstr "Offre valide 1 mois à compter du"
+
+msgid "emptyTable"
 msgstr "Table vide"
 
-msgid "Voir entre"
+msgid "info"
 msgstr "Affichage de _START_ à _END_ ligne(s), sur un total de _TOTAL_ ligne(s)"
 
-msgid "Voir entre0"
+msgid "infoEmpty"
 msgstr "Affichage de 0 à 0 ligne(s), sur un total de 0 ligne"
 
-msgid "Filtre MAX"
+msgid "infoFiltered"
 msgstr "_MAX_ ligne(s) filtrées"
 
-msgid "Voir entre Menu"
+msgid "lengthMenu"
 msgstr "Affichage _MENU_ ligne(s)"
 
-msgid "Chargement"
+msgid "loadingRecords"
 msgstr "Chargement"
 
-msgid "Traitement"
+msgid "processing"
 msgstr "Traitement"
 
-msgid "Aucune entrée correspondante"
+msgid "zeroRecords"
 msgstr "Aucune entrée correspondante"
 
-msgid "Premier"
+msgid "first"
 msgstr "Premier"
 
-msgid "Dernier"
+msgid "last"
 msgstr "Dernier"
 
-msgid "Suivant"
+msgid "next"
 msgstr "Suivant"
 
-msgid "Précédent"
+msgid "previous"
 msgstr "Précédent"
 
 msgid "Configuration"
 msgstr "Configuration"
 
-msgid "Configuration Entreprise"
+msgid "Please configure your company informations"
 msgstr "Veuillez configurer les informations concernant votre entreprise : "
 
-msgid "Devis"
+msgid "Quote"
 msgstr "Devis"
 
-msgid "Ajouter un devis"
+msgid "Add new quote"
 msgstr "Ajouter un devis"
 
-msgid "date devis"
-msgstr "Date d'emission"
+msgid "Quote date"
+msgstr "Date du devis"
 
-msgid "numero devis"
+msgid "Quote number"
 msgstr "Numéro du devis"
 
-msgid "devis client"
+msgid "Quote #"
+msgstr "DEVIS N°"
+
+msgid "Customer quote"
 msgstr "Devis du client"
 
-msgid "facture"
+msgid "invoice"
 msgstr "Facture"
 
-msgid "Ajouter facture"
+msgid "invoice #"
+msgstr "Facture N°"
+
+msgid "add invoice"
 msgstr "Ajouter une facture"
 
-msgid "numero facture"
+msgid "Invoice number"
 msgstr "Numero de la facture"
 
-msgid "date realisation"
+msgid "date of service"
 msgstr "Date réalisation"
 
-msgid "date paiement"
+msgid "payment date"
 msgstr "Date du paiement"
 
-msgid "Moyen paiement"
+msgid "Means of payment"
 msgstr "Moyen de paiement"
 
-msgid "Devis associe"
+msgid "Associated quote"
 msgstr "Devis associe"
+
+msgid "FROM"
+msgstr "PART"
+
+msgid "TO"
+msgstr "POUR"
+
+msgid "Reference"
+msgstr "Référence"
+
+msgid "Designation"
+msgstr "Désignation"
+
+msgid "Quantity"
+msgstr "Quantité"
+
+msgid "Unit price without VAT"
+msgstr "PU HT"
+
+msgid "Total without VAT"
+msgstr "Total HT"
+
+msgid "VAT Rate"
+msgstr "Taux TVA"
+
+msgid "Total VAT"
+msgstr "Total TVA"
+
+msgid "Total Price"
+msgstr "Total TTC"
+
+msgid "Company"
+msgstr "Société"
+
+msgid "Settlement date"
+msgstr "Date de règlement"
+
+msgid "Save folder"
+msgstr "Dossier d'enregistrement"
+
+msgid "added"
+msgstr "C'est ajouté !"
+
+msgid "Creation in progress"
+msgstr "Création en cours"
+
+msgid "There is an error"
+msgstr "Il y a une erreur"
+
+msgid "Save in "
+msgstr "Sauvegardé dans "
+
+msgid "Editable"
+msgstr "Modifiable"
+
+msgid "Modification saved"
+msgstr "Les modifications ont été enregistrées"
+
+msgid "Open"
+msgstr "Ouvrir"
+
+msgid "Choose customer"
+msgstr "Choisir un client"
+
+msgid "Choose quote"
+msgstr "Choisir un devis"
+
+msgid "Choose work folder"
+msgstr "Choisir le répertoire de travail"

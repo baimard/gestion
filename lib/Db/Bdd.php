@@ -76,24 +76,24 @@ class Bdd {
      * INSERT
      */
 
-    public function insertClient($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."client` (`id`,`id_nextcloud`,`nom`,`prenom`,`siret`,`entreprise`,`telephone`,`mail`,`adresse`) VALUES (NULL, ?,'nom','prenom','siret','entreprise','telephone','mail','adresse');";
-        return $this-> execSQL($sql, array($idNextcloud));
+    public function insertClient($idNextcloud,$name,$fname,$lc,$c,$pn,$email,$address){
+        $sql = "INSERT INTO `".$this->tableprefix."client` (`id`,`id_nextcloud`,`nom`,`prenom`,`siret`,`entreprise`,`telephone`,`mail`,`adresse`) VALUES (NULL,?,?,?,?,?,?,?,?)";
+        return $this-> execSQL($sql,array($idNextcloud,$name,$fname,$lc,$c,$pn,$email,$address));
     }
 
-    public function insertDevis($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."devis` (`id`, `date`,`id_nextcloud`,`num`,`id_client`) VALUES (NULL, NOW(), ?,'numero interne de devis',0);";
-        return $this-> execSQL($sql, array($idNextcloud));
+    public function insertDevis($idNextcloud,$nd){
+        $sql = "INSERT INTO `".$this->tableprefix."devis` (`id`, `date`,`id_nextcloud`,`num`,`id_client`) VALUES (NULL, NOW(), ?,?,0);";
+        return $this-> execSQL($sql, array($idNextcloud,$nd));
     }
 
-    public function insertFacture($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."facture` (`id`, `date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`) VALUES (NULL, NOW(), ?,'numero interne de facture',NOW(),'type paiement',1);";
-        return $this-> execSQL($sql, array($idNextcloud));
+    public function insertFacture($idNextcloud,$nf,$tp){
+        $sql = "INSERT INTO `".$this->tableprefix."facture` (`id`, `date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`) VALUES (NULL, 'Texte libre', ?,?,NOW(),?,1);";
+        return $this-> execSQL($sql, array($idNextcloud,$nf,$tp));
     }
 
-    public function insertProduit($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."produit` (`id`,`id_nextcloud`,`reference`,`description`,`prix_unitaire`) VALUES (NULL, ?,'reference','description', 0);";
-        return $this-> execSQL($sql, array($idNextcloud));
+    public function insertProduit($idNextcloud,$ref,$des){
+        $sql = "INSERT INTO `".$this->tableprefix."produit` (`id`,`id_nextcloud`,`reference`,`description`,`prix_unitaire`) VALUES (NULL, ?,?,?, 0);";
+        return $this-> execSQL($sql, array($idNextcloud,$ref,$des));
     }
 
     public function insertProduitDevis($id,$idNextcloud){
@@ -132,6 +132,7 @@ class Bdd {
 
     /**
      * Check
+     * TODO Translation
      */
     public function checkConfig($idNextcloud){
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";

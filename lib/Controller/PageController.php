@@ -7,21 +7,23 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 use OCA\Gestion\Db\Bdd;
+use \OCP\IL10N;
 
 class PageController extends Controller {
 	private $idNextcloud;
 	private $myDb;
 	private $UserId;
+	private $l;
 
 	/** @var IRootStorage */
 	private $storage;
 
-	public function __construct($AppName, IRequest $request, $UserId, Bdd $myDb, IRootFolder $rootFolder){
+	public function __construct($AppName, IRequest $request, $UserId, Bdd $myDb, IRootFolder $rootFolder, IL10N $l){
 		parent::__construct($AppName, $request);
 		$this->idNextcloud = $UserId;
 		$this->UserId = $UserId;
 		$this->myDb = $myDb;
-
+		$this->l = $l;
 		try{
 			$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
 		}catch(\OC\User\NoUserException $e){
@@ -183,7 +185,15 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function insertClient() {
-		return $this->myDb->insertClient($this->idNextcloud);
+		return $this->myDb->insertClient(	$this->idNextcloud,
+											$this->l->t('name'),
+											$this->l->t('first name'),
+											$this->l->t('limited company'),
+											$this->l->t('Company'),
+											$this->l->t('Phone number'),
+											$this->l->t('Email'),
+											$this->l->t('address')
+										);
 	}
 
 	/**
@@ -192,7 +202,9 @@ class PageController extends Controller {
 	 * 
 	 */
 	public function insertDevis(){
-		return $this->myDb->insertDevis($this->idNextcloud);
+		return $this->myDb->insertDevis(	$this->idNextcloud,
+											$this->l->t('Quote number')
+										);
 	}
 
 	/**
@@ -201,7 +213,10 @@ class PageController extends Controller {
 	 * 
 	 */
 	public function insertFacture(){
-		return $this->myDb->insertFacture($this->idNextcloud);
+		return $this->myDb->insertFacture(	$this->idNextcloud,
+											$this->l->t('Invoice number'),
+											$this->l->t('Means of payment')
+										);
 	}
 
 	/**
@@ -210,7 +225,10 @@ class PageController extends Controller {
 	 * 
 	 */
 	public function insertProduit(){
-		return $this->myDb->insertProduit($this->idNextcloud);
+		return $this->myDb->insertProduit(	$this->idNextcloud,
+											$this->l->t('Reference'),
+											$this->l->t('Designation')
+										);
 	}
 
 	/**

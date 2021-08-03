@@ -1,6 +1,6 @@
 {
     "name": "gestion/app",
-    "description": "Gestion d&#39;une autoentreprise facilement",
+    "description": "Company administration",
     "type": "project",
     "license": "AGPL",
     "authors": [

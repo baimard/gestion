@@ -5,18 +5,18 @@
             <span style="display: none;"></span>
         </div>
         <div class="crumb svg crumbhome">
-            <span><?php p($l->t('Devis'));?></span>
+            <span><?php p($l->t('Quote'));?></span>
         </div>
         <div class="crumb svg crumbhome">
-            <a><span id="newDevis"><?php p($l->t('Ajouter un devis'));?></span></a>
+            <a><span id="newDevis"><?php p($l->t('Add new quote'));?></span></a>
         </div>
     </div>
     <table id="devis" class="display tabledt" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
-                <th><?php p($l->t('date devis'));?></th>
-                <th><?php p($l->t('numero devis'));?></th>
-                <th><?php p($l->t('devis client'));?></th>
+                <th><?php p($l->t('Quote date'));?></th>
+                <th><?php p($l->t('Quote number'));?></th>
+                <th><?php p($l->t('Customer quote'));?></th>
                 <th><?php p($l->t('Actions'));?></th>
             </tr>
         </thead>

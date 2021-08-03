@@ -5,19 +5,19 @@
             <span style="display: none;"></span>
         </div>
         <div class="crumb svg crumbhome">
-            <span>Produit</span>
+            <span><?php p($l->t('product'));?></span>
         </div>
         <div class="crumb svg crumbhome">
-            <a><span id="newProduit">Ajouter un Produit</span></a>
+            <a><span id="newProduit"><?php p($l->t('Add product'));?></span></a>
         </div>
     </div>
 	<table id="produit" class="display tabledt" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
-                <th>reference</th>
-                <th>description</th>
-                <th>prix unitaire</th>
-                <th>Action(s)</th>
+                <th><?php p($l->t('Reference'));?></th>
+                <th><?php p($l->t('Designation'));?></th>
+                <th><?php p($l->t('Unit price without VAT'));?></th>
+                <th><?php p($l->t('Actions'));?></th>
             </tr>
         </thead>
         <tbody>

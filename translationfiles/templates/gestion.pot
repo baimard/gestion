@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: /app/specialAppInfoFakeDummyForL10nScript.php:2
-msgid "Gestion"
+msgid "Administration"
 msgstr ""
 
 #: /app/specialAppInfoFakeDummyForL10nScript.php:3
@@ -46,167 +46,212 @@ msgid ""
 "[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/"
 "benjaminaimard)"
 msgstr ""
+msgid "Click for modification"
+msgstr "Cliquer pour modifier"
 
-#: /app/src/js/main.js:21
-msgid "Recherche"
-msgstr ""
+msgid "Company"
+msgstr "Entreprise"
 
-#: /app/src/js/main.js:22
-msgid "Table vide"
-msgstr ""
+msgid "My company"
+msgstr "Mon entreprise"
 
-#: /app/src/js/main.js:23
-msgid "Voir entre"
-msgstr ""
+msgid "name"
+msgstr "Nom"
 
-#: /app/src/js/main.js:24
-msgid "Voir entre0"
-msgstr ""
+msgid "first name"
+msgstr "Prenom"
 
-#: /app/src/js/main.js:25
-msgid "Filtre MAX"
-msgstr ""
+#https://www.startbusinessinfrance.com/blog/post/tip-what-is-a-siren-or-siret-number
+msgid "limited company"
+msgstr "Siret"
 
-#: /app/src/js/main.js:26
-msgid "Voir entre Menu"
-msgstr ""
+#https://www.startbusinessinfrance.com/blog/post/tip-what-is-a-siren-or-siret-number
+msgid "Unique identification"
+msgstr "Siren"
 
-#: /app/src/js/main.js:27
-msgid "Chargement"
-msgstr ""
+msgid "Phone number"
+msgstr "Téléphone"
 
-#: /app/src/js/main.js:28
-msgid "Traitement"
-msgstr ""
+msgid "Email"
+msgstr "Email"
 
-#: /app/src/js/main.js:29
-msgid "Aucune entrée correspondante"
-msgstr ""
+msgid "address"
+msgstr "Adresse"
 
-#: /app/src/js/main.js:31
-msgid "Premier"
-msgstr ""
-
-#: /app/src/js/main.js:32
-msgid "Dernier"
-msgstr ""
-
-#: /app/src/js/main.js:33
-msgid "Suivant"
-msgstr ""
-
-#: /app/src/js/main.js:34
-msgid "Précédent"
-msgstr ""
-
-#: /app/templates/content/configuration.php:2
-msgid "Configuration"
-msgstr ""
-
-#: /app/templates/content/configuration.php:6
-#: /app/templates/content/index.php:23
-msgid "Entreprise"
-msgstr ""
-
-#: /app/templates/content/configuration.php:7
-#: /app/templates/content/index.php:24
-msgid "Nom"
-msgstr ""
-
-#: /app/templates/content/configuration.php:8
-#: /app/templates/content/index.php:25
-msgid "Prenom"
-msgstr ""
-
-#: /app/templates/content/configuration.php:9
-#: /app/templates/content/index.php:26
-msgid "Siret"
-msgstr ""
-
-#: /app/templates/content/configuration.php:10
-msgid "Siren"
-msgstr ""
-
-#: /app/templates/content/configuration.php:11
-#: /app/templates/content/index.php:27
-msgid "Telephone"
-msgstr ""
-
-#: /app/templates/content/configuration.php:12
-#: /app/templates/content/index.php:28
-msgid "Mail"
-msgstr ""
-
-#: /app/templates/content/configuration.php:13
-#: /app/templates/content/index.php:29
-msgid "Adresse"
-msgstr ""
-
-#: /app/templates/content/devis.php:8
-msgid "Devis"
-msgstr ""
-
-#: /app/templates/content/devis.php:11
-msgid "Ajouter un devis"
-msgstr ""
-
-#: /app/templates/content/devis.php:17
-msgid "date devis"
-msgstr ""
-
-#: /app/templates/content/devis.php:18
-msgid "numero devis"
-msgstr ""
-
-#: /app/templates/content/devis.php:19
-msgid "devis client"
-msgstr ""
-
-#: /app/templates/content/devis.php:20 /app/templates/content/facture.php:22
-#: /app/templates/content/index.php:30
 msgid "Actions"
-msgstr ""
+msgstr "Action(s)"
 
-#: /app/templates/content/facture.php:8
-msgid "facture"
-msgstr ""
+msgid "product"
+msgstr "Produit"
 
-#: /app/templates/content/facture.php:11
-msgid "Ajouter facture"
-msgstr ""
+msgid "Add product"
+msgstr "Ajouter produit"
 
-#: /app/templates/content/facture.php:17
-msgid "numero facture"
-msgstr ""
+msgid "Save in Nextcloud"
+msgstr "Sauvegarde dans nextcloud"
 
-#: /app/templates/content/facture.php:18
-msgid "date realisation"
-msgstr ""
 
-#: /app/templates/content/facture.php:19
-msgid "date paiement"
-msgstr ""
+msgid "Add customer"
+msgstr "Ajouter un client"
 
-#: /app/templates/content/facture.php:20
-msgid "Moyen paiement"
-msgstr ""
+msgid "customer"
+msgstr "Client"
 
-#: /app/templates/content/facture.php:21
-msgid "Devis associe"
-msgstr ""
+msgid "Search"
+msgstr "Recherche : "
 
-#: /app/templates/content/index.php:5
-msgid "Configuration Entreprise"
-msgstr ""
+msgid "Offer valid for 1 month from"
+msgstr "Offre valide 1 mois à compter du"
 
-#: /app/templates/content/index.php:5
-msgid "Mon entreprise"
-msgstr ""
+msgid "emptyTable"
+msgstr "Table vide"
 
-#: /app/templates/content/index.php:14
-msgid "Client"
-msgstr ""
+msgid "info"
+msgstr "Affichage de _START_ à _END_ ligne(s), sur un total de _TOTAL_ ligne(s)"
 
-#: /app/templates/content/index.php:17
-msgid "Ajout Client"
-msgstr ""
+msgid "infoEmpty"
+msgstr "Affichage de 0 à 0 ligne(s), sur un total de 0 ligne"
+
+msgid "infoFiltered"
+msgstr "_MAX_ ligne(s) filtrées"
+
+msgid "lengthMenu"
+msgstr "Affichage _MENU_ ligne(s)"
+
+msgid "loadingRecords"
+msgstr "Chargement"
+
+msgid "processing"
+msgstr "Traitement"
+
+msgid "zeroRecords"
+msgstr "Aucune entrée correspondante"
+
+msgid "first"
+msgstr "Premier"
+
+msgid "last"
+msgstr "Dernier"
+
+msgid "next"
+msgstr "Suivant"
+
+msgid "previous"
+msgstr "Précédent"
+
+msgid "Configuration"
+msgstr "Configuration"
+
+msgid "Company configuration"
+msgstr "Veuillez configurer les informations concernant votre entreprise : "
+
+msgid "Quote"
+msgstr "Devis"
+
+msgid "Add new quote"
+msgstr "Ajouter un devis"
+
+msgid "Quote date"
+msgstr "Date du devis"
+
+msgid "Quote number"
+msgstr "Numéro du devis"
+
+msgid "Quote #"
+msgstr "DEVIS N°"
+
+msgid "Customer quote"
+msgstr "Devis du client"
+
+msgid "invoice"
+msgstr "Facture"
+
+msgid "invoice #"
+msgstr "Facture N°"
+
+msgid "add invoice"
+msgstr "Ajouter une facture"
+
+msgid "Invoice number"
+msgstr "Numero de la facture"
+
+msgid "date of service"
+msgstr "Date réalisation"
+
+msgid "payment date"
+msgstr "Date du paiement"
+
+msgid "Means of payment"
+msgstr "Moyen de paiement"
+
+msgid "Associated quote"
+msgstr "Devis associe"
+
+msgid "FROM"
+msgstr "PART"
+
+msgid "TO"
+msgstr "POUR"
+
+msgid "Reference"
+msgstr "Référence"
+
+msgid "Designation"
+msgstr "Désignation"
+
+msgid "Quantity"
+msgstr "Quantité"
+
+msgid "Unit price without VAT"
+msgstr "PU HT"
+
+msgid "Total without VAT"
+msgstr "Total HT"
+
+msgid "VAT Rate"
+msgstr "Taux TVA"
+
+msgid "Total VAT"
+msgstr "Total TVA"
+
+msgid "Total Price"
+msgstr "Total TTC"
+
+msgid "Company"
+msgstr "Société"
+
+msgid "Settlement date"
+msgstr "Date de règlement"
+
+msgid "Save folder"
+msgstr "Dossier d'enregistrement"
+
+msgid "added"
+msgstr "C'est ajouté !"
+
+msgid "Creation in progress"
+msgstr "Création en cours"
+
+msgid "There is an error"
+msgstr "Il y a une erreur"
+
+msgid "Save in "
+msgstr "Sauvegardé dans "
+
+msgid "Editable"
+msgstr "Modifiable !"
+
+msgid "Modification saved"
+msgstr "Les modifications ont été enregistrées"
+
+msgid "Open"
+msgstr "Ouvrir"
+
+msgid "Choose customer"
+msgstr "Choisir un client"
+
+msgid "Choose quote"
+msgstr "Choisir un devis"
+
+msgid "Choose work folder"
+msgstr "Choisir le répertoire de travail"

@@ -2,7 +2,7 @@
     <div id="modalConfig" class="modalConfig">
         <div class="modal-content">
             <span class="modalClose">&times;</span>
-            <p><?php p($l->t('Configuration Entreprise'));?><a href="/apps/gestion/config"><?php p($l->t('Mon entreprise'));?></a></p>
+            <p><?php p($l->t('Please configure your company informations'));?> <a href="/apps/gestion/config"><?php p($l->t('My company'));?></a></p>
         </div>
     </div>
     <div class="breadcrumb" data-html2canvas-ignore>
@@ -11,22 +11,22 @@
             <span style="display: none;"></span>
         </div>
         <div class="crumb svg crumbhome">
-            <span><?php p($l->t('Client'));?></span>
+            <span><?php p($l->t('customer'));?></span>
         </div>
         <div class="crumb svg crumbhome">
-            <a><span id="newClient"><?php p($l->t('Ajout Client'));?></span></a>
+            <a><span id="newClient"><?php p($l->t('Add customer'));?></span></a>
         </div>
     </div>
     <table id="client" class="display tabledt" style="table-layout: fixed; font-size:11px; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>
-                <th><?php p($l->t('Entreprise'));?></th>
-                <th><?php p($l->t('Nom'));?></th>
-                <th><?php p($l->t('Prenom'));?></th>
-                <th><?php p($l->t('Siret'));?></th>
-                <th><?php p($l->t('Telephone'));?></th>
-                <th><?php p($l->t('Mail'));?></th>
-                <th><?php p($l->t('Adresse'));?></th>
+                <th><?php p($l->t('Company'));?></th>
+                <th><?php p($l->t('name'));?></th>
+                <th><?php p($l->t('first name'));?></th>
+                <th><?php p($l->t('limited company'));?></th>
+                <th><?php p($l->t('Phone number'));?></th>
+                <th><?php p($l->t('Email'));?></th>
+                <th><?php p($l->t('address'));?></th>
                 <th><?php p($l->t('Actions'));?></th>
             </tr>
         </thead>

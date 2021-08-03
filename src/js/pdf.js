@@ -8,7 +8,7 @@ import { showMessage } from "@nextcloud/dialogs";
 var baseUrl = generateUrl('/apps/gestion');
 
 $('body').on('click', '#pdf', function(){
-    showMessage("Generation en cours ...");
+    showMessage(t('gestion', 'Creation in progress'));
     capture();
 });
 
@@ -64,9 +64,9 @@ function genPDF(imgData, canvas){
         contentType: 'application/json',
         data: JSON.stringify(myData)
       }).done(function (response) {
-        showMessage('Sauvegarde dans ' + $("#theFolder").val()+"/"+ $("#pdf").data("folder"));
+        showMessage(t('gestion', 'Save in ') + $("#theFolder").val()+"/"+ $("#pdf").data("folder"));
       }).fail(function (response, code) {
-        showMessage('Il y a une erreur');
+        showMessage(t('gestion', 'There is an error'));
         error(response);
       });
 

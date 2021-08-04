@@ -20,7 +20,7 @@
                         <span id="adresse"></span><br />
                         <span id="mail"></span><br />
                         <span id="telephone"></span><br />
-                        <?php p($l->t('limited company'));?> : <span id="siret"></span><br />
+                        <?php p($l->t('Limited company'));?> : <span id="siret"></span><br />
                     </p>
             </div>
         </div>

@@ -1,5 +1,5 @@
     <div class="bootstrap-iso">
-        <h2 class="mt-3 mb-3 text-center"><?php p($l->t('invoice #'));?> <div id="factureid" style="display:inline" class="editable" data-table="facture" data-column="num" data-id="<?php echo $_['facture'][0]->id;?>"><?php echo $_['facture'][0]->num;?></div></h2>
+        <h2 class="mt-3 mb-3 text-center"><?php p($l->t('Invoice #'));?> <div id="factureid" style="display:inline" class="editable" data-table="facture" data-column="num" data-id="<?php echo $_['facture'][0]->id;?>"><?php echo $_['facture'][0]->num;?></div></h2>
         <hr/>
         <div class="row">
             <div class="col col-md">

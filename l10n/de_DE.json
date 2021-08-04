@@ -1,0 +1,7 @@
+{ "translations": {
+    "Gestion" : "Gestion",
+    "Invoicing management application for Micro-Entreprise in France" : "Rechnung-Management-APP für Kleinunternehmen in Frankreich",
+    "Configuration" : "Konfiguration",
+    "Actions" : "Aktionen"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

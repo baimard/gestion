@@ -8,17 +8,95 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-08-03 03:27+0000\n"
+"POT-Creation-Date: 2021-08-04 03:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: /app/lib/Controller/PageController.php:189
+#: /app/templates/content/configuration.php:7
+#: /app/templates/content/index.php:24
+msgid "name"
+msgstr ""
+
+#: /app/lib/Controller/PageController.php:190
+#: /app/templates/content/configuration.php:8
+#: /app/templates/content/index.php:25
+msgid "first name"
+msgstr ""
+
+#: /app/lib/Controller/PageController.php:191
+#: /app/templates/content/configuration.php:9
+#: /app/templates/content/devisshow.php:23
+#: /app/templates/content/devisshow.php:70
+#: /app/templates/content/factureshow.php:22
+#: /app/templates/content/factureshow.php:71
+#: /app/templates/content/index.php:26
+msgid "limited company"
+msgstr ""
+
+#: /app/lib/Controller/PageController.php:192
+#: /app/templates/content/configuration.php:6
+#: /app/templates/content/devisshow.php:70
+#: /app/templates/content/factureshow.php:71
+#: /app/templates/content/index.php:23
+msgid "Company"
+msgstr ""
+
+#: /app/lib/Controller/PageController.php:193
+#: /app/templates/content/configuration.php:11
+#: /app/templates/content/index.php:27
+msgid "Phone number"
+msgstr ""
+
+#: /app/lib/Controller/PageController.php:194
+#: /app/templates/content/configuration.php:12
+#: /app/templates/content/index.php:28
+msgid "Email"
+msgstr ""
+
+#: /app/lib/Controller/PageController.php:195
+#: /app/templates/content/configuration.php:13
+#: /app/templates/content/index.php:29
+msgid "address"
+msgstr ""
+
+#: /app/lib/Controller/PageController.php:206
+#: /app/templates/content/devis.php:18
+msgid "Quote number"
+msgstr ""
+
+#: /app/lib/Controller/PageController.php:217
+#: /app/templates/content/facture.php:17
+msgid "Invoice number"
+msgstr ""
+
+#: /app/lib/Controller/PageController.php:218
+#: /app/templates/content/facture.php:20
+#: /app/templates/content/factureshow.php:31
+msgid "Means of payment"
+msgstr ""
+
+#: /app/lib/Controller/PageController.php:229
+#: /app/templates/content/devisshow.php:38
+#: /app/templates/content/factureshow.php:40
+#: /app/templates/content/produit.php:17
+msgid "Reference"
+msgstr ""
+
+#: /app/lib/Controller/PageController.php:230
+#: /app/templates/content/devisshow.php:39
+#: /app/templates/content/factureshow.php:41
+#: /app/templates/content/produit.php:18
+msgid "Designation"
+msgstr ""
+
 #: /app/specialAppInfoFakeDummyForL10nScript.php:2
-msgid "Administration"
+msgid "Gestion"
 msgstr ""
 
 #: /app/specialAppInfoFakeDummyForL10nScript.php:3
@@ -41,217 +119,242 @@ msgid ""
 "* You can generate PDFs directly from the app and save them to your "
 "Nextcloud.\n"
 "\n"
-"Video in user documentation\n"
+"Presentation video in user documentation\n"
+"\n"
+"if you need to adapt this application to your country laws, please open "
+"issue.\n"
 "\n"
 "[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/"
 "benjaminaimard)"
 msgstr ""
-msgid "Click for modification"
-msgstr "Cliquer pour modifier"
 
-msgid "Company"
-msgstr "Entreprise"
+#: /app/src/js/main.js:21
+msgid "search"
+msgstr ""
 
-msgid "My company"
-msgstr "Mon entreprise"
-
-msgid "name"
-msgstr "Nom"
-
-msgid "first name"
-msgstr "Prenom"
-
-#https://www.startbusinessinfrance.com/blog/post/tip-what-is-a-siren-or-siret-number
-msgid "limited company"
-msgstr "Siret"
-
-#https://www.startbusinessinfrance.com/blog/post/tip-what-is-a-siren-or-siret-number
-msgid "Unique identification"
-msgstr "Siren"
-
-msgid "Phone number"
-msgstr "Téléphone"
-
-msgid "Email"
-msgstr "Email"
-
-msgid "address"
-msgstr "Adresse"
-
-msgid "Actions"
-msgstr "Action(s)"
-
-msgid "product"
-msgstr "Produit"
-
-msgid "Add product"
-msgstr "Ajouter produit"
-
-msgid "Save in Nextcloud"
-msgstr "Sauvegarde dans nextcloud"
-
-
-msgid "Add customer"
-msgstr "Ajouter un client"
-
-msgid "customer"
-msgstr "Client"
-
-msgid "Search"
-msgstr "Recherche : "
-
-msgid "Offer valid for 1 month from"
-msgstr "Offre valide 1 mois à compter du"
-
+#: /app/src/js/main.js:22
 msgid "emptyTable"
-msgstr "Table vide"
+msgstr ""
 
+#: /app/src/js/main.js:23
 msgid "info"
-msgstr "Affichage de _START_ à _END_ ligne(s), sur un total de _TOTAL_ ligne(s)"
+msgstr ""
 
+#: /app/src/js/main.js:24
 msgid "infoEmpty"
-msgstr "Affichage de 0 à 0 ligne(s), sur un total de 0 ligne"
+msgstr ""
 
+#: /app/src/js/main.js:25
 msgid "infoFiltered"
-msgstr "_MAX_ ligne(s) filtrées"
+msgstr ""
 
+#: /app/src/js/main.js:26
 msgid "lengthMenu"
-msgstr "Affichage _MENU_ ligne(s)"
+msgstr ""
 
+#: /app/src/js/main.js:27
 msgid "loadingRecords"
-msgstr "Chargement"
+msgstr ""
 
+#: /app/src/js/main.js:28
 msgid "processing"
-msgstr "Traitement"
+msgstr ""
 
+#: /app/src/js/main.js:29
 msgid "zeroRecords"
-msgstr "Aucune entrée correspondante"
+msgstr ""
 
+#: /app/src/js/main.js:31
 msgid "first"
-msgstr "Premier"
+msgstr ""
 
+#: /app/src/js/main.js:32
 msgid "last"
-msgstr "Dernier"
+msgstr ""
 
+#: /app/src/js/main.js:33
 msgid "next"
-msgstr "Suivant"
+msgstr ""
 
+#: /app/src/js/main.js:34
 msgid "previous"
-msgstr "Précédent"
+msgstr ""
 
-msgid "Configuration"
-msgstr "Configuration"
-
-msgid "Company configuration"
-msgstr "Veuillez configurer les informations concernant votre entreprise : "
-
-msgid "Quote"
-msgstr "Devis"
-
-msgid "Add new quote"
-msgstr "Ajouter un devis"
-
-msgid "Quote date"
-msgstr "Date du devis"
-
-msgid "Quote number"
-msgstr "Numéro du devis"
-
-msgid "Quote #"
-msgstr "DEVIS N°"
-
-msgid "Customer quote"
-msgstr "Devis du client"
-
-msgid "invoice"
-msgstr "Facture"
-
-msgid "invoice #"
-msgstr "Facture N°"
-
-msgid "add invoice"
-msgstr "Ajouter une facture"
-
-msgid "Invoice number"
-msgstr "Numero de la facture"
-
-msgid "date of service"
-msgstr "Date réalisation"
-
-msgid "payment date"
-msgstr "Date du paiement"
-
-msgid "Means of payment"
-msgstr "Moyen de paiement"
-
-msgid "Associated quote"
-msgstr "Devis associe"
-
-msgid "FROM"
-msgstr "PART"
-
-msgid "TO"
-msgstr "POUR"
-
-msgid "Reference"
-msgstr "Référence"
-
-msgid "Designation"
-msgstr "Désignation"
-
-msgid "Quantity"
-msgstr "Quantité"
-
-msgid "Unit price without VAT"
-msgstr "PU HT"
-
-msgid "Total without VAT"
-msgstr "Total HT"
-
-msgid "VAT Rate"
-msgstr "Taux TVA"
-
-msgid "Total VAT"
-msgstr "Total TVA"
-
-msgid "Total Price"
-msgstr "Total TTC"
-
-msgid "Company"
-msgstr "Société"
-
-msgid "Settlement date"
-msgstr "Date de règlement"
-
-msgid "Save folder"
-msgstr "Dossier d'enregistrement"
-
-msgid "added"
-msgstr "C'est ajouté !"
-
-msgid "Creation in progress"
-msgstr "Création en cours"
-
-msgid "There is an error"
-msgstr "Il y a une erreur"
-
-msgid "Save in "
-msgstr "Sauvegardé dans "
-
-msgid "Editable"
-msgstr "Modifiable !"
-
-msgid "Modification saved"
-msgstr "Les modifications ont été enregistrées"
-
-msgid "Open"
-msgstr "Ouvrir"
-
-msgid "Choose customer"
-msgstr "Choisir un client"
-
-msgid "Choose quote"
-msgstr "Choisir un devis"
-
+#: /app/src/js/main.js:56
 msgid "Choose work folder"
-msgstr "Choisir le répertoire de travail"
+msgstr ""
+
+#: /app/src/js/main.js:258 /app/src/js/main.js:288
+msgid "Open"
+msgstr ""
+
+#: /app/src/js/main.js:360
+msgid "Choose customer"
+msgstr ""
+
+#: /app/src/js/main.js:370
+msgid "Choose quote"
+msgstr ""
+
+#: /app/src/js/main.js:502
+msgid "added"
+msgstr ""
+
+#: /app/src/js/pdf.js:11
+msgid "Creation in progress"
+msgstr ""
+
+#: /app/src/js/pdf.js:67
+msgid "Save in "
+msgstr ""
+
+#: /app/src/js/pdf.js:69
+msgid "There is an error"
+msgstr ""
+
+#: /app/templates/content/configuration.php:2
+#: /app/templates/settings/index.php:4
+msgid "Configuration"
+msgstr ""
+
+#: /app/templates/content/configuration.php:10
+#: /app/templates/content/devisshow.php:70
+#: /app/templates/content/factureshow.php:71
+msgid "Unique identification"
+msgstr ""
+
+#: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:9
+msgid "Quote"
+msgstr ""
+
+#: /app/templates/content/devis.php:11
+msgid "Add new quote"
+msgstr ""
+
+#: /app/templates/content/devis.php:17
+msgid "Quote date"
+msgstr ""
+
+#: /app/templates/content/devis.php:19
+msgid "Customer quote"
+msgstr ""
+
+#: /app/templates/content/devis.php:20 /app/templates/content/facture.php:22
+#: /app/templates/content/index.php:30 /app/templates/content/produit.php:20
+msgid "Actions"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:2
+msgid "Quote #"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:8
+#: /app/templates/content/factureshow.php:7
+msgid "FROM"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:17
+#: /app/templates/content/factureshow.php:16
+msgid "TO"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:30
+msgid "Offer valid for 1 month from"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:40
+#: /app/templates/content/factureshow.php:42
+msgid "Quantity"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:41
+#: /app/templates/content/factureshow.php:43
+#: /app/templates/content/produit.php:19
+msgid "Unit price without VAT"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:42
+#: /app/templates/content/devisshow.php:55
+#: /app/templates/content/factureshow.php:44
+#: /app/templates/content/factureshow.php:56
+msgid "Total without VAT"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:48
+#: /app/templates/content/produit.php:11
+msgid "Add product"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:49
+#: /app/templates/content/factureshow.php:50
+msgid "Save in Nextcloud"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:56
+#: /app/templates/content/factureshow.php:57
+msgid "VAT Rate"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:57
+#: /app/templates/content/factureshow.php:58
+msgid "Total VAT"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:58
+#: /app/templates/content/factureshow.php:59
+msgid "Total Price"
+msgstr ""
+
+#: /app/templates/content/facture.php:8 /app/templates/navigation/index.php:16
+msgid "invoice"
+msgstr ""
+
+#: /app/templates/content/facture.php:11
+msgid "add invoice"
+msgstr ""
+
+#: /app/templates/content/facture.php:18
+#: /app/templates/content/factureshow.php:30
+msgid "date of service"
+msgstr ""
+
+#: /app/templates/content/facture.php:19
+msgid "payment date"
+msgstr ""
+
+#: /app/templates/content/facture.php:21
+#: /app/templates/content/factureshow.php:31
+msgid "Associated quote"
+msgstr ""
+
+#: /app/templates/content/factureshow.php:2
+msgid "invoice #"
+msgstr ""
+
+#: /app/templates/content/factureshow.php:30
+msgid "Settlement date"
+msgstr ""
+
+#: /app/templates/content/index.php:5
+msgid "Please configure your company informations"
+msgstr ""
+
+#: /app/templates/content/index.php:5 /app/templates/settings/index.php:10
+msgid "My company"
+msgstr ""
+
+#: /app/templates/content/index.php:14 /app/templates/navigation/index.php:2
+msgid "customer"
+msgstr ""
+
+#: /app/templates/content/index.php:17
+msgid "Add customer"
+msgstr ""
+
+#: /app/templates/content/produit.php:8 /app/templates/navigation/index.php:23
+msgid "product"
+msgstr ""
+
+#: /app/templates/settings/index.php:9
+msgid "Save folder"
+msgstr ""

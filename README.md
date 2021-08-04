@@ -11,7 +11,7 @@ Fonctionnalités à venir / Upcoming Features
 - [ ] Zone de commentaire pour les devis ( qui s'affichera dans les factures ) / comment zone in quote
 - [ ] Version des pdf enregistrés à chaque fois que l'on clique sur sauvegarder nextcloud / Versionning for saved pdf, when you click save nextcloud increment the version.
 - [ ] Etat d'une facture (Annulé, Modifié, payé) / status of an invoice (Cancel, Modified, paid)
-- [ ] #9 / XML format for invoice
+- [ ] https://github.com/baimard/gestion/issues/9 / XML format for invoice
 
 ## Application de gestion de facturation pour Micro-entreprise *France*
 

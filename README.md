@@ -8,7 +8,7 @@ Need fonctionnlality ? open an issue
 
 Fonctionnalités à venir / Upcoming Features
 
-- [] Zone de commentaire pour les devis ( qui s'affichera dans les factures ) / comment zone in quote
+- [x] Zone de commentaire pour les devis ( qui s'affichera dans les factures ) / comment zone in quote
 - [] Version des pdf enregistrés à chaque fois que l'on clique sur sauvegarder nextcloud / Versionning for saved pdf, when you click save nextcloud increment the version.
 - [] Etat d'une facture (Annulé, Modifié, payé) / status of an invoice (Cancel, Modified, paid)
 - [] Facture électronique au format XML / XML format for invoice

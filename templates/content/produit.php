@@ -5,7 +5,7 @@
             <span style="display: none;"></span>
         </div>
         <div class="crumb svg crumbhome">
-            <span><?php p($l->t('product'));?></span>
+            <span><?php p($l->t('Product'));?></span>
         </div>
         <div class="crumb svg crumbhome">
             <a><span id="newProduit"><?php p($l->t('Add product'));?></span></a>

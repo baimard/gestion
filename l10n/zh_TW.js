@@ -15,6 +15,7 @@ OC.L10N.register(
     "Designation" : "指定",
     "Gestion" : "Gestion",
     "Invoicing management application for Micro-Entreprise in France" : "法國微型企業進銷存管理應用程式",
+    "# Gestion Nextcloud application\n\nThis application allows the management of invoicing in a very simple way for Micro-Entreprise.\n\nFunctionality:\n\n* Add customer\n* Generate a quote\n* Generate an invoice\n* Generate product lines to include in quotes\n* You can generate PDFs directly from the app and save them to your Nextcloud\n\nPresentation video in user documentation\n\nIf you need to adapt this application to your country laws, please open issue.\n\n[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)" : "# Gestion Nextcloud 應用程式\n\n此應用程式允許以非常簡單的方式為微型企業管理發票。\n\n功能：\n\n* 新增客戶\n* 產生報價\n* 產生發票\n* 產生商品線以包含在報價中\n* 您可以直接從應用程式產生 PDF 並將它們儲存到您的 Nextcloud。\n\n用戶說明書中的展示視訊\n\n如果您需要將此應用程式調整為您所在國家/地區的法律，請開啟問題。\n\n[喜歡我的作品嗎？ 給我買杯咖啡！](https://www.buymeacoffee.com/benjaminaimard)",
     "search" : "搜尋",
     "emptyTable" : "emptyTable",
     "info" : "info",

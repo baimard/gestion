@@ -2,7 +2,7 @@
     <div id="modalConfig" class="modalConfig">
         <div class="modal-content">
             <span class="modalClose">&times;</span>
-            <p><?php p($l->t('Please configure your company informations'));?> <a href="/apps/gestion/config"><?php p($l->t('My company'));?></a></p>
+            <p><?php p($l->t('Please configure your company information'));?> <a href="/apps/gestion/config"><?php p($l->t('My company'));?></a></p>
         </div>
     </div>
     <div class="breadcrumb" data-html2canvas-ignore>

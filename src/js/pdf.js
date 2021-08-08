@@ -64,7 +64,7 @@ function genPDF(imgData, canvas){
         contentType: 'application/json',
         data: JSON.stringify(myData)
       }).done(function (response) {
-        showMessage(t('gestion', 'Save in ') + $("#theFolder").val()+"/"+ $("#pdf").data("folder"));
+        showMessage(t('gestion', 'Save in') + " " + $("#theFolder").val()+"/"+ $("#pdf").data("folder"));
       }).fail(function (response, code) {
         showMessage(t('gestion', 'There is an error'));
         error(response);

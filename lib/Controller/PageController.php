@@ -186,13 +186,13 @@ class PageController extends Controller {
 	 */
 	public function insertClient() {
 		return $this->myDb->insertClient(	$this->idNextcloud,
-											$this->l->t('name'),
-											$this->l->t('first name'),
-											$this->l->t('limited company'),
+											$this->l->t('Name'),
+											$this->l->t('First name'),
+											$this->l->t('Limited company'),
 											$this->l->t('Company'),
 											$this->l->t('Phone number'),
 											$this->l->t('Email'),
-											$this->l->t('address')
+											$this->l->t('Address')
 										);
 	}
 

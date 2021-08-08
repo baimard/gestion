@@ -8,7 +8,7 @@ import { showMessage } from "@nextcloud/dialogs";
 var baseUrl = generateUrl('/apps/gestion');
 
 $('body').on('click', '#pdf', function(){
-    showMessage(t('gestion', 'Creation in progress'));
+    showMessage(t('gestion', 'Creation in progress …'));
     capture();
 });
 

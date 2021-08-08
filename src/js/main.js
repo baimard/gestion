@@ -499,7 +499,7 @@ function getProduitsById() {
 }
 
 function showDone() {
-    showMessage(t('gestion', 'added'));
+    showMessage(t('gestion', 'Added'));
 }
 
 

@@ -1,5 +1,5 @@
     <div class="bootstrap-iso">
-        <h2 class="mt-3 mb-3 text-center"><?php p($l->t('invoice #'));?> <div id="factureid" style="display:inline" class="editable" data-table="facture" data-column="num" data-id="<?php echo $_['facture'][0]->id;?>"><?php echo $_['facture'][0]->num;?></div></h2>
+        <h2 class="mt-3 mb-3 text-center"><?php p($l->t('Invoice #'));?> <div id="factureid" style="display:inline" class="editable" data-table="facture" data-column="num" data-id="<?php echo $_['facture'][0]->id;?>"><?php echo $_['facture'][0]->num;?></div></h2>
         <hr/>
         <div class="row">
             <div class="col col-md">
@@ -19,7 +19,7 @@
                     <span id="adresse"></span><br/>
                     <span id="mail"></span><br/>
                     <span id="telephone"></span><br/>
-                    <?php p($l->t('limited company'));?> : <span id="siret"></span><br/>
+                    <?php p($l->t('Limited company'));?> : <span id="siret"></span><br/>
                 </p>
             </div>
         </div>
@@ -68,6 +68,6 @@
                 <p>Délai de paiement le 5ième jour du mois suivant la commande. En cas de retard, une pénalité au taux annuel de 5 % sera appliquée.</p>
                 <p>TVA non applicable, art. 293B du CGI.</p>
                 <hr />
-                <p><?php p($l->t('Company'));?> <?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /> <?php p($l->t('Unique identification'));?> : <?php echo $res->siren; ?> - <?php p($l->t('limited company'));?> : <?php echo $res->siret; ?></p>
+                <p><?php p($l->t('Company'));?> <?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /> <?php p($l->t('Unique identification'));?> : <?php echo $res->siren; ?> - <?php p($l->t('Limited company'));?> : <?php echo $res->siret; ?></p>
             </div>
     </div>

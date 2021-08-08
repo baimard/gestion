@@ -18,20 +18,20 @@ $(window).on("load", function() {
     $('.tabledt').DataTable({
         "autoWidth": true,
         language: {
-            "search":           t('gestion', 'search'),
-            "emptyTable":       t('gestion', 'emptyTable'),
-            "info":             t('gestion', 'info'),
-            "infoEmpty":        t('gestion', 'infoEmpty'),
-            "infoFiltered":     t('gestion', 'infoFiltered'),
-            "lengthMenu":       t('gestion', 'lengthMenu'),
-            "loadingRecords":   t('gestion', 'loadingRecords'),
-            "processing":       t('gestion', 'processing'),
-            "zeroRecords":      t('gestion', 'zeroRecords'),
+            "search":           t('gestion', 'Search'),
+            "emptyTable":       t('gestion', 'No data available in table'),
+            "info":             t('gestion', 'Showing _START_ to _END_ of _TOTAL_ entries'),
+            "infoEmpty":        t('gestion', 'Showing 0 to 0 of 0 entries'),
+            "infoFiltered":     t('gestion', '_MAX_ entries filtered'),
+            "lengthMenu":       t('gestion', 'Show _MENU_ entries'),
+            "loadingRecords":   t('gestion', 'Loading records'),
+            "processing":       t('gestion', 'Processing'),
+            "zeroRecords":      t('gestion', 'No corresponding entrie'),
             "paginate": {   
-                "first":        t('gestion', 'first'),
-                "last":         t('gestion', 'last'),
-                "next":         t('gestion', 'next'),
-                "previous":     t('gestion', 'previous'),
+                "first":        t('gestion', 'First'),
+                "last":         t('gestion', 'Last'),
+                "next":         t('gestion', 'Next'),
+                "previous":     t('gestion', 'Previous'),
             }   
         }
     });

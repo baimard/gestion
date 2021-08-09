@@ -26,7 +26,7 @@ $(window).on("load", function() {
             "lengthMenu":       'Show _MENU_ entries',
             "loadingRecords":   t('gestion', 'Loading records'),
             "processing":       t('gestion', 'Processing'),
-            "zeroRecords":      t('gestion', 'No corresponding entrie'),
+            "zeroRecords":      t('gestion', 'No corresponding entry'),
             "paginate": {   
                 "first":        t('gestion', 'First'),
                 "last":         t('gestion', 'Last'),

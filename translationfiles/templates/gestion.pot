@@ -8,25 +8,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-08-08 03:23+0000\n"
+"POT-Creation-Date: 2021-08-09 03:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: /app/lib/Controller/PageController.php:189
 #: /app/templates/content/configuration.php:7
 #: /app/templates/content/index.php:24
-msgid "name"
+msgid "Name"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:190
 #: /app/templates/content/configuration.php:8
 #: /app/templates/content/index.php:25
-msgid "first name"
+msgid "First name"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:191
@@ -36,7 +36,7 @@ msgstr ""
 #: /app/templates/content/factureshow.php:22
 #: /app/templates/content/factureshow.php:71
 #: /app/templates/content/index.php:26
-msgid "limited company"
+msgid "Limited company"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:192
@@ -62,7 +62,7 @@ msgstr ""
 #: /app/lib/Controller/PageController.php:195
 #: /app/templates/content/configuration.php:13
 #: /app/templates/content/index.php:29
-msgid "address"
+msgid "Address"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:206
@@ -129,55 +129,39 @@ msgid ""
 msgstr ""
 
 #: /app/src/js/main.js:21
-msgid "search"
+msgid "Search"
 msgstr ""
 
 #: /app/src/js/main.js:22
-msgid "emptyTable"
-msgstr ""
-
-#: /app/src/js/main.js:23
-msgid "info"
-msgstr ""
-
-#: /app/src/js/main.js:24
-msgid "infoEmpty"
-msgstr ""
-
-#: /app/src/js/main.js:25
-msgid "infoFiltered"
-msgstr ""
-
-#: /app/src/js/main.js:26
-msgid "lengthMenu"
+msgid "No data available in table"
 msgstr ""
 
 #: /app/src/js/main.js:27
-msgid "loadingRecords"
+msgid "Loading records"
 msgstr ""
 
 #: /app/src/js/main.js:28
-msgid "processing"
+msgid "Processing"
 msgstr ""
 
 #: /app/src/js/main.js:29
-msgid "zeroRecords"
+msgid "No corresponding entry"
 msgstr ""
 
 #: /app/src/js/main.js:31
-msgid "first"
+msgid "First"
 msgstr ""
 
 #: /app/src/js/main.js:32
-msgid "last"
+msgid "Last"
 msgstr ""
 
 #: /app/src/js/main.js:33
-msgid "next"
+msgid "Next"
 msgstr ""
 
 #: /app/src/js/main.js:34
-msgid "previous"
+msgid "Previous"
 msgstr ""
 
 #: /app/src/js/main.js:56
@@ -197,15 +181,15 @@ msgid "Choose quote"
 msgstr ""
 
 #: /app/src/js/main.js:502
-msgid "added"
+msgid "Added"
 msgstr ""
 
 #: /app/src/js/pdf.js:11
-msgid "Creation in progress"
+msgid "Creation in progress …"
 msgstr ""
 
 #: /app/src/js/pdf.js:67
-msgid "Save in "
+msgid "Save in"
 msgstr ""
 
 #: /app/src/js/pdf.js:69
@@ -306,20 +290,19 @@ msgid "Total Price"
 msgstr ""
 
 #: /app/templates/content/facture.php:8 /app/templates/navigation/index.php:16
-msgid "invoice"
+msgid "Invoice"
 msgstr ""
 
 #: /app/templates/content/facture.php:11
-msgid "add invoice"
+msgid "Add invoice"
 msgstr ""
 
 #: /app/templates/content/facture.php:18
-#: /app/templates/content/factureshow.php:30
-msgid "date of service"
+msgid "Date of service"
 msgstr ""
 
 #: /app/templates/content/facture.php:19
-msgid "payment date"
+msgid "Payment date"
 msgstr ""
 
 #: /app/templates/content/facture.php:21
@@ -328,15 +311,19 @@ msgid "Associated quote"
 msgstr ""
 
 #: /app/templates/content/factureshow.php:2
-msgid "invoice #"
+msgid "Invoice #"
 msgstr ""
 
 #: /app/templates/content/factureshow.php:30
 msgid "Settlement date"
 msgstr ""
 
+#: /app/templates/content/factureshow.php:30
+msgid "date of service"
+msgstr ""
+
 #: /app/templates/content/index.php:5
-msgid "Please configure your company informations"
+msgid "Please configure your company information"
 msgstr ""
 
 #: /app/templates/content/index.php:5 /app/templates/settings/index.php:10
@@ -344,7 +331,7 @@ msgid "My company"
 msgstr ""
 
 #: /app/templates/content/index.php:14 /app/templates/navigation/index.php:2
-msgid "customer"
+msgid "Customer"
 msgstr ""
 
 #: /app/templates/content/index.php:17
@@ -352,7 +339,7 @@ msgid "Add customer"
 msgstr ""
 
 #: /app/templates/content/produit.php:8 /app/templates/navigation/index.php:23
-msgid "product"
+msgid "Product"
 msgstr ""
 
 #: /app/templates/settings/index.php:9

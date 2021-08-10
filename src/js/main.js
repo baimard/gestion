@@ -24,8 +24,8 @@ $(window).on("load", function() {
             "infoEmpty":        'Showing 0 to 0 of 0 entries',
             "infoFiltered":     '_MAX_ entries filtered',
             "lengthMenu":       'Show _MENU_ entries',
-            "loadingRecords":   t('gestion', 'Loading records'),
-            "processing":       t('gestion', 'Processing'),
+            "loadingRecords":   t('gestion', 'Loading records …'),
+            "processing":       t('gestion', 'Processing …'),
             "zeroRecords":      t('gestion', 'No corresponding entry'),
             "paginate": {   
                 "first":        t('gestion', 'First'),

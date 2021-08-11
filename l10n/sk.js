@@ -12,6 +12,7 @@ OC.L10N.register(
     "Means of payment" : "Platobný prostriedok",
     "Reference" : "Referencia",
     "Designation" : "Označenie",
+    "Invoicing management application for Micro-Entreprise in France" : "Aplikácia na správu fakturácie pre Micro-Enterprise vo Francúzsku",
     "Search" : "Hľadať",
     "No data available in table" : "V tabuľke nie sú žiadne dáta",
     "Loading records" : "Nahrávam záznamy",

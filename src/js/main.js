@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import {generateUrl} from "@nextcloud/router";
 import {FilePicker,showMessage,showError} from "@nextcloud/dialogs";
-import {translate as t, translatePlural as n} from '@nextcloud/l10n'
+import {getCanonicalLocale, translate as t, translatePlural as n} from '@nextcloud/l10n'
 import '@nextcloud/dialogs/styles/toast.scss'
 import '../css/mycss.less';
 import 'datatables.net-dt/css/jquery.dataTables.css';
@@ -15,17 +15,19 @@ const euro = new Intl.NumberFormat('fr-FR', {style: 'currency',currency: 'EUR',m
 
 $(window).on("load", function() {
 
+    console.log(getCanonicalLocale());
+
     $('.tabledt').DataTable({
         "autoWidth": true,
         language: {
             "search":           t('gestion', 'Search'),
             "emptyTable":       t('gestion', 'No data available in table'),
-            "info":             'Showing _START_ to _END_ of _TOTAL_ entries',
-            "infoEmpty":        'Showing 0 to 0 of 0 entries',
-            "infoFiltered":     '_MAX_ entries filtered',
-            "lengthMenu":       'Show _MENU_ entries',
+            "info":             t('gestion', 'Showing')+' _START_ '+t('gestion', 'to')+' _END_ '+t('gestion', 'of')+' _TOTAL_ ' + t('gestion', 'entries'),
+            "infoEmpty":        t('gestion', 'Showing 0 to 0 of 0 entries'),
             "loadingRecords":   t('gestion', 'Loading records …'),
             "processing":       t('gestion', 'Processing …'),
+            "infoFiltered":     '_MAX_ '+t('gestion', 'entries filtered'),
+            "lengthMenu":       t('gestion', 'Show')+' _MENU_ '+ t('gestion', 'entries'),
             "zeroRecords":      t('gestion', 'No corresponding entry'),
             "paginate": {   
                 "first":        t('gestion', 'First'),
@@ -33,6 +35,7 @@ $(window).on("load", function() {
                 "next":         t('gestion', 'Next'),
                 "previous":     t('gestion', 'Previous'),
             }   
+
         }
     });
 
@@ -79,15 +82,6 @@ $('body').on('keypress', '.editable' ,function(event) {
     }
 });
 
-// $('body').on('dblclick', '.selectableClient, .selectableClient_devis', function() {
-//     var id = $(this).data('id');
-//     var table = $(this).data('table');
-//     var column = $(this).data('column');
-//     $(this).text("");
-//     $(this).html('<select class="listClient">');
-//     listClient($('#listClient'), id, table, column);
-// });
-
 $('body').on('dblclick', '.selectableDevis', function() {
     var id = $(this).data('id');
     var table = $(this).data('table');
@@ -100,7 +94,6 @@ $('body').on('dblclick', '.selectableDevis', function() {
 $('body').on('dblclick', '.selectable', function() {
     var id = $(this).data('id');
     var produitid = $(this).data('val');
-    console.log(produitid);
     $(this).text("");
     $(this).html('<select id="listProduit">');
     listProduit($('#listProduit'), id, produitid);
@@ -124,6 +117,14 @@ $('body').on('change', '.listClient,.listDevis', function(){
     var val = this.value;
     var column = $(myDiv).data('column');
     var table = $(myDiv).data('table');
+    updateDB(table, column, val, id);
+})
+
+$('body').on('change', '.inputDate', function(){
+    var id = $(this).data('id');
+    var val = this.value;
+    var column = $(this).data('column');
+    var table = $(this).data('table');
     updateDB(table, column, val, id);
 })
 
@@ -198,13 +199,6 @@ function updateEditable(myCase){
 }
 
 function loadProduitDT() {
-    if (!$.fn.DataTable.isDataTable('#produit')) {
-        $('#produit').dataTable({
-            "autoWidth": true,
-            "columns": [{ "width": "20%" },{ "width": "50%" },{ "width": "20%" },{ "width": "10%" },]
-        });
-    }
-
     $.ajax({
         url: baseUrl + '/getProduits',
         type: 'PROPFIND',
@@ -228,13 +222,6 @@ function loadProduitDT() {
 }
 
 function loadFactureDT() {
-    if (!$.fn.DataTable.isDataTable('#facture')) {
-        $('#facture').dataTable({
-            "autoWidth": true,
-            "columns": [{ "width": "16%" },{ "width": "16%" },{ "width": "17%" },{ "width": "18%" },{ "width": "23%" },{ "width": "10%" }]
-        });
-    }
-
     $.ajax({
         url: baseUrl + '/getFactures',
         type: 'PROPFIND',
@@ -267,13 +254,6 @@ function loadFactureDT() {
 }
 
 function loadDevisDT() {
-    if (!$.fn.DataTable.isDataTable('#devis')) {
-        $('#devis').dataTable({
-            "autoWidth": true,
-            "columns": [{ "width": "30%" }, { "width": "30%" },{ "width": "30%" },{ "width": "10%" }]
-        });
-    }
-
     $.ajax({
         url: baseUrl + '/getDevis',
         type: 'PROPFIND',
@@ -282,7 +262,7 @@ function loadDevisDT() {
         $('#devis').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
             $('#devis').DataTable().row.add([
-                '<div class="editable" data-table="devis" data-column="date" data-id="' + myresp.id + '">' + myresp.date + '</div>',
+                '<input style="margin:0;padding:0;" class="inputDate" type="date" value='+myresp.date+' data-table="devis" data-column="date" data-id="' + myresp.id + '"/>',
                 '<div class="editable" data-table="devis" data-column="num" data-id="' + myresp.id + '" style="display:inline">' + myresp.num + '</div>',
                 '<div data-table="devis" data-column="id_client" data-id="' + myresp.id + '"><select class="listClient" data-current="'+ myresp.cid +'"></select></div>',
                 '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/devis/' + myresp.id + '/show"><button>'+ t('gestion', 'Open')+'</button></a></div><div data-modifier="devis" data-id=' + myresp.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
@@ -290,6 +270,7 @@ function loadDevisDT() {
         });
         loadClientList();
         $('#devis').DataTable().draw();
+        $('#devis').DataTable().columns.adjust();
         configureDT();
     }).fail(function(response, code) {
         showError(response);
@@ -297,14 +278,6 @@ function loadDevisDT() {
 }
 
 var lcdt = function loadConfigurationDT(response) {
-
-    if (!$.fn.DataTable.isDataTable('#configuration')) {
-        $('#configuration').dataTable({
-            "autoWidth": true,
-            "columns": [{ "width": "10%" }, { "width": "10%" },{ "width": "10%" },{ "width": "10%" },{ "width": "10%" },{ "width": "14%" },{ "width": "18%" }, { "width": "18%" }]
-        });
-    }
-
     $('#configuration').DataTable().clear();
     $.each(JSON.parse(response), function(arrayID, myresp) {
         $('#configuration').DataTable().row.add(['<div class="editable" data-table="configuration" data-column="entreprise" data-id="' + myresp.id + '">' + myresp.entreprise + '</div>',
@@ -328,13 +301,6 @@ function loadClientDT() {
         type: 'PROPFIND',
         contentType: 'application/json'
     }).done(function(response) {
-        // if (!$.fn.DataTable.isDataTable('#client')) {
-        //     $('#client').dataTable({
-        //         "autoWidth": true,
-        //         "columns": [{ "width": "14%" },{ "width": "10%" },{ "width": "10%" },{ "width": "10%" },{ "width": "14%" },{ "width": "18%" },{ "width": "18%" },{ "width": "6%" }]
-        //     });
-        // }
-
         $('#client').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
             $('#client').DataTable().row.add([
@@ -447,20 +413,6 @@ function listProduit(lp, id, produitid) {
         showError(response);
     });
 }
-
-// function listDevis(lp, id, table, column) {
-//     $.ajax({
-//         url: baseUrl + '/getDevis',
-//         type: 'PROPFIND',
-//         contentType: 'application/json'
-//     }).done(function(response) {
-//         $.each(JSON.parse(response), function(arrayID, myresp) {
-//             lp.append('<option data-table="' + table + '" data-column="' + column + '" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom + '</option>');
-//         });
-//     }).fail(function(response, code) {
-//         showError(response);
-//     });
-// }
 
 function getProduitsById() {
     var devis_id = $('#devisid').data('id');

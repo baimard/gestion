@@ -13,8 +13,6 @@ OC.L10N.register(
     "Reference" : "Референца",
     "Designation" : "Означување",
     "Search" : "Барај",
-    "Loading records" : "Вчирување на записи",
-    "Processing" : "Обработка",
     "First" : "Прва",
     "Last" : "Последна",
     "Next" : "Следна",

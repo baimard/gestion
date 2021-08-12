@@ -17,8 +17,6 @@ OC.L10N.register(
     "Invoicing management application for Micro-Entreprise in France" : "法国微型企业进销存管理应用程序",
     "Search" : "搜索",
     "No data available in table" : "此表中无数据",
-    "Loading records" : "正加载记录",
-    "Processing" : "处理中",
     "No corresponding entry" : "无对应条目",
     "First" : "第一个",
     "Last" : "最后一个",

@@ -17,8 +17,6 @@ OC.L10N.register(
     "Invoicing management application for Micro-Entreprise in France" : "Frantzian Mikroenpresaren fakturazio kudeaketa aplikazioa",
     "Search" : "Bilatu",
     "No data available in table" : "Ez dago daturik eskuragarri taulan",
-    "Loading records" : "Erregistroak kargatzen",
-    "Processing" : "Prozesatzen",
     "No corresponding entry" : "Ez dago bat datorren sarrerarik",
     "First" : "Lehenengoa",
     "Last" : "Azkena",

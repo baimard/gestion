@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-08-11 03:28+0000\n"
+"POT-Creation-Date: 2021-08-12 03:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,59 +128,87 @@ msgid ""
 "benjaminaimard)"
 msgstr ""
 
-#: /app/src/js/main.js:21
+#: /app/src/js/main.js:23
 msgid "Search"
 msgstr ""
 
-#: /app/src/js/main.js:22
+#: /app/src/js/main.js:24
 msgid "No data available in table"
 msgstr ""
 
+#: /app/src/js/main.js:25
+msgid "Showing"
+msgstr ""
+
+#: /app/src/js/main.js:25
+msgid "to"
+msgstr ""
+
+#: /app/src/js/main.js:25
+msgid "of"
+msgstr ""
+
+#: /app/src/js/main.js:25 /app/src/js/main.js:30
+msgid "entries"
+msgstr ""
+
+#: /app/src/js/main.js:26
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
 #: /app/src/js/main.js:27
-msgid "Loading records"
+msgid "Loading records …"
 msgstr ""
 
 #: /app/src/js/main.js:28
-msgid "Processing"
+msgid "Processing …"
 msgstr ""
 
 #: /app/src/js/main.js:29
-msgid "No corresponding entry"
+msgid "entries filtered"
+msgstr ""
+
+#: /app/src/js/main.js:30
+msgid "Show"
 msgstr ""
 
 #: /app/src/js/main.js:31
-msgid "First"
-msgstr ""
-
-#: /app/src/js/main.js:32
-msgid "Last"
+msgid "No corresponding entry"
 msgstr ""
 
 #: /app/src/js/main.js:33
-msgid "Next"
+msgid "First"
 msgstr ""
 
 #: /app/src/js/main.js:34
+msgid "Last"
+msgstr ""
+
+#: /app/src/js/main.js:35
+msgid "Next"
+msgstr ""
+
+#: /app/src/js/main.js:36
 msgid "Previous"
 msgstr ""
 
-#: /app/src/js/main.js:56
+#: /app/src/js/main.js:59
 msgid "Choose work folder"
 msgstr ""
 
-#: /app/src/js/main.js:258 /app/src/js/main.js:288
+#: /app/src/js/main.js:245 /app/src/js/main.js:268
 msgid "Open"
 msgstr ""
 
-#: /app/src/js/main.js:360
+#: /app/src/js/main.js:326
 msgid "Choose customer"
 msgstr ""
 
-#: /app/src/js/main.js:370
+#: /app/src/js/main.js:336
 msgid "Choose quote"
 msgstr ""
 
-#: /app/src/js/main.js:502
+#: /app/src/js/main.js:454
 msgid "Added"
 msgstr ""
 

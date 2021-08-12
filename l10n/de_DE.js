@@ -18,8 +18,6 @@ OC.L10N.register(
     "# Gestion Nextcloud application\n\nThis application allows the management of invoicing in a very simple way for Micro-Entreprise.\n\nFunctionality:\n\n* Add customer\n* Generate a quote\n* Generate an invoice\n* Generate product lines to include in quotes\n* You can generate PDFs directly from the app and save them to your Nextcloud\n\nPresentation video in user documentation\n\nIf you need to adapt this application to your country laws, please open issue.\n\n[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)" : "# Gestion Nextcloud-Anwendung\nDiese Anwendung ermöglicht die Verwaltung der Rechnungserstellung für Kleinunternehmen auf eine sehr einfache Art und Weise.\n\nFunktionen:\n\n* Kunden hinzufügen\n* Angebot erstellen.\n* Eine Rechnung erstellen.\n* Erzeugen von Produktlinien, die in Angebote übernommen werden können\n* Sie können PDFs direkt aus der App erstellen und sie in Ihrer Nextcloud speichern.\n\nPräsentationsvideo in der Benutzerdokumentation\n\nWenn Sie diese Anwendung an die Gesetze Ihres Landes anpassen müssen, öffnen Sie bitte ein Problem auf GitHub.\n\n[Gefällt Ihnen meine Arbeit? Kaufen Sie mir einen Kaffee!](https://www.buymeacoffee.com/benjaminaimard)",
     "Search" : "Suche",
     "No data available in table" : "Keine Daten in der Tabelle verfügbar",
-    "Loading records" : "Lade Einträge",
-    "Processing" : "Verarbeite",
     "No corresponding entry" : "Kein korrespondierender Eintrag",
     "First" : "Erste",
     "Last" : "Letzte",

@@ -52,21 +52,6 @@ all: build
 allnew: dev-setup lint build-js-production test
 dev-setup: clean clean-dev composer npm-init
 
-# Installs and updates the composer dependencies. If composer is not installed
-# a copy is fetched from the web
-composer:
-ifeq (, $(composer))
-	@echo "No composer command available, downloading a copy from the web"
-	mkdir -p $(build_tools_directory)
-	curl -sS https://getcomposer.org/installer | php
-	mv composer.phar $(build_tools_directory)
-	php $(build_tools_directory)/composer.phar install --prefer-dist
-	php $(build_tools_directory)/composer.phar update --prefer-dist
-else
-	composer install --prefer-dist
-	composer update --prefer-dist
-endif
-
 npm-init:
 	npm i
 
@@ -107,48 +92,45 @@ stylelint-fix:
 clean-dev:
 	rm -rf node_modules
 
-# Tests
-test:
-	./vendor/phpunit/phpunit/phpunit -c phpunit.xml
-	./vendor/phpunit/phpunit/phpunit -c phpunit.integration.xml
-
 # Fetches the PHP and JS dependencies and compiles the JS. If no composer.json
 # is present, the composer step is skipped, if no package.json or js/package.json
 # is present, the npm step is skipped
 .PHONY: build
 build:
-ifneq (,$(wildcard $(CURDIR)/composer.json))
-	make composer
-endif
-ifneq (,$(wildcard $(CURDIR)/package.json))
-	make npm
-endif
-ifneq (,$(wildcard $(CURDIR)/js/package.json))
-	make npm
-endif
+	ifneq (,$(wildcard $(CURDIR)/composer.json))
+		make composer
+	endif
+	ifneq (,$(wildcard $(CURDIR)/package.json))
+		make npm
+	endif
+	ifneq (,$(wildcard $(CURDIR)/js/package.json))
+		make npm
+	endif
 
 # # Installs and updates the composer dependencies. If composer is not installed
 # # a copy is fetched from the web
 .PHONY: composer
 composer:
-ifeq (, $(composer))
-	@echo "No composer command available, downloading a copy from the web"
-	mkdir -p $(build_tools_directory)
-	curl -sS https://getcomposer.org/installer | php
-	mv composer.phar $(build_tools_directory)
-	php $(build_tools_directory)/composer.phar install --prefer-dist
-else
-	composer install --prefer-dist
-endif
+	ifeq (, $(composer))
+		@echo "No composer command available, downloading a copy from the web"
+		mkdir -p $(build_tools_directory)
+		curl -sS https://getcomposer.org/installer | php
+		mv composer.phar $(build_tools_directory)
+		php $(build_tools_directory)/composer.phar install --prefer-dist
+		php $(build_tools_directory)/composer.phar update --prefer-dist
+	else
+		composer install --prefer-dist
+		composer update --prefer-dist
+	endif
 
 # Installs npm dependencies
 .PHONY: npm
 npm:
-ifeq (,$(wildcard $(CURDIR)/package.json))
-	cd js && $(npm) run build
-else
-	npm run build
-endif
+	ifeq (,$(wildcard $(CURDIR)/package.json))
+		cd js && $(npm) run build
+	else
+		npm run build
+	endif
 
 # Removes the appstore build
 .PHONY: clean
@@ -232,7 +214,6 @@ translate:
 	./translationtool.phar convert-po-files
 
 .PHONY: translationtool.phar
-
 translationtool.phar: install-composer-deps
 	php -d phar.readonly=off vendor/bin/phar-composer build src
 	chmod +x translationtool.phar
@@ -244,6 +225,6 @@ install-composer-deps: composer.phar
 composer.phar:
 	curl -sS https://getcomposer.org/installer | php
 
-clean:
+cleanComposer:
 	rm -f translationtool.phar composer.lock src/composer.lock
 	rm -rf vendor src/vendor

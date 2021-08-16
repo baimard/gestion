@@ -20,14 +20,23 @@ $(window).on("load", function() {
     $('.tabledt').DataTable({
         "autoWidth": true,
         language: {
+            // TRANSLATORS Shown in all datatables
             "search":           t('gestion', 'Search'),
+            // TRANSLATORS Shown in all datatables
             "emptyTable":       t('gestion', 'No data available in table'),
-            "info":             t('gestion', 'Showing')+' _START_ '+t('gestion', 'to')+' _END_ '+t('gestion', 'of')+' _TOTAL_ ' + t('gestion', 'entries'),
+            // TRANSLATORS Shown in all datatables
+            "info":             t('gestion', 'Showing {start} to {end} of {total} entries', {start: '_START_', end: '_END_', total: '_TOTAL_'}),
+            // TRANSLATORS Shown in all datatables
             "infoEmpty":        t('gestion', 'Showing 0 to 0 of 0 entries'),
+            // TRANSLATORS Shown in all datatables
             "loadingRecords":   t('gestion', 'Loading records …'),
+            // TRANSLATORS Shown in all datatables
             "processing":       t('gestion', 'Processing …'),
-            "infoFiltered":     '_MAX_ '+t('gestion', 'entries filtered'),
-            "lengthMenu":       t('gestion', 'Show')+' _MENU_ '+ t('gestion', 'entries'),
+            // TRANSLATORS Shown in all datatables
+            "infoFiltered":     t('gestion', '{max} entries filtered', {max: '_MAX_'}),
+            // TRANSLATORS Shown in all datatables
+            "lengthMenu":       t('gestion', 'Show {menu} entries', {menu: '_MENU_'}),
+            // TRANSLATORS Shown in all datatables
             "zeroRecords":      t('gestion', 'No corresponding entry'),
             "paginate": {   
                 "first":        t('gestion', 'First'),

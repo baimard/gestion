@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-08-16 03:26+0000\n"
+"POT-Creation-Date: 2021-08-17 03:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,87 +128,84 @@ msgid ""
 "benjaminaimard)"
 msgstr ""
 
-#: /app/src/js/main.js:23
+#. TRANSLATORS Shown in all datatables
+#: /app/src/js/main.js:24
 msgid "Search"
 msgstr ""
 
-#: /app/src/js/main.js:24
+#. TRANSLATORS Shown in all datatables
+#: /app/src/js/main.js:26
 msgid "No data available in table"
 msgstr ""
 
-#: /app/src/js/main.js:25
-msgid "Showing"
+#. TRANSLATORS Shown in all datatables
+#: /app/src/js/main.js:28
+msgid "Showing {start} to {end} of {total} entries"
 msgstr ""
 
-#: /app/src/js/main.js:25
-msgid "to"
-msgstr ""
-
-#: /app/src/js/main.js:25
-msgid "of"
-msgstr ""
-
-#: /app/src/js/main.js:25 /app/src/js/main.js:30
-msgid "entries"
-msgstr ""
-
-#: /app/src/js/main.js:26
+#. TRANSLATORS Shown in all datatables
+#: /app/src/js/main.js:30
 msgid "Showing 0 to 0 of 0 entries"
 msgstr ""
 
-#: /app/src/js/main.js:27
+#. TRANSLATORS Shown in all datatables
+#: /app/src/js/main.js:32
 msgid "Loading records …"
 msgstr ""
 
-#: /app/src/js/main.js:28
+#. TRANSLATORS Shown in all datatables
+#: /app/src/js/main.js:34
 msgid "Processing …"
 msgstr ""
 
-#: /app/src/js/main.js:29
-msgid "entries filtered"
+#. TRANSLATORS Shown in all datatables
+#: /app/src/js/main.js:36
+msgid "{max} entries filtered"
 msgstr ""
 
-#: /app/src/js/main.js:30
-msgid "Show"
+#. TRANSLATORS Shown in all datatables
+#: /app/src/js/main.js:38
+msgid "Show {menu} entries"
 msgstr ""
 
-#: /app/src/js/main.js:31
+#. TRANSLATORS Shown in all datatables
+#: /app/src/js/main.js:40
 msgid "No corresponding entry"
 msgstr ""
 
-#: /app/src/js/main.js:33
+#: /app/src/js/main.js:42
 msgid "First"
 msgstr ""
 
-#: /app/src/js/main.js:34
+#: /app/src/js/main.js:43
 msgid "Last"
 msgstr ""
 
-#: /app/src/js/main.js:35
+#: /app/src/js/main.js:44
 msgid "Next"
 msgstr ""
 
-#: /app/src/js/main.js:36
+#: /app/src/js/main.js:45
 msgid "Previous"
 msgstr ""
 
-#: /app/src/js/main.js:59
+#: /app/src/js/main.js:68
 msgid "Choose work folder"
 msgstr ""
 
-#: /app/src/js/main.js:245 /app/src/js/main.js:268
+#: /app/src/js/main.js:254 /app/src/js/main.js:277
 msgid "Open"
 msgstr ""
 
-#: /app/src/js/main.js:326
+#: /app/src/js/main.js:335
 msgid "Choose customer"
 msgstr ""
 
-#: /app/src/js/main.js:336
+#: /app/src/js/main.js:345
 msgid "Choose quote"
 msgstr ""
 
-#: /app/src/js/main.js:454
+#: /app/src/js/main.js:463
 msgid "Added"
 msgstr ""
 

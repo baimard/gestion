@@ -17,6 +17,7 @@
     "Search" : "搜尋",
     "No data available in table" : "沒有可用的數據",
     "Showing {start} to {end} of {total} entries" : "正在顯示第 {start} 項到第 {end} 項 ，共有 {total} 項",
+    "Showing 0 to 0 of 0 entries" : "正在顯示第 0 項到第 0 項 ，共有 0 項",
     "Loading records …" : "正在載入記錄 ...",
     "Processing …" : "處理中 ...",
     "{max} entries filtered" : "過濾了 {max} 項",

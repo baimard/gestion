@@ -54,6 +54,7 @@ OC.L10N.register(
     "Associated quote" : "Zugehöriges Angebot",
     "Settlement date" : "Abrechnungsdatum",
     "date of service" : "Datum der Lieferung/Leistung",
+    "Please configure your company information" : "Bitte konfigurieren Deine Firmendaten",
     "My company" : "Meine Firma",
     "Customer" : "Kunde",
     "Add customer" : "Kunde hinzufügen",

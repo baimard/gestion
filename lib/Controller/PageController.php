@@ -7,23 +7,35 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 use OCA\Gestion\Db\Bdd;
-use \OCP\IL10N;
+use OCP\IL10N;
+use OCP\IURLGenerator;
 
 class PageController extends Controller {
 	private $idNextcloud;
 	private $myDb;
 	private $UserId;
 	private $l;
+	private $urlGenerator;
 
 	/** @var IRootStorage */
 	private $storage;
-
-	public function __construct($AppName, IRequest $request, $UserId, Bdd $myDb, IRootFolder $rootFolder, IL10N $l){
+	
+	public function __construct($AppName, 
+								IRequest $request, 
+								$UserId, 
+								Bdd $myDb, 
+								IRootFolder $rootFolder, 
+								IL10N $l,
+								IURLGenerator $urlGenerator)
+	{
+		
 		parent::__construct($AppName, $request);
 		$this->idNextcloud = $UserId;
 		$this->UserId = $UserId;
 		$this->myDb = $myDb;
 		$this->l = $l;
+		$this->urlGenerator = $urlGenerator;
+	
 		try{
 			$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
 		}catch(\OC\User\NoUserException $e){
@@ -42,7 +54,7 @@ class PageController extends Controller {
 	 *
     */
 	public function index() {
-		return new TemplateResponse('gestion', 'index', array('path' => $this->idNextcloud));  // templates/index.php
+		return new TemplateResponse('gestion', 'index', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/index.php
 	}
 
 	/**
@@ -84,6 +96,21 @@ class PageController extends Controller {
     */
 	public function isConfig() {
 		return $this->myDb->isConfig($this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 */
+
+	private function getNavigationLink(){
+		return array(	"index" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.index"),
+						"devis" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.devis"),
+						"facture" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.facture"),
+						"produit" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.produit"),
+						"config" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.config"),
+						"isConfig" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.isConfig"),
+					);
 	}
 
 	/**

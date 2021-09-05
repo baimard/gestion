@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-09-04 03:27+0000\n"
+"POT-Creation-Date: 2021-09-05 03:28+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin Aimard <benjamin@cybercorp.fr>, 2021\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -22,19 +22,19 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: /app/lib/Controller/PageController.php:189
+#: /app/lib/Controller/PageController.php:216
 #: /app/templates/content/configuration.php:7
 #: /app/templates/content/index.php:24
 msgid "Name"
 msgstr "Nom"
 
-#: /app/lib/Controller/PageController.php:190
+#: /app/lib/Controller/PageController.php:217
 #: /app/templates/content/configuration.php:8
 #: /app/templates/content/index.php:25
 msgid "First name"
 msgstr "Prénom"
 
-#: /app/lib/Controller/PageController.php:191
+#: /app/lib/Controller/PageController.php:218
 #: /app/templates/content/configuration.php:9
 #: /app/templates/content/devisshow.php:23
 #: /app/templates/content/devisshow.php:70
@@ -44,7 +44,7 @@ msgstr "Prénom"
 msgid "Limited company"
 msgstr "Siret"
 
-#: /app/lib/Controller/PageController.php:192
+#: /app/lib/Controller/PageController.php:219
 #: /app/templates/content/configuration.php:6
 #: /app/templates/content/devisshow.php:70
 #: /app/templates/content/factureshow.php:71
@@ -52,48 +52,48 @@ msgstr "Siret"
 msgid "Company"
 msgstr "Société"
 
-#: /app/lib/Controller/PageController.php:193
+#: /app/lib/Controller/PageController.php:220
 #: /app/templates/content/configuration.php:11
 #: /app/templates/content/index.php:27
 msgid "Phone number"
 msgstr "Téléphone"
 
-#: /app/lib/Controller/PageController.php:194
+#: /app/lib/Controller/PageController.php:221
 #: /app/templates/content/configuration.php:12
 #: /app/templates/content/index.php:28
 msgid "Email"
 msgstr "Email"
 
-#: /app/lib/Controller/PageController.php:195
+#: /app/lib/Controller/PageController.php:222
 #: /app/templates/content/configuration.php:13
 #: /app/templates/content/index.php:29
 msgid "Address"
 msgstr "Adresse"
 
-#: /app/lib/Controller/PageController.php:206
+#: /app/lib/Controller/PageController.php:233
 #: /app/templates/content/devis.php:18
 msgid "Quote number"
 msgstr "Numéro de devis"
 
-#: /app/lib/Controller/PageController.php:217
+#: /app/lib/Controller/PageController.php:244
 #: /app/templates/content/facture.php:17
 msgid "Invoice number"
 msgstr "Numéro de facture"
 
-#: /app/lib/Controller/PageController.php:218
+#: /app/lib/Controller/PageController.php:245
 #: /app/templates/content/facture.php:20
 #: /app/templates/content/factureshow.php:31
 msgid "Means of payment"
 msgstr "Moyen de paiement"
 
-#: /app/lib/Controller/PageController.php:229
+#: /app/lib/Controller/PageController.php:256
 #: /app/templates/content/devisshow.php:38
 #: /app/templates/content/factureshow.php:40
 #: /app/templates/content/produit.php:17
 msgid "Reference"
 msgstr "Référence"
 
-#: /app/lib/Controller/PageController.php:230
+#: /app/lib/Controller/PageController.php:257
 #: /app/templates/content/devisshow.php:39
 #: /app/templates/content/factureshow.php:41
 #: /app/templates/content/produit.php:18
@@ -131,86 +131,77 @@ msgid ""
 "[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)"
 msgstr ""
 
-#. TRANSLATORS Shown in all datatables
-#: /app/src/js/main.js:24
+#: /app/src/js/main.js:23
 msgid "Search"
 msgstr "Recherche"
 
-#. TRANSLATORS Shown in all datatables
-#: /app/src/js/main.js:26
+#: /app/src/js/main.js:24
 msgid "No data available in table"
-msgstr "Table vide"
+msgstr "Aucune donnée disponible dans le tableau"
 
-#. TRANSLATORS Shown in all datatables
-#: /app/src/js/main.js:28
+#: /app/src/js/main.js:25
 msgid "Showing {start} to {end} of {total} entries"
-msgstr ""
+msgstr "Affichage de {start} à {end} sur {total} éléments"
 
-#. TRANSLATORS Shown in all datatables
-#: /app/src/js/main.js:30
+#: /app/src/js/main.js:26
 msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
+msgstr "Affichage de 0 à 0 sur 0 éléments"
 
-#. TRANSLATORS Shown in all datatables
-#: /app/src/js/main.js:32
+#: /app/src/js/main.js:27
 msgid "Loading records …"
-msgstr ""
+msgstr "Chargement..."
 
-#. TRANSLATORS Shown in all datatables
-#: /app/src/js/main.js:34
+#: /app/src/js/main.js:28
 msgid "Processing …"
-msgstr ""
+msgstr "Traitement..."
 
-#. TRANSLATORS Shown in all datatables
-#: /app/src/js/main.js:36
+#: /app/src/js/main.js:29
 msgid "{max} entries filtered"
-msgstr ""
+msgstr "(filtrés depuis un total de {max} éléments)"
 
-#. TRANSLATORS Shown in all datatables
-#: /app/src/js/main.js:38
+#: /app/src/js/main.js:30
 msgid "Show {menu} entries"
-msgstr ""
+msgstr "Afficher {menu} éléments"
 
-#. TRANSLATORS Shown in all datatables
-#: /app/src/js/main.js:40
+#: /app/src/js/main.js:31
 msgid "No corresponding entry"
-msgstr ""
+msgstr "Aucun élément correspondant trouvé"
 
-#: /app/src/js/main.js:42
+#: /app/src/js/main.js:33
 msgid "First"
 msgstr "Premier"
 
-#: /app/src/js/main.js:43
+#: /app/src/js/main.js:34
 msgid "Last"
 msgstr "Dernier"
 
-#: /app/src/js/main.js:44
+#: /app/src/js/main.js:35
 msgid "Next"
 msgstr "Suivant"
 
-#: /app/src/js/main.js:45
+#: /app/src/js/main.js:36
 msgid "Previous"
 msgstr "Précédent"
 
-#: /app/src/js/main.js:68
+#: /app/src/js/main.js:59
 msgid "Choose work folder"
 msgstr "Choisir le répertoire de travail"
 
-#: /app/src/js/main.js:254 /app/src/js/main.js:277
+#: /app/src/js/main.js:245 /app/src/js/main.js:268
 msgid "Open"
 msgstr "Ouvrir"
 
-#: /app/src/js/main.js:335
+#: /app/src/js/main.js:326
 msgid "Choose customer"
 msgstr "Choisir un client"
 
-#: /app/src/js/main.js:345
+#: /app/src/js/main.js:336
 msgid "Choose quote"
 msgstr "Choisir un devis"
 
-#: /app/src/js/main.js:463
+#: /app/src/js/main.js:454
 msgid "Added"
-msgstr "Ajouter"
+msgstr "Ajouté"
 
 #: /app/src/js/pdf.js:11
 msgid "Creation in progress …"

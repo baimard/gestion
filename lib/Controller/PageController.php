@@ -62,7 +62,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function devis() {
-		return new TemplateResponse('gestion', 'devis', array('path' => $this->idNextcloud));  // templates/devis.php
+		return new TemplateResponse('gestion', 'devis', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/devis.php
 	}
 
 	/**
@@ -70,7 +70,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function facture() {
-		return new TemplateResponse('gestion', 'facture', array('path' => $this->idNextcloud));  // templates/facture.php
+		return new TemplateResponse('gestion', 'facture', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/facture.php
 	}
 
 	/**
@@ -78,7 +78,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function produit() {
-		return new TemplateResponse('gestion', 'produit', array('path' => $this->idNextcloud));  // templates/produit.php
+		return new TemplateResponse('gestion', 'produit', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/produit.php
 	}
 
 	/**
@@ -87,7 +87,27 @@ class PageController extends Controller {
     */
 	public function config() {
 		$this->myDb->checkConfig($this->idNextcloud);
-		return new TemplateResponse('gestion', 'configuration', array('path' => $this->idNextcloud));  // templates/configuration.php
+		return new TemplateResponse('gestion', 'configuration', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/configuration.php
+	}
+	
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+    */
+	public function devisshow($numdevis) {
+		$devis = $this->myDb->getOneDevis($numdevis,$this->idNextcloud);
+		$produits = $this->myDb->getListProduit($numdevis, $this->idNextcloud);
+		return new TemplateResponse('gestion', 'devisshow', array('configuration'=> $this->getConfiguration(), 'devis'=>json_decode($devis), 'produit'=>json_decode($produits), 'path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+    */
+	public function factureshow($numfacture) {
+		$facture = $this->myDb->getOneFacture($numfacture,$this->idNextcloud);
+		// $produits = $this->myDb->getListProduit($numdevis);
+		return new TemplateResponse('gestion', 'factureshow', array('path' => $this->idNextcloud, 'configuration'=> $this->getConfiguration(), 'facture'=>json_decode($facture), 'url' => $this->getNavigationLink()));
 	}
 
 	/**
@@ -111,26 +131,6 @@ class PageController extends Controller {
 						"config" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.config"),
 						"isConfig" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.isConfig"),
 					);
-	}
-
-	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-    */
-	public function devisshow($numdevis) {
-		$devis = $this->myDb->getOneDevis($numdevis,$this->idNextcloud);
-		$produits = $this->myDb->getListProduit($numdevis, $this->idNextcloud);
-		return new TemplateResponse('gestion', 'devisshow', array('configuration'=> $this->getConfiguration(), 'devis'=>json_decode($devis), 'produit'=>json_decode($produits), 'path' => $this->idNextcloud));
-	}
-
-	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-    */
-	public function factureshow($numfacture) {
-		$facture = $this->myDb->getOneFacture($numfacture,$this->idNextcloud);
-		// $produits = $this->myDb->getListProduit($numdevis);
-		return new TemplateResponse('gestion', 'factureshow', array('path' => $this->idNextcloud, 'configuration'=> $this->getConfiguration(), 'facture'=>json_decode($facture)));
 	}
 
 	/**

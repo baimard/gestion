@@ -1,4 +1,4 @@
-    <div class="bootstrap-iso">
+<div class="bootstrap-iso">
         <h2 class="mt-3 mb-3 text-center"> <?php p($l->t('Quote #'));?> <div id="devisid" style="display:inline" class="editable" data-table="devis" data-column="num" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->num; ?></div>
         </h2>
         <hr />
@@ -52,7 +52,7 @@
             <table id="totaldevis" class="table table-striped table-xl">
                 <thead class="bg-dark text-white">
                     <tr>
-                        <th class="text-center"><?php p($l->t('Total without VAT'));?>/th>
+                        <th class="text-center"><?php p($l->t('Total without VAT'));?></th>
                         <th class="text-center"><?php p($l->t('VAT Rate'));?></th>
                         <th class="text-center"><?php p($l->t('Total VAT'));?></th>
                         <th class="text-center"><?php p($l->t('Total Price'));?></th>

@@ -124,12 +124,12 @@ class PageController extends Controller {
 	 */
 
 	private function getNavigationLink(){
-		return array(	"index" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.index"),
-						"devis" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.devis"),
-						"facture" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.facture"),
-						"produit" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.produit"),
-						"config" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.config"),
-						"isConfig" => $this->urlGenerator->getBaseUrl().$this->urlGenerator->linkToRoute("gestion.page.isConfig"),
+		return array(	"index" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.index"),
+						"devis" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.devis"),
+						"facture" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.facture"),
+						"produit" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.produit"),
+						"config" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.config"),
+						"isConfig" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.isConfig"),
 					);
 	}
 

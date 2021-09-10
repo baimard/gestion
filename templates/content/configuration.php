@@ -1,5 +1,13 @@
 <div id="contentTable">
-    <center><h2><?php p($l->t('Configuration'));?></h2></center>
+    <div class="breadcrumb" data-html2canvas-ignore>
+        <div class="crumb svg crumbhome">
+            <a href="<?php echo($_['url']['index']); ?>" class="icon-home"></a>
+            <span style="display: none;"></span>
+        </div>
+        <div class="crumb svg crumbhome">
+            <span><?php p($l->t('Configuration'));?></span>
+        </div>
+    </div>
 	<table id="configuration" class="display tabledt" style="table-layout: fixed; font-size:11px; width: 100%; white-space: pre-wrap;">
         <thead>
             <tr>

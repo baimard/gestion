@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {generateUrl} from "@nextcloud/router";
+import {generateUrl, linkTo} from "@nextcloud/router";
 import {FilePicker,showMessage,showError} from "@nextcloud/dialogs";
 import {getCanonicalLocale, translate as t, translatePlural as n} from '@nextcloud/l10n'
 import '@nextcloud/dialogs/styles/toast.scss'
@@ -265,7 +265,7 @@ function loadDevisDT() {
                 '<input style="margin:0;padding:0;" class="inputDate" type="date" value='+myresp.date+' data-table="devis" data-column="date" data-id="' + myresp.id + '"/>',
                 '<div class="editable" data-table="devis" data-column="num" data-id="' + myresp.id + '" style="display:inline">' + myresp.num + '</div>',
                 '<div data-table="devis" data-column="id_client" data-id="' + myresp.id + '"><select class="listClient" data-current="'+ myresp.cid +'"></select></div>',
-                '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/devis/' + myresp.id + '/show"><button>'+ t('gestion', 'Open')+'</button></a></div><div data-modifier="devis" data-id=' + myresp.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
+                '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="'+baseUrl+"/devis/"+myresp.id+'/show"><button>'+ t('gestion', 'Open')+'</button></a></div><div data-modifier="devis" data-id=' + myresp.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
             ]);
         });
         loadClientList();

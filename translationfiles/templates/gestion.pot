@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-09-10 03:39+0000\n"
+"POT-Creation-Date: 2021-09-11 03:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: /app/lib/Controller/PageController.php:216
-#: /app/templates/content/configuration.php:7
+#: /app/templates/content/configuration.php:15
 #: /app/templates/content/index.php:24
 msgid "Name"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:217
-#: /app/templates/content/configuration.php:8
+#: /app/templates/content/configuration.php:16
 #: /app/templates/content/index.php:25
 msgid "First name"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:218
-#: /app/templates/content/configuration.php:9
+#: /app/templates/content/configuration.php:17
 #: /app/templates/content/devisshow.php:23
 #: /app/templates/content/devisshow.php:70
 #: /app/templates/content/factureshow.php:22
@@ -40,7 +40,7 @@ msgid "Limited company"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:219
-#: /app/templates/content/configuration.php:6
+#: /app/templates/content/configuration.php:14
 #: /app/templates/content/devisshow.php:70
 #: /app/templates/content/factureshow.php:71
 #: /app/templates/content/index.php:23
@@ -48,19 +48,19 @@ msgid "Company"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:220
-#: /app/templates/content/configuration.php:11
+#: /app/templates/content/configuration.php:19
 #: /app/templates/content/index.php:27
 msgid "Phone number"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:221
-#: /app/templates/content/configuration.php:12
+#: /app/templates/content/configuration.php:20
 #: /app/templates/content/index.php:28
 msgid "Email"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:222
-#: /app/templates/content/configuration.php:13
+#: /app/templates/content/configuration.php:21
 #: /app/templates/content/index.php:29
 msgid "Address"
 msgstr ""
@@ -212,12 +212,12 @@ msgstr ""
 msgid "There is an error"
 msgstr ""
 
-#: /app/templates/content/configuration.php:2
+#: /app/templates/content/configuration.php:8
 #: /app/templates/settings/index.php:4
 msgid "Configuration"
 msgstr ""
 
-#: /app/templates/content/configuration.php:10
+#: /app/templates/content/configuration.php:18
 #: /app/templates/content/devisshow.php:70
 #: /app/templates/content/factureshow.php:71
 msgid "Unique identification"

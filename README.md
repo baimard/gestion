@@ -15,6 +15,9 @@ Fonctionnalités à venir / Upcoming Features
 - [ ] Version des pdf enregistrés à chaque fois que l'on clique sur sauvegarder nextcloud / Versionning for saved pdf, when you click save nextcloud increment the version.
 - [ ] Etat d'une facture (Annulé, Modifié, payé) / status of an invoice (Cancel, Modified, paid)
 - [ ] Facture électronique / XML format for invoice
+- [ ] Generation des numéros de facture automatique / Invoice numbers generated
+- [ ] TVA par produit et calcule final / VAT rate per product
+- [ ] Currency ?
 
 ## Application de gestion de facturation pour Micro-entreprise *France*
 

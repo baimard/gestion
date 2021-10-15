@@ -53,7 +53,7 @@
             <table id="totaldevis" class="table table-striped table-xl">
                 <thead class="bg-dark text-white">
                     <tr>
-                        <th class="text-center"><?php p($l->t('Total without VAT'));?>/th>
+                        <th class="text-center"><?php p($l->t('Total without VAT'));?></th>
                         <th class="text-center"><?php p($l->t('VAT Rate'));?></th>
                         <th class="text-center"><?php p($l->t('Total VAT'));?></th>
                         <th class="text-center"><?php p($l->t('Total Price'));?></th>

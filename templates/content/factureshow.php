@@ -47,27 +47,50 @@
                 <tbody>
                 </tbody>
             </table>
-            <button id="pdf" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore><?php p($l->t('Save in Nextcloud'));?></button>
         </div>
-        <div class="mt-0 table-responsive">
-            <table id="totaldevis" class="table table-striped table-xl">
-                <thead class="bg-dark text-white">
+        <div class="table-responsive">
+            <table id="discounts" data-type="facture" class="table table-striped discountRelated">
+                <thead>
                     <tr>
-                        <th class="text-center"><?php p($l->t('Total without VAT'));?></th>
-                        <th class="text-center"><?php p($l->t('VAT Rate'));?></th>
-                        <th class="text-center"><?php p($l->t('Total VAT'));?></th>
-                        <th class="text-center"><?php p($l->t('Total Price'));?></th>
+<!--                        <th><?php p($l->t('Priority'));?></th>-->
+                        <th><?php p($l->t('Discount'));?></th>
+                        <th><?php p($l->t('Value'));?></th>
+<!--                        <th><?php p($l->t('Type'));?></th>-->
                     </tr>
                 </thead>
                 <tbody>
                 </tbody>
             </table>
         </div>
-            <div class="col m-0 pb-0 alert alert-info text-center">
-                <!-- Need to set in Database -->
-                <p>Délai de paiement le 5ième jour du mois suivant la commande. En cas de retard, une pénalité au taux annuel de 5 % sera appliquée.</p>
-                <p>TVA non applicable, art. 293B du CGI.</p>
-                <hr />
-                <p><?php p($l->t('Company'));?> <?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /> <?php p($l->t('Unique identification'));?> : <?php echo $res->siren; ?> - <?php p($l->t('Limited company'));?> : <?php echo $res->siret; ?></p>
-            </div>
+        <div class="mt-0 table-responsive">
+            <table id="totaldevis" class="table table-striped table-xl">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th class="text-center"><?php p($l->t('Total without VAT'));?></th>
+                        <th class="text-center discountRelated"><?php p($l->t('Discount'));?></th>
+                        <th class="text-center"><?php p($l->t('VAT Rate'));?></th>
+                        <th class="text-center"><?php p($l->t('Total VAT'));?></th>
+                        <th class="text-center"><?php p($l->t('Total Price'));?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center" id="rawTotalValue" data-value="0" >0</td>
+                        <td class="text-center discountRelated" id="discountRate" data-value="0">0%</td>
+                        <td class="text-center" id="vatRate" data-value="0">0%</td>
+                        <td class="text-center" id="totalVat" data-value="0">0</td>
+                        <td class="text-center" id="finalTotalValue" data-value="0">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col m-0 pb-0 alert alert-info text-center">
+            <!-- Need to set in Database -->
+            <p>Délai de paiement le 5ième jour du mois suivant la commande. En cas de retard, une pénalité au taux annuel de 5 % sera appliquée.</p>
+            <p>TVA non applicable, art. 293B du CGI.</p>
+            <hr />
+            <p><?php p($l->t('Company'));?> <?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /> <?php p($l->t('Unique identification'));?> : <?php echo $res->siren; ?> - <?php p($l->t('Limited company'));?> : <?php echo $res->siret; ?></p>
+        </div>
+        
+        <button id="pdf" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore><?php p($l->t('Save in Nextcloud'));?></button>
     </div>

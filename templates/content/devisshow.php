@@ -46,19 +46,41 @@
                 </tbody>
             </table>
             <button id="devisAdd" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
-            <button id="pdf" type="button" data-name="" class="mb-2 btn btn-outline-success" data-html2canvas-ignore><?php p($l->t('Save in Nextcloud'));?></button>
+        </div>
+        <div class="table-responsive">
+            <table id="discounts" class="table table-striped discountRelated">
+                <thead>
+                    <tr>
+<!--                        <th><?php p($l->t('Priority'));?></th>-->
+                        <th><?php p($l->t('Discount'));?></th>
+                        <th><?php p($l->t('Value'));?></th>
+<!--                        <th><?php p($l->t('Type'));?></th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <button id="devisAddGlobalDiscount" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore><?php p($l->t('Add global discount'));?></button>
         </div>
         <div class="mt-0 table-responsive">
             <table id="totaldevis" class="table table-striped table-xl">
                 <thead class="bg-dark text-white">
                     <tr>
                         <th class="text-center"><?php p($l->t('Total without VAT'));?></th>
+                        <th class="text-center discountRelated"><?php p($l->t('Discount'));?></th>
                         <th class="text-center"><?php p($l->t('VAT Rate'));?></th>
                         <th class="text-center"><?php p($l->t('Total VAT'));?></th>
                         <th class="text-center"><?php p($l->t('Total Price'));?></th>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td class="text-center" id="rawTotalValue" data-value="0" >0</td>
+                        <td class="text-center discountRelated" id="discountRate" data-value="0">0%</td>
+                        <td class="text-center" id="vatRate" data-value="0">0%</td>
+                        <td class="text-center" id="totalVat" data-value="0">0</td>
+                        <td class="text-center" id="finalTotalValue" data-value="0">0</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -69,4 +91,6 @@
             <hr />
             <p><?php p($l->t('Company'));?> <?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /> <?php p($l->t('Unique identification'));?> : <?php echo $res->siren; ?> - <?php p($l->t('Limited company'));?> : <?php echo $res->siret; ?></p>
         </div>
+        
+        <button id="pdf" type="button" data-name="" class="mb-2 btn btn-outline-success" data-html2canvas-ignore><?php p($l->t('Save in Nextcloud'));?></button>
     </div>

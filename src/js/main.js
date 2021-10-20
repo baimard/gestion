@@ -45,6 +45,7 @@ $(window).on("load", function() {
     if ($('#devisid').length) {
         getClientByIdDevis($('#devisid').data('id'));
         getProduitsById();
+        getGlobalDiscountsById();
     }
     if ($('#client').length) {loadClientDT();}
     if ($('#configuration').length) {configuration(lcdt);}
@@ -72,7 +73,9 @@ $('body').on('click', '.modalClose', function(){
     modal.style.display = "none";
 })
 
-$('body').on('click', '.editable', function() {$(this).attr('contenteditable', 'true');});
+$('body').on('click', '.editable', function() {makeEditable($(this));});
+
+$('body').on('click', '.editableChild', function() {makeEditable($(this.querySelector('.editable')));});
 
 $('body').on('blur', '.editable', function() {updateEditable($(this));});
 
@@ -105,6 +108,7 @@ $('body').on('click', '.deleteItem', function() {
     var modifier = $(this).data('modifier');
     deleteDB(table, id);
     if (modifier === "getProduitsById") {getProduitsById();}
+    if (modifier === "getGlobalDiscountsById") {getGlobalDiscountsById();}
     if (modifier === "client") {loadClientDT();}
     if (modifier === "devis") {loadDevisDT();}
     if (modifier === "facture") {loadFactureDT();}
@@ -169,6 +173,26 @@ $('body').on('click', '#devisAdd', function() {
     });
 });
 
+$('body').on('click', '#devisAddGlobalDiscount', function() {
+
+    var devis_id = $('#devisid').data('id');
+    var discount_devis = {
+        id: devis_id,
+        produit_devis_id: -1
+    };
+
+    $.ajax({
+        url: baseUrl + '/insertDiscountDevis',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(discount_devis)
+    }).done(function(response) {
+        getGlobalDiscountsById();
+    }).fail(function(response, code) {
+        showError(response);
+    });
+});
+
 $('body').on('click', '#newClient', function() {
     newClient();
     loadClientDT();
@@ -189,10 +213,18 @@ $('body').on('click', '#newProduit', function() {
     loadProduitDT();
 })
 
+function makeEditable(element) {
+	element.attr('contenteditable', 'true');
+	element.focus();
+}
+
 function updateEditable(myCase){
     updateDB(myCase.data('table'), myCase.data('column'), myCase.text(), myCase.data('id'));
     if (myCase.data('modifier') === "getProduitsById") {
         getProduitsById();
+    }
+    if (myCase.data('modifier') === "getGlobalDiscountsById") {
+        getGlobalDiscountsById()
     }
     myCase.attr('contenteditable', 'false');
     myCase.removeAttr('contenteditable');
@@ -414,6 +446,18 @@ function listProduit(lp, id, produitid) {
     });
 }
 
+function updateFinalValue(){
+	var rawTotal = parseFloat($("#rawTotalValue").data("value"));
+	var discountAmount = rawTotal * parseFloat($("#discountRate").data("value"));
+	var vatAmount = (rawTotal + discountAmount) * parseFloat($("#vatRate").data("value"));
+	
+	$("#totalVat").data("value", vatAmount);
+	
+	var total = rawTotal + discountAmount + vatAmount;
+	$("#finalTotalValue").data("value", total);
+	$("#finalTotalValue").text(euro.format(total));
+}
+
 function getProduitsById() {
     var devis_id = $('#devisid').data('id');
     var myData = { numdevis: devis_id, };
@@ -441,10 +485,60 @@ function getProduitsById() {
             total += (myresp.quantite * myresp.prix_unitaire);
         });
 
-        $("#totaldevis tbody").empty();
-        // Paramètre global BDD Taux TVA
-        //$('#totaldevis tbody').append('<tr><td>'+euro.format(total)+'</td><td>0 %</td><td>'+euro.format(Math.round((total*0.2*100))/100)+'</td><td>'+euro.format(Math.round((total*1.2*100))/100)+'</td></tr>');
-        $('#totaldevis tbody').append('<tr><td>' + euro.format(total) + '</td><td>0 %</td><td>0</td><td>' + euro.format(total) + '</td></tr>');
+        $("#rawTotalValue").text(euro.format(total));
+        $("#rawTotalValue").data("value", total);
+        
+        updateFinalValue();
+    }).fail(function(response, code) {
+        showError(response);
+    });
+}
+
+function getGlobalDiscountsById(){
+    var devis_id = $('#devisid').data('id');
+    var myData = { numdevis: devis_id, };
+
+    $.ajax({
+        url: baseUrl + '/getGlobalDiscountsById',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(myData)
+    }).done(function(response, code) {
+        $('#discounts tbody').empty();
+        var total = 0;
+        var discountNb = 0;
+        var deleteDisable = "";
+        if($('#discounts').data("type")==="facture"){
+            deleteDisable="d-none";
+        }
+
+        $.each(JSON.parse(response), function(arrayID, myresp) {
+            $('#discounts tbody').append('<tr>'+
+//                '<td class="editableChild"><div class="editable getGlobalDiscountsById" style="display:inline;" data-modifier="getGlobalDiscountsById" data-table="discount_devis" data-column="priority" data-id=' + myresp.did + '>' + myresp.priority + '</div> </td>' +
+                '<td class="editableChild"><div data-html2canvas-ignore data-modifier="getGlobalDiscountsById" data-id="' + myresp.did + '" data-table="discount_devis" class="'+ deleteDisable +' deleteItem icon-delete"></div><div class="editable getGlobalDiscountsById" style="display:inline;" data-modifier="getGlobalDiscountsById" data-table="discount_devis" data-column="description" data-id=' + myresp.did + '>' + myresp.description + '</div>' +
+                '<td class="editableChild"><div class="editable getGlobalDiscountsById" style="display:inline;" data-modifier="getGlobalDiscountsById" data-table="discount_devis" data-column="value" data-id=' + myresp.did + '>' + myresp.value + '</div>% </td>');
+//                '<td class="editableChild"><div class="editable getGlobalDiscountsById" style="display:inline;" data-modifier="getGlobalDiscountsById" data-table="discount_devis" data-column="type" data-id=' + myresp.did + '>' + myresp.type + '</div> </td>');
+            
+            total = myresp.value/100.0 + total + total * myresp.value/100.0;
+            discountNb += 1;
+        });
+
+        $("#discountRate").text((total*100).toFixed(2) + "%");
+        $("#discountRate").data("value", total);
+    
+        updateFinalValue();
+        
+        if(discountNb<=0){
+			$(".discountRelated").each( function() {
+				$(this).css("display", "none");
+			});
+        } else {
+			$(".discountRelated").each( function() {
+				$(this).css("display", "");
+			});
+		}
+    
     }).fail(function(response, code) {
         showError(response);
     });

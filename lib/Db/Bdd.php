@@ -12,8 +12,8 @@ class Bdd {
 
     public function __construct(IDbConnection $db) {
         
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren", "path");
-        $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren", "path", "priority", "value", "type", "produit_devis_id");
+        $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration", "discount_devis");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->pdo = $db;
     }
@@ -67,6 +67,10 @@ class Bdd {
         $sql = "SELECT ".$this->tableprefix."produit.id as pid,".$this->tableprefix."produit_devis.id as pdid, reference, description, quantite, prix_unitaire FROM ".$this->tableprefix."produit, ".$this->tableprefix."devis, ".$this->tableprefix."produit_devis WHERE ".$this->tableprefix."produit.id = produit_id AND ".$this->tableprefix."devis.id = devis_id AND ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_nextcloud = ? AND ".$this->tableprefix."produit.id_nextcloud = ?";
         return $this->execSQL($sql, array($numdevis, $idNextcloud, $idNextcloud));
     }
+    public function getListDiscounts($numdevis, $idNextcloud, $produit_devis_id){
+        $sql = "SELECT ".$this->tableprefix."discount_devis.id as did, priority, description, value, type FROM ".$this->tableprefix."discount_devis, ".$this->tableprefix."devis WHERE ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_nextcloud = ? AND ".$this->tableprefix."discount_devis.id_nextcloud = ? AND produit_devis_id = ?";
+        return $this->execSQL($sql, array($numdevis, $idNextcloud, $idNextcloud, $produit_devis_id));
+    }
 
     private function getFunctionCall(){
         $trace = debug_backtrace();
@@ -100,6 +104,12 @@ class Bdd {
         $res = $this->searchMaxIdProduit($idNextcloud);
         $sql = "INSERT INTO `".$this->tableprefix."produit_devis` (`devis_id`, `id_nextcloud`,`produit_id`,`quantite`) VALUES (?,?,?,1);";
         return $this-> execSQL($sql, array($id,$idNextcloud,$res[0]['id']));
+
+    }
+    public function insertDiscountDevis($id,$idNextcloud,$produit_devis_id){
+        # Using -1 as a produit_devis_id makes the discount a global discount
+        $sql = "INSERT INTO `".$this->tableprefix."discount_devis` (`devis_id`, `id_nextcloud`, `priority`, `description`, `produit_devis_id`,`value`,`type`) VALUES (?,?,0,\"Discount\",?,0,\"amount\");";
+        return $this-> execSQL($sql, array($id,$idNextcloud,$produit_devis_id));
 
     }
 

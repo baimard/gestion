@@ -186,6 +186,15 @@ class PageController extends Controller {
 	public function getProduitsById($numdevis) {
 		return $this->myDb->getListProduit($numdevis, $this->idNextcloud);
 	}
+	
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @param string $numdevis
+    */
+	public function getGlobalDiscountsById($numdevis) {
+		return $this->myDb->getListDiscounts($numdevis, $this->idNextcloud, "-1");
+	}
 
 	/**
 	 * @NoAdminRequired
@@ -266,7 +275,15 @@ class PageController extends Controller {
 	public function insertProduitDevis($id){
 		return $this->myDb->insertProduitDevis($id, $this->idNextcloud);
 	}
-
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @param string $id
+	 * @param string $produit_devis_id
+	 */
+	public function insertDiscountDevis($id,$produit_devis_id){
+		return $this->myDb->insertDiscountDevis($id, $this->idNextcloud, $produit_devis_id);
+	}
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired

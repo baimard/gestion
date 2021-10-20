@@ -28,6 +28,7 @@ return [
        ['name' => 'page#devisshow',         'url' => '/devis/{numdevis}/show', 'verb' => 'GET'],
        ['name' => 'page#insertDevis',       'url' => '/devis/insert', 'verb' => 'POST'],
        ['name' => 'page#insertProduitDevis','url' => '/insertProduitDevis', 'verb' => 'POST'],
+       ['name' => 'page#insertDiscountDevis','url' => '/insertDiscountDevis', 'verb' => 'POST'],
 
        ['name' => 'page#getFactures',       'url' => '/getFactures', 'verb' => 'PROPFIND'],
        ['name' => 'page#factureshow',         'url' => '/facture/{numfacture}/show', 'verb' => 'GET'],
@@ -35,6 +36,7 @@ return [
 
        ['name' => 'page#getProduits',       'url' => '/getProduits', 'verb' => 'PROPFIND'],
        ['name' => 'page#getProduitsById',   'url' => '/getProduitsById', 'verb' => 'POST'],
+       ['name' => 'page#getGlobalDiscountsById',   'url' => '/getGlobalDiscountsById', 'verb' => 'POST'],
        ['name' => 'page#insertProduit',     'url' => '/produit/insert', 'verb' => 'POST'],
        ['name' => 'page#delete',            'url' => '/delete', 'verb' => 'DELETE'],
        ['name' => 'page#savePDF',           'url' => '/savePDF', 'verb' => 'POST'],

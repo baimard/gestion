@@ -1,5 +1,9 @@
 # Gestion de facturation Nextcloud APP
 
+News 23/10/2021 :
+
+*Due to an increase in activity at the end of the year, development will resume in December. Thank you for your understanding. This application is more successful than expected.*
+
 https://apps.nextcloud.com/apps/gestion
 
 Besoin d'une fonction ? ouvrez une "issue"

@@ -360,13 +360,13 @@ function getClientByIdDevis(id) {
         data: JSON.stringify(myData)
     }).done(function(response, code) {
         $.each(JSON.parse(response), function(arrayID, myresp) {
-            $("#nomprenom").text(myresp.prenom + ' ' + myresp.nom);
+            $("#nomprenom").html(myresp.prenom + ' ' + myresp.nom);
             $("#nomprenom").attr('data-id', id);
-            $("#entreprise").text(myresp.entreprise);
-            $("#adresse").text(myresp.adresse);
-            $("#mail").text(myresp.mail);
-            $("#telephone").text(myresp.telephone);
-            $("#siret").text(myresp.siret);
+            $("#entreprise").html(myresp.entreprise);
+            $("#adresse").html(myresp.adresse);
+            $("#mail").html(myresp.mail);
+            $("#telephone").html(myresp.telephone);
+            $("#siret").html(myresp.siret);
             $("#pdf").attr("data-folder", myresp.num);
             if ($("#factureid").length) {
                 $("#pdf").attr("data-name", myresp.entreprise + "_" + $("#factureid").text() + "_v" + 1);

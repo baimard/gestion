@@ -42,7 +42,7 @@ If you need to adapt this application to your country laws, please open issue.
 [Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)
 
     </description>
-    <version>1.1.3</version>
+    <version>1.1.3.1</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>
@@ -57,7 +57,7 @@ If you need to adapt this application to your country laws, please open issue.
     <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png">https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png</screenshot>
     <dependencies>
-        <nextcloud min-version="20" max-version="22"/>
+        <nextcloud min-version="21" max-version="22"/>
     </dependencies>
     <navigations>
         <navigation>

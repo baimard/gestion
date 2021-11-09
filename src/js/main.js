@@ -287,7 +287,8 @@ var lcdt = function loadConfigurationDT(response) {
             '<div class="editable" data-table="configuration" data-column="siren" data-id="' + myresp.id + '">' + myresp.siren + '</div>',
             '<div class="editable" data-table="configuration" data-column="telephone" data-id="' + myresp.id + '">' + myresp.telephone + '</div>',
             '<div class="editable" data-table="configuration" data-column="mail" data-id="' + myresp.id + '">' + myresp.mail + '</div>',
-            '<div class="editable" data-table="configuration" data-column="adresse" data-id="' + myresp.id + '">' + myresp.adresse + '</div>'
+            '<div class="editable" data-table="configuration" data-column="adresse" data-id="' + myresp.id + '">' + myresp.adresse + '</div>',
+            '<div class="editable" data-table="configuration" data-column="tva_default" data-id="' + myresp.id + '">' + myresp.tva_default + '%</div>'
         ]);
     });
 
@@ -442,9 +443,8 @@ function getProduitsById() {
         });
 
         $("#totaldevis tbody").empty();
-        // Paramètre global BDD Taux TVA
-        //$('#totaldevis tbody').append('<tr><td>'+euro.format(total)+'</td><td>0 %</td><td>'+euro.format(Math.round((total*0.2*100))/100)+'</td><td>'+euro.format(Math.round((total*1.2*100))/100)+'</td></tr>');
-        $('#totaldevis tbody').append('<tr><td>' + euro.format(total) + '</td><td>0 %</td><td>0</td><td>' + euro.format(total) + '</td></tr>');
+        //Dernier ligne de calcul
+        getTva(total);
     }).fail(function(response, code) {
         showError(response);
     });
@@ -510,6 +510,19 @@ function configuration(f1) {
         showError(response);
     });
 }
+
+function getTva(total){
+    $.ajax({
+        url: baseUrl + '/getConfiguration',
+        type: 'PROPFIND',
+        contentType: 'application/json',
+        async: false
+    }).done(function(response) {
+        var tva = parseFloat(JSON.parse(response)[0].tva_default)
+        $('#totaldevis tbody').append('<tr><td>' + euro.format(total) + '</td><td id="tva">'+tva+' %</td><td id="totaltva">'+euro.format(Math.round((total*tva))/100)+'</td><td>' + euro.format(Math.round((total*(tva+100)))/100) + '</td></tr>');
+    })
+}
+
 
 function isconfig() {
     $.ajax({

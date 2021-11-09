@@ -19,6 +19,7 @@
                 <th><?php p($l->t('Phone number'));?></th>
                 <th><?php p($l->t('Email'));?></th>
                 <th><?php p($l->t('Address'));?></th>
+                <th><?php p($l->t('Vat Default'));?></th>
             </tr>
         </thead>
         <tbody>

@@ -263,8 +263,10 @@ function loadDevisDT() {
         $.each(JSON.parse(response), function(arrayID, myresp) {
             $('#devis').DataTable().row.add([
                 '<input style="margin:0;padding:0;" class="inputDate" type="date" value='+myresp.date+' data-table="devis" data-column="date" data-id="' + myresp.id + '"/>',
-                '<div class="editable" data-table="devis" data-column="num" data-id="' + myresp.id + '" style="display:inline">' + myresp.num + '</div>',
+                '<div class="editable" data-table="devis" data-column="num" data-id="' + myresp.id + '" style="display:inline">' + ((myresp.num.length === 0) ? '-' : myresp.num) + '</div>',
                 '<div data-table="devis" data-column="id_client" data-id="' + myresp.id + '"><select class="listClient" data-current="'+ myresp.cid +'"></select></div>',
+                '<div class="editable" data-table="devis" data-column="version" data-id="' + myresp.id + '" style="display:inline">' + ((myresp.version.length === 0) ? '-' : myresp.version) + '</div>',
+                '<div class="editable" data-table="devis" data-column="mentions" data-id="' + myresp.id + '" style="display:inline">' + ((myresp.mentions.length === 0) ? '-' : myresp.mentions) + '</div>',
                 '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="'+baseUrl+"/devis/"+myresp.id+'/show"><button>'+ t('gestion', 'Open')+'</button></a></div><div data-modifier="devis" data-id=' + myresp.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
             ]);
         });
@@ -290,6 +292,9 @@ var lcdt = function loadConfigurationDT(response) {
             '<div class="editable" data-table="configuration" data-column="adresse" data-id="' + myresp.id + '">' + myresp.adresse + '</div>',
             '<div class="editable" data-table="configuration" data-column="tva_default" data-id="' + myresp.id + '">' + myresp.tva_default + '%</div>'
         ]);
+
+        $('#mentions_default').html(myresp.mentions_default);
+        $('#mentions_default').data("id", myresp.id);
     });
 
     $('#configuration').DataTable().draw();
@@ -444,7 +449,7 @@ function getProduitsById() {
 
         $("#totaldevis tbody").empty();
         //Dernier ligne de calcul
-        getTva(total);
+        getGlobal(total);
     }).fail(function(response, code) {
         showError(response);
     });
@@ -511,18 +516,18 @@ function configuration(f1) {
     });
 }
 
-function getTva(total){
+function getGlobal(total){
     $.ajax({
         url: baseUrl + '/getConfiguration',
         type: 'PROPFIND',
         contentType: 'application/json',
-        async: false
     }).done(function(response) {
-        var tva = parseFloat(JSON.parse(response)[0].tva_default)
+        var myresp = JSON.parse(response)[0];
+        var tva = parseFloat(myresp.tva_default);
         $('#totaldevis tbody').append('<tr><td>' + euro.format(total) + '</td><td id="tva">'+tva+' %</td><td id="totaltva">'+euro.format(Math.round((total*tva))/100)+'</td><td>' + euro.format(Math.round((total*(tva+100)))/100) + '</td></tr>');
+        $('#mentions_default').html(myresp.mentions_default);
     })
 }
-
 
 function isconfig() {
     $.ajax({

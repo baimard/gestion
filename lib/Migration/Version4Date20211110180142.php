@@ -1,24 +1,28 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OCA\Gestion\Migration;
 
 use Closure;
 use OCP\DB\ISchemaWrapper;
-use OCP\Migration\SimpleMigrationStep;
 use OCP\Migration\IOutput;
+use OCP\Migration\SimpleMigrationStep;
 
-class Version2Date20211107000003 extends SimpleMigrationStep {
+/**
+ * Auto-generated migration step: Please modify to your needs!
+ */
+class Version4Date20211110180142 extends SimpleMigrationStep {
 
 	/**
 	 * @param IOutput $output
 	 * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
 	 * @param array $options
 	 */
-	public function preSchemaChange(IOutput $output, Closure $schemaClosure, array $options) {
-	
-    }
+	public function preSchemaChange(IOutput $output, Closure $schemaClosure, array $options): void {
+	}
 
-	/**
+/**
 	 * @param IOutput $output
 	 * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
 	 * @param array $options
@@ -154,13 +158,13 @@ class Version2Date20211107000003 extends SimpleMigrationStep {
                 $table->addColumn('num', 'text', []);
             }
             if (!$table->hasColumn('comment')) {
-                $table->addColumn('comment', 'text', []);
+                $table->addColumn('comment', 'string', ['default' => "commentaire"]);
             }
             if (!$table->hasColumn('version')) {
-                $table->addColumn('version', 'string', ['length' => 64,]);
+                $table->addColumn('version', 'string', ['length' => 64, 'default' => "1.0"]);
             }
             if (!$table->hasColumn('mentions')) {
-                $table->addColumn('mentions', 'text', []);
+                $table->addColumn('mentions', 'string', ['default' => "création"]);
             }
             if (!$table->hasColumn('id_client')) {
                 $table->addColumn('id_client', 'integer', ['length' => 11,]);
@@ -211,6 +215,9 @@ class Version2Date20211107000003 extends SimpleMigrationStep {
             if (!$table->hasColumn('id_nextcloud')) {
                 $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
             }
+
+			$column = $table->getColumn('version');
+			$column->setOptions(['default' => '1.0',]);
         }
 
         if (!$schema->hasTable($tableprefix.'produit')) {
@@ -279,7 +286,6 @@ class Version2Date20211107000003 extends SimpleMigrationStep {
 	 * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
 	 * @param array $options
 	 */
-	public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options) {
-
+	public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options): void {
 	}
 }

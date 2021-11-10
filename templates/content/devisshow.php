@@ -1,5 +1,7 @@
 <div class="bootstrap-iso">
-        <h2 class="mt-3 mb-3 text-center"> <?php p($l->t('Quote #'));?> <div id="devisid" style="display:inline" class="editable" data-table="devis" data-column="num" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->num; ?></div>
+        <h2 class="mt-3 mb-3 text-center"> <?php p($l->t('Quote #'));?>
+        <div id="devisid" style="display:inline" class="editable" data-table="devis" data-column="num" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->num; ?></div>
+        <div id="devisversion" style="display:inline" class="editable" data-table="devis" data-column="version" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->version; ?></div>
         </h2>
         <hr />
         <div class="row">
@@ -28,6 +30,13 @@
             <div class="col col-md">
                 <hr />
                 <div class="col col-xl mb-3 text-center"><b><span><?php p($l->t('Offer valid for 1 month from'));?> : </span><span><?php echo (new DateTime($_['devis'][0]->date))->format('d-m-Y'); ?></span></b></div>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md">
+                <hr />
+                <div class="col col-xl mb-3 text-center editable" id="deviscomment" style="display:inline" data-table="devis" data-column="comment" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo ($_['devis'][0]->comment == "" ) ? "-" : $_['devis'][0]->comment ; ?></div>
                 <hr />
             </div>
         </div>
@@ -63,10 +72,10 @@
             </table>
         </div>
         <div class="col m-0 pb-0 alert alert-info text-center">
-            <!-- Need to set in Database -->
-            <p>Délai de paiement le 5ième jour du mois suivant la commande. En cas de retard, une pénalité au taux annuel de 5 % sera appliquée.</p>
-            <p>TVA non applicable, art. 293B du CGI.</p>
-            <hr />
+            <p><span id="mentions_default"><?php p($l->t('Please set in global configuration'));?></span></p>
+        </div>
+        <hr />
+        <div class="col m-0 pb-0 alert alert-info text-center">
             <p><?php p($l->t('Company'));?> <?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /> <?php p($l->t('Unique identification'));?> : <?php echo $res->siren; ?> - <?php p($l->t('Limited company'));?> : <?php echo $res->siret; ?></p>
         </div>
     </div>

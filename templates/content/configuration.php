@@ -25,4 +25,7 @@
         <tbody>
         </tbody>
 	</table>
+    <hr/>
+    <h2><?php p($l->t('legal disclaimer'));?></h2>
+    <div id="mentions_default" class="editable" data-table="configuration" data-column="mentions_default" data-id=""><?php p($l->t('Loading'));?></div>
 </div>

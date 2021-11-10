@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-09 06:59+0000\n"
+"POT-Creation-Date: 2021-11-10 03:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -188,11 +188,11 @@ msgstr ""
 msgid "Open"
 msgstr ""
 
-#: /app/src/js/main.js:326
+#: /app/src/js/main.js:327
 msgid "Choose customer"
 msgstr ""
 
-#: /app/src/js/main.js:336
+#: /app/src/js/main.js:337
 msgid "Choose quote"
 msgstr ""
 
@@ -221,6 +221,10 @@ msgstr ""
 #: /app/templates/content/devisshow.php:70
 #: /app/templates/content/factureshow.php:71
 msgid "Unique identification"
+msgstr ""
+
+#: /app/templates/content/configuration.php:22
+msgid "Vat Default"
 msgstr ""
 
 #: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:9

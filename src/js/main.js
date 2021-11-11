@@ -166,7 +166,7 @@ $('body').on('click', '#devisAdd', function() {
     }).done(function(response) {
         getProduitsById();
     }).fail(function(response, code) {
-        showError(response);
+        showError(t('gestion', "Please create a new product"));
     });
 });
 

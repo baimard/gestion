@@ -174,55 +174,56 @@ class Version4Date20211110180142 extends SimpleMigrationStep {
             }
         }
 
+        /**FACTURE**/
         if (!$schema->hasTable($tableprefix.'facture')) {
-            $table = $schema->createTable($tableprefix.'facture');
-            $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-            $table->addColumn('num', 'text', []);
-            $table->addColumn('date', 'string', ['length' => 64,]);
-            $table->addColumn('date_paiement', 'date', []);
-            $table->addColumn('type_paiement', 'string', ['length' => 64,]);
-            $table->addColumn('status_paiement', 'string', ['length' => 64,]);
-            $table->addColumn('version', 'string', ['length' => 64,]);
-            $table->addColumn('id_devis', 'integer', ['length' => 11,]);
-            $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
-            $table->setPrimaryKey(['id']);
-        }else{
-            $table = $schema->getTable($tableprefix.'facture');
-            if (!$table->hasColumn('id')) {
-                $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-            }
-            if (!$table->hasColumn('num')) {
-                $table->addColumn('num', 'text', []);
-            }
-            if (!$table->hasColumn('date')) {
-                $table->addColumn('date', 'string', ['length' => 64,]);
-            }
-            if (!$table->hasColumn('date_paiement')) {
-                $table->addColumn('date_paiement', 'date', []);
-            }
-            if (!$table->hasColumn('type_paiement')) {
-                $table->addColumn('type_paiement', 'string', ['length' => 64,]);
-            }
-            if (!$table->hasColumn('status_paiement')) {
-                $table->addColumn('status_paiement', 'string', ['length' => 64,]);
-            }else{
-                $column = $table->getColumn('status_paiement');
-			    $column->setOptions(['default' => 'NC',]);
-            }
-            if (!$table->hasColumn('version')) {
-                $table->addColumn('version', 'string', ['length' => 64,]);
-            }else{
-                $column = $table->getColumn('version');
-			    $column->setOptions(['default' => '1.0',]);
-            }
-            if (!$table->hasColumn('id_nextcloud')) {
-                $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
-            }
-
-			$column = $table->getColumn('version');
-			$column->setOptions(['default' => '1.0',]);
+            $table = $schema->createTable($tableprefix.'facture');            
         }
 
+        $table = $schema->getTable($tableprefix.'facture');
+
+        if (!$table->hasColumn('id')) {
+            $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
+            $table->setPrimaryKey(['id']);
+        }
+
+        if (!$table->hasColumn('num')) {
+            $table->addColumn('num', 'text', []);
+        }
+
+        if (!$table->hasColumn('date')) {
+            $table->addColumn('date', 'string', ['length' => 64,]);
+        }
+
+        if (!$table->hasColumn('date_paiement')) {
+            $table->addColumn('date_paiement', 'date', []);
+        }
+
+        if (!$table->hasColumn('type_paiement')) {
+            $table->addColumn('type_paiement', 'string', ['length' => 64,]);
+        }
+        
+        if (!$table->hasColumn('status_paiement')) {
+            $table->addColumn('status_paiement', 'string', ['length' => 64, 'default' => 'NC',]);
+        }else{
+            $column = $table->getColumn('status_paiement');
+            $column->setOptions(['default' => 'NC',]);
+        }
+        
+        if (!$table->hasColumn('version')) {
+            $table->addColumn('version', 'string', ['length' => 64, 'default' => '1.0',]);
+        }else{
+            $column = $table->getColumn('version');
+            $column->setOptions(['default' => '1.0',]);
+        }
+        if (!$table->hasColumn('id_devis')) {
+            $table->addColumn('id_devis', 'integer', ['length' => 11,]);
+        }
+
+        if (!$table->hasColumn('id_nextcloud')) {
+            $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
+        }
+
+        /** PRODUIT **/
         if (!$schema->hasTable($tableprefix.'produit')) {
             $table = $schema->createTable($tableprefix.'produit');
             $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);

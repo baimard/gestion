@@ -1,8 +1,6 @@
 # Gestion de facturation Nextcloud APP
 
-News 23/10/2021 :
-
-*Due to an increase in activity at the end of the year, development will resume in December. Thank you for your understanding. This application is more successful than expected.*
+News 11/11/2021 :
 
 https://apps.nextcloud.com/apps/gestion
 
@@ -15,9 +13,10 @@ Fonctionnalités à venir / Upcoming Features
 - [ ] Modifier le logo / logo
 - [ ] Envoie de la facture par mail via nextcloud / Send mail with nextcloud with the quote or bill
 - [ ] Créer une zone statistique pour pouvoir faire sa compta / Create an accounting statistique zone
-- [ ] Zone de commentaire pour les devis ( qui s'affichera dans les factures ) / comment zone in quote
-- [ ] Version des pdf enregistrés à chaque fois que l'on clique sur sauvegarder nextcloud / Versionning for saved pdf, when you click save nextcloud increment the version.
-- [ ] Etat d'une facture (Annulé, Modifié, payé) / status of an invoice (Cancel, Modified, paid)
+- [x] Zone de commentaire pour les devis ( qui s'affichera dans les factures ) / comment zone in quote
+- [x] Version des pdf enregistrés à chaque fois que l'on clique sur sauvegarder nextcloud / Versionning for saved pdf, when you click save nextcloud increment the version.
+- [x] Etat d'une facture (Annulé, Modifié, payé) / Invoice status (Cancel, Modified, paid)
+- [x] Etat d'un devis (Acccepté, refusé) / Quote status (Succes, refused)
 - [ ] Facture électronique / XML format for invoice
 - [ ] Generation des numéros de facture automatique / Invoice numbers generated
 - [ ] TVA par produit / VAT rate per product

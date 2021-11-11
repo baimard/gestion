@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-10 03:28+0000\n"
+"POT-Creation-Date: 2021-11-11 03:26+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin Aimard <benjamin@cybercorp.fr>, 2021\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -36,8 +36,8 @@ msgstr "Prénom"
 
 #: /app/lib/Controller/PageController.php:218
 #: /app/templates/content/configuration.php:17
-#: /app/templates/content/devisshow.php:23
-#: /app/templates/content/devisshow.php:70
+#: /app/templates/content/devisshow.php:25
+#: /app/templates/content/devisshow.php:79
 #: /app/templates/content/factureshow.php:22
 #: /app/templates/content/factureshow.php:71
 #: /app/templates/content/index.php:26
@@ -46,7 +46,7 @@ msgstr "Siret"
 
 #: /app/lib/Controller/PageController.php:219
 #: /app/templates/content/configuration.php:14
-#: /app/templates/content/devisshow.php:70
+#: /app/templates/content/devisshow.php:79
 #: /app/templates/content/factureshow.php:71
 #: /app/templates/content/index.php:23
 msgid "Company"
@@ -87,14 +87,14 @@ msgid "Means of payment"
 msgstr "Moyen de paiement"
 
 #: /app/lib/Controller/PageController.php:256
-#: /app/templates/content/devisshow.php:38
+#: /app/templates/content/devisshow.php:47
 #: /app/templates/content/factureshow.php:40
 #: /app/templates/content/produit.php:17
 msgid "Reference"
 msgstr "Référence"
 
 #: /app/lib/Controller/PageController.php:257
-#: /app/templates/content/devisshow.php:39
+#: /app/templates/content/devisshow.php:48
 #: /app/templates/content/factureshow.php:41
 #: /app/templates/content/produit.php:18
 msgid "Designation"
@@ -187,19 +187,19 @@ msgstr "Précédent"
 msgid "Choose work folder"
 msgstr "Choisir le répertoire de travail"
 
-#: /app/src/js/main.js:245 /app/src/js/main.js:268
+#: /app/src/js/main.js:245 /app/src/js/main.js:270
 msgid "Open"
 msgstr "Ouvrir"
 
-#: /app/src/js/main.js:327
+#: /app/src/js/main.js:332
 msgid "Choose customer"
 msgstr "Choisir un client"
 
-#: /app/src/js/main.js:337
+#: /app/src/js/main.js:342
 msgid "Choose quote"
 msgstr "Choisir un devis"
 
-#: /app/src/js/main.js:454
+#: /app/src/js/main.js:459
 msgid "Added"
 msgstr "Ajouté"
 
@@ -221,13 +221,21 @@ msgid "Configuration"
 msgstr "Configuration"
 
 #: /app/templates/content/configuration.php:18
-#: /app/templates/content/devisshow.php:70
+#: /app/templates/content/devisshow.php:79
 #: /app/templates/content/factureshow.php:71
 msgid "Unique identification"
 msgstr "Siren"
 
 #: /app/templates/content/configuration.php:22
-msgid "Vat Default"
+msgid "VAT Default"
+msgstr ""
+
+#: /app/templates/content/configuration.php:29
+msgid "legal disclaimer"
+msgstr ""
+
+#: /app/templates/content/configuration.php:30
+msgid "Loading"
 msgstr ""
 
 #: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:9
@@ -246,7 +254,15 @@ msgstr "Date du devis"
 msgid "Customer quote"
 msgstr "Numéro du devis"
 
-#: /app/templates/content/devis.php:20 /app/templates/content/facture.php:22
+#: /app/templates/content/devis.php:20
+msgid "Version"
+msgstr ""
+
+#: /app/templates/content/devis.php:21
+msgid "Stats"
+msgstr ""
+
+#: /app/templates/content/devis.php:22 /app/templates/content/facture.php:22
 #: /app/templates/content/index.php:30 /app/templates/content/produit.php:20
 msgid "Actions"
 msgstr "Actions"
@@ -255,62 +271,66 @@ msgstr "Actions"
 msgid "Quote #"
 msgstr "DEVIS N°"
 
-#: /app/templates/content/devisshow.php:8
+#: /app/templates/content/devisshow.php:10
 #: /app/templates/content/factureshow.php:7
 msgid "FROM"
 msgstr "PART"
 
-#: /app/templates/content/devisshow.php:17
+#: /app/templates/content/devisshow.php:19
 #: /app/templates/content/factureshow.php:16
 msgid "TO"
 msgstr "POUR"
 
-#: /app/templates/content/devisshow.php:30
+#: /app/templates/content/devisshow.php:32
 msgid "Offer valid for 1 month from"
 msgstr "Offre valide 1 mois à compter du"
 
-#: /app/templates/content/devisshow.php:40
+#: /app/templates/content/devisshow.php:49
 #: /app/templates/content/factureshow.php:42
 msgid "Quantity"
 msgstr "Quantité"
 
-#: /app/templates/content/devisshow.php:41
+#: /app/templates/content/devisshow.php:50
 #: /app/templates/content/factureshow.php:43
 #: /app/templates/content/produit.php:19
 msgid "Unit price without VAT"
 msgstr "PU HT"
 
-#: /app/templates/content/devisshow.php:42
-#: /app/templates/content/devisshow.php:55
+#: /app/templates/content/devisshow.php:51
+#: /app/templates/content/devisshow.php:64
 #: /app/templates/content/factureshow.php:44
 #: /app/templates/content/factureshow.php:56
 msgid "Total without VAT"
 msgstr "Total HT"
 
-#: /app/templates/content/devisshow.php:48
+#: /app/templates/content/devisshow.php:57
 #: /app/templates/content/produit.php:11
 msgid "Add product"
 msgstr "Ajouter produit"
 
-#: /app/templates/content/devisshow.php:49
+#: /app/templates/content/devisshow.php:58
 #: /app/templates/content/factureshow.php:50
 msgid "Save in Nextcloud"
 msgstr "Sauvegarder dans nextcloud"
 
-#: /app/templates/content/devisshow.php:56
+#: /app/templates/content/devisshow.php:65
 #: /app/templates/content/factureshow.php:57
 msgid "VAT Rate"
 msgstr "Taux TVA"
 
-#: /app/templates/content/devisshow.php:57
+#: /app/templates/content/devisshow.php:66
 #: /app/templates/content/factureshow.php:58
 msgid "Total VAT"
 msgstr "Total TVA"
 
-#: /app/templates/content/devisshow.php:58
+#: /app/templates/content/devisshow.php:67
 #: /app/templates/content/factureshow.php:59
 msgid "Total Price"
 msgstr "Total TTC"
+
+#: /app/templates/content/devisshow.php:75
+msgid "Please set in global configuration"
+msgstr ""
 
 #: /app/templates/content/facture.php:8 /app/templates/navigation/index.php:16
 msgid "Invoice"

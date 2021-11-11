@@ -18,6 +18,7 @@ OC.L10N.register(
     "Search" : "搜索",
     "No data available in table" : "此表中无数据",
     "Showing {start} to {end} of {total} entries" : "显示第 {start} 项到第 {end} 项，共 {total} 项",
+    "Showing 0 to 0 of 0 entries" : "正显示第 0 项到第 0 项 ，共 0 项",
     "Loading records …" : "加载记录中 ...",
     "Processing …" : "处理中...",
     "{max} entries filtered" : "已筛选最多 {max} 项",

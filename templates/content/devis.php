@@ -11,7 +11,7 @@
             <a><span id="newDevis"><?php p($l->t('Add new quote'));?></span></a>
         </div>
     </div>
-    <table id="devis" class="display tabledt" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
+    <table id="devis" class="display tabledt">
         <thead>
             <tr>
                 <th><?php p($l->t('Quote date'));?></th>

@@ -15,10 +15,11 @@ const euro = new Intl.NumberFormat('fr-FR', {style: 'currency',currency: 'EUR',m
 
 $(window).on("load", function() {
 
-    console.log(getCanonicalLocale());
+    //console.log(getCanonicalLocale());
 
     $('.tabledt').DataTable({
-        "autoWidth": true,
+        autoWidth: false,
+        stateSave: true,
         language: {
             "search":           t('gestion', 'Search'),
             "emptyTable":       t('gestion', 'No data available in table'),
@@ -214,7 +215,7 @@ function loadProduitDT() {
                 
             ]);
         });
-        $('#produit').DataTable().draw(false);
+        $('#produit').DataTable().columns.adjust().draw();
         configureDT();
     }).fail(function(response, code) {
         showError(response);
@@ -242,11 +243,13 @@ function loadFactureDT() {
                 '<div class="editable" data-table="facture" data-column="date_paiement" data-id="' + myresp.id + '">' + dtpaiement + '</div>',
                 '<div class="editable" data-table="facture" data-column="type_paiement" data-id="' + myresp.id + '">' + myresp.type_paiement + '</div>',
                 '<div data-table="facture" data-column="id_devis" data-id="' + myresp.id + '"><select class="listDevis" data-current="'+ myresp.id_devis +'"></select></div>',
+                '<div class="editable" data-table="facture" data-column="version" data-id="' + myresp.id + '" style="display:inline">' + ((myresp.version.length === 0) ? '-' : myresp.version) + '</div>',
+                '<div class="editable" data-table="facture" data-column="status_paiement" data-id="' + myresp.id + '" style="display:inline">' + ((myresp.status_paiement.length === 0) ? '-' : myresp.status_paiement) + '</div>',
                 '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/facture/' + myresp.id + '/show"><button>'+ t('gestion', 'Open')+'</button></a></div><div data-modifier="facture" data-id=' + myresp.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
             ]);
         });
         loadDevisList();
-        $('#facture').DataTable().draw(false);
+        $('#facture').DataTable().columns.adjust().draw();
         configureDT();
     }).fail(function(response, code) {
         showError(response);
@@ -271,8 +274,7 @@ function loadDevisDT() {
             ]);
         });
         loadClientList();
-        $('#devis').DataTable().draw();
-        $('#devis').DataTable().columns.adjust();
+        $('#devis').DataTable().columns.adjust().draw();
         configureDT();
     }).fail(function(response, code) {
         showError(response);
@@ -296,8 +298,9 @@ var lcdt = function loadConfigurationDT(response) {
         $('#mentions_default').html(myresp.mentions_default);
         $('#mentions_default').data("id", myresp.id);
     });
-
-    $('#configuration').DataTable().draw();
+    $('#configuration').DataTable().destroy()
+    $('#configuration').DataTable({paging: false, searching: false, info: false}).columns.adjust().draw();
+    
     configureDT();
 }
 
@@ -320,7 +323,7 @@ function loadClientDT() {
                 '<center><div data-modifier="client" data-id=' + myresp.id + ' data-table="client" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div></center>'
             ]);
         });
-        $('#client').DataTable().draw();
+        $('#client').DataTable().columns.adjust().draw();
         configureDT();
     }).fail(function(response, code) {
         showError(response);
@@ -329,7 +332,7 @@ function loadClientDT() {
 
 function loadClientList(){
     getClients(function(response){
-        $('.listClient').append("<option value='nothing'>"+ t('gestion', 'Choose customer')+"</option>");
+        $('.listClient').append("<option value='0'>"+ t('gestion', 'Choose customer')+"</option>");
         $.each(JSON.parse(response), function(arrayID, myresp) {     
             $('.listClient').append("<option value='"+ myresp.id +"'>"+myresp.nom + " " + myresp.prenom+"</option>");
         });
@@ -339,7 +342,7 @@ function loadClientList(){
 
 function loadDevisList(){
     getDevis(function(response){
-        $('.listDevis').append("<option value='nothing'>"+ t('gestion', 'Choose quote')+"</option>");
+        $('.listDevis').append("<option value='0'>"+ t('gestion', 'Choose quote')+"</option>");
         $.each(JSON.parse(response), function(arrayID, myresp) {     
             $('.listDevis').append("<option value='"+ myresp.id +"'>"+ myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom +"</option>");
         });
@@ -375,9 +378,9 @@ function getClientByIdDevis(id) {
             $("#siret").html(myresp.siret);
             $("#pdf").attr("data-folder", myresp.num);
             if ($("#factureid").length) {
-                $("#pdf").attr("data-name", myresp.entreprise + "_" + $("#factureid").text() + "_v" + 1);
+                $("#pdf").data('name', myresp.entreprise + "_" + $("#factureid").text() + "_v" + $('#factureversion').text());
             } else {
-                $("#pdf").attr("data-name", myresp.entreprise + "_" + myresp.num + "_v" + 1);
+                $("#pdf").data('name', myresp.entreprise + "_" + myresp.num + "_v" + $('#devisversion').text());
             }
 
         });
@@ -535,7 +538,6 @@ function isconfig() {
         type: 'GET',
         contentType: 'application/json'
     }).done(function(response) {
-        console.log(response)
         if(!response){
             var modal = document.getElementById("modalConfig");
             modal.style.display = "block";

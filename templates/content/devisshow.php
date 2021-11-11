@@ -1,7 +1,7 @@
 <div class="bootstrap-iso">
         <h2 class="mt-3 mb-3 text-center"> <?php p($l->t('Quote #'));?>
         <div id="devisid" style="display:inline" class="editable" data-table="devis" data-column="num" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->num; ?></div>
-        <div id="devisversion" style="display:inline" class="editable" data-table="devis" data-column="version" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->version; ?></div>
+        <span><?php p($l->t('Version'));?></span> <div id="devisversion" style="display:inline" class="editable" data-table="devis" data-column="version" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->version; ?></div>
         </h2>
         <hr />
         <div class="row">

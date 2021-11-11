@@ -205,12 +205,15 @@ class Version4Date20211110180142 extends SimpleMigrationStep {
             }
             if (!$table->hasColumn('status_paiement')) {
                 $table->addColumn('status_paiement', 'string', ['length' => 64,]);
+            }else{
+                $column = $table->getColumn('status_paiement');
+			    $column->setOptions(['default' => 'NC',]);
             }
             if (!$table->hasColumn('version')) {
                 $table->addColumn('version', 'string', ['length' => 64,]);
-            }
-            if (!$table->hasColumn('id_client')) {
-                $table->addColumn('id_client', 'integer', ['length' => 11,]);
+            }else{
+                $column = $table->getColumn('version');
+			    $column->setOptions(['default' => '1.0',]);
             }
             if (!$table->hasColumn('id_nextcloud')) {
                 $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);

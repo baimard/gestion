@@ -11,7 +11,7 @@
             <a><span id="newProduit"><?php p($l->t('Add product'));?></span></a>
         </div>
     </div>
-	<table id="produit" class="display tabledt" style="table-layout: fixed; width: 100%; white-space: pre-wrap;">
+	<table id="produit" class="display tabledt">
         <thead>
             <tr>
                 <th><?php p($l->t('Reference'));?></th>

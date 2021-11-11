@@ -8,7 +8,7 @@
             <span><?php p($l->t('Configuration'));?></span>
         </div>
     </div>
-	<table id="configuration" class="display tabledt" style="table-layout: fixed; font-size:11px; width: 100%; white-space: pre-wrap;">
+	<table id="configuration" class="display tabledt">
         <thead>
             <tr>
                 <th><?php p($l->t('Company'));?></th>

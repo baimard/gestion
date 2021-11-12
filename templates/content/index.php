@@ -4,9 +4,9 @@
             <span class="modalClose">&times;</span>
             <h2><?php p($l->t('Welcome to GESTION'));?></h2>
             <p style="margin-bottom:20px;"><?php p($l->t('This application is an opensource application design by Benjamin AIMARD, if you like my work you can'));?> &#129321; <a href="https://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a cofee'));?></a> &#129321;</p>
-            <p style="margin-bottom:20px;"><?php p($l->t('To start with this application you need to configure your entreprise information, follow this link'));?> &#128073; <a href="<?php echo($_['url']['config']); ?>"><?php p($l->t('My company'));?></a></p>
+            <p style="margin-bottom:20px;"><?php p($l->t('To start with this application you need to configure your company information, follow this link'));?> &#128073; <a href="<?php echo($_['url']['config']); ?>"><?php p($l->t('My company'));?></a></p>
             <p style="margin-bottom:20px;"><?php p($l->t('If you need documentation, follow this link'));?> &#128073; <a href="https://baimard.github.io/gestion/"><?php p($l->t('Documentation'));?></a></p>
-            <p style="margin-bottom:20px;"><?php p($l->t('Others questions ?'));?> &#128073; <a href="mailto:contact@cybercorp.fr"><?php p($l->t('Contact'));?></a></p>
+            <p style="margin-bottom:20px;"><?php p($l->t('Others questions?'));?> &#128073; <a href="mailto:contact@cybercorp.fr"><?php p($l->t('Contact'));?></a></p>
         </div>
     </div>
     <div class="breadcrumb" data-html2canvas-ignore>

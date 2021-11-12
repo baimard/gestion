@@ -64,7 +64,6 @@ OC.L10N.register(
     "Invoice #" : "Инвойс #",
     "Settlement date" : "Дата расчёта",
     "date of service" : "Дата исполнения",
-    "Please configure your company information" : "Пожалуйста, укажите информацию о вашей компании",
     "My company" : "Моя компания",
     "Customer" : "Клиент",
     "Add customer" : "Добавить клиента",

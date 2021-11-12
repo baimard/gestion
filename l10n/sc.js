@@ -61,7 +61,6 @@ OC.L10N.register(
     "Invoice #" : "Fatura #",
     "Settlement date" : "Data de acòrdiu",
     "date of service" : "data de servìtziu",
-    "Please configure your company information" : "Cunfigura is informatziones de sa sotziedade",
     "My company" : "Sotziedade mia",
     "Customer" : "Cliente",
     "Add customer" : "Agiunghe cliente",

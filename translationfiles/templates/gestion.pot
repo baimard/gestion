@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-11 03:26+0000\n"
+"POT-Creation-Date: 2021-11-12 03:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,13 @@ msgstr ""
 
 #: /app/lib/Controller/PageController.php:216
 #: /app/templates/content/configuration.php:15
-#: /app/templates/content/index.php:24
+#: /app/templates/content/index.php:28
 msgid "Name"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:217
 #: /app/templates/content/configuration.php:16
-#: /app/templates/content/index.php:25
+#: /app/templates/content/index.php:29
 msgid "First name"
 msgstr ""
 
@@ -33,35 +33,35 @@ msgstr ""
 #: /app/templates/content/configuration.php:17
 #: /app/templates/content/devisshow.php:25
 #: /app/templates/content/devisshow.php:79
-#: /app/templates/content/factureshow.php:22
-#: /app/templates/content/factureshow.php:71
-#: /app/templates/content/index.php:26
+#: /app/templates/content/factureshow.php:25
+#: /app/templates/content/factureshow.php:74
+#: /app/templates/content/index.php:30
 msgid "Limited company"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:219
 #: /app/templates/content/configuration.php:14
 #: /app/templates/content/devisshow.php:79
-#: /app/templates/content/factureshow.php:71
-#: /app/templates/content/index.php:23
+#: /app/templates/content/factureshow.php:74
+#: /app/templates/content/index.php:27
 msgid "Company"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:220
 #: /app/templates/content/configuration.php:19
-#: /app/templates/content/index.php:27
+#: /app/templates/content/index.php:31
 msgid "Phone number"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:221
 #: /app/templates/content/configuration.php:20
-#: /app/templates/content/index.php:28
+#: /app/templates/content/index.php:32
 msgid "Email"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:222
 #: /app/templates/content/configuration.php:21
-#: /app/templates/content/index.php:29
+#: /app/templates/content/index.php:33
 msgid "Address"
 msgstr ""
 
@@ -77,20 +77,20 @@ msgstr ""
 
 #: /app/lib/Controller/PageController.php:245
 #: /app/templates/content/facture.php:20
-#: /app/templates/content/factureshow.php:31
+#: /app/templates/content/factureshow.php:34
 msgid "Means of payment"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:256
 #: /app/templates/content/devisshow.php:47
-#: /app/templates/content/factureshow.php:40
+#: /app/templates/content/factureshow.php:43
 #: /app/templates/content/produit.php:17
 msgid "Reference"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:257
 #: /app/templates/content/devisshow.php:48
-#: /app/templates/content/factureshow.php:41
+#: /app/templates/content/factureshow.php:44
 #: /app/templates/content/produit.php:18
 msgid "Designation"
 msgstr ""
@@ -128,75 +128,79 @@ msgid ""
 "benjaminaimard)"
 msgstr ""
 
-#: /app/src/js/main.js:23
+#: /app/src/js/main.js:24
 msgid "Search"
 msgstr ""
 
-#: /app/src/js/main.js:24
+#: /app/src/js/main.js:25
 msgid "No data available in table"
 msgstr ""
 
-#: /app/src/js/main.js:25
+#: /app/src/js/main.js:26
 msgid "Showing {start} to {end} of {total} entries"
 msgstr ""
 
-#: /app/src/js/main.js:26
+#: /app/src/js/main.js:27
 msgid "Showing 0 to 0 of 0 entries"
 msgstr ""
 
-#: /app/src/js/main.js:27
+#: /app/src/js/main.js:28
 msgid "Loading records …"
 msgstr ""
 
-#: /app/src/js/main.js:28
+#: /app/src/js/main.js:29
 msgid "Processing …"
 msgstr ""
 
-#: /app/src/js/main.js:29
+#: /app/src/js/main.js:30
 msgid "{max} entries filtered"
 msgstr ""
 
-#: /app/src/js/main.js:30
+#: /app/src/js/main.js:31
 msgid "Show {menu} entries"
 msgstr ""
 
-#: /app/src/js/main.js:31
+#: /app/src/js/main.js:32
 msgid "No corresponding entry"
 msgstr ""
 
-#: /app/src/js/main.js:33
+#: /app/src/js/main.js:34
 msgid "First"
 msgstr ""
 
-#: /app/src/js/main.js:34
+#: /app/src/js/main.js:35
 msgid "Last"
 msgstr ""
 
-#: /app/src/js/main.js:35
+#: /app/src/js/main.js:36
 msgid "Next"
 msgstr ""
 
-#: /app/src/js/main.js:36
+#: /app/src/js/main.js:37
 msgid "Previous"
 msgstr ""
 
-#: /app/src/js/main.js:59
+#: /app/src/js/main.js:60
 msgid "Choose work folder"
 msgstr ""
 
-#: /app/src/js/main.js:245 /app/src/js/main.js:270
+#: /app/src/js/main.js:169
+msgid "Please create a new product"
+msgstr ""
+
+#: /app/src/js/main.js:248 /app/src/js/main.js:273
 msgid "Open"
 msgstr ""
 
-#: /app/src/js/main.js:332
+#: /app/src/js/main.js:335
 msgid "Choose customer"
 msgstr ""
 
-#: /app/src/js/main.js:342
+#: /app/src/js/main.js:345
 msgid "Choose quote"
 msgstr ""
 
-#: /app/src/js/main.js:459
+#: /app/src/js/main.js:462
 msgid "Added"
 msgstr ""
 
@@ -219,7 +223,7 @@ msgstr ""
 
 #: /app/templates/content/configuration.php:18
 #: /app/templates/content/devisshow.php:79
-#: /app/templates/content/factureshow.php:71
+#: /app/templates/content/factureshow.php:74
 msgid "Unique identification"
 msgstr ""
 
@@ -228,7 +232,7 @@ msgid "VAT Default"
 msgstr ""
 
 #: /app/templates/content/configuration.php:29
-msgid "legal disclaimer"
+msgid "Legal disclaimer"
 msgstr ""
 
 #: /app/templates/content/configuration.php:30
@@ -251,16 +255,18 @@ msgstr ""
 msgid "Customer quote"
 msgstr ""
 
-#: /app/templates/content/devis.php:20
+#: /app/templates/content/devis.php:20 /app/templates/content/devisshow.php:4
+#: /app/templates/content/facture.php:22
+#: /app/templates/content/factureshow.php:4
 msgid "Version"
 msgstr ""
 
-#: /app/templates/content/devis.php:21
+#: /app/templates/content/devis.php:21 /app/templates/content/facture.php:23
 msgid "Stats"
 msgstr ""
 
-#: /app/templates/content/devis.php:22 /app/templates/content/facture.php:22
-#: /app/templates/content/index.php:30 /app/templates/content/produit.php:20
+#: /app/templates/content/devis.php:22 /app/templates/content/facture.php:24
+#: /app/templates/content/index.php:34 /app/templates/content/produit.php:20
 msgid "Actions"
 msgstr ""
 
@@ -269,12 +275,12 @@ msgid "Quote #"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:10
-#: /app/templates/content/factureshow.php:7
+#: /app/templates/content/factureshow.php:10
 msgid "FROM"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:19
-#: /app/templates/content/factureshow.php:16
+#: /app/templates/content/factureshow.php:19
 msgid "TO"
 msgstr ""
 
@@ -283,20 +289,20 @@ msgid "Offer valid for 1 month from"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:49
-#: /app/templates/content/factureshow.php:42
+#: /app/templates/content/factureshow.php:45
 msgid "Quantity"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:50
-#: /app/templates/content/factureshow.php:43
+#: /app/templates/content/factureshow.php:46
 #: /app/templates/content/produit.php:19
 msgid "Unit price without VAT"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:51
 #: /app/templates/content/devisshow.php:64
-#: /app/templates/content/factureshow.php:44
-#: /app/templates/content/factureshow.php:56
+#: /app/templates/content/factureshow.php:47
+#: /app/templates/content/factureshow.php:59
 msgid "Total without VAT"
 msgstr ""
 
@@ -306,22 +312,22 @@ msgid "Add product"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:58
-#: /app/templates/content/factureshow.php:50
+#: /app/templates/content/factureshow.php:53
 msgid "Save in Nextcloud"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:65
-#: /app/templates/content/factureshow.php:57
+#: /app/templates/content/factureshow.php:60
 msgid "VAT Rate"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:66
-#: /app/templates/content/factureshow.php:58
+#: /app/templates/content/factureshow.php:61
 msgid "Total VAT"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:67
-#: /app/templates/content/factureshow.php:59
+#: /app/templates/content/factureshow.php:62
 msgid "Total Price"
 msgstr ""
 
@@ -346,7 +352,7 @@ msgid "Payment date"
 msgstr ""
 
 #: /app/templates/content/facture.php:21
-#: /app/templates/content/factureshow.php:31
+#: /app/templates/content/factureshow.php:34
 msgid "Associated quote"
 msgstr ""
 
@@ -354,27 +360,59 @@ msgstr ""
 msgid "Invoice #"
 msgstr ""
 
-#: /app/templates/content/factureshow.php:30
+#: /app/templates/content/factureshow.php:33
 msgid "Settlement date"
 msgstr ""
 
-#: /app/templates/content/factureshow.php:30
+#: /app/templates/content/factureshow.php:33
 msgid "date of service"
 msgstr ""
 
 #: /app/templates/content/index.php:5
-msgid "Please configure your company information"
+msgid "Welcome to GESTION"
 msgstr ""
 
-#: /app/templates/content/index.php:5 /app/templates/settings/index.php:10
+#: /app/templates/content/index.php:6
+msgid ""
+"This application is an opensource application design by Benjamin AIMARD, if "
+"you like my work you can"
+msgstr ""
+
+#: /app/templates/content/index.php:6
+msgid "buy me a cofee"
+msgstr ""
+
+#: /app/templates/content/index.php:7
+msgid ""
+"To start with this application you need to configure your entreprise "
+"information, follow this link"
+msgstr ""
+
+#: /app/templates/content/index.php:7 /app/templates/settings/index.php:9
 msgid "My company"
 msgstr ""
 
-#: /app/templates/content/index.php:14 /app/templates/navigation/index.php:2
+#: /app/templates/content/index.php:8
+msgid "If you need documentation, follow this link"
+msgstr ""
+
+#: /app/templates/content/index.php:8
+msgid "Documentation"
+msgstr ""
+
+#: /app/templates/content/index.php:9
+msgid "Others questions ?"
+msgstr ""
+
+#: /app/templates/content/index.php:9
+msgid "Contact"
+msgstr ""
+
+#: /app/templates/content/index.php:18 /app/templates/navigation/index.php:2
 msgid "Customer"
 msgstr ""
 
-#: /app/templates/content/index.php:17
+#: /app/templates/content/index.php:21
 msgid "Add customer"
 msgstr ""
 
@@ -382,6 +420,6 @@ msgstr ""
 msgid "Product"
 msgstr ""
 
-#: /app/templates/settings/index.php:9
+#: /app/templates/settings/index.php:10
 msgid "Save folder"
 msgstr ""

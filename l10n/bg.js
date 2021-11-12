@@ -64,7 +64,6 @@ OC.L10N.register(
     "Invoice #" : "Фактура #",
     "Settlement date" : "Дата на споразумение ",
     "date of service" : "дата на услуга",
-    "Please configure your company information" : "Моля, конфигурирайте информацията за вашата фирма",
     "My company" : "Моята фирма",
     "Customer" : "Клиент",
     "Add customer" : "Добавяне на клиент",

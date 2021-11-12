@@ -49,7 +49,6 @@ OC.L10N.register(
     "Invoice #" : "Фактура #",
     "Settlement date" : "Датум на порамнување",
     "date of service" : "датум на услуга",
-    "Please configure your company information" : "Конфигурирај ги податоците за фирмата",
     "My company" : "Моја компанија",
     "Customer" : "Потрошувач",
     "Add customer" : "Додади потрошувач",

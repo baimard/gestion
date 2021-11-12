@@ -36,7 +36,6 @@ OC.L10N.register(
     "Add invoice" : "Προσθήκη τιμολογίου",
     "Payment date" : "Ημερομηνία πληρωμής",
     "Invoice #" : "Τιμολόγιο #",
-    "Please configure your company information" : "Παρακαλούμε ρυθμίστε τα στοιχεία της εταιρείας σας",
     "My company" : "Η εταιρία μου",
     "Customer" : "Πελάτης",
     "Add customer" : "Προσθήκη πελάτη",

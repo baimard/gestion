@@ -64,7 +64,6 @@ OC.L10N.register(
     "Invoice #" : "Račun #",
     "Settlement date" : "Datum poravnave",
     "date of service" : "datum storitve",
-    "Please configure your company information" : "Urediti in vpisati je treba podrobnosti podjetja",
     "My company" : "Moje podjetje",
     "Customer" : "Stranka",
     "Add customer" : "Dodaj stranko",

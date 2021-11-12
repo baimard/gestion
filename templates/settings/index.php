@@ -6,8 +6,10 @@
 	</div>
 	<div id="app-settings-content">
 		<ul>
-			<li><span class="icon-rename"></span><a href="<?php echo($_['url']['config']); ?>"><button><?php p($l->t('My company'));?></button></a></li>
-			<li><label><?php p($l->t('Save folder'));?></label><input id="theFolder" data-table="configuration" data-column="path" data-id="" type="text" placeholder="Veuillez choisir un dossier"></li>
+			<li><center><a href="#"><button id="about" style="width:270px;"><?php p($l->t('About'));?></button></a></center></li>
+			<li><center><a href="<?php echo($_['url']['config']); ?>"><button style="width:270px;"><?php p($l->t('My company'));?></button></a></center></li>
+			<li><hr/></li>
+			<li><label><b><?php p($l->t('Save folder'));?></b></label><input id="theFolder" data-table="configuration" data-column="path" data-id="" type="text" placeholder="Veuillez choisir un dossier"></li>
 		</ul>
 	</div>
 </div>

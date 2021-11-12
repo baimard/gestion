@@ -173,22 +173,27 @@ $('body').on('click', '#devisAdd', function() {
 $('body').on('click', '#newClient', function() {
     newClient();
     loadClientDT();
-})
+});
 
 $('body').on('click', '#newDevis', function() {
     newDevis();
     loadDevisDT();
-})
+});
 
 $('body').on('click', '#newFacture', function() {
     newFacture();
     loadFactureDT();
-})
+});
 
 $('body').on('click', '#newProduit', function() {
     newProduit();
     loadProduitDT();
-})
+});
+
+$('body').on('click', '#about', function() {
+    var modal = document.getElementById("modalConfig");
+    modal.style.display = "block";
+});
 
 function updateEditable(myCase){
     updateDB(myCase.data('table'), myCase.data('column'), myCase.text(), myCase.data('id'));
@@ -208,9 +213,9 @@ function loadProduitDT() {
         $('#produit').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
             $('#produit').DataTable().row.add([
-                '<div class="editable" data-table="produit" data-column="reference" data-id="' + myresp.id + '">' + myresp.reference + '</div>',
-                '<div class="editable" data-table="produit" data-column="description" data-id="' + myresp.id + '">' + myresp.description + '</div>',
-                '<div class="editable" data-table="produit" data-column="prix_unitaire" data-id="' + myresp.id + '">' + myresp.prix_unitaire + '</div>',
+                '<div class="editable" data-table="produit" data-column="reference" data-id="' + myresp.id + '">' + ((myresp.reference.length === 0) ? '-' : myresp.reference) + '</div>',
+                '<div class="editable" data-table="produit" data-column="description" data-id="' + myresp.id + '">' + ((myresp.description.length === 0) ? '-' : myresp.description) + '</div>',
+                '<div class="editable" data-table="produit" data-column="prix_unitaire" data-id="' + myresp.id + '">' + ((myresp.prix_unitaire.length === 0) ? '-' : myresp.prix_unitaire) + '</div>',
                 '<div data-modifier="produit" data-id=' + myresp.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
                 
             ]);
@@ -230,18 +235,12 @@ function loadFactureDT() {
     }).done(function(response) {
         $('#facture').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
-            var dtpaiement = ""
-            if (myresp.date_paiement == null) {
-                dtpaiement = "Attente client"
-            } else {
-                dtpaiement = myresp.date_paiement
-            }
 
             $('#facture').DataTable().row.add([
-                '<div class="editable" data-table="facture" data-column="num" data-id="' + myresp.id + '">' + myresp.num + '</div>',
-                '<div class="editable" data-table="facture" data-column="date" data-id="' + myresp.id + '">' + myresp.date + '</div>',
-                '<div class="editable" data-table="facture" data-column="date_paiement" data-id="' + myresp.id + '">' + dtpaiement + '</div>',
-                '<div class="editable" data-table="facture" data-column="type_paiement" data-id="' + myresp.id + '">' + myresp.type_paiement + '</div>',
+                '<div class="editable" data-table="facture" data-column="num" data-id="' + myresp.id + '">' + ((myresp.num.length === 0) ? '-' : myresp.num) + '</div>',
+                '<div class="editable" data-table="facture" data-column="date" data-id="' + myresp.id + '">' + ((myresp.date.length === 0) ? '-' : myresp.date) + '</div>',
+                '<input style="margin:0;padding:0;" class="inputDate" type="date" value='+myresp.date_paiement+' data-table="facture" data-column="date_paiement" data-id="' + myresp.id + '"/>',
+                '<div class="editable" data-table="facture" data-column="type_paiement" data-id="' + myresp.id + '">' + ((myresp.type_paiement.length === 0) ? '-' : myresp.type_paiement) + '</div>',
                 '<div data-table="facture" data-column="id_devis" data-id="' + myresp.id + '"><select class="listDevis" data-current="'+ myresp.id_devis +'"></select></div>',
                 '<div class="editable" data-table="facture" data-column="version" data-id="' + myresp.id + '" style="display:inline">' + ((myresp.version.length === 0) ? '-' : myresp.version) + '</div>',
                 '<div class="editable" data-table="facture" data-column="status_paiement" data-id="' + myresp.id + '" style="display:inline">' + ((myresp.status_paiement.length === 0) ? '-' : myresp.status_paiement) + '</div>',
@@ -284,18 +283,18 @@ function loadDevisDT() {
 var lcdt = function loadConfigurationDT(response) {
     $('#configuration').DataTable().clear();
     $.each(JSON.parse(response), function(arrayID, myresp) {
-        $('#configuration').DataTable().row.add(['<div class="editable" data-table="configuration" data-column="entreprise" data-id="' + myresp.id + '">' + myresp.entreprise + '</div>',
-            '<div class="editable" data-table="configuration" data-column="nom" data-id="' + myresp.id + '">' + myresp.nom + '</div>',
-            '<div class="editable" data-table="configuration" data-column="prenom" data-id="' + myresp.id + '">' + myresp.prenom + '</div>',
-            '<div class="editable" data-table="configuration" data-column="siret" data-id="' + myresp.id + '">' + myresp.siret + '</div>',
-            '<div class="editable" data-table="configuration" data-column="siren" data-id="' + myresp.id + '">' + myresp.siren + '</div>',
-            '<div class="editable" data-table="configuration" data-column="telephone" data-id="' + myresp.id + '">' + myresp.telephone + '</div>',
-            '<div class="editable" data-table="configuration" data-column="mail" data-id="' + myresp.id + '">' + myresp.mail + '</div>',
-            '<div class="editable" data-table="configuration" data-column="adresse" data-id="' + myresp.id + '">' + myresp.adresse + '</div>',
-            '<div class="editable" data-table="configuration" data-column="tva_default" data-id="' + myresp.id + '">' + myresp.tva_default + '%</div>'
+        $('#configuration').DataTable().row.add(['<div class="editable" data-table="configuration" data-column="entreprise" data-id="' + myresp.id + '">' + ((myresp.entreprise.length === 0) ? '-' : myresp.entreprise) + '</div>',
+            '<div class="editable" data-table="configuration" data-column="nom" data-id="' + myresp.id + '">' + ((myresp.nom.length === 0) ? '-' : myresp.nom) + '</div>',
+            '<div class="editable" data-table="configuration" data-column="prenom" data-id="' + myresp.id + '">' + ((myresp.prenom.length === 0) ? '-' : myresp.prenom) + '</div>',
+            '<div class="editable" data-table="configuration" data-column="siret" data-id="' + myresp.id + '">' + ((myresp.siret.length === 0) ? '-' : myresp.siret) + '</div>',
+            '<div class="editable" data-table="configuration" data-column="siren" data-id="' + myresp.id + '">' + ((myresp.siren.length === 0) ? '-' : myresp.siren) + '</div>',
+            '<div class="editable" data-table="configuration" data-column="telephone" data-id="' + myresp.id + '">' + ((myresp.telephone.length === 0) ? '-' : myresp.telephone) + '</div>',
+            '<div class="editable" data-table="configuration" data-column="mail" data-id="' + myresp.id + '">' + ((myresp.mail.length === 0) ? '-' : myresp.mail) + '</div>',
+            '<div class="editable" data-table="configuration" data-column="adresse" data-id="' + myresp.id + '">' + ((myresp.adresse.length === 0) ? '-' : myresp.adresse) + '</div>',
+            '<div class="editable" data-table="configuration" data-column="tva_default" data-id="' + myresp.id + '">' + ((myresp.tva_default.length === 0) ? '-' : myresp.tva_default) + '%</div>'
         ]);
 
-        $('#mentions_default').html(myresp.mentions_default);
+        $('#mentions_default').html(((myresp.mentions_default.length === 0) ? '-' : myresp.mentions_default));
         $('#mentions_default').data("id", myresp.id);
     });
     $('#configuration').DataTable().destroy()
@@ -313,13 +312,13 @@ function loadClientDT() {
         $('#client').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
             $('#client').DataTable().row.add([
-                '<div class="editable" data-table="client" data-column="entreprise" data-id="' + myresp.id + '">' + myresp.entreprise + '</div>',
-                '<div class="editable" data-table="client" data-column="nom" data-id="' + myresp.id + '">' + myresp.nom + '</div>',
-                '<div class="editable" data-table="client" data-column="prenom" data-id="' + myresp.id + '">' + myresp.prenom + '</div>',
-                '<div class="editable" data-table="client" data-column="siret" data-id="' + myresp.id + '">' + myresp.siret + '</div>',
-                '<div class="editable" data-table="client" data-column="telephone" data-id="' + myresp.id + '">' + myresp.telephone + '</div>',
-                '<div class="editable" data-table="client" data-column="mail" data-id="' + myresp.id + '">' + myresp.mail + '</div>',
-                '<div class="editable" data-table="client" data-column="adresse" data-id="' + myresp.id + '">' + myresp.adresse + '</div>',
+                '<div class="editable" data-table="client" data-column="entreprise" data-id="' + myresp.id + '">' + ((myresp.entreprise.length === 0) ? '-' : myresp.entreprise) + '</div>',
+                '<div class="editable" data-table="client" data-column="nom" data-id="' + myresp.id + '">' + ((myresp.nom.length === 0) ? '-' : myresp.nom) + '</div>',
+                '<div class="editable" data-table="client" data-column="prenom" data-id="' + myresp.id + '">' + ((myresp.prenom.length === 0) ? '-' : myresp.prenom) + '</div>',
+                '<div class="editable" data-table="client" data-column="siret" data-id="' + myresp.id + '">' + ((myresp.siret.length === 0) ? '-' : myresp.siret) + '</div>',
+                '<div class="editable" data-table="client" data-column="telephone" data-id="' + myresp.id + '">' + ((myresp.telephone.length === 0) ? '-' : myresp.telephone) + '</div>',
+                '<div class="editable" data-table="client" data-column="mail" data-id="' + myresp.id + '">' + ((myresp.mail.length === 0) ? '-' : myresp.mail) + '</div>',
+                '<div class="editable" data-table="client" data-column="adresse" data-id="' + myresp.id + '">' + ((myresp.adresse.length === 0) ? '-' : myresp.adresse) + '</div>',
                 '<center><div data-modifier="client" data-id=' + myresp.id + ' data-table="client" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div></center>'
             ]);
         });

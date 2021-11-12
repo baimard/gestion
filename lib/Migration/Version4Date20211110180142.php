@@ -33,145 +33,157 @@ class Version4Date20211110180142 extends SimpleMigrationStep {
           $schema = $schemaClosure();
           $tableprefix = "gestion_";
 
-          if (!$schema->hasTable($tableprefix.'client')) {
-              $table = $schema->createTable($tableprefix.'client');
-              $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-              $table->addColumn('nom', 'text', []);
-              $table->addColumn('prenom', 'text', []);
-              $table->addColumn('siret', 'text', []);
-              $table->addColumn('entreprise', 'text', []);
-              $table->addColumn('telephone', 'text', []);
-              $table->addColumn('mail', 'text', []);
-              $table->addColumn('adresse', 'text', []);
-              $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
-              $table->setPrimaryKey(['id']);
-          }else{
-            $table = $schema->getTable($tableprefix.'client');
-            if (!$table->hasColumn('id')) {
-                $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-            }
-            if (!$table->hasColumn('nom')) {
-                $table->addColumn('nom', 'text', []);            
-            }
-            if (!$table->hasColumn('prenom')) {
-                $table->addColumn('prenom', 'text', []);
-            }
-            if (!$table->hasColumn('siret')) {
-                $table->addColumn('siret', 'text', []);
-            }
-            if (!$table->hasColumn('entreprise')) {
-                $table->addColumn('entreprise', 'text', []);
-            }
-            if (!$table->hasColumn('telephone')) {
-                $table->addColumn('telephone', 'text', []);
-            }
-            if (!$table->hasColumn('mail')) {
-                $table->addColumn('mail', 'text', []);
-            }
-            if (!$table->hasColumn('adresse')) {
-                $table->addColumn('adresse', 'text', []);
-            }
-            if (!$table->hasColumn('id_nextcloud')) {
-                $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
-            }
-          }
-
-          if (!$schema->hasTable($tableprefix.'configuration')) {
-            $table = $schema->createTable($tableprefix.'configuration');
+        /**Client**/
+        if (!$schema->hasTable($tableprefix.'client')) {
+            $table = $schema->createTable($tableprefix.'client');
+        }
+        $table = $schema->getTable($tableprefix.'client');
+        if (!$table->hasColumn('id')) {
             $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-            $table->addColumn('entreprise', 'text', []);
-            $table->addColumn('nom', 'text', []);
-            $table->addColumn('prenom', 'text', []);
-            $table->addColumn('siret', 'text', []);
-            $table->addColumn('siren', 'text', []);
-            $table->addColumn('mail', 'text', []);
-            $table->addColumn('telephone', 'text', []);
-            $table->addColumn('adresse', 'text', []);
-            $table->addColumn('path', 'text', []);
-            $table->addColumn('mentions_default', 'text', []);
-            $table->addColumn('tva_default', 'float', []);
-            $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
             $table->setPrimaryKey(['id']);
-        }else{
-            $table = $schema->getTable($tableprefix.'configuration');
-            if (!$table->hasColumn('id')) {
-                $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-            }
-            if (!$table->hasColumn('entreprise')) {
-                $table->addColumn('entreprise', 'text', []);
-            }
-            if (!$table->hasColumn('nom')) {
-                $table->addColumn('nom', 'text', []);
-            }
-            if (!$table->hasColumn('prenom')) {
-                $table->addColumn('prenom', 'text', []);
-            }
-            if (!$table->hasColumn('siret')) {
-                $table->addColumn('siret', 'text', []);
-            }
-            if (!$table->hasColumn('siren')) {
-                $table->addColumn('siren', 'text', []);
-            }
-            if (!$table->hasColumn('mail')) {
-                $table->addColumn('mail', 'text', []);
-            }
-            if (!$table->hasColumn('telephone')) {
-                $table->addColumn('telephone', 'text', []);
-            }
-            if (!$table->hasColumn('adresse')) {
-                $table->addColumn('adresse', 'text', []);
-            }
-            if (!$table->hasColumn('path')) {
-                $table->addColumn('path', 'text', []);
-            }
-            if (!$table->hasColumn('mentions_default')) {
-                $table->addColumn('mentions_default', 'text', []);
-            }
-            if (!$table->hasColumn('tva_default')) {
-                $table->addColumn('tva_default', 'float', []);
-            }
-            if (!$table->hasColumn('id_nextcloud')) {
-                $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
-            }
+        }
+        if (!$table->hasColumn('nom')) {
+            $table->addColumn('nom', 'text', []);            
+        }
+        if (!$table->hasColumn('prenom')) {
+            $table->addColumn('prenom', 'text', []);
+        }
+        if (!$table->hasColumn('siret')) {
+            $table->addColumn('siret', 'text', []);
+        }
+        if (!$table->hasColumn('entreprise')) {
+            $table->addColumn('entreprise', 'text', []);
+        }
+        if (!$table->hasColumn('telephone')) {
+            $table->addColumn('telephone', 'text', []);
+        }
+        if (!$table->hasColumn('mail')) {
+            $table->addColumn('mail', 'text', []);
+        }
+        if (!$table->hasColumn('adresse')) {
+            $table->addColumn('adresse', 'text', []);
+        }
+        if (!$table->hasColumn('id_nextcloud')) {
+            $table->addColumn('id_nextcloud', 'string', ['length' => 64]);
         }
 
+        /**Configuration**/
+        if (!$schema->hasTable($tableprefix.'configuration')) {
+            $table = $schema->createTable($tableprefix.'configuration');
+        }
+        $table = $schema->getTable($tableprefix.'configuration');
+        if (!$table->hasColumn('id')) {
+            $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
+            $table->setPrimaryKey(['id']);
+        }
+
+        if (!$table->hasColumn('entreprise')) {
+            $table->addColumn('entreprise', 'text', []);
+        }
+
+        if (!$table->hasColumn('nom')) {
+            $table->addColumn('nom', 'text', []);
+        }
+
+        if (!$table->hasColumn('prenom')) {
+            $table->addColumn('prenom', 'text', []);
+        }
+
+        if (!$table->hasColumn('siret')) {
+            $table->addColumn('siret', 'text', []);
+        }
+
+        if (!$table->hasColumn('siren')) {
+            $table->addColumn('siren', 'text', []);
+        }
+
+        if (!$table->hasColumn('mail')) {
+            $table->addColumn('mail', 'text', []);
+        }
+
+        if (!$table->hasColumn('telephone')) {
+            $table->addColumn('telephone', 'text', []);
+        }
+
+        if (!$table->hasColumn('adresse')) {
+            $table->addColumn('adresse', 'text', []);
+        }
+
+        if (!$table->hasColumn('path')) {
+            $table->addColumn('path', 'text', []);
+        }
+
+        if (!$table->hasColumn('mentions_default')) {
+            $table->addColumn('mentions_default', 'string', ['default'=>'Legales mentions']);
+        }else{
+            $column = $table->getColumn('mentions_default');
+            $column->setOptions(['default'=>'Legales mentions']);
+        }
+
+        if (!$table->hasColumn('tva_default')) {
+            $table->addColumn('tva_default', 'float', ['default' => 0]);
+        }else{
+            $column = $table->getColumn('tva_default');
+            $column->setOptions(['default' => 0]);
+        }
+
+        if (!$table->hasColumn('changelog')) {
+            $table->addColumn('changelog', 'string', ['default' => '0']);
+        }else{
+            $column = $table->getColumn('changelog');
+            $column->setOptions(['default' => '0']);
+        }
+
+        if (!$table->hasColumn('id_nextcloud')) {
+            $table->addColumn('id_nextcloud', 'string', ['length' => 64]);
+        }
+        
+        /**DEVIS**/
         if (!$schema->hasTable($tableprefix.'devis')) {
             $table = $schema->createTable($tableprefix.'devis');
-            $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-            $table->addColumn('date', 'date', []);
-            $table->addColumn('num', 'text', []);
-            $table->addColumn('comment', 'text', []);
-            $table->addColumn('version', 'string', ['length' => 64,]);
-            $table->addColumn('mentions', 'text', []);
-            $table->addColumn('id_client', 'integer', ['length' => 11,]);
-            $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
+        }
+
+        $table = $schema->getTable($tableprefix.'devis');
+        if (!$table->hasColumn('id')) {
+            $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true]);
             $table->setPrimaryKey(['id']);
+        }
+        
+        if (!$table->hasColumn('date')) {
+            $table->addColumn('date', 'date', []);
+        }
+
+        if (!$table->hasColumn('num')) {
+            $table->addColumn('num', 'text', []);
+        }
+
+        if (!$table->hasColumn('comment')) {
+            $table->addColumn('comment', 'string', ['default' => "comment"]);
         }else{
-            $table = $schema->getTable($tableprefix.'devis');
-            if (!$table->hasColumn('id')) {
-                $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-            }
-            if (!$table->hasColumn('date')) {
-                $table->addColumn('date', 'date', []);
-            }
-            if (!$table->hasColumn('num')) {
-                $table->addColumn('num', 'text', []);
-            }
-            if (!$table->hasColumn('comment')) {
-                $table->addColumn('comment', 'string', ['default' => "commentaire"]);
-            }
-            if (!$table->hasColumn('version')) {
-                $table->addColumn('version', 'string', ['length' => 64, 'default' => "1.0"]);
-            }
-            if (!$table->hasColumn('mentions')) {
-                $table->addColumn('mentions', 'string', ['default' => "création"]);
-            }
-            if (!$table->hasColumn('id_client')) {
-                $table->addColumn('id_client', 'integer', ['length' => 11,]);
-            }
-            if (!$table->hasColumn('id_nextcloud')) {
-                $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
-            }
+            $column = $table->getColumn('comment');
+            $column->setOptions(['default' => 'comment']);
+        }
+
+        if (!$table->hasColumn('version')) {
+            $table->addColumn('version', 'string', ['length' => 64, 'default' => "1.0"]);
+        }else{
+            $column = $table->getColumn('version');
+            $column->setOptions(['default' => '1.0']);
+        }
+
+        if (!$table->hasColumn('mentions')) {
+            $table->addColumn('mentions', 'string', ['default' => "New"]);
+        }else{
+            $column = $table->getColumn('mentions');
+            $column->setOptions(['default' => 'New']);
+        }
+
+        if (!$table->hasColumn('id_client')) {
+            $table->addColumn('id_client', 'integer', ['length' => 11]);
+        }
+
+        if (!$table->hasColumn('id_nextcloud')) {
+            $table->addColumn('id_nextcloud', 'string', ['length' => 64]);
         }
 
         /**FACTURE**/
@@ -199,90 +211,102 @@ class Version4Date20211110180142 extends SimpleMigrationStep {
         }
 
         if (!$table->hasColumn('type_paiement')) {
-            $table->addColumn('type_paiement', 'string', ['length' => 64,]);
+            $table->addColumn('type_paiement', 'string', ['length' => 64]);
         }
         
         if (!$table->hasColumn('status_paiement')) {
-            $table->addColumn('status_paiement', 'string', ['length' => 64, 'default' => 'NC',]);
+            $table->addColumn('status_paiement', 'string', ['length' => 64, 'default' => 'NC']);
         }else{
             $column = $table->getColumn('status_paiement');
-            $column->setOptions(['default' => 'NC',]);
+            $column->setOptions(['default' => 'NC']);
         }
         
         if (!$table->hasColumn('version')) {
-            $table->addColumn('version', 'string', ['length' => 64, 'default' => '1.0',]);
+            $table->addColumn('version', 'string', ['length' => 64, 'default' => '1.0']);
         }else{
             $column = $table->getColumn('version');
-            $column->setOptions(['default' => '1.0',]);
+            $column->setOptions(['default' => '1.0']);
         }
         if (!$table->hasColumn('id_devis')) {
-            $table->addColumn('id_devis', 'integer', ['length' => 11,]);
+            $table->addColumn('id_devis', 'integer', ['length' => 11]);
         }
 
         if (!$table->hasColumn('id_nextcloud')) {
-            $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
+            $table->addColumn('id_nextcloud', 'string', ['length' => 64]);
         }
 
         /** PRODUIT **/
         if (!$schema->hasTable($tableprefix.'produit')) {
             $table = $schema->createTable($tableprefix.'produit');
-            $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-            $table->addColumn('reference', 'text', []);
-            $table->addColumn('description', 'text', []);
-            $table->addColumn('prix_unitaire', 'float', []);
-            $table->addColumn('vat', 'float', []);
-            $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
-            $table->setPrimaryKey(['id']);
-        }else{
-            $table = $schema->getTable($tableprefix.'produit');
-            if (!$table->hasColumn('id')) {
-                $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-            }
-            if (!$table->hasColumn('reference')) {
-                $table->addColumn('reference', 'text', []);
-            }
-            if (!$table->hasColumn('description')) {
-                $table->addColumn('description', 'text', []);
-            }
-            if (!$table->hasColumn('prix_unitaire')) {
-                $table->addColumn('prix_unitaire', 'float', []);
-            }
-            if (!$table->hasColumn('vat')) {
-                $table->addColumn('vat', 'float', []);
-            }
-            if (!$table->hasColumn('id_nextcloud')) {
-                $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
-            }
         }
 
+        $table = $schema->getTable($tableprefix.'produit');
+        if (!$table->hasColumn('id')) {
+            $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
+            $table->setPrimaryKey(['id']);
+        }
+
+        if (!$table->hasColumn('reference')) {
+            $table->addColumn('reference', 'text', []);
+        }
+
+        if (!$table->hasColumn('description')) {
+            $table->addColumn('description', 'text', []);
+        }
+
+        if (!$table->hasColumn('prix_unitaire')) {
+            $table->addColumn('prix_unitaire', 'float', ['default' => 0]);
+        }else{
+            $column = $table->getColumn('prix_unitaire');
+            $column->setOptions(['default' => 0]);
+        }
+
+        if (!$table->hasColumn('vat')) {
+            $table->addColumn('vat', 'float', ['default' => 0]);
+        }else{
+            $column = $table->getColumn('vat');
+            $column->setOptions(['default' => 0]);
+        }
+
+        if (!$table->hasColumn('id_nextcloud')) {
+            $table->addColumn('id_nextcloud', 'string', ['length' => 64]);
+        }
+
+        /** PRODUIT_DEVIS **/
         if (!$schema->hasTable($tableprefix.'produit_devis')) {
             $table = $schema->createTable($tableprefix.'produit_devis');
-            $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-            $table->addColumn('devis_id', 'integer', ['length' => 11,]);
-            $table->addColumn('produit_id', 'integer', ['length' => 11,]);
-            $table->addColumn('quantite', 'integer', ['length' => 11,]);
-            $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
-            $table->setPrimaryKey(['id']);
-        }else{
-            $table = $schema->getTable($tableprefix.'produit_devis');
-            if (!$table->hasColumn('id')) {
-                $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
-            }
-            if (!$table->hasColumn('devis_id')) {
-                $table->addColumn('devis_id', 'integer', ['length' => 11,]);
-            }
-            if (!$table->hasColumn('produit_id')) {
-                $table->addColumn('produit_id', 'integer', ['length' => 11,]);
-            }
-            if (!$table->hasColumn('quantite')) {
-                $table->addColumn('quantite', 'integer', ['length' => 11,]);
-            }
-            if (!$table->hasColumn('id_nextcloud')) {
-                $table->addColumn('id_nextcloud', 'string', ['length' => 64,]);
-            }
         }
 
-          return $schema;
+        $table = $schema->getTable($tableprefix.'produit_devis');
+        if (!$table->hasColumn('id')) {
+            $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
+            $table->setPrimaryKey(['id']);
+        }
+
+        if (!$table->hasColumn('devis_id')) {
+            $table->addColumn('devis_id', 'integer', ['length' => 11,]);
+        }
+
+        if (!$table->hasColumn('produit_id')) {
+            $table->addColumn('produit_id', 'integer', ['length' => 11,]);
+        }
+
+        if (!$table->hasColumn('quantite')) {
+            $table->addColumn('quantite', 'integer', ['length' => 11,]);
+        }
+
+        if (!$table->hasColumn('discount')) {
+            $table->addColumn('discount', 'integer', ['length' => 11, 'default' => 0]);
+        }else{
+            $column = $table->getColumn('discount');
+            $column->setOptions(['default' => 0]);
+        }
+
+        if (!$table->hasColumn('id_nextcloud')) {
+            $table->addColumn('id_nextcloud', 'string', ['length' => 64]);
+        }
+
+        return $schema;
 	}
 
 	/**

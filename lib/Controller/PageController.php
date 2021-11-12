@@ -43,8 +43,9 @@ class PageController extends Controller {
 		}
 		
 		\OCP\Util::addScript('gestion', 'bundle');
-		\OCP\Util::addScript('gestion', '120.bundle');
-		\OCP\Util::addScript('gestion', '513.bundle');
+		// \OCP\Util::addScript('gestion', '120.bundle');
+		// \OCP\Util::addScript('gestion', '513.bundle');
+		\OCP\Util::addScript('gestion', '820.bundle');
 		\OCP\Util::addScript('gestion', '856.bundle');
 	}
 

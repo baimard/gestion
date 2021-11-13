@@ -22,6 +22,7 @@ OC.L10N.register(
     "Choose customer" : "Kies klant",
     "Added" : "Toegevoegd",
     "Save in" : "Bewaren in",
+    "My company" : "Mijn bedrijf",
     "Configuration" : "Configuratie",
     "Actions" : "Acties",
     "FROM" : "VAN",
@@ -35,7 +36,6 @@ OC.L10N.register(
     "Add invoice" : "Factuur toevoegen",
     "Payment date" : "Betaaldatum",
     "Invoice #" : "Factuur #",
-    "My company" : "Mijn bedrijf",
     "Customer" : "Klant",
     "Product" : "Product"
 },

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-12 03:22+0000\n"
+"POT-Creation-Date: 2021-11-13 03:27+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2021\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -22,78 +22,78 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: /app/lib/Controller/PageController.php:216
+#: /app/lib/Controller/PageController.php:217
 #: /app/templates/content/configuration.php:15
-#: /app/templates/content/index.php:28
+#: /app/templates/content/index.php:18
 msgid "Name"
 msgstr "Nom"
 
-#: /app/lib/Controller/PageController.php:217
+#: /app/lib/Controller/PageController.php:218
 #: /app/templates/content/configuration.php:16
-#: /app/templates/content/index.php:29
+#: /app/templates/content/index.php:19
 msgid "First name"
 msgstr "Prénom"
 
-#: /app/lib/Controller/PageController.php:218
+#: /app/lib/Controller/PageController.php:219
 #: /app/templates/content/configuration.php:17
 #: /app/templates/content/devisshow.php:25
 #: /app/templates/content/devisshow.php:79
 #: /app/templates/content/factureshow.php:25
 #: /app/templates/content/factureshow.php:74
-#: /app/templates/content/index.php:30
+#: /app/templates/content/index.php:20
 msgid "Limited company"
 msgstr "Siret"
 
-#: /app/lib/Controller/PageController.php:219
+#: /app/lib/Controller/PageController.php:220
 #: /app/templates/content/configuration.php:14
 #: /app/templates/content/devisshow.php:79
 #: /app/templates/content/factureshow.php:74
-#: /app/templates/content/index.php:27
+#: /app/templates/content/index.php:17
 msgid "Company"
 msgstr "Société"
 
-#: /app/lib/Controller/PageController.php:220
+#: /app/lib/Controller/PageController.php:221
 #: /app/templates/content/configuration.php:19
-#: /app/templates/content/index.php:31
+#: /app/templates/content/index.php:21
 msgid "Phone number"
 msgstr "Téléphone"
 
-#: /app/lib/Controller/PageController.php:221
+#: /app/lib/Controller/PageController.php:222
 #: /app/templates/content/configuration.php:20
-#: /app/templates/content/index.php:32
+#: /app/templates/content/index.php:22
 msgid "Email"
 msgstr "Email"
 
-#: /app/lib/Controller/PageController.php:222
+#: /app/lib/Controller/PageController.php:223
 #: /app/templates/content/configuration.php:21
-#: /app/templates/content/index.php:33
+#: /app/templates/content/index.php:23
 msgid "Address"
 msgstr "Adresse"
 
-#: /app/lib/Controller/PageController.php:233
+#: /app/lib/Controller/PageController.php:234
 #: /app/templates/content/devis.php:18
 msgid "Quote number"
 msgstr "Numéro de devis"
 
-#: /app/lib/Controller/PageController.php:244
+#: /app/lib/Controller/PageController.php:245
 #: /app/templates/content/facture.php:17
 msgid "Invoice number"
 msgstr "Numéro de facture"
 
-#: /app/lib/Controller/PageController.php:245
+#: /app/lib/Controller/PageController.php:246
 #: /app/templates/content/facture.php:20
 #: /app/templates/content/factureshow.php:34
 msgid "Means of payment"
 msgstr "Moyen de paiement"
 
-#: /app/lib/Controller/PageController.php:256
+#: /app/lib/Controller/PageController.php:257
 #: /app/templates/content/devisshow.php:47
 #: /app/templates/content/factureshow.php:43
 #: /app/templates/content/produit.php:17
 msgid "Reference"
 msgstr "Référence"
 
-#: /app/lib/Controller/PageController.php:257
+#: /app/lib/Controller/PageController.php:258
 #: /app/templates/content/devisshow.php:48
 #: /app/templates/content/factureshow.php:44
 #: /app/templates/content/produit.php:18
@@ -191,19 +191,19 @@ msgstr "Choisir le répertoire de travail"
 msgid "Please create a new product"
 msgstr ""
 
-#: /app/src/js/main.js:248 /app/src/js/main.js:273
+#: /app/src/js/main.js:247 /app/src/js/main.js:272
 msgid "Open"
 msgstr "Ouvrir"
 
-#: /app/src/js/main.js:335
+#: /app/src/js/main.js:334
 msgid "Choose customer"
 msgstr "Choisir un client"
 
-#: /app/src/js/main.js:345
+#: /app/src/js/main.js:344
 msgid "Choose quote"
 msgstr "Choisir un devis"
 
-#: /app/src/js/main.js:462
+#: /app/src/js/main.js:461
 msgid "Added"
 msgstr "Ajouté"
 
@@ -218,6 +218,82 @@ msgstr "Sauvegarder dans"
 #: /app/src/js/pdf.js:69
 msgid "There is an error"
 msgstr "Il y a une erreur"
+
+#: /app/templates/content/changelog.php:4
+msgid "Welcome to GESTION"
+msgstr ""
+
+#: /app/templates/content/changelog.php:5
+msgid ""
+"To start with this application you need to configure your company "
+"information, follow this link"
+msgstr ""
+
+#: /app/templates/content/changelog.php:5 /app/templates/settings/index.php:10
+msgid "My company"
+msgstr "Mon entreprise"
+
+#: /app/templates/content/changelog.php:6
+msgid ""
+"This application is an open source application design by Benjamin AIMARD. If"
+" you like my work you can"
+msgstr ""
+
+#: /app/templates/content/changelog.php:6
+msgid "buy me a coffee"
+msgstr ""
+
+#: /app/templates/content/changelog.php:7
+msgid "If you need documentation, follow this link"
+msgstr ""
+
+#: /app/templates/content/changelog.php:7
+msgid "Documentation"
+msgstr ""
+
+#: /app/templates/content/changelog.php:8
+msgid "Others questions?"
+msgstr ""
+
+#: /app/templates/content/changelog.php:8
+msgid "Contact"
+msgstr ""
+
+#: /app/templates/content/changelog.php:9
+msgid "Only if you like this application :), let me a comment!"
+msgstr ""
+
+#: /app/templates/content/changelog.php:9
+msgid "Nextcloud apps"
+msgstr ""
+
+#: /app/templates/content/changelog.php:11
+msgid "Change log"
+msgstr ""
+
+#: /app/templates/content/changelog.php:14
+msgid "Possibility to add comment in quote"
+msgstr ""
+
+#: /app/templates/content/changelog.php:15
+msgid "Global VAT rate"
+msgstr ""
+
+#: /app/templates/content/changelog.php:16
+msgid "Add version for quote and invoice"
+msgstr ""
+
+#: /app/templates/content/changelog.php:17
+msgid "States for invoice and quote, like sent, canceled or whatever you want"
+msgstr ""
+
+#: /app/templates/content/changelog.php:18
+msgid "All libraries updated"
+msgstr ""
+
+#: /app/templates/content/changelog.php:19
+msgid "Multiple bugs corrections"
+msgstr ""
 
 #: /app/templates/content/configuration.php:8
 #: /app/templates/settings/index.php:4
@@ -269,7 +345,7 @@ msgid "Stats"
 msgstr "Statistiques"
 
 #: /app/templates/content/devis.php:22 /app/templates/content/facture.php:24
-#: /app/templates/content/index.php:34 /app/templates/content/produit.php:20
+#: /app/templates/content/index.php:24 /app/templates/content/produit.php:20
 msgid "Actions"
 msgstr "Actions"
 
@@ -371,51 +447,11 @@ msgstr "Date de règlement"
 msgid "date of service"
 msgstr "date de réalisation"
 
-#: /app/templates/content/index.php:5
-msgid "Welcome to GESTION"
-msgstr ""
-
-#: /app/templates/content/index.php:6
-msgid ""
-"This application is an opensource application design by Benjamin AIMARD, if "
-"you like my work you can"
-msgstr ""
-
-#: /app/templates/content/index.php:6
-msgid "buy me a cofee"
-msgstr ""
-
-#: /app/templates/content/index.php:7
-msgid ""
-"To start with this application you need to configure your entreprise "
-"information, follow this link"
-msgstr ""
-
-#: /app/templates/content/index.php:7 /app/templates/settings/index.php:9
-msgid "My company"
-msgstr "Mon entreprise"
-
-#: /app/templates/content/index.php:8
-msgid "If you need documentation, follow this link"
-msgstr ""
-
-#: /app/templates/content/index.php:8
-msgid "Documentation"
-msgstr ""
-
-#: /app/templates/content/index.php:9
-msgid "Others questions ?"
-msgstr ""
-
-#: /app/templates/content/index.php:9
-msgid "Contact"
-msgstr ""
-
-#: /app/templates/content/index.php:18 /app/templates/navigation/index.php:2
+#: /app/templates/content/index.php:8 /app/templates/navigation/index.php:2
 msgid "Customer"
 msgstr "Client"
 
-#: /app/templates/content/index.php:21
+#: /app/templates/content/index.php:11
 msgid "Add customer"
 msgstr "Ajouter client"
 
@@ -423,6 +459,10 @@ msgstr "Ajouter client"
 msgid "Product"
 msgstr "Produit"
 
-#: /app/templates/settings/index.php:10
+#: /app/templates/settings/index.php:9
+msgid "About"
+msgstr ""
+
+#: /app/templates/settings/index.php:12
 msgid "Save folder"
 msgstr "Dossier de sauvegarde"

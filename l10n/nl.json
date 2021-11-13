@@ -20,6 +20,7 @@
     "Choose customer" : "Kies klant",
     "Added" : "Toegevoegd",
     "Save in" : "Bewaren in",
+    "My company" : "Mijn bedrijf",
     "Configuration" : "Configuratie",
     "Actions" : "Acties",
     "FROM" : "VAN",
@@ -33,7 +34,6 @@
     "Add invoice" : "Factuur toevoegen",
     "Payment date" : "Betaaldatum",
     "Invoice #" : "Factuur #",
-    "My company" : "Mijn bedrijf",
     "Customer" : "Klant",
     "Product" : "Product"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

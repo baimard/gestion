@@ -6,7 +6,7 @@
 		<p style="margin-bottom:20px;"><?php p($l->t('This application is an open source application design by Benjamin AIMARD. If you like my work you can'));?> &#129321; <a href="https://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a coffee'));?></a> &#129321;</p>
 		<p style="margin-bottom:20px;"><?php p($l->t('If you need documentation, follow this link'));?> &#128073; <a href="https://baimard.github.io/gestion/"><?php p($l->t('Documentation'));?></a></p>
 		<p style="margin-bottom:20px;"><?php p($l->t('Others questions?'));?> &#128073; <a href="mailto:contact@cybercorp.fr"><?php p($l->t('Contact'));?></a></p>
-		<p style="margin-bottom:20px;"><?php p($l->t('Only if you like this application :), let me a comment!'));?> &#128073; <a href="https://apps.nextcloud.com/apps/gestion"><?php p($l->t('Nextcloud apps'));?></a></p>
+		<p style="margin-bottom:20px;"><?php p($l->t('Leave me a comment, but only if you like this application :)'));?> &#128073; <a href="https://apps.nextcloud.com/apps/gestion"><?php p($l->t('Nextcloud apps'));?></a></p>
 		<hr/>	
 		<h2><?php p($l->t('Change log'));?> v1.2.0</h2>
 		<p>

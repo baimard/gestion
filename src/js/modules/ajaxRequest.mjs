@@ -1,5 +1,7 @@
 import {showMessage,showError} from "@nextcloud/dialogs";
 import {generateUrl} from "@nextcloud/router";
+import { configureDT, showDone } from "./mainFunction.mjs";
+import { Product } from "../objects/product.mjs";
 var baseUrl = generateUrl('/apps/gestion');
 
 /**
@@ -33,6 +35,22 @@ export function getDevis(callback) {
     }).fail(function(response, code) {
         showError(response);
     });
+}
+
+/**
+ * New invoice
+ */
+export function newInvoice() {
+    $.ajax({
+        url: baseUrl + '/facture/insert',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json'
+    }).fail(function(response, code) {
+        showError(response);
+    }).done(
+        showDone()
+    );
 }
 
 /**
@@ -82,6 +100,28 @@ export function deleteDB(table, id) {
         data: JSON.stringify(myData)
     }).done(function(response, code) {
         showMessage(t('gestion', 'Modification saved'));
+    }).fail(function(response, code) {
+        showError(response);
+    });
+}
+
+/**
+ * Load product ajax
+ */
+
+ export function loadProduitDT(productDT) {
+    $.ajax({
+        url: baseUrl + '/getProduits',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function(response) {
+        productDT.clear();
+        $.each(JSON.parse(response), function(arrayID, myresp) {
+            let p = new Product(myresp);
+            productDT.row.add(p.getDTRow());
+        });
+        productDT.columns.adjust().draw();
+        configureDT();
     }).fail(function(response, code) {
         showError(response);
     });

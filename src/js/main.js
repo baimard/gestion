@@ -1,14 +1,18 @@
 import $ from 'jquery';
+
 import {generateUrl, linkTo} from "@nextcloud/router";
 import {FilePicker,showMessage,showError} from "@nextcloud/dialogs";
 import {getCanonicalLocale, translate as t, translatePlural as n} from '@nextcloud/l10n'
+
 import '@nextcloud/dialogs/styles/toast.scss'
 import '../css/mycss.less';
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net';
+
 import 'bootstrap/js/dist/util';
-import { getClients, getDevis, updateDB, deleteDB} from "./modules/ajaxRequest.mjs";
-import { configureDT, langage } from "./modules/mainFunction.mjs";
+
+import { getClients, getDevis, newInvoice, updateDB, deleteDB, loadProduitDT} from "./modules/ajaxRequest.mjs";
+import { configureDT, showDone, langage } from "./modules/mainFunction.mjs";
 
 var baseUrl = generateUrl('/apps/gestion');
 const euro = new Intl.NumberFormat('fr-FR', {style: 'currency',currency: 'EUR',minimumFractionDigits: 2});
@@ -51,7 +55,7 @@ $(window).on("load", function() {
     if ($('#configuration').length) {configuration(lcdt);}
     if ($('#devis').length) {loadDevisDT();}
     if ($('#facture').length) {loadFactureDT();}
-    if ($('#produit').length) {loadProduitDT();}
+    if ($('#produit').length) {loadProduitDT($('#produit').DataTable());}
 
     configuration(path);
 });
@@ -109,7 +113,7 @@ $('body').on('click', '.deleteItem', function() {
     if (modifier === "client") {loadClientDT();}
     if (modifier === "devis") {loadDevisDT();}
     if (modifier === "facture") {loadFactureDT();}
-    if (modifier === "produit") {loadProduitDT();}
+    if (modifier === "produit") {loadProduitDT($('#produit').DataTable());}
 });
 
 $('body').on('change', '.listClient,.listDevis', function(){
@@ -180,14 +184,14 @@ $('body').on('click', '#newDevis', function() {
     loadDevisDT();
 });
 
-$('body').on('click', '#newFacture', function() {
-    newFacture();
+$('body').on('click', '#newInvoice', function() {
+    newInvoice();
     loadFactureDT();
 });
 
 $('body').on('click', '#newProduit', function() {
     newProduit();
-    loadProduitDT();
+    loadProduitDT($('#produit').DataTable());
 });
 
 $('body').on('click', '#about', function() {
@@ -202,29 +206,6 @@ function updateEditable(myCase){
     }
     myCase.attr('contenteditable', 'false');
     myCase.removeAttr('contenteditable');
-}
-
-function loadProduitDT() {
-    $.ajax({
-        url: baseUrl + '/getProduits',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function(response) {
-        $('#produit').DataTable().clear();
-        $.each(JSON.parse(response), function(arrayID, myresp) {
-            $('#produit').DataTable().row.add([
-                '<div class="editable" data-table="produit" data-column="reference" data-id="' + myresp.id + '">' + ((myresp.reference.length === 0) ? '-' : myresp.reference) + '</div>',
-                '<div class="editable" data-table="produit" data-column="description" data-id="' + myresp.id + '">' + ((myresp.description.length === 0) ? '-' : myresp.description) + '</div>',
-                '<div class="editable" data-table="produit" data-column="prix_unitaire" data-id="' + myresp.id + '">' + ((myresp.prix_unitaire.length === 0) ? '-' : myresp.prix_unitaire) + '</div>',
-                '<div data-modifier="produit" data-id=' + myresp.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
-                
-            ]);
-        });
-        $('#produit').DataTable().columns.adjust().draw();
-        configureDT();
-    }).fail(function(response, code) {
-        showError(response);
-    });
 }
 
 function loadFactureDT() {
@@ -457,21 +438,8 @@ function getProduitsById() {
     });
 }
 
-function showDone() {
-    showMessage(t('gestion', 'Added'));
-}
 
 
-function newFacture() {
-    $.ajax({
-        url: baseUrl + '/facture/insert',
-        type: 'POST',
-        async: false,
-        contentType: 'application/json'
-    }).fail(function(response, code) {
-        showError(response);
-    }).done(showDone());
-}
 
 function newDevis() {
     $.ajax({

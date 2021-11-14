@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-13 03:27+0000\n"
+"POT-Creation-Date: 2021-11-14 03:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -232,8 +232,8 @@ msgstr ""
 
 #: /app/templates/content/changelog.php:6
 msgid ""
-"This application is an open source application design by Benjamin AIMARD. If "
-"you like my work you can"
+"This application is an open source application designed by Benjamin AIMARD. "
+"If you like my work you can"
 msgstr ""
 
 #: /app/templates/content/changelog.php:6
@@ -257,7 +257,7 @@ msgid "Contact"
 msgstr ""
 
 #: /app/templates/content/changelog.php:9
-msgid "Only if you like this application :), let me a comment!"
+msgid "Leave me a comment, but only if you like this application :)"
 msgstr ""
 
 #: /app/templates/content/changelog.php:9

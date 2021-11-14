@@ -36,6 +36,13 @@
                 <hr/>
             </div>
         </div>
+        <div class="row">
+            <div class="col col-md">
+                <hr />
+                <div class="col col-xl mb-3 text-center" style="display:inline" ><?php echo ($_['facture'][0]->comment == "" ) ? "-" : $_['facture'][0]->comment ; ?></div>
+                <hr />
+            </div>
+        </div>
         <div class="table-responsive">
             <table id="produits" data-type="facture" class="table table-striped">
                 <thead>

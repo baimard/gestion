@@ -49,7 +49,7 @@ class Bdd {
     }
 
     public function getOneFacture($numfacture, $idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."facture.id," . $this->tableprefix . "facture.version," . $this->tableprefix . "facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, date_paiement, type_paiement, id_devis, nom, prenom, entreprise FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id WHERE ".$this->tableprefix."facture.id = ? AND ".$this->tableprefix."facture.id_nextcloud = ?";
+        $sql = "SELECT ".$this->tableprefix."facture.id," . $this->tableprefix . "facture.version," . $this->tableprefix . "facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, comment, date_paiement, type_paiement, id_devis, nom, prenom, entreprise FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id WHERE ".$this->tableprefix."facture.id = ? AND ".$this->tableprefix."facture.id_nextcloud = ?";
         return $this->execSQL($sql, array($numfacture, $idNextcloud));
     }
 

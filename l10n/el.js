@@ -19,7 +19,6 @@ OC.L10N.register(
     "Next" : "Επόμενο",
     "Previous" : "Προηγούμενο",
     "Open" : "Άνοιγμα",
-    "Added" : "Προστέθηκε",
     "Save in" : "Αποθήκευση σε",
     "There is an error" : "Παρουσιάστηκε σφάλμα",
     "My company" : "Η εταιρία μου",

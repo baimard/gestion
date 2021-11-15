@@ -33,7 +33,6 @@ OC.L10N.register(
     "Open" : "Открыть",
     "Choose customer" : "Выбрать клиента",
     "Choose quote" : "Выбрать номер",
-    "Added" : "Добавлена",
     "Creation in progress …" : "Идёт создание ...",
     "Save in" : "Сохранить в",
     "There is an error" : "Возникла ошибка",

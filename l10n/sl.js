@@ -33,7 +33,6 @@ OC.L10N.register(
     "Open" : "Odpri",
     "Choose customer" : "Izbor stranke",
     "Choose quote" : "Izbor ponudbe",
-    "Added" : "Dodano",
     "Creation in progress …" : "Poteka ustvarjanje vpisa ...",
     "Save in" : "Shrani v",
     "There is an error" : "Prišlo je do napake",

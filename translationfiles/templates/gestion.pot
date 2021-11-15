@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-14 03:25+0000\n"
+"POT-Creation-Date: 2021-11-15 03:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr ""
 #: /app/templates/content/devisshow.php:25
 #: /app/templates/content/devisshow.php:79
 #: /app/templates/content/factureshow.php:25
-#: /app/templates/content/factureshow.php:74
+#: /app/templates/content/factureshow.php:81
 #: /app/templates/content/index.php:20
 msgid "Limited company"
 msgstr ""
@@ -42,7 +42,7 @@ msgstr ""
 #: /app/lib/Controller/PageController.php:220
 #: /app/templates/content/configuration.php:14
 #: /app/templates/content/devisshow.php:79
-#: /app/templates/content/factureshow.php:74
+#: /app/templates/content/factureshow.php:81
 #: /app/templates/content/index.php:17
 msgid "Company"
 msgstr ""
@@ -83,14 +83,14 @@ msgstr ""
 
 #: /app/lib/Controller/PageController.php:257
 #: /app/templates/content/devisshow.php:47
-#: /app/templates/content/factureshow.php:43
+#: /app/templates/content/factureshow.php:50
 #: /app/templates/content/produit.php:17
 msgid "Reference"
 msgstr ""
 
 #: /app/lib/Controller/PageController.php:258
 #: /app/templates/content/devisshow.php:48
-#: /app/templates/content/factureshow.php:44
+#: /app/templates/content/factureshow.php:51
 #: /app/templates/content/produit.php:18
 msgid "Designation"
 msgstr ""
@@ -128,80 +128,76 @@ msgid ""
 "benjaminaimard)"
 msgstr ""
 
-#: /app/src/js/main.js:24
+#: /app/src/js/main.js:28
 msgid "Search"
 msgstr ""
 
-#: /app/src/js/main.js:25
+#: /app/src/js/main.js:29
 msgid "No data available in table"
 msgstr ""
 
-#: /app/src/js/main.js:26
+#: /app/src/js/main.js:30
 msgid "Showing {start} to {end} of {total} entries"
 msgstr ""
 
-#: /app/src/js/main.js:27
+#: /app/src/js/main.js:31
 msgid "Showing 0 to 0 of 0 entries"
 msgstr ""
 
-#: /app/src/js/main.js:28
+#: /app/src/js/main.js:32
 msgid "Loading records …"
 msgstr ""
 
-#: /app/src/js/main.js:29
+#: /app/src/js/main.js:33
 msgid "Processing …"
 msgstr ""
 
-#: /app/src/js/main.js:30
+#: /app/src/js/main.js:34
 msgid "{max} entries filtered"
 msgstr ""
 
-#: /app/src/js/main.js:31
+#: /app/src/js/main.js:35
 msgid "Show {menu} entries"
 msgstr ""
 
-#: /app/src/js/main.js:32
+#: /app/src/js/main.js:36
 msgid "No corresponding entry"
 msgstr ""
 
-#: /app/src/js/main.js:34
+#: /app/src/js/main.js:38
 msgid "First"
 msgstr ""
 
-#: /app/src/js/main.js:35
+#: /app/src/js/main.js:39
 msgid "Last"
 msgstr ""
 
-#: /app/src/js/main.js:36
+#: /app/src/js/main.js:40
 msgid "Next"
 msgstr ""
 
-#: /app/src/js/main.js:37
+#: /app/src/js/main.js:41
 msgid "Previous"
 msgstr ""
 
-#: /app/src/js/main.js:60
+#: /app/src/js/main.js:64
 msgid "Choose work folder"
 msgstr ""
 
-#: /app/src/js/main.js:169
+#: /app/src/js/main.js:173
 msgid "Please create a new product"
 msgstr ""
 
-#: /app/src/js/main.js:247 /app/src/js/main.js:272
+#: /app/src/js/main.js:228 /app/src/js/main.js:253
 msgid "Open"
 msgstr ""
 
-#: /app/src/js/main.js:334
+#: /app/src/js/main.js:315
 msgid "Choose customer"
 msgstr ""
 
-#: /app/src/js/main.js:344
+#: /app/src/js/main.js:325
 msgid "Choose quote"
-msgstr ""
-
-#: /app/src/js/main.js:461
-msgid "Added"
 msgstr ""
 
 #: /app/src/js/pdf.js:11
@@ -299,7 +295,7 @@ msgstr ""
 
 #: /app/templates/content/configuration.php:18
 #: /app/templates/content/devisshow.php:79
-#: /app/templates/content/factureshow.php:74
+#: /app/templates/content/factureshow.php:81
 msgid "Unique identification"
 msgstr ""
 
@@ -365,20 +361,20 @@ msgid "Offer valid for 1 month from"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:49
-#: /app/templates/content/factureshow.php:45
+#: /app/templates/content/factureshow.php:52
 msgid "Quantity"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:50
-#: /app/templates/content/factureshow.php:46
+#: /app/templates/content/factureshow.php:53
 #: /app/templates/content/produit.php:19
 msgid "Unit price without VAT"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:51
 #: /app/templates/content/devisshow.php:64
-#: /app/templates/content/factureshow.php:47
-#: /app/templates/content/factureshow.php:59
+#: /app/templates/content/factureshow.php:54
+#: /app/templates/content/factureshow.php:66
 msgid "Total without VAT"
 msgstr ""
 
@@ -388,22 +384,22 @@ msgid "Add product"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:58
-#: /app/templates/content/factureshow.php:53
+#: /app/templates/content/factureshow.php:60
 msgid "Save in Nextcloud"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:65
-#: /app/templates/content/factureshow.php:60
+#: /app/templates/content/factureshow.php:67
 msgid "VAT Rate"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:66
-#: /app/templates/content/factureshow.php:61
+#: /app/templates/content/factureshow.php:68
 msgid "Total VAT"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:67
-#: /app/templates/content/factureshow.php:62
+#: /app/templates/content/factureshow.php:69
 msgid "Total Price"
 msgstr ""
 

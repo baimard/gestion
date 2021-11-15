@@ -33,7 +33,6 @@ OC.L10N.register(
     "Open" : "Abrir",
     "Choose customer" : "Elegir cliente",
     "Choose quote" : "Elegir cuota",
-    "Added" : "Añadido",
     "Creation in progress …" : "Creación en progreso",
     "Save in" : "Guardar en",
     "There is an error" : "Hay un error",

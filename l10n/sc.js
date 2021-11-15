@@ -30,7 +30,6 @@ OC.L10N.register(
     "Open" : "Aberi",
     "Choose customer" : "Sèbera cliente",
     "Choose quote" : "Sèbera preventivu",
-    "Added" : "Agiuntu",
     "Creation in progress …" : "Creatzione in cursu ...",
     "Save in" : "Sarva in",
     "There is an error" : "B'at un'errore",

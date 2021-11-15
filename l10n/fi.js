@@ -18,7 +18,6 @@ OC.L10N.register(
     "Please create a new product" : "Luo uusi tuote",
     "Open" : "Avaa",
     "Choose customer" : "Valitse asiakas",
-    "Added" : "Lisätty",
     "There is an error" : "Tapahtui virhe",
     "My company" : "Yritykseni",
     "Documentation" : "Dokumentaatio",

@@ -6,15 +6,16 @@
 # Translators:
 # Ldm Public <ldmpub@gmail.com>, 2021
 # Benjamin <benjamin@cybercorp.fr>, 2021
+# Alain Rihs <alainrihs@sunrise.ch>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-16 03:24+0000\n"
+"POT-Creation-Date: 2021-11-17 03:46+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2021\n"
+"Last-Translator: Alain Rihs <alainrihs@sunrise.ch>, 2021\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -130,6 +131,23 @@ msgid ""
 "\n"
 "[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)"
 msgstr ""
+"# Application Gestion Nextcloud\n"
+"\n"
+"Cette application permet la gestion de la facturation de manière très simple pour une Micro-entreprise.\n"
+"\n"
+"Fonctionnalité :\n"
+"\n"
+"* Ajouter un client\n"
+"* Générer un devis\n"
+"* Générer une facture\n"
+"* Générer des gammes de produits à inclure dans les devis\n"
+"* Vous pouvez générer des fichiers PDF directement à partir de l’application et les enregistrer dans votre compte Nextcloud\n"
+"\n"
+"Vidéo de présentation dans la documentation utilisateur\n"
+"\n"
+"Si vous avez besoin d’adapter cette application aux lois de votre pays, veuillez ouvrir un ticket.\n"
+"\n"
+"[Aimez-vous mon travail ? Offrez-moi un café !](https://www.buymeacoffee.com/benjaminaimard)"
 
 #: /app/src/js/main.js:28
 msgid "Search"

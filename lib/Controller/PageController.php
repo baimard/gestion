@@ -207,15 +207,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function insertClient() {
-		return $this->myDb->insertClient(	$this->idNextcloud,
-											$this->l->t('Name'),
-											$this->l->t('First name'),
-											$this->l->t('Limited company'),
-											$this->l->t('Company'),
-											$this->l->t('Phone number'),
-											$this->l->t('Email'),
-											$this->l->t('Address')
-										);
+		return $this->myDb->insertClient($this->idNextcloud);
 	}
 
 	/**
@@ -224,9 +216,7 @@ class PageController extends Controller {
 	 * 
 	 */
 	public function insertDevis(){
-		return $this->myDb->insertDevis(	$this->idNextcloud,
-											$this->l->t('Quote number')
-										);
+		return $this->myDb->insertDevis($this->idNextcloud);
 	}
 
 	/**
@@ -235,10 +225,8 @@ class PageController extends Controller {
 	 * 
 	 */
 	public function insertFacture(){
-		return $this->myDb->insertFacture(	$this->idNextcloud,
-											$this->l->t('Invoice number'),
-											$this->l->t('Means of payment')
-										);
+		$this->myDb->insertFacture($this->idNextcloud);
+		return "ok";
 	}
 
 	/**
@@ -247,10 +235,7 @@ class PageController extends Controller {
 	 * 
 	 */
 	public function insertProduit(){
-		return $this->myDb->insertProduit(	$this->idNextcloud,
-											$this->l->t('Reference'),
-											$this->l->t('Designation')
-										);
+		return $this->myDb->insertProduit($this->idNextcloud);
 	}
 
 	/**

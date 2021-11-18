@@ -433,7 +433,6 @@ function getProduitsById() {
         });
 
         $("#totaldevis tbody").empty();
-        //Dernier ligne de calcul
         getGlobal(total);
     }).fail(function(response, code) {
         showError(response);

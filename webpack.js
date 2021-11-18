@@ -1,12 +1,21 @@
 const path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
     mode: "production",
+    performance: { hints: false },
     entry: ['./src/js/main.js', 
-            './src/js/pdf.js'],
+            './src/js/pdf.js'
+          ],
     output: {
-      filename: '../js/bundle.js'
+      filename: '../js/[name].app.js',
     },
+    plugins: [
+      new webpack.ProvidePlugin({
+          $: "jquery",
+          jQuery: "jquery"
+      })
+    ],
     module: {
         rules: [
             {

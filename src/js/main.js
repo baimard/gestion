@@ -1,4 +1,4 @@
-import $ from 'jquery';
+// import $ from 'jquery';
 
 import {generateUrl, linkTo} from "@nextcloud/router";
 import {FilePicker,showMessage,showError} from "@nextcloud/dialogs";
@@ -8,16 +8,17 @@ import '@nextcloud/dialogs/styles/toast.scss'
 import '../css/mycss.less';
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net';
-
 import 'bootstrap/js/dist/util';
 
 import { getClients, getDevis, newInvoice, updateDB, deleteDB, loadProduitDT} from "./modules/ajaxRequest.mjs";
 import { configureDT, showDone, langage } from "./modules/mainFunction.mjs";
 
 var baseUrl = generateUrl('/apps/gestion');
+console.log(baseUrl);
 const euro = new Intl.NumberFormat('fr-FR', {style: 'currency',currency: 'EUR',minimumFractionDigits: 2});
 
-$(window).on("load", function() {
+
+    $(window).on("load", function() {
 
     //console.log(getCanonicalLocale());
 
@@ -51,6 +52,7 @@ $(window).on("load", function() {
         getClientByIdDevis($('#devisid').data('id'));
         getProduitsById();
     }
+
     if ($('#client').length) {loadClientDT();}
     if ($('#configuration').length) {configuration(lcdt);}
     if ($('#devis').length) {loadDevisDT();}

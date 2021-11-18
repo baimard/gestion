@@ -1,3 +1,5 @@
+<?php require_once('scripts.php'); ?>
+
 <div id="app">
 	<div id="app-navigation">
 		<?php print_unescaped($this->inc('navigation/index')); ?>

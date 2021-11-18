@@ -28,7 +28,7 @@ class PageController extends Controller {
 								IL10N $l,
 								IURLGenerator $urlGenerator)
 	{
-		
+
 		parent::__construct($AppName, $request);
 		$this->idNextcloud = $UserId;
 		$this->UserId = $UserId;
@@ -41,12 +41,6 @@ class PageController extends Controller {
 		}catch(\OC\User\NoUserException $e){
 
 		}
-		
-		\OCP\Util::addScript('gestion', 'bundle');
-		// \OCP\Util::addScript('gestion', '120.bundle');
-		// \OCP\Util::addScript('gestion', '513.bundle');
-		\OCP\Util::addScript('gestion', '820.bundle');
-		\OCP\Util::addScript('gestion', '856.bundle');
 	}
 
 	/**

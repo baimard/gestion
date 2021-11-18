@@ -73,11 +73,11 @@
                 </tbody>
             </table>
         </div>
-            <div class="col m-0 pb-0 alert alert-info text-center">
-                <!-- Need to set in Database -->
-                <p>Délai de paiement le 5ième jour du mois suivant la commande. En cas de retard, une pénalité au taux annuel de 5 % sera appliquée.</p>
-                <p>TVA non applicable, art. 293B du CGI.</p>
-                <hr />
-                <p><?php p($l->t('Company'));?> <?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /> <?php p($l->t('Unique identification'));?> : <?php echo $res->siren; ?> - <?php p($l->t('Limited company'));?> : <?php echo $res->siret; ?></p>
-            </div>
+        <div class="col m-0 pb-0 alert alert-info text-center">
+            <p><span id="mentions_default"><?php p($l->t('Please set in global configuration'));?></span></p>
+        </div>
+        <hr />
+        <div class="col m-0 pb-0 alert alert-info text-center">
+            <p><?php p($l->t('Company'));?> <?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /> <?php p($l->t('Unique identification'));?> : <?php echo $res->siren; ?> - <?php p($l->t('Limited company'));?> : <?php echo $res->siret; ?></p>
+        </div>
     </div>

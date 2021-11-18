@@ -1,10 +1,10 @@
 {
 	"name": "gestion",
 	"description": "Application pour gérer votre micro entreprise, client, facture, devis",
-	"version": "1.0.0",
+	"version": "1.2.0",
 	"author": "Benjamin AIMARD",
 	"contributors": [
-		"benjamin@41m4rd.ovh"
+		"contact@cybercorp.fr"
 	],
 	"bugs": {
 		"url": "https://gitlab.com/baimard/gestion/-/issues"
@@ -50,7 +50,7 @@
 		"sass-loader": "^11.0.1",
 		"style": "0.0.3",
 		"style-loader": "^2.0.0",
-		"webpack": "^5.24.2",
+		"webpack": "^5.61.1",
 		"webpack-cli": "^4.5.0"
 	}
 }

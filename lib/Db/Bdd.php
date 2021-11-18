@@ -15,7 +15,7 @@ class Bdd {
     public function __construct(IDbConnection $db,
                                 IL10N $l) {
         
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise");
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->pdo = $db;
@@ -63,7 +63,7 @@ class Bdd {
     }
 
     public function getOneDevis($numdevis,$idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."devis.id as devisid, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.comment, date, num, id_client, ".$this->tableprefix."client.id as clientid, nom, prenom, siret, entreprise, telephone, mail, adresse FROM ".$this->tableprefix."devis, ".$this->tableprefix."client WHERE id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_nextcloud = ?";
+        $sql = "SELECT ".$this->tableprefix."devis.id as devisid, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.comment, date, num, id_client, ".$this->tableprefix."client.id as clientid, nom, prenom, siret, entreprise, telephone, mail, adresse FROM ".$this->tableprefix."devis left join ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id WHERE ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_nextcloud = ?";
         return $this->execSQL($sql, array($numdevis,$idNextcloud));
     }
 
@@ -111,7 +111,7 @@ class Bdd {
 
     public function insertProduitDevis($id,$idNextcloud){
         $res = $this->searchMaxIdProduit($idNextcloud);
-        $sql = "INSERT INTO `".$this->tableprefix."produit_devis` (`devis_id`, `id_nextcloud`,`produit_id`,`quantite`) VALUES (?,?,?,1);";
+        $sql = "INSERT INTO `".$this->tableprefix."produit_devis` (`devis_id`, `id_nextcloud`,`produit_id`,`quantite`,`discount`) VALUES (?,?,?,1,0);";
         return $this-> execSQL($sql, array($id,$idNextcloud,$res[0]['id']));
 
     }
@@ -151,17 +151,18 @@ class Bdd {
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
         if ( $res < 1 ){
-            $sql = "INSERT INTO `".$this->tableprefix."configuration` (`id`, `entreprise`, `nom`, `prenom`, `siret`, `siren`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, '/', ?, ?, '0');";
-            $this->execSQL($sql, array($this->l->t('Your company data'),
-                                        $this->l->t('Your company data'),
-                                        $this->l->t('Your company data'),
-                                        $this->l->t('Your company data'),
-                                        $this->l->t('Your company data'),
-                                        $this->l->t('Your company data'),
-                                        $this->l->t('Your company data'),
-                                        $this->l->t('Your company data'),
+            $sql = "INSERT INTO `".$this->tableprefix."configuration` (`id`, `entreprise`, `nom`, `prenom`, `siret`, `siren`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, '/', ?, ?, '0',?);";
+            $this->execSQL($sql, array($this->l->t('Your company name'),
+                                        $this->l->t('Your company contact surname'),
+                                        $this->l->t('Your company contact name'),
+                                        $this->l->t('Your Limited company'),
+                                        $this->l->t('Your company Unique identification'),
+                                        $this->l->t('Your company mail'),
+                                        $this->l->t('Your company phone'),
+                                        $this->l->t('Your company address'),
                                         $idNextcloud,
-                                        $this->l->t('Legal Disclaimer ...')
+                                        $this->l->t('All Legal mentions or disclaimer or everything you want in the footer.'),
+                                        $this->l->t('EUR')
                                         )
                                     );
         }

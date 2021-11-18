@@ -8,24 +8,16 @@
             <span><?php p($l->t('Configuration'));?></span>
         </div>
     </div>
-	<table id="configuration" class="display tabledt">
-        <thead>
-            <tr>
-                <th><?php p($l->t('Company'));?></th>
-                <th><?php p($l->t('Name'));?></th>
-                <th><?php p($l->t('First name'));?></th>
-                <th><?php p($l->t('Limited company'));?></th>
-                <th><?php p($l->t('Unique identification'));?></th>
-                <th><?php p($l->t('Phone number'));?></th>
-                <th><?php p($l->t('Email'));?></th>
-                <th><?php p($l->t('Address'));?></th>
-                <th><?php p($l->t('VAT Default'));?></th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-	</table>
-    <hr/>
-    <h2><?php p($l->t('Legal disclaimer'));?></h2>
-    <div id="mentions_default" class="editable" data-table="configuration" data-column="mentions_default" data-id=""><?php p($l->t('Loading'));?></div>
+    <h2 id="configuration"><?php p($l->t('Click to edit'));?></h2>
+    <div class="configuration-global"><div class="configuration-icon icon-timezone"></div><div id="entreprise" class="configuration-content editable" data-table="configuration" data-column="entreprise" data-id=""><?php p($l->t('Loading'));?></div></div>
+    <div class="configuration-global"><div class="configuration-icon icon-user"></div><div id="nom" class="configuration-content editable" data-table="configuration" data-column="nom" data-id=""><?php p($l->t('Loading'));?></div></div>
+    <div class="configuration-global"><div class="configuration-icon icon-user"></div><div id="prenom" class="configuration-content editable" data-table="configuration" data-column="prenom" data-id=""><?php p($l->t('Loading'));?></div></div>
+    <div class="configuration-global"><div class="configuration-icon icon-address"></div><div id="adresse" class="configuration-content editable" data-table="configuration" data-column="adresse" data-id=""><?php p($l->t('Loading'));?></div></div>
+    <div class="configuration-global"><div class="configuration-icon icon-edit"></div><div id="siret" class="configuration-content editable" data-table="configuration" data-column="siret" data-id=""><?php p($l->t('Loading'));?></div></div>
+    <div class="configuration-global"><div class="configuration-icon icon-category-enabled"></div><div id="siren" class="configuration-content editable" data-table="configuration" data-column="siren" data-id=""><?php p($l->t('Loading'));?></div></div>
+    <div class="configuration-global"><div class="configuration-icon icon-phone"></div><div id="telephone" class="configuration-content editable" data-table="configuration" data-column="telephone" data-id=""><?php p($l->t('Loading'));?></div></div>
+    <div class="configuration-global"><div class="configuration-icon icon-mail"></div><div id="mail" class="configuration-content editable" data-table="configuration" data-column="mail" data-id=""><?php p($l->t('Loading'));?></div></div>
+    <div class="configuration-global"><div class="configuration-icon icon-info"></div><div id="tva_default" class="configuration-content editable" data-table="configuration" data-column="tva_default" data-id=""><?php p($l->t('Loading'));?></div></div>
+    <div class="configuration-global"><div class="configuration-icon icon-rename"></div><select id="currency" class="configuration-content editableSelect" data-table="configuration" data-column="devise" data-id=""></select></div>
+    <div class="configuration-global"><div class="configuration-icon icon-comment"></div><div id="mentions_default" class="configuration-content editable" data-table="configuration" data-column="mentions_default" data-id=""><?php p($l->t('Loading'));?></div></div>
 </div>

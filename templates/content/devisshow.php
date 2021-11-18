@@ -12,7 +12,8 @@
                     <?php echo $res->prenom . " " . $res->nom; ?><br />
                     <?php echo $res->adresse; ?><br />
                     <?php echo $res->mail; ?><br />
-                    <?php echo $res->telephone; ?>
+                    <?php echo $res->telephone; ?><br/>
+                    <span id="nothing"></span><br />
                 </p>
             </div>
             <div class="col col-md">

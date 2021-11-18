@@ -12,9 +12,9 @@ use OCP\Migration\SimpleMigrationStep;
 /**
  * Auto-generated migration step: Please modify to your needs!
  */
-class Version4Date20211110180142 extends SimpleMigrationStep {
+class Version5Date20211118102345 extends SimpleMigrationStep {
 
-	/**
+/**
 	 * @param IOutput $output
 	 * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
 	 * @param array $options
@@ -132,6 +132,13 @@ class Version4Date20211110180142 extends SimpleMigrationStep {
         }else{
             $column = $table->getColumn('changelog');
             $column->setOptions(['default' => '0']);
+        }
+
+		if (!$table->hasColumn('devise')) {
+            $table->addColumn('devise', 'string', ['default' => 'EUR']);
+        }else{
+            $column = $table->getColumn('devise');
+            $column->setOptions(['default' => 'EUR']);
         }
 
         if (!$table->hasColumn('id_nextcloud')) {

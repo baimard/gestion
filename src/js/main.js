@@ -1,6 +1,6 @@
 // import $ from 'jquery';
 
-import {generateUrl, linkTo} from "@nextcloud/router";
+import {generateUrl, getRootUrl} from "@nextcloud/router";
 import {FilePicker,showMessage,showError} from "@nextcloud/dialogs";
 import {getCanonicalLocale, translate as t, translatePlural as n} from '@nextcloud/l10n'
 
@@ -12,15 +12,14 @@ import 'bootstrap/js/dist/util';
 
 import { getClients, getDevis, newInvoice, updateDB, deleteDB, loadProduitDT} from "./modules/ajaxRequest.mjs";
 import { configureDT, showDone, langage } from "./modules/mainFunction.mjs";
+import { getCurrencyList } from "./modules/currency.mjs";
 
-var baseUrl = generateUrl('/apps/gestion');
-console.log(baseUrl);
-const euro = new Intl.NumberFormat('fr-FR', {style: 'currency',currency: 'EUR',minimumFractionDigits: 2});
+var baseUrl = getRootUrl()+generateUrl('/apps/gestion');
+var cur = null ;
 
-
-    $(window).on("load", function() {
-
-    //console.log(getCanonicalLocale());
+$(window).on("load", function() {
+    // console.log(baseRemoteUrl);
+    // console.log(getCanonicalLocale());
 
     $('.tabledt').DataTable({
         autoWidth: false,
@@ -41,25 +40,24 @@ const euro = new Intl.NumberFormat('fr-FR', {style: 'currency',currency: 'EUR',m
                 "next":         t('gestion', 'Next'),
                 "previous":     t('gestion', 'Previous'),
             }   
-
         }
     });
 
     getStats();
     isconfig();
+    configuration(getCurrency);
+    configuration(path);
 
     if ($('#devisid').length) {
+        console.log('ici')
         getClientByIdDevis($('#devisid').data('id'));
         getProduitsById();
     }
-
     if ($('#client').length) {loadClientDT();}
     if ($('#configuration').length) {configuration(lcdt);}
     if ($('#devis').length) {loadDevisDT();}
     if ($('#facture').length) {loadFactureDT();}
     if ($('#produit').length) {loadProduitDT($('#produit').DataTable());}
-
-    configuration(path);
 });
 
 $('body').on('click', '#theFolder', function() {
@@ -72,22 +70,17 @@ $('body').on('click', '#theFolder', function() {
     );
 });
 
+$('body').on('change', '.editableSelect', function() { updateDB($(this).data('table'), $(this).data('column'), $(this).val(), $(this).data('id')); });
+
 $('body').on('click', '.menu', function() {$('#menu-'+this.dataset.menu).toggleClass('open');});
 
-$('body').on('click', '.modalClose', function(){
-    var modal = document.getElementById("modalConfig");
-    modal.style.display = "none";
-})
+$('body').on('click', '.modalClose', function(){ var modal = document.getElementById("modalConfig"); modal.style.display = "none"; })
 
 $('body').on('click', '.editable', function() {$(this).attr('contenteditable', 'true');});
 
 $('body').on('blur', '.editable', function() {updateEditable($(this));});
 
-$('body').on('keypress', '.editable' ,function(event) {
-    if(event.key === "Enter") {
-        updateEditable($(this));
-    }
-});
+$('body').on('keypress', '.editable' ,function(event) { if(event.key === "Enter") { updateEditable($(this)); } });
 
 $('body').on('dblclick', '.selectableDevis', function() {
     var id = $(this).data('id');
@@ -218,7 +211,6 @@ function loadFactureDT() {
     }).done(function(response) {
         $('#facture').DataTable().clear();
         $.each(JSON.parse(response), function(arrayID, myresp) {
-
             $('#facture').DataTable().row.add([
                 '<div class="editable" data-table="facture" data-column="num" data-id="' + myresp.id + '">' + ((myresp.num.length === 0) ? '-' : myresp.num) + '</div>',
                 '<div class="editable" data-table="facture" data-column="date" data-id="' + myresp.id + '">' + ((myresp.date.length === 0) ? '-' : myresp.date) + '</div>',
@@ -227,7 +219,7 @@ function loadFactureDT() {
                 '<div data-table="facture" data-column="id_devis" data-id="' + myresp.id + '"><select class="listDevis" data-current="'+ myresp.id_devis +'"></select></div>',
                 '<div class="editable" data-table="facture" data-column="version" data-id="' + myresp.id + '" style="display:inline">' + ((myresp.version.length === 0) ? '-' : myresp.version) + '</div>',
                 '<div class="editable" data-table="facture" data-column="status_paiement" data-id="' + myresp.id + '" style="display:inline">' + ((myresp.status_paiement.length === 0) ? '-' : myresp.status_paiement) + '</div>',
-                '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="/apps/gestion/facture/' + myresp.id + '/show"><button>'+ t('gestion', 'Open')+'</button></a></div><div data-modifier="facture" data-id=' + myresp.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
+                '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="'+baseUrl+'/facture/' + myresp.id + '/show"><button>'+ t('gestion', 'Open')+'</button></a></div><div data-modifier="facture" data-id=' + myresp.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
             ]);
         });
         loadDevisList();
@@ -264,26 +256,40 @@ function loadDevisDT() {
 }
 
 var lcdt = function loadConfigurationDT(response) {
-    $('#configuration').DataTable().clear();
     $.each(JSON.parse(response), function(arrayID, myresp) {
-        $('#configuration').DataTable().row.add(['<div class="editable" data-table="configuration" data-column="entreprise" data-id="' + myresp.id + '">' + ((myresp.entreprise.length === 0) ? '-' : myresp.entreprise) + '</div>',
-            '<div class="editable" data-table="configuration" data-column="nom" data-id="' + myresp.id + '">' + ((myresp.nom.length === 0) ? '-' : myresp.nom) + '</div>',
-            '<div class="editable" data-table="configuration" data-column="prenom" data-id="' + myresp.id + '">' + ((myresp.prenom.length === 0) ? '-' : myresp.prenom) + '</div>',
-            '<div class="editable" data-table="configuration" data-column="siret" data-id="' + myresp.id + '">' + ((myresp.siret.length === 0) ? '-' : myresp.siret) + '</div>',
-            '<div class="editable" data-table="configuration" data-column="siren" data-id="' + myresp.id + '">' + ((myresp.siren.length === 0) ? '-' : myresp.siren) + '</div>',
-            '<div class="editable" data-table="configuration" data-column="telephone" data-id="' + myresp.id + '">' + ((myresp.telephone.length === 0) ? '-' : myresp.telephone) + '</div>',
-            '<div class="editable" data-table="configuration" data-column="mail" data-id="' + myresp.id + '">' + ((myresp.mail.length === 0) ? '-' : myresp.mail) + '</div>',
-            '<div class="editable" data-table="configuration" data-column="adresse" data-id="' + myresp.id + '">' + ((myresp.adresse.length === 0) ? '-' : myresp.adresse) + '</div>',
-            '<div class="editable" data-table="configuration" data-column="tva_default" data-id="' + myresp.id + '">' + ((myresp.tva_default.length === 0) ? '-' : myresp.tva_default) + '%</div>'
-        ]);
+        $('#entreprise').html(((myresp.entreprise.length === 0) ? '-' : myresp.entreprise));
+        $('#entreprise').data("id", myresp.id);
+
+        $('#nom').html(((myresp.nom.length === 0) ? '-' : myresp.nom));
+        $('#nom').data("id", myresp.id);
+
+        $('#prenom').html(((myresp.prenom.length === 0) ? '-' : myresp.prenom));
+        $('#prenom').data("id", myresp.id);
+
+        $('#adresse').html(((myresp.adresse.length === 0) ? '-' : myresp.adresse));
+        $('#adresse').data("id", myresp.id);
+
+        $('#siret').html(((myresp.siret.length === 0) ? '-' : myresp.siret));
+        $('#siret').data("id", myresp.id);
+
+        $('#siren').html(((myresp.siren.length === 0) ? '-' : myresp.siren));
+        $('#siren').data("id", myresp.id);
+
+        $('#telephone').html(((myresp.telephone.length === 0) ? '-' : myresp.telephone));
+        $('#telephone').data("id", myresp.id);
+
+        $('#mail').html(((myresp.mail.length === 0) ? '-' : myresp.mail));
+        $('#mail').data("id", myresp.id);
+
+        $('#tva_default').html(((myresp.tva_default.length === 0) ? '-' : myresp.tva_default + " %"));
+        $('#tva_default').data("id", myresp.id);
+
+        $('#currency').append(getCurrencyList(myresp.devise));
+        $('#currency').data("id", myresp.id);
 
         $('#mentions_default').html(((myresp.mentions_default.length === 0) ? '-' : myresp.mentions_default));
         $('#mentions_default').data("id", myresp.id);
     });
-    $('#configuration').DataTable().destroy()
-    $('#configuration').DataTable({paging: false, searching: false, info: false}).columns.adjust().draw();
-    
-    configureDT();
 }
 
 function loadClientDT() {
@@ -398,7 +404,7 @@ function listProduit(lp, id, produitid) {
             if(produitid == myresp.id){
                 selected = "selected";
             }
-            lp.append('<option '+selected+' data-table="produit_devis" data-column="produit_id" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.reference + ' ' + myresp.description + ' ' + myresp.prix_unitaire + ' &euro;' + '</option>');
+            lp.append('<option '+selected+' data-table="produit_devis" data-column="produit_id" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.reference + ' ' + myresp.description + ' ' + cur.format(myresp.prix_unitaire) + '</option>');
         });
     }).fail(function(response, code) {
         showError(response);
@@ -427,8 +433,8 @@ function getProduitsById() {
             $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="'+ deleteDisable +' deleteItem icon-delete"></div><div style="display:inline;" data-val="'+ myresp.pid +'" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
                 '<td>' + myresp.description + '</td>' +
                 '<td><div class="editable getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id=' + myresp.pdid + '>' + myresp.quantite + '</div> </td>' +
-                '<td>' + euro.format(myresp.prix_unitaire) + '</td>' +
-                '<td>' + euro.format((myresp.quantite * myresp.prix_unitaire)) + '</td></tr>');
+                '<td>' + cur.format(myresp.prix_unitaire) + '</td>' +
+                '<td>' + cur.format((myresp.quantite * myresp.prix_unitaire)) + '</td></tr>');
             total += (myresp.quantite * myresp.prix_unitaire);
         });
 
@@ -479,13 +485,20 @@ function configuration(f1) {
     $.ajax({
         url: baseUrl + '/getConfiguration',
         type: 'PROPFIND',
-        contentType: 'application/json'
+        contentType: 'application/json',
+        async:false,
     }).done(function(response) {
         f1(response);
     }).fail(function(response, code) {
         showError(response);
     });
 }
+
+var getCurrency = function (response) {
+    var myresp = JSON.parse(response)[0];
+    cur = new Intl.NumberFormat('fr-FR', {style: 'currency',currency: myresp.devise, minimumFractionDigits: 2});
+}
+
 
 function getGlobal(total){
     $.ajax({
@@ -495,7 +508,7 @@ function getGlobal(total){
     }).done(function(response) {
         var myresp = JSON.parse(response)[0];
         var tva = parseFloat(myresp.tva_default);
-        $('#totaldevis tbody').append('<tr><td>' + euro.format(total) + '</td><td id="tva">'+tva+' %</td><td id="totaltva">'+euro.format(Math.round((total*tva))/100)+'</td><td>' + euro.format(Math.round((total*(tva+100)))/100) + '</td></tr>');
+        $('#totaldevis tbody').append('<tr><td>' + cur.format(total) + '</td><td id="tva">'+tva+' %</td><td id="totaltva">'+cur.format(Math.round((total*tva))/100)+'</td><td>' + cur.format(Math.round((total*(tva+100)))/100) + '</td></tr>');
         $('#mentions_default').html(myresp.mentions_default);
     })
 }

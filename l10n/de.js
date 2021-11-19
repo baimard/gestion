@@ -51,8 +51,6 @@ OC.L10N.register(
     "All libraries updated" : "Alle Bibliotheken aktualisiert",
     "Configuration" : "Konfiguration",
     "Unique identification" : "Eindeutige Identifizierung ",
-    "VAT Default" : "USt.-Standard",
-    "Legal disclaimer" : "Haftungsausschluss",
     "Quote" : "Angebot",
     "Add new quote" : "Neues Angebot hinzufügen",
     "Quote date" : "Angebotsdatum",

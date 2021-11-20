@@ -157,7 +157,7 @@ class Bdd {
                                         $this->l->t('Your company contact name'),
                                         $this->l->t('Your Limited company'),
                                         $this->l->t('Your company Unique identification'),
-                                        $this->l->t('Your company mail'),
+                                        $this->l->t('Your company email'),
                                         $this->l->t('Your company phone'),
                                         $this->l->t('Your company address'),
                                         $idNextcloud,

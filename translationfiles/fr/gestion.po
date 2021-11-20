@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-19 04:01+0000\n"
+"POT-Creation-Date: 2021-11-20 03:45+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Alain Rihs <alainrihs@sunrise.ch>, 2021\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -130,7 +130,8 @@ msgid "Your company address"
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:164
-msgid "All Legal mentions or disclaimer or everything you want in the footer."
+msgid ""
+"All Legal mentions, disclaimer or everything, you want place in the footer."
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:165

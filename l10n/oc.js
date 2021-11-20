@@ -14,7 +14,13 @@ OC.L10N.register(
     "Next" : "Seguent",
     "Previous" : "Precedent",
     "Open" : "Dobrir",
+    "Welcome to GESTION" : "Benvengut a GESTION",
+    "Documentation" : "Documentacion",
+    "Contact" : "Contacte",
     "Configuration" : "Configuracion",
-    "Actions" : "Accions"
+    "Loading" : "Cargament",
+    "Version" : "Version",
+    "Actions" : "Accions",
+    "About" : "A prepaus"
 },
 "nplurals=2; plural=(n > 1);");

@@ -111,17 +111,8 @@ build:
 # # a copy is fetched from the web
 .PHONY: composer
 composer:
-	ifeq (, $(composer))
-		@echo "No composer command available, downloading a copy from the web"
-		mkdir -p $(build_tools_directory)
-		curl -sS https://getcomposer.org/installer | php
-		mv composer.phar $(build_tools_directory)
-		php $(build_tools_directory)/composer.phar install --prefer-dist
-		php $(build_tools_directory)/composer.phar update --prefer-dist
-	else
-		composer install --prefer-dist
-		composer update --prefer-dist
-	endif
+	php composer.phar install --prefer-dist
+	php composer.phar update --prefer-dist
 
 # Installs npm dependencies
 .PHONY: npm
@@ -206,9 +197,9 @@ appstore:
 	../$(app_name) 
 
 .PHONY: test
-test: composer
-	$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.xml
-	$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.integration.xml
+test:
+	$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.xml --debug
+#$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.integration.xml
 
 translate:
 	./translationtool.phar convert-po-files
@@ -228,3 +219,6 @@ composer.phar:
 cleanComposer:
 	rm -f translationtool.phar composer.lock src/composer.lock
 	rm -rf vendor src/vendor
+
+testPanther:
+	sudo killall geckodriver; php tests/Unit/Panther/IhmTest.php 

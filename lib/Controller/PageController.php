@@ -118,7 +118,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 
-	private function getNavigationLink(){
+	public function getNavigationLink(){
 		return array(	"index" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.index"),
 						"devis" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.devis"),
 						"facture" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.facture"),
@@ -133,7 +133,6 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function getClients() {
-		
 		return $this->myDb->getClients($this->idNextcloud);
 	}
 
@@ -142,7 +141,6 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function getConfiguration() {
-		
 		return $this->myDb->getConfiguration($this->idNextcloud);
 	}
 
@@ -151,7 +149,6 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
     */
 	public function getDevis() {
-		
 		return $this->myDb->getDevis($this->idNextcloud);
 	}
 
@@ -207,6 +204,12 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function insertClient() {
+		// try {
+		// 	return new DataResponse($this->myDb->insertClient($this->idNextcloud), Http::STATUS_OK, ['Content-Type' => 'application/json']);
+		// }
+		// catch( PDOException $Exception ) {
+		// 	return new DataResponse($Exception, 500, ['Content-Type' => 'application/json']);
+		// }
 		return $this->myDb->insertClient($this->idNextcloud);
 	}
 

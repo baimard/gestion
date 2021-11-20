@@ -81,8 +81,8 @@ class Bdd {
      */
 
     public function insertClient($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."client` (`id`,`id_nextcloud`,`nom`,`prenom`,`siret`,`entreprise`,`telephone`,`mail`,`adresse`) VALUES (NULL,?,?,?,?,?,?,?,?)";
-        return $this-> execSQL($sql,array($idNextcloud,
+        $sql = "INSERT INTO `".$this->tableprefix."client` (`id_nextcloud`,`nom`,`prenom`,`siret`,`entreprise`,`telephone`,`mail`,`adresse`) VALUES (?,?,?,?,?,?,?,?)";
+        $this->execSQLNoData($sql,array($idNextcloud,
                                             $this->l->t('Name'),
                                             $this->l->t('First name'),
                                             $this->l->t('Limited company'),
@@ -152,7 +152,7 @@ class Bdd {
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
         if ( $res < 1 ){
             $sql = "INSERT INTO `".$this->tableprefix."configuration` (`id`, `entreprise`, `nom`, `prenom`, `siret`, `siren`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, '/', ?, ?, '0',?);";
-            $this->execSQL($sql, array($this->l->t('Your company name'),
+            $this->execSQLNoData($sql, array($this->l->t('Your company name'),
                                         $this->l->t('Your company contact surname'),
                                         $this->l->t('Your company contact name'),
                                         $this->l->t('Your Limited company'),
@@ -177,7 +177,6 @@ class Bdd {
         }else{
             return true;
         }
-
     }
 
     /**
@@ -222,6 +221,12 @@ class Bdd {
         $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         return json_encode($data);
+    }
+
+    private function execSQLNoData($sql, $conditions){
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($conditions);
+        $stmt->closeCursor();
     }
 
     private function execSQLNoJsonReturn($sql, $conditions){

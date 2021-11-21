@@ -24,6 +24,7 @@ OC.L10N.register(
     "Your company mail" : "Вашата служебна поща",
     "Your company phone" : "Вашият служебен телефон",
     "Your company address" : "Адресът на вашата фирма",
+    "All Legal mentions, disclaimer or everything, you want place in the footer." : "Всички правни споменавания, отказ от отговорност или всичко, което искате, поставeте в долния колонтитул.",
     "EUR" : "Евро",
     "Gestion" : "Gestion",
     "Invoicing management application for Micro-Entreprise in France" : "Приложение за управление на фактурирането за Micro-Entreprise във Франция",

@@ -24,6 +24,7 @@ OC.L10N.register(
     "Your company mail" : "Firemní e-mail",
     "Your company phone" : "Firemní telefon",
     "Your company address" : "Firemní adresa",
+    "All Legal mentions, disclaimer or everything, you want place in the footer." : "Veškerá právní zmínění, zřeknutí se odpovědnosti nebo cokoli co chcete mít v zápatí.",
     "EUR" : "EUR",
     "Gestion" : "Řízení",
     "Invoicing management application for Micro-Entreprise in France" : "Aplikace pro správu fakturování pro opravdu malé firmy ve Francii",

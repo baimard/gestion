@@ -24,6 +24,7 @@ OC.L10N.register(
     "Your company mail" : "企业邮箱",
     "Your company phone" : "企业电话",
     "Your company address" : "企业地址",
+    "All Legal mentions, disclaimer or everything, you want place in the footer." : "所有法律提及、免责声明或你想在页脚添加的一切",
     "EUR" : "EUR",
     "Gestion" : "Gestion",
     "Invoicing management application for Micro-Entreprise in France" : "法国微型企业进销存管理应用程序",

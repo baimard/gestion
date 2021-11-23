@@ -20,6 +20,7 @@ OC.L10N.register(
     "Your company contact surname" : "Zure enpresaren kontaktu abizena",
     "Your company contact name" : "Zure enpresaren kontaktu izena",
     "Your Limited company" : "Zure sozietate mugatua",
+    "Your company Unique identification" : "Zure enpresaren identifikazio bakarra",
     "Your company mail" : "Zure enpresaren e-posta",
     "Your company phone" : "Zure enpresaren telefonoa",
     "Your company address" : "Zure enpresaren helbidea",

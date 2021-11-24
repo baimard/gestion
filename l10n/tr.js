@@ -21,7 +21,6 @@ OC.L10N.register(
     "Your company contact name" : "Şirketinizin temsilcisinin adı",
     "Your Limited company" : "Limited şirketiniz",
     "Your company Unique identification" : "Şirketinizin unvanı",
-    "Your company mail" : "Şirketinizin e-posta adresi",
     "Your company phone" : "Şirketinizin telefon numarası",
     "Your company address" : "Şirketinizin adresi",
     "All Legal mentions, disclaimer or everything, you want place in the footer." : "Tüm yasal hükümler, sorumluluk reddi ve alt bilgi bölümüne eklemek istediğiniz diğer şeyler.",

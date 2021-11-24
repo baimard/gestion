@@ -21,7 +21,6 @@ OC.L10N.register(
     "Your company contact name" : "企业联系人名字",
     "Your Limited company" : "有限公司",
     "Your company Unique identification" : "企业唯一标识",
-    "Your company mail" : "企业邮箱",
     "Your company phone" : "企业电话",
     "Your company address" : "企业地址",
     "All Legal mentions, disclaimer or everything, you want place in the footer." : "所有法律提及、免责声明或你想在页脚添加的一切",

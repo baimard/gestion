@@ -21,7 +21,6 @@ OC.L10N.register(
     "Your company contact name" : "Je bedrijfscontact naam",
     "Your Limited company" : "Je Naamloze vennootschap",
     "Your company Unique identification" : "Je KvK-nummer",
-    "Your company mail" : "Je bedrijfse-mail",
     "Your company phone" : "Je bedrijfstelefoonnummer",
     "Your company address" : "Je bedrijfsadres",
     "All Legal mentions, disclaimer or everything, you want place in the footer." : "Alle rechtelijke vermeldingen of disclaimers of alles wat je in de footer wil plaatsen.",

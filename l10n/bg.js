@@ -21,7 +21,6 @@ OC.L10N.register(
     "Your company contact name" : "Име за контакт с вашата фирма",
     "Your Limited company" : "Вашето дружество с ограничена отговорност",
     "Your company Unique identification" : "Уникална идентификация на вашата фирма",
-    "Your company mail" : "Вашата служебна поща",
     "Your company phone" : "Вашият служебен телефон",
     "Your company address" : "Адресът на вашата фирма",
     "All Legal mentions, disclaimer or everything, you want place in the footer." : "Всички правни споменавания, отказ от отговорност или всичко, което искате, поставeте в долния колонтитул.",

@@ -22,7 +22,8 @@ Fonctionnalités à venir / Upcoming Features
 - [ ] TVA par produit / VAT rate per product
 - [ ] TVA par devis / VAT rate by quote
 - [x] TVA par défault / VAT rate default
-- [ ] Currency ?
+- [x] Currency
+- [ ] Tests ...
 
 ## Application de gestion de facturation pour Micro-entreprise *France*
 

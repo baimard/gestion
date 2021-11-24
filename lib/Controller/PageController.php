@@ -185,7 +185,6 @@ class PageController extends Controller {
 	 * @param string $id
     */
 	public function getClient($id) {
-		
 		return $this->myDb->getClient($id, $this->idNextcloud);
 	}
 
@@ -228,8 +227,7 @@ class PageController extends Controller {
 	 * 
 	 */
 	public function insertFacture(){
-		$this->myDb->insertFacture($this->idNextcloud);
-		return "ok";
+		return $this->myDb->insertFacture($this->idNextcloud);
 	}
 
 	/**

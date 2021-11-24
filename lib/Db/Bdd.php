@@ -76,10 +76,11 @@ class Bdd {
         $trace = debug_backtrace();
         return $trace[2]['function'];
     }
-    /**
-     * INSERT
-     */
 
+    /**
+     * INSERT client
+     * @$idnextcloud
+     */
     public function insertClient($idNextcloud){
         $sql = "INSERT INTO `".$this->tableprefix."client` (`id_nextcloud`,`nom`,`prenom`,`siret`,`entreprise`,`telephone`,`mail`,`adresse`) VALUES (?,?,?,?,?,?,?,?)";
         $this->execSQLNoData($sql,array($idNextcloud,
@@ -92,33 +93,43 @@ class Bdd {
                                             $this->l->t('Address')
                                         )
                                     );
+        return true;
     }
 
+    /**
+     * Insert quote
+     */
     public function insertDevis($idNextcloud){
         $sql = "INSERT INTO `".$this->tableprefix."devis` (`id`, `date`,`id_nextcloud`,`num`,`id_client`,version,mentions,comment) VALUES (NULL, NOW(),?,?,0,'0.1',?,?);";
-        return $this-> execSQL($sql, array($idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment')));
+        $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment')));
+        return true;
     }
 
+    /**
+     * Insert invoice
+     */
     public function insertFacture($idNextcloud){
         $sql = "INSERT INTO `".$this->tableprefix."facture` (`id`, `date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`) VALUES (NULL,?,?,?,NOW(),?,0);";
-        return $this-> execSQL($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('Invoice number'),$this->l->t('Means of payment')));
+        $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('Invoice number'),$this->l->t('Means of payment')));
+        return true;
     }
 
-    public function insertProduit($idNextcloud,$ref,$des){
-        $sql = "INSERT INTO `".$this->tableprefix."produit` (`id`,`id_nextcloud`,`reference`,`description`,`prix_unitaire`) VALUES (NULL, ?,?,?, 0);";
-        return $this-> execSQL($sql, array($idNextcloud,$this->l->t('Reference'),$this->l->t('Designation')));
+    public function insertProduit($idNextcloud){
+        $sql = "INSERT INTO `".$this->tableprefix."produit` (`id_nextcloud`,`reference`,`description`,`prix_unitaire`) VALUES (?,?,?,0);";
+        $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Reference'),$this->l->t('Designation')));
+        return true;
     }
 
     public function insertProduitDevis($id,$idNextcloud){
         $res = $this->searchMaxIdProduit($idNextcloud);
         $sql = "INSERT INTO `".$this->tableprefix."produit_devis` (`devis_id`, `id_nextcloud`,`produit_id`,`quantite`,`discount`) VALUES (?,?,?,1,0);";
-        return $this-> execSQL($sql, array($id,$idNextcloud,$res[0]['id']));
-
+        $this->execSQLNoData($sql, array($id,$idNextcloud,$res[0]['id']));
+        return true;
     }
 
     public function searchMaxIdProduit($idNextcloud){
         $sqlSearchMax = "SELECT MIN(id) as id FROM `".$this->tableprefix."produit` WHERE id_nextcloud = ?";
-        return $this-> execSQLNoJsonReturn($sqlSearchMax, array($idNextcloud));
+        return $this->execSQLNoJsonReturn($sqlSearchMax, array($idNextcloud));
     }
     
     /**
@@ -127,7 +138,8 @@ class Bdd {
     public function gestion_update($table, $column, $data, $id, $idNextcloud){
         if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
             $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ? AND `id_nextcloud` = ?";
-            return $this->execSQL($sql, array(htmlentities($data), $id, $idNextcloud));
+            $this->execSQLNoData($sql, array(htmlentities($data), $id, $idNextcloud));
+            return true;
         }
         return false;
     }
@@ -138,7 +150,8 @@ class Bdd {
     public function gestion_delete($table, $id, $idNextcloud){
         if(in_array($table, $this->whiteTable)){
             $sql = "DELETE FROM ".$this->tableprefix.$table." WHERE `id` = ? AND `id_nextcloud` = ?";
-            return $this->execSQL($sql, array($id, $idNextcloud));
+            $this->execSQLNoData($sql, array($id, $idNextcloud));
+            return true;
         }
         return false;
     }
@@ -209,6 +222,10 @@ class Bdd {
     public function numberProduit($idNextcloud){
         $sql = "SELECT count(*) as c from ".$this->tableprefix."produit WHERE `id_nextcloud` = ?;";
         return $this->execSQL($sql, array($idNextcloud));
+    }
+
+    public function lastinsertid(){
+        return $this->execSQLNoJsonReturn("SELECT LAST_INSERT_ID();",array())[0]['LAST_INSERT_ID()'];
     }
 
     /**

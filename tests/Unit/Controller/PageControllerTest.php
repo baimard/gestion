@@ -58,42 +58,153 @@ class PageControllerTest extends TestCase {
 		$this->assertTrue($result instanceof TemplateResponse);
 	}
 
+	public function testConfig() {
+		$result = $this->controller->config();
+		$this->assertEquals('configuration', $result->getTemplateName());
+		$this->assertTrue($result instanceof TemplateResponse);
+	}
+
+	public function testDevisShow() {
+		$r = json_decode($this->controller->getDevis())[0]->{"id"};
+		$result = $this->controller->devisshow($r);
+		$this->assertEquals('devisshow', $result->getTemplateName());
+		$this->assertTrue($result instanceof TemplateResponse);
+	}
+
+	public function testfactureshow() {
+		$r = json_decode($this->controller->getFactures())[0]->{"id"};
+		$result = $this->controller->factureshow($r);
+		$this->assertEquals('factureshow', $result->getTemplateName());
+		$this->assertTrue($result instanceof TemplateResponse);
+	}
+
+	/**
+	 * After testConfig
+	 */
+	public function testIsConfig() {
+		$result = $this->controller->isConfig();
+		$this->assertTrue($result);
+	}
+
+	/**
+	 * After testConfig
+	 */
+	public function testGetConfiguation() {
+		$result = json_decode($this->controller->getConfiguration());
+		$this->assertIsArray($result);
+	}
+
 	public function testGetNavigationLink() {
 		$result = $this->controller->getNavigationLink();
 		$this->assertIsArray($result);
 	}
 
 	public function testGetClients() {
-		$result = $this->controller->getClients();
-		$this->assertIsArray($result);
-	}
-
-	public function testGetConfiguation() {
-		$result = $this->controller->getConfiguration();
+		$result = json_decode($this->controller->getClients());
 		$this->assertIsArray($result);
 	}
 
 	public function testGetDevis() {
-		$result = $this->controller->getDevis();
+		$result = json_decode($this->controller->getDevis());
 		$this->assertIsArray($result);
 	}
 
 	public function testGetFactures() {
-		$result = $this->controller->getFactures();
+		$result = json_decode($this->controller->getFactures());
 		$this->assertIsArray($result);
 	}
 
 	public function testGetProduits() {
-		$result = $this->controller->getProduits();
+		$result = json_decode($this->controller->getProduits());		
+		$this->assertIsArray($result);
+	}
+
+	public function testGetProduitsById() {
+		$r = json_decode($this->controller->getProduits())[0]->{"id"};
+		$result = json_decode($this->controller->getProduitsById($r));		
 		$this->assertIsArray($result);
 	}
 
 	public function testGetClient() {
-		$result = $this->controller->getClient($this->controller->getClients()[0]["id
-		"]);
+		$r = json_decode($this->controller->getClients())[0]->{"id"};
+		$result = json_decode($this->controller->getClient($r));
 		$this->assertIsArray($result);
 		$this->assertCount(1, $result);
 	}
 
 
+	/**
+	 * Need to create an update of quote
+	 */
+	// public function testGetClientbyiddevis() {
+	// 	$r = json_decode($this->controller->getDevis())[0]->{"id"};
+	// 	$result = json_decode($this->controller->getClientbyiddevis($r));
+	// 	$this->assertIsArray($result);
+	// 	$this->assertCount(1, $result);
+	// }
+
+	public function testInsertClient() {
+		$result = $this->controller->insertClient();
+		$this->assertTrue($result);
+	}
+
+	/** 
+	 * need to be right after testInsertClient()
+	 * 
+	 */
+	public function testDeleteClient() {
+		$id = $this->db->lastinsertid();
+		$table = "client";
+		$result = $this->controller->delete($table,$id);
+		$this->assertTrue($result);
+	}
+
+
+	public function testInsertDevis() {
+		$result = $this->controller->insertDevis();
+		$this->assertTrue($result);
+	}
+
+	/** 
+	 * need to be right after testInsertClient()
+	 * 
+	 */
+	public function testDeleteDevis() {
+		$id = $this->db->lastinsertid();
+		$table = "devis";
+		$result = $this->controller->delete($table,$id);
+		$this->assertTrue($result);
+	}
+
+	public function testInsertFacture() {
+		$result = $this->controller->insertFacture();
+		$this->assertTrue($result);
+	}
+
+	/** 
+	 * need to be right after testInsertClient()
+	 * 
+	 */
+	public function testDeleteFacture() {
+		$id = $this->db->lastinsertid();
+		$table = "facture";
+		$result = $this->controller->delete($table,$id);
+		$this->assertTrue($result);
+	}
+
+	public function testInsertProduit() {
+		$result = $this->controller->insertProduit();
+		$this->assertTrue($result);
+	}
+
+	/** 
+	 * need to be right after testInsertClient()
+	 * 
+	 */
+	public function testDeleteProduit() {
+		$id = $this->db->lastinsertid();
+		$table = "produit";
+		$result = $this->controller->delete($table,$id);
+		$this->assertTrue($result);
+	}
 }

@@ -22,7 +22,6 @@ class PageControllerTest extends TestCase {
 		$l =  $this->createMock('OCP\IL10N');
 		$urlGenerator = $this->createMock('OCP\IURLGenerator');
 		
-		
 		$this->db = new Bdd($myDb,$l);
 		$this->controller = new PageController('gestion', 
 												$request, 
@@ -132,17 +131,6 @@ class PageControllerTest extends TestCase {
 		$this->assertCount(1, $result);
 	}
 
-
-	/**
-	 * Need to create an update of quote
-	 */
-	// public function testGetClientbyiddevis() {
-	// 	$r = json_decode($this->controller->getDevis())[0]->{"id"};
-	// 	$result = json_decode($this->controller->getClientbyiddevis($r));
-	// 	$this->assertIsArray($result);
-	// 	$this->assertCount(1, $result);
-	// }
-
 	public function testInsertClient() {
 		$result = $this->controller->insertClient();
 		$this->assertTrue($result);
@@ -160,9 +148,19 @@ class PageControllerTest extends TestCase {
 	}
 
 
-	public function testInsertDevis() {
+	public function testManagementDevis() {
 		$result = $this->controller->insertDevis();
 		$this->assertTrue($result);
+
+		$r = json_decode($this->controller->getDevis())[0]->{"id"};
+		$id_client = json_decode($this->controller->getClients())[0]->{"id"};
+		
+		$resultInterUpdate = $this->controller->update('devis', 'id_client', $id_client, $r);
+		$this->assertTrue($resultInterUpdate);
+
+		$result = json_decode($this->controller->getClientbyiddevis($r));
+		$this->assertIsArray($result);
+		$this->assertCount(1, $result);
 	}
 
 	/** 
@@ -206,5 +204,26 @@ class PageControllerTest extends TestCase {
 		$table = "produit";
 		$result = $this->controller->delete($table,$id);
 		$this->assertTrue($result);
+	}
+
+	public function testInsertProduitDevis(){
+		$r = json_decode($this->controller->getDevis())[0]->{"id"};
+		$result = $this->controller->insertProduitDevis($r);
+		$this->assertTrue($result);
+	}
+
+	public function testDeleteProduitDevis(){
+		$id = $this->db->lastinsertid();
+		$table = "produit_devis";
+		$result = $this->controller->delete($table,$id);
+		$this->assertTrue($result);
+	}
+
+	public function testGetStats(){
+		$result = (array) json_decode($this->controller->getStats());
+		$this->assertArrayHasKey('client', $result);
+		$this->assertArrayHasKey('devis', $result);
+		$this->assertArrayHasKey('facture', $result);
+		$this->assertArrayHasKey('produit', $result);
 	}
 }

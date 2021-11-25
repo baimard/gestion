@@ -221,4 +221,4 @@ cleanComposer:
 	rm -rf vendor src/vendor
 
 testPanther:
-	sudo killall geckodriver; php tests/Unit/Panther/IhmTest.php 
+	killall geckodriver; php tests/Unit/Panther/IhmTest.php 

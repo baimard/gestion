@@ -20,6 +20,9 @@ class PageController extends Controller {
 	/** @var IRootStorage */
 	private $storage;
 	
+	/**
+	 * Constructor
+	 */
 	public function __construct($AppName, 
 								IRequest $request, 
 								$UserId, 
@@ -47,7 +50,7 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 *
-    */
+     */
 	public function index() {
 		return new TemplateResponse('gestion', 'index', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/index.php
 	}
@@ -55,7 +58,7 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+     */
 	public function devis() {
 		return new TemplateResponse('gestion', 'devis', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/devis.php
 	}
@@ -63,7 +66,7 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+     */
 	public function facture() {
 		return new TemplateResponse('gestion', 'facture', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/facture.php
 	}
@@ -71,7 +74,7 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+     */
 	public function produit() {
 		return new TemplateResponse('gestion', 'produit', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/produit.php
 	}
@@ -79,7 +82,7 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+     */
 	public function config() {
 		$this->myDb->checkConfig($this->idNextcloud);
 		return new TemplateResponse('gestion', 'configuration', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/configuration.php
@@ -88,7 +91,8 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+	 * @param string $numdevis
+     */
 	public function devisshow($numdevis) {
 		$devis = $this->myDb->getOneDevis($numdevis,$this->idNextcloud);
 		$produits = $this->myDb->getListProduit($numdevis, $this->idNextcloud);
@@ -98,7 +102,8 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+	 * @param string $numfacture
+	 */
 	public function factureshow($numfacture) {
 		$facture = $this->myDb->getOneFacture($numfacture,$this->idNextcloud);
 		// $produits = $this->myDb->getListProduit($numdevis);
@@ -108,7 +113,7 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+     */
 	public function isConfig() {
 		return $this->myDb->isConfig($this->idNextcloud);
 	}
@@ -117,7 +122,6 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 */
-
 	public function getNavigationLink(){
 		return array(	"index" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.index"),
 						"devis" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.devis"),
@@ -131,7 +135,7 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+     */
 	public function getClients() {
 		return $this->myDb->getClients($this->idNextcloud);
 	}
@@ -139,7 +143,7 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+     */
 	public function getConfiguration() {
 		return $this->myDb->getConfiguration($this->idNextcloud);
 	}
@@ -147,7 +151,7 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+     */
 	public function getDevis() {
 		return $this->myDb->getDevis($this->idNextcloud);
 	}
@@ -155,7 +159,7 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+     */
 	public function getFactures() {
 		
 		return $this->myDb->getFactures($this->idNextcloud);
@@ -164,7 +168,7 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-    */
+     */
 	public function getProduits() {
 		
 		return $this->myDb->getProduits($this->idNextcloud);
@@ -174,7 +178,7 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @param string $numdevis
-    */
+     */
 	public function getProduitsById($numdevis) {
 		return $this->myDb->getListProduit($numdevis, $this->idNextcloud);
 	}
@@ -183,7 +187,7 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @param string $id
-    */
+     */
 	public function getClient($id) {
 		return $this->myDb->getClient($id, $this->idNextcloud);
 	}
@@ -192,7 +196,7 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @param string $id
-    */
+     */
 	public function getClientbyiddevis($id) {
 		
 		return $this->myDb->getClientbyiddevis($id, $this->idNextcloud);
@@ -331,13 +335,11 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function getStats(){
-		
 		$res = array();
 		$res['client'] = json_decode($this->myDb->numberClient($this->idNextcloud))[0]->c;
 		$res['devis'] = json_decode($this->myDb->numberDevis($this->idNextcloud))[0]->c;
 		$res['facture'] = json_decode($this->myDb->numberFacture($this->idNextcloud))[0]->c;
 		$res['produit'] = json_decode($this->myDb->numberProduit($this->idNextcloud))[0]->c;
-
 		return json_encode($res);
 	}
 

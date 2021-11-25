@@ -302,8 +302,8 @@ function loadClientDT() {
         $.each(JSON.parse(response), function(arrayID, myresp) {
             $('#client').DataTable().row.add([
                 '<div class="editable" data-table="client" data-column="entreprise" data-id="' + myresp.id + '">' + ((myresp.entreprise.length === 0) ? '-' : myresp.entreprise) + '</div>',
-                '<div class="editable" data-table="client" data-column="nom" data-id="' + myresp.id + '">' + ((myresp.nom.length === 0) ? '-' : myresp.nom) + '</div>',
                 '<div class="editable" data-table="client" data-column="prenom" data-id="' + myresp.id + '">' + ((myresp.prenom.length === 0) ? '-' : myresp.prenom) + '</div>',
+                '<div class="editable" data-table="client" data-column="nom" data-id="' + myresp.id + '">' + ((myresp.nom.length === 0) ? '-' : myresp.nom) + '</div>',
                 '<div class="editable" data-table="client" data-column="siret" data-id="' + myresp.id + '">' + ((myresp.siret.length === 0) ? '-' : myresp.siret) + '</div>',
                 '<div class="editable" data-table="client" data-column="telephone" data-id="' + myresp.id + '">' + ((myresp.telephone.length === 0) ? '-' : myresp.telephone) + '</div>',
                 '<div class="editable" data-table="client" data-column="mail" data-id="' + myresp.id + '">' + ((myresp.mail.length === 0) ? '-' : myresp.mail) + '</div>',

@@ -21,6 +21,7 @@ OC.L10N.register(
     "Your company contact name" : "Imię osoby do kontaktu w Twojej firmie",
     "Your Limited company" : "Kapitał Twojej firmy",
     "Your company Unique identification" : "Numer NIP Twojej firmy",
+    "Your company email" : "E-mail Twojej firmy",
     "Your company phone" : "Telefon Twojej firmy",
     "Your company address" : "Adres Twojej firmy",
     "All Legal mentions, disclaimer or everything, you want place in the footer." : "Wszystkie wzmianki prawne, zastrzeżenia lub wszystko, co chcesz umieścić w stopce.",

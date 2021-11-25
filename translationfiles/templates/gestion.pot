@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-24 03:27+0000\n"
+"POT-Creation-Date: 2021-11-25 03:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /app/lib/Db/Bdd.php:86 /app/templates/content/index.php:18
+#: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:18
 msgid "Name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:19
+#: /app/lib/Db/Bdd.php:88 /app/templates/content/index.php:19
 msgid "First name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:88 /app/templates/content/configuration.php:16
+#: /app/lib/Db/Bdd.php:89 /app/templates/content/configuration.php:16
 #: /app/templates/content/devisshow.php:26
 #: /app/templates/content/devisshow.php:80
 #: /app/templates/content/factureshow.php:25
@@ -34,101 +34,101 @@ msgstr ""
 msgid "Limited company"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:89 /app/templates/content/devisshow.php:80
+#: /app/lib/Db/Bdd.php:90 /app/templates/content/devisshow.php:80
 #: /app/templates/content/factureshow.php:81
 #: /app/templates/content/index.php:17
 msgid "Company"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:90 /app/templates/content/configuration.php:18
+#: /app/lib/Db/Bdd.php:91 /app/templates/content/configuration.php:18
 #: /app/templates/content/index.php:21
 msgid "Phone number"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:91 /app/templates/content/configuration.php:19
+#: /app/lib/Db/Bdd.php:92 /app/templates/content/configuration.php:19
 #: /app/templates/content/index.php:22
 msgid "Email"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:92 /app/templates/content/index.php:23
+#: /app/lib/Db/Bdd.php:93 /app/templates/content/index.php:23
 msgid "Address"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:99 /app/templates/content/devis.php:18
+#: /app/lib/Db/Bdd.php:104 /app/templates/content/devis.php:18
 msgid "Quote number"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:99
+#: /app/lib/Db/Bdd.php:104
 msgid "New"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:99
+#: /app/lib/Db/Bdd.php:104
 msgid "Comment"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:104
+#: /app/lib/Db/Bdd.php:113
 msgid "Text free"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:104 /app/templates/content/facture.php:17
+#: /app/lib/Db/Bdd.php:113 /app/templates/content/facture.php:17
 msgid "Invoice number"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:104 /app/templates/content/facture.php:20
+#: /app/lib/Db/Bdd.php:113 /app/templates/content/facture.php:20
 #: /app/templates/content/factureshow.php:34
 msgid "Means of payment"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:109 /app/templates/content/devisshow.php:48
+#: /app/lib/Db/Bdd.php:119 /app/templates/content/devisshow.php:48
 #: /app/templates/content/factureshow.php:50
 #: /app/templates/content/produit.php:17
 msgid "Reference"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:109 /app/templates/content/devisshow.php:49
+#: /app/lib/Db/Bdd.php:119 /app/templates/content/devisshow.php:49
 #: /app/templates/content/factureshow.php:51
 #: /app/templates/content/produit.php:18
 msgid "Designation"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:155
+#: /app/lib/Db/Bdd.php:168
 msgid "Your company name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:156
+#: /app/lib/Db/Bdd.php:169
 msgid "Your company contact surname"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:157
+#: /app/lib/Db/Bdd.php:170
 msgid "Your company contact name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:158
+#: /app/lib/Db/Bdd.php:171
 msgid "Your Limited company"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:159
+#: /app/lib/Db/Bdd.php:172
 msgid "Your company Unique identification"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:160
+#: /app/lib/Db/Bdd.php:173
 msgid "Your company email"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:161
+#: /app/lib/Db/Bdd.php:174
 msgid "Your company phone"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:162
+#: /app/lib/Db/Bdd.php:175
 msgid "Your company address"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:164
+#: /app/lib/Db/Bdd.php:177
 msgid ""
 "All Legal mentions, disclaimer or everything, you want place in the footer."
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:165
+#: /app/lib/Db/Bdd.php:178
 msgid "EUR"
 msgstr ""
 

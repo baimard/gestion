@@ -5,17 +5,17 @@
 # 
 # Translators:
 # Ldm Public <ldmpub@gmail.com>, 2021
-# Benjamin <benjamin@cybercorp.fr>, 2021
 # Alain Rihs <alainrihs@sunrise.ch>, 2021
+# Benjamin <benjamin@cybercorp.fr>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-25 03:25+0000\n"
+"POT-Creation-Date: 2021-11-26 03:46+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Alain Rihs <alainrihs@sunrise.ch>, 2021\n"
+"Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2021\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,11 +23,11 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:18
+#: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:19
 msgid "Name"
 msgstr "Nom"
 
-#: /app/lib/Db/Bdd.php:88 /app/templates/content/index.php:19
+#: /app/lib/Db/Bdd.php:88 /app/templates/content/index.php:18
 msgid "First name"
 msgstr "Prénom"
 
@@ -66,15 +66,15 @@ msgstr "Numéro de devis"
 
 #: /app/lib/Db/Bdd.php:104
 msgid "New"
-msgstr ""
+msgstr "Nouveau"
 
 #: /app/lib/Db/Bdd.php:104
 msgid "Comment"
-msgstr ""
+msgstr "Commentaire"
 
 #: /app/lib/Db/Bdd.php:113
 msgid "Text free"
-msgstr ""
+msgstr "Texte libre"
 
 #: /app/lib/Db/Bdd.php:113 /app/templates/content/facture.php:17
 msgid "Invoice number"
@@ -99,7 +99,7 @@ msgstr "Désignation"
 
 #: /app/lib/Db/Bdd.php:168
 msgid "Your company name"
-msgstr ""
+msgstr "Nom de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:169
 msgid "Your company contact surname"
@@ -107,36 +107,38 @@ msgstr ""
 
 #: /app/lib/Db/Bdd.php:170
 msgid "Your company contact name"
-msgstr ""
+msgstr "Nom du contact de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:171
 msgid "Your Limited company"
-msgstr ""
+msgstr "Siret de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:172
 msgid "Your company Unique identification"
-msgstr ""
+msgstr "Siren de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:173
 msgid "Your company email"
-msgstr ""
+msgstr "Email de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:174
 msgid "Your company phone"
-msgstr ""
+msgstr "Numéro de téléphone de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:175
 msgid "Your company address"
-msgstr ""
+msgstr "Adresse de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:177
 msgid ""
 "All Legal mentions, disclaimer or everything, you want place in the footer."
 msgstr ""
+"Toutes les mentions légales, conditions ou tout ce que vous souhaitez mettre"
+" dans le pied de page."
 
 #: /app/lib/Db/Bdd.php:178
 msgid "EUR"
-msgstr ""
+msgstr "EUR"
 
 #: /app/specialAppInfoFakeDummyForL10nScript.php:2
 msgid "Gestion"
@@ -360,11 +362,11 @@ msgstr "Configuration"
 
 #: /app/templates/content/configuration.php:11
 msgid "Click to edit"
-msgstr ""
+msgstr "Cliquer pour éditer"
 
 #: /app/templates/content/configuration.php:12
 msgid "Company name"
-msgstr ""
+msgstr "Nom de votre entreprise"
 
 #: /app/templates/content/configuration.php:12
 #: /app/templates/content/configuration.php:13
@@ -380,11 +382,11 @@ msgid "Loading"
 msgstr "Chargement"
 
 #: /app/templates/content/configuration.php:13
-msgid "Contact name"
+msgid "Contact First name"
 msgstr ""
 
 #: /app/templates/content/configuration.php:14
-msgid "Contact First name"
+msgid "Contact name"
 msgstr ""
 
 #: /app/templates/content/configuration.php:15

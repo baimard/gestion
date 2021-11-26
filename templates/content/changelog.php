@@ -8,15 +8,13 @@
 		<p style="margin-bottom:20px;"><?php p($l->t('Others questions?'));?> &#128073; <a href="mailto:contact@cybercorp.fr"><?php p($l->t('Contact'));?></a></p>
 		<p style="margin-bottom:20px;"><?php p($l->t('Leave me a comment, but only if you like this application :)'));?> &#128073; <a href="https://apps.nextcloud.com/apps/gestion"><?php p($l->t('Nextcloud apps'));?></a></p>
 		<hr/>	
-		<h2><?php p($l->t('Change log'));?> v1.2.0</h2>
+		<h2><?php p($l->t('Change log'));?> v1.2.2</h2>
 		<p>
 			<ul>
-				<li><?php p($l->t('Possibility to add comment in quote'));?></li>
-				<li><?php p($l->t('Global VAT rate'));?></li>
-				<li><?php p($l->t('Add version for quote and invoice'));?></li>
-				<li><?php p($l->t('States for invoice and quote, like sent, canceled or whatever you want'));?></li>
-				<li><?php p($l->t('All libraries updated'));?></li>
-				<li><?php p($l->t('Multiple bugs corrections'));?></li>
+				<li><a href="https://github.com/baimard/gestion/issues/58">[EN] Apps: add product bug #58</a></li>
+				<li><a href="https://github.com/baimard/gestion/issues/53">[EN] Add a mark setting for price #53</a></li>
+				<li><a href="https://github.com/baimard/gestion/issues/56">[EN] Change position in table #56</a></li>
+				<li>Enhancement test</li>
 			</ul>
 		</p>
 	</div>

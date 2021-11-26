@@ -54,8 +54,13 @@ If you need to adapt this application to your country laws, please open issue.
         <user>https://baimard.github.io/gestion/</user>
     </documentation>
     <bugs>https://github.com/baimard/gestion/issues</bugs>
-    <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png">https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/img/screen.png</screenshot>
+    <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/index.png">https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/index.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/Capture%20d%E2%80%99%C3%A9cran%20de%202021-11-26%2009-09-49.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/config.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/devis.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/facture.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/produit.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/selectFolder.png</screenshot>
     <dependencies>
         <nextcloud min-version="21" max-version="22"/>
     </dependencies>

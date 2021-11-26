@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-25 03:25+0000\n"
+"POT-Creation-Date: 2021-11-26 03:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:18
+#: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:19
 msgid "Name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:88 /app/templates/content/index.php:19
+#: /app/lib/Db/Bdd.php:88 /app/templates/content/index.php:18
 msgid "First name"
 msgstr ""
 
@@ -352,11 +352,11 @@ msgid "Loading"
 msgstr ""
 
 #: /app/templates/content/configuration.php:13
-msgid "Contact name"
+msgid "Contact First name"
 msgstr ""
 
 #: /app/templates/content/configuration.php:14
-msgid "Contact First name"
+msgid "Contact name"
 msgstr ""
 
 #: /app/templates/content/configuration.php:15

@@ -63,7 +63,6 @@ OC.L10N.register(
     "Associated quote" : "Povezana ponudba",
     "Invoice #" : "Račun #",
     "Settlement date" : "Datum poravnave",
-    "date of service" : "datum storitve",
     "Customer" : "Stranka",
     "Add customer" : "Dodaj stranko",
     "Product" : "Izdelek",

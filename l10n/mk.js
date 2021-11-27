@@ -48,7 +48,6 @@ OC.L10N.register(
     "Payment date" : "Датум на уплата",
     "Invoice #" : "Фактура #",
     "Settlement date" : "Датум на порамнување",
-    "date of service" : "датум на услуга",
     "Customer" : "Потрошувач",
     "Add customer" : "Додади потрошувач",
     "Product" : "Продукт",

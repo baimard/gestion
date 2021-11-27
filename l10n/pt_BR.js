@@ -63,7 +63,6 @@ OC.L10N.register(
     "Associated quote" : "Cota associada ",
     "Invoice #" : "Fatura # ",
     "Settlement date" : "Data de liquidação ",
-    "date of service" : "data de serviço",
     "Customer" : "Customer",
     "Add customer" : "Adicionar cliente",
     "Product" : "Produto",

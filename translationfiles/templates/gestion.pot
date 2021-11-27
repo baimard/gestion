@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-26 03:46+0000\n"
+"POT-Creation-Date: 2021-11-27 03:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -301,30 +301,6 @@ msgstr ""
 msgid "Change log"
 msgstr ""
 
-#: /app/templates/content/changelog.php:14
-msgid "Possibility to add comment in quote"
-msgstr ""
-
-#: /app/templates/content/changelog.php:15
-msgid "Global VAT rate"
-msgstr ""
-
-#: /app/templates/content/changelog.php:16
-msgid "Add version for quote and invoice"
-msgstr ""
-
-#: /app/templates/content/changelog.php:17
-msgid "States for invoice and quote, like sent, canceled or whatever you want"
-msgstr ""
-
-#: /app/templates/content/changelog.php:18
-msgid "All libraries updated"
-msgstr ""
-
-#: /app/templates/content/changelog.php:19
-msgid "Multiple bugs corrections"
-msgstr ""
-
 #: /app/templates/content/configuration.php:8
 #: /app/templates/settings/index.php:4
 msgid "Configuration"
@@ -487,6 +463,7 @@ msgid "Add invoice"
 msgstr ""
 
 #: /app/templates/content/facture.php:18
+#: /app/templates/content/factureshow.php:33
 msgid "Date of service"
 msgstr ""
 
@@ -505,10 +482,6 @@ msgstr ""
 
 #: /app/templates/content/factureshow.php:33
 msgid "Settlement date"
-msgstr ""
-
-#: /app/templates/content/factureshow.php:33
-msgid "date of service"
 msgstr ""
 
 #: /app/templates/content/index.php:8 /app/templates/navigation/index.php:2

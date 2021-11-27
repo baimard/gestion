@@ -60,7 +60,6 @@ OC.L10N.register(
     "Associated quote" : "Preventivu assotziadu",
     "Invoice #" : "Fatura #",
     "Settlement date" : "Data de acòrdiu",
-    "date of service" : "data de servìtziu",
     "Customer" : "Cliente",
     "Add customer" : "Agiunghe cliente",
     "Product" : "Prodotu",

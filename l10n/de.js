@@ -20,6 +20,7 @@ OC.L10N.register(
     "Your company contact name" : "Kontaktname Deiner Firma",
     "Your Limited company" : "Deine Gesellschaft mit beschränkter Haftung",
     "Your company Unique identification" : "Eindeutige Identifizierung Deiner Firma",
+    "Your company email" : "Deine Firmen-E-Mail",
     "Your company phone" : "Telefonnummer Deiner Firma",
     "Your company address" : "Anschrift Deiner Firma",
     "All Legal mentions, disclaimer or everything, you want place in the footer." : "Alle rechtlichen Hinweise, Haftungsausschlüsse oder alles, was in der Fußzeile stehen sollte",

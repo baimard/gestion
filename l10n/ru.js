@@ -63,7 +63,6 @@ OC.L10N.register(
     "Associated quote" : "Номер заказа",
     "Invoice #" : "Инвойс #",
     "Settlement date" : "Дата расчёта",
-    "date of service" : "Дата исполнения",
     "Customer" : "Клиент",
     "Add customer" : "Добавить клиента",
     "Product" : "Товар",

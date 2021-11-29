@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-26 03:46+0000\n"
+"POT-Creation-Date: 2021-11-29 03:25+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2021\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -329,32 +329,6 @@ msgstr "Application Nextcloud"
 msgid "Change log"
 msgstr "Suivi des changements"
 
-#: /app/templates/content/changelog.php:14
-msgid "Possibility to add comment in quote"
-msgstr "Possibilité d'ajouter des commentaires dans les devis"
-
-#: /app/templates/content/changelog.php:15
-msgid "Global VAT rate"
-msgstr "TVA Global"
-
-#: /app/templates/content/changelog.php:16
-msgid "Add version for quote and invoice"
-msgstr "Suivi de version pour devis et facture"
-
-#: /app/templates/content/changelog.php:17
-msgid "States for invoice and quote, like sent, canceled or whatever you want"
-msgstr ""
-"État des devis ou des factures, exemple envoyé, annulé ou ce que vous "
-"souhaitez"
-
-#: /app/templates/content/changelog.php:18
-msgid "All libraries updated"
-msgstr "Librairies mises à jour"
-
-#: /app/templates/content/changelog.php:19
-msgid "Multiple bugs corrections"
-msgstr "Correction de multiple bugs"
-
 #: /app/templates/content/configuration.php:8
 #: /app/templates/settings/index.php:4
 msgid "Configuration"
@@ -517,6 +491,7 @@ msgid "Add invoice"
 msgstr "Ajouter une facture"
 
 #: /app/templates/content/facture.php:18
+#: /app/templates/content/factureshow.php:33
 msgid "Date of service"
 msgstr "Date de réalisation"
 
@@ -536,10 +511,6 @@ msgstr "Facture N°"
 #: /app/templates/content/factureshow.php:33
 msgid "Settlement date"
 msgstr "Date de règlement"
-
-#: /app/templates/content/factureshow.php:33
-msgid "date of service"
-msgstr "date de réalisation"
 
 #: /app/templates/content/index.php:8 /app/templates/navigation/index.php:2
 msgid "Customer"

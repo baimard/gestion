@@ -10,6 +10,7 @@ use OCA\Gestion\Db\Bdd;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 
+
 class PageController extends Controller {
 	private $idNextcloud;
 	private $myDb;
@@ -38,6 +39,7 @@ class PageController extends Controller {
 		$this->myDb = $myDb;
 		$this->l = $l;
 		$this->urlGenerator = $urlGenerator;
+		$this->$mailer = $mailer;
 	
 		try{
 			$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
@@ -278,15 +280,37 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @param string $content
+	 * @param string $name
+	 * @param string $subject
+	 * @param string $to
+	 */
+	public function sendPDF($content, $name, $subject, $to){
+		$data = base64_decode($content);
+		$mailer = \OC::$server->getMailer();
+		$message = $mailer->createMessage();
+		$message->setSubject($subject);
+		//$message->setFrom(['contact@cybercorp.fr' => 'Cybercorp']);
+		$message->setTo((array) json_decode($to));
+		$message->setHtmlBody('The <strong>message</strong> text');
+		// $message->setPlainBody('The message text');
+		$content = $mailer->createAttachment($data,$name.".pdf","x-pdf");
+		$message->attach($content);
+		$mailer->send($message);
+		return new DataResponse("", 200, ['Content-Type' => 'application/json']);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @param string $content
 	 * @param string $folder
 	 * @param string $name
 	 */
 	public function savePDF($content, $folder, $name){
-
 		try {
 			$this->storage->newFolder($folder);
         } catch(\OCP\Files\NotPermittedException $e) {
-            
+            throw new StorageException('Cant write to file');
         }
 
 		try {
@@ -297,11 +321,10 @@ class PageController extends Controller {
 				$data = base64_decode($content);
 				$file->putContent($data);
           	} catch(\OCP\Files\NotFoundException $e) {
-               	
+				throw new StorageException('Cant write to file');
             }
 
         } catch(\OCP\Files\NotPermittedException $e) {
-
             throw new StorageException('Cant write to file');
         }
 

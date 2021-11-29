@@ -37,8 +37,13 @@ return [
        ['name' => 'page#getProduitsById',   'url' => '/getProduitsById', 'verb' => 'POST'],
        ['name' => 'page#insertProduit',     'url' => '/produit/insert', 'verb' => 'POST'],
        ['name' => 'page#delete',            'url' => '/delete', 'verb' => 'DELETE'],
-       ['name' => 'page#savePDF',           'url' => '/savePDF', 'verb' => 'POST'],
+       
        ['name' => 'page#getStats',           'url' => '/getStats', 'verb' => 'PROPFIND'],
+        
+       //PDF
+       ['name' => 'page#sendPDF',           'url' => '/sendPDF', 'verb' => 'POST'],
+       ['name' => 'page#savePDF',           'url' => '/savePDF', 'verb' => 'POST'],
+       
 
     ]
 ];

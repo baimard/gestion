@@ -33,6 +33,10 @@ class PageControllerTest extends TestCase {
 
 	}
 
+	public function testMail(){
+		$result = $this->controller->testMail();
+	}
+
 	public function testIndex() {
 		$result = $this->controller->index();
 		$this->assertEquals('index', $result->getTemplateName());

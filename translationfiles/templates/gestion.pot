@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-29 03:25+0000\n"
+"POT-Creation-Date: 2021-11-30 03:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,15 +27,15 @@ msgstr ""
 
 #: /app/lib/Db/Bdd.php:89 /app/templates/content/configuration.php:16
 #: /app/templates/content/devisshow.php:26
-#: /app/templates/content/devisshow.php:80
+#: /app/templates/content/devisshow.php:81
 #: /app/templates/content/factureshow.php:25
-#: /app/templates/content/factureshow.php:81
+#: /app/templates/content/factureshow.php:82
 #: /app/templates/content/index.php:20
 msgid "Limited company"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:90 /app/templates/content/devisshow.php:80
-#: /app/templates/content/factureshow.php:81
+#: /app/lib/Db/Bdd.php:90 /app/templates/content/devisshow.php:81
+#: /app/templates/content/factureshow.php:82
 #: /app/templates/content/index.php:17
 msgid "Company"
 msgstr ""
@@ -165,88 +165,96 @@ msgid ""
 "benjaminaimard)"
 msgstr ""
 
-#: /app/src/js/main.js:28
+#: /app/src/js/main.js:29
 msgid "Search"
 msgstr ""
 
-#: /app/src/js/main.js:29
+#: /app/src/js/main.js:30
 msgid "No data available in table"
 msgstr ""
 
-#: /app/src/js/main.js:30
+#: /app/src/js/main.js:31
 msgid "Showing {start} to {end} of {total} entries"
 msgstr ""
 
-#: /app/src/js/main.js:31
+#: /app/src/js/main.js:32
 msgid "Showing 0 to 0 of 0 entries"
 msgstr ""
 
-#: /app/src/js/main.js:32
+#: /app/src/js/main.js:33
 msgid "Loading records …"
 msgstr ""
 
-#: /app/src/js/main.js:33
+#: /app/src/js/main.js:34
 msgid "Processing …"
 msgstr ""
 
-#: /app/src/js/main.js:34
+#: /app/src/js/main.js:35
 msgid "{max} entries filtered"
 msgstr ""
 
-#: /app/src/js/main.js:35
+#: /app/src/js/main.js:36
 msgid "Show {menu} entries"
 msgstr ""
 
-#: /app/src/js/main.js:36
+#: /app/src/js/main.js:37
 msgid "No corresponding entry"
 msgstr ""
 
-#: /app/src/js/main.js:38
+#: /app/src/js/main.js:39
 msgid "First"
 msgstr ""
 
-#: /app/src/js/main.js:39
+#: /app/src/js/main.js:40
 msgid "Last"
 msgstr ""
 
-#: /app/src/js/main.js:40
+#: /app/src/js/main.js:41
 msgid "Next"
 msgstr ""
 
-#: /app/src/js/main.js:41
+#: /app/src/js/main.js:42
 msgid "Previous"
 msgstr ""
 
-#: /app/src/js/main.js:64
+#: /app/src/js/main.js:65
 msgid "Choose work folder"
 msgstr ""
 
-#: /app/src/js/main.js:168
+#: /app/src/js/main.js:169
 msgid "Please create a new product"
 msgstr ""
 
-#: /app/src/js/main.js:222 /app/src/js/main.js:247
+#: /app/src/js/main.js:223 /app/src/js/main.js:248
 msgid "Open"
 msgstr ""
 
-#: /app/src/js/main.js:323
+#: /app/src/js/main.js:324
 msgid "Choose customer"
 msgstr ""
 
-#: /app/src/js/main.js:333
+#: /app/src/js/main.js:334
 msgid "Choose quote"
 msgstr ""
 
-#: /app/src/js/pdf.js:11
-msgid "Creation in progress …"
-msgstr ""
-
-#: /app/src/js/pdf.js:67
+#: /app/src/js/pdf.js:15
 msgid "Save in"
 msgstr ""
 
-#: /app/src/js/pdf.js:69
+#: /app/src/js/pdf.js:17 /app/src/js/pdf.js:31
 msgid "There is an error"
+msgstr ""
+
+#: /app/src/js/pdf.js:29
+msgid "Mail sended"
+msgstr ""
+
+#: /app/src/js/pdf.js:37
+msgid "Creation in progress …"
+msgstr ""
+
+#: /app/src/js/pdf.js:47
+msgid "Preparing the email …"
 msgstr ""
 
 #: /app/templates/content/changelog.php:4
@@ -301,6 +309,30 @@ msgstr ""
 msgid "Change log"
 msgstr ""
 
+#: /app/templates/content/changelog.php:27
+msgid "Send an email"
+msgstr ""
+
+#: /app/templates/content/changelog.php:28
+msgid "Your invoice/quote"
+msgstr ""
+
+#: /app/templates/content/changelog.php:30
+msgid "Dear,"
+msgstr ""
+
+#: /app/templates/content/changelog.php:32
+msgid "You will find attached to this email a new document."
+msgstr ""
+
+#: /app/templates/content/changelog.php:34
+msgid "Regards,"
+msgstr ""
+
+#: /app/templates/content/changelog.php:36
+msgid "Send"
+msgstr ""
+
 #: /app/templates/content/configuration.php:8
 #: /app/templates/settings/index.php:4
 msgid "Configuration"
@@ -340,8 +372,8 @@ msgid "Company address"
 msgstr ""
 
 #: /app/templates/content/configuration.php:17
-#: /app/templates/content/devisshow.php:80
-#: /app/templates/content/factureshow.php:81
+#: /app/templates/content/devisshow.php:81
+#: /app/templates/content/factureshow.php:82
 msgid "Unique identification"
 msgstr ""
 
@@ -418,9 +450,9 @@ msgid "Unit price without VAT"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:52
-#: /app/templates/content/devisshow.php:65
+#: /app/templates/content/devisshow.php:66
 #: /app/templates/content/factureshow.php:54
-#: /app/templates/content/factureshow.php:66
+#: /app/templates/content/factureshow.php:67
 msgid "Total without VAT"
 msgstr ""
 
@@ -434,23 +466,28 @@ msgstr ""
 msgid "Save in Nextcloud"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:66
-#: /app/templates/content/factureshow.php:67
-msgid "VAT Rate"
+#: /app/templates/content/devisshow.php:60
+#: /app/templates/content/factureshow.php:61
+msgid "Send by email"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:67
 #: /app/templates/content/factureshow.php:68
-msgid "Total VAT"
+msgid "VAT Rate"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:68
 #: /app/templates/content/factureshow.php:69
+msgid "Total VAT"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:69
+#: /app/templates/content/factureshow.php:70
 msgid "Total Price"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:76
-#: /app/templates/content/factureshow.php:77
+#: /app/templates/content/devisshow.php:77
+#: /app/templates/content/factureshow.php:78
 msgid "Please set in global configuration"
 msgstr ""
 

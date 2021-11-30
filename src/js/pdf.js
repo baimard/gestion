@@ -39,8 +39,15 @@ $('body').on('click', '#pdf', function(){
 });
 
 $('body').on('click', '#mail', function(){
-  showMessage(t('gestion', 'Creation in progress …'));
+  var modal = document.getElementById("modalMail");
+  modal.style.display = "block";
+});
+
+$('body').on('click', '#sendmail', function(){
+  showMessage(t('gestion', 'Preparing the email …'));
   capture(sendMail);
+  var modal = $(this)[0].parentElement.parentElement; 
+  modal.style.display = "none";
 });
 
 function capture(afterCapturefunction) {
@@ -81,17 +88,16 @@ function genPDF(imgData, canvas){
       var n = ""
       var to = {};
       to [$('#mail').text()] = $('#nomprenom').text()
-      var subject = ""
+      var subject = $("#subject").val()
+      var body = $("#body").val()
 
       if($("#factureid").length){
         n = "FACTURE_" + $("#pdf").data("name");
-        subject = t('gestion', 'Your invoice')
       }else{
         n = "DEVIS_" + $("#pdf").data("name");
-        subject = t('gestion', 'Your quote')
       }
-      //['test@cybercorp.fr' => 'test test']
-      var myData = {name: n, subject: subject, to: JSON.stringify(to), content: pdf,folder: $("#theFolder").val()+"/"+ $("#pdf").data("folder")+"/"};
+
+      var myData = {name: n, subject: subject, body: body, to: JSON.stringify(to), content: pdf,folder: $("#theFolder").val()+"/"+ $("#pdf").data("folder")+"/"};
       return myData;
     //doc.save('devis.pdf');
 }

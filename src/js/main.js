@@ -5,6 +5,7 @@ import {FilePicker,showMessage,showError} from "@nextcloud/dialogs";
 import {getCanonicalLocale, translate as t, translatePlural as n} from '@nextcloud/l10n'
 
 import '@nextcloud/dialogs/styles/toast.scss'
+
 import '../css/mycss.less';
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net';
@@ -74,7 +75,7 @@ $('body').on('change', '.editableSelect', function() { updateDB($(this).data('ta
 
 $('body').on('click', '.menu', function() {$('#menu-'+this.dataset.menu).toggleClass('open');});
 
-$('body').on('click', '.modalClose', function(){ var modal = document.getElementById("modalConfig"); modal.style.display = "none"; })
+$('body').on('click', '.modalClose', function(){ var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; })
 
 $('body').on('click', '.editable', function() {$(this).attr('contenteditable', 'true');});
 

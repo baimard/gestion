@@ -282,17 +282,16 @@ class PageController extends Controller {
 	 * @param string $content
 	 * @param string $name
 	 * @param string $subject
+	 * @param string $body
 	 * @param string $to
 	 */
-	public function sendPDF($content, $name, $subject, $to){
+	public function sendPDF($content, $name, $subject, $body, $to){
 		$data = base64_decode($content);
 		$mailer = \OC::$server->getMailer();
 		$message = $mailer->createMessage();
 		$message->setSubject($subject);
-		//$message->setFrom(['contact@cybercorp.fr' => 'Cybercorp']);
 		$message->setTo((array) json_decode($to));
-		$message->setHtmlBody('The <strong>message</strong> text');
-		// $message->setPlainBody('The message text');
+		$message->setHtmlBody($body);
 		$content = $mailer->createAttachment($data,$name.".pdf","x-pdf");
 		$message->attach($content);
 		$mailer->send($message);

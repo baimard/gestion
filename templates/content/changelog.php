@@ -1,4 +1,4 @@
-<div id="modalConfig" class="modalConfig">
+<div id="modalConfig" class="modal">
 	<div class="modal-content">
 		<span class="modalClose">&times;</span>
 		<h2><?php p($l->t('Welcome to GESTION'));?></h2>
@@ -19,3 +19,22 @@
 		</p>
 	</div>
 </div>
+
+
+<div id="modalMail" class="modal">
+<div class="modal-content">
+<span class="modalClose">&times;</span>
+<h2><?php p($l->t('Send an email')); ?></h2>
+<input id="subject" style="width:100%" type="text" value="<?php p($l->t('Your invoice/quote')); ?>"/>		
+<textarea style="width:100%" id="body" >
+<?php p($l->t('Dear,'));?>
+<br/>
+<?php p($l->t('You will find attached to this email a new document.'));?>
+<br/>
+<?php p($l->t('Regards,'));?>
+</textarea>
+<button id="sendmail"><?php p($l->t('Send')); ?></button>
+</div>
+</div>
+
+

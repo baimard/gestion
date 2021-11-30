@@ -26,7 +26,7 @@ var sendMail = function(myData){
     contentType: 'application/json',
     data: JSON.stringify(myData)
   }).done(function (response) {
-    showMessage(t('gestion', 'Mail sent'));
+    showMessage(t('gestion', 'Email sent'));
   }).fail(function (response, code) {
     showMessage(t('gestion', 'There is an error'));
     error(response);

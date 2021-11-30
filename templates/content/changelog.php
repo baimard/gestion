@@ -29,9 +29,9 @@
 <textarea style="width:100%" id="body" >
 <?php p($l->t('Dear,'));?>
 <br/>
-<?php p($l->t('You will find attached to this email a new document.'));?>
+<?php p($l->t('Attached to this email you will find a new document.'));?>
 <br/>
-<?php p($l->t('Regards,'));?>
+<?php p($l->t('Best regards,'));?>
 </textarea>
 <button id="sendmail"><?php p($l->t('Send')); ?></button>
 </div>

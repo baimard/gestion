@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-11-30 03:27+0000\n"
+"POT-Creation-Date: 2021-12-01 03:32+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2021\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -269,7 +269,7 @@ msgid "There is an error"
 msgstr "Il y a une erreur"
 
 #: /app/src/js/pdf.js:29
-msgid "Mail sended"
+msgid "Email sent"
 msgstr ""
 
 #: /app/src/js/pdf.js:37
@@ -350,11 +350,11 @@ msgid "Dear,"
 msgstr ""
 
 #: /app/templates/content/changelog.php:32
-msgid "You will find attached to this email a new document."
+msgid "Attached to this email you will find a new document."
 msgstr ""
 
 #: /app/templates/content/changelog.php:34
-msgid "Regards,"
+msgid "Best regards,"
 msgstr ""
 
 #: /app/templates/content/changelog.php:36

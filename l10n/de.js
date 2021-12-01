@@ -59,6 +59,7 @@ OC.L10N.register(
     "Contact" : "Kontakt",
     "Leave me a comment, but only if you like this application :)" : "Hinterlasse mir eine Bewertung, aber nur, wenn Dir diese Anwendung gefällt :)",
     "Nextcloud apps" : "Nextcloud Apps",
+    "Your invoice/quote" : "Deine Rechnung/Dein Angebot",
     "Configuration" : "Konfiguration",
     "Click to edit" : "Klicken, um zu bearbeiten",
     "Company name" : "Name der Firma",

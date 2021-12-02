@@ -60,6 +60,7 @@ OC.L10N.register(
     "Leave me a comment, but only if you like this application :)" : "Hinterlasse mir eine Bewertung, aber nur, wenn Dir diese Anwendung gefällt :)",
     "Nextcloud apps" : "Nextcloud Apps",
     "Your invoice/quote" : "Deine Rechnung/Dein Angebot",
+    "Attached to this email you will find a new document." : "Im Anhang zu dieser E-Mail findest Du ein neues Dokument.",
     "Configuration" : "Konfiguration",
     "Click to edit" : "Klicken, um zu bearbeiten",
     "Company name" : "Name der Firma",

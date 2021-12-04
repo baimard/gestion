@@ -62,7 +62,6 @@ OC.L10N.register(
     "Contact" : "联系",
     "Leave me a comment, but only if you like this application :)" : "请留下评论，但前提是你喜欢这个应用 :)",
     "Nextcloud apps" : "NextCloud 应用",
-    "Change log" : "更新日志",
     "Send an email" : "发送一封电子邮件",
     "Your invoice/quote" : "你的发票/报价",
     "Dear," : "亲爱的，",

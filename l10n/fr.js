@@ -60,7 +60,6 @@ OC.L10N.register(
     "Contact" : "Contact",
     "Leave me a comment, but only if you like this application :)" : "Laissez moi un commentaire, mais seulement si vous aimez l'application :)",
     "Nextcloud apps" : "Application Nextcloud",
-    "Change log" : "Suivi des changements",
     "Configuration" : "Configuration",
     "Click to edit" : "Cliquer pour éditer",
     "Company name" : "Nom de votre entreprise",

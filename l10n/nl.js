@@ -62,7 +62,6 @@ OC.L10N.register(
     "Contact" : "Contact",
     "Leave me a comment, but only if you like this application :)" : "Laat een bericht voor me achter, maar alleen als je deze applicatie waardeert :)",
     "Nextcloud apps" : "Nextcloud apps",
-    "Change log" : "Veranderingslogboek",
     "Send an email" : "Verzend een e-mail",
     "Your invoice/quote" : "Je rekening/factuur",
     "Dear," : "Beste,",

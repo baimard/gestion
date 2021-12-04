@@ -61,7 +61,6 @@ OC.L10N.register(
     "Contact" : "Stik",
     "Leave me a comment, but only if you like this application :)" : "Pustite sporočilo, a le, če vam je program všeč ;).",
     "Nextcloud apps" : "Programi Nextcloud",
-    "Change log" : "Zapisi dnevnika",
     "Configuration" : "Nastavitve",
     "Click to edit" : "Kliknite za urejanje",
     "Company name" : "Ime podjetja",

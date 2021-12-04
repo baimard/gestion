@@ -62,7 +62,6 @@ OC.L10N.register(
     "Contact" : "Kontaktua",
     "Leave me a comment, but only if you like this application :)" : "Egin iruzkin bat, baina bakarrik aplikazioa gustuko baduzu :)",
     "Nextcloud apps" : "Nextcloud aplikazioak",
-    "Change log" : "Aldaketa erregistroa",
     "Send an email" : "Bidali posta-mezu bat",
     "Your invoice/quote" : "Zure faktura/eskaintza",
     "Attached to this email you will find a new document." : "Dokumentu berri bat aurkituko duzu e-posta honi erantsita. ",

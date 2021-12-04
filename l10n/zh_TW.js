@@ -63,7 +63,6 @@ OC.L10N.register(
     "Contact" : "聯絡人",
     "Leave me a comment, but only if you like this application :)" : "請留下評論，但前提是您喜歡這個應用程式 :)",
     "Nextcloud apps" : "Nextcloud 應用程式",
-    "Change log" : "變更紀錄",
     "Send an email" : "傳送電子郵件",
     "Your invoice/quote" : "您的發票／報價",
     "Dear," : "您好，",

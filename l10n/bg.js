@@ -61,7 +61,6 @@ OC.L10N.register(
     "Contact" : "Контакт",
     "Leave me a comment, but only if you like this application :)" : "Оставете ми коментар, но само ако ви харесва това приложение :)",
     "Nextcloud apps" : "Приложения Nextcloud",
-    "Change log" : "Журнал на промените",
     "Configuration" : "Конфигурация",
     "Click to edit" : "Кликнете, за да редактирате",
     "Company name" : "Име на фирма",

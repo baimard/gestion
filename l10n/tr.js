@@ -63,7 +63,6 @@ OC.L10N.register(
     "Contact" : "İletişim",
     "Leave me a comment, but only if you like this application :)" : "Uygulamayı beğendiyseniz değerlendirin.",
     "Nextcloud apps" : "Nextcloud uygulamaları",
-    "Change log" : "Değişiklik günlüğü",
     "Send an email" : "E-posta gönder",
     "Your invoice/quote" : "Faturanız/teklifiniz",
     "Dear," : "Sayın,",

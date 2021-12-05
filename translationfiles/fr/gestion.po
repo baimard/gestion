@@ -7,15 +7,16 @@
 # Ldm Public <ldmpub@gmail.com>, 2021
 # Alain Rihs <alainrihs@sunrise.ch>, 2021
 # Benjamin <benjamin@cybercorp.fr>, 2021
+# antemyste, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-12-04 03:33+0000\n"
+"POT-Creation-Date: 2021-12-05 03:38+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2021\n"
+"Last-Translator: antemyste, 2021\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,7 +104,7 @@ msgstr "Nom de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:169
 msgid "Your company contact surname"
-msgstr ""
+msgstr "Votre nom de contact d'entreprise"
 
 #: /app/lib/Db/Bdd.php:170
 msgid "Your company contact name"
@@ -270,7 +271,7 @@ msgstr "Il y a une erreur"
 
 #: /app/src/js/pdf.js:29
 msgid "Email sent"
-msgstr ""
+msgstr "Email envoyé"
 
 #: /app/src/js/pdf.js:37
 msgid "Creation in progress …"
@@ -278,7 +279,7 @@ msgstr "Création en cours"
 
 #: /app/src/js/pdf.js:47
 msgid "Preparing the email …"
-msgstr ""
+msgstr "Préparation de l'e-mail…"
 
 #: /app/templates/content/changelog.php:4
 msgid "Welcome to GESTION"
@@ -335,31 +336,31 @@ msgstr "Application Nextcloud"
 
 #: /app/templates/content/changelog.php:11
 msgid "Changelog"
-msgstr ""
+msgstr "Journal des modifications"
 
 #: /app/templates/content/changelog.php:27
 msgid "Send an email"
-msgstr ""
+msgstr "Envoyer un e-mail"
 
 #: /app/templates/content/changelog.php:28
 msgid "Your invoice/quote"
-msgstr ""
+msgstr "Votre facture/devis"
 
 #: /app/templates/content/changelog.php:30
 msgid "Dear,"
-msgstr ""
+msgstr "Cher,"
 
 #: /app/templates/content/changelog.php:32
 msgid "Attached to this email you will find a new document."
-msgstr ""
+msgstr "Vous trouverez en pièce jointe de cet e-mail un nouveau document."
 
 #: /app/templates/content/changelog.php:34
 msgid "Best regards,"
-msgstr ""
+msgstr "Meilleures salutations,"
 
 #: /app/templates/content/changelog.php:36
 msgid "Send"
-msgstr ""
+msgstr "Envoyer"
 
 #: /app/templates/content/configuration.php:8
 #: /app/templates/settings/index.php:4
@@ -389,15 +390,15 @@ msgstr "Chargement"
 
 #: /app/templates/content/configuration.php:13
 msgid "Contact First name"
-msgstr ""
+msgstr "Prénom de Contact"
 
 #: /app/templates/content/configuration.php:14
 msgid "Contact name"
-msgstr ""
+msgstr "Nom du contact"
 
 #: /app/templates/content/configuration.php:15
 msgid "Company address"
-msgstr ""
+msgstr "Adresse de la société"
 
 #: /app/templates/content/configuration.php:17
 #: /app/templates/content/devisshow.php:81
@@ -407,15 +408,15 @@ msgstr "Siren"
 
 #: /app/templates/content/configuration.php:20
 msgid "Default VAT"
-msgstr ""
+msgstr "TVA par défaut"
 
 #: /app/templates/content/configuration.php:21
 msgid "Default Currency"
-msgstr ""
+msgstr "Devise par défaut"
 
 #: /app/templates/content/configuration.php:22
 msgid "Legal disclaimer/mentions"
-msgstr ""
+msgstr "Avis de non-responsabilité/mentions"
 
 #: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:9
 msgid "Quote"
@@ -497,7 +498,7 @@ msgstr "Sauvegarder dans nextcloud"
 #: /app/templates/content/devisshow.php:60
 #: /app/templates/content/factureshow.php:61
 msgid "Send by email"
-msgstr ""
+msgstr "Envoyer par email"
 
 #: /app/templates/content/devisshow.php:67
 #: /app/templates/content/factureshow.php:68

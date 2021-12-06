@@ -63,6 +63,7 @@ OC.L10N.register(
     "Contact" : "Kontakt",
     "Leave me a comment, but only if you like this application :)" : "Zanechajte mi komentár, ale iba ak máte moju aplikáciu radi :)",
     "Nextcloud apps" : "Nextcloud aplikácie",
+    "Changelog" : "Zoznam zmien",
     "Send an email" : "Odoslať e-mail",
     "Your invoice/quote" : "Vaša faktúra/cenová ponuka",
     "Dear," : "Vážená/Vážený %s,",

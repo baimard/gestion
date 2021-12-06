@@ -20,7 +20,7 @@
                 <th><?php p($l->t('Means of payment'));?></th>
                 <th><?php p($l->t('Associated quote'));?></th>
                 <th><?php p($l->t('Version'));?></th>
-                <th><?php p($l->t('Stats'));?></th>
+                <th><?php p($l->t('Status'));?></th>
                 <th><?php p($l->t('Actions'));?></th>
             </tr>
         </thead>

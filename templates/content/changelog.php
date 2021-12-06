@@ -8,13 +8,23 @@
 		<p style="margin-bottom:20px;"><?php p($l->t('Others questions?'));?> &#128073; <a href="mailto:contact@cybercorp.fr"><?php p($l->t('Contact'));?></a></p>
 		<p style="margin-bottom:20px;"><?php p($l->t('Leave me a comment, but only if you like this application :)'));?> &#128073; <a href="https://apps.nextcloud.com/apps/gestion"><?php p($l->t('Nextcloud apps'));?></a></p>
 		<hr/>	
-		<h2><?php p($l->t('Changelog'));?> v1.2.2</h2>
+		<h2><?php p($l->t('Changelog'));?> v1.2.12</h2>
 		<p>
-			<ul>
-				<li><a href="https://github.com/baimard/gestion/issues/58">[EN] Apps: add product bug #58</a></li>
-				<li><a href="https://github.com/baimard/gestion/issues/53">[EN] Add a mark setting for price #53</a></li>
-				<li><a href="https://github.com/baimard/gestion/issues/56">[EN] Change position in table #56</a></li>
-				<li>Enhancement test</li>
+			
+			## New features
+		<ul>
+			<li>* Direct send quote and invoice by mail
+			<li>* Compatibility Nextcloud 23
+		</ul>
+		<ul>
+			## What's Changed
+			<li>* l10n: Change to a capital letter by @Valdnet in https://github.com/baimard/gestion/pull/62</li>
+			<li>* l10n: Correct spelling by @Valdnet in https://github.com/baimard/gestion/pull/71</li>
+			<li>* l10n: Spelling unification by @Valdnet in https://github.com/baimard/gestion/pull/72</li>
+			<li>* l10n: Improved grammar by @rakekniven in https://github.com/baimard/gestion/pull/73</li>
+			<li>* Fixed grammar by @rakekniven in https://github.com/baimard/gestion/pull/76</li>
+
+			<li>**Full Changelog**: https://github.com/baimard/gestion/compare/1.2.2...1.2.12</li>
 			</ul>
 		</p>
 	</div>

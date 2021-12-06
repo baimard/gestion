@@ -11,9 +11,10 @@ use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\Notification\IManager;
 
 class Application extends App implements IBootstrap {
+    public const APP_ID = 'gestion';
 
     public function __construct() {
-        parent::__construct('gestion');
+        parent::__construct(self::APP_ID);
     }
 
     public function register(IRegistrationContext $context): void {

@@ -286,16 +286,21 @@ class PageController extends Controller {
 	 * @param string $to
 	 */
 	public function sendPDF($content, $name, $subject, $body, $to){
-		$data = base64_decode($content);
-		$mailer = \OC::$server->getMailer();
-		$message = $mailer->createMessage();
-		$message->setSubject($subject);
-		$message->setTo((array) json_decode($to));
-		$message->setHtmlBody($body);
-		$content = $mailer->createAttachment($data,$name.".pdf","x-pdf");
-		$message->attach($content);
-		$mailer->send($message);
-		return new DataResponse("", 200, ['Content-Type' => 'application/json']);
+		try {
+			$data = base64_decode($content);
+			$mailer = \OC::$server->getMailer();
+			$message = $mailer->createMessage();
+			$message->setSubject($subject);
+			$message->setTo((array) json_decode($to));
+			$message->setHtmlBody($body);
+			$content = $mailer->createAttachment($data,$name.".pdf","x-pdf");
+			$message->attach($content);
+			$mailer->send($message);
+			return new DataResponse("", 200, ['Content-Type' => 'application/json']);
+		} catch (Exception $e) {
+			return new DataResponse("Is your global mail server configured in Nextcloud ?", 500, ['Content-Type' => 'application/json']);
+		}
+		
 	}
 
 	/**

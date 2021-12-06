@@ -18,7 +18,7 @@
                 <th><?php p($l->t('Quote number'));?></th>
                 <th><?php p($l->t('Customer quote'));?></th>
                 <th><?php p($l->t('Version'));?></th>
-                <th><?php p($l->t('Stats'));?></th>
+                <th><?php p($l->t('Status'));?></th>
                 <th><?php p($l->t('Actions'));?></th>
             </tr>
         </thead>

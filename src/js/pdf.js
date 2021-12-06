@@ -28,8 +28,7 @@ var sendMail = function(myData){
   }).done(function (response) {
     showMessage(t('gestion', 'Email sent'));
   }).fail(function (response, code) {
-    showMessage(t('gestion', 'There is an error'));
-    error(response);
+    showMessage(t('gestion', 'Is your global mail server configured in Nextcloud ?'));
   });
 }   
 

@@ -50,7 +50,6 @@ $(window).on("load", function() {
     configuration(path);
 
     if ($('#devisid').length) {
-        console.log('ici')
         getClientByIdDevis($('#devisid').data('id'));
         getProduitsById();
     }
@@ -288,7 +287,7 @@ var lcdt = function loadConfigurationDT(response) {
         $('#currency').append(getCurrencyList(myresp.devise));
         $('#currency').data("id", myresp.id);
 
-        $('#mentions_default').html(((myresp.mentions_default.length === 0) ? '-' : myresp.mentions_default));
+        $('#mentions_default').html(((myresp.mentions_default.length === 0) ? '-' : myresp.mentions_default.replace(/\&amp;/g, '&')));
         $('#mentions_default').data("id", myresp.id);
     });
 }

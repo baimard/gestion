@@ -15,6 +15,7 @@ return [
        ['name' => 'page#produit',           'url' => '/produit', 'verb' => 'GET'],
        ['name' => 'page#config',           'url' => '/config', 'verb' => 'GET'],
        ['name' => 'page#isConfig',          'url' => '/isconfig', 'verb' => 'GET'],
+       ['name' => 'page#statistique',          'url' => '/statistique', 'verb' => 'GET'],
        //['name' => 'page#clientcreate',      'url' => '/client/create', 'verb' => 'GET'],
 
 	   ['name' => 'page#getClients',        'url' => '/getClients', 'verb' => 'PROPFIND'],

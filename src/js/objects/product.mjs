@@ -16,7 +16,7 @@ export class Product {
      */
     getDTRow() {
         let myrow = [
-            '<div class="editable" data-table="produit" data-column="reference" data-id="' + this.id + '">' + this.reference + '</div>',
+            '<div class="editable" data-table="produit" data-column="reference" data-id="' + this.id + '">' + this.reference + '</div><div class="editablebutton"><button class="icon-rename"></button><div>',
             '<div class="editable" data-table="produit" data-column="description" data-id="' + this.id + '">' + this.description + '</div>',
             '<div class="editable" data-table="produit" data-column="prix_unitaire" data-id="' + this.id + '">' + this.prix_unitaire + '</div>',
             '<div data-modifier="produit" data-id=' + this.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'

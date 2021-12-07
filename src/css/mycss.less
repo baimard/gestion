@@ -13,18 +13,18 @@
     ol,
     ul,
     dl {
-    margin-top: 0;
-    margin-bottom: 0rem;
+      margin-top: 0;
+      margin-bottom: 0rem;
     }
 
     *,
     *::before,
     *::after {
-    box-sizing: content-box;
+      box-sizing: content-box;
     }
 
     a {
-    text-decoration: none;
+      text-decoration: none;
     }
     
     table#totaldevis td{
@@ -35,6 +35,10 @@
       white-space: normal;
       word-wrap: break-word;
     }
+}
+
+.bootstrap-iso select{
+  max-width: 400px;
 }
 
 #hello {
@@ -48,6 +52,7 @@
 
 #content {
 	width:100%;
+  min-width: 1920px;
 }
 
 #contentTable {
@@ -181,6 +186,19 @@
   display: table-cell;
 }
 
-// *[contenteditable="true"] {
-//   width: 100%;
-// }
+.editable{
+  float:left;
+  padding-top:5px;
+  max-width: 90%;
+}
+
+.editable[contenteditable="true"]{
+  float:left;
+  width: 80%;
+}
+
+.editablebutton button{
+  float: right;
+  padding-top:0px;
+  margin-top: 0px;
+}

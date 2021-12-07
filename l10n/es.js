@@ -85,7 +85,6 @@ OC.L10N.register(
     "Quote date" : "Fecha del presupuesto",
     "Customer quote" : "Presupuesto de cliente",
     "Version" : "Versión",
-    "Stats" : "Estadísticas",
     "Actions" : "Acciones",
     "Quote #" : "Presupuesto #",
     "FROM" : "DESDE",

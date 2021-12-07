@@ -77,7 +77,6 @@ OC.L10N.register(
     "Quote date" : "Дата на оферта",
     "Customer quote" : "Оферта за клиент",
     "Version" : "Версия",
-    "Stats" : "Статистики",
     "Actions" : "Действия",
     "Quote #" : "Оферта #",
     "FROM" : "ОТ",

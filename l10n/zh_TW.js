@@ -86,7 +86,6 @@ OC.L10N.register(
     "Quote date" : "報價日期",
     "Customer quote" : "消費者報價",
     "Version" : "版本",
-    "Stats" : "統計",
     "Actions" : "動作",
     "Quote #" : "報價 #",
     "FROM" : "從",

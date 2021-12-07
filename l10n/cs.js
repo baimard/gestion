@@ -86,7 +86,6 @@ OC.L10N.register(
     "Quote date" : "Datum nabídky",
     "Customer quote" : "Nabídka pro zákazníka",
     "Version" : "Verze",
-    "Stats" : "Statistiky",
     "Actions" : "Akce",
     "Quote #" : "Nabídka č.",
     "FROM" : "OD",

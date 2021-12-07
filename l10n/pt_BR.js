@@ -56,7 +56,6 @@ OC.L10N.register(
     "Quote date" : "Data da cotação ",
     "Customer quote" : "Cotação do cliente ",
     "Version" : "Versão",
-    "Stats" : "Estatísticas",
     "Actions" : "Ações",
     "Quote #" : "Cota #",
     "FROM" : "A PARTIR DE",

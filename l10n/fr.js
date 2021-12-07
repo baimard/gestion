@@ -86,7 +86,6 @@ OC.L10N.register(
     "Quote date" : "Date du devis",
     "Customer quote" : "Numéro du devis",
     "Version" : "Version",
-    "Stats" : "État(s)",
     "Actions" : "Actions",
     "Quote #" : "DEVIS N°",
     "FROM" : "PART",

@@ -77,7 +77,6 @@ OC.L10N.register(
     "Quote date" : "Datum ponudbe",
     "Customer quote" : "Ponudba stranke",
     "Version" : "Različica",
-    "Stats" : "Stanje",
     "Actions" : "Dejanja",
     "Quote #" : "Ponudba #",
     "FROM" : "OD",

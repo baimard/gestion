@@ -81,7 +81,6 @@ OC.L10N.register(
     "Quote date" : "Aurrekontuaren data",
     "Customer quote" : "Bezeroaren aurrekontua",
     "Version" : "Bertsioa",
-    "Stats" : "Estatistikak",
     "Actions" : "Ekintzak",
     "Quote #" : "Eskaintza #",
     "FROM" : "NORK",

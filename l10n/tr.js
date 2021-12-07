@@ -86,7 +86,6 @@ OC.L10N.register(
     "Quote date" : "Teklif tarihi",
     "Customer quote" : "Müşteri teklifi",
     "Version" : "Sürüm",
-    "Stats" : "İstatistikler",
     "Actions" : "İşlemler",
     "Quote #" : "Teklif no",
     "FROM" : "BAŞLANGIÇ",

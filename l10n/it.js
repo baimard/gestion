@@ -85,7 +85,6 @@ OC.L10N.register(
     "Quote date" : "Data preventivo",
     "Customer quote" : "Preventivo del cliente",
     "Version" : "Versione",
-    "Stats" : "Statistiche",
     "Actions" : "Azioni",
     "Quote #" : "Preventivo #",
     "FROM" : "DA",

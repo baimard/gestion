@@ -86,7 +86,6 @@ OC.L10N.register(
     "Quote date" : "Angebotsdatum",
     "Customer quote" : "Angebot für Kunden",
     "Version" : "Version",
-    "Stats" : "Statistiken",
     "Actions" : "Aktionen",
     "Quote #" : "Angebot #",
     "FROM" : "VON",

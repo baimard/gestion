@@ -50,7 +50,6 @@ OC.L10N.register(
     "Save in" : "保存於",
     "There is an error" : "有一個錯誤",
     "Email sent" : "電子郵件已寄出",
-    "Is your global mail server configured in Nextcloud ?" : "您的電郵伺服器是否已在 Nextcloud 中配置？",
     "Creation in progress …" : "正在創建中",
     "Preparing the email …" : "正在準備電郵 ...",
     "Welcome to GESTION" : "歡迎來到 GESTION",

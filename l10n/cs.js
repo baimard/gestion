@@ -50,6 +50,7 @@ OC.L10N.register(
     "Save in" : "Uložit do",
     "There is an error" : "Je zde chyba",
     "Email sent" : "E-mail odeslán",
+    "Is your global mail server configured in Nextcloud?" : "Je v Nextcloud nastaven váš globální e-mailový server?",
     "Creation in progress …" : "Probíhá vytváření",
     "Preparing the email …" : "Připravuje se e-mail",
     "Welcome to GESTION" : "Vítejte v GESTION",

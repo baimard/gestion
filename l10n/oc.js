@@ -17,6 +17,7 @@ OC.L10N.register(
     "Welcome to GESTION" : "Benvengut a GESTION",
     "Documentation" : "Documentacion",
     "Contact" : "Contacte",
+    "Nextcloud apps" : "Apps Nextcloud",
     "Configuration" : "Configuracion",
     "Loading" : "Cargament",
     "Version" : "Version",

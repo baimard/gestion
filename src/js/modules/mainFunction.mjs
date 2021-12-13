@@ -22,3 +22,13 @@ export function langage(){
 export function showDone() {
     showMessage(t('gestion', 'Added'));
 }
+
+export function checkSelect(el){
+    $(el).each(function(arrayID, elem){
+        $(elem).find('option').each(function(){ 
+            if(this.value==$(elem).data('current')){
+                $(this).prop('selected', true)
+            }
+        })
+    })
+}

@@ -19,7 +19,6 @@
 	</div>
 </div>
 
-
 <div id="modalMail" class="modal">
 <div class="modal-content">
 <span class="modalClose">&times;</span>

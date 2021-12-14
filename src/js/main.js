@@ -11,9 +11,13 @@ import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net';
 import 'bootstrap/js/dist/util';
 
-import { getClients, getDevis, newInvoice, updateDB, deleteDB, loadProduitDT, loadClientDT, loadDevisDT} from "./modules/ajaxRequest.mjs";
-import { configureDT, showDone, langage, checkSelect } from "./modules/mainFunction.mjs";
+import { newInvoice, updateDB, deleteDB, loadProduitDT, loadClientDT, loadDevisDT} from "./modules/ajaxRequest.mjs";
+import { showDone } from "./modules/mainFunction.mjs";
 import { getCurrencyList } from "./modules/currency.mjs";
+import { loadFactureDT } from "./modules/ajaxRequest.mjs";
+import { getStats } from "./modules/ajaxRequest.mjs";
+import { loadClientList } from "./modules/mainFunction.mjs";
+import { loadDevisList } from "./modules/mainFunction.mjs";
 
 var baseUrl = getRootUrl()+generateUrl('/apps/gestion');
 var cur = null ;
@@ -56,8 +60,13 @@ $(window).on("load", function() {
     if ($('#client').length) {loadClientDT($('#client').DataTable());}
     if ($('#configuration').length) {configuration(lcdt);}
     if ($('#devis').length) {loadDevisDT($('#devis').DataTable());}
-    if ($('#facture').length) {loadFactureDT();}
+    if ($('#facture').length) {loadFactureDT($('#facture').DataTable());}
     if ($('#produit').length) {loadProduitDT($('#produit').DataTable());}
+});
+
+$('body').on('page.dt search.dr', function() {
+    if ($('#devis').length) {console.log("loadclientlist"); loadClientList();}
+    if ($('#facture').length) {console.log("loadclientlist"); loadDevisList();}
 });
 
 $('body').on('click', '#theFolder', function() {
@@ -107,7 +116,7 @@ $('body').on('click', '.deleteItem', function() {
     if (modifier === "getProduitsById") {getProduitsById();}
     if (modifier === "client") {loadClientDT($('#client').DataTable());}
     if (modifier === "devis") {loadDevisDT($('#devis').DataTable());}
-    if (modifier === "facture") {loadFactureDT();}
+    if (modifier === "facture") {loadFactureDT($('#facture').DataTable());}
     if (modifier === "produit") {loadProduitDT($('#produit').DataTable());}
 });
 
@@ -117,6 +126,9 @@ $('body').on('change', '.listClient,.listDevis', function(){
     var val = this.value;
     var column = $(myDiv).data('column');
     var table = $(myDiv).data('table');
+
+    this.setAttribute('data-current',this.value)
+
     updateDB(table, column, val, id);
 })
 
@@ -181,7 +193,7 @@ $('body').on('click', '#newDevis', function() {
 
 $('body').on('click', '#newInvoice', function() {
     newInvoice();
-    loadFactureDT();
+    loadFactureDT($('#facture').DataTable());
 });
 
 $('body').on('click', '#newProduit', function() {
@@ -202,35 +214,6 @@ function updateEditable(myCase){
     myCase.attr('contenteditable', 'false');
     myCase.removeAttr('contenteditable');
 }
-
-function loadFactureDT() {
-    $.ajax({
-        url: baseUrl + '/getFactures',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function(response) {
-        $('#facture').DataTable().clear();
-        $.each(JSON.parse(response), function(arrayID, myresp) {
-            $('#facture').DataTable().row.add([
-                '<div class="editable" data-table="facture" data-column="num" data-id="' + myresp.id + '">' + ((myresp.num.length === 0) ? '-' : myresp.num) + '</div>',
-                '<div class="editable" data-table="facture" data-column="date" data-id="' + myresp.id + '">' + ((myresp.date.length === 0) ? '-' : myresp.date) + '</div>',
-                '<input style="margin:0;padding:0;" class="inputDate" type="date" value='+myresp.date_paiement+' data-table="facture" data-column="date_paiement" data-id="' + myresp.id + '"/>',
-                '<div class="editable" data-table="facture" data-column="type_paiement" data-id="' + myresp.id + '">' + ((myresp.type_paiement.length === 0) ? '-' : myresp.type_paiement) + '</div>',
-                '<div data-table="facture" data-column="id_devis" data-id="' + myresp.id + '"><select class="listDevis" data-current="'+ myresp.id_devis +'"></select></div>',
-                '<div class="editable" data-table="facture" data-column="version" data-id="' + myresp.id + '" style="display:inline">' + ((myresp.version.length === 0) ? '-' : myresp.version) + '</div>',
-                '<div class="editable" data-table="facture" data-column="status_paiement" data-id="' + myresp.id + '" style="display:inline">' + ((myresp.status_paiement.length === 0) ? '-' : myresp.status_paiement) + '</div>',
-                '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="'+baseUrl+'/facture/' + myresp.id + '/show"><button>'+ t('gestion', 'Open')+'</button></a></div><div data-modifier="facture" data-id=' + myresp.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
-            ]);
-        });
-        loadDevisList();
-        $('#facture').DataTable().columns.adjust().draw();
-        configureDT();
-    }).fail(function(response, code) {
-        showError(response);
-    });
-}
-
-
 
 var lcdt = function loadConfigurationDT(response) {
     $.each(JSON.parse(response), function(arrayID, myresp) {
@@ -269,20 +252,6 @@ var lcdt = function loadConfigurationDT(response) {
     });
 }
 
-
-
-function loadDevisList(){
-    getDevis(function(response){
-        $('.listDevis').append("<option value='0'>"+ t('gestion', 'Choose quote')+"</option>");
-        $.each(JSON.parse(response), function(arrayID, myresp) {     
-            $('.listDevis').append("<option value='"+ myresp.id +"'>"+ myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom +"</option>");
-        });
-        checkSelect('.listDevis');
-    });
-}
-
-
-
 function getClientByIdDevis(id) {
     var myData = { id: id, };
     $.ajax({
@@ -312,20 +281,6 @@ function getClientByIdDevis(id) {
     });
 }
 
-
-function listClient(lc, id, table, column) {
-    $.ajax({
-        url: baseUrl + '/getClients',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function(response) {
-        $.each(JSON.parse(response), function(arrayID, myresp) {
-            lc.append('<option data-table="' + table + '" data-column="' + column + '" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.prenom + ' ' + myresp.nom + ' ' + '</option>');
-        });
-    }).fail(function(response, code) {
-        showError(response);
-    });
-}
 
 function listProduit(lp, id, produitid) {
     $.ajax({
@@ -467,18 +422,3 @@ var path = function(res) {
     $("#theFolder").attr('data-id', myres.id);
 };
 
-function getStats() {
-    $.ajax({
-        url: baseUrl + '/getStats',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function(response) {
-        var res = JSON.parse(response);
-        $("#statsclient").text(res.client);
-        $("#statsdevis").text(res.devis);
-        $("#statsfacture").text(res.facture);
-        $("#statsproduit").text(res.produit);
-    }).fail(function(response, code) {
-        showError(response);
-    });
-}

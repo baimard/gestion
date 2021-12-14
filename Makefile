@@ -152,7 +152,7 @@ appstore:
 
 .PHONY: test
 test:
-	$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.xml --debug
+	$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.xml --debug --colors
 #$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.integration.xml
 
 .PHONY: testPanther

@@ -1,9 +1,14 @@
-import {showMessage,showError} from "@nextcloud/dialogs";
-import {generateUrl} from "@nextcloud/router";
-import { configureDT, showDone, checkSelect } from "./mainFunction.mjs";
+import { showMessage,showError } from "@nextcloud/dialogs";
+import { generateUrl } from "@nextcloud/router";
+
+import { showDone } from "./mainFunction.mjs";
 import { Product } from "../objects/product.mjs";
 import { Client } from "../objects/client.mjs";
 import { Devis } from "../objects/devis.mjs";
+import { loadClientList } from "./mainFunction.mjs";
+import { LoadDT } from "./mainFunction.mjs";
+import { Facture } from "../objects/facture.mjs";
+import { loadDevisList } from "./mainFunction.mjs";
 var baseUrl = generateUrl('/apps/gestion');
 
 /**
@@ -107,26 +112,6 @@ export function deleteDB(table, id) {
     });
 }
 
-function loadClientList(){
-    getClients(function(response){
-        $('.listClient').append("<option value='0'>"+ t('gestion', 'Choose customer')+"</option>");
-        $.each(JSON.parse(response), function(arrayID, myresp) {     
-            $('.listClient').append("<option value='"+ myresp.id +"'>"+myresp.nom + " " + myresp.prenom+"</option>");
-        });
-        checkSelect('.listClient');
-    });
-}
-
-function LoadDT(DT,response,cls){
-    DT.clear();
-    $.each(JSON.parse(response), function(arrayID, myresp) {
-        let c = new cls(myresp);
-        DT.row.add(c.getDTRow());
-    });
-    DT.columns.adjust().draw();
-    configureDT();
-}
-
 /**
  * Load product ajax
  * @param productDT product datatable
@@ -171,6 +156,40 @@ export function loadDevisDT(devisDT) {
     }).done(function(response) {
         LoadDT(devisDT,response,Devis);
         loadClientList();
+    }).fail(function(response, code) {
+        showError(response);
+    });
+}
+
+/**
+ * Load facture ajax
+ * @param factureDT 
+ */
+export function loadFactureDT(factureDT) {
+    $.ajax({
+        url: baseUrl + '/getFactures',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function(response) {
+        LoadDT(factureDT,response,Facture);
+        loadDevisList();
+    }).fail(function(response, code) {
+        showError(response);
+    });
+}
+
+
+export function getStats() {
+    $.ajax({
+        url: baseUrl + '/getStats',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function(response) {
+        var res = JSON.parse(response);
+        $("#statsclient").text(res.client);
+        $("#statsdevis").text(res.devis);
+        $("#statsfacture").text(res.facture);
+        $("#statsproduit").text(res.produit);
     }).fail(function(response, code) {
         showError(response);
     });

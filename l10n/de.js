@@ -47,6 +47,7 @@ OC.L10N.register(
     "Choose quote" : "Angebot auswählen",
     "Save in" : "Speichern unter",
     "There is an error" : "Fehler aufgetreten",
+    "Is your global mail server configured in Nextcloud?" : "Ist Dein globaler Mailserver in Nextcloud konfiguriert?",
     "Creation in progress …" : "Erstellung läuft …",
     "Welcome to GESTION" : "Willkommen bei GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Um mit dieser Anwendung zu beginnen, musst Du Deine Unternehmensdaten konfigurieren, folge diesem Link",

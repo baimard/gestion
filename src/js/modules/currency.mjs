@@ -165,15 +165,15 @@ var currency_list = {
     "ZMK": "Zambian Kwacha"
 };
 
-export function getCurrencyList(currentDevise){
+export function getCurrencyList(currentDevise) {
     var list = "";
     for (const [key, value] of Object.entries(currency_list)) {
-        if(currentDevise===key){
-            list += "<option selected value='"+key+"'>"+value+"</option>";
-        }else{
-            list += "<option value='"+key+"'>"+value+"</option>";
+        if (currentDevise === key) {
+            list += "<option selected value='" + key + "'>" + value + "</option>";
+        } else {
+            list += "<option value='" + key + "'>" + value + "</option>";
         }
-        
+
     }
     return list;
 }

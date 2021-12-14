@@ -113,7 +113,7 @@ class Bdd {
         $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('Invoice number'),$this->l->t('Means of payment')));
         return true;
     }
-
+    
     public function insertProduit($idNextcloud){
         $sql = "INSERT INTO `".$this->tableprefix."produit` (`id_nextcloud`,`reference`,`description`,`prix_unitaire`) VALUES (?,?,?,0);";
         $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Reference'),$this->l->t('Designation')));

@@ -1,4 +1,4 @@
-import { showMessage,showError } from "@nextcloud/dialogs";
+import { showMessage, showError } from "@nextcloud/dialogs";
 import { generateUrl } from "@nextcloud/router";
 
 import { showDone } from "./mainFunction.mjs";
@@ -21,9 +21,9 @@ export function getClients(callback) {
         url: baseUrl + '/getClients',
         type: 'PROPFIND',
         contentType: 'application/json'
-    }).done(function(response) {
+    }).done(function (response) {
         callback(response);
-    }).fail(function(response, code) {
+    }).fail(function (response, code) {
         showError(response);
     });
 }
@@ -37,9 +37,9 @@ export function getDevis(callback) {
         url: baseUrl + '/getDevis',
         type: 'PROPFIND',
         contentType: 'application/json'
-    }).done(function(response) {
+    }).done(function (response) {
         callback(response);
-    }).fail(function(response, code) {
+    }).fail(function (response, code) {
         showError(response);
     });
 }
@@ -53,7 +53,7 @@ export function newInvoice() {
         type: 'POST',
         async: false,
         contentType: 'application/json'
-    }).fail(function(response, code) {
+    }).fail(function (response, code) {
         showError(response);
     }).done(
         showDone()
@@ -81,9 +81,9 @@ export function updateDB(table, column, data, id) {
         async: false,
         contentType: 'application/json',
         data: JSON.stringify(myData)
-    }).done(function(response, code) {
+    }).done(function (response, code) {
         showMessage(t('gestion', 'Modification saved'));
-    }).fail(function(response, code) {
+    }).fail(function (response, code) {
         showError(response);
     });
 }
@@ -105,9 +105,9 @@ export function deleteDB(table, id) {
         async: false,
         contentType: 'application/json',
         data: JSON.stringify(myData)
-    }).done(function(response, code) {
+    }).done(function (response, code) {
         showMessage(t('gestion', 'Modification saved'));
-    }).fail(function(response, code) {
+    }).fail(function (response, code) {
         showError(response);
     });
 }
@@ -121,10 +121,10 @@ export function loadProduitDT(productDT) {
         url: baseUrl + '/getProduits',
         type: 'PROPFIND',
         contentType: 'application/json'
-    }).done(function(response) {
-        LoadDT(productDT,response,Product);
-    }).fail(function(response, code) {
-        showError(response); 
+    }).done(function (response) {
+        LoadDT(productDT, response, Product);
+    }).fail(function (response, code) {
+        showError(response);
     });
 }
 
@@ -137,9 +137,9 @@ export function loadClientDT(clientDT) {
         url: baseUrl + '/getClients',
         type: 'PROPFIND',
         contentType: 'application/json'
-    }).done(function(response) {
-        LoadDT(clientDT,response,Client);
-    }).fail(function(response, code) {
+    }).done(function (response) {
+        LoadDT(clientDT, response, Client);
+    }).fail(function (response, code) {
         showError(response);
     });
 }
@@ -153,10 +153,10 @@ export function loadDevisDT(devisDT) {
         url: baseUrl + '/getDevis',
         type: 'PROPFIND',
         contentType: 'application/json'
-    }).done(function(response) {
-        LoadDT(devisDT,response,Devis);
+    }).done(function (response) {
+        LoadDT(devisDT, response, Devis);
         loadClientList();
-    }).fail(function(response, code) {
+    }).fail(function (response, code) {
         showError(response);
     });
 }
@@ -170,10 +170,10 @@ export function loadFactureDT(factureDT) {
         url: baseUrl + '/getFactures',
         type: 'PROPFIND',
         contentType: 'application/json'
-    }).done(function(response) {
-        LoadDT(factureDT,response,Facture);
+    }).done(function (response) {
+        LoadDT(factureDT, response, Facture);
         loadDevisList();
-    }).fail(function(response, code) {
+    }).fail(function (response, code) {
         showError(response);
     });
 }
@@ -184,13 +184,13 @@ export function getStats() {
         url: baseUrl + '/getStats',
         type: 'PROPFIND',
         contentType: 'application/json'
-    }).done(function(response) {
+    }).done(function (response) {
         var res = JSON.parse(response);
         $("#statsclient").text(res.client);
         $("#statsdevis").text(res.devis);
         $("#statsfacture").text(res.facture);
         $("#statsproduit").text(res.produit);
-    }).fail(function(response, code) {
+    }).fail(function (response, code) {
         showError(response);
     });
 }

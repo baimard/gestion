@@ -53,5 +53,3 @@ Functionality:
 * Generate product lines to include in quotes
 
 You can generate PDFs directly from the app and save them to your Nextcloud.
-
-Video presentation coming soon

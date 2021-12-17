@@ -6,6 +6,7 @@ import { showMessage } from "@nextcloud/dialogs";
 var baseUrl = generateUrl('/apps/gestion');
 
 var saveNextcloud = function (myData) {
+  console.log(myData)
   $.ajax({
     url: baseUrl + '/savePDF',
     type: 'POST',
@@ -97,6 +98,7 @@ function genPDF(imgData, canvas) {
   }
 
   var myData = { name: n, subject: subject, body: body, to: JSON.stringify(to), content: pdf, folder: $("#theFolder").val() + "/" + $("#pdf").data("folder") + "/" };
+
   return myData;
   //doc.save('devis.pdf');
 }

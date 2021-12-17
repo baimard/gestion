@@ -320,25 +320,29 @@ class PageController extends Controller {
 	 * @param string $name
 	 */
 	public function savePDF($content, $folder, $name){
+
+		$clean_folder = html_entity_decode($folder);
+		$clean_name = html_entity_decode($name);
+
 		try {
-			$this->storage->newFolder($folder);
+			$this->storage->newFolder($clean_folder);
         } catch(\OCP\Files\NotPermittedException $e) {
-            throw new StorageException('Cant write to file');
+            
         }
 
 		try {
 			try {
-				$ff = $folder . $name . ".pdf";
+				$ff = $clean_folder . $clean_name . ".pdf";
 				$this->storage->newFile($ff);
 				$file = $this->storage->get($ff);
 				$data = base64_decode($content);
 				$file->putContent($data);
           	} catch(\OCP\Files\NotFoundException $e) {
-				throw new StorageException('Cant write to file');
+				
             }
 
         } catch(\OCP\Files\NotPermittedException $e) {
-            throw new StorageException('Cant write to file');
+            
         }
 
 		//work

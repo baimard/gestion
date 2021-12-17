@@ -57,6 +57,8 @@ $(window).on("load", function () {
     }
     if ($('#devis').length) {
         loadDevisDT($('#devis').DataTable());
+    }
+    if ($('#devisid').length) {
         getClientByIdDevis($('#devisid').data('id'));
         getProduitsById();
     }

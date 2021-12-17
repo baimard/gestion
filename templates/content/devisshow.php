@@ -55,9 +55,9 @@
                 <tbody>
                 </tbody>
             </table>
-            <button id="devisAdd" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
-            <button id="pdf" type="button" data-name="" class="be.aimard@gmail.com1mb-2 btn btn-outline-success" data-html2canvas-ignore><?php p($l->t('Save in Nextcloud'));?></button>
-            <button id="mail" type="button" data-name="" class="mb-2 btn btn-outline-success sendmail" data-html2canvas-ignore><?php p($l->t('Send by email'));?></button>
+            <button id="devisAdd"   type="button"   class="mb-2 btn btn-outline-success"            data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
+            <button id="pdf"        type="button"   class="mb-2 btn btn-outline-success"            data-html2canvas-ignore data-name=""><?php p($l->t('Save in Nextcloud'));?></button>
+            <button id="mail"       type="button"   class="mb-2 btn btn-outline-success sendmail"   data-html2canvas-ignore data-name=""><?php p($l->t('Send by email'));?></button>
         </div>
         <div class="mt-0 table-responsive">
             <table id="totaldevis" class="table table-striped table-xl">

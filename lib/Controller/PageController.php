@@ -295,6 +295,7 @@ class PageController extends Controller {
 	 * @param string $to
 	 */
 	public function sendPDF($content, $name, $subject, $body, $to){
+		$clean_name = html_entity_decode($name);
 		try {
 			$data = base64_decode($content);
 			$mailer = \OC::$server->getMailer();
@@ -302,7 +303,7 @@ class PageController extends Controller {
 			$message->setSubject($subject);
 			$message->setTo((array) json_decode($to));
 			$message->setHtmlBody($body);
-			$content = $mailer->createAttachment($data,$name.".pdf","x-pdf");
+			$content = $mailer->createAttachment($data,$clean_name.".pdf","x-pdf");
 			$message->attach($content);
 			$mailer->send($message);
 			return new DataResponse("", 200, ['Content-Type' => 'application/json']);

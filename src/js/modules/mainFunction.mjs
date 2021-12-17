@@ -1,5 +1,5 @@
 // import {translate as t, translatePlural as n} from '@nextcloud/l10n'
-import { FilePicker, showMessage, showError } from "@nextcloud/dialogs";
+import { FilePicker, showMessage, showSuccess, showError } from "@nextcloud/dialogs";
 import { getDevis } from "./ajaxRequest.mjs";
 import { getClients } from "./ajaxRequest.mjs";
 
@@ -22,7 +22,7 @@ export function langage() {
  * Success message
  */
 export function showDone() {
-    showMessage(t('gestion', 'Added'));
+    showSuccess(t('gestion', 'Added'));
 }
 
 export function checkSelect(el) {

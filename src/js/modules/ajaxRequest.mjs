@@ -1,4 +1,4 @@
-import { showMessage, showError } from "@nextcloud/dialogs";
+import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
 import { generateUrl } from "@nextcloud/router";
 
 import { showDone } from "./mainFunction.mjs";
@@ -82,7 +82,7 @@ export function updateDB(table, column, data, id) {
         contentType: 'application/json',
         data: JSON.stringify(myData)
     }).done(function (response, code) {
-        showMessage(t('gestion', 'Modification saved'));
+        showSuccess(t('gestion', 'Modification saved'));
     }).fail(function (response, code) {
         showError(response);
     });

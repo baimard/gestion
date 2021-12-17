@@ -73,7 +73,6 @@ OC.L10N.register(
     "Configuration" : "配置",
     "Click to edit" : "点击编辑",
     "Company name" : "企业名",
-    "Loading" : "加载中",
     "Contact First name" : "联系人姓氏",
     "Contact name" : "联系人名字",
     "Company address" : "企业地址",

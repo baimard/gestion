@@ -70,7 +70,6 @@ OC.L10N.register(
     "Configuration" : "Ezarpenak",
     "Click to edit" : "Egin klik editatzeko",
     "Company name" : "Enpresaren izena",
-    "Loading" : "Kargatzen",
     "Contact First name" : "Kontaktuaren izena",
     "Contact name" : "Kontaktuaren izena",
     "Company address" : "Enpresaren helbidea",

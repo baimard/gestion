@@ -74,7 +74,6 @@ OC.L10N.register(
     "Configuration" : "設定",
     "Click to edit" : "點擊以編輯",
     "Company name" : "公司名稱",
-    "Loading" : "正在載入",
     "Contact First name" : "聯絡人姓氏",
     "Contact name" : "聯絡人名字",
     "Company address" : "公司地址",

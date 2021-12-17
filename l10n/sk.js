@@ -73,7 +73,6 @@ OC.L10N.register(
     "Configuration" : "Nastavenia",
     "Click to edit" : "Kliknite pre úpravu",
     "Company name" : "Názov spoločnosti",
-    "Loading" : "Načítava sa",
     "Contact First name" : "Meno kontaktu",
     "Contact name" : "Meno kontaktu",
     "Company address" : "Adresa spoločnosti",

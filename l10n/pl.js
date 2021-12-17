@@ -74,7 +74,6 @@ OC.L10N.register(
     "Configuration" : "Konfiguracja",
     "Click to edit" : "Kliknij, aby edytować",
     "Company name" : "Nazwa firmy",
-    "Loading" : "Wczytywanie",
     "Contact First name" : "Główna nazwa kontaktu",
     "Contact name" : "Nazwa kontaktu",
     "Company address" : "Adres firmy",

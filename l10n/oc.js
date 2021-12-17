@@ -19,7 +19,6 @@ OC.L10N.register(
     "Contact" : "Contacte",
     "Nextcloud apps" : "Apps Nextcloud",
     "Configuration" : "Configuracion",
-    "Loading" : "Cargament",
     "Version" : "Version",
     "Actions" : "Accions",
     "About" : "A prepaus"

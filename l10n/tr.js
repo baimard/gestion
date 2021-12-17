@@ -74,7 +74,6 @@ OC.L10N.register(
     "Configuration" : "Yapılandırma",
     "Click to edit" : "Düzenlemek için tıklayın",
     "Company name" : "Şirket adı",
-    "Loading" : "Yükleniyor",
     "Contact First name" : "İlgilinin adı",
     "Contact name" : "İlgili adı",
     "Company address" : "Şirket adresi",

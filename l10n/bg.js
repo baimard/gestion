@@ -64,7 +64,6 @@ OC.L10N.register(
     "Configuration" : "Конфигурация",
     "Click to edit" : "Кликнете, за да редактирате",
     "Company name" : "Име на фирма",
-    "Loading" : "Зареждане",
     "Contact First name" : "Собствено име за контакт",
     "Contact name" : "Име за контакт",
     "Company address" : "Адрес на фирмата",

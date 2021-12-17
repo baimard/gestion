@@ -73,7 +73,6 @@ OC.L10N.register(
     "Configuration" : "Configuratie",
     "Click to edit" : "Klik om aan te passen",
     "Company name" : "Bedrijfsnaam",
-    "Loading" : "Laden",
     "Contact First name" : "Contact Voornaam",
     "Contact name" : "Contactnaam",
     "Company address" : "Bedrijfsadres",

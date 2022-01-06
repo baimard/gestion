@@ -45,8 +45,13 @@
         <div class="configuration-icon icon-info"></div>
         <div style="float:none;" id="tva_default" class="configuration-content editable" data-table="configuration" data-column="tva_default" data-id=""><?php p($l->t('Loading')); ?></div>
     </div>
+    <div title="<?php p($l->t('Automatic invoice number')); ?>" class="configuration-global">
+        <div class="configuration-icon icon-category-dashboard"></div>
+        <select style="float:none;" id="auto_invoice_number" class="configuration-content editableSelect" data-table="configuration" data-column="auto_invoice_number" data-id=""></select>
+    </div>
     <div title="<?php p($l->t('Default Currency')); ?>" class="configuration-global">
-        <div class="configuration-icon icon-rename"></div><select style="float:none;" id="currency" class="configuration-content editableSelect" data-table="configuration" data-column="devise" data-id=""></select>
+        <div class="configuration-icon icon-rename"></div>
+        <select style="float:none;" id="currency" class="configuration-content editableSelect" data-table="configuration" data-column="devise" data-id=""></select>
     </div>
     <div title="<?php p($l->t('Legal disclaimer/mentions')); ?>" class="configuration-global">
         <div class="configuration-icon icon-comment"></div>

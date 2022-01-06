@@ -15,7 +15,7 @@ class Bdd {
     public function __construct(IDbConnection $db,
                                 IL10N $l) {
         
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number");
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->pdo = $db;
@@ -111,6 +111,11 @@ class Bdd {
     public function insertFacture($idNextcloud){
         $sql = "INSERT INTO `".$this->tableprefix."facture` (`id`, `date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`) VALUES (NULL,?,?,?,NOW(),?,0);";
         $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('Invoice number'),$this->l->t('Means of payment')));
+
+        if(json_decode($this->getConfiguration(($idNextcloud)))[0]->auto_invoice_number == 1){
+            $this->gestion_update('facture', 'num', $this->l->t('INVOICE-').$this->lastinsertid(),$this->lastinsertid(),$idNextcloud);
+        }
+        
         return true;
     }
     

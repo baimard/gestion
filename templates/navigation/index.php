@@ -2,7 +2,7 @@
     <li class="app-navigation-entry"><span class="navmarg"></span><b><?php p($l->t('Manage'));?></b></li>
 	<li class="app-navigation-entry">
 		<ul class="app-navigation">
-			<li class="app-navigation-entry"><span class="navmarg icon-add"></span><a class="a-entry" href="<?php echo($_['url']['index']); ?>"><?php p($l->t('Customer'));?></a>
+			<li class="app-navigation-entry"><span class="navmarg icon-contacts"></span><a class="a-entry" href="<?php echo($_['url']['index']); ?>"><?php p($l->t('Customer'));?></a>
 				<div class="app-navigation-entry-utils">
 					<ul>
 					<li class="app-navigation-entry-utils-counter"><span id="statsclient"><div class="loader"></div></span></li>

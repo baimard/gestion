@@ -11,12 +11,31 @@ import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net';
 import 'bootstrap/js/dist/util';
 
-import { newInvoice, updateDB, deleteDB, loadProduitDT, loadClientDT, loadDevisDT, loadFactureDT, getStats } from "./modules/ajaxRequest.mjs";
-import { getCurrencyList } from "./modules/currency.mjs";
+import { newInvoice, updateDB, deleteDB, loadProduitDT, loadClientDT, loadDevisDT, loadFactureDT, getStats, configuration } from "./modules/ajaxRequest.mjs";
+import { getAutoIncrement, getCurrencyList } from "./modules/list.mjs";
 import { showDone, loadClientList, loadDevisList } from "./modules/mainFunction.mjs";
 
 var baseUrl = getRootUrl() + generateUrl('/apps/gestion');
 var cur = null;
+
+/**
+ * Convert a string to HTML entities
+ */
+ String.prototype.toHtmlEntities = function() {
+    return this.replace(/./gm, function(s) {
+        // return "&#" + s.charCodeAt(0) + ";";
+        return (s.match(/[a-z0-9\s]+/i)) ? s : "&#" + s.charCodeAt(0) + ";";
+    });
+};
+
+/**
+ * Create string from HTML entities
+ */
+String.fromHtmlEntities = function(string) {
+    return (string+"").replace(/&#\d+;/gm,function(s) {
+        return String.fromCharCode(s.match(/\d+/gm)[0]);
+    })
+};
 
 $(window).on("load", function () {
     // console.log(baseRemoteUrl);
@@ -243,7 +262,10 @@ var lcdt = function loadConfigurationDT(response) {
         $('#tva_default').html(((myresp.tva_default.length === 0) ? '-' : myresp.tva_default + " %"));
         $('#tva_default').data("id", myresp.id);
 
-        $('#currency').append(getCurrencyList(myresp.devise));
+        $('#auto_invoice_number').html(getAutoIncrement(myresp.auto_invoice_number));
+        $('#auto_invoice_number').data("id", myresp.id);
+
+        $('#currency').html(getCurrencyList(myresp.devise));
         $('#currency').data("id", myresp.id);
 
         $('#mentions_default').html(((myresp.mentions_default.length === 0) ? '-' : myresp.mentions_default.replace(/\&amp;/g, '&')));
@@ -370,18 +392,6 @@ function newProduit() {
     }).done(showDone());
 }
 
-function configuration(f1) {
-    $.ajax({
-        url: baseUrl + '/getConfiguration',
-        type: 'PROPFIND',
-        contentType: 'application/json',
-        async: false,
-    }).done(function (response) {
-        f1(response);
-    }).fail(function (response, code) {
-        showError(response);
-    });
-}
 
 var getCurrency = function (response) {
     var myresp = JSON.parse(response)[0];

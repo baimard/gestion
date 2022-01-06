@@ -1,3 +1,5 @@
+import { translate as t } from '@nextcloud/l10n'
+
 var currency_list = {
     "AFA": "Afghan Afghani",
     "ALL": "Albanian Lek",
@@ -176,4 +178,12 @@ export function getCurrencyList(currentDevise) {
 
     }
     return list;
+}
+
+export function getAutoIncrement(activate){
+    if(activate == 0){
+        return "<option selected value='0'>" + t('gestion', 'disable') + "</option><option value='1'>" + t('gestion', 'enable') + "</option>"
+    }else{
+        return "<option value='0'>" + t('gestion', 'disable') + "</option><option selected value='1'>" + t('gestion', 'enable') + "</option>"
+    }
 }

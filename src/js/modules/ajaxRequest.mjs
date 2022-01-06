@@ -173,6 +173,7 @@ export function loadFactureDT(factureDT) {
     }).done(function (response) {
         LoadDT(factureDT, response, Facture);
         loadDevisList();
+        configuration(checkAutoIncrement);
     }).fail(function (response, code) {
         showError(response);
     });
@@ -193,4 +194,25 @@ export function getStats() {
     }).fail(function (response, code) {
         showError(response);
     });
+}
+
+export function configuration(f1) {
+    $.ajax({
+        url: baseUrl + '/getConfiguration',
+        type: 'PROPFIND',
+        contentType: 'application/json',
+        async: false,
+    }).done(function (response) {
+        f1(response);
+    }).fail(function (response, code) {
+        showError(response);
+    });
+}
+
+var checkAutoIncrement = function (response){
+    var myresp = JSON.parse(response)[0];
+    if(myresp.auto_invoice_number==1){
+        $('.deleteItem').remove();
+        $(".factureNum").removeClass("editable");
+    }
 }

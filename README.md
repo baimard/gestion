@@ -27,6 +27,7 @@ Fonctionnalités à venir / Upcoming Features
 - [ ] Facture électronique / XML format for invoice
 - [ ] TVA par produit / VAT rate per product
 - [ ] TVA par devis / VAT rate by quote
+- [ ] on clique sur sauvegarder nextcloud la version s'incremente / when you click save nextcloud increment the version.
 
 ## Application de gestion de facturation pour Micro-entreprise *France*
 

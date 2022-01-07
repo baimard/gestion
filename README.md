@@ -13,7 +13,7 @@ Need fonctionnlality ? open an issue
 Fonctionnalités à venir / Upcoming Features
 
 - [ ] Modifier le logo / logo
-- [ ] Envoie de la facture par mail via nextcloud / Send mail with nextcloud with the quote or bill
+- [x] Envoie de la facture par mail via nextcloud / Send mail with nextcloud with the quote or bill
 - [ ] Créer une zone statistique pour pouvoir faire sa compta / Create an accounting statistique zone
 - [x] Zone de commentaire pour les devis ( qui s'affichera dans les factures ) / comment zone in quote
 - [x] Version des pdf enregistrés à chaque fois que l'on clique sur sauvegarder nextcloud / Versionning for saved pdf, when you click save nextcloud increment the version.

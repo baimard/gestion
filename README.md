@@ -20,12 +20,12 @@ Fonctionnalités à venir / Upcoming Features
 - [x] Etat d'une facture (Annulé, Modifié, payé) / Invoice status (Cancel, Modified, paid)
 - [x] Etat d'un devis (Acccepté, refusé) / Quote status (Succes, refused)
 - [ ] Facture électronique / XML format for invoice
-- [ ] Generation des numéros de facture automatique / Invoice numbers generated
+- [x] Generation des numéros de facture automatique / Invoice numbers generated
 - [ ] TVA par produit / VAT rate per product
 - [ ] TVA par devis / VAT rate by quote
 - [x] TVA par défault / VAT rate default
 - [x] Currency
-- [ ] Tests ...
+- [x] Tests
 
 ## Application de gestion de facturation pour Micro-entreprise *France*
 

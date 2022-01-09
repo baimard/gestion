@@ -23,6 +23,7 @@ Fonctionnalités à venir / Upcoming Features
 - [x] Currency
 - [x] Tests
 - [x] Créer une zone statistique pour pouvoir faire sa compta / Create an accounting statistique zone
+- [ ] Sauvegarde des données au formats csv / backup datas as csv file
 - [ ] Modifier le logo / logo
 - [ ] Facture électronique / XML format for invoice
 - [ ] TVA par produit / VAT rate per product

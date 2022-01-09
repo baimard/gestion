@@ -229,6 +229,25 @@ class Bdd {
         return $this->execSQL($sql, array($idNextcloud));
     }
 
+    /**
+     * Annual turnover per month without VAT
+     */
+    public function getAnnualTurnoverPerMonthNoVat($idNextcloud){
+        $sql = "SELECT  YEAR(oc_gestion_facture.date_paiement) as y, 
+                        MONTH(oc_gestion_facture.date_paiement) as m, 
+                        sum(oc_gestion_produit.prix_unitaire * oc_gestion_produit_devis.quantite) as total
+                FROM `oc_gestion_facture`, `oc_gestion_produit_devis`, `oc_gestion_produit`
+                WHERE oc_gestion_facture.id_devis = oc_gestion_produit_devis.devis_id
+                AND oc_gestion_produit_devis.produit_id = oc_gestion_produit.id
+                AND oc_gestion_facture.id_nextcloud = ?
+                GROUP BY YEAR(oc_gestion_facture.date_paiement), MONTH(oc_gestion_facture.date_paiement)
+                ORDER BY YEAR(oc_gestion_facture.date_paiement) DESC, MONTH(oc_gestion_facture.date_paiement);";
+        return $this->execSQL($sql, array($idNextcloud));
+    }
+
+    /**
+     * Get last insert id
+     */
     public function lastinsertid(){
         return $this->execSQLNoJsonReturn("SELECT LAST_INSERT_ID();",array())[0]['LAST_INSERT_ID()'];
     }

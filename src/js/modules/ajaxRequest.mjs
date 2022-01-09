@@ -1,7 +1,7 @@
 import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
 import { generateUrl } from "@nextcloud/router";
 
-import { showDone } from "./mainFunction.mjs";
+import { getCurrency, insertCell, insertRow, modifyCell, showDone } from "./mainFunction.mjs";
 import { Product } from "../objects/product.mjs";
 import { Client } from "../objects/client.mjs";
 import { Devis } from "../objects/devis.mjs";
@@ -215,4 +215,28 @@ var checkAutoIncrement = function (response){
         $('.deleteItem').remove();
         $(".factureNum").removeClass("editable");
     }
+}
+
+export function getAnnualTurnoverPerMonthNoVat(cur) {
+    $.ajax({
+        url: baseUrl + '/getAnnualTurnoverPerMonthNoVat',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        var res = JSON.parse(response);
+        var curY = "";
+        var curRow;
+        res.forEach(function(item){
+            if(curY !== item.y){
+                curY = item.y;
+                curRow = insertRow("Statistical", -1, 0, item.y);
+                modifyCell(curRow, item.m, cur.format(Math.round(item.total)));
+            }else{
+                modifyCell(curRow, item.m, cur.format(Math.round(item.total)));
+            }
+            console.log(curRow.cells.lenght);
+        });
+    }).fail(function (response, code) {
+        showError(response);
+    });
 }

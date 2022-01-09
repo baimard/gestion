@@ -11,7 +11,7 @@ import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net';
 import 'bootstrap/js/dist/util';
 
-import { newInvoice, updateDB, deleteDB, loadProduitDT, loadClientDT, loadDevisDT, loadFactureDT, getStats, configuration } from "./modules/ajaxRequest.mjs";
+import { newInvoice, updateDB, deleteDB, loadProduitDT, loadClientDT, loadDevisDT, loadFactureDT, getStats, configuration, getAnnualTurnoverPerMonthNoVat } from "./modules/ajaxRequest.mjs";
 import { getAutoIncrement, getCurrencyList } from "./modules/list.mjs";
 import { showDone, loadClientList, loadDevisList } from "./modules/mainFunction.mjs";
 
@@ -87,6 +87,9 @@ $(window).on("load", function () {
     if ($('#produit').length) {
         loadProduitDT($('#produit').DataTable());
     }
+    if ($('#Statistical').length) {
+        getAnnualTurnoverPerMonthNoVat(cur);
+    }
 });
 
 $('body').on('page.dt search.dt', function () {
@@ -159,7 +162,6 @@ $('body').on('change', '.inputDate', function () {
 })
 
 $('body').on('change', '#listProduit,#listDevis', function () {
-
     var id = $(this).find(':selected').data('id')
     var val = $(this).find(':selected').data('val')
     var column = $(this).find(':selected').data('column')
@@ -181,7 +183,6 @@ $('body').on('change', '#listProduit,#listDevis', function () {
 });
 
 $('body').on('click', '#devisAdd', function () {
-
     var devis_id = $('#devisid').data('id');
     var produit_devis = {
         id: devis_id
@@ -302,7 +303,6 @@ function getClientByIdDevis(id) {
     });
 }
 
-
 function listProduit(lp, id, produitid) {
     $.ajax({
         url: baseUrl + '/getProduits',
@@ -356,9 +356,6 @@ function getProduitsById() {
     });
 }
 
-
-
-
 function newDevis() {
     $.ajax({
         url: baseUrl + '/devis/insert',
@@ -392,13 +389,6 @@ function newProduit() {
     }).done(showDone());
 }
 
-
-var getCurrency = function (response) {
-    var myresp = JSON.parse(response)[0];
-    cur = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
-}
-
-
 function getGlobal(total) {
     $.ajax({
         url: baseUrl + '/getConfiguration',
@@ -415,8 +405,8 @@ function getGlobal(total) {
 function isconfig() {
     $.ajax({
         url: baseUrl + '/isconfig',
-        type: 'GET',
-        contentType: 'application/json'
+    type: 'GET',
+    contentType: 'application/json'
     }).done(function (response) {
         if (!response) {
             var modal = document.getElementById("modalConfig");
@@ -425,9 +415,21 @@ function isconfig() {
     })
 }
 
+/**
+ * 
+ * @param {*} res 
+ */
 var path = function (res) {
     var myres = JSON.parse(res)[0];
     $("#theFolder").val(myres.path);
     $("#theFolder").attr('data-id', myres.id);
 };
 
+/**
+ * 
+ * @param {*} response 
+ */
+ var getCurrency = function (response) {
+    var myresp = JSON.parse(response)[0];
+    cur = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+}

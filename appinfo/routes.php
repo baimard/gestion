@@ -40,7 +40,8 @@ return [
        ['name' => 'page#delete',            'url' => '/delete', 'verb' => 'DELETE'],
        
        ['name' => 'page#getStats',           'url' => '/getStats', 'verb' => 'PROPFIND'],
-        
+       ['name' => 'page#getAnnualTurnoverPerMonthNoVat', 'url' => '/getAnnualTurnoverPerMonthNoVat', 'verb' => 'PROPFIND'],
+       
        //PDF
        ['name' => 'page#sendPDF',           'url' => '/sendPDF', 'verb' => 'POST'],
        ['name' => 'page#savePDF',           'url' => '/savePDF', 'verb' => 'POST'],

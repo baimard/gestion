@@ -384,4 +384,12 @@ class PageController extends Controller {
 		return json_encode($res);
 	}
 
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 */
+	public function getAnnualTurnoverPerMonthNoVat(){
+		return $this->myDb->getAnnualTurnoverPerMonthNoVat($this->idNextcloud);
+	}
+
 }

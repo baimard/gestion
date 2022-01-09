@@ -234,7 +234,6 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
             }else{
                 modifyCell(curRow, item.m, cur.format(Math.round(item.total)));
             }
-            console.log(curRow.cells.lenght);
         });
     }).fail(function (response, code) {
         showError(response);

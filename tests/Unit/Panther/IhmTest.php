@@ -3,11 +3,13 @@
 use Symfony\Component\Panther\Client;
 require __DIR__.'/../../../vendor/autoload.php';
 
+
 $client = Client::createFirefoxClient();
+
 $client->request('GET', 'http://next.cybercorp.fr/apps/gestion');
 $client->submitForm('submit-form', [
     'user' => 'baimard',
-    'password' => 'abcdefgeijklmnopqrstuvwx' // Not my real pass ...
+    'password' => 'Luxomo32' // Not my real pass ...
 ]);
 
 $client->request('GET', 'http://next.cybercorp.fr/apps/gestion/config');

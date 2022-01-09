@@ -64,7 +64,6 @@ OC.L10N.register(
     "Configuration" : "Nastavitve",
     "Click to edit" : "Kliknite za urejanje",
     "Company name" : "Ime podjetja",
-    "Loading" : "Poteka nalaganje",
     "Contact First name" : "Ime stika",
     "Contact name" : "Ime stika",
     "Company address" : "Naslov podjetja",

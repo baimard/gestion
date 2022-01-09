@@ -21,7 +21,6 @@ OC.L10N.register(
     "There is an error" : "Tapahtui virhe",
     "My company" : "Yritykseni",
     "Documentation" : "Dokumentaatio",
-    "Loading" : "Ladataan",
     "Version" : "Versio",
     "Quantity" : "Lukumäärä",
     "Unit price without VAT" : "Yksikköhinta ilman alv:tä",

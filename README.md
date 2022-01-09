@@ -12,20 +12,22 @@ Need fonctionnlality ? open an issue
 
 Fonctionnalités à venir / Upcoming Features
 
-- [ ] Modifier le logo / logo
-- [ ] Envoie de la facture par mail via nextcloud / Send mail with nextcloud with the quote or bill
-- [ ] Créer une zone statistique pour pouvoir faire sa compta / Create an accounting statistique zone
+
+- [x] Envoie de la facture par mail via nextcloud / Send mail with nextcloud with the quote or bill
 - [x] Zone de commentaire pour les devis ( qui s'affichera dans les factures ) / comment zone in quote
 - [x] Version des pdf enregistrés à chaque fois que l'on clique sur sauvegarder nextcloud / Versionning for saved pdf, when you click save nextcloud increment the version.
 - [x] Etat d'une facture (Annulé, Modifié, payé) / Invoice status (Cancel, Modified, paid)
 - [x] Etat d'un devis (Acccepté, refusé) / Quote status (Succes, refused)
-- [ ] Facture électronique / XML format for invoice
-- [ ] Generation des numéros de facture automatique / Invoice numbers generated
-- [ ] TVA par produit / VAT rate per product
-- [ ] TVA par devis / VAT rate by quote
+- [x] Generation des numéros de facture automatique / Invoice numbers generated
 - [x] TVA par défault / VAT rate default
 - [x] Currency
-- [ ] Tests ...
+- [x] Tests
+- [ ] Modifier le logo / logo
+- [ ] Créer une zone statistique pour pouvoir faire sa compta / Create an accounting statistique zone
+- [ ] Facture électronique / XML format for invoice
+- [ ] TVA par produit / VAT rate per product
+- [ ] TVA par devis / VAT rate by quote
+- [ ] on clique sur sauvegarder nextcloud la version s'incremente / when you click save nextcloud increment the version.
 
 ## Application de gestion de facturation pour Micro-entreprise *France*
 
@@ -53,5 +55,3 @@ Functionality:
 * Generate product lines to include in quotes
 
 You can generate PDFs directly from the app and save them to your Nextcloud.
-
-Video presentation coming soon

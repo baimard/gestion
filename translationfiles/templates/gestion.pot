@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-12-07 04:25+0000\n"
+"POT-Creation-Date: 2022-01-09 03:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -250,7 +250,7 @@ msgid "Email sent"
 msgstr ""
 
 #: /app/src/js/pdf.js:31
-msgid "Is your global mail server configured in Nextcloud ?"
+msgid "Is your global mail server configured in Nextcloud?"
 msgstr ""
 
 #: /app/src/js/pdf.js:36
@@ -360,7 +360,7 @@ msgstr ""
 #: /app/templates/content/configuration.php:19
 #: /app/templates/content/configuration.php:20
 #: /app/templates/content/configuration.php:22
-msgid "Loading"
+msgid "Loading …"
 msgstr ""
 
 #: /app/templates/content/configuration.php:13

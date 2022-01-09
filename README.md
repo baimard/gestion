@@ -22,8 +22,8 @@ Fonctionnalités à venir / Upcoming Features
 - [x] TVA par défault / VAT rate default
 - [x] Currency
 - [x] Tests
+- [x] Créer une zone statistique pour pouvoir faire sa compta / Create an accounting statistique zone
 - [ ] Modifier le logo / logo
-- [ ] Créer une zone statistique pour pouvoir faire sa compta / Create an accounting statistique zone
 - [ ] Facture électronique / XML format for invoice
 - [ ] TVA par produit / VAT rate per product
 - [ ] TVA par devis / VAT rate by quote

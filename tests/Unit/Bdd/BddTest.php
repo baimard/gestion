@@ -8,6 +8,9 @@ use PHPUnit\Framework\MockObject\MockObject;
 use OCA\Gestion\Db\Bdd;
 use OCP\IDBConnection;
 
+/**
+ * @covers Bdd::
+ */
 class BddTest extends TestCase {
 	private $userId = 'baimard';
 	private $db;

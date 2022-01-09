@@ -10,6 +10,9 @@ module.exports = {
     output: {
       filename: '../js/[name].app.js',
     },
+    optimization: {
+      minimize: true
+    },
     plugins: [
       new webpack.ProvidePlugin({
           $: "jquery",

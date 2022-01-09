@@ -85,6 +85,14 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
      */
+	public function statistique() {
+		return new TemplateResponse('gestion', 'statistique', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/statistique.php
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+     */
 	public function config() {
 		$this->myDb->checkConfig($this->idNextcloud);
 		return new TemplateResponse('gestion', 'configuration', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/configuration.php
@@ -131,6 +139,7 @@ class PageController extends Controller {
 						"produit" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.produit"),
 						"config" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.config"),
 						"isConfig" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.isConfig"),
+						"statistique" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.statistique"),
 					);
 	}
 
@@ -286,6 +295,7 @@ class PageController extends Controller {
 	 * @param string $to
 	 */
 	public function sendPDF($content, $name, $subject, $body, $to){
+		$clean_name = html_entity_decode($name);
 		try {
 			$data = base64_decode($content);
 			$mailer = \OC::$server->getMailer();
@@ -293,7 +303,7 @@ class PageController extends Controller {
 			$message->setSubject($subject);
 			$message->setTo((array) json_decode($to));
 			$message->setHtmlBody($body);
-			$content = $mailer->createAttachment($data,$name.".pdf","x-pdf");
+			$content = $mailer->createAttachment($data,$clean_name.".pdf","x-pdf");
 			$message->attach($content);
 			$mailer->send($message);
 			return new DataResponse("", 200, ['Content-Type' => 'application/json']);
@@ -311,25 +321,29 @@ class PageController extends Controller {
 	 * @param string $name
 	 */
 	public function savePDF($content, $folder, $name){
+
+		$clean_folder = html_entity_decode($folder);
+		$clean_name = html_entity_decode($name);
+
 		try {
-			$this->storage->newFolder($folder);
+			$this->storage->newFolder($clean_folder);
         } catch(\OCP\Files\NotPermittedException $e) {
-            throw new StorageException('Cant write to file');
+            
         }
 
 		try {
 			try {
-				$ff = $folder . $name . ".pdf";
+				$ff = $clean_folder . $clean_name . ".pdf";
 				$this->storage->newFile($ff);
 				$file = $this->storage->get($ff);
 				$data = base64_decode($content);
 				$file->putContent($data);
           	} catch(\OCP\Files\NotFoundException $e) {
-				throw new StorageException('Cant write to file');
+				
             }
 
         } catch(\OCP\Files\NotPermittedException $e) {
-            throw new StorageException('Cant write to file');
+            
         }
 
 		//work
@@ -368,6 +382,14 @@ class PageController extends Controller {
 		$res['facture'] = json_decode($this->myDb->numberFacture($this->idNextcloud))[0]->c;
 		$res['produit'] = json_decode($this->myDb->numberProduit($this->idNextcloud))[0]->c;
 		return json_encode($res);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 */
+	public function getAnnualTurnoverPerMonthNoVat(){
+		return $this->myDb->getAnnualTurnoverPerMonthNoVat($this->idNextcloud);
 	}
 
 }

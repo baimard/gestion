@@ -1,3 +1,5 @@
+import { translate as t } from '@nextcloud/l10n'
+
 var currency_list = {
     "AFA": "Afghan Afghani",
     "ALL": "Albanian Lek",
@@ -165,15 +167,23 @@ var currency_list = {
     "ZMK": "Zambian Kwacha"
 };
 
-export function getCurrencyList(currentDevise){
+export function getCurrencyList(currentDevise) {
     var list = "";
     for (const [key, value] of Object.entries(currency_list)) {
-        if(currentDevise===key){
-            list += "<option selected value='"+key+"'>"+value+"</option>";
-        }else{
-            list += "<option value='"+key+"'>"+value+"</option>";
+        if (currentDevise === key) {
+            list += "<option selected value='" + key + "'>" + value + "</option>";
+        } else {
+            list += "<option value='" + key + "'>" + value + "</option>";
         }
-        
+
     }
     return list;
+}
+
+export function getAutoIncrement(activate){
+    if(activate == 0){
+        return "<option selected value='0'>" + t('gestion', 'disable') + "</option><option value='1'>" + t('gestion', 'enable') + "</option>"
+    }else{
+        return "<option value='0'>" + t('gestion', 'disable') + "</option><option selected value='1'>" + t('gestion', 'enable') + "</option>"
+    }
 }

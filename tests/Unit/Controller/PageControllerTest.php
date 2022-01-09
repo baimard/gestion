@@ -9,6 +9,10 @@ use PHPUnit\Framework\MockObject\MockObject;
 use OCA\Gestion\Db\Bdd;
 use OCP\IDBConnection;
 
+
+/**
+ * @covers Controller::
+ */
 class PageControllerTest extends TestCase {
 	private $controller;
 	private $userId = 'baimard';
@@ -32,7 +36,7 @@ class PageControllerTest extends TestCase {
 												$urlGenerator);
 
 	}
-
+	
 	public function testIndex() {
 		$result = $this->controller->index();
 		$this->assertEquals('index', $result->getTemplateName());

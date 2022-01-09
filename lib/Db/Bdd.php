@@ -15,7 +15,7 @@ class Bdd {
     public function __construct(IDbConnection $db,
                                 IL10N $l) {
         
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "siret", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "siren", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number");
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->pdo = $db;
@@ -111,9 +111,14 @@ class Bdd {
     public function insertFacture($idNextcloud){
         $sql = "INSERT INTO `".$this->tableprefix."facture` (`id`, `date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`) VALUES (NULL,?,?,?,NOW(),?,0);";
         $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('Invoice number'),$this->l->t('Means of payment')));
+
+        if(json_decode($this->getConfiguration(($idNextcloud)))[0]->auto_invoice_number == 1){
+            $this->gestion_update('facture', 'num', $this->l->t('INVOICE-').$this->lastinsertid(),$this->lastinsertid(),$idNextcloud);
+        }
+        
         return true;
     }
-
+    
     public function insertProduit($idNextcloud){
         $sql = "INSERT INTO `".$this->tableprefix."produit` (`id_nextcloud`,`reference`,`description`,`prix_unitaire`) VALUES (?,?,?,0);";
         $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Reference'),$this->l->t('Designation')));
@@ -224,6 +229,25 @@ class Bdd {
         return $this->execSQL($sql, array($idNextcloud));
     }
 
+    /**
+     * Annual turnover per month without VAT
+     */
+    public function getAnnualTurnoverPerMonthNoVat($idNextcloud){
+        $sql = "SELECT  YEAR(oc_gestion_facture.date_paiement) as y, 
+                        MONTH(oc_gestion_facture.date_paiement) as m, 
+                        sum(oc_gestion_produit.prix_unitaire * oc_gestion_produit_devis.quantite) as total
+                FROM `oc_gestion_facture`, `oc_gestion_produit_devis`, `oc_gestion_produit`
+                WHERE oc_gestion_facture.id_devis = oc_gestion_produit_devis.devis_id
+                AND oc_gestion_produit_devis.produit_id = oc_gestion_produit.id
+                AND oc_gestion_facture.id_nextcloud = ?
+                GROUP BY YEAR(oc_gestion_facture.date_paiement), MONTH(oc_gestion_facture.date_paiement)
+                ORDER BY YEAR(oc_gestion_facture.date_paiement) DESC, MONTH(oc_gestion_facture.date_paiement);";
+        return $this->execSQL($sql, array($idNextcloud));
+    }
+
+    /**
+     * Get last insert id
+     */
     public function lastinsertid(){
         return $this->execSQLNoJsonReturn("SELECT LAST_INSERT_ID();",array())[0]['LAST_INSERT_ID()'];
     }

@@ -15,6 +15,7 @@ return [
        ['name' => 'page#produit',           'url' => '/produit', 'verb' => 'GET'],
        ['name' => 'page#config',           'url' => '/config', 'verb' => 'GET'],
        ['name' => 'page#isConfig',          'url' => '/isconfig', 'verb' => 'GET'],
+       ['name' => 'page#statistique',          'url' => '/statistique', 'verb' => 'GET'],
        //['name' => 'page#clientcreate',      'url' => '/client/create', 'verb' => 'GET'],
 
 	   ['name' => 'page#getClients',        'url' => '/getClients', 'verb' => 'PROPFIND'],
@@ -39,7 +40,8 @@ return [
        ['name' => 'page#delete',            'url' => '/delete', 'verb' => 'DELETE'],
        
        ['name' => 'page#getStats',           'url' => '/getStats', 'verb' => 'PROPFIND'],
-        
+       ['name' => 'page#getAnnualTurnoverPerMonthNoVat', 'url' => '/getAnnualTurnoverPerMonthNoVat', 'verb' => 'PROPFIND'],
+       
        //PDF
        ['name' => 'page#sendPDF',           'url' => '/sendPDF', 'verb' => 'POST'],
        ['name' => 'page#savePDF',           'url' => '/savePDF', 'verb' => 'POST'],

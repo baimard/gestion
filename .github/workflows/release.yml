@@ -1,6 +1,7 @@
 name: Publish in GitHub Package Registry
 
-on:  
+on:
+  workflow_dispatch:
   push:
     tags:
       - '*'

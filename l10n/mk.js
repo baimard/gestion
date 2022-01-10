@@ -22,8 +22,6 @@ OC.L10N.register(
     "Next" : "Следна",
     "Previous" : "Предходна",
     "Choose work folder" : "Избери работна папка",
-    "Open" : "Отвори",
-    "Choose customer" : "Избери потрошувач",
     "Save in" : "Зачувај во",
     "There is an error" : "Настана грешка",
     "Creation in progress …" : "Создавање во тек…",

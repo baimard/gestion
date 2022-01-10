@@ -18,7 +18,6 @@ OC.L10N.register(
     "No corresponding entry" : "Δεν υπάρχει αντίστοιχη καταχώριση",
     "Next" : "Επόμενο",
     "Previous" : "Προηγούμενο",
-    "Open" : "Άνοιγμα",
     "Save in" : "Αποθήκευση σε",
     "There is an error" : "Παρουσιάστηκε σφάλμα",
     "My company" : "Η εταιρία μου",

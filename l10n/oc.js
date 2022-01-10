@@ -13,7 +13,6 @@ OC.L10N.register(
     "Last" : "Darrièr",
     "Next" : "Seguent",
     "Previous" : "Precedent",
-    "Open" : "Dobrir",
     "Welcome to GESTION" : "Benvengut a GESTION",
     "Documentation" : "Documentacion",
     "Contact" : "Contacte",

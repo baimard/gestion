@@ -5,7 +5,7 @@
             <span style="display: none;"></span>
         </div>
         <div class="crumb svg crumbhome">
-            <span><?php p($l->t('Statistical'));?></span></a>
+            <span><?php p($l->t('Statistics'));?></span></a>
         </div>
     </div>
     <h2><?php p($l->t('Monthly turnover without VAT'));?></h2>

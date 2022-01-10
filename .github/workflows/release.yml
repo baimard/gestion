@@ -9,11 +9,14 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
       - name: Upload app to Nextcloud appstore
         uses: R0Wi/nextcloud-appstore-push-action@v1
         with:
           app_name: gestion
           appstore_token: ${{ secrets.APPSTORE_TOKEN }}
-          download_url: https://github.com/baimard/gestion/releases/download/${{ GITHUB_REF##*/ }}/gestion.tar.gz
+          download_url: https://github.com/baimard/gestion/releases/download/${{ steps.get_version.outputs.VERSION }}/gestion.tar.gz
           app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
           nightly: ${{ github.event.release.prerelease }}

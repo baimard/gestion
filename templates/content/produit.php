@@ -8,8 +8,13 @@
             <span><?php p($l->t('Product'));?></span>
         </div>
         <div class="crumb svg crumbhome">
-            <a><span id="newProduit"><?php p($l->t('Add product'));?></span></a>
+            <button style="margin-left:3px;" type="button"  id="newProduit">
+                <?php p($l->t('Add product'));?>
+            </button>
         </div>
+        <!--<div class="crumb svg crumbhome">
+            <a><span id="newProduit"><?php //p($l->t('Add product'));?></span></a>
+        </div>-->
     </div>
 	<table id="produit" class="display tabledt">
         <thead>

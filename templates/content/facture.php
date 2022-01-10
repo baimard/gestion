@@ -8,8 +8,13 @@
             <span><?php p($l->t('Invoice'));?></span>
         </div>
         <div class="crumb svg crumbhome">
-            <a><span id="newInvoice"><?php p($l->t('Add invoice'));?></span></a>
+            <button style="margin-left:3px;" type="button"  id="newInvoice">
+                <?php p($l->t('Add invoice'));?>
+            </button>
         </div>
+        <!--<div class="crumb svg crumbhome">
+            <a><span id="newInvoice"><?php //p($l->t('Add invoice'));?></span></a>
+        </div>-->
     </div>
     <table id="facture" class="display tabledt">
         <thead>

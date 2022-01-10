@@ -16,8 +16,6 @@ OC.L10N.register(
     "Previous" : "Edellinen",
     "Choose work folder" : "Valitse työkansio",
     "Please create a new product" : "Luo uusi tuote",
-    "Open" : "Avaa",
-    "Choose customer" : "Valitse asiakas",
     "There is an error" : "Tapahtui virhe",
     "My company" : "Yritykseni",
     "Documentation" : "Dokumentaatio",

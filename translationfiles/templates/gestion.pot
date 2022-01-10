@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-01-09 03:22+0000\n"
+"POT-Creation-Date: 2022-01-10 03:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "First name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:89 /app/templates/content/configuration.php:16
+#: /app/lib/Db/Bdd.php:89 /app/templates/content/configuration.php:28
 #: /app/templates/content/devisshow.php:26
 #: /app/templates/content/devisshow.php:81
 #: /app/templates/content/factureshow.php:25
@@ -40,12 +40,12 @@ msgstr ""
 msgid "Company"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:91 /app/templates/content/configuration.php:18
+#: /app/lib/Db/Bdd.php:91 /app/templates/content/configuration.php:36
 #: /app/templates/content/index.php:21
 msgid "Phone number"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:92 /app/templates/content/configuration.php:19
+#: /app/lib/Db/Bdd.php:92 /app/templates/content/configuration.php:40
 #: /app/templates/content/index.php:22
 msgid "Email"
 msgstr ""
@@ -79,56 +79,60 @@ msgstr ""
 msgid "Means of payment"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:119 /app/templates/content/devisshow.php:48
+#: /app/lib/Db/Bdd.php:116
+msgid "INVOICE-"
+msgstr ""
+
+#: /app/lib/Db/Bdd.php:124 /app/templates/content/devisshow.php:48
 #: /app/templates/content/factureshow.php:50
 #: /app/templates/content/produit.php:17
 msgid "Reference"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:119 /app/templates/content/devisshow.php:49
+#: /app/lib/Db/Bdd.php:124 /app/templates/content/devisshow.php:49
 #: /app/templates/content/factureshow.php:51
 #: /app/templates/content/produit.php:18
 msgid "Designation"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:168
+#: /app/lib/Db/Bdd.php:173
 msgid "Your company name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:169
+#: /app/lib/Db/Bdd.php:174
 msgid "Your company contact surname"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:170
+#: /app/lib/Db/Bdd.php:175
 msgid "Your company contact name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:171
+#: /app/lib/Db/Bdd.php:176
 msgid "Your Limited company"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:172
+#: /app/lib/Db/Bdd.php:177
 msgid "Your company Unique identification"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:173
+#: /app/lib/Db/Bdd.php:178
 msgid "Your company email"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:174
+#: /app/lib/Db/Bdd.php:179
 msgid "Your company phone"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:175
+#: /app/lib/Db/Bdd.php:180
 msgid "Your company address"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:177
+#: /app/lib/Db/Bdd.php:182
 msgid ""
 "All Legal mentions, disclaimer or everything, you want place in the footer."
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:178
+#: /app/lib/Db/Bdd.php:183
 msgid "EUR"
 msgstr ""
 
@@ -144,120 +148,108 @@ msgstr ""
 msgid ""
 "# Gestion Nextcloud application\n"
 "\n"
-"This application allows the management of invoicing in a very simple way for "
-"Micro-Entreprise.\n"
+"        This application allows the management of invoicing in a very simple "
+"way for Micro-Entreprise.\n"
 "\n"
-"Functionality:\n"
+"        Functionality:\n"
 "\n"
-"* Add customer\n"
-"* Generate a quote\n"
-"* Generate an invoice\n"
-"* Generate product lines to include in quotes\n"
-"* You can generate PDFs directly from the app and save them to your "
+"        * Add customer\n"
+"        * Generate a quote\n"
+"        * Generate an invoice\n"
+"        * Generate product lines to include in quotes\n"
+"        * You can generate PDFs directly from the app and save them to your "
 "Nextcloud\n"
 "\n"
-"Presentation video in user documentation\n"
+"        Presentation video in user documentation\n"
 "\n"
-"If you need to adapt this application to your country laws, please open "
-"issue.\n"
+"        If you need to adapt this application to your country laws, please "
+"open issue.\n"
 "\n"
-"[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/"
+"        [Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/"
 "benjaminaimard)"
 msgstr ""
 
-#: /app/src/js/main.js:29
+#: /app/src/js/main.js:48
 msgid "Search"
 msgstr ""
 
-#: /app/src/js/main.js:30
+#: /app/src/js/main.js:49
 msgid "No data available in table"
 msgstr ""
 
-#: /app/src/js/main.js:31
+#: /app/src/js/main.js:50
 msgid "Showing {start} to {end} of {total} entries"
 msgstr ""
 
-#: /app/src/js/main.js:32
+#: /app/src/js/main.js:51
 msgid "Showing 0 to 0 of 0 entries"
 msgstr ""
 
-#: /app/src/js/main.js:33
+#: /app/src/js/main.js:52
 msgid "Loading records …"
 msgstr ""
 
-#: /app/src/js/main.js:34
+#: /app/src/js/main.js:53
 msgid "Processing …"
 msgstr ""
 
-#: /app/src/js/main.js:35
+#: /app/src/js/main.js:54
 msgid "{max} entries filtered"
 msgstr ""
 
-#: /app/src/js/main.js:36
+#: /app/src/js/main.js:55
 msgid "Show {menu} entries"
 msgstr ""
 
-#: /app/src/js/main.js:37
+#: /app/src/js/main.js:56
 msgid "No corresponding entry"
 msgstr ""
 
-#: /app/src/js/main.js:39
+#: /app/src/js/main.js:58
 msgid "First"
 msgstr ""
 
-#: /app/src/js/main.js:40
+#: /app/src/js/main.js:59
 msgid "Last"
 msgstr ""
 
-#: /app/src/js/main.js:41
+#: /app/src/js/main.js:60
 msgid "Next"
 msgstr ""
 
-#: /app/src/js/main.js:42
+#: /app/src/js/main.js:61
 msgid "Previous"
 msgstr ""
 
-#: /app/src/js/main.js:64
+#: /app/src/js/main.js:101
 msgid "Choose work folder"
 msgstr ""
 
-#: /app/src/js/main.js:168
+#: /app/src/js/main.js:199
 msgid "Please create a new product"
 msgstr ""
 
-#: /app/src/js/main.js:222 /app/src/js/main.js:247
-msgid "Open"
-msgstr ""
-
-#: /app/src/js/main.js:323
-msgid "Choose customer"
-msgstr ""
-
-#: /app/src/js/main.js:333
-msgid "Choose quote"
-msgstr ""
-
-#: /app/src/js/pdf.js:15
+#: /app/src/js/pdf.js:16
 msgid "Save in"
 msgstr ""
 
-#: /app/src/js/pdf.js:17
+#: /app/src/js/pdf.js:18
 msgid "There is an error"
 msgstr ""
 
-#: /app/src/js/pdf.js:29
+#: /app/src/js/pdf.js:30
 msgid "Email sent"
 msgstr ""
 
-#: /app/src/js/pdf.js:31
+#: /app/src/js/pdf.js:32
 msgid "Is your global mail server configured in Nextcloud?"
 msgstr ""
 
-#: /app/src/js/pdf.js:36
+#: /app/src/js/pdf.js:37
 msgid "Creation in progress …"
 msgstr ""
 
-#: /app/src/js/pdf.js:46
+#: /app/src/js/pdf.js:47
 msgid "Preparing the email …"
 msgstr ""
 
@@ -275,65 +267,73 @@ msgstr ""
 msgid "My company"
 msgstr ""
 
-#: /app/templates/content/changelog.php:6
+#: /app/templates/content/changelog.php:7
 msgid ""
 "This application is an open source application designed by Benjamin AIMARD. "
 "If you like my work you can"
 msgstr ""
 
-#: /app/templates/content/changelog.php:6
+#: /app/templates/content/changelog.php:7
 msgid "buy me a coffee"
 msgstr ""
 
-#: /app/templates/content/changelog.php:7
+#: /app/templates/content/changelog.php:8
 msgid "If you need documentation, follow this link"
 msgstr ""
 
-#: /app/templates/content/changelog.php:7
+#: /app/templates/content/changelog.php:8
 msgid "Documentation"
 msgstr ""
 
-#: /app/templates/content/changelog.php:8
+#: /app/templates/content/changelog.php:9
 msgid "Others questions?"
 msgstr ""
 
-#: /app/templates/content/changelog.php:8
+#: /app/templates/content/changelog.php:9
 msgid "Contact"
 msgstr ""
 
-#: /app/templates/content/changelog.php:9
+#: /app/templates/content/changelog.php:10
 msgid "Leave me a comment, but only if you like this application :)"
 msgstr ""
 
-#: /app/templates/content/changelog.php:9
+#: /app/templates/content/changelog.php:10
 msgid "Nextcloud apps"
 msgstr ""
 
 #: /app/templates/content/changelog.php:11
+msgid "Want to talk with the community ?"
+msgstr ""
+
+#: /app/templates/content/changelog.php:11
+msgid "Git discussion"
+msgstr ""
+
+#: /app/templates/content/changelog.php:13
 msgid "Changelog"
 msgstr ""
 
-#: /app/templates/content/changelog.php:37
+#: /app/templates/content/changelog.php:31
 msgid "Send an email"
 msgstr ""
 
-#: /app/templates/content/changelog.php:38
+#: /app/templates/content/changelog.php:32
 msgid "Your invoice/quote"
 msgstr ""
 
-#: /app/templates/content/changelog.php:40
+#: /app/templates/content/changelog.php:34
 msgid "Dear,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:42
+#: /app/templates/content/changelog.php:36
 msgid "Attached to this email you will find a new document."
 msgstr ""
 
-#: /app/templates/content/changelog.php:44
+#: /app/templates/content/changelog.php:38
 msgid "Best regards,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:46
+#: /app/templates/content/changelog.php:40
 msgid "Send"
 msgstr ""
 
@@ -350,50 +350,54 @@ msgstr ""
 msgid "Company name"
 msgstr ""
 
-#: /app/templates/content/configuration.php:12
-#: /app/templates/content/configuration.php:13
 #: /app/templates/content/configuration.php:14
-#: /app/templates/content/configuration.php:15
-#: /app/templates/content/configuration.php:16
-#: /app/templates/content/configuration.php:17
 #: /app/templates/content/configuration.php:18
-#: /app/templates/content/configuration.php:19
-#: /app/templates/content/configuration.php:20
 #: /app/templates/content/configuration.php:22
+#: /app/templates/content/configuration.php:26
+#: /app/templates/content/configuration.php:30
+#: /app/templates/content/configuration.php:34
+#: /app/templates/content/configuration.php:38
+#: /app/templates/content/configuration.php:42
+#: /app/templates/content/configuration.php:46
+#: /app/templates/content/configuration.php:58
 msgid "Loading …"
 msgstr ""
 
-#: /app/templates/content/configuration.php:13
+#: /app/templates/content/configuration.php:16
 msgid "Contact First name"
 msgstr ""
 
-#: /app/templates/content/configuration.php:14
+#: /app/templates/content/configuration.php:20
 msgid "Contact name"
 msgstr ""
 
-#: /app/templates/content/configuration.php:15
+#: /app/templates/content/configuration.php:24
 msgid "Company address"
 msgstr ""
 
-#: /app/templates/content/configuration.php:17
+#: /app/templates/content/configuration.php:32
 #: /app/templates/content/devisshow.php:81
 #: /app/templates/content/factureshow.php:82
 msgid "Unique identification"
 msgstr ""
 
-#: /app/templates/content/configuration.php:20
+#: /app/templates/content/configuration.php:44
 msgid "Default VAT"
 msgstr ""
 
-#: /app/templates/content/configuration.php:21
+#: /app/templates/content/configuration.php:48
+msgid "Automatic invoice number"
+msgstr ""
+
+#: /app/templates/content/configuration.php:52
 msgid "Default Currency"
 msgstr ""
 
-#: /app/templates/content/configuration.php:22
+#: /app/templates/content/configuration.php:56
 msgid "Legal disclaimer/mentions"
 msgstr ""
 
-#: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:9
+#: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:12
 msgid "Quote"
 msgstr ""
 
@@ -495,7 +499,7 @@ msgstr ""
 msgid "Please set in global configuration"
 msgstr ""
 
-#: /app/templates/content/facture.php:8 /app/templates/navigation/index.php:16
+#: /app/templates/content/facture.php:8 /app/templates/navigation/index.php:19
 msgid "Invoice"
 msgstr ""
 
@@ -525,7 +529,7 @@ msgstr ""
 msgid "Settlement date"
 msgstr ""
 
-#: /app/templates/content/index.php:8 /app/templates/navigation/index.php:2
+#: /app/templates/content/index.php:8 /app/templates/navigation/index.php:5
 msgid "Customer"
 msgstr ""
 
@@ -533,8 +537,73 @@ msgstr ""
 msgid "Add customer"
 msgstr ""
 
-#: /app/templates/content/produit.php:8 /app/templates/navigation/index.php:23
+#: /app/templates/content/produit.php:8 /app/templates/navigation/index.php:26
 msgid "Product"
+msgstr ""
+
+#: /app/templates/content/statistique.php:8
+#: /app/templates/navigation/index.php:38
+msgid "Statistical"
+msgstr ""
+
+#: /app/templates/content/statistique.php:11
+msgid "Annual turnover per month without VAT"
+msgstr ""
+
+#: /app/templates/content/statistique.php:17
+msgid "January"
+msgstr ""
+
+#: /app/templates/content/statistique.php:18
+msgid "February"
+msgstr ""
+
+#: /app/templates/content/statistique.php:19
+msgid "March"
+msgstr ""
+
+#: /app/templates/content/statistique.php:20
+msgid "April"
+msgstr ""
+
+#: /app/templates/content/statistique.php:21
+msgid "May"
+msgstr ""
+
+#: /app/templates/content/statistique.php:22
+msgid "June"
+msgstr ""
+
+#: /app/templates/content/statistique.php:23
+msgid "July"
+msgstr ""
+
+#: /app/templates/content/statistique.php:24
+msgid "August"
+msgstr ""
+
+#: /app/templates/content/statistique.php:25
+msgid "September"
+msgstr ""
+
+#: /app/templates/content/statistique.php:26
+msgid "October"
+msgstr ""
+
+#: /app/templates/content/statistique.php:27
+msgid "November"
+msgstr ""
+
+#: /app/templates/content/statistique.php:28
+msgid "December"
+msgstr ""
+
+#: /app/templates/navigation/index.php:2
+msgid "Manage"
+msgstr ""
+
+#: /app/templates/navigation/index.php:35
+msgid "Information"
 msgstr ""
 
 #: /app/templates/settings/index.php:9

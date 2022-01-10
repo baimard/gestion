@@ -2,7 +2,7 @@
 
 Support: https://www.buymeacoffee.com/benjaminaimard
 
-News 11/11/2021 :
+News 10/01/2022 :
 
 https://apps.nextcloud.com/apps/gestion
 

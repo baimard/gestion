@@ -102,7 +102,6 @@ export function insertRow(ID, positionRow = -1, positionColumn = -1, data){
     for (let i = 1; i < 13; i++) {
         insertCell(r, -1, 0);
     }
-    
     return r;
 }
 /**
@@ -123,6 +122,9 @@ export function insertCell(r, positionColumn = -1, data){
  * @param {*} data 
  */
 export function modifyCell(r, positionColumn = -1, data){
-    var c = r.cells.item(positionColumn);
-    c.replaceWith(document.createTextNode(data));
+    
+    var cell = r.cells[positionColumn];
+    cell.innerHTML = data;
+    console.log(r);
+    
 }

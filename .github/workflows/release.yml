@@ -12,8 +12,8 @@ jobs:
       - name: Upload app to Nextcloud appstore
         uses: R0Wi/nextcloud-appstore-push-action@v1
         with:
-          app_name: ${{ env.APP_NAME }}
+          app_name: gestion
           appstore_token: ${{ secrets.APPSTORE_TOKEN }}
-          download_url: ${{ steps.attach_to_release.outputs.browser_download_url }}
+          download_url: https://github.com/baimard/gestion/releases/download/${GITHUB_REF##*/}/gestion.tar.gz
           app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
           nightly: ${{ github.event.release.prerelease }}

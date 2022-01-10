@@ -9,18 +9,18 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: PHPUnit (php-actions)
-      - uses: php-actions/phpunit@v3
-        with:
-          php_version: 7.4
-          
-  job2:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Archive Release
-      uses: thedoctor0/zip-release@master
+    - name: PHPUnit (php-actions)
+    - uses: php-actions/phpunit@v3
       with:
-        type: 'zip'
-        filename: 'release.zip'
-       # exclusions: '*.git* /*node_modules/* .editorconfig'
+        php_version: 7.4
+
+  # job2:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@master
+  #   - name: Archive Release
+  #     uses: thedoctor0/zip-release@master
+  #     with:
+  #       type: 'zip'
+  #       filename: 'release.zip'
+  #      # exclusions: '*.git* /*node_modules/* .editorconfig'

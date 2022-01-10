@@ -14,6 +14,6 @@ jobs:
         with:
           app_name: gestion
           appstore_token: ${{ secrets.APPSTORE_TOKEN }}
-          download_url: https://github.com/baimard/gestion/releases/download/${GITHUB_REF##*/}/gestion.tar.gz
+          download_url: https://github.com/baimard/gestion/releases/download/${{ GITHUB_REF##*/ }}/gestion.tar.gz
           app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
           nightly: ${{ github.event.release.prerelease }}

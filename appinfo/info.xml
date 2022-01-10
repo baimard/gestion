@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>gestion</id>
     <name>Gestion</name>
-    <summary lang="fr">Application de gestion de facturation pour Micro-entreprise France</summary>
+    <summary lang="fr">Application de gestion de facturation simplifiée</summary>
     <description lang="fr">
         # Gestion de facturation
         Cette application permet la gestion de facturation de manière très simple pour une micro entreprise.
@@ -20,7 +20,7 @@
 
         [Vous aimez mon travail ? Achetez moi un café !](https://www.buymeacoffee.com/benjaminaimard)
     </description>
-    <summary lang="en">Invoicing management application for Micro-Entreprise in France</summary>
+    <summary lang="en">Simplified invoice management application</summary>
     <description lang="en">
         # Gestion Nextcloud application
 

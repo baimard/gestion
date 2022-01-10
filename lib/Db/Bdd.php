@@ -113,7 +113,7 @@ class Bdd {
         $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('Invoice number'),$this->l->t('Means of payment')));
 
         if(json_decode($this->getConfiguration(($idNextcloud)))[0]->auto_invoice_number == 1){
-            $this->gestion_update('facture', 'num', $this->l->t('INVOICE-').$this->lastinsertid(),$this->lastinsertid(),$idNextcloud);
+            $this->gestion_update('facture', 'num', $this->l->t('INVOICE')."-".$this->lastinsertid(),$this->lastinsertid(),$idNextcloud);
         }
         
         return true;

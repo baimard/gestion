@@ -8,7 +8,7 @@
             <span><?php p($l->t('Statistical'));?></span></a>
         </div>
     </div>
-    <h2><?php p($l->t('Annual turnover per month without VAT'));?></h2>
+    <h2><?php p($l->t('Monthly turnover without VAT'));?></h2>
     <div>
         <table id="Statistical">
             <thead>

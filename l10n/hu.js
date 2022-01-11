@@ -10,7 +10,6 @@ OC.L10N.register(
     "Invoice number" : "Számla azonosító",
     "Reference" : "Hivatkozás",
     "Gestion" : "Menedzsment",
-    "Invoicing management application for Micro-Entreprise in France" : "Számlázóprogram franciaországi mikrovállalkozások számára.",
     "Search" : "Keresés",
     "Configuration" : "Beállítások",
     "Actions" : "Műveletek"

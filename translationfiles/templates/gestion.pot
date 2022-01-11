@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-01-10 03:26+0000\n"
+"POT-Creation-Date: 2022-01-11 03:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:19
+#: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:24
 msgid "Name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:88 /app/templates/content/index.php:18
+#: /app/lib/Db/Bdd.php:88 /app/templates/content/index.php:23
 msgid "First name"
 msgstr ""
 
@@ -30,31 +30,31 @@ msgstr ""
 #: /app/templates/content/devisshow.php:81
 #: /app/templates/content/factureshow.php:25
 #: /app/templates/content/factureshow.php:82
-#: /app/templates/content/index.php:20
+#: /app/templates/content/index.php:25
 msgid "Limited company"
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:90 /app/templates/content/devisshow.php:81
 #: /app/templates/content/factureshow.php:82
-#: /app/templates/content/index.php:17
+#: /app/templates/content/index.php:22
 msgid "Company"
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:91 /app/templates/content/configuration.php:36
-#: /app/templates/content/index.php:21
+#: /app/templates/content/index.php:26
 msgid "Phone number"
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:92 /app/templates/content/configuration.php:40
-#: /app/templates/content/index.php:22
+#: /app/templates/content/index.php:27
 msgid "Email"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:93 /app/templates/content/index.php:23
+#: /app/lib/Db/Bdd.php:93 /app/templates/content/index.php:28
 msgid "Address"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:104 /app/templates/content/devis.php:18
+#: /app/lib/Db/Bdd.php:104 /app/templates/content/devis.php:23
 msgid "Quote number"
 msgstr ""
 
@@ -70,28 +70,28 @@ msgstr ""
 msgid "Text free"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:113 /app/templates/content/facture.php:17
+#: /app/lib/Db/Bdd.php:113 /app/templates/content/facture.php:22
 msgid "Invoice number"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:113 /app/templates/content/facture.php:20
+#: /app/lib/Db/Bdd.php:113 /app/templates/content/facture.php:25
 #: /app/templates/content/factureshow.php:34
 msgid "Means of payment"
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:116
-msgid "INVOICE-"
+msgid "INVOICE"
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:124 /app/templates/content/devisshow.php:48
 #: /app/templates/content/factureshow.php:50
-#: /app/templates/content/produit.php:17
+#: /app/templates/content/produit.php:22
 msgid "Reference"
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:124 /app/templates/content/devisshow.php:49
 #: /app/templates/content/factureshow.php:51
-#: /app/templates/content/produit.php:18
+#: /app/templates/content/produit.php:23
 msgid "Designation"
 msgstr ""
 
@@ -141,7 +141,7 @@ msgid "Gestion"
 msgstr ""
 
 #: /app/specialAppInfoFakeDummyForL10nScript.php:3
-msgid "Invoicing management application for Micro-Entreprise in France"
+msgid "Simplified invoice management application"
 msgstr ""
 
 #: /app/specialAppInfoFakeDummyForL10nScript.php:4
@@ -302,7 +302,7 @@ msgid "Nextcloud apps"
 msgstr ""
 
 #: /app/templates/content/changelog.php:11
-msgid "Want to talk with the community ?"
+msgid "Want to talk with the community?"
 msgstr ""
 
 #: /app/templates/content/changelog.php:11
@@ -313,27 +313,27 @@ msgstr ""
 msgid "Changelog"
 msgstr ""
 
-#: /app/templates/content/changelog.php:31
+#: /app/templates/content/changelog.php:33
 msgid "Send an email"
 msgstr ""
 
-#: /app/templates/content/changelog.php:32
+#: /app/templates/content/changelog.php:34
 msgid "Your invoice/quote"
 msgstr ""
 
-#: /app/templates/content/changelog.php:34
+#: /app/templates/content/changelog.php:36
 msgid "Dear,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:36
+#: /app/templates/content/changelog.php:38
 msgid "Attached to this email you will find a new document."
 msgstr ""
 
-#: /app/templates/content/changelog.php:38
+#: /app/templates/content/changelog.php:40
 msgid "Best regards,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:40
+#: /app/templates/content/changelog.php:42
 msgid "Send"
 msgstr ""
 
@@ -401,30 +401,30 @@ msgstr ""
 msgid "Quote"
 msgstr ""
 
-#: /app/templates/content/devis.php:11
-msgid "Add new quote"
+#: /app/templates/content/devis.php:12
+msgid "Add quote"
 msgstr ""
 
-#: /app/templates/content/devis.php:17
+#: /app/templates/content/devis.php:22
 msgid "Quote date"
 msgstr ""
 
-#: /app/templates/content/devis.php:19
+#: /app/templates/content/devis.php:24
 msgid "Customer quote"
 msgstr ""
 
-#: /app/templates/content/devis.php:20 /app/templates/content/devisshow.php:4
-#: /app/templates/content/facture.php:22
+#: /app/templates/content/devis.php:25 /app/templates/content/devisshow.php:4
+#: /app/templates/content/facture.php:27
 #: /app/templates/content/factureshow.php:4
 msgid "Version"
 msgstr ""
 
-#: /app/templates/content/devis.php:21 /app/templates/content/facture.php:23
+#: /app/templates/content/devis.php:26 /app/templates/content/facture.php:28
 msgid "Status"
 msgstr ""
 
-#: /app/templates/content/devis.php:22 /app/templates/content/facture.php:24
-#: /app/templates/content/index.php:24 /app/templates/content/produit.php:20
+#: /app/templates/content/devis.php:27 /app/templates/content/facture.php:29
+#: /app/templates/content/index.php:29 /app/templates/content/produit.php:25
 msgid "Actions"
 msgstr ""
 
@@ -453,7 +453,7 @@ msgstr ""
 
 #: /app/templates/content/devisshow.php:51
 #: /app/templates/content/factureshow.php:53
-#: /app/templates/content/produit.php:19
+#: /app/templates/content/produit.php:24
 msgid "Unit price without VAT"
 msgstr ""
 
@@ -465,7 +465,7 @@ msgid "Total without VAT"
 msgstr ""
 
 #: /app/templates/content/devisshow.php:58
-#: /app/templates/content/produit.php:11
+#: /app/templates/content/produit.php:12
 msgid "Add product"
 msgstr ""
 
@@ -503,20 +503,20 @@ msgstr ""
 msgid "Invoice"
 msgstr ""
 
-#: /app/templates/content/facture.php:11
+#: /app/templates/content/facture.php:12
 msgid "Add invoice"
 msgstr ""
 
-#: /app/templates/content/facture.php:18
+#: /app/templates/content/facture.php:23
 #: /app/templates/content/factureshow.php:33
 msgid "Date of service"
 msgstr ""
 
-#: /app/templates/content/facture.php:19
+#: /app/templates/content/facture.php:24
 msgid "Payment date"
 msgstr ""
 
-#: /app/templates/content/facture.php:21
+#: /app/templates/content/facture.php:26
 #: /app/templates/content/factureshow.php:34
 msgid "Associated quote"
 msgstr ""
@@ -533,7 +533,7 @@ msgstr ""
 msgid "Customer"
 msgstr ""
 
-#: /app/templates/content/index.php:11
+#: /app/templates/content/index.php:12
 msgid "Add customer"
 msgstr ""
 
@@ -543,11 +543,11 @@ msgstr ""
 
 #: /app/templates/content/statistique.php:8
 #: /app/templates/navigation/index.php:38
-msgid "Statistical"
+msgid "Statistics"
 msgstr ""
 
 #: /app/templates/content/statistique.php:11
-msgid "Annual turnover per month without VAT"
+msgid "Monthly turnover without VAT"
 msgstr ""
 
 #: /app/templates/content/statistique.php:17

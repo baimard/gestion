@@ -10,7 +10,6 @@ OC.L10N.register(
     "Means of payment" : "Τρόπος πληρωμής",
     "Reference" : "Αναφορά",
     "Designation" : "Προσδιορισμός",
-    "Invoicing management application for Micro-Entreprise in France" : "Εφαρμογή διαχείρισης τιμολογίων για τη Micro-Entreprise στη Γαλλία",
     "Search" : "Αναζήτηση",
     "No data available in table" : "Δεν υπάρχουν διαθέσιμα δεδομένα στον πίνακα",
     "Loading records …" : "Γίνεται φόρτωση εγγραφών …",

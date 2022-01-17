@@ -1,7 +1,6 @@
 {
 	"name": "gestion",
 	"description": "Application pour gérer votre micro entreprise, client, facture, devis",
-	"version": "1.2.0",
 	"author": "Benjamin AIMARD",
 	"contributors": [
 		"contact@cybercorp.fr"

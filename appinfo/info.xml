@@ -40,18 +40,19 @@
 
         [Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)
     </description>
-    <version>1.3.3</version>
+    <version>1.3.4</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>
 	<category>office</category>
 	<category>organization</category>
-    <repository>https://github.com/baimard/gestion</repository>
     <website>https://www.buymeacoffee.com/benjaminaimard</website>
     <documentation>
         <user>https://baimard.github.io/gestion/</user>
     </documentation>
+    <discussion>https://github.com/baimard/gestion/discussions</discussion>
     <bugs>https://github.com/baimard/gestion/issues</bugs>
+    <repository>https://github.com/baimard/gestion</repository>
     <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/index.png">https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/index.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/Capture%20d%E2%80%99%C3%A9cran%20de%202021-11-26%2009-09-49.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/config.png</screenshot>
@@ -61,6 +62,7 @@
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/selectFolder.png</screenshot>
     <dependencies>
         <nextcloud min-version="21" max-version="23"/>
+        <php min-version="7.4"/>
     </dependencies>
     <navigations>
         <navigation>

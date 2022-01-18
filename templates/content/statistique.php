@@ -13,7 +13,7 @@
         <table id="Statistical">
             <thead>
                 <tr>
-                    <th></th>
+                    <th><?php p($l->t('Year'));?></th>
                     <th><?php p($l->t('January'));?></th>
                     <th><?php p($l->t('February'));?></th>
                     <th><?php p($l->t('March'));?></th>
@@ -26,6 +26,7 @@
                     <th><?php p($l->t('October'));?></th>
                     <th><?php p($l->t('November'));?></th>
                     <th><?php p($l->t('December'));?></th>
+                    <th><?php p($l->t('Total'));?></th>
                 </tr>
             </thead>
             <tbody>

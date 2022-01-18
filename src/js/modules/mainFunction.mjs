@@ -106,12 +106,12 @@ export function insertRow(ID, positionRow = -1, positionColumn = -1, data){
 }
 /**
  * 
- * @param {*} r 
+ * @param {*} row
  * @param {*} positionColumn 
  * @param {*} data 
  */
-export function insertCell(r, positionColumn = -1, data){
-    var c = r.insertCell(positionColumn);
+export function insertCell(row, positionColumn = -1, data){
+    var c = row.insertCell(positionColumn);
     c.appendChild(document.createTextNode(data));
 }
 
@@ -122,9 +122,6 @@ export function insertCell(r, positionColumn = -1, data){
  * @param {*} data 
  */
 export function modifyCell(r, positionColumn = -1, data){
-    
     var cell = r.cells[positionColumn];
     cell.innerHTML = data;
-    console.log(r);
-    
 }

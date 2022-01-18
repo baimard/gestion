@@ -226,16 +226,26 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
         var res = JSON.parse(response);
         var curY = "";
         var curRow;
+        var total=0;
         res.forEach(function(item){
-
             if(curY !== item.y){
+                
+                if(curY !== ""){
+                    insertCell(curRow, -1, cur.format(total));
+                    total=0;
+                }
+
                 curY = item.y;
                 curRow = insertRow("Statistical", -1, 0, item.y);
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
+                total+= Math.round(item.total);
             }else{
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
+                total+= Math.round(item.total);
             }
         });
+        // At the end
+        insertCell(curRow, -1, cur.format(total));
     }).fail(function (response, code) {
         showError(response);
     });

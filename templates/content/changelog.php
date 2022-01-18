@@ -10,11 +10,8 @@
 		<p style="margin-bottom:20px;"><?php p($l->t('Leave me a comment, but only if you like this application :)')); ?> &#128073; <a href="https://apps.nextcloud.com/apps/gestion"><?php p($l->t('Nextcloud apps')); ?></a></p>
 		<p style="margin-bottom:20px;"><?php p($l->t('Want to talk with the community?')); ?> &#128073; <a href="https://github.com/baimard/gestion/discussions"><?php p($l->t('Git discussion')); ?></a></p>
 		<hr />
-		<h2><?php p($l->t('Changelog')); ?> v1.3.4</h2>
-		<p>
-			* https://github.com/baimard/gestion/issues/87 <br/>
-			* Translation
-		</p>
+		<h2><?php p($l->t('Changelog')); ?></h2>
+		<p><a href="https://github.com/baimard/gestion/releases">Release</a></p>
 	</div>
 </div>
 

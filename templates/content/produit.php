@@ -12,9 +12,6 @@
                 <?php p($l->t('Add product'));?>
             </button>
         </div>
-        <!--<div class="crumb svg crumbhome">
-            <a><span id="newProduit"><?php //p($l->t('Add product'));?></span></a>
-        </div>-->
     </div>
 	<table id="produit" class="display tabledt">
         <thead>

@@ -12,9 +12,6 @@
                 <?php p($l->t('Add customer'));?>
             </button>
         </div>
-        <!-- <div class="crumb svg crumbhome">
-            <a><span id="newClient"><?php //p($l->t('Add customer'));?></span></a>
-        </div> -->
     </div>
     <table id="client" class="display tabledt" style="font-size:11px;">
         <thead>

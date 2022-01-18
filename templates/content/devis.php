@@ -12,9 +12,6 @@
                 <?php p($l->t('Add quote'));?>
             </button>
         </div>
-        <!--<div class="crumb svg crumbhome">
-            <a><span id="newDevis"><?php //p($l->t('Add new quote'));?></span></a>
-        </div>-->
     </div>
     <table id="devis" class="display tabledt">
         <thead>

@@ -1,22 +1,84 @@
 name: Publish in GitHub Package Registry
 
-on:
-  push:
-    tags:
-      - '*'
+# on:
+#   workflow_dispatch:
 
-jobs:  
-  job2:
+#   push :
+#     tags:
+#       - '*'
+
+on:
+  release:
+      types: [published]
+
+jobs:
+  container:
     runs-on: ubuntu-latest
+    container: nextcloud
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: gestion
+
+      - name: Create tar
+        run: |
+          cd gestion && make appstore
+
+      - name: load app
+        run: |
+          cd gestion
+          tar xzvf ./build/artifacts/appstore/gestion.tar.gz --directory /usr/src/nextcloud/apps/
+
+      - name: Generate key
+        env:
+          APP_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+          APP_CRT: ${{ secrets.APP_CERTIFICATE }}
+        run: |
+          echo -n "$APP_KEY" > /usr/src/nextcloud/p.key
+          echo -n "$APP_CRT" > /usr/src/nextcloud/p.crt
+
+      - name: sign app
+        env:
+          APP_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+        run: |
+          cd /usr/src/nextcloud
+          php occ integrity:sign-app --privateKey=p.key --certificate=p.crt --path=/usr/src/nextcloud/apps/gestion
+          cd /usr/src/nextcloud/apps
+          tar cvzf gestion.tar.gz gestion
+          echo -n "$APP_KEY" > /usr/src/nextcloud/apps/p.key
+          openssl dgst -sha512 -sign /usr/src/nextcloud/apps/p.key /usr/src/nextcloud/apps/gestion.tar.gz | openssl base64 > /usr/src/nextcloud/apps/shasum.txt
+          cat ./shasum.txt
+
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+
+      - name: Upload app tarball to release
+        uses: svenstaro/upload-release-action@v2
+        id: attach_to_release_app
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /usr/src/nextcloud/apps/gestion.tar.gz
+          asset_name: gestion.tar.gz
+          tag: ${{ steps.get_version.outputs.VERSION }}
+          overwrite: true
+
+      - name: Upload shasum to release
+        uses: svenstaro/upload-release-action@v2
+        id: attach_to_release_shasum
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /usr/src/nextcloud/apps/shasum.txt
+          asset_name: shasum.${{ steps.get_version.outputs.VERSION }}.txt
+          tag: ${{ steps.get_version.outputs.VERSION }}
+          overwrite: true
+
       - name: Upload app to Nextcloud appstore
         uses: R0Wi/nextcloud-appstore-push-action@v1
         with:
           app_name: gestion
           appstore_token: ${{ secrets.APPSTORE_TOKEN }}
-          download_url: https://github.com/baimard/gestion/releases/download/${{ steps.get_version.outputs.VERSION }}/gestion.tar.gz
+          download_url: ${{ steps.attach_to_release_app.outputs.browser_download_url }}
           app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
           nightly: false

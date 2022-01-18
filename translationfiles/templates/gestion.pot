@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-01-17 03:22+0000\n"
+"POT-Creation-Date: 2022-01-18 03:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -313,27 +313,27 @@ msgstr ""
 msgid "Changelog"
 msgstr ""
 
-#: /app/templates/content/changelog.php:33
+#: /app/templates/content/changelog.php:24
 msgid "Send an email"
 msgstr ""
 
-#: /app/templates/content/changelog.php:34
+#: /app/templates/content/changelog.php:25
 msgid "Your invoice/quote"
 msgstr ""
 
-#: /app/templates/content/changelog.php:36
+#: /app/templates/content/changelog.php:27
 msgid "Dear,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:38
+#: /app/templates/content/changelog.php:29
 msgid "Attached to this email you will find a new document."
 msgstr ""
 
-#: /app/templates/content/changelog.php:40
+#: /app/templates/content/changelog.php:31
 msgid "Best regards,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:42
+#: /app/templates/content/changelog.php:33
 msgid "Send"
 msgstr ""
 

@@ -148,6 +148,7 @@ appstore:
 	--exclude="../$(app_name)/js/.*" \
 	--exclude="../$(app_name)/vendor" \
 	--exclude="../$(app_name)/drivers" \
+	--exclude="../$(app_name)/*.sh" \
 	../$(app_name)
 
 .PHONY: test

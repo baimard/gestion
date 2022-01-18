@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-01-17 03:22+0000\n"
+"POT-Creation-Date: 2022-01-18 03:43+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Arnaud Wallon <arnaud@netbeat.be>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -339,27 +339,27 @@ msgstr "Discussion Git"
 msgid "Changelog"
 msgstr "Journal des modifications"
 
-#: /app/templates/content/changelog.php:33
+#: /app/templates/content/changelog.php:24
 msgid "Send an email"
 msgstr "Envoyer un e-mail"
 
-#: /app/templates/content/changelog.php:34
+#: /app/templates/content/changelog.php:25
 msgid "Your invoice/quote"
 msgstr "Votre facture/devis"
 
-#: /app/templates/content/changelog.php:36
+#: /app/templates/content/changelog.php:27
 msgid "Dear,"
 msgstr "Cher,"
 
-#: /app/templates/content/changelog.php:38
+#: /app/templates/content/changelog.php:29
 msgid "Attached to this email you will find a new document."
 msgstr "Vous trouverez en pièce jointe de cet e-mail un nouveau document."
 
-#: /app/templates/content/changelog.php:40
+#: /app/templates/content/changelog.php:31
 msgid "Best regards,"
 msgstr "Meilleures salutations,"
 
-#: /app/templates/content/changelog.php:42
+#: /app/templates/content/changelog.php:33
 msgid "Send"
 msgstr "Envoyer"
 

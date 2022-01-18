@@ -2,16 +2,9 @@
 
 Support: https://www.buymeacoffee.com/benjaminaimard
 
-News 10/01/2022 :
-
 https://apps.nextcloud.com/apps/gestion
 
-Besoin d'une fonction ? ouvrez une "issue"
-
-Need fonctionnlality ? open an issue
-
 Fonctionnalités à venir / Upcoming Features
-
 
 - [x] Envoie de la facture par mail via nextcloud / Send mail with nextcloud with the quote or bill
 - [x] Zone de commentaire pour les devis ( qui s'affichera dans les factures ) / comment zone in quote
@@ -30,11 +23,11 @@ Fonctionnalités à venir / Upcoming Features
 - [ ] TVA par devis / VAT rate by quote
 - [ ] on clique sur sauvegarder nextcloud la version s'incremente / when you click save nextcloud increment the version.
 
-## Application de gestion de facturation pour Micro-entreprise *France*
+## Application de gestion de facturation pour Micro-entreprise
 
 Cette application permet la gestion de facturation de manière très simple pour une micro entreprise.
 
-Fonctionnalité : 
+Fonctionnalité :
 * Ajouter un client
 * Générer un devis
 * Générer une facture
@@ -42,9 +35,7 @@ Fonctionnalité :
 
 Vous pouvez générer des PDF directement depuis l'application et les enregistrer dans votre Nextcloud.
 
-Vidéo de présentation à venir
-
-## Invoicing management application for Micro-Entreprise in *France* 
+## Invoicing management application for Micro-Entreprise
 
 This application allows the management of invoicing in a very simple way for Micro-Entreprise.
 
@@ -55,4 +46,4 @@ Functionality:
 * Generate an invoice
 * Generate product lines to include in quotes
 
-You can generate PDFs directly from the app and save them to your Nextcloud.
+You can generate PDFs directly from the app and save them to your Nextcloud

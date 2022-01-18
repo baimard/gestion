@@ -74,10 +74,13 @@ jobs:
           tag: ${{ steps.get_version.outputs.VERSION }}
           overwrite: true
 
-      - name: Sleep for 2 minutes
-        run: sleep 120s
+      - name: Sleep for 1 minute
+        run: sleep 60s
         shell: bash
 
+  publish:
+    runs-on: ubuntu-latest
+    steps:
       - name: Upload app to Nextcloud appstore
         uses: R0Wi/nextcloud-appstore-push-action@v1
         with:
@@ -86,3 +89,5 @@ jobs:
           download_url: ${{ steps.attach_to_release_app.outputs.browser_download_url }}
           app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
           nightly: false
+
+          

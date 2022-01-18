@@ -23,7 +23,6 @@ var cur = null;
  */
  String.prototype.toHtmlEntities = function() {
     return this.replace(/./gm, function(s) {
-        // return "&#" + s.charCodeAt(0) + ";";
         return (s.match(/[a-z0-9\s]+/i)) ? s : "&#" + s.charCodeAt(0) + ";";
     });
 };
@@ -37,6 +36,9 @@ String.fromHtmlEntities = function(string) {
     })
 };
 
+/**
+ * When you load app
+ */
 $(window).on("load", function () {
     // console.log(baseRemoteUrl);
     // console.log(getCanonicalLocale());
@@ -93,8 +95,8 @@ $(window).on("load", function () {
 });
 
 $('body').on('page.dt search.dt', function () {
-    if ($('#devis').length) { console.log("loadclientlist"); loadClientList(); }
-    if ($('#facture').length) { console.log("loadclientlist"); loadDevisList(); }
+    if ($('#devis').length) { loadClientList(); }
+    if ($('#facture').length) { loadDevisList(); }
 });
 
 $('body').on('click', '#theFolder', function () {

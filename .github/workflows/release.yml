@@ -74,6 +74,10 @@ jobs:
           tag: ${{ steps.get_version.outputs.VERSION }}
           overwrite: true
 
+      - name: Sleep for 2 minutes
+        run: sleep 120s
+        shell: bash
+
       - name: Upload app to Nextcloud appstore
         uses: R0Wi/nextcloud-appstore-push-action@v1
         with:

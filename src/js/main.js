@@ -6,10 +6,12 @@ import { getCanonicalLocale, translate as t, translatePlural as n } from '@nextc
 
 import '@nextcloud/dialogs/styles/toast.scss'
 
-import '../css/mycss.less';
+
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net';
 import 'bootstrap/js/dist/util';
+
+import '../css/mycss.less';
 
 import { newInvoice, updateDB, deleteDB, loadProduitDT, loadClientDT, loadDevisDT, loadFactureDT, getStats, configuration, getAnnualTurnoverPerMonthNoVat } from "./modules/ajaxRequest.mjs";
 import { getAutoIncrement, getCurrencyList } from "./modules/list.mjs";

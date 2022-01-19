@@ -6,8 +6,9 @@
       margin-right:10px;
       width: 30px;
      }
-
+    background-color: white;
     width: 100%;
+    color: #000000;
 
     /* override bootstrap 5.0*/
     ol,
@@ -56,6 +57,7 @@
 }
 
 #contentTable {
+  background-color: var(--color-main-background);
   padding-left: 10px;
   padding-right: 10px;
   width: 100%;
@@ -69,6 +71,19 @@
   table-layout: auto;
   width: 100%;
   white-space: pre-wrap;
+  background-color: var(--color-main-background);
+}
+
+.tabledt tbody tr td {
+  background-color: var(--color-main-background);
+}
+
+table.dataTable.display tbody tr.odd > [class*="sorting_"] {
+  background-color: var(--color-main-background);
+}
+
+table.dataTable.display tbody tr.even > [class*="sorting_"] {
+  background-color: var(--color-main-background);
 }
 
 #Statistical {
@@ -144,7 +159,8 @@
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: var(--color-main-background);
+  color: var(--color-main-text);
   margin: auto;
   padding: 20px;
   border: 1px solid #888;

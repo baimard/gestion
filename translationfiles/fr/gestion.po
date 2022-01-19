@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-01-18 03:43+0000\n"
+"POT-Creation-Date: 2022-01-19 03:25+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Arnaud Wallon <arnaud@netbeat.be>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -23,11 +23,11 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:24
+#: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:21
 msgid "Name"
 msgstr "Nom"
 
-#: /app/lib/Db/Bdd.php:88 /app/templates/content/index.php:23
+#: /app/lib/Db/Bdd.php:88 /app/templates/content/index.php:20
 msgid "First name"
 msgstr "Prénom"
 
@@ -36,31 +36,31 @@ msgstr "Prénom"
 #: /app/templates/content/devisshow.php:81
 #: /app/templates/content/factureshow.php:25
 #: /app/templates/content/factureshow.php:82
-#: /app/templates/content/index.php:25
+#: /app/templates/content/index.php:22
 msgid "Limited company"
 msgstr "Siret"
 
 #: /app/lib/Db/Bdd.php:90 /app/templates/content/devisshow.php:81
 #: /app/templates/content/factureshow.php:82
-#: /app/templates/content/index.php:22
+#: /app/templates/content/index.php:19
 msgid "Company"
 msgstr "Société"
 
 #: /app/lib/Db/Bdd.php:91 /app/templates/content/configuration.php:36
-#: /app/templates/content/index.php:26
+#: /app/templates/content/index.php:23
 msgid "Phone number"
 msgstr "Téléphone"
 
 #: /app/lib/Db/Bdd.php:92 /app/templates/content/configuration.php:40
-#: /app/templates/content/index.php:27
+#: /app/templates/content/index.php:24
 msgid "Email"
 msgstr "Email"
 
-#: /app/lib/Db/Bdd.php:93 /app/templates/content/index.php:28
+#: /app/lib/Db/Bdd.php:93 /app/templates/content/index.php:25
 msgid "Address"
 msgstr "Adresse"
 
-#: /app/lib/Db/Bdd.php:104 /app/templates/content/devis.php:23
+#: /app/lib/Db/Bdd.php:104 /app/templates/content/devis.php:20
 msgid "Quote number"
 msgstr "Numéro de devis"
 
@@ -91,13 +91,13 @@ msgstr "FACTURE"
 
 #: /app/lib/Db/Bdd.php:124 /app/templates/content/devisshow.php:48
 #: /app/templates/content/factureshow.php:50
-#: /app/templates/content/produit.php:22
+#: /app/templates/content/produit.php:19
 msgid "Reference"
 msgstr "Référence"
 
 #: /app/lib/Db/Bdd.php:124 /app/templates/content/devisshow.php:49
 #: /app/templates/content/factureshow.php:51
-#: /app/templates/content/produit.php:23
+#: /app/templates/content/produit.php:20
 msgid "Designation"
 msgstr "Désignation"
 
@@ -190,63 +190,63 @@ msgstr ""
 "\n"
 "        [Vous appréciez mon travail ? Achetez-moi un café !](https://www.buymeacoffee.com/benjaminaimard)"
 
-#: /app/src/js/main.js:48
+#: /app/src/js/main.js:50
 msgid "Search"
 msgstr "Recherche"
 
-#: /app/src/js/main.js:49
+#: /app/src/js/main.js:51
 msgid "No data available in table"
 msgstr "Aucune donnée disponible dans le tableau"
 
-#: /app/src/js/main.js:50
+#: /app/src/js/main.js:52
 msgid "Showing {start} to {end} of {total} entries"
 msgstr "Affichage de {start} à {end} sur {total} éléments"
 
-#: /app/src/js/main.js:51
+#: /app/src/js/main.js:53
 msgid "Showing 0 to 0 of 0 entries"
 msgstr "Affichage de 0 à 0 sur 0 éléments"
 
-#: /app/src/js/main.js:52
+#: /app/src/js/main.js:54
 msgid "Loading records …"
 msgstr "Chargement..."
 
-#: /app/src/js/main.js:53
+#: /app/src/js/main.js:55
 msgid "Processing …"
 msgstr "Traitement..."
 
-#: /app/src/js/main.js:54
+#: /app/src/js/main.js:56
 msgid "{max} entries filtered"
 msgstr "(filtrés depuis un total de {max} éléments)"
 
-#: /app/src/js/main.js:55
+#: /app/src/js/main.js:57
 msgid "Show {menu} entries"
 msgstr "Afficher {menu} éléments"
 
-#: /app/src/js/main.js:56
+#: /app/src/js/main.js:58
 msgid "No corresponding entry"
 msgstr "Aucun élément correspondant trouvé"
 
-#: /app/src/js/main.js:58
+#: /app/src/js/main.js:60
 msgid "First"
 msgstr "Premier"
 
-#: /app/src/js/main.js:59
+#: /app/src/js/main.js:61
 msgid "Last"
 msgstr "Dernier"
 
-#: /app/src/js/main.js:60
+#: /app/src/js/main.js:62
 msgid "Next"
 msgstr "Suivant"
 
-#: /app/src/js/main.js:61
+#: /app/src/js/main.js:63
 msgid "Previous"
 msgstr "Précédent"
 
-#: /app/src/js/main.js:101
+#: /app/src/js/main.js:103
 msgid "Choose work folder"
 msgstr "Choisir le répertoire de travail"
 
-#: /app/src/js/main.js:199
+#: /app/src/js/main.js:201
 msgid "Please create a new product"
 msgstr "Il faut créer un nouveau produit."
 
@@ -339,27 +339,27 @@ msgstr "Discussion Git"
 msgid "Changelog"
 msgstr "Journal des modifications"
 
-#: /app/templates/content/changelog.php:24
+#: /app/templates/content/changelog.php:21
 msgid "Send an email"
 msgstr "Envoyer un e-mail"
 
-#: /app/templates/content/changelog.php:25
+#: /app/templates/content/changelog.php:22
 msgid "Your invoice/quote"
 msgstr "Votre facture/devis"
 
-#: /app/templates/content/changelog.php:27
+#: /app/templates/content/changelog.php:24
 msgid "Dear,"
 msgstr "Cher,"
 
-#: /app/templates/content/changelog.php:29
+#: /app/templates/content/changelog.php:26
 msgid "Attached to this email you will find a new document."
 msgstr "Vous trouverez en pièce jointe de cet e-mail un nouveau document."
 
-#: /app/templates/content/changelog.php:31
+#: /app/templates/content/changelog.php:28
 msgid "Best regards,"
 msgstr "Meilleures salutations,"
 
-#: /app/templates/content/changelog.php:33
+#: /app/templates/content/changelog.php:30
 msgid "Send"
 msgstr "Envoyer"
 
@@ -431,26 +431,26 @@ msgstr "Devis"
 msgid "Add quote"
 msgstr "Ajouter un devis"
 
-#: /app/templates/content/devis.php:22
+#: /app/templates/content/devis.php:19
 msgid "Quote date"
 msgstr "Date du devis"
 
-#: /app/templates/content/devis.php:24
+#: /app/templates/content/devis.php:21
 msgid "Customer quote"
 msgstr "Numéro du devis"
 
-#: /app/templates/content/devis.php:25 /app/templates/content/devisshow.php:4
+#: /app/templates/content/devis.php:22 /app/templates/content/devisshow.php:4
 #: /app/templates/content/facture.php:27
 #: /app/templates/content/factureshow.php:4
 msgid "Version"
 msgstr "Version"
 
-#: /app/templates/content/devis.php:26 /app/templates/content/facture.php:28
+#: /app/templates/content/devis.php:23 /app/templates/content/facture.php:28
 msgid "Status"
 msgstr "État"
 
-#: /app/templates/content/devis.php:27 /app/templates/content/facture.php:29
-#: /app/templates/content/index.php:29 /app/templates/content/produit.php:25
+#: /app/templates/content/devis.php:24 /app/templates/content/facture.php:29
+#: /app/templates/content/index.php:26 /app/templates/content/produit.php:22
 msgid "Actions"
 msgstr "Actions"
 
@@ -479,7 +479,7 @@ msgstr "Quantité"
 
 #: /app/templates/content/devisshow.php:51
 #: /app/templates/content/factureshow.php:53
-#: /app/templates/content/produit.php:24
+#: /app/templates/content/produit.php:21
 msgid "Unit price without VAT"
 msgstr "PU HT"
 
@@ -576,6 +576,10 @@ msgstr "Statistiques"
 msgid "Monthly turnover without VAT"
 msgstr "Chiffre d'affaires mensuel HT"
 
+#: /app/templates/content/statistique.php:16
+msgid "Year"
+msgstr ""
+
 #: /app/templates/content/statistique.php:17
 msgid "January"
 msgstr "Janvier"
@@ -624,6 +628,10 @@ msgstr "Novembre"
 msgid "December"
 msgstr "Décembre"
 
+#: /app/templates/content/statistique.php:29
+msgid "Total"
+msgstr ""
+
 #: /app/templates/navigation/index.php:2
 msgid "Manage"
 msgstr "Gérer"
@@ -639,3 +647,7 @@ msgstr "À propos"
 #: /app/templates/settings/index.php:12
 msgid "Save folder"
 msgstr "Dossier de sauvegarde"
+
+#: /app/templates/settings/index.php:12
+msgid "Please choose a folder"
+msgstr ""

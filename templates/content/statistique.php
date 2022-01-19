@@ -9,7 +9,6 @@
         </div>
     </div>
     <h2><?php p($l->t('Monthly turnover without VAT'));?></h2>
-    <div>
         <table id="Statistical">
             <thead>
                 <tr>
@@ -30,10 +29,6 @@
                 </tr>
             </thead>
             <tbody>
-
             </tbody>
         </table>
-    </div>
-
-
 </div>

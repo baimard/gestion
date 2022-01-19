@@ -60,6 +60,7 @@
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/facture.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/produit.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/selectFolder.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/statistique.png</screenshot>
     <dependencies>
         <nextcloud min-version="21" max-version="23"/>
         <php min-version="7.4"/>

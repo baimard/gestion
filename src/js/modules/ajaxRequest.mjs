@@ -1,7 +1,7 @@
 import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
 import { generateUrl } from "@nextcloud/router";
-
-import { getCurrency, insertCell, insertRow, modifyCell, showDone } from "./mainFunction.mjs";
+import { translate as t, translatePlural as n } from '@nextcloud/l10n'
+import { insertCell, insertRow, modifyCell, showDone } from "./mainFunction.mjs";
 import { Product } from "../objects/product.mjs";
 import { Client } from "../objects/client.mjs";
 import { Devis } from "../objects/devis.mjs";

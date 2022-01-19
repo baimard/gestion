@@ -38,6 +38,8 @@ String.fromHtmlEntities = function(string) {
     })
 };
 
+var choose_folder = t('gestion', 'Choose work folder');
+
 /**
  * When you load app
  */
@@ -102,7 +104,7 @@ $('body').on('page.dt search.dt', function () {
 });
 
 $('body').on('click', '#theFolder', function () {
-    var f = new FilePicker(t('gestion', 'Choose work folder'), false, [], false, 1, true, $("#theFolder").val());
+    var f = new FilePicker(choose_folder, false, [], false, 1, true, $("#theFolder").val());
     f.pick().then(
         function (value) {
             updateDB($('#theFolder').data('table'), $('#theFolder').data('column'), value, $('#theFolder').data('id'));

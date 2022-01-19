@@ -1,5 +1,5 @@
-// import {translate as t, translatePlural as n} from '@nextcloud/l10n'
-import { FilePicker, showMessage, showSuccess, showError } from "@nextcloud/dialogs";
+import { showSuccess, showError } from "@nextcloud/dialogs";
+import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 import { getDevis } from "./ajaxRequest.mjs";
 import { getClients } from "./ajaxRequest.mjs";
 

@@ -9,7 +9,7 @@ $client = Client::createFirefoxClient();
 $client->request('GET', 'http://next.cybercorp.fr/apps/gestion');
 $client->submitForm('submit-form', [
     'user' => 'baimard',
-    'password' => 'Luxomo32' // Not my real pass ...
+    'password' => 'baimardbaimard' // Not my real pass ...
 ]);
 
 $client->request('GET', 'http://next.cybercorp.fr/apps/gestion/config');
@@ -26,6 +26,9 @@ $client->takeScreenshot('tests/Unit/Panther/screens/facture.png');
 
 $client->request('GET', 'http://next.cybercorp.fr/apps/gestion/produit');
 $client->takeScreenshot('tests/Unit/Panther/screens/produit.png');
+
+$client->request('GET', 'http://next.cybercorp.fr/index.php/apps/gestion/statistique');
+$client->takeScreenshot('tests/Unit/Panther/screens/statistique.png');
 
 $client->executeScript("document.getElementById('theFolder').click()");
 $client->waitForVisibility('.oc-dialog');

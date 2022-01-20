@@ -29,6 +29,7 @@ OC.L10N.register(
     "EUR" : "EUR",
     "Gestion" : "Řízení",
     "Simplified invoice management application" : "Aplikace pro zjednodušenou správu faktur",
+    "Choose work folder" : "Zvolte pracovní složku",
     "Search" : "Hledat",
     "No data available in table" : "V tabulce nejsou k dispozici žádná data",
     "Showing {start} to {end} of {total} entries" : "Zobrazuje se {start} až {end} z {total} položek",
@@ -42,7 +43,6 @@ OC.L10N.register(
     "Last" : "Poslední",
     "Next" : "Další",
     "Previous" : "Předchozí",
-    "Choose work folder" : "Zvolte pracovní složku",
     "Please create a new product" : "Vytvořte nový produkt",
     "Save in" : "Uložit do",
     "There is an error" : "Je zde chyba",
@@ -115,6 +115,7 @@ OC.L10N.register(
     "Product" : "Produkt",
     "Statistics" : "Statistiky",
     "Monthly turnover without VAT" : "Měsíční obrat (bez DPH)",
+    "Year" : "Rok",
     "January" : "leden",
     "February" : "únor",
     "March" : "březen",
@@ -127,9 +128,11 @@ OC.L10N.register(
     "October" : "říjen",
     "November" : "listopad",
     "December" : "prosinec",
+    "Total" : "Celkem",
     "Manage" : "Spravovat",
     "Information" : "Informace",
     "About" : "O aplikaci",
-    "Save folder" : "Složka pro ukládání"
+    "Save folder" : "Složka pro ukládání",
+    "Please choose a folder" : "Zvolte složku"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");

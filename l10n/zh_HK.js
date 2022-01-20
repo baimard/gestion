@@ -30,6 +30,7 @@ OC.L10N.register(
     "Gestion" : "Gestion",
     "Simplified invoice management application" : "簡易發票管理應用程式",
     "# Gestion Nextcloud application\n\n        This application allows the management of invoicing in a very simple way for Micro-Entreprise.\n\n        Functionality:\n\n        * Add customer\n        * Generate a quote\n        * Generate an invoice\n        * Generate product lines to include in quotes\n        * You can generate PDFs directly from the app and save them to your Nextcloud\n\n        Presentation video in user documentation\n\n        If you need to adapt this application to your country laws, please open issue.\n\n        [Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)" : "# Gestion Nextcloud 應用程式\n\n此應用程式允許以非常簡單的方式為微型企業管理發票。\n\n功能：\n\n* 添加客戶\n* 生成報價\n* 生成發票\n* 生成商品線以包含在報價中\n* 您可以直接從應用程式生成 PDF 並將它們保存到您的 Nextcloud。\n\n用戶說明書中的演示視頻\n\n如果您需要將此應用程式調整為您所在國家/地區的法律，請聯絡我。\n\n[喜歡我的作品嗎？ 喜歡的話就請我飲茶啦！](https://www.buymeacoffee.com/benjaminaimard)",
+    "Choose work folder" : "選擇工作資料夾",
     "Search" : "搜尋",
     "No data available in table" : "沒有可用的數據",
     "Showing {start} to {end} of {total} entries" : "正在顯示第 {start} 項到第 {end} 項 ，共有 {total} 項",
@@ -43,7 +44,6 @@ OC.L10N.register(
     "Last" : "尾頁",
     "Next" : "下一頁",
     "Previous" : "上一頁",
-    "Choose work folder" : "選擇工作資料夾",
     "Please create a new product" : "請創建一個新商品",
     "Save in" : "保存於",
     "There is an error" : "有一個錯誤",
@@ -116,6 +116,7 @@ OC.L10N.register(
     "Product" : "商品",
     "Statistics" : "統計",
     "Monthly turnover without VAT" : "不含增值稅的月營業額",
+    "Year" : "年",
     "January" : "一月",
     "February" : "二月",
     "March" : "三月",
@@ -128,9 +129,11 @@ OC.L10N.register(
     "October" : "十月",
     "November" : "十一月",
     "December" : "十二月",
+    "Total" : "總計",
     "Manage" : "管理",
     "Information" : "資訊",
     "About" : "關於",
-    "Save folder" : "保存資料夾"
+    "Save folder" : "保存資料夾",
+    "Please choose a folder" : "請選擇一個資料夾"
 },
 "nplurals=1; plural=0;");

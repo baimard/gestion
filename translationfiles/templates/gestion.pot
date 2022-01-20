@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-01-19 03:25+0000\n"
+"POT-Creation-Date: 2022-01-20 03:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -169,63 +169,63 @@ msgid ""
 "benjaminaimard)"
 msgstr ""
 
-#: /app/src/js/main.js:50
-msgid "Search"
-msgstr ""
-
-#: /app/src/js/main.js:51
-msgid "No data available in table"
-msgstr ""
-
-#: /app/src/js/main.js:52
-msgid "Showing {start} to {end} of {total} entries"
-msgstr ""
-
-#: /app/src/js/main.js:53
-msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
-
-#: /app/src/js/main.js:54
-msgid "Loading records …"
-msgstr ""
-
-#: /app/src/js/main.js:55
-msgid "Processing …"
-msgstr ""
-
-#: /app/src/js/main.js:56
-msgid "{max} entries filtered"
-msgstr ""
-
-#: /app/src/js/main.js:57
-msgid "Show {menu} entries"
-msgstr ""
-
-#: /app/src/js/main.js:58
-msgid "No corresponding entry"
-msgstr ""
-
-#: /app/src/js/main.js:60
-msgid "First"
-msgstr ""
-
-#: /app/src/js/main.js:61
-msgid "Last"
-msgstr ""
-
-#: /app/src/js/main.js:62
-msgid "Next"
-msgstr ""
-
-#: /app/src/js/main.js:63
-msgid "Previous"
-msgstr ""
-
-#: /app/src/js/main.js:103
+#: /app/src/js/main.js:41
 msgid "Choose work folder"
 msgstr ""
 
-#: /app/src/js/main.js:201
+#: /app/src/js/main.js:54
+msgid "Search"
+msgstr ""
+
+#: /app/src/js/main.js:55
+msgid "No data available in table"
+msgstr ""
+
+#: /app/src/js/main.js:56
+msgid "Showing {start} to {end} of {total} entries"
+msgstr ""
+
+#: /app/src/js/main.js:57
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+#: /app/src/js/main.js:58
+msgid "Loading records …"
+msgstr ""
+
+#: /app/src/js/main.js:59
+msgid "Processing …"
+msgstr ""
+
+#: /app/src/js/main.js:60
+msgid "{max} entries filtered"
+msgstr ""
+
+#: /app/src/js/main.js:61
+msgid "Show {menu} entries"
+msgstr ""
+
+#: /app/src/js/main.js:62
+msgid "No corresponding entry"
+msgstr ""
+
+#: /app/src/js/main.js:64
+msgid "First"
+msgstr ""
+
+#: /app/src/js/main.js:65
+msgid "Last"
+msgstr ""
+
+#: /app/src/js/main.js:66
+msgid "Next"
+msgstr ""
+
+#: /app/src/js/main.js:67
+msgid "Previous"
+msgstr ""
+
+#: /app/src/js/main.js:205
 msgid "Please create a new product"
 msgstr ""
 
@@ -550,59 +550,59 @@ msgstr ""
 msgid "Monthly turnover without VAT"
 msgstr ""
 
-#: /app/templates/content/statistique.php:16
+#: /app/templates/content/statistique.php:15
 msgid "Year"
 msgstr ""
 
-#: /app/templates/content/statistique.php:17
+#: /app/templates/content/statistique.php:16
 msgid "January"
 msgstr ""
 
-#: /app/templates/content/statistique.php:18
+#: /app/templates/content/statistique.php:17
 msgid "February"
 msgstr ""
 
-#: /app/templates/content/statistique.php:19
+#: /app/templates/content/statistique.php:18
 msgid "March"
 msgstr ""
 
-#: /app/templates/content/statistique.php:20
+#: /app/templates/content/statistique.php:19
 msgid "April"
 msgstr ""
 
-#: /app/templates/content/statistique.php:21
+#: /app/templates/content/statistique.php:20
 msgid "May"
 msgstr ""
 
-#: /app/templates/content/statistique.php:22
+#: /app/templates/content/statistique.php:21
 msgid "June"
 msgstr ""
 
-#: /app/templates/content/statistique.php:23
+#: /app/templates/content/statistique.php:22
 msgid "July"
 msgstr ""
 
-#: /app/templates/content/statistique.php:24
+#: /app/templates/content/statistique.php:23
 msgid "August"
 msgstr ""
 
-#: /app/templates/content/statistique.php:25
+#: /app/templates/content/statistique.php:24
 msgid "September"
 msgstr ""
 
-#: /app/templates/content/statistique.php:26
+#: /app/templates/content/statistique.php:25
 msgid "October"
 msgstr ""
 
-#: /app/templates/content/statistique.php:27
+#: /app/templates/content/statistique.php:26
 msgid "November"
 msgstr ""
 
-#: /app/templates/content/statistique.php:28
+#: /app/templates/content/statistique.php:27
 msgid "December"
 msgstr ""
 
-#: /app/templates/content/statistique.php:29
+#: /app/templates/content/statistique.php:28
 msgid "Total"
 msgstr ""
 

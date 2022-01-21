@@ -116,6 +116,7 @@ OC.L10N.register(
     "Product" : "Produto",
     "Statistics" : "Estatística",
     "Monthly turnover without VAT" : "Volume de negócios mensal sem VAT",
+    "Year" : "Ano",
     "January" : "Janeiro",
     "February" : "Fevereiro",
     "March" : "Março",
@@ -128,9 +129,11 @@ OC.L10N.register(
     "October" : "Outubro",
     "November" : "Novembro",
     "December" : "Dezembro",
+    "Total" : "Total",
     "Manage" : "Gerenciar",
     "Information" : "Informação",
     "About" : "Sobre",
-    "Save folder" : "Salvar pasta "
+    "Save folder" : "Salvar pasta ",
+    "Please choose a folder" : "Por favor escolha uma pasta"
 },
 "nplurals=2; plural=(n > 1);");

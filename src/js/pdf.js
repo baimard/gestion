@@ -6,7 +6,7 @@ import { showMessage } from "@nextcloud/dialogs";
 var baseUrl = generateUrl('/apps/gestion');
 
 var saveNextcloud = function (myData) {
-  console.log(myData)
+  // console.log(myData)
   $.ajax({
     url: baseUrl + '/savePDF',
     type: 'POST',

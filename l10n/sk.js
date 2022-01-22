@@ -116,6 +116,7 @@ OC.L10N.register(
     "Product" : "Produkt",
     "Statistics" : "Štatistiky",
     "Monthly turnover without VAT" : "Mesačný obrat bez DPH",
+    "Year" : "Rok",
     "January" : "Január",
     "February" : "Február",
     "March" : "Marec",
@@ -128,9 +129,11 @@ OC.L10N.register(
     "October" : "Október",
     "November" : "November",
     "December" : "December",
+    "Total" : "Celkom",
     "Manage" : "Spravovať",
     "Information" : "Informácia",
     "About" : "O aplikácii",
-    "Save folder" : "Uložiť priečinok"
+    "Save folder" : "Uložiť priečinok",
+    "Please choose a folder" : "Prosím vyberte priečinok"
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");

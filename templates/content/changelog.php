@@ -1,14 +1,16 @@
 <div syle="display: none;" id="modalConfig" class="modal">
 	<div class="modal-content">
 		<span class="modalClose">&times;</span>
-		<h2><?php p($l->t('Welcome to GESTION')); ?></h2>
+		<h2><?php p($l->t('Welcome to GESTION 2.0')); ?></h2>
 		<p style="margin-bottom:20px;"><b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> &#128073; <a href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a></p>
-		<br />
-		<p style="margin-bottom:20px;"><?php p($l->t('This application is an open source application designed by Benjamin AIMARD. If you like my work you can')); ?> &#129321; <a href="https://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a coffee')); ?></a> &#129321;</p>
-		<p style="margin-bottom:20px;"><?php p($l->t('If you need documentation, follow this link')); ?> &#128073; <a href="https://baimard.github.io/gestion/"><?php p($l->t('Documentation')); ?></a></p>
-		<p style="margin-bottom:20px;"><?php p($l->t('Others questions?')); ?> &#128073; <a href="mailto:contact@cybercorp.fr"><?php p($l->t('Contact')); ?></a></p>
-		<p style="margin-bottom:20px;"><?php p($l->t('Leave me a comment, but only if you like this application :)')); ?> &#128073; <a href="https://apps.nextcloud.com/apps/gestion"><?php p($l->t('Nextcloud apps')); ?></a></p>
-		<p style="margin-bottom:20px;"><?php p($l->t('Want to talk with the community?')); ?> &#128073; <a href="https://github.com/baimard/gestion/discussions"><?php p($l->t('Git discussion')); ?></a></p>
+		<p style="margin-bottom:20px;">&#9888; <u><?php p($l->t('If you update this application, dont forget to clear your cache')); ?></u> &#9888;</p>
+		<p style="margin-bottom:20px;"><?php p($l->t('This application is an open source application designed by Benjamin AIMARD.')); ?></p>
+		<p style="margin-bottom:20px;">
+				<?php p($l->t('If you like my work you can')); ?> &#129321; <a href="https://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a coffee')); ?></a> &#129321;
+		<br/>	<?php p($l->t('If you need documentation, follow this link')); ?> &#128073; <a href="https://baimard.github.io/gestion/"><?php p($l->t('Documentation')); ?></a>
+		<br/>	<?php p($l->t('Others questions?')); ?> &#128073; <a href="mailto:contact@cybercorp.fr"><?php p($l->t('Contact')); ?></a>
+		<br/>	<?php p($l->t('Leave me a comment, but only if you like this application :)')); ?> &#128073; <a href="https://apps.nextcloud.com/apps/gestion"><?php p($l->t('Nextcloud apps')); ?></a>
+		<br/>	<?php p($l->t('Want to talk with the community?')); ?> &#128073; <a href="https://github.com/baimard/gestion/discussions"><?php p($l->t('Git discussion')); ?></a>
 		<hr />
 		<h2><?php p($l->t('Changelog')); ?></h2>
 		<p><a href="https://github.com/baimard/gestion/releases">Release</a></p>
@@ -28,5 +30,37 @@
 			<?php p($l->t('Best regards,')); ?>
 		</textarea>
 		<button id="sendmail"><?php p($l->t('Send')); ?></button>
+	</div>
+</div>
+
+<div id="ConfigurationHelp" class="modal">
+	<div class="modal-content">
+		<span class="modalClose">&times;</span>
+		<h2><?php p($l->t('Help configure')); ?></h2>
+		<hr/>
+		<h2><?php p($l->t('Company name')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('This is the name of the company that will appear in the footer of your quote and invoice.  For example, you can set : "Company : Cybercorp" or just "Cybercorp"')); ?></div>
+		<h2><?php p($l->t('Your company contact surname')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('First name appear in the quote/invoice header as a contact')); ?></div>
+		<h2><?php p($l->t('Your company contact name')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('Last name appear in the quote/invoice header as a contact')); ?></div>
+		<h2><?php p($l->t('Legal company information line one')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('This is a first line in the footer of your Quote/Invoice with all legals informations you need')); ?></div>
+		<h2><?php p($l->t('Legal company information line two')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('This is a second line in the footer of your Quote/Invoice with all legals informations you need')); ?></div>
+		<h2><?php p($l->t('Your company address')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('Company address appear in the quote/invoice header')); ?></div>
+		<h2><?php p($l->t('Your company phone')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('Phone number appear in the quote/invoice header')); ?></div>
+		<h2><?php p($l->t('Your company email')); ?></h2>
+		<div><?php p($l->t('Email appear in the quote/invoice header')); ?></div>
+		<h2><?php p($l->t('Your company VAT')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('Global Default VAT apply to your Quote/Invoice (globally), to change it, please just insert VAT amount without the percent sign')); ?></div>	
+		<h2><?php p($l->t('Automatic generated invoice number')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('If you want to have an automatic generated invoice number, set to enable, if you want to be free, set disable. You can enable and disable when you want.')); ?></div>	
+		<h2><?php p($l->t('Global default Currency')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('Gloabl currency for the application')); ?></div>
+		<h2><?php p($l->t('Legal disclaimer/mentions')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('Legal disclaimer/mentions you need in your footer - before company information')); ?></div>
 	</div>
 </div>

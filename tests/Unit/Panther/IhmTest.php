@@ -34,4 +34,8 @@ $client->executeScript("document.getElementById('theFolder').click()");
 $client->waitForVisibility('.oc-dialog');
 $client->takeScreenshot('tests/Unit/Panther/screens/selectFolder.png');
 
-$client->executeScript("document.getElementsByClassName('oc-dialog-close')[0].click()");
+$client->executeScript("document.getElementsByClassName('oc-dialog-close').item(0).click()");
+$client->executeScript("document.getElementById('about').click()");
+$client->waitForVisibility('#modalConfig');
+$client->takeScreenshot('tests/Unit/Panther/screens/about.png');
+

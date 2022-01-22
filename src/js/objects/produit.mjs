@@ -1,4 +1,7 @@
-export class Product {
+import { showError } from "@nextcloud/dialogs";
+import { baseUrl, LoadDT, showDone } from "../modules/mainFunction.mjs";
+
+export class Produit {
 
   /**
    * 
@@ -22,5 +25,41 @@ export class Product {
       '<div data-modifier="produit" data-id=' + this.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
     ];
     return myrow;
+  }
+
+  /**
+   * 
+   * @param {*} productDT 
+   */
+  static loadProduitDT(productDT) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', baseUrl + '/getProduits', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        LoadDT(productDT, JSON.parse(this.response), Produit);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  /**
+   * 
+   * @param {*} dt 
+   */
+   static newProduct(dt) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('POST', baseUrl + '/produit/insert', true);
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        showDone()
+        Produit.loadProduitDT(dt);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
   }
 }

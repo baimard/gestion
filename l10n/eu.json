@@ -118,6 +118,7 @@
     "Manage" : "Kudeatu",
     "Information" : "Informazioa",
     "About" : "Honi buruz",
-    "Save folder" : "Gorde karpeta"
+    "Save folder" : "Gorde karpeta",
+    "Please choose a folder" : "Mesedez aukeratu karpeta bat"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

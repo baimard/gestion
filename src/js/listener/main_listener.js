@@ -1,12 +1,13 @@
-const { FilePicker } = require("@nextcloud/dialogs");
-const { updateDB, configuration, updateEditable, newClient, newProduit, loadProduitDT, newInvoice, loadFactureDT, loadDevisDT, newDevis, loadClientDT, deleteDB, getProduitsById, listProduit } = require("../modules/ajaxRequest.mjs");
-const { loadDevisList, loadClientList, baseUrl } = require("../modules/mainFunction.mjs");
+const { FilePicker, showError } = require("@nextcloud/dialogs");
+const { updateDB, configuration, updateEditable, deleteDB, getProduitsById, listProduit } = require("../modules/ajaxRequest.mjs");
+const { path, baseUrl } = require("../modules/mainFunction.mjs");
 import DataTable from 'datatables.net';
+import { Client } from '../objects/client.mjs';
+import { Devis } from '../objects/devis.mjs';
+import { Facture } from '../objects/facture.mjs';
+import { Produit } from '../objects/produit.mjs';
 
-$('body').on('page.dt search.dt', function () {
-    if ($('#devis').length) { loadClientList(); }
-    if ($('#facture').length) { loadDevisList(); }
-});
+var choose_folder = t('gestion', 'Choose work folder');
 
 $('body').on('click', '#theFolder', function () {
     var f = new FilePicker(choose_folder, false, [], false, 1, true, $("#theFolder").val());
@@ -20,8 +21,7 @@ $('body').on('click', '#theFolder', function () {
 
 $('body').on('change', '.editableSelect', function () { updateDB($(this).data('table'), $(this).data('column'), $(this).val(), $(this).data('id')); });
 $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
-$('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; })
-
+$('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 $('body').on('click', '.editable', function () { $(this).attr('contenteditable', 'true'); });
 $('body').on('blur', '.editable', function () { updateEditable($(this)); });
 $('body').on('keypress', '.editable', function (event) { if (event.key === "Enter") { updateEditable($(this)); } });
@@ -54,11 +54,12 @@ $('body').on('click', '.deleteItem', function () {
     var table = $(this).data('table');
     var modifier = $(this).data('modifier');
     deleteDB(table, id);
+    var dt = new DataTable('.tabledt');
     if (modifier === "getProduitsById") { getProduitsById(); }
-    if (modifier === "client") { loadClientDT(new DataTable('.tabledt')); }
-    if (modifier === "devis") { loadDevisDT($('#devis').DataTable()); }
-    if (modifier === "facture") { loadFactureDT($('#facture').DataTable()); }
-    if (modifier === "produit") { loadProduitDT($('#produit').DataTable()); }
+    if (modifier === "client") { Client.loadClientDT(dt); }
+    if (modifier === "devis") { Devis.loadDevisDT(dt); }
+    if (modifier === "facture") { Facture.loadFactureDT(dt); }
+    if (modifier === "produit") { Produit.loadProduitDT(dt); }
 });
 
 $('body').on('change', '.listClient,.listDevis', function () {
@@ -67,7 +68,7 @@ $('body').on('change', '.listClient,.listDevis', function () {
     var val = this.value;
     var column = $(myDiv).data('column');
     var table = $(myDiv).data('table');
-    this.setAttribute('data-current', this.value) // Bug #
+    this.setAttribute('data-current', this.value)
     updateDB(table, column, val, id);
 })
 
@@ -119,23 +120,19 @@ $('body').on('click', '#devisAdd', function () {
 });
 
 $('body').on('click', '#newClient', function () {
-    newClient();
-    loadClientDT(new DataTable('.tabledt'));
+    Client.newClient(new DataTable('.tabledt'));
 });
 
 $('body').on('click', '#newDevis', function () {
-    newDevis();
-    loadDevisDT($('#devis').DataTable());
+    Devis.newDevis(new DataTable('.tabledt'));
 });
 
 $('body').on('click', '#newInvoice', function () {
-    newInvoice();
-    loadFactureDT($('#facture').DataTable());
+    Facture.newFacture(new DataTable('.tabledt'));
 });
 
 $('body').on('click', '#newProduit', function () {
-    newProduit();
-    loadProduitDT($('#produit').DataTable());
+    Produit.newProduct(new DataTable('.tabledt'));
 });
 
 $('body').on('click', '#about', function () {

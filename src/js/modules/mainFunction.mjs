@@ -1,34 +1,70 @@
-import { showSuccess, showError } from "@nextcloud/dialogs";
+import { showSuccess } from "@nextcloud/dialogs";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
-import { getDevis } from "./ajaxRequest.mjs";
-import { getClients } from "./ajaxRequest.mjs";
+import { configuration, getStats, isconfig } from "./ajaxRequest.mjs";
 
 import { generateUrl, getRootUrl } from "@nextcloud/router";
+import { Devis } from "../objects/devis.mjs";
+import { Client } from "../objects/client.mjs";
 export var baseUrl = getRootUrl() + generateUrl('/apps/gestion');
 export var cur = null;
 
+/**
+ * 
+ */
+ export const optionDatatable = {
+    autoWidth: false,
+    stateSave: true,
+    language: {
+        "search": t('gestion', 'Search'),
+        "emptyTable": t('gestion', 'No data available in table'),
+        "info": t('gestion', 'Showing {start} to {end} of {total} entries', { start: '_START_', end: '_END_', total: '_TOTAL_' }),
+        "infoEmpty": t('gestion', 'Showing 0 to 0 of 0 entries'),
+        "loadingRecords": t('gestion', 'Loading records …'),
+        "processing": t('gestion', 'Processing …'),
+        "infoFiltered": t('gestion', '{max} entries filtered', { max: '_MAX_' }),
+        "lengthMenu": t('gestion', 'Show {menu} entries', { menu: '_MENU_' }),
+        "zeroRecords": t('gestion', 'No corresponding entry'),
+        "paginate": {
+            "first": t('gestion', 'First'),
+            "last": t('gestion', 'Last'),
+            "next": t('gestion', 'Next'),
+            "previous": t('gestion', 'Previous'),
+        }
+    }
+}
+
+export function globalConfiguration(){
+    getStats();
+    isconfig();
+    configuration(getCurrency);
+    configuration(path);
+}
+
+/**
+ * 
+ */
 export function configureDT() {
     $('.editable').attr('title', t('gestion', 'Editable (Click to change)'));
 }
 
+/**
+ * 
+ */
 export function configureShow() {
     $('.sendmail').attr('title', t('gestion', 'Your global Nextcloud mail server need to be configured'));
-}
-
-/**
- * Support de langue pour datatable
- */
-export function langage() {
-    return;
 }
 
 /**
  * Success message
  */
 export function showDone() {
-    showSuccess(t('gestion', 'Added'));
+    showSuccess(t('gestion', 'Added!'));
 }
 
+/**
+ * 
+ * @param {*} el 
+ */
 export function checkSelect(el) {
     $(el).each(function (arrayID, elem) {
         $(elem).find('option').each(function () {
@@ -39,6 +75,12 @@ export function checkSelect(el) {
     })
 }
 
+/**
+ * 
+ * @param {*} DT 
+ * @param {*} response 
+ * @param {*} cls 
+ */
 export function LoadDT(DT, response, cls) {
     DT.clear();
     $.each(JSON.parse(response), function (arrayID, myresp) {
@@ -49,14 +91,18 @@ export function LoadDT(DT, response, cls) {
     configureDT();
 }
 
+/**
+ * 
+ */
 export function loadDevisList() {
-    getDevis(function (response) {
+    Devis.getDevis(function (response) {
         $('.listDevis').empty();
         $('.listDevis').append("<option value='0'>" + t('gestion', 'Choose quote') + "</option>");
         $.each(JSON.parse(response), function (arrayID, myresp) {
             $('.listDevis').append("<option value='" + myresp.id + "'>" + myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom + "</option>");
         });
         checkSelect('.listDevis');
+        configuration(checkAutoIncrement);
     });
 }
 
@@ -64,34 +110,13 @@ export function loadDevisList() {
  * 
  */
 export function loadClientList() {
-    getClients(function (response) {
+    Client.getClients(function (response) {
         $('.listClient').empty();
         $('.listClient').append("<option value='0'>" + t('gestion', 'Choose customer') + "</option>");
         $.each(JSON.parse(response), function (arrayID, myresp) {
             $('.listClient').append("<option value='" + myresp.id + "'>" + myresp.nom + " " + myresp.prenom + "</option>");
         });
         checkSelect('.listClient');
-    });
-}
-
-/**
- * Depreciated
- * @param lc 
- * @param id 
- * @param table 
- * @param column 
- */
-function listClient(lc, id, table, column) {
-    $.ajax({
-        url: baseUrl + '/getClients',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            lc.append('<option data-table="' + table + '" data-column="' + column + '" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.prenom + ' ' + myresp.nom + ' ' + '</option>');
-        });
-    }).fail(function (response, code) {
-        showError(response);
     });
 }
 
@@ -155,31 +180,6 @@ export function modifyCell(r, positionColumn = -1, data){
 
 /**
  * 
- */
-export const optionDatatable = {
-    autoWidth: false,
-    stateSave: true,
-    language: {
-        "search": t('gestion', 'Search'),
-        "emptyTable": t('gestion', 'No data available in table'),
-        "info": t('gestion', 'Showing {start} to {end} of {total} entries', { start: '_START_', end: '_END_', total: '_TOTAL_' }),
-        "infoEmpty": t('gestion', 'Showing 0 to 0 of 0 entries'),
-        "loadingRecords": t('gestion', 'Loading records …'),
-        "processing": t('gestion', 'Processing …'),
-        "infoFiltered": t('gestion', '{max} entries filtered', { max: '_MAX_' }),
-        "lengthMenu": t('gestion', 'Show {menu} entries', { menu: '_MENU_' }),
-        "zeroRecords": t('gestion', 'No corresponding entry'),
-        "paginate": {
-            "first": t('gestion', 'First'),
-            "last": t('gestion', 'Last'),
-            "next": t('gestion', 'Next'),
-            "previous": t('gestion', 'Previous'),
-        }
-    }
-}
-
-/**
- * 
  * @param {*} total 
  */
 export function getGlobal(total) {
@@ -193,4 +193,16 @@ export function getGlobal(total) {
         $('#totaldevis tbody').append('<tr><td>' + cur.format(total) + '</td><td id="tva">' + tva + ' %</td><td id="totaltva">' + cur.format(Math.round((total * tva)) / 100) + '</td><td>' + cur.format(Math.round((total * (tva + 100))) / 100) + '</td></tr>');
         $('#mentions_default').html(myresp.mentions_default);
     })
+}
+
+/**
+ * 
+ * @param {*} response 
+ */
+export function checkAutoIncrement(response){
+    var myresp = JSON.parse(response)[0];
+    if(myresp.auto_invoice_number==1){
+        $('.deleteItem').remove();
+        $(".factureNum").removeClass("editable");
+    }
 }

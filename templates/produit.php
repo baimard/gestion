@@ -1,5 +1,6 @@
-<?php require_once('scripts.php'); ?>
-
+<?php
+	script('gestion', array('produit.app', '820.app', '856.app'));
+?>
 <div id="app">
 	<div id="app-navigation">
 		<?php print_unescaped($this->inc('navigation/index')); ?>

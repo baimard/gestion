@@ -116,6 +116,7 @@ OC.L10N.register(
     "Product" : "Ürün",
     "Statistics" : "İstatistikler",
     "Monthly turnover without VAT" : "KDV hariç aylık ciro",
+    "Year" : "Yıl",
     "January" : "Ocak",
     "February" : "Şubat",
     "March" : "Mart",
@@ -128,9 +129,11 @@ OC.L10N.register(
     "October" : "Ekim",
     "November" : "Kasım",
     "December" : "Aralık",
+    "Total" : "Toplam",
     "Manage" : "Yönetim",
     "Information" : "Bilgiler",
     "About" : "Hakkında",
-    "Save folder" : "Kayıt klasörü"
+    "Save folder" : "Kayıt klasörü",
+    "Please choose a folder" : "Lütfen bir klasör seçin"
 },
 "nplurals=2; plural=(n > 1);");

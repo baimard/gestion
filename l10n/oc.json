@@ -18,6 +18,19 @@
     "Configuration" : "Configuracion",
     "Version" : "Version",
     "Actions" : "Accions",
+    "Year" : "Annada",
+    "January" : "Genièr",
+    "February" : "Febrièr",
+    "March" : "Març",
+    "April" : "Abril",
+    "May" : "Mai",
+    "June" : "Junh",
+    "July" : "Julhet",
+    "August" : "Agost",
+    "September" : "Setembre",
+    "October" : "Octòbre",
+    "November" : "Novembre",
+    "December" : "Decembre",
     "About" : "A prepaus"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

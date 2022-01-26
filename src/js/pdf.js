@@ -1,26 +1,9 @@
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
-import { generateUrl } from "@nextcloud/router";
 import { showMessage } from "@nextcloud/dialogs";
+import { baseUrl } from "./modules/mainFunction.mjs";
 
-var baseUrl = generateUrl('/apps/gestion');
-
-var saveNextcloud = function (myData) {
-  console.log(myData)
-  $.ajax({
-    url: baseUrl + '/savePDF',
-    type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify(myData)
-  }).done(function (response) {
-    showMessage(t('gestion', 'Save in') + " " + $("#theFolder").val() + "/" + $("#pdf").data("folder"));
-  }).fail(function (response, code) {
-    showMessage(t('gestion', 'There is an error'));
-    error(response);
-  });
-}
-
-var sendMail = function (myData) {
+export function sendMail(myData) {
   $.ajax({
     url: baseUrl + '/sendPDF',
     type: 'POST',
@@ -33,27 +16,14 @@ var sendMail = function (myData) {
   });
 }
 
-$('body').on('click', '#pdf', function () {
+export function capture(afterCapturefunction) {
   showMessage(t('gestion', 'Creation in progress …'));
-  capture(saveNextcloud);
-});
 
-$('body').on('click', '#mail', function () {
-  var modal = document.getElementById("modalMail");
-  modal.style.display = "block";
-});
-
-$('body').on('click', '#sendmail', function () {
-  showMessage(t('gestion', 'Preparing the email …'));
-  capture(sendMail);
-  var modal = $(this)[0].parentElement.parentElement;
-  modal.style.display = "none";
-});
-
-function capture(afterCapturefunction) {
-  $('.bootstrap-iso').css('width', '900px')
+  $('.bootstrap-iso').css('width', '1000px')
   $('.bootstrap-iso').css('padding-right', '20px')
   $('.bootstrap-iso').css('padding-left', '20px')
+  
+  
   html2canvas($('.bootstrap-iso')[0], {
     scrollY: -window.scrollY,
     dpi: 600,
@@ -61,6 +31,21 @@ function capture(afterCapturefunction) {
     var data = genPDF(canvas.toDataURL("image/png"), canvas);
     afterCapturefunction(data);
   });
+
+    // html2canvas($('.bootstrap-iso')[0], {
+    //   onrendered: function(canvas){
+    //     canvas.toBlob(function(blob){
+    //       var urlCreator = window.URL || window.webkitURL;
+    //       var imageUrl = urlCreator.createObjectURL(blob);
+    //       var img = new Image();
+    //       img.src = imageUrl;
+    //       var data = genPDF(img, canvas);
+    //       afterCapturefunction(data);
+    //     })
+    //   }
+    // })
+
+
   $('.bootstrap-iso').css('width', '')
   $('.bootstrap-iso').css('padding-right', '')
   $('.bootstrap-iso').css('padding-left', '')

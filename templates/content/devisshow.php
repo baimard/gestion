@@ -23,7 +23,7 @@
                         <span id="adresse"></span><br />
                         <span id="mail"></span><br />
                         <span id="telephone"></span><br />
-                        <?php p($l->t('Limited company'));?> : <span id="siret"></span><br />
+                        <span id="legal_one"></span><br />
                     </p>
             </div>
         </div>
@@ -57,7 +57,7 @@
             </table>
             <button id="devisAdd"   type="button"   class="mb-2 btn btn-outline-success"            data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
             <button id="pdf"        type="button"   class="mb-2 btn btn-outline-success"            data-html2canvas-ignore data-name=""><?php p($l->t('Save in Nextcloud'));?></button>
-            <button id="mail"       type="button"   class="mb-2 btn btn-outline-success sendmail"   data-html2canvas-ignore data-name=""><?php p($l->t('Send by email'));?></button>
+            <button id="mailGestion"       type="button"   class="mb-2 btn btn-outline-success sendmail"   data-html2canvas-ignore data-name=""><?php p($l->t('Send by email'));?></button>
         </div>
         <div class="mt-0 table-responsive">
             <table id="totaldevis" class="table table-striped table-xl">
@@ -78,6 +78,6 @@
         </div>
         <hr />
         <div class="col m-0 pb-0 alert alert-info text-center">
-            <p><?php p($l->t('Company'));?> <?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /> <?php p($l->t('Unique identification'));?> : <?php echo $res->siren; ?> - <?php p($l->t('Limited company'));?> : <?php echo $res->siret; ?></p>
+            <p><?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /><?php echo $res->legal_one; ?><br/><?php echo $res->legal_two; ?></p>
         </div>
     </div>

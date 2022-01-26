@@ -1,4 +1,5 @@
 import { generateUrl, getRootUrl } from "@nextcloud/router";
+import { baseUrl, loadClientList, LoadDT, showDone } from "../modules/mainFunction.mjs";
 
 export class Devis {
 
@@ -29,5 +30,56 @@ export class Devis {
       '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl + "/devis/" + this.id + '/show"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="devis" data-id=' + this.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
     ];
     return myrow;
+  }
+
+  /**
+   * 
+   * @param {*} dt 
+   */
+  static newDevis(dt) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('POST', baseUrl + '/devis/insert', true);
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        showDone()
+        Devis.loadDevisDT(dt);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  /**
+   * Load devis ajax
+   * @param devisDT devis datatable
+   */
+  static loadDevisDT(devisDT) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', baseUrl + '/getDevis', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        LoadDT(devisDT, JSON.parse(this.response), Devis);
+        loadClientList();
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  static getDevis(callback){
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', baseUrl + '/getDevis', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        callback(JSON.parse(this.response));
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
   }
 }

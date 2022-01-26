@@ -1,64 +1,8 @@
 import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
 import { generateUrl } from "@nextcloud/router";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
-import { insertCell, insertRow, modifyCell, showDone } from "./mainFunction.mjs";
-import { Product } from "../objects/product.mjs";
-import { Client } from "../objects/client.mjs";
-import { Devis } from "../objects/devis.mjs";
-import { loadClientList } from "./mainFunction.mjs";
-import { LoadDT } from "./mainFunction.mjs";
-import { Facture } from "../objects/facture.mjs";
-import { loadDevisList } from "./mainFunction.mjs";
+import { cur, getGlobal, insertCell, insertRow, modifyCell } from "./mainFunction.mjs";
 var baseUrl = generateUrl('/apps/gestion');
-
-/**
- * Get customers
- * @param baseUrl 
- * @param callback 
- */
-export function getClients(callback) {
-    $.ajax({
-        url: baseUrl + '/getClients',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        callback(response);
-    }).fail(function (response, code) {
-        showError(response);
-    });
-}
-
-/**
- * Get quote
- * @param callback 
- */
-export function getDevis(callback) {
-    $.ajax({
-        url: baseUrl + '/getDevis',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        callback(response);
-    }).fail(function (response, code) {
-        showError(response);
-    });
-}
-
-/**
- * New invoice
- */
-export function newInvoice() {
-    $.ajax({
-        url: baseUrl + '/facture/insert',
-        type: 'POST',
-        async: false,
-        contentType: 'application/json'
-    }).fail(function (response, code) {
-        showError(response);
-    }).done(
-        showDone()
-    );
-}
 
 /**
  * Update data
@@ -113,73 +57,8 @@ export function deleteDB(table, id) {
 }
 
 /**
- * Load product ajax
- * @param productDT product datatable
+ * 
  */
-export function loadProduitDT(productDT) {
-    $.ajax({
-        url: baseUrl + '/getProduits',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        LoadDT(productDT, response, Product);
-    }).fail(function (response, code) {
-        showError(response);
-    });
-}
-
-/**
- * Load client ajax
- * @param clientDT client datatable
- */
-export function loadClientDT(clientDT) {
-    $.ajax({
-        url: baseUrl + '/getClients',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        LoadDT(clientDT, response, Client);
-    }).fail(function (response, code) {
-        showError(response);
-    });
-}
-
-/**
- * Load devis ajax
- * @param devisDT devis datatable
- */
-export function loadDevisDT(devisDT) {
-    $.ajax({
-        url: baseUrl + '/getDevis',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        LoadDT(devisDT, response, Devis);
-        loadClientList();
-    }).fail(function (response, code) {
-        showError(response);
-    });
-}
-
-/**
- * Load facture ajax
- * @param factureDT 
- */
-export function loadFactureDT(factureDT) {
-    $.ajax({
-        url: baseUrl + '/getFactures',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        LoadDT(factureDT, response, Facture);
-        loadDevisList();
-        configuration(checkAutoIncrement);
-    }).fail(function (response, code) {
-        showError(response);
-    });
-}
-
-
 export function getStats() {
     $.ajax({
         url: baseUrl + '/getStats',
@@ -196,6 +75,11 @@ export function getStats() {
     });
 }
 
+
+/**
+ * 
+ * @param {*} f1 
+ */
 export function configuration(f1) {
     $.ajax({
         url: baseUrl + '/getConfiguration',
@@ -209,14 +93,26 @@ export function configuration(f1) {
     });
 }
 
-var checkAutoIncrement = function (response){
-    var myresp = JSON.parse(response)[0];
-    if(myresp.auto_invoice_number==1){
-        $('.deleteItem').remove();
-        $(".factureNum").removeClass("editable");
-    }
+/**
+ * 
+ */
+export function isconfig() {
+    $.ajax({
+        url: baseUrl + '/isconfig',
+        type: 'GET',
+        contentType: 'application/json'
+    }).done(function (response) {
+        if (!response) {
+            var modal = document.getElementById("modalConfig");
+            modal.style.display = "block";
+        }
+    })
 }
 
+/**
+ * 
+ * @param {*} cur 
+ */
 export function getAnnualTurnoverPerMonthNoVat(cur) {
     $.ajax({
         url: baseUrl + '/getAnnualTurnoverPerMonthNoVat',
@@ -250,3 +146,96 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
         showError(response);
     });
 }
+
+/**
+ * 
+ * @param {*} myCase 
+ */
+export function updateEditable(myCase) {
+    updateDB(myCase.data('table'), myCase.data('column'), myCase.text(), myCase.data('id'));
+    if (myCase.data('modifier') === "getProduitsById") {
+        getProduitsById();
+    }
+    myCase.attr('contenteditable', 'false');
+    myCase.removeAttr('contenteditable');
+}
+
+/**
+ * 
+ * @param {*} lp 
+ * @param {*} id 
+ * @param {*} produitid 
+ */
+export function listProduit(lp, id, produitid) {
+    $.ajax({
+        url: baseUrl + '/getProduits',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">Annuler</option>');
+        $.each(JSON.parse(response), function (arrayID, myresp) {
+            var selected = "";
+            if (produitid == myresp.id) {
+                selected = "selected";
+            }
+            lp.append('<option ' + selected + ' data-table="produit_devis" data-column="produit_id" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.reference + ' ' + myresp.description + ' ' + cur.format(myresp.prix_unitaire) + '</option>');
+        });
+    }).fail(function (response, code) {
+        showError(response);
+    });
+}
+
+/**
+ * Get a product in database using id
+ */
+ export function getProduitsById() {
+    var devis_id = $('#devisid').data('id');
+    var myData = { numdevis: devis_id, };
+
+    $.ajax({
+        url: baseUrl + '/getProduitsById',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(myData)
+    }).done(function (response, code) {
+        $('#produits tbody').empty();
+        var total = 0;
+        var deleteDisable = "";
+        if ($('#produits').data("type") === "facture") {
+            deleteDisable = "d-none";
+        }
+
+        $.each(JSON.parse(response), function (arrayID, myresp) {
+            $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="' + deleteDisable + ' deleteItem icon-delete"></div><div style="display:inline;" data-val="' + myresp.pid + '" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
+                '<td>' + myresp.description + '</td>' +
+                '<td><div class="editable getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id=' + myresp.pdid + '>' + myresp.quantite + '</div> </td>' +
+                '<td>' + cur.format(myresp.prix_unitaire) + '</td>' +
+                '<td>' + cur.format((myresp.quantite * myresp.prix_unitaire)) + '</td></tr>');
+            total += (myresp.quantite * myresp.prix_unitaire);
+        });
+
+        $("#totaldevis tbody").empty();
+        getGlobal(total);
+    }).fail(function (response, code) {
+        showError(response);
+    });
+}
+
+/**
+ * Save pdf in nextcloud
+ * @param {*} myData 
+ */
+export function saveNextcloud (myData) {
+    $.ajax({
+      url: baseUrl + '/savePDF',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(myData)
+    }).done(function (response) {
+      showMessage(t('gestion', 'Save in') + " " + $("#theFolder").val() + "/" + $("#pdf").data("folder"));
+    }).fail(function (response, code) {
+      showMessage(t('gestion', 'There is an error'));
+      error(response);
+    });
+  }

@@ -1,4 +1,7 @@
+import { showError } from "@nextcloud/dialogs";
 import { generateUrl, getRootUrl } from "@nextcloud/router";
+import { configuration } from "../modules/ajaxRequest.mjs";
+import { baseUrl, checkAutoIncrement, loadDevisList, LoadDT, showDone } from "../modules/mainFunction.mjs";
 
 export class Facture {
 
@@ -35,4 +38,40 @@ export class Facture {
     ];
     return myrow;
   }
+
+  static loadFactureDT(factureDT) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', baseUrl + '/getFactures', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        LoadDT(factureDT, JSON.parse(this.response), Facture);
+        loadDevisList();
+        configuration(checkAutoIncrement);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+
+  /**
+   * 
+   * @param {*} dt 
+   */
+   static newFacture(dt) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('POST', baseUrl + '/facture/insert', true);
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        showDone()
+        Facture.loadFactureDT(dt);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
 }

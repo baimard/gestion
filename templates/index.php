@@ -1,4 +1,6 @@
-<?php require_once('scripts.php'); ?>
+<?php
+	script('gestion', array('client.app', '820.app', '856.app'));
+?>
 
 <div id="app">
 	<div id="app-navigation">

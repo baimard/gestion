@@ -120,6 +120,7 @@ OC.L10N.register(
     "Manage" : "Kudeatu",
     "Information" : "Informazioa",
     "About" : "Honi buruz",
-    "Save folder" : "Gorde karpeta"
+    "Save folder" : "Gorde karpeta",
+    "Please choose a folder" : "Mesedez aukeratu karpeta bat"
 },
 "nplurals=2; plural=(n != 1);");

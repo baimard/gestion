@@ -199,17 +199,6 @@ class PageControllerTest extends TestCase {
 		$this->assertTrue($result);
 	}
 
-	/** 
-	 * need to be right after testInsertClient()
-	 * 
-	 */
-	public function testDeleteProduit() {
-		$id = $this->db->lastinsertid();
-		$table = "produit";
-		$result = $this->controller->delete($table,$id);
-		$this->assertTrue($result);
-	}
-
 	public function testInsertProduitDevis(){
 		$r = json_decode($this->controller->getDevis())[0]->{"id"};
 		$result = $this->controller->insertProduitDevis($r);
@@ -219,6 +208,17 @@ class PageControllerTest extends TestCase {
 	public function testDeleteProduitDevis(){
 		$id = $this->db->lastinsertid();
 		$table = "produit_devis";
+		$result = $this->controller->delete($table,$id);
+		$this->assertTrue($result);
+	}
+
+	/** 
+	 * need to be right after testInsertClient()
+	 * 
+	 */
+	public function testDeleteProduit() {
+		$id = $this->db->lastinsertid();
+		$table = "produit";
 		$result = $this->controller->delete($table,$id);
 		$this->assertTrue($result);
 	}

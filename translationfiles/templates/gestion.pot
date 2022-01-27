@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-01-26 03:25+0000\n"
+"POT-Creation-Date: 2022-01-27 03:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,28 +25,19 @@ msgstr ""
 msgid "First name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:89 /app/templates/content/configuration.php:28
-#: /app/templates/content/devisshow.php:26
-#: /app/templates/content/devisshow.php:81
-#: /app/templates/content/factureshow.php:25
-#: /app/templates/content/factureshow.php:82
-#: /app/templates/content/index.php:22
+#: /app/lib/Db/Bdd.php:89
 msgid "Limited company"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:90 /app/templates/content/devisshow.php:81
-#: /app/templates/content/factureshow.php:82
-#: /app/templates/content/index.php:19
+#: /app/lib/Db/Bdd.php:90 /app/templates/content/index.php:19
 msgid "Company"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:91 /app/templates/content/configuration.php:36
-#: /app/templates/content/index.php:23
+#: /app/lib/Db/Bdd.php:91 /app/templates/content/index.php:23
 msgid "Phone number"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:92 /app/templates/content/configuration.php:40
-#: /app/templates/content/index.php:24
+#: /app/lib/Db/Bdd.php:92 /app/templates/content/index.php:24
 msgid "Email"
 msgstr ""
 
@@ -99,31 +90,31 @@ msgstr ""
 msgid "Your company name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:174
+#: /app/lib/Db/Bdd.php:174 /app/templates/content/changelog.php:43
 msgid "Your company contact surname"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:175
+#: /app/lib/Db/Bdd.php:175 /app/templates/content/changelog.php:45
 msgid "Your company contact name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:176
-msgid "Your Limited company"
+#: /app/lib/Db/Bdd.php:176 /app/templates/content/changelog.php:47
+msgid "Legal company information line one"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:177
-msgid "Your company Unique identification"
+#: /app/lib/Db/Bdd.php:177 /app/templates/content/changelog.php:49
+msgid "Legal company information line two"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:178
+#: /app/lib/Db/Bdd.php:178 /app/templates/content/changelog.php:55
 msgid "Your company email"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:179
+#: /app/lib/Db/Bdd.php:179 /app/templates/content/changelog.php:53
 msgid "Your company phone"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:180
+#: /app/lib/Db/Bdd.php:180 /app/templates/content/changelog.php:51
 msgid "Your company address"
 msgstr ""
 
@@ -169,92 +160,28 @@ msgid ""
 "benjaminaimard)"
 msgstr ""
 
-#: /app/src/js/main.js:41
+#: /app/src/js/listener/main_listener.js:10
 msgid "Choose work folder"
 msgstr ""
 
-#: /app/src/js/main.js:54
-msgid "Search"
-msgstr ""
-
-#: /app/src/js/main.js:55
-msgid "No data available in table"
-msgstr ""
-
-#: /app/src/js/main.js:56
-msgid "Showing {start} to {end} of {total} entries"
-msgstr ""
-
-#: /app/src/js/main.js:57
-msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
-
-#: /app/src/js/main.js:58
-msgid "Loading records …"
-msgstr ""
-
-#: /app/src/js/main.js:59
-msgid "Processing …"
-msgstr ""
-
-#: /app/src/js/main.js:60
-msgid "{max} entries filtered"
-msgstr ""
-
-#: /app/src/js/main.js:61
-msgid "Show {menu} entries"
-msgstr ""
-
-#: /app/src/js/main.js:62
-msgid "No corresponding entry"
-msgstr ""
-
-#: /app/src/js/main.js:64
-msgid "First"
-msgstr ""
-
-#: /app/src/js/main.js:65
-msgid "Last"
-msgstr ""
-
-#: /app/src/js/main.js:66
-msgid "Next"
-msgstr ""
-
-#: /app/src/js/main.js:67
-msgid "Previous"
-msgstr ""
-
-#: /app/src/js/main.js:205
+#: /app/src/js/listener/main_listener.js:118
 msgid "Please create a new product"
 msgstr ""
 
-#: /app/src/js/pdf.js:16
-msgid "Save in"
-msgstr ""
-
-#: /app/src/js/pdf.js:18
-msgid "There is an error"
-msgstr ""
-
-#: /app/src/js/pdf.js:30
+#: /app/src/js/pdf.js:13
 msgid "Email sent"
 msgstr ""
 
-#: /app/src/js/pdf.js:32
+#: /app/src/js/pdf.js:15
 msgid "Is your global mail server configured in Nextcloud?"
 msgstr ""
 
-#: /app/src/js/pdf.js:37
+#: /app/src/js/pdf.js:20
 msgid "Creation in progress …"
 msgstr ""
 
-#: /app/src/js/pdf.js:47
-msgid "Preparing the email …"
-msgstr ""
-
 #: /app/templates/content/changelog.php:4
-msgid "Welcome to GESTION"
+msgid "Welcome to GESTION 2.0"
 msgstr ""
 
 #: /app/templates/content/changelog.php:5
@@ -267,74 +194,178 @@ msgstr ""
 msgid "My company"
 msgstr ""
 
-#: /app/templates/content/changelog.php:7
-msgid ""
-"This application is an open source application designed by Benjamin AIMARD. "
-"If you like my work you can"
+#: /app/templates/content/changelog.php:6
+msgid "If you update this application, dont forget to clear your cache"
 msgstr ""
 
 #: /app/templates/content/changelog.php:7
+msgid ""
+"This application is an open source application designed by Benjamin AIMARD."
+msgstr ""
+
+#: /app/templates/content/changelog.php:9
+msgid "If you like my work you can"
+msgstr ""
+
+#: /app/templates/content/changelog.php:9
 msgid "buy me a coffee"
 msgstr ""
 
-#: /app/templates/content/changelog.php:8
+#: /app/templates/content/changelog.php:10
 msgid "If you need documentation, follow this link"
 msgstr ""
 
-#: /app/templates/content/changelog.php:8
+#: /app/templates/content/changelog.php:10
 msgid "Documentation"
 msgstr ""
 
-#: /app/templates/content/changelog.php:9
+#: /app/templates/content/changelog.php:11
 msgid "Others questions?"
 msgstr ""
 
-#: /app/templates/content/changelog.php:9
+#: /app/templates/content/changelog.php:11
 msgid "Contact"
 msgstr ""
 
-#: /app/templates/content/changelog.php:10
+#: /app/templates/content/changelog.php:12
 msgid "Leave me a comment, but only if you like this application :)"
 msgstr ""
 
-#: /app/templates/content/changelog.php:10
+#: /app/templates/content/changelog.php:12
 msgid "Nextcloud apps"
 msgstr ""
 
-#: /app/templates/content/changelog.php:11
+#: /app/templates/content/changelog.php:13
 msgid "Want to talk with the community?"
 msgstr ""
 
-#: /app/templates/content/changelog.php:11
+#: /app/templates/content/changelog.php:13
 msgid "Git discussion"
 msgstr ""
 
-#: /app/templates/content/changelog.php:13
+#: /app/templates/content/changelog.php:15
 msgid "Changelog"
 msgstr ""
 
-#: /app/templates/content/changelog.php:21
+#: /app/templates/content/changelog.php:23
 msgid "Send an email"
 msgstr ""
 
-#: /app/templates/content/changelog.php:22
+#: /app/templates/content/changelog.php:24
 msgid "Your invoice/quote"
 msgstr ""
 
-#: /app/templates/content/changelog.php:24
+#: /app/templates/content/changelog.php:26
 msgid "Dear,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:26
+#: /app/templates/content/changelog.php:28
 msgid "Attached to this email you will find a new document."
 msgstr ""
 
-#: /app/templates/content/changelog.php:28
+#: /app/templates/content/changelog.php:30
 msgid "Best regards,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:30
+#: /app/templates/content/changelog.php:32
 msgid "Send"
+msgstr ""
+
+#: /app/templates/content/changelog.php:39
+msgid "Help configure"
+msgstr ""
+
+#: /app/templates/content/changelog.php:41
+msgid "Company name"
+msgstr ""
+
+#: /app/templates/content/changelog.php:42
+#: /app/templates/content/configuration.php:12
+msgid ""
+"This is the name of the company that will appear in the footer of your quote "
+"and invoice.  For example, you can set : \"Company : Cybercorp\" or just "
+"\"Cybercorp\""
+msgstr ""
+
+#: /app/templates/content/changelog.php:44
+#: /app/templates/content/configuration.php:16
+msgid "First name appear in the quote/invoice header as a contact"
+msgstr ""
+
+#: /app/templates/content/changelog.php:46
+#: /app/templates/content/configuration.php:20
+msgid "Last name appear in the quote/invoice header as a contact"
+msgstr ""
+
+#: /app/templates/content/changelog.php:48
+#: /app/templates/content/configuration.php:28
+msgid ""
+"This is a first line in the footer of your Quote/Invoice with all legals "
+"informations you need"
+msgstr ""
+
+#: /app/templates/content/changelog.php:50
+#: /app/templates/content/configuration.php:32
+msgid ""
+"This is a second line in the footer of your Quote/Invoice with all legals "
+"informations you need"
+msgstr ""
+
+#: /app/templates/content/changelog.php:52
+#: /app/templates/content/configuration.php:24
+msgid "Company address appear in the quote/invoice header"
+msgstr ""
+
+#: /app/templates/content/changelog.php:54
+#: /app/templates/content/configuration.php:36
+msgid "Phone number appear in the quote/invoice header"
+msgstr ""
+
+#: /app/templates/content/changelog.php:56
+#: /app/templates/content/configuration.php:40
+msgid "Email appear in the quote/invoice header"
+msgstr ""
+
+#: /app/templates/content/changelog.php:57
+msgid "Your company VAT"
+msgstr ""
+
+#: /app/templates/content/changelog.php:58
+#: /app/templates/content/configuration.php:44
+msgid ""
+"Global Default VAT apply to your Quote/Invoice (globally), to change it, "
+"please just insert VAT amount without the percent sign"
+msgstr ""
+
+#: /app/templates/content/changelog.php:59
+#: /app/templates/content/configuration.php:48
+msgid "Automatic generated invoice number"
+msgstr ""
+
+#: /app/templates/content/changelog.php:60
+msgid ""
+"If you want to have an automatic generated invoice number, set to enable, if "
+"you want to be free, set disable. You can enable and disable when you want."
+msgstr ""
+
+#: /app/templates/content/changelog.php:61
+#: /app/templates/content/configuration.php:52
+msgid "Global default Currency"
+msgstr ""
+
+#: /app/templates/content/changelog.php:62
+msgid "Gloabl currency for the application"
+msgstr ""
+
+#: /app/templates/content/changelog.php:63
+msgid "Legal disclaimer/mentions"
+msgstr ""
+
+#: /app/templates/content/changelog.php:64
+#: /app/templates/content/configuration.php:56
+msgid ""
+"Legal disclaimer/mentions you need in your footer - before company "
+"information"
 msgstr ""
 
 #: /app/templates/content/configuration.php:8
@@ -346,8 +377,8 @@ msgstr ""
 msgid "Click to edit"
 msgstr ""
 
-#: /app/templates/content/configuration.php:12
-msgid "Company name"
+#: /app/templates/content/configuration.php:11
+msgid "Need help ?"
 msgstr ""
 
 #: /app/templates/content/configuration.php:14
@@ -361,40 +392,6 @@ msgstr ""
 #: /app/templates/content/configuration.php:46
 #: /app/templates/content/configuration.php:58
 msgid "Loading …"
-msgstr ""
-
-#: /app/templates/content/configuration.php:16
-msgid "Contact First name"
-msgstr ""
-
-#: /app/templates/content/configuration.php:20
-msgid "Contact name"
-msgstr ""
-
-#: /app/templates/content/configuration.php:24
-msgid "Company address"
-msgstr ""
-
-#: /app/templates/content/configuration.php:32
-#: /app/templates/content/devisshow.php:81
-#: /app/templates/content/factureshow.php:82
-msgid "Unique identification"
-msgstr ""
-
-#: /app/templates/content/configuration.php:44
-msgid "Default VAT"
-msgstr ""
-
-#: /app/templates/content/configuration.php:48
-msgid "Automatic invoice number"
-msgstr ""
-
-#: /app/templates/content/configuration.php:52
-msgid "Default Currency"
-msgstr ""
-
-#: /app/templates/content/configuration.php:56
-msgid "Legal disclaimer/mentions"
 msgstr ""
 
 #: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:12
@@ -535,6 +532,10 @@ msgstr ""
 
 #: /app/templates/content/index.php:12
 msgid "Add customer"
+msgstr ""
+
+#: /app/templates/content/index.php:22
+msgid "Legal information"
 msgstr ""
 
 #: /app/templates/content/produit.php:8 /app/templates/navigation/index.php:26

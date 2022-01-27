@@ -4,8 +4,6 @@ OC.L10N.register(
     "Phone number" : "Telefono numeris",
     "Email" : "El. paštas",
     "Address" : "Adresas",
-    "Processing …" : "Apdorojama…",
-    "There is an error" : "Yra klaida",
     "Send" : "Siųsti",
     "Send by email" : "Siųsti el. paštu",
     "About" : "Apie"

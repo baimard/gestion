@@ -10,7 +10,6 @@ OC.L10N.register(
     "Invoice number" : "Számla azonosító",
     "Reference" : "Hivatkozás",
     "Gestion" : "Menedzsment",
-    "Search" : "Keresés",
     "Configuration" : "Beállítások",
     "Actions" : "Műveletek"
 },

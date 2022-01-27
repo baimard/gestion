@@ -3,8 +3,8 @@
 		<span class="modalClose">&times;</span>
 		<h2><?php p($l->t('Welcome to GESTION 2.0')); ?></h2>
 		<p style="margin-bottom:20px;"><b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> &#128073; <a href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a></p>
-		<p style="margin-bottom:20px;">&#9888; <u><?php p($l->t('If you update this application, dont forget to clear your cache')); ?></u> &#9888;</p>
-		<p style="margin-bottom:20px;"><?php p($l->t('This application is an open source application designed by Benjamin AIMARD.')); ?></p>
+		<p style="margin-bottom:20px;">&#9888; <u><?php p($l->t('If you have updated this application, do not forget to clear your cache')); ?></u> &#9888;</p>
+		<p style="margin-bottom:20px;"><?php p($l->t('This application is open source, it designed by Benjamin AIMARD.')); ?></p>
 		<p style="margin-bottom:20px;">
 				<?php p($l->t('If you like my work you can')); ?> &#129321; <a href="https://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a coffee')); ?></a> &#129321;
 		<br/>	<?php p($l->t('If you need documentation, follow this link')); ?> &#128073; <a href="https://baimard.github.io/gestion/"><?php p($l->t('Documentation')); ?></a>
@@ -39,27 +39,27 @@
 		<h2><?php p($l->t('Help configure')); ?></h2>
 		<hr/>
 		<h2><?php p($l->t('Company name')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('This is the name of the company that will appear in the footer of your quote and invoice.  For example, you can set : "Company : Cybercorp" or just "Cybercorp"')); ?></div>
+		<div class="ConfigurationHelp"><?php p($l->t('This is the name of the company that will appears in the footer of your quote and invoice. For example, you can set : "Company : Cybercorp" or just "Cybercorp".')); ?></div>
 		<h2><?php p($l->t('Your company contact surname')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('First name appear in the quote/invoice header as a contact')); ?></div>
+		<div class="ConfigurationHelp"><?php p($l->t('First name appears in the Quote/Invoice header as a contact')); ?></div>
 		<h2><?php p($l->t('Your company contact name')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('Last name appear in the quote/invoice header as a contact')); ?></div>
-		<h2><?php p($l->t('Legal company information line one')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('This is a first line in the footer of your Quote/Invoice with all legals informations you need')); ?></div>
-		<h2><?php p($l->t('Legal company information line two')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('This is a second line in the footer of your Quote/Invoice with all legals informations you need')); ?></div>
+		<div class="ConfigurationHelp"><?php p($l->t('Last name appears in the Quote/Invoice header as a contact')); ?></div>
+		<h2><?php p($l->t('Company legal information line one')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('This is a first line in the footer of your Quote/Invoice with all legal information you need')); ?></div>
+		<h2><?php p($l->t('Company legal information line two')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('This is a second line in the footer of your Quote/Invoice with all legal information you need')); ?></div>
 		<h2><?php p($l->t('Your company address')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('Company address appear in the quote/invoice header')); ?></div>
+		<div class="ConfigurationHelp"><?php p($l->t('Show company address in the quote/invoice header')); ?></div>
 		<h2><?php p($l->t('Your company phone')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('Phone number appear in the quote/invoice header')); ?></div>
+		<div class="ConfigurationHelp"><?php p($l->t('Show phone number in the Quote/Invoice header')); ?></div>
 		<h2><?php p($l->t('Your company email')); ?></h2>
-		<div><?php p($l->t('Email appear in the quote/invoice header')); ?></div>
-		<h2><?php p($l->t('Your company VAT')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('Global Default VAT apply to your Quote/Invoice (globally), to change it, please just insert VAT amount without the percent sign')); ?></div>	
+		<div><?php p($l->t('E-mail address which appears in the header of the Quote/Invoice')); ?></div>
+		<h2><?php p($l->t('Your company VAT rate')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('Global Default VAT rate apply to your Quote/Invoice (globally), to change it, please just insert VAT amount without the percent sign')); ?></div>	
 		<h2><?php p($l->t('Automatic generated invoice number')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('If you want to have an automatic generated invoice number, set to enable, if you want to be free, set disable. You can enable and disable when you want.')); ?></div>	
+		<div class="ConfigurationHelp"><?php p($l->t('If you want to have an automatic generated invoice number, set to enable. if you want to be free, set disable. You can enable and disable when you want.')); ?></div>	
 		<h2><?php p($l->t('Global default Currency')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('Gloabl currency for the application')); ?></div>
+		<div class="ConfigurationHelp"><?php p($l->t('Global currency for the application')); ?></div>
 		<h2><?php p($l->t('Legal disclaimer/mentions')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('Legal disclaimer/mentions you need in your footer - before company information')); ?></div>
 	</div>

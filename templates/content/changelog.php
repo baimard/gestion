@@ -36,7 +36,7 @@
 <div id="ConfigurationHelp" class="modal">
 	<div class="modal-content">
 		<span class="modalClose">&times;</span>
-		<h2><?php p($l->t('Help configure')); ?></h2>
+		<h2><?php p($l->t('Configuration help')); ?></h2>
 		<hr/>
 		<h2><?php p($l->t('Company name')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('This is the name of the company that will appears in the footer of your quote and invoice. For example, you can set : "Company : Cybercorp" or just "Cybercorp".')); ?></div>
@@ -45,9 +45,9 @@
 		<h2><?php p($l->t('Your company contact name')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('Last name appears in the Quote/Invoice header as a contact')); ?></div>
 		<h2><?php p($l->t('Company legal information line one')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('This is a first line in the footer of your Quote/Invoice with all legal information you need')); ?></div>
+		<div class="ConfigurationHelp"><?php p($l->t('This is the first line in the footer of your Quote/Invoice with all legal information you need')); ?></div>
 		<h2><?php p($l->t('Company legal information line two')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('This is a second line in the footer of your Quote/Invoice with all legal information you need')); ?></div>
+		<div class="ConfigurationHelp"><?php p($l->t('This is the second line in the footer of your Quote/Invoice with all legal information you need')); ?></div>
 		<h2><?php p($l->t('Your company address')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('Show company address in the quote/invoice header')); ?></div>
 		<h2><?php p($l->t('Your company phone')); ?></h2>

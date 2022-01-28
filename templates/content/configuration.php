@@ -25,11 +25,11 @@
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="adresse" class="configuration-content editable" data-table="configuration" data-column="adresse" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
-    <div title="<?php p($l->t('This is a first line in the footer of your Quote/Invoice with all legals informations you need')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('This is the first line in the footer of your Quote/Invoice with all legals informations you need')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="legal_one" class="configuration-content editable" data-table="configuration" data-column="legal_one" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
-    <div title="<?php p($l->t('This is a second line in the footer of your Quote/Invoice with all legals informations you need')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('This is the second line in the footer of your Quote/Invoice with all legals informations you need')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="legal_two" class="configuration-content editable" data-table="configuration" data-column="legal_two" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
@@ -45,7 +45,7 @@
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="tva_default" class="configuration-content editable" data-table="configuration" data-column="tva_default" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
-    <div title="<?php p($l->t('Automatic generated invoice number')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('Generate invoice number automatically?')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <select style="float:none;" id="auto_invoice_number" class="configuration-content editableSelect" data-table="configuration" data-column="auto_invoice_number" data-id=""></select>
     </div>

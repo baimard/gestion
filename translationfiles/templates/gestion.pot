@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-01-27 03:25+0000\n"
+"POT-Creation-Date: 2022-01-28 03:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,11 +99,11 @@ msgid "Your company contact name"
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:176 /app/templates/content/changelog.php:47
-msgid "Legal company information line one"
+msgid "Company legal information line one"
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:177 /app/templates/content/changelog.php:49
-msgid "Legal company information line two"
+msgid "Company legal information line two"
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:178 /app/templates/content/changelog.php:55
@@ -195,12 +195,11 @@ msgid "My company"
 msgstr ""
 
 #: /app/templates/content/changelog.php:6
-msgid "If you update this application, dont forget to clear your cache"
+msgid "If you have updated this application, do not forget to clear your cache"
 msgstr ""
 
 #: /app/templates/content/changelog.php:7
-msgid ""
-"This application is an open source application designed by Benjamin AIMARD."
+msgid "This application is open source, it designed by Benjamin AIMARD."
 msgstr ""
 
 #: /app/templates/content/changelog.php:9
@@ -280,61 +279,52 @@ msgid "Company name"
 msgstr ""
 
 #: /app/templates/content/changelog.php:42
-#: /app/templates/content/configuration.php:12
 msgid ""
-"This is the name of the company that will appear in the footer of your quote "
-"and invoice.  For example, you can set : \"Company : Cybercorp\" or just "
-"\"Cybercorp\""
+"This is the name of the company that will appears in the footer of your "
+"quote and invoice. For example, you can set : \"Company : Cybercorp\" or "
+"just \"Cybercorp\"."
 msgstr ""
 
 #: /app/templates/content/changelog.php:44
-#: /app/templates/content/configuration.php:16
-msgid "First name appear in the quote/invoice header as a contact"
+msgid "First name appears in the Quote/Invoice header as a contact"
 msgstr ""
 
 #: /app/templates/content/changelog.php:46
-#: /app/templates/content/configuration.php:20
-msgid "Last name appear in the quote/invoice header as a contact"
+msgid "Last name appears in the Quote/Invoice header as a contact"
 msgstr ""
 
 #: /app/templates/content/changelog.php:48
-#: /app/templates/content/configuration.php:28
 msgid ""
-"This is a first line in the footer of your Quote/Invoice with all legals "
-"informations you need"
+"This is a first line in the footer of your Quote/Invoice with all legal "
+"information you need"
 msgstr ""
 
 #: /app/templates/content/changelog.php:50
-#: /app/templates/content/configuration.php:32
 msgid ""
-"This is a second line in the footer of your Quote/Invoice with all legals "
-"informations you need"
+"This is a second line in the footer of your Quote/Invoice with all legal "
+"information you need"
 msgstr ""
 
 #: /app/templates/content/changelog.php:52
-#: /app/templates/content/configuration.php:24
-msgid "Company address appear in the quote/invoice header"
+msgid "Show company address in the quote/invoice header"
 msgstr ""
 
 #: /app/templates/content/changelog.php:54
-#: /app/templates/content/configuration.php:36
-msgid "Phone number appear in the quote/invoice header"
+msgid "Show phone number in the Quote/Invoice header"
 msgstr ""
 
 #: /app/templates/content/changelog.php:56
-#: /app/templates/content/configuration.php:40
-msgid "Email appear in the quote/invoice header"
+msgid "E-mail address which appears in the header of the Quote/Invoice"
 msgstr ""
 
 #: /app/templates/content/changelog.php:57
-msgid "Your company VAT"
+msgid "Your company VAT rate"
 msgstr ""
 
 #: /app/templates/content/changelog.php:58
-#: /app/templates/content/configuration.php:44
 msgid ""
-"Global Default VAT apply to your Quote/Invoice (globally), to change it, "
-"please just insert VAT amount without the percent sign"
+"Global Default VAT rate apply to your Quote/Invoice (globally), to change "
+"it, please just insert VAT amount without the percent sign"
 msgstr ""
 
 #: /app/templates/content/changelog.php:59
@@ -344,7 +334,7 @@ msgstr ""
 
 #: /app/templates/content/changelog.php:60
 msgid ""
-"If you want to have an automatic generated invoice number, set to enable, if "
+"If you want to have an automatic generated invoice number, set to enable. if "
 "you want to be free, set disable. You can enable and disable when you want."
 msgstr ""
 
@@ -354,7 +344,7 @@ msgid "Global default Currency"
 msgstr ""
 
 #: /app/templates/content/changelog.php:62
-msgid "Gloabl currency for the application"
+msgid "Global currency for the application"
 msgstr ""
 
 #: /app/templates/content/changelog.php:63
@@ -378,7 +368,14 @@ msgid "Click to edit"
 msgstr ""
 
 #: /app/templates/content/configuration.php:11
-msgid "Need help ?"
+msgid "Need help?"
+msgstr ""
+
+#: /app/templates/content/configuration.php:12
+msgid ""
+"This is the name of the company that will appear in the footer of your quote "
+"and invoice.  For example, you can set : \"Company : Cybercorp\" or just "
+"\"Cybercorp\""
 msgstr ""
 
 #: /app/templates/content/configuration.php:14
@@ -392,6 +389,44 @@ msgstr ""
 #: /app/templates/content/configuration.php:46
 #: /app/templates/content/configuration.php:58
 msgid "Loading …"
+msgstr ""
+
+#: /app/templates/content/configuration.php:16
+msgid "First name appear in the quote/invoice header as a contact"
+msgstr ""
+
+#: /app/templates/content/configuration.php:20
+msgid "Last name appear in the quote/invoice header as a contact"
+msgstr ""
+
+#: /app/templates/content/configuration.php:24
+msgid "Company address appear in the quote/invoice header"
+msgstr ""
+
+#: /app/templates/content/configuration.php:28
+msgid ""
+"This is a first line in the footer of your Quote/Invoice with all legals "
+"informations you need"
+msgstr ""
+
+#: /app/templates/content/configuration.php:32
+msgid ""
+"This is a second line in the footer of your Quote/Invoice with all legals "
+"informations you need"
+msgstr ""
+
+#: /app/templates/content/configuration.php:36
+msgid "Phone number appear in the quote/invoice header"
+msgstr ""
+
+#: /app/templates/content/configuration.php:40
+msgid "Email appear in the quote/invoice header"
+msgstr ""
+
+#: /app/templates/content/configuration.php:44
+msgid ""
+"Global Default VAT apply to your Quote/Invoice (globally), to change it, "
+"please just insert VAT amount without the percent sign"
 msgstr ""
 
 #: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:12

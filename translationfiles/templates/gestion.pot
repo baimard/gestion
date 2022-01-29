@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-01-28 03:25+0000\n"
+"POT-Creation-Date: 2022-01-29 03:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -271,7 +271,7 @@ msgid "Send"
 msgstr ""
 
 #: /app/templates/content/changelog.php:39
-msgid "Help configure"
+msgid "Configuration help"
 msgstr ""
 
 #: /app/templates/content/changelog.php:41
@@ -295,13 +295,13 @@ msgstr ""
 
 #: /app/templates/content/changelog.php:48
 msgid ""
-"This is a first line in the footer of your Quote/Invoice with all legal "
+"This is the first line in the footer of your Quote/Invoice with all legal "
 "information you need"
 msgstr ""
 
 #: /app/templates/content/changelog.php:50
 msgid ""
-"This is a second line in the footer of your Quote/Invoice with all legal "
+"This is the second line in the footer of your Quote/Invoice with all legal "
 "information you need"
 msgstr ""
 
@@ -328,7 +328,6 @@ msgid ""
 msgstr ""
 
 #: /app/templates/content/changelog.php:59
-#: /app/templates/content/configuration.php:48
 msgid "Automatic generated invoice number"
 msgstr ""
 
@@ -405,13 +404,13 @@ msgstr ""
 
 #: /app/templates/content/configuration.php:28
 msgid ""
-"This is a first line in the footer of your Quote/Invoice with all legals "
+"This is the first line in the footer of your Quote/Invoice with all legals "
 "informations you need"
 msgstr ""
 
 #: /app/templates/content/configuration.php:32
 msgid ""
-"This is a second line in the footer of your Quote/Invoice with all legals "
+"This is the second line in the footer of your Quote/Invoice with all legals "
 "informations you need"
 msgstr ""
 
@@ -427,6 +426,10 @@ msgstr ""
 msgid ""
 "Global Default VAT apply to your Quote/Invoice (globally), to change it, "
 "please just insert VAT amount without the percent sign"
+msgstr ""
+
+#: /app/templates/content/configuration.php:48
+msgid "Generate invoice number automatically?"
 msgstr ""
 
 #: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:12

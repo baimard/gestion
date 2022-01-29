@@ -53,7 +53,6 @@ OC.L10N.register(
     "Attached to this email you will find a new document." : "Vous trouverez en pièce jointe de cet e-mail un nouveau document.",
     "Best regards," : "Meilleures salutations,",
     "Send" : "Envoyer",
-    "Help configure" : "Aide à la configuration",
     "Company name" : "Nom de votre entreprise",
     "Legal disclaimer/mentions" : "Avis de non-responsabilité/mentions",
     "Configuration" : "Configuration",

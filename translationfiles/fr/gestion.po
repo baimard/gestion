@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-01-29 03:26+0000\n"
+"POT-Creation-Date: 2022-01-31 03:25+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -107,11 +107,11 @@ msgstr "Nom du contact de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:176 /app/templates/content/changelog.php:47
 msgid "Company legal information line one"
-msgstr ""
+msgstr "Information légale d'entreprise ligne une"
 
 #: /app/lib/Db/Bdd.php:177 /app/templates/content/changelog.php:49
 msgid "Company legal information line two"
-msgstr ""
+msgstr "Information légale d'entreprise ligne deux"
 
 #: /app/lib/Db/Bdd.php:178 /app/templates/content/changelog.php:55
 msgid "Your company email"
@@ -221,15 +221,15 @@ msgstr "Mon entreprise"
 #: /app/templates/content/changelog.php:6
 msgid ""
 "If you have updated this application, do not forget to clear your cache"
-msgstr ""
+msgstr "Si vous avez mis à jour l'application, pensez à effacer votre cache"
 
 #: /app/templates/content/changelog.php:7
-msgid "This application is open source, it designed by Benjamin AIMARD."
+msgid "This application is open source and is designed by Benjamin AIMARD."
 msgstr ""
 
 #: /app/templates/content/changelog.php:9
-msgid "If you like my work you can"
-msgstr "Si vous aimez mon travail vous pouvez"
+msgid "If you like my work you can:"
+msgstr ""
 
 #: /app/templates/content/changelog.php:9
 msgid "buy me a coffee"
@@ -298,79 +298,98 @@ msgstr "Envoyer"
 
 #: /app/templates/content/changelog.php:39
 msgid "Configuration help"
-msgstr ""
+msgstr "Aide à la configuration"
 
 #: /app/templates/content/changelog.php:41
 msgid "Company name"
 msgstr "Nom de votre entreprise"
 
 #: /app/templates/content/changelog.php:42
+#: /app/templates/content/configuration.php:12
 msgid ""
-"This is the name of the company that will appears in the footer of your "
-"quote and invoice. For example, you can set : \"Company : Cybercorp\" or "
-"just \"Cybercorp\"."
+"This is the name of the company that will appear in the footer of your quote"
+" and invoice. For example, you can set: \"Company : Cybercorp\" or just "
+"\"Cybercorp\"."
 msgstr ""
 
 #: /app/templates/content/changelog.php:44
+#: /app/templates/content/configuration.php:16
 msgid "First name appears in the Quote/Invoice header as a contact"
 msgstr ""
+"Le prénom apparaît dans l'entête de votre Devis/Facture comme le contact"
 
 #: /app/templates/content/changelog.php:46
+#: /app/templates/content/configuration.php:20
 msgid "Last name appears in the Quote/Invoice header as a contact"
-msgstr ""
+msgstr "Le nom apparaît dans l'entête de votre Devis/Facture comme le contact"
 
 #: /app/templates/content/changelog.php:48
+#: /app/templates/content/configuration.php:28
 msgid ""
 "This is the first line in the footer of your Quote/Invoice with all legal "
 "information you need"
 msgstr ""
+"C'est la premier ligne de votre pied de page dans votre Devis/Facture avec "
+"toutes les informations légales dont vous avez besoin. Exemple : SIREN"
 
 #: /app/templates/content/changelog.php:50
+#: /app/templates/content/configuration.php:32
 msgid ""
 "This is the second line in the footer of your Quote/Invoice with all legal "
 "information you need"
 msgstr ""
+"C'est la second ligne de votre pied de page dans votre Devis/Facture avec "
+"toutes les informations légales dont vous avez besoin. Exemple : SIRET"
 
 #: /app/templates/content/changelog.php:52
+#: /app/templates/content/configuration.php:24
 msgid "Show company address in the quote/invoice header"
 msgstr ""
+"Afficher l'adresse de l'entreprise dans l'entête de votre Devis/Facture"
 
 #: /app/templates/content/changelog.php:54
+#: /app/templates/content/configuration.php:36
 msgid "Show phone number in the Quote/Invoice header"
-msgstr ""
+msgstr "Afficher le numéro de téléphone dans l'entête de votre Devis/Facture"
 
 #: /app/templates/content/changelog.php:56
+#: /app/templates/content/configuration.php:40
 msgid "E-mail address which appears in the header of the Quote/Invoice"
-msgstr ""
+msgstr "Afficher le courriel dans l'entête de votre Devis/Facture"
 
 #: /app/templates/content/changelog.php:57
 msgid "Your company VAT rate"
-msgstr ""
+msgstr "Le taux de TVA de votre entreprise"
 
 #: /app/templates/content/changelog.php:58
+#: /app/templates/content/configuration.php:44
 msgid ""
 "Global Default VAT rate apply to your Quote/Invoice (globally), to change "
-"it, please just insert VAT amount without the percent sign"
+"it, just insert VAT rate amount without the percent sign"
 msgstr ""
 
 #: /app/templates/content/changelog.php:59
 msgid "Automatic generated invoice number"
-msgstr ""
+msgstr "Numéro de facture généré automatiquement"
 
 #: /app/templates/content/changelog.php:60
+#: /app/templates/content/configuration.php:48
 msgid ""
 "If you want to have an automatic generated invoice number, set to enable. if"
 " you want to be free, set disable. You can enable and disable when you want."
 msgstr ""
+"Si vous souhaitez que générer automatiquement vos numéros de facture, mettre"
+" \"enable\"? Si vous souhaitez être libre, mettez \"disable\". Vous pouvez "
+"mettre \"enable\" ou \"disable\" quand vous le souhaitez."
 
 #: /app/templates/content/changelog.php:61
-#: /app/templates/content/configuration.php:52
 msgid "Global default Currency"
-msgstr ""
+msgstr "Devis par défaut globale"
 
 #: /app/templates/content/changelog.php:62
+#: /app/templates/content/configuration.php:52
 msgid "Global currency for the application"
-msgstr ""
+msgstr "Devise globale de votre application"
 
 #: /app/templates/content/changelog.php:63
 msgid "Legal disclaimer/mentions"
@@ -382,6 +401,8 @@ msgid ""
 "Legal disclaimer/mentions you need in your footer - before company "
 "information"
 msgstr ""
+"Information/Avertissement dont vous avez besoin dans votre pied de page, "
+"avant les informations de l'entreprise"
 
 #: /app/templates/content/configuration.php:8
 #: /app/templates/settings/index.php:4
@@ -390,18 +411,11 @@ msgstr "Configuration"
 
 #: /app/templates/content/configuration.php:11
 msgid "Click to edit"
-msgstr "Cliquer pour éditer"
+msgstr "Cliquer pour modifier"
 
 #: /app/templates/content/configuration.php:11
 msgid "Need help?"
-msgstr ""
-
-#: /app/templates/content/configuration.php:12
-msgid ""
-"This is the name of the company that will appear in the footer of your quote"
-" and invoice.  For example, you can set : \"Company : Cybercorp\" or just "
-"\"Cybercorp\""
-msgstr ""
+msgstr "Besoin d'aide ?"
 
 #: /app/templates/content/configuration.php:14
 #: /app/templates/content/configuration.php:18
@@ -415,48 +429,6 @@ msgstr ""
 #: /app/templates/content/configuration.php:58
 msgid "Loading …"
 msgstr "Chargement …"
-
-#: /app/templates/content/configuration.php:16
-msgid "First name appear in the quote/invoice header as a contact"
-msgstr ""
-
-#: /app/templates/content/configuration.php:20
-msgid "Last name appear in the quote/invoice header as a contact"
-msgstr ""
-
-#: /app/templates/content/configuration.php:24
-msgid "Company address appear in the quote/invoice header"
-msgstr ""
-
-#: /app/templates/content/configuration.php:28
-msgid ""
-"This is the first line in the footer of your Quote/Invoice with all legals "
-"informations you need"
-msgstr ""
-
-#: /app/templates/content/configuration.php:32
-msgid ""
-"This is the second line in the footer of your Quote/Invoice with all legals "
-"informations you need"
-msgstr ""
-
-#: /app/templates/content/configuration.php:36
-msgid "Phone number appear in the quote/invoice header"
-msgstr ""
-
-#: /app/templates/content/configuration.php:40
-msgid "Email appear in the quote/invoice header"
-msgstr ""
-
-#: /app/templates/content/configuration.php:44
-msgid ""
-"Global Default VAT apply to your Quote/Invoice (globally), to change it, "
-"please just insert VAT amount without the percent sign"
-msgstr ""
-
-#: /app/templates/content/configuration.php:48
-msgid "Generate invoice number automatically?"
-msgstr ""
 
 #: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:12
 msgid "Quote"

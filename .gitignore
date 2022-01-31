@@ -3,4 +3,5 @@
 .php-cs-fixer.cache
 /vendor/
 /build/
+/js/
 /.phpunit.result.cache

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OCA\Gestion\Migration;
 
 use Closure;
+use OCP\IDBConnection;
 use OCP\DB\ISchemaWrapper;
 use OCP\Migration\IOutput;
 use OCP\Migration\SimpleMigrationStep;
@@ -12,9 +13,14 @@ use OCP\Migration\SimpleMigrationStep;
 /**
  * Auto-generated migration step: Please modify to your needs!
  */
-class Version4Date20211110180142 extends SimpleMigrationStep {
+class Version7Date20220125174818 extends SimpleMigrationStep {
 
-	/**
+    private IDbConnection $db;
+    public function __construct(IDbConnection $db){
+        $this->db = $db;
+    }
+
+    /**
 	 * @param IOutput $output
 	 * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
 	 * @param array $options
@@ -22,7 +28,7 @@ class Version4Date20211110180142 extends SimpleMigrationStep {
 	public function preSchemaChange(IOutput $output, Closure $schemaClosure, array $options): void {
 	}
 
-/**
+    /**
 	 * @param IOutput $output
 	 * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
 	 * @param array $options
@@ -36,8 +42,11 @@ class Version4Date20211110180142 extends SimpleMigrationStep {
         /**Client**/
         if (!$schema->hasTable($tableprefix.'client')) {
             $table = $schema->createTable($tableprefix.'client');
+        }else{
+            $table = $schema->getTable($tableprefix.'client');
         }
-        $table = $schema->getTable($tableprefix.'client');
+
+        
         if (!$table->hasColumn('id')) {
             $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
             $table->setPrimaryKey(['id']);
@@ -49,8 +58,15 @@ class Version4Date20211110180142 extends SimpleMigrationStep {
             $table->addColumn('prenom', 'text', []);
         }
         if (!$table->hasColumn('siret')) {
-            $table->addColumn('siret', 'text', []);
+        }else{
+            $stmt = $this->db->prepare("ALTER TABLE `".'*PREFIX*'."gestion_client` CHANGE `siret` `legal_one` LONGTEXT");
+            $stmt->execute();
         }
+
+        if (!$table->hasColumn('legal_one')) {
+            $table->addColumn('legal_one', 'text', []);
+        }
+
         if (!$table->hasColumn('entreprise')) {
             $table->addColumn('entreprise', 'text', []);
         }
@@ -90,11 +106,23 @@ class Version4Date20211110180142 extends SimpleMigrationStep {
         }
 
         if (!$table->hasColumn('siret')) {
-            $table->addColumn('siret', 'text', []);
+        }else{
+            $stmt = $this->db->prepare("ALTER TABLE `".'*PREFIX*'."gestion_configuration` CHANGE `siret` `legal_one` LONGTEXT");
+            $stmt->execute();
         }
 
         if (!$table->hasColumn('siren')) {
-            $table->addColumn('siren', 'text', []);
+        }else{
+            $stmt = $this->db->prepare("ALTER TABLE `".'*PREFIX*'."gestion_configuration` CHANGE `siren` `legal_two` LONGTEXT");
+            $stmt->execute();
+        }
+
+        if (!$table->hasColumn('legal_one')) {
+            $table->addColumn('legal_one', 'text', []);
+        }
+
+        if (!$table->hasColumn('legal_two')) {
+            $table->addColumn('legal_two', 'text', []);
         }
 
         if (!$table->hasColumn('mail')) {
@@ -132,6 +160,17 @@ class Version4Date20211110180142 extends SimpleMigrationStep {
         }else{
             $column = $table->getColumn('changelog');
             $column->setOptions(['default' => '0']);
+        }
+
+		if (!$table->hasColumn('devise')) {
+            $table->addColumn('devise', 'string', ['default' => 'EUR']);
+        }else{
+            $column = $table->getColumn('devise');
+            $column->setOptions(['default' => 'EUR']);
+        }
+
+        if (!$table->hasColumn('auto_invoice_number')) {
+            $table->addColumn('auto_invoice_number', 'integer', ['default' => 1 ]);
         }
 
         if (!$table->hasColumn('id_nextcloud')) {

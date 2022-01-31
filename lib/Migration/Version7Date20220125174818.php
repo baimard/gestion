@@ -39,25 +39,32 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
           $schema = $schemaClosure();
           $tableprefix = "gestion_";
 
+        /** @var \Doctrine\DBAL\Schema\Table $table */
         /**Client**/
         if (!$schema->hasTable($tableprefix.'client')) {
             $table = $schema->createTable($tableprefix.'client');
+        } else {
+            $table = $schema->getTable($tableprefix.'client');
         }
-        $table = $schema->getTable($tableprefix.'client');
+
         if (!$table->hasColumn('id')) {
             $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
             $table->setPrimaryKey(['id']);
         }
         if (!$table->hasColumn('nom')) {
-            $table->addColumn('nom', 'text', []);            
+            $table->addColumn('nom', 'text', []);
         }
         if (!$table->hasColumn('prenom')) {
             $table->addColumn('prenom', 'text', []);
         }
-        if (!$table->hasColumn('siret')) {
-        }else{
-            $stmt = $this->db->prepare("ALTER TABLE `".'*PREFIX*'."gestion_client` CHANGE `siret` `legal_one` LONGTEXT");
-            $stmt->execute();
+        if ($table->hasColumn('siret')) {
+            $table->changeColumn('siret', [
+                'type' => 'longtext',
+            ]);
+
+            $table->changeColumn('legal_one', [
+                'type' => 'longtext',
+            ]);
         }
 
         if (!$table->hasColumn('legal_one')) {
@@ -83,8 +90,10 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
         /**Configuration**/
         if (!$schema->hasTable($tableprefix.'configuration')) {
             $table = $schema->createTable($tableprefix.'configuration');
+        } else {
+            $table = $schema->getTable($tableprefix.'configuration');
         }
-        $table = $schema->getTable($tableprefix.'configuration');
+
         if (!$table->hasColumn('id')) {
             $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true,]);
             $table->setPrimaryKey(['id']);
@@ -102,16 +111,24 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
             $table->addColumn('prenom', 'text', []);
         }
 
-        if (!$table->hasColumn('siret')) {
-        }else{
-            $stmt = $this->db->prepare("ALTER TABLE `".'*PREFIX*'."gestion_configuration` CHANGE `siret` `legal_one` LONGTEXT");
-            $stmt->execute();
+        if ($table->hasColumn('siret')) {
+            $table->changeColumn('siret', [
+                'type' => 'longtext',
+            ]);
+
+            $table->changeColumn('legal_one', [
+                'type' => 'longtext',
+            ]);
         }
 
-        if (!$table->hasColumn('siren')) {
-        }else{
-            $stmt = $this->db->prepare("ALTER TABLE `".'*PREFIX*'."gestion_configuration` CHANGE `siren` `legal_two` LONGTEXT");
-            $stmt->execute();
+        if ($table->hasColumn('siren')) {
+            $table->changeColumn('siret', [
+                'type' => 'longtext',
+            ]);
+
+            $table->changeColumn('legal_one', [
+                'type' => 'longtext',
+            ]);
         }
 
         if (!$table->hasColumn('legal_one')) {
@@ -173,18 +190,19 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
         if (!$table->hasColumn('id_nextcloud')) {
             $table->addColumn('id_nextcloud', 'string', ['length' => 64]);
         }
-        
+
         /**DEVIS**/
         if (!$schema->hasTable($tableprefix.'devis')) {
             $table = $schema->createTable($tableprefix.'devis');
+        } else {
+            $table = $schema->getTable($tableprefix.'devis');
         }
 
-        $table = $schema->getTable($tableprefix.'devis');
         if (!$table->hasColumn('id')) {
             $table->addColumn('id', 'integer', ['autoincrement' => true,'notnull' => true]);
             $table->setPrimaryKey(['id']);
         }
-        
+
         if (!$table->hasColumn('date')) {
             $table->addColumn('date', 'date', []);
         }
@@ -224,7 +242,7 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
 
         /**FACTURE**/
         if (!$schema->hasTable($tableprefix.'facture')) {
-            $table = $schema->createTable($tableprefix.'facture');            
+            $table = $schema->createTable($tableprefix.'facture');
         }
 
         $table = $schema->getTable($tableprefix.'facture');
@@ -249,14 +267,14 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
         if (!$table->hasColumn('type_paiement')) {
             $table->addColumn('type_paiement', 'string', ['length' => 64]);
         }
-        
+
         if (!$table->hasColumn('status_paiement')) {
             $table->addColumn('status_paiement', 'string', ['length' => 64, 'default' => 'NC']);
         }else{
             $column = $table->getColumn('status_paiement');
             $column->setOptions(['default' => 'NC']);
         }
-        
+
         if (!$table->hasColumn('version')) {
             $table->addColumn('version', 'string', ['length' => 64, 'default' => '1.0']);
         }else{

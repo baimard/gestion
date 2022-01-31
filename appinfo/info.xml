@@ -4,42 +4,37 @@
     <id>gestion</id>
     <name>Gestion</name>
     <summary lang="fr">Application de gestion de facturation simplifiée</summary>
-    <description lang="fr">
-        # Gestion de facturation
-        Cette application permet la gestion de facturation de manière très simple pour une micro entreprise.
+    <description lang="fr"><![CDATA[Cette application permet la gestion de facturation de manière très simple pour une micro entreprise.
 
-        Fonctionnalité :
+Fonctionnalité :
 
-        * Ajouter un client
-        * Générer un devis
-        * Générer une facture
-        * Générer des lignes de produit pour inclure dans les devis
-        * Vous pouvez générer des PDF directement depuis l'application et les enregistrer dans votre Nextcloud.
+* Ajouter un client
+* Générer un devis
+* Générer une facture
+* Générer des lignes de produit pour inclure dans les devis
+* Vous pouvez générer des PDF directement depuis l'application et les enregistrer dans votre Nextcloud.
 
-        Vidéo de présentation dans la documentation utilisateur
+Vidéo de présentation dans la documentation utilisateur
 
-        [Vous aimez mon travail ? Achetez moi un café !](https://www.buymeacoffee.com/benjaminaimard)
-    </description>
+[Vous aimez mon travail ? Achetez moi un café !](https://www.buymeacoffee.com/benjaminaimard)
+    ]]></description>
     <summary lang="en">Simplified invoice management application</summary>
-    <description lang="en">
-        # Gestion Nextcloud application
+    <description lang="en"><![CDATA[This application allows the management of invoicing in a very simple way for Micro-Entreprise.
 
-        This application allows the management of invoicing in a very simple way for Micro-Entreprise.
+Functionality:
 
-        Functionality:
+* Add customer
+* Generate a quote
+* Generate an invoice
+* Generate product lines to include in quotes
+* You can generate PDFs directly from the app and save them to your Nextcloud
 
-        * Add customer
-        * Generate a quote
-        * Generate an invoice
-        * Generate product lines to include in quotes
-        * You can generate PDFs directly from the app and save them to your Nextcloud
+Presentation video in user documentation
 
-        Presentation video in user documentation
+If you need to adapt this application to your country laws, please open issue.
 
-        If you need to adapt this application to your country laws, please open issue.
-
-        [Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)
-    </description>
+[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)
+    ]]></description>
     <version>2.0.1</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>

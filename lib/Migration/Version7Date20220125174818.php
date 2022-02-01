@@ -98,11 +98,6 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
         }
 
 
-        // if (!$table->hasColumn('siren')) {
-        // }else{
-        //     $stmt = $this->db->prepare("ALTER TABLE `".'*PREFIX*'."gestion_configuration` CHANGE `siren` `legal_two` LONGTEXT");
-        //     $stmt->execute();
-        // }
 
         if (!$table->hasColumn('legal_one')) {
             $table->addColumn('legal_one', 'text', []);

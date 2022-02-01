@@ -45,7 +45,7 @@
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="tva_default" class="configuration-content editable" data-table="configuration" data-column="tva_default" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
-    <div title="<?php p($l->t('If you want to have an automatic generated invoice number, set to enable. if you want to be free, set disable. You can enable and disable when you want.')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('If you want to have an automatically generated invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want.')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <select style="float:none;" id="auto_invoice_number" class="configuration-content editableSelect" data-table="configuration" data-column="auto_invoice_number" data-id=""></select>
     </div>

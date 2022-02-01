@@ -21,7 +21,7 @@
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="nom" class="configuration-content editable" data-table="configuration" data-column="nom" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
-    <div title="<?php p($l->t('Show company address in the quote/invoice header')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('Show company address in the Quote/Invoice header')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="adresse" class="configuration-content editable" data-table="configuration" data-column="adresse" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>

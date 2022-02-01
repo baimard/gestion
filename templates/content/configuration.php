@@ -9,7 +9,7 @@
         </div>
     </div>
     <h2 id="configuration"><?php p($l->t('Click to edit')); ?> - <a id="HelpSection"><u><?php p($l->t('Need help?')); ?></u></a></h2>
-    <div title="<?php p($l->t('This is the name of the company that will appear in the footer of your quote and invoice. For example, you can set: "Company : Cybercorp" or just "Cybercorp".')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('This is the name of the company that will appear in the footer of your quote and invoice. For example, you can set: "Company: Cybercorp" or just "Cybercorp".')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="entreprise" class="configuration-content editable" data-table="configuration" data-column="entreprise" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
@@ -21,7 +21,7 @@
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="nom" class="configuration-content editable" data-table="configuration" data-column="nom" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
-    <div title="<?php p($l->t('Show company address in the quote/invoice header')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('Show company address in the Quote/Invoice header')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="adresse" class="configuration-content editable" data-table="configuration" data-column="adresse" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
@@ -41,11 +41,11 @@
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="mail" class="configuration-content editable" data-table="configuration" data-column="mail" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
-    <div title="<?php p($l->t('Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign.')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="tva_default" class="configuration-content editable" data-table="configuration" data-column="tva_default" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
-    <div title="<?php p($l->t('If you want to have an automatic generated invoice number, set to enable. if you want to be free, set disable. You can enable and disable when you want.')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('If you want to have an automatically generated invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want.')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <select style="float:none;" id="auto_invoice_number" class="configuration-content editableSelect" data-table="configuration" data-column="auto_invoice_number" data-id=""></select>
     </div>

@@ -39,7 +39,7 @@
 		<h2><?php p($l->t('Configuration help')); ?></h2>
 		<hr/>
 		<h2><?php p($l->t('Company name')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('This is the name of the company that will appear in the footer of your quote and invoice. For example, you can set: "Company : Cybercorp" or just "Cybercorp".')); ?></div>
+		<div class="ConfigurationHelp"><?php p($l->t('This is the name of the company that will appear in the footer of your quote and invoice. For example, you can set: "Company: Cybercorp" or just "Cybercorp".')); ?></div>
 		<h2><?php p($l->t('Your company contact surname')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('First name appears in the Quote/Invoice header as a contact')); ?></div>
 		<h2><?php p($l->t('Your company contact name')); ?></h2>
@@ -49,15 +49,15 @@
 		<h2><?php p($l->t('Company legal information line two')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('This is the second line in the footer of your Quote/Invoice with all legal information you need')); ?></div>
 		<h2><?php p($l->t('Your company address')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('Show company address in the quote/invoice header')); ?></div>
+		<div class="ConfigurationHelp"><?php p($l->t('Show company address in the Quote/Invoice header')); ?></div>
 		<h2><?php p($l->t('Your company phone')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('Show phone number in the Quote/Invoice header')); ?></div>
 		<h2><?php p($l->t('Your company email')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('E-mail address which appears in the header of the Quote/Invoice')); ?></div>
 		<h2><?php p($l->t('Your company VAT rate')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign')); ?></div>	
-		<h2><?php p($l->t('Automatic generated invoice number')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('If you want to have an automatic generated invoice number, set to enable. if you want to be free, set disable. You can enable and disable when you want.')); ?></div>	
+		<div class="ConfigurationHelp"><?php p($l->t('Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign.')); ?></div>	
+		<h2><?php p($l->t('Automatically generated invoice number')); ?></h2>
+		<div class="ConfigurationHelp"><?php p($l->t('If you want to have an automatically generated invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want.')); ?></div>	
 		<h2><?php p($l->t('Global default Currency')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('Global currency for the application')); ?></div>
 		<h2><?php p($l->t('Legal disclaimer/mentions')); ?></h2>

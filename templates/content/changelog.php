@@ -49,7 +49,7 @@
 		<h2><?php p($l->t('Company legal information line two')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('This is the second line in the footer of your Quote/Invoice with all legal information you need')); ?></div>
 		<h2><?php p($l->t('Your company address')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('Show company address in the quote/invoice header')); ?></div>
+		<div class="ConfigurationHelp"><?php p($l->t('Show company address in the Quote/Invoice header')); ?></div>
 		<h2><?php p($l->t('Your company phone')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('Show phone number in the Quote/Invoice header')); ?></div>
 		<h2><?php p($l->t('Your company email')); ?></h2>

@@ -179,7 +179,7 @@ class Bdd {
                                         $this->l->t('Your company phone'),
                                         $this->l->t('Your company address'),
                                         $idNextcloud,
-                                        $this->l->t('All Legal mentions, disclaimer or everything, you want place in the footer.'),
+                                        $this->l->t('All Legal mentions, disclaimer or everything you want to place in the footer.'),
                                         $this->l->t('EUR')
                                         )
                                     );

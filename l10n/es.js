@@ -53,7 +53,6 @@ OC.L10N.register(
     "Best regards," : "Un cordial saludo,",
     "Send" : "Enviar",
     "Company name" : "Nombre de la empresa",
-    "Automatic generated invoice number" : "Número de factura generado automáticamente",
     "Global default Currency" : "Divisa global por defecto",
     "Legal disclaimer/mentions" : "Descargo de responsabilidad legal/menciones",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Descargo de responsabilidad/menciones que necesitas poner en tu pie de página - antes de la información de la empresa",

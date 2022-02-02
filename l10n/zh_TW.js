@@ -53,7 +53,6 @@ OC.L10N.register(
     "Best regards," : "此致，",
     "Send" : "傳送",
     "Company name" : "公司名稱",
-    "Automatic generated invoice number" : "自動產生發票編號",
     "Global default Currency" : "預設貨幣",
     "Legal disclaimer/mentions" : "法律免責聲明",
     "Legal disclaimer/mentions you need in your footer - before company information" : "頁尾的法律免責聲明 - 在公司資訊之前",

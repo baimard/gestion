@@ -11,9 +11,6 @@ use OCP\Migration\SimpleMigrationStep;
 use OCP\IDBConnection;
 
 class Version20002Date20220201085856 extends SimpleMigrationStep {
-	/**
-	 * IDB
-	 */
 	private $rows = [];
     private IDbConnection $db;
 

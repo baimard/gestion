@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-02-01 03:25+0000\n"
+"POT-Creation-Date: 2022-02-03 03:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,7 +120,7 @@ msgstr ""
 
 #: /app/lib/Db/Bdd.php:182
 msgid ""
-"All Legal mentions, disclaimer or everything, you want place in the footer."
+"All Legal mentions, disclaimer or everything you want to place in the footer."
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:183
@@ -282,7 +282,7 @@ msgstr ""
 #: /app/templates/content/configuration.php:12
 msgid ""
 "This is the name of the company that will appear in the footer of your quote "
-"and invoice. For example, you can set: \"Company : Cybercorp\" or just "
+"and invoice. For example, you can set: \"Company: Cybercorp\" or just "
 "\"Cybercorp\"."
 msgstr ""
 
@@ -312,7 +312,7 @@ msgstr ""
 
 #: /app/templates/content/changelog.php:52
 #: /app/templates/content/configuration.php:24
-msgid "Show company address in the quote/invoice header"
+msgid "Show company address in the Quote/Invoice header"
 msgstr ""
 
 #: /app/templates/content/changelog.php:54
@@ -333,17 +333,17 @@ msgstr ""
 #: /app/templates/content/configuration.php:44
 msgid ""
 "Global Default VAT rate apply to your Quote/Invoice (globally), to change "
-"it, just insert VAT rate amount without the percent sign"
+"it, just insert VAT rate amount without the percent sign."
 msgstr ""
 
 #: /app/templates/content/changelog.php:59
-msgid "Automatic generated invoice number"
+msgid "Automatically generated invoice number"
 msgstr ""
 
 #: /app/templates/content/changelog.php:60
 #: /app/templates/content/configuration.php:48
 msgid ""
-"If you want to have an automatic generated invoice number, set to enable. if "
+"If you want to automatically generated an invoice number, set to enable. If "
 "you want to be free, set disable. You can enable and disable when you want."
 msgstr ""
 

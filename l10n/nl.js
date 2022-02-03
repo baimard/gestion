@@ -22,7 +22,6 @@ OC.L10N.register(
     "Your company email" : "Je bedrijfse-mail",
     "Your company phone" : "Je bedrijfstelefoonnummer",
     "Your company address" : "Je bedrijfsadres",
-    "All Legal mentions, disclaimer or everything, you want place in the footer." : "Alle rechtelijke vermeldingen of disclaimers of alles wat je in de footer wil plaatsen.",
     "EUR" : "EUR",
     "Gestion" : "Gestion",
     "Choose work folder" : "Kies werkmap",

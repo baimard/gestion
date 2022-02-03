@@ -22,7 +22,6 @@ OC.L10N.register(
     "Your company email" : "Вашата служебна поща",
     "Your company phone" : "Вашият служебен телефон",
     "Your company address" : "Адресът на вашата фирма",
-    "All Legal mentions, disclaimer or everything, you want place in the footer." : "Всички правни споменавания, отказ от отговорност или всичко, което искате, поставeте в долния колонтитул.",
     "EUR" : "Евро",
     "Gestion" : "Gestion",
     "Choose work folder" : "Избор на работна папка",

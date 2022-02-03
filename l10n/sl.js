@@ -22,7 +22,6 @@ OC.L10N.register(
     "Your company email" : "Elektronski naslov podjetja",
     "Your company phone" : "Telefonska številka podjetja",
     "Your company address" : "Naslov podjetja",
-    "All Legal mentions, disclaimer or everything, you want place in the footer." : "Vsa pravna obvestila, podatki podjetja in vse, kar želite postaviti v nogo.",
     "EUR" : "EUR",
     "Gestion" : "Gestion",
     "Choose work folder" : "Izbor delovne mape",

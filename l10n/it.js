@@ -22,7 +22,6 @@ OC.L10N.register(
     "Your company email" : "L'email della tua azienda",
     "Your company phone" : "Il telefono della tua azienda",
     "Your company address" : "L'indirizzo della tua azienda",
-    "All Legal mentions, disclaimer or everything, you want place in the footer." : "Tutte le note legali, informative o qualunque cosa tu voglia mettere a piè pagina.",
     "EUR" : "EUR",
     "Gestion" : "Gestionale",
     "Choose work folder" : "Scegli la cartella di lavoro",

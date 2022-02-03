@@ -23,7 +23,6 @@ OC.L10N.register(
     "Your company email" : "Su correo de empresa",
     "Your company phone" : "Teléfono de tu empresa",
     "Your company address" : "Dirección de tu empresa",
-    "All Legal mentions, disclaimer or everything, you want place in the footer." : "Todas las menciones legales, descargo de responsabilidad o cualquier otra cosa que quieras colocar en el pie de página.",
     "EUR" : "EUR",
     "Gestion" : "Gestion",
     "Simplified invoice management application" : "Una aplicación de gestión de facturas simplificada",

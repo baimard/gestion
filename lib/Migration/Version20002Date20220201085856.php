@@ -11,10 +11,11 @@ use OCP\Migration\SimpleMigrationStep;
 use OCP\IDBConnection;
 
 class Version20002Date20220201085856 extends SimpleMigrationStep {
-	private $rows = [];
+	private $rows_client = [];
+	private $rows_configuration = [];
     private IDbConnection $db;
 
-    public function __construct(IDbConnection $db){
+	public function __construct(IDbConnection $db){
         $this->db = $db;
     }
 
@@ -26,11 +27,21 @@ class Version20002Date20220201085856 extends SimpleMigrationStep {
 	public function preSchemaChange(IOutput $output, Closure $schemaClosure, array $options): void {
 		$schema = $schemaClosure();
 		$tableprefix = "gestion_";
+
+		//Client
 		if($schema->getTable($tableprefix.'client')->hasColumn('siret')) {
 			$query = $this->db->getQueryBuilder();
 			$query	->select('id', 'siret')
 					->from($tableprefix.'client');
-			$this->rows = $query->execute()->fetchAll();
+			$this->rows_client = $query->execute()->fetchAll();
+		}
+
+		//Configuration
+		if($schema->getTable($tableprefix.'configuration')->hasColumn('siret')) {
+			$query = $this->db->getQueryBuilder();
+			$query	->select('id', 'siret', 'siren')
+					->from($tableprefix.'configuration');
+			$this->rows_configuration = $query->execute()->fetchAll();
 		}
 	}
 
@@ -55,6 +66,14 @@ class Version20002Date20220201085856 extends SimpleMigrationStep {
         }
 
 		$table = $schema->getTable($tableprefix.'configuration');
+
+		if ($table->hasColumn('siret')) {
+			$table->dropColumn('siret');
+		}
+		if ($table->hasColumn('siren')) {
+			$table->dropColumn('siren');
+		}
+
 		if (!$table->hasColumn('legal_one')) {
             $table->addColumn('legal_one', 'text', []);
         }
@@ -72,7 +91,8 @@ class Version20002Date20220201085856 extends SimpleMigrationStep {
 	 * @param array $options
 	 */
 	public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options): void {
-		foreach ($this->rows as $row) {
+		//Client
+		foreach ($this->rows_client as $row) {
 			$qb = $this->db->getQueryBuilder();
 			$qb
 				->update('gestion_client')
@@ -80,5 +100,22 @@ class Version20002Date20220201085856 extends SimpleMigrationStep {
 				->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
 				->execute();
 		}
+
+		//Configuration
+		foreach ($this->rows_configuration as $row) {
+			$qb = $this->db->getQueryBuilder();
+			$qb
+				->update('gestion_configuration')
+				->set('legal_one', $qb->createNamedParameter($row['siret']))
+				->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
+				->execute();
+
+				$qb
+				->update('gestion_configuration')
+				->set('legal_two', $qb->createNamedParameter($row['siren']))
+				->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
+				->execute();
+		}
+
 	}
 }

@@ -23,7 +23,6 @@ OC.L10N.register(
     "Your company email" : "您公司的電子郵件",
     "Your company phone" : "您公司的電話",
     "Your company address" : "您公司的地址",
-    "All Legal mentions, disclaimer or everything, you want place in the footer." : "所有法律提及、免責聲明或您想在頁尾中提及的一切。",
     "EUR" : "EUR",
     "Gestion" : "Gestion",
     "Simplified invoice management application" : "簡易發票管理應用程式",

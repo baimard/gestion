@@ -23,7 +23,6 @@ OC.L10N.register(
     "Your company email" : "E-mail vašej spoločnosti",
     "Your company phone" : "Telefón vašej spoločnosti",
     "Your company address" : "Adresa vašej spoločnosti",
-    "All Legal mentions, disclaimer or everything, you want place in the footer." : "Všetky právne údaje, odmietnutie zodpovednosti alebo všetko, čo chcete umiestniť do päty.",
     "EUR" : "EUR",
     "Gestion" : "Riadenie",
     "Simplified invoice management application" : "Aplikácia pre jednoduchú správu faktúr",

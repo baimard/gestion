@@ -1,8 +1,6 @@
 import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
-import { generateUrl } from "@nextcloud/router";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
-import { cur, getGlobal, insertCell, insertRow, modifyCell } from "./mainFunction.mjs";
-var baseUrl = generateUrl('/apps/gestion');
+import { baseUrl, cur, getGlobal, insertCell, insertRow, modifyCell } from "./mainFunction.mjs";
 
 /**
  * Update data

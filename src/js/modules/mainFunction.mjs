@@ -5,7 +5,8 @@ import { configuration, getStats, isconfig } from "./ajaxRequest.mjs";
 import { generateUrl, getRootUrl } from "@nextcloud/router";
 import { Devis } from "../objects/devis.mjs";
 import { Client } from "../objects/client.mjs";
-export var baseUrl = getRootUrl() + generateUrl('/apps/gestion');
+
+export var baseUrl = generateUrl('/apps/gestion');
 export var cur = null;
 
 /**

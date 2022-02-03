@@ -10,13 +10,7 @@ use OCP\Migration\IOutput;
 use OCP\Migration\SimpleMigrationStep;
 use OCP\IDBConnection;
 
-/**
- * Auto-generated migration step: Please modify to your needs!
- */
 class Version20002Date20220201085856 extends SimpleMigrationStep {
-	/**
-	 * IDB
-	 */
 	private $rows = [];
     private IDbConnection $db;
 

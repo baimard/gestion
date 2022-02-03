@@ -1,6 +1,8 @@
 OC.L10N.register(
     "gestion",
     {
+    "Name" : "Surname",
+    "First name" : "Given name",
     "Limited company" : "SIRET",
     "Means of payment" : "Payment method",
     "Designation" : "Description",

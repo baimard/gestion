@@ -74,8 +74,12 @@ class Version20002Date20220201085856 extends SimpleMigrationStep {
 	 */
 	public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options): void {
 		foreach ($this->rows as $row) {
-     		$stmt = $this->db->prepare("UPDATE `".'*PREFIX*'."gestion_client` SET `legal_one` = ? WHERE id = ?;");
-        	$stmt->execute(array($row['siret'], $row['id']));
+			$qb = $this->db->getQueryBuilder();
+			$qb
+				->update('gestion_client')
+				->set('legal_one', $qb->createNamedParameter($row['siret']))
+				->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
+				->execute();
 		}
 	}
 }

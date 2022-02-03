@@ -97,8 +97,6 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
             $table->addColumn('prenom', 'text', []);
         }
 
-
-
         if (!$table->hasColumn('legal_one')) {
             $table->addColumn('legal_one', 'text', []);
         }

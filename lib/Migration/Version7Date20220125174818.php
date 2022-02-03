@@ -54,11 +54,6 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
         if (!$table->hasColumn('prenom')) {
             $table->addColumn('prenom', 'text', []);
         }
-        if (!$table->hasColumn('siret')) {
-        }else{
-            $stmt = $this->db->prepare("ALTER TABLE `".'*PREFIX*'."gestion_client` CHANGE `siret` `legal_one` LONGTEXT");
-            $stmt->execute();
-        }
 
         if (!$table->hasColumn('legal_one')) {
             $table->addColumn('legal_one', 'text', []);
@@ -100,18 +95,6 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
 
         if (!$table->hasColumn('prenom')) {
             $table->addColumn('prenom', 'text', []);
-        }
-
-        if (!$table->hasColumn('siret')) {
-        }else{
-            $stmt = $this->db->prepare("ALTER TABLE `".'*PREFIX*'."gestion_configuration` CHANGE `siret` `legal_one` LONGTEXT");
-            $stmt->execute();
-        }
-
-        if (!$table->hasColumn('siren')) {
-        }else{
-            $stmt = $this->db->prepare("ALTER TABLE `".'*PREFIX*'."gestion_configuration` CHANGE `siren` `legal_two` LONGTEXT");
-            $stmt->execute();
         }
 
         if (!$table->hasColumn('legal_one')) {

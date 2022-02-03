@@ -12,7 +12,7 @@ module.exports =
       filename: '../js/client.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -65,7 +65,7 @@ module.exports =
       filename: '../js/devis.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -118,7 +118,7 @@ module.exports =
       filename: '../js/facture.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -171,7 +171,7 @@ module.exports =
       filename: '../js/devisShow.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -224,7 +224,7 @@ module.exports =
       filename: '../js/factureShow.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -277,7 +277,7 @@ module.exports =
       filename: '../js/produit.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -329,7 +329,7 @@ module.exports =
       filename: '../js/configuration.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -381,7 +381,7 @@ module.exports =
       filename: '../js/statistique.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -434,7 +434,7 @@ module.exports =
       filename: '../js/[name].app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
 
     plugins: [

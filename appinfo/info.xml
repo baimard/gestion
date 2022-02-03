@@ -40,7 +40,11 @@
 
         [Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)
     </description>
+<<<<<<< Updated upstream
     <version>2.0.1</version>
+=======
+    <version>2.0</version>
+>>>>>>> Stashed changes
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>

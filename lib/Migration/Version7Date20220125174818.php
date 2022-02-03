@@ -97,11 +97,6 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
             $table->addColumn('prenom', 'text', []);
         }
 
-        // if (!$table->hasColumn('siret')) {
-        // }else{
-        //     $stmt = $this->db->prepare("ALTER TABLE `".'*PREFIX*'."gestion_configuration` CHANGE `siret` `legal_one` LONGTEXT");
-        //     $stmt->execute();
-        // }
 
         // if (!$table->hasColumn('siren')) {
         // }else{

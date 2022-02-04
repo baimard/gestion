@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-02-03 03:25+0000\n"
+"POT-Creation-Date: 2022-02-04 03:25+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -202,8 +202,8 @@ msgid "Creation in progress …"
 msgstr "Création en cours"
 
 #: /app/templates/content/changelog.php:4
-msgid "Welcome to GESTION 2.0"
-msgstr "Bienvenue dans GESTION 2.0"
+msgid "Welcome to GESTION 2.0.2\t"
+msgstr ""
 
 #: /app/templates/content/changelog.php:5
 msgid ""

@@ -114,16 +114,16 @@ class Version20002Date20220201085856 extends SimpleMigrationStep {
 			foreach ($this->rows_configuration as $row) {
 				$qb = $this->db->getQueryBuilder();
 				$qb
-					->update('gestion_configuration')
-					->set('legal_one', $qb->createNamedParameter($row['siret']))
-					->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
-					->execute();
+				->update('gestion_configuration')
+				->set('legal_one', $qb->createNamedParameter($row['siret']))
+				->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
+				->execute();
 
-					$qb
-					->update('gestion_configuration')
-					->set('legal_two', $qb->createNamedParameter($row['siren']))
-					->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
-					->execute();
+				$qb
+				->update('gestion_configuration')
+				->set('legal_two', $qb->createNamedParameter($row['siren']))
+				->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
+				->execute();
 			}
 		}
 	}

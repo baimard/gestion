@@ -7,8 +7,8 @@ $client = Client::createFirefoxClient();
 
 $client->request('GET', 'http://next.cybercorp.fr');
 $client->submitForm('submit-form', [
-    'user' => 'baimard',
-    'password' => 'baimardbaimard' // Not my real pass ...
+    'user' => 'nextcloud',
+    'password' => 'nextcloud' // Not my real pass ...
 ]);
 
 $client->request('GET', 'http://next.cybercorp.fr/index.php/apps/gestion/config');

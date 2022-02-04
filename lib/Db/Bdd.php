@@ -100,7 +100,7 @@ class Bdd {
      * Insert quote
      */
     public function insertDevis($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."devis` (`id`, `date`,`id_nextcloud`,`num`,`id_client`,version,mentions,comment) VALUES (NULL, NOW(),?,?,0,'0.1',?,?);";
+        $sql = "INSERT INTO `".$this->tableprefix."devis` (`date`,`id_nextcloud`,`num`,`id_client`,version,mentions,comment) VALUES (NOW(),?,?,0,'0.1',?,?);";
         $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment')));
         return true;
     }
@@ -109,7 +109,7 @@ class Bdd {
      * Insert invoice
      */
     public function insertFacture($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."facture` (`id`, `date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`) VALUES (NULL,?,?,?,NOW(),?,0);";
+        $sql = "INSERT INTO `".$this->tableprefix."facture` (`date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`) VALUES (?,?,?,NOW(),?,0);";
         $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('Invoice number'),$this->l->t('Means of payment')));
 
         if(json_decode($this->getConfiguration(($idNextcloud)))[0]->auto_invoice_number == 1){
@@ -169,7 +169,7 @@ class Bdd {
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
         if ( $res < 1 ){
-            $sql = "INSERT INTO `".$this->tableprefix."configuration` (`id`, `entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, '/', ?, ?, '0',?);";
+            $sql = "INSERT INTO `".$this->tableprefix."configuration` (`entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '/', ?, ?, '0',?);";
             $this->execSQLNoData($sql, array($this->l->t('Your company name'),
                                         $this->l->t('Your company contact surname'),
                                         $this->l->t('Your company contact name'),
@@ -242,15 +242,15 @@ class Bdd {
      * Annual turnover per month without VAT
      */
     public function getAnnualTurnoverPerMonthNoVat($idNextcloud){
-        $sql = "SELECT  YEAR(oc_gestion_facture.date_paiement) as y, 
-                        MONTH(oc_gestion_facture.date_paiement) as m, 
-                        sum(oc_gestion_produit.prix_unitaire * oc_gestion_produit_devis.quantite) as total
-                FROM `oc_gestion_facture`, `oc_gestion_produit_devis`, `oc_gestion_produit`
-                WHERE oc_gestion_facture.id_devis = oc_gestion_produit_devis.devis_id
-                AND oc_gestion_produit_devis.produit_id = oc_gestion_produit.id
-                AND oc_gestion_facture.id_nextcloud = ?
-                GROUP BY YEAR(oc_gestion_facture.date_paiement), MONTH(oc_gestion_facture.date_paiement)
-                ORDER BY YEAR(oc_gestion_facture.date_paiement) DESC, MONTH(oc_gestion_facture.date_paiement);";
+        $sql = "SELECT  YEAR(".$this->tableprefix."facture.date_paiement) as y, 
+                        MONTH(".$this->tableprefix."facture.date_paiement) as m, 
+                        sum(".$this->tableprefix."produit.prix_unitaire * ".$this->tableprefix."produit_devis.quantite) as total
+                FROM `".$this->tableprefix."facture`, `".$this->tableprefix."produit_devis`, `".$this->tableprefix."produit`
+                WHERE ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."produit_devis.devis_id
+                AND ".$this->tableprefix."produit_devis.produit_id = ".$this->tableprefix."produit.id
+                AND ".$this->tableprefix."facture.id_nextcloud = ?
+                GROUP BY YEAR(".$this->tableprefix."facture.date_paiement), MONTH(".$this->tableprefix."facture.date_paiement)
+                ORDER BY YEAR(".$this->tableprefix."facture.date_paiement) DESC, MONTH(".$this->tableprefix."facture.date_paiement);";
         return $this->execSQL($sql, array($idNextcloud));
     }
 

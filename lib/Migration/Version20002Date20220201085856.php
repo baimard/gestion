@@ -14,6 +14,8 @@ class Version20002Date20220201085856 extends SimpleMigrationStep {
 	private $rows_client = [];
 	private $rows_configuration = [];
     private IDbConnection $db;
+	private $detect_client = false;
+	private $detect_configuration = false;
 
 	public function __construct(IDbConnection $db){
         $this->db = $db;
@@ -34,6 +36,7 @@ class Version20002Date20220201085856 extends SimpleMigrationStep {
 			$query	->select('id', 'siret')
 					->from($tableprefix.'client');
 			$this->rows_client = $query->execute()->fetchAll();
+			$this->detect_client = true;
 		}
 
 		//Configuration
@@ -42,6 +45,7 @@ class Version20002Date20220201085856 extends SimpleMigrationStep {
 			$query	->select('id', 'siret', 'siren')
 					->from($tableprefix.'configuration');
 			$this->rows_configuration = $query->execute()->fetchAll();
+			$this->detect_configuration = true;
 		}
 	}
 
@@ -91,20 +95,25 @@ class Version20002Date20220201085856 extends SimpleMigrationStep {
 	 * @param array $options
 	 */
 	public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options): void {
-		//Client
-		foreach ($this->rows_client as $row) {
-			$qb = $this->db->getQueryBuilder();
-			$qb
-				->update('gestion_client')
-				->set('legal_one', $qb->createNamedParameter($row['siret']))
-				->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
-				->execute();
-		}
+		$schema = $schemaClosure();
+		$tableprefix = "gestion_";
 
-		//Configuration
-		foreach ($this->rows_configuration as $row) {
-			$qb = $this->db->getQueryBuilder();
-			$qb
+		if($this->detect_client){
+			//Client
+			foreach ($this->rows_client as $row) {
+				$qb = $this->db->getQueryBuilder();
+				$qb
+					->update('gestion_client')
+					->set('legal_one', $qb->createNamedParameter($row['siret']))
+					->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
+					->execute();
+			}
+		}
+		if($this->detect_configuration){
+			//Configuration
+			foreach ($this->rows_configuration as $row) {
+				$qb = $this->db->getQueryBuilder();
+				$qb
 				->update('gestion_configuration')
 				->set('legal_one', $qb->createNamedParameter($row['siret']))
 				->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
@@ -115,7 +124,7 @@ class Version20002Date20220201085856 extends SimpleMigrationStep {
 				->set('legal_two', $qb->createNamedParameter($row['siren']))
 				->where($qb->expr()->eq('id', $qb->createNamedParameter($row['id'])))
 				->execute();
+			}
 		}
-
 	}
 }

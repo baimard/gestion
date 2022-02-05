@@ -35,6 +35,7 @@ OC.L10N.register(
     "Email sent" : "E-Mail gesendet",
     "Is your global mail server configured in Nextcloud?" : "Ist Ihr globaler Mailserver in Nextcloud konfiguriert?",
     "Creation in progress …" : "Erstellung läuft…",
+    "Welcome to GESTION 2.0.2\t" : "Willkommen bei GESTION 2.0.2\t",
     "To start with this application you need to configure your company information, follow this link" : "Um mit dieser Anwendung zu beginnen, müssen Sie Ihre Unternehmensdaten konfigurieren, folgen Sie diesem Link",
     "My company" : "Meine Firma",
     "If you have updated this application, do not forget to clear your cache" : "Vergessen Sie nicht Ihren Cache zu löschen, nachdem Sie diese Anwendung aktualisiert haben.",

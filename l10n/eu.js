@@ -80,6 +80,7 @@ OC.L10N.register(
     "Add customer" : "Gehitu bezeroa",
     "Legal information" : "Informazio legala",
     "Product" : "Produktua",
+    "Statistics" : "Estatistikak",
     "Year" : "Urtea",
     "January" : "Urtarrila",
     "February" : "Otsaila",

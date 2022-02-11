@@ -13,7 +13,7 @@
 		<br/>	<?php p($l->t('Want to talk with the community?')); ?> &#128073; <a href="https://github.com/baimard/gestion/discussions"><?php p($l->t('Git discussion')); ?></a>
 		<hr />
 		<h2><?php p($l->t('Changelog')); ?></h2>
-		<p><a href="https://github.com/baimard/gestion/releases">Release</a></p>
+		<p><a href="https://github.com/baimard/gestion/releases"><?php p($l->t('Release')); ?></a></p>
 	</div>
 </div>
 

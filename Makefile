@@ -153,7 +153,7 @@ appstore:
 
 .PHONY: test
 test:
-	$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.xml --debug --colors
+	sudo -u www-data $(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.xml --debug --colors
 #$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.integration.xml
 
 .PHONY: testPanther
@@ -178,3 +178,18 @@ composer.phar:
 cleanComposer:
 	rm -f translationtool.phar composer.lock src/composer.lock
 	rm -rf vendor src/vendor
+
+fulltest: runContainer testPanther test stopContainer
+
+runContainer:
+	sudo service apache2 stop
+	docker run -d --rm --network next --name database -p 3306:3306 -e MYSQL_DATABASE=nextcloud -e MARIADB_ROOT_PASSWORD=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud mariadb
+	docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:23-apache
+	sleep 5
+	killall geckodriver; php tests/Unit/Panther/initTest.php
+	docker exec -i database sh -c 'exec mysql -uroot -p"$$MARIADB_ROOT_PASSWORD"' < ./tests/dataset.sql
+
+stopContainer:
+	docker stop -t 0 database
+	docker stop -t 0 nextcloud
+	sudo service apache2 start

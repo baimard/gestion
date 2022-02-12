@@ -230,4 +230,9 @@ class PageControllerTest extends TestCase {
 		$this->assertArrayHasKey('facture', $result);
 		$this->assertArrayHasKey('produit', $result);
 	}
+
+	public function testGetAnnualTurnoverPerMonthNoVat(){
+		$result = (array) json_decode($this->controller->getAnnualTurnoverPerMonthNoVat());
+		$this->assertIsArray($result);
+	}
 }

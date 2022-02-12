@@ -46,7 +46,7 @@ OC.L10N.register(
     "Documentation" : "Dokumentacja",
     "Others questions?" : "Inne pytania?",
     "Contact" : "Kontakt",
-    "Leave me a comment, but only if you like this application :)" : "Zostaw komentarz, ale tylko jeśli podoba Ci się ta aplikacja :)",
+    "Leave me a comment, but only if you like this application :)" : "Zostaw komentarz, ale tylko jeśli podoba się Tobie ta aplikacja :)",
     "Nextcloud apps" : "Aplikacje Nextcloud",
     "Want to talk with the community?" : "Chcesz porozmawiać ze społecznością?",
     "Git discussion" : "Dyskusja Git",

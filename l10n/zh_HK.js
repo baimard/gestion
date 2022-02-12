@@ -35,6 +35,7 @@ OC.L10N.register(
     "Email sent" : "電子郵件已寄出",
     "Is your global mail server configured in Nextcloud?" : "您的電郵伺服器是否已在 Nextcloud 中配置？",
     "Creation in progress …" : "正在創建中",
+    "Welcome to GESTION 2.0.2\t" : "歡迎使用 GESTION 2.0.2\t",
     "To start with this application you need to configure your company information, follow this link" : "要開始使用此應用程式，您必須先設定您的公司資訊，請點擊此連結",
     "My company" : "我的公司",
     "If you have updated this application, do not forget to clear your cache" : "如果您更新此應用程式，請不要忘記清除緩存",

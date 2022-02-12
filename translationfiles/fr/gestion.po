@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-02-04 03:25+0000\n"
+"POT-Creation-Date: 2022-02-12 03:29+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -270,6 +270,10 @@ msgstr "Discussion Git"
 #: /app/templates/content/changelog.php:15
 msgid "Changelog"
 msgstr "Journal des modifications"
+
+#: /app/templates/content/changelog.php:16
+msgid "Release"
+msgstr ""
 
 #: /app/templates/content/changelog.php:23
 msgid "Send an email"

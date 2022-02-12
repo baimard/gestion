@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-02-04 03:25+0000\n"
+"POT-Creation-Date: 2022-02-12 03:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -244,6 +244,10 @@ msgstr ""
 
 #: /app/templates/content/changelog.php:15
 msgid "Changelog"
+msgstr ""
+
+#: /app/templates/content/changelog.php:16
+msgid "Release"
 msgstr ""
 
 #: /app/templates/content/changelog.php:23

@@ -2,7 +2,7 @@ import { showSuccess } from "@nextcloud/dialogs";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 import { configuration, getStats, isconfig } from "./ajaxRequest.mjs";
 
-import { generateUrl, getRootUrl } from "@nextcloud/router";
+import { generateUrl } from "@nextcloud/router";
 import { Devis } from "../objects/devis.mjs";
 import { Client } from "../objects/client.mjs";
 
@@ -12,7 +12,7 @@ export var cur = null;
 /**
  * 
  */
- export const optionDatatable = {
+ export var optionDatatable = {
     autoWidth: false,
     stateSave: true,
     language: {
@@ -88,7 +88,7 @@ export function LoadDT(DT, response, cls) {
         let c = new cls(myresp);
         DT.row.add(c.getDTRow());
     });
-    DT.columns.adjust().draw();
+    DT.columns.adjust(optionDatatable).draw(true);
     configureDT();
 }
 

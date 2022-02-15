@@ -116,7 +116,6 @@ OC.L10N.register(
     "December" : "Dezembro",
     "Total" : "Total",
     "Manage" : "Gerenciar",
-    "Information" : "Informação",
     "About" : "Sobre",
     "Save folder" : "Salvar pasta ",
     "Please choose a folder" : "Por favor escolha uma pasta"

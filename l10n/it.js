@@ -94,7 +94,6 @@ OC.L10N.register(
     "November" : "Novembre",
     "December" : "Dicembre",
     "Manage" : "Gestisci",
-    "Information" : "Informazioni",
     "About" : "Informazioni",
     "Save folder" : "Salva cartella"
 },

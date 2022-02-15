@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-02-14 03:28+0000\n"
+"POT-Creation-Date: 2022-02-15 04:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -430,7 +430,7 @@ msgid ""
 "information"
 msgstr ""
 
-#: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:12
+#: /app/templates/content/devis.php:8
 msgid "Quote"
 msgstr ""
 
@@ -532,7 +532,7 @@ msgstr ""
 msgid "Please set in global configuration"
 msgstr ""
 
-#: /app/templates/content/facture.php:8 /app/templates/navigation/index.php:19
+#: /app/templates/content/facture.php:8
 msgid "Invoice"
 msgstr ""
 
@@ -562,7 +562,7 @@ msgstr ""
 msgid "Settlement date"
 msgstr ""
 
-#: /app/templates/content/index.php:8 /app/templates/navigation/index.php:5
+#: /app/templates/content/index.php:8
 msgid "Customer"
 msgstr ""
 
@@ -574,7 +574,7 @@ msgstr ""
 msgid "Legal information"
 msgstr ""
 
-#: /app/templates/content/produit.php:8 /app/templates/navigation/index.php:26
+#: /app/templates/content/produit.php:8
 msgid "Product"
 msgstr ""
 
@@ -647,8 +647,24 @@ msgstr ""
 msgid "Manage"
 msgstr ""
 
+#: /app/templates/navigation/index.php:5
+msgid "Customers"
+msgstr ""
+
+#: /app/templates/navigation/index.php:12
+msgid "Quotes"
+msgstr ""
+
+#: /app/templates/navigation/index.php:19
+msgid "Invoices"
+msgstr ""
+
+#: /app/templates/navigation/index.php:26
+msgid "Products"
+msgstr ""
+
 #: /app/templates/navigation/index.php:35
-msgid "Information"
+msgid "Informations"
 msgstr ""
 
 #: /app/templates/settings/index.php:9

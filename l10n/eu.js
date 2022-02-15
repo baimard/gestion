@@ -96,7 +96,6 @@ OC.L10N.register(
     "December" : "Abendua",
     "Total" : "Totala",
     "Manage" : "Kudeatu",
-    "Information" : "Informazioa",
     "About" : "Honi buruz",
     "Save folder" : "Gorde karpeta",
     "Please choose a folder" : "Mesedez aukeratu karpeta bat"

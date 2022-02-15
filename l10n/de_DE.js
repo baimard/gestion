@@ -138,7 +138,6 @@ OC.L10N.register(
     "December" : "Dezember",
     "Total" : "Gesamt",
     "Manage" : "Verwalten",
-    "Information" : "Information",
     "About" : "Über",
     "Save folder" : "Ordner speichern",
     "Please choose a folder" : "Bitte einen Ordner auswählen"

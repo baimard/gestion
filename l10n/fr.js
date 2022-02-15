@@ -34,6 +34,7 @@ OC.L10N.register(
     "Email sent" : "Email envoyé",
     "Is your global mail server configured in Nextcloud?" : "Est ce que le serveur courriel est configuré dans Nextcloud ?",
     "Creation in progress …" : "Création en cours",
+    "Welcome to GESTION" : "Bienvenue dans GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Pour commencer avec cette application, vous devez configurer les informations de votre entreprise, suivez ce lien",
     "My company" : "Mon entreprise",
     "If you have updated this application, do not forget to clear your cache" : "Si vous avez mis à jour l'application, pensez à effacer votre cache",
@@ -59,6 +60,7 @@ OC.L10N.register(
     "Company name" : "Nom de votre entreprise",
     "Your company VAT rate" : "Le taux de TVA de votre entreprise",
     "Global default Currency" : "Devis par défaut globale",
+    "Global currency for the application." : "Devise globale pour toute l'application",
     "Legal disclaimer/mentions" : "Avis de non-responsabilité/mentions",
     "Configuration" : "Configuration",
     "Click to edit" : "Cliquer pour modifier",
@@ -121,7 +123,6 @@ OC.L10N.register(
     "December" : "Décembre",
     "Total" : "Total",
     "Manage" : "Gérer",
-    "Information" : "Information",
     "About" : "À propos",
     "Save folder" : "Dossier de sauvegarde",
     "Please choose a folder" : "Veuillez sélectionner un dossier"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-02-14 03:28+0000\n"
+"POT-Creation-Date: 2022-02-15 04:45+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -203,7 +203,7 @@ msgstr "Création en cours"
 
 #: /app/templates/content/changelog.php:4
 msgid "Welcome to GESTION"
-msgstr ""
+msgstr "Bienvenue dans GESTION"
 
 #: /app/templates/content/changelog.php:5
 msgid ""
@@ -375,7 +375,7 @@ msgstr "Devis par défaut globale"
 
 #: /app/templates/content/changelog.php:62
 msgid "Global currency for the application."
-msgstr ""
+msgstr "Devise globale pour toute l'application"
 
 #: /app/templates/content/changelog.php:63
 msgid "Legal disclaimer/mentions"
@@ -462,7 +462,7 @@ msgstr ""
 "Information/Avertissement dont vous avez besoin dans votre pied de page, "
 "avant les informations de l'entreprise"
 
-#: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:12
+#: /app/templates/content/devis.php:8
 msgid "Quote"
 msgstr "Devis"
 
@@ -564,7 +564,7 @@ msgstr "Total TTC"
 msgid "Please set in global configuration"
 msgstr "Merci de le renseigner dans la zone de configuration globale"
 
-#: /app/templates/content/facture.php:8 /app/templates/navigation/index.php:19
+#: /app/templates/content/facture.php:8
 msgid "Invoice"
 msgstr "Facture"
 
@@ -594,7 +594,7 @@ msgstr "Facture N°"
 msgid "Settlement date"
 msgstr "Date de règlement"
 
-#: /app/templates/content/index.php:8 /app/templates/navigation/index.php:5
+#: /app/templates/content/index.php:8
 msgid "Customer"
 msgstr "Client"
 
@@ -606,7 +606,7 @@ msgstr "Ajouter client"
 msgid "Legal information"
 msgstr "Information légale"
 
-#: /app/templates/content/produit.php:8 /app/templates/navigation/index.php:26
+#: /app/templates/content/produit.php:8
 msgid "Product"
 msgstr "Produit"
 
@@ -679,9 +679,25 @@ msgstr "Total"
 msgid "Manage"
 msgstr "Gérer"
 
+#: /app/templates/navigation/index.php:5
+msgid "Customers"
+msgstr ""
+
+#: /app/templates/navigation/index.php:12
+msgid "Quotes"
+msgstr ""
+
+#: /app/templates/navigation/index.php:19
+msgid "Invoices"
+msgstr ""
+
+#: /app/templates/navigation/index.php:26
+msgid "Products"
+msgstr ""
+
 #: /app/templates/navigation/index.php:35
-msgid "Information"
-msgstr "Information"
+msgid "Informations"
+msgstr ""
 
 #: /app/templates/settings/index.php:9
 msgid "About"

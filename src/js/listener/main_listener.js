@@ -13,6 +13,7 @@ $('body').on('click', '#theFolder', function () {
     var f = new FilePicker(choose_folder, false, [], false, 1, true, $("#theFolder").val());
     f.pick().then(
         function (value) {
+            console.log(value)
             updateDB($('#theFolder').data('table'), $('#theFolder').data('column'), value, $('#theFolder').data('id'));
             configuration(path);
         }

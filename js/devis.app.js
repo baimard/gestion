@@ -36314,7 +36314,7 @@ function listProduit(lp, id, produitid) {
         type: 'PROPFIND',
         contentType: 'application/json'
     }).done(function (response) {
-        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">Annuler</option>');
+        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">'+(0,_nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__/* .translate */ .Iu)('gestion','Cancel')+'</option>');
         $.each(JSON.parse(response), function (arrayID, myresp) {
             var selected = "";
             if (produitid == myresp.id) {

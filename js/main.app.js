@@ -30663,7 +30663,7 @@ function listProduit(lp, id, produitid) {
         type: 'PROPFIND',
         contentType: 'application/json'
     }).done(function (response) {
-        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">Annuler</option>');
+        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">'+t('gestion','Cancel')+'</option>');
         ajaxRequest_$.each(JSON.parse(response), function (arrayID, myresp) {
             var selected = "";
             if (produitid == myresp.id) {

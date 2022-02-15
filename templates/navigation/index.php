@@ -32,7 +32,7 @@
 			</li>
 		</ul>
 	</li>
-	<li class="app-navigation-entry"><span class="navmarg"></span><b><?php p($l->t('Informations'));?></b></li>
+	<li class="app-navigation-entry"><span class="navmarg"></span><b><?php p($l->t('Information'));?></b></li>
 	<li class="app-navigation-entry">
 		<ul class="app-navigation">
 			<li class="app-navigation-entry"><span class="navmarg icon-toggle-pictures"></span><a href="<?php echo($_['url']['statistique']); ?>"><?php p($l->t('Statistics'));?></a></li>

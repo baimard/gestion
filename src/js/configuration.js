@@ -8,7 +8,7 @@ import { getAutoIncrement, getCurrencyList } from './modules/list.mjs';
 
 
 window.addEventListener('DOMContentLoaded', function () {
-    globalConfiguration();
+    globalConfiguration(false);
 
 
     configuration(loadConfigurationDT);

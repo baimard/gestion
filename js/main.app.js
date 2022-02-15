@@ -30983,9 +30983,15 @@ var mainFunction_cur = null;
     }
 }
 
-function globalConfiguration(){
+/**
+ * 
+ * @param {*} checkConfig 
+ */
+function globalConfiguration(checkConfig=true){
     getStats();
-    isconfig();
+    if(checkConfig){
+        isconfig();
+    }
     configuration(getCurrency);
     configuration(mainFunction_path);
 }

@@ -34,9 +34,15 @@ export var cur = null;
     }
 }
 
-export function globalConfiguration(){
+/**
+ * 
+ * @param {*} checkConfig 
+ */
+export function globalConfiguration(checkConfig=true){
     getStats();
-    isconfig();
+    if(checkConfig){
+        isconfig();
+    }
     configuration(getCurrency);
     configuration(path);
 }

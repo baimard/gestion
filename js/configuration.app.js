@@ -36358,9 +36358,15 @@ var cur = null;
     }
 }
 
-function globalConfiguration(){
+/**
+ * 
+ * @param {*} checkConfig 
+ */
+function globalConfiguration(checkConfig=true){
     ;(0,_ajaxRequest_mjs__WEBPACK_IMPORTED_MODULE_2__.getStats)();
-    (0,_ajaxRequest_mjs__WEBPACK_IMPORTED_MODULE_2__.isconfig)();
+    if(checkConfig){
+        (0,_ajaxRequest_mjs__WEBPACK_IMPORTED_MODULE_2__.isconfig)();
+    }
     (0,_ajaxRequest_mjs__WEBPACK_IMPORTED_MODULE_2__.configuration)(getCurrency);
     (0,_ajaxRequest_mjs__WEBPACK_IMPORTED_MODULE_2__.configuration)(path);
 }
@@ -37414,7 +37420,7 @@ function getAutoIncrement(activate){
 
 
 window.addEventListener('DOMContentLoaded', function () {
-    (0,mainFunction.globalConfiguration)();
+    (0,mainFunction.globalConfiguration)(false);
 
 
     (0,ajaxRequest.configuration)(loadConfigurationDT);

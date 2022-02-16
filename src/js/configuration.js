@@ -50,7 +50,7 @@ function loadConfigurationDT(response) {
         $('#mail').html(((myresp.mail.length === 0) ? '-' : myresp.mail));
         $('#mail').data("id", myresp.id);
 
-        $('#tva_default').html(((myresp.tva_default.length === 0) ? '-' : myresp.tva_default + " %"));
+        $('#tva_default').html(((myresp.tva_default.length === 0) ? '-' : myresp.tva_default));
         $('#tva_default').data("id", myresp.id);
 
         $('#auto_invoice_number').html(getAutoIncrement(myresp.auto_invoice_number));

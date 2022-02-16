@@ -222,8 +222,12 @@ export function checkAutoIncrement(response){
  * 
  * @param {*} div 
  */
-export function updateNumerical(el){
+export function updateNumerical(el, format_number=true){
     el.text(el.text().replace(',', '.').replace(/[^0-9.-]+/g,""))
-    updateEditable(el); 
-    el.text(cur.format(el.text()))
+    updateEditable(el);
+    if(format_number){
+        el.text(cur.format(el.text()))
+    }else{
+        el.text(el.text())
+    }
 }

@@ -24,20 +24,16 @@ $('body').on('change', '.editableSelect', function () { updateDB($(this).data('t
 $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
-$('body').on('click', '.editable, .editableNumeric', function () { $(this).attr('contenteditable', 'true'); });
+$('body').on('click', '.editable, .editableNumeric, .editableNumber', function () { $(this).attr('contenteditable', 'true'); });
 
 $('body').on('blur', '.editable', function () { updateEditable($(this)); });
 $('body').on('keypress', '.editable', function (event) { if (event.key === "Enter") { updateEditable($(this)); } });
 
-$('body').on('blur', '.editableNumeric', function () {
-    updateNumerical($(this));
-});
+$('body').on('blur', '.editableNumeric', function () {updateNumerical($(this));});
+$('body').on('keypress', '.editableNumeric', function (event) {if (event.key === "Enter") {updateNumerical($(this));}});
 
-$('body').on('keypress', '.editableNumeric', function (event) {
-    if (event.key === "Enter") {
-        updateNumerical($(this));
-    }
-});
+$('body').on('blur', '.editableNumber', function () {updateNumerical($(this), false);});
+$('body').on('keypress', '.editableNumber', function (event) {if (event.key === "Enter") {updateNumerical($(this), false);}});
 
 //Problem avec les elements dynamique
 // var classEditable = document.getElementsByClassName('editable');

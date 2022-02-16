@@ -36077,13 +36077,13 @@ function updateDB(table, column, data, id) {
     }).done(function (response, code) {
         (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__.showSuccess)((0,_nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__/* .translate */ .Iu)('gestion', 'Modification saved'));
     }).fail(function (response, code) {
-        (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__.showError)(response);
+        (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__.showError)((0,_nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__/* .translate */ .Iu)('gestion', 'There is an error with the format, please check the documentation'));
     });
 }
 
 /**
  * Delete data
- * @param table 
+ * @param table
  * @param id 
  */
 function deleteDB(table, id) {
@@ -36092,17 +36092,21 @@ function deleteDB(table, id) {
         id: id,
     };
 
-    $.ajax({
-        url: _mainFunction_mjs__WEBPACK_IMPORTED_MODULE_2__.baseUrl + '/delete',
-        type: 'DELETE',
-        async: false,
-        contentType: 'application/json',
-        data: JSON.stringify(myData)
-    }).done(function (response, code) {
-        (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__.showMessage)((0,_nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__/* .translate */ .Iu)('gestion', 'Modification saved'));
-    }).fail(function (response, code) {
-        (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__.showError)(response);
-    });
+    if(window.confirm((0,_nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__/* .translate */ .Iu)('gestion','Are you sure you want to delete?'))){
+        $.ajax({
+            url: _mainFunction_mjs__WEBPACK_IMPORTED_MODULE_2__.baseUrl + '/delete',
+            type: 'DELETE',
+            async: false,
+            contentType: 'application/json',
+            data: JSON.stringify(myData)
+        }).done(function (response, code) {
+            (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__.showSuccess)((0,_nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__/* .translate */ .Iu)('gestion', 'Modification saved'));
+        }).fail(function (response, code) {
+            (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__.showError)(response);
+        });
+    }else{
+        (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__.showMessage)((0,_nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__/* .translate */ .Iu)('gestion', 'Nothing changed'))
+    }
 }
 
 /**
@@ -36550,10 +36554,14 @@ function checkAutoIncrement(response){
  * 
  * @param {*} div 
  */
-function updateNumerical(el){
+function updateNumerical(el, format_number=true){
     el.text(el.text().replace(',', '.').replace(/[^0-9.-]+/g,""))
-    ;(0,_ajaxRequest_mjs__WEBPACK_IMPORTED_MODULE_2__.updateEditable)(el); 
-    el.text(cur.format(el.text()))
+    ;(0,_ajaxRequest_mjs__WEBPACK_IMPORTED_MODULE_2__.updateEditable)(el);
+    if(format_number){
+        el.text(cur.format(el.text()))
+    }else{
+        el.text(el.text())
+    }
 }
 
 /***/ }),
@@ -37119,20 +37127,16 @@ $('body').on('change', '.editableSelect', function () { updateDB($(this).data('t
 $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
-$('body').on('click', '.editable, .editableNumeric', function () { $(this).attr('contenteditable', 'true'); });
+$('body').on('click', '.editable, .editableNumeric, .editableNumber', function () { $(this).attr('contenteditable', 'true'); });
 
 $('body').on('blur', '.editable', function () { updateEditable($(this)); });
 $('body').on('keypress', '.editable', function (event) { if (event.key === "Enter") { updateEditable($(this)); } });
 
-$('body').on('blur', '.editableNumeric', function () {
-    updateNumerical($(this));
-});
+$('body').on('blur', '.editableNumeric', function () {updateNumerical($(this));});
+$('body').on('keypress', '.editableNumeric', function (event) {if (event.key === "Enter") {updateNumerical($(this));}});
 
-$('body').on('keypress', '.editableNumeric', function (event) {
-    if (event.key === "Enter") {
-        updateNumerical($(this));
-    }
-});
+$('body').on('blur', '.editableNumber', function () {updateNumerical($(this), false);});
+$('body').on('keypress', '.editableNumber', function (event) {if (event.key === "Enter") {updateNumerical($(this), false);}});
 
 //Problem avec les elements dynamique
 // var classEditable = document.getElementsByClassName('editable');
@@ -37492,7 +37496,7 @@ function loadConfigurationDT(response) {
         $('#mail').html(((myresp.mail.length === 0) ? '-' : myresp.mail));
         $('#mail').data("id", myresp.id);
 
-        $('#tva_default').html(((myresp.tva_default.length === 0) ? '-' : myresp.tva_default + " %"));
+        $('#tva_default').html(((myresp.tva_default.length === 0) ? '-' : myresp.tva_default));
         $('#tva_default').data("id", myresp.id);
 
         $('#auto_invoice_number').html(getAutoIncrement(myresp.auto_invoice_number));

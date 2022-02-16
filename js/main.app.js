@@ -30519,13 +30519,13 @@ function updateDB(table, column, data, id) {
     }).done(function (response, code) {
         showSuccess(t('gestion', 'Modification saved'));
     }).fail(function (response, code) {
-        showError(response);
+        showError(t('gestion', 'There is an error with the format, please check the documentation'));
     });
 }
 
 /**
  * Delete data
- * @param table 
+ * @param table
  * @param id 
  */
 function deleteDB(table, id) {
@@ -30534,17 +30534,21 @@ function deleteDB(table, id) {
         id: id,
     };
 
-    ajaxRequest_$.ajax({
-        url: baseUrl + '/delete',
-        type: 'DELETE',
-        async: false,
-        contentType: 'application/json',
-        data: JSON.stringify(myData)
-    }).done(function (response, code) {
-        showMessage(t('gestion', 'Modification saved'));
-    }).fail(function (response, code) {
-        showError(response);
-    });
+    if(window.confirm(t('gestion','Are you sure you want to delete?'))){
+        ajaxRequest_$.ajax({
+            url: baseUrl + '/delete',
+            type: 'DELETE',
+            async: false,
+            contentType: 'application/json',
+            data: JSON.stringify(myData)
+        }).done(function (response, code) {
+            showSuccess(t('gestion', 'Modification saved'));
+        }).fail(function (response, code) {
+            showError(response);
+        });
+    }else{
+        showMessage(t('gestion', 'Nothing changed'))
+    }
 }
 
 /**
@@ -31174,10 +31178,14 @@ function checkAutoIncrement(response){
  * 
  * @param {*} div 
  */
-function updateNumerical(el){
+function updateNumerical(el, format_number=true){
     el.text(el.text().replace(',', '.').replace(/[^0-9.-]+/g,""))
-    updateEditable(el); 
-    el.text(mainFunction_cur.format(el.text()))
+    updateEditable(el);
+    if(format_number){
+        el.text(mainFunction_cur.format(el.text()))
+    }else{
+        el.text(el.text())
+    }
 }
 ;// CONCATENATED MODULE: ./src/js/pdf.js
 /* provided dependency */ var pdf_$ = __webpack_require__(9755);

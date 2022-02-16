@@ -36317,7 +36317,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "path": () => (/* binding */ path),
 /* harmony export */   "getCurrency": () => (/* binding */ getCurrency),
 /* harmony export */   "getGlobal": () => (/* binding */ getGlobal),
-/* harmony export */   "checkAutoIncrement": () => (/* binding */ checkAutoIncrement)
+/* harmony export */   "checkAutoIncrement": () => (/* binding */ checkAutoIncrement),
+/* harmony export */   "updateNumerical": () => (/* binding */ updateNumerical)
 /* harmony export */ });
 /* harmony import */ var _nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2880);
 /* harmony import */ var _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9944);
@@ -36543,6 +36544,16 @@ function checkAutoIncrement(response){
         $('.deleteItem').remove();
         $(".factureNum").removeClass("editable");
     }
+}
+
+/**
+ * 
+ * @param {*} div 
+ */
+function updateNumerical(el){
+    el.text(el.text().replace(',', '.').replace(/[^0-9.-]+/g,""))
+    ;(0,_ajaxRequest_mjs__WEBPACK_IMPORTED_MODULE_2__.updateEditable)(el); 
+    el.text(cur.format(el.text()))
 }
 
 /***/ }),
@@ -37038,7 +37049,7 @@ class Produit {
     let myrow = [
       '<div class="editable" data-table="produit" data-column="reference" data-id="' + this.id + '">' + this.reference + '</div>',
       '<div class="editable" data-table="produit" data-column="description" data-id="' + this.id + '">' + this.description + '</div>',
-      '<div class="editable" data-table="produit" data-column="prix_unitaire" data-id="' + this.id + '">' + this.prix_unitaire + '</div>',
+      '<div class="editableNumeric" data-table="produit" data-column="prix_unitaire" data-id="' + this.id + '">' + mainFunction.cur.format(this.prix_unitaire) + '</div>',
       '<div data-modifier="produit" data-id=' + this.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
     ];
     return myrow;
@@ -37084,7 +37095,7 @@ class Produit {
 ;// CONCATENATED MODULE: ./src/js/listener/main_listener.js
 const { FilePicker, showError } = __webpack_require__(2880);
 const { updateDB, configuration, updateEditable, deleteDB, getProduitsById, listProduit } = __webpack_require__(7467);
-const { path, baseUrl } = __webpack_require__(8362);
+const { path, baseUrl, updateNumerical } = __webpack_require__(8362);
 
 
 
@@ -37107,9 +37118,21 @@ $('body').on('click', '#theFolder', function () {
 $('body').on('change', '.editableSelect', function () { updateDB($(this).data('table'), $(this).data('column'), $(this).val(), $(this).data('id')); });
 $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
-$('body').on('click', '.editable', function () { $(this).attr('contenteditable', 'true'); });
+
+$('body').on('click', '.editable, .editableNumeric', function () { $(this).attr('contenteditable', 'true'); });
+
 $('body').on('blur', '.editable', function () { updateEditable($(this)); });
 $('body').on('keypress', '.editable', function (event) { if (event.key === "Enter") { updateEditable($(this)); } });
+
+$('body').on('blur', '.editableNumeric', function () {
+    updateNumerical($(this));
+});
+
+$('body').on('keypress', '.editableNumeric', function (event) {
+    if (event.key === "Enter") {
+        updateNumerical($(this));
+    }
+});
 
 //Problem avec les elements dynamique
 // var classEditable = document.getElementsByClassName('editable');

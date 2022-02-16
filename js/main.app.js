@@ -30645,7 +30645,7 @@ function getAnnualTurnoverPerMonthNoVat(cur) {
  * 
  * @param {*} myCase 
  */
-function updateEditable(myCase) {
+function ajaxRequest_updateEditable(myCase) {
     updateDB(myCase.data('table'), myCase.data('column'), myCase.text(), myCase.data('id'));
     if (myCase.data('modifier') === "getProduitsById") {
         getProduitsById();
@@ -31168,6 +31168,16 @@ function checkAutoIncrement(response){
         mainFunction_$('.deleteItem').remove();
         mainFunction_$(".factureNum").removeClass("editable");
     }
+}
+
+/**
+ * 
+ * @param {*} div 
+ */
+function updateNumerical(el){
+    el.text(el.text().replace(',', '.').replace(/[^0-9.-]+/g,""))
+    updateEditable(el); 
+    el.text(mainFunction_cur.format(el.text()))
 }
 ;// CONCATENATED MODULE: ./src/js/pdf.js
 /* provided dependency */ var pdf_$ = __webpack_require__(9755);

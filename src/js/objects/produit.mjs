@@ -1,5 +1,5 @@
 import { showError } from "@nextcloud/dialogs";
-import { baseUrl, LoadDT, showDone } from "../modules/mainFunction.mjs";
+import { baseUrl, cur, LoadDT, showDone } from "../modules/mainFunction.mjs";
 
 export class Produit {
 
@@ -21,7 +21,7 @@ export class Produit {
     let myrow = [
       '<div class="editable" data-table="produit" data-column="reference" data-id="' + this.id + '">' + this.reference + '</div>',
       '<div class="editable" data-table="produit" data-column="description" data-id="' + this.id + '">' + this.description + '</div>',
-      '<div class="editable" data-table="produit" data-column="prix_unitaire" data-id="' + this.id + '">' + this.prix_unitaire + '</div>',
+      '<div class="editableNumeric" data-table="produit" data-column="prix_unitaire" data-id="' + this.id + '">' + cur.format(this.prix_unitaire) + '</div>',
       '<div data-modifier="produit" data-id=' + this.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
     ];
     return myrow;

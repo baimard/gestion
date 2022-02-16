@@ -1,6 +1,6 @@
 import { showSuccess } from "@nextcloud/dialogs";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
-import { configuration, getStats, isconfig } from "./ajaxRequest.mjs";
+import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest.mjs";
 
 import { generateUrl } from "@nextcloud/router";
 import { Devis } from "../objects/devis.mjs";
@@ -216,4 +216,14 @@ export function checkAutoIncrement(response){
         $('.deleteItem').remove();
         $(".factureNum").removeClass("editable");
     }
+}
+
+/**
+ * 
+ * @param {*} div 
+ */
+export function updateNumerical(el){
+    el.text(el.text().replace(',', '.').replace(/[^0-9.-]+/g,""))
+    updateEditable(el); 
+    el.text(cur.format(el.text()))
 }

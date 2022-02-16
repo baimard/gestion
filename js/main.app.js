@@ -30626,9 +30626,12 @@ function getAnnualTurnoverPerMonthNoVat(cur) {
                 curRow = insertRow("Statistical", -1, 0, item.y);
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
                 total+= Math.round(item.total);
+
             }else{
+
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
                 total+= Math.round(item.total);
+
             }
         });
         // At the end
@@ -31084,11 +31087,14 @@ function mainFunction_loadClientList() {
  * @param {*} data 
  */
 function mainFunction_insertRow(ID, positionRow = -1, positionColumn = -1, data){
+    
     t = document.getElementById(ID);
     var r = t.insertRow(positionRow);
-    mainFunction_insertCell(r, -1, data);
+    mainFunction_insertCell(r, -1, data, "statHead");
+
+    //Ajout de toutes les colonnes
     for (let i = 1; i < 13; i++) {
-        mainFunction_insertCell(r, -1, 0);
+        mainFunction_insertCell(r, -1, mainFunction_cur.format(0));
     }
     return r;
 }
@@ -31098,9 +31104,10 @@ function mainFunction_insertRow(ID, positionRow = -1, positionColumn = -1, data)
  * @param {*} positionColumn 
  * @param {*} data 
  */
-function mainFunction_insertCell(row, positionColumn = -1, data){
+function mainFunction_insertCell(row, positionColumn = -1, data, className="statData"){
     var c = row.insertCell(positionColumn);
     c.appendChild(document.createTextNode(data));
+    c.setAttribute("class", className);
 }
 
 /**

@@ -133,9 +133,12 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
                 curRow = insertRow("Statistical", -1, 0, item.y);
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
                 total+= Math.round(item.total);
+
             }else{
+
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
                 total+= Math.round(item.total);
+
             }
         });
         // At the end

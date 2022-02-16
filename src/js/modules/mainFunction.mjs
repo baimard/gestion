@@ -135,11 +135,14 @@ export function loadClientList() {
  * @param {*} data 
  */
 export function insertRow(ID, positionRow = -1, positionColumn = -1, data){
+    
     t = document.getElementById(ID);
     var r = t.insertRow(positionRow);
-    insertCell(r, -1, data);
+    insertCell(r, -1, data, "statHead");
+
+    //Ajout de toutes les colonnes
     for (let i = 1; i < 13; i++) {
-        insertCell(r, -1, 0);
+        insertCell(r, -1, cur.format(0));
     }
     return r;
 }
@@ -149,9 +152,10 @@ export function insertRow(ID, positionRow = -1, positionColumn = -1, data){
  * @param {*} positionColumn 
  * @param {*} data 
  */
-export function insertCell(row, positionColumn = -1, data){
+export function insertCell(row, positionColumn = -1, data, className="statData"){
     var c = row.insertCell(positionColumn);
     c.appendChild(document.createTextNode(data));
+    c.setAttribute("class", className);
 }
 
 /**

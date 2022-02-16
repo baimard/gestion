@@ -138,6 +138,10 @@ OC.L10N.register(
     "December" : "Aralık",
     "Total" : "Toplam",
     "Manage" : "Yönetim",
+    "Customers" : "Müşteriler",
+    "Quotes" : "Teklifler",
+    "Invoices" : "Faturalar",
+    "Products" : "Ürünler",
     "About" : "Hakkında",
     "Save folder" : "Kayıt klasörü",
     "Please choose a folder" : "Lütfen bir klasör seçin"

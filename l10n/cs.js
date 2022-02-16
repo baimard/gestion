@@ -138,6 +138,10 @@ OC.L10N.register(
     "December" : "prosinec",
     "Total" : "Celkem",
     "Manage" : "Spravovat",
+    "Customers" : "Zákazníci",
+    "Quotes" : "Nabídky",
+    "Invoices" : "Faktury",
+    "Products" : "Produkty",
     "About" : "O aplikaci",
     "Save folder" : "Složka pro ukládání",
     "Please choose a folder" : "Zvolte složku"

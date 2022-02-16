@@ -8,15 +8,16 @@
 # Arnaud Wallon <arnaud@netbeat.be>, 2022
 # Hugo Robert <hugo.robert@protonmail.ch>, 2022
 # Benjamin <benjamin@cybercorp.fr>, 2022
+# Alain Rihs <alainrihs@sunrise.ch>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-02-15 04:45+0000\n"
+"POT-Creation-Date: 2022-02-16 03:28+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
+"Last-Translator: Alain Rihs <alainrihs@sunrise.ch>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -130,6 +131,8 @@ msgid ""
 "All Legal mentions, disclaimer or everything you want to place in the "
 "footer."
 msgstr ""
+"Toutes les mentions légales, conditions ou tout ce que vous souhaitez mettre"
+" dans le pied de page."
 
 #: /app/lib/Db/Bdd.php:183
 msgid "EUR"
@@ -273,7 +276,7 @@ msgstr "Journal des modifications"
 
 #: /app/templates/content/changelog.php:16
 msgid "Releases"
-msgstr ""
+msgstr "Versions"
 
 #: /app/templates/content/changelog.php:23
 msgid "Send an email"
@@ -314,6 +317,9 @@ msgid ""
 " and invoice. For example, you can set: \"Company: Cybercorp\" or just "
 "\"Cybercorp\"."
 msgstr ""
+"Il s'agit du nom de l'entreprise qui va apparaître dans le pied de page de "
+"votre devis ou facture. Par exemple, vous pouvez définir : \"Entreprise : "
+"Cybercorp\" ou simplement \"Cybercorp\"."
 
 #: /app/templates/content/changelog.php:44
 msgid "First name appears in the Quote/Invoice header as a contact."
@@ -360,7 +366,7 @@ msgstr ""
 
 #: /app/templates/content/changelog.php:59
 msgid "Automatically generated invoice number"
-msgstr ""
+msgstr "Numéro de facture généré automatiquement"
 
 #: /app/templates/content/changelog.php:60
 #: /app/templates/content/configuration.php:48
@@ -368,6 +374,9 @@ msgid ""
 "If you want to automatically generated an invoice number, set to enable. If "
 "you want to be free, set disable. You can enable and disable when you want."
 msgstr ""
+"Si vous souhaitez générer automatiquement vos numéros de facture, activer ce"
+" paramètre. Si vous souhaitez définir librement, désactivez-le. Vous pouvez "
+"en tout temps l'activer ou le désactiver."
 
 #: /app/templates/content/changelog.php:61
 msgid "Global default Currency"
@@ -681,7 +690,7 @@ msgstr "Gérer"
 
 #: /app/templates/navigation/index.php:5
 msgid "Customers"
-msgstr ""
+msgstr "Clients"
 
 #: /app/templates/navigation/index.php:12
 msgid "Quotes"
@@ -689,14 +698,14 @@ msgstr ""
 
 #: /app/templates/navigation/index.php:19
 msgid "Invoices"
-msgstr ""
+msgstr "Factures"
 
 #: /app/templates/navigation/index.php:26
 msgid "Products"
-msgstr ""
+msgstr "Produits"
 
 #: /app/templates/navigation/index.php:35
-msgid "Informations"
+msgid "Information"
 msgstr ""
 
 #: /app/templates/settings/index.php:9

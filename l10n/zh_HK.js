@@ -138,6 +138,10 @@ OC.L10N.register(
     "December" : "十二月",
     "Total" : "總計",
     "Manage" : "管理",
+    "Customers" : "客户",
+    "Quotes" : "報價",
+    "Invoices" : "發票",
+    "Products" : "商品",
     "About" : "關於",
     "Save folder" : "保存資料夾",
     "Please choose a folder" : "請選擇一個資料夾"

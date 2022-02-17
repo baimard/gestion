@@ -84,7 +84,7 @@ class Bdd {
     public function insertClient($idNextcloud){
         $sql = "INSERT INTO `".$this->tableprefix."client` (`id_nextcloud`,`nom`,`prenom`,`legal_one`,`entreprise`,`telephone`,`mail`,`adresse`) VALUES (?,?,?,?,?,?,?,?)";
         $this->execSQLNoData($sql,array($idNextcloud,
-                                            $this->l->t('Name'),
+                                            $this->l->t('Last name'),
                                             $this->l->t('First name'),
                                             $this->l->t('Limited company'),
                                             $this->l->t('Company'),

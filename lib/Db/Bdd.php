@@ -171,8 +171,8 @@ class Bdd {
         if ( $res < 1 ){
             $sql = "INSERT INTO `".$this->tableprefix."configuration` (`entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '/', ?, ?, '0',?);";
             $this->execSQLNoData($sql, array($this->l->t('Your company name'),
-                                        $this->l->t('Your company contact surname'),
-                                        $this->l->t('Your company contact name'),
+                                        $this->l->t('Your company contact last name'),
+                                        $this->l->t('Your company contact first name'),
                                         $this->l->t('Company legal information line one'),
                                         $this->l->t('Company legal information line two'),
                                         $this->l->t('Your company email'),

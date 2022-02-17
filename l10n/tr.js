@@ -142,6 +142,7 @@ OC.L10N.register(
     "Quotes" : "Teklifler",
     "Invoices" : "Faturalar",
     "Products" : "Ürünler",
+    "Information" : "Bilgiler",
     "About" : "Hakkında",
     "Save folder" : "Kayıt klasörü",
     "Please choose a folder" : "Lütfen bir klasör seçin"

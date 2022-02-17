@@ -142,6 +142,7 @@ OC.L10N.register(
     "Quotes" : "Nabídky",
     "Invoices" : "Faktury",
     "Products" : "Produkty",
+    "Information" : "Informace",
     "About" : "O aplikaci",
     "Save folder" : "Složka pro ukládání",
     "Please choose a folder" : "Zvolte složku"

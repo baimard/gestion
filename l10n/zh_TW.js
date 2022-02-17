@@ -142,6 +142,7 @@ OC.L10N.register(
     "Quotes" : "報價",
     "Invoices" : "發票",
     "Products" : "產品",
+    "Information" : "資訊",
     "About" : "關於",
     "Save folder" : "儲存資料夾",
     "Please choose a folder" : "請選擇資料夾"

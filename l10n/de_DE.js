@@ -69,7 +69,7 @@ OC.L10N.register(
     "Show phone number in the Quote/Invoice header." : "Telefonnummer in der Kopfzeile von Angebot oder Rechnung anzeigen.",
     "E-mail address which appears in the header of the Quote/Invoice." : "E-Mail-Adresse, die in der Kopfzeile von Angebot oder Rechnung erscheint.",
     "Your company VAT rate" : "Ihr Firmen-USt-Satz",
-    "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Der globale Standard-USt-Satz gilt für Ihre Angebote und Rechungen (global). Um ihn zu ändern, geben Sie einfach den USt-Satz ohne das Prozentzeichen ein.",
+    "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Der globale Standard-USt-Satz gilt für Ihre Angebote und Rechnungen (global). Um ihn zu ändern, geben Sie einfach den USt-Satz ohne das Prozentzeichen ein.",
     "Automatically generated invoice number" : "Automatisch erzeugte Rechnungsnummer",
     "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Aktivieren Sie diese Option, wenn Sie eine automatisch generierte Rechnungsnummer haben möchten. Für eine freie Eingabe deaktivieren Sie diese Option. Sie können diese Einstellung jederzeit ändern.",
     "Global default Currency" : "Globale Standardwährung",
@@ -142,6 +142,7 @@ OC.L10N.register(
     "Quotes" : "Angebote",
     "Invoices" : "Rechnungen",
     "Products" : "Produkte",
+    "Information" : "Informationen",
     "About" : "Über",
     "Save folder" : "Ordner speichern",
     "Please choose a folder" : "Bitte einen Ordner auswählen"

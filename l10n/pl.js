@@ -142,6 +142,7 @@ OC.L10N.register(
     "Quotes" : "Oferty",
     "Invoices" : "Faktury",
     "Products" : "Produkty",
+    "Information" : "Informacje",
     "About" : "O aplikacji",
     "Save folder" : "Zapisz katalog",
     "Please choose a folder" : "Wybierz katalog"

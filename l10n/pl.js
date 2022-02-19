@@ -1,9 +1,9 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Nazwa",
-    "First name" : "Główna nazwa",
-    "Limited company" : "Kapitał firmy",
+    "Name" : "Nazwisko",
+    "First name" : "Imię",
+    "Limited company" : "Kapitał zakładowy",
     "Company" : "Firma",
     "Phone number" : "Numer telefonu",
     "Email" : "E-mail",

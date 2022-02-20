@@ -14,7 +14,7 @@ $client->executeScript("document.getElementById('mysql').click()");
 $client->submitForm('Terminer l\'installation', [
     'adminlogin' => 'nextcloud',
     'adminpass' => 'nextcloud',
-    'dbuser' => 'root',
+    'dbuser' => 'nextcloud',
     'dbpass' => 'nextcloud',
     'dbname' => 'nextcloud',
     'dbhost' => 'database',

@@ -1,6 +1,6 @@
 import { showSuccess } from "@nextcloud/dialogs";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
-import { configuration, getStats, isconfig } from "./ajaxRequest.mjs";
+import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest.mjs";
 
 import { generateUrl } from "@nextcloud/router";
 import { Devis } from "../objects/devis.mjs";
@@ -34,9 +34,15 @@ export var cur = null;
     }
 }
 
-export function globalConfiguration(){
+/**
+ * 
+ * @param {*} checkConfig 
+ */
+export function globalConfiguration(checkConfig=true){
     getStats();
-    isconfig();
+    if(checkConfig){
+        isconfig();
+    }
     configuration(getCurrency);
     configuration(path);
 }
@@ -129,11 +135,14 @@ export function loadClientList() {
  * @param {*} data 
  */
 export function insertRow(ID, positionRow = -1, positionColumn = -1, data){
+    
     t = document.getElementById(ID);
     var r = t.insertRow(positionRow);
-    insertCell(r, -1, data);
+    insertCell(r, -1, data, "statHead");
+
+    //Ajout de toutes les colonnes
     for (let i = 1; i < 13; i++) {
-        insertCell(r, -1, 0);
+        insertCell(r, -1, cur.format(0));
     }
     return r;
 }
@@ -143,9 +152,10 @@ export function insertRow(ID, positionRow = -1, positionColumn = -1, data){
  * @param {*} positionColumn 
  * @param {*} data 
  */
-export function insertCell(row, positionColumn = -1, data){
+export function insertCell(row, positionColumn = -1, data, className="statData"){
     var c = row.insertCell(positionColumn);
     c.appendChild(document.createTextNode(data));
+    c.setAttribute("class", className);
 }
 
 /**
@@ -205,5 +215,19 @@ export function checkAutoIncrement(response){
     if(myresp.auto_invoice_number==1){
         $('.deleteItem').remove();
         $(".factureNum").removeClass("editable");
+    }
+}
+
+/**
+ * 
+ * @param {*} div 
+ */
+export function updateNumerical(el, format_number=true){
+    el.text(el.text().replace(',', '.').replace(/[^0-9.-]+/g,""))
+    updateEditable(el);
+    if(format_number){
+        el.text(cur.format(el.text()))
+    }else{
+        el.text(el.text())
     }
 }

@@ -26,13 +26,13 @@ export function updateDB(table, column, data, id) {
     }).done(function (response, code) {
         showSuccess(t('gestion', 'Modification saved'));
     }).fail(function (response, code) {
-        showError(response);
+        showError(t('gestion', 'There is an error with the format, please check the documentation'));
     });
 }
 
 /**
  * Delete data
- * @param table 
+ * @param table
  * @param id 
  */
 export function deleteDB(table, id) {
@@ -41,17 +41,21 @@ export function deleteDB(table, id) {
         id: id,
     };
 
-    $.ajax({
-        url: baseUrl + '/delete',
-        type: 'DELETE',
-        async: false,
-        contentType: 'application/json',
-        data: JSON.stringify(myData)
-    }).done(function (response, code) {
-        showMessage(t('gestion', 'Modification saved'));
-    }).fail(function (response, code) {
-        showError(response);
-    });
+    if(window.confirm(t('gestion','Are you sure you want to delete?'))){
+        $.ajax({
+            url: baseUrl + '/delete',
+            type: 'DELETE',
+            async: false,
+            contentType: 'application/json',
+            data: JSON.stringify(myData)
+        }).done(function (response, code) {
+            showSuccess(t('gestion', 'Modification saved'));
+        }).fail(function (response, code) {
+            showError(response);
+        });
+    }else{
+        showMessage(t('gestion', 'Nothing changed'))
+    }
 }
 
 /**
@@ -133,9 +137,12 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
                 curRow = insertRow("Statistical", -1, 0, item.y);
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
                 total+= Math.round(item.total);
+
             }else{
+
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
                 total+= Math.round(item.total);
+
             }
         });
         // At the end
@@ -170,7 +177,7 @@ export function listProduit(lp, id, produitid) {
         type: 'PROPFIND',
         contentType: 'application/json'
     }).done(function (response) {
-        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">Annuler</option>');
+        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">'+t('gestion','Cancel')+'</option>');
         $.each(JSON.parse(response), function (arrayID, myresp) {
             var selected = "";
             if (produitid == myresp.id) {

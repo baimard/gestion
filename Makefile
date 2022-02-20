@@ -187,6 +187,8 @@ runContainer:
 	docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:23-apache
 	sleep 5
 	killall geckodriver; php tests/Unit/Panther/initTest.php
+
+loaddata:
 	docker exec -i database sh -c 'exec mysql -uroot -p"$$MARIADB_ROOT_PASSWORD"' < ./tests/dataset.sql
 
 stopContainer:

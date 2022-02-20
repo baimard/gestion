@@ -1,6 +1,6 @@
 const { FilePicker, showError } = require("@nextcloud/dialogs");
 const { updateDB, configuration, updateEditable, deleteDB, getProduitsById, listProduit } = require("../modules/ajaxRequest.mjs");
-const { path, baseUrl } = require("../modules/mainFunction.mjs");
+const { path, baseUrl, updateNumerical } = require("../modules/mainFunction.mjs");
 import DataTable from 'datatables.net';
 import { Client } from '../objects/client.mjs';
 import { Devis } from '../objects/devis.mjs';
@@ -13,6 +13,7 @@ $('body').on('click', '#theFolder', function () {
     var f = new FilePicker(choose_folder, false, [], false, 1, true, $("#theFolder").val());
     f.pick().then(
         function (value) {
+            console.log(value)
             updateDB($('#theFolder').data('table'), $('#theFolder').data('column'), value, $('#theFolder').data('id'));
             configuration(path);
         }
@@ -22,9 +23,17 @@ $('body').on('click', '#theFolder', function () {
 $('body').on('change', '.editableSelect', function () { updateDB($(this).data('table'), $(this).data('column'), $(this).val(), $(this).data('id')); });
 $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
-$('body').on('click', '.editable', function () { $(this).attr('contenteditable', 'true'); });
+
+$('body').on('click', '.editable, .editableNumeric, .editableNumber', function () { $(this).attr('contenteditable', 'true'); });
+
 $('body').on('blur', '.editable', function () { updateEditable($(this)); });
 $('body').on('keypress', '.editable', function (event) { if (event.key === "Enter") { updateEditable($(this)); } });
+
+$('body').on('blur', '.editableNumeric', function () {updateNumerical($(this));});
+$('body').on('keypress', '.editableNumeric', function (event) {if (event.key === "Enter") {updateNumerical($(this));}});
+
+$('body').on('blur', '.editableNumber', function () {updateNumerical($(this), false);});
+$('body').on('keypress', '.editableNumber', function (event) {if (event.key === "Enter") {updateNumerical($(this), false);}});
 
 //Problem avec les elements dynamique
 // var classEditable = document.getElementsByClassName('editable');

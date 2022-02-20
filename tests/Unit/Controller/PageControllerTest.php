@@ -15,7 +15,7 @@ use OCP\IDBConnection;
  */
 class PageControllerTest extends TestCase {
 	private $controller;
-	private $userId = 'baimard';
+	private $userId = 'nextcloud';
 	private $db;
 
 	public function setUp(): void{

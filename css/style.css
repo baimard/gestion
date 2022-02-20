@@ -1,0 +1,200 @@
+/* Prevent modal show */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: var(--color-main-background);
+    color: var(--color-main-text);
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+  }
+  
+  .modal-content a {
+    text-decoration: underline;
+  }
+  
+  .modalClose {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .modalClose:hover,
+  .modalClose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+#hello {
+	color: red;
+}
+
+#formulaire {
+	margin-left:20px;
+	margin-top:20px;
+}
+
+#content {
+	width:100%;
+  min-width: 1920px; //bug #67
+}
+
+#contentTable {
+  background-color: var(--color-main-background);
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+}
+
+#app {
+	width:100%;
+}
+
+.tabledt {
+  table-layout: auto;
+  width: 100%;
+  white-space: pre-wrap;
+  background-color: var(--color-main-background);
+}
+
+.tabledt tbody tr td {
+  background-color: var(--color-main-background);
+}
+
+table.dataTable.display tbody tr.odd > [class*="sorting_"] {
+  background-color: var(--color-main-background);
+}
+
+table.dataTable.display tbody tr.even > [class*="sorting_"] {
+  background-color: var(--color-main-background);
+}
+
+#Statistical {
+  table-layout: auto;
+  white-space: pre-wrap;
+}
+
+#Statistical th{
+  border: 1px solid;
+  background-color: var(--color-primary-element-light);
+  color:var(--color-primary-text);
+  text-align:center;
+  width:100px;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+	font-size: 3.5rem;
+  }
+}
+
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.icon-details {
+  display:inline-block;
+  margin-right: 20px ;
+  margin-left:10px;
+  width: 30px;
+ }
+
+.navmarg {
+  margin-left:10px;
+}
+
+#app-navigation:not(.vue) > ul > li > a, #app-navigation:not(.vue) > ul > li > ul > li > a {
+  padding:0 12px 0 15px;
+}
+
+.inputDate{
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.configuration-global{
+  margin-top:15px;
+}
+
+.configuration-icon{
+  float: left;
+  width:40px;
+  height: 40px;
+  margin-right: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.configuration-content{
+  height: 40px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+// .editable{
+//   float:left;
+//   padding-top:5px;
+//   max-width: 90%;
+//   width: 90%;
+// }
+
+.editable[contenteditable="true"]{
+  // float:left;
+  width: 80%;
+}
+
+.editablebutton button{
+  float: right;
+  padding-top:0px;
+  margin-top: 0px;
+}
+
+.ConfigurationHelp{
+  margin-bottom: 20px;
+}
+
+.statHead{
+  text-align: center;
+}
+
+.statData{
+  text-align: right;
+}

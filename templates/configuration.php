@@ -1,4 +1,5 @@
 <?php
+	style('gestion', array('style'));
 	script('gestion', array('configuration.app', '820.app', '856.app'));
 ?>
 

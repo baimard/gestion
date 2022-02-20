@@ -1,4 +1,5 @@
 <?php
+	style('gestion', array('style'));
 	script('gestion', array('devis.app', '820.app', '856.app'));
 ?>
 

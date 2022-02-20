@@ -10,7 +10,7 @@
  */
 
 /*!
- * html2canvas 1.4.0 <https://html2canvas.hertzen.com>
+ * html2canvas 1.4.1 <https://html2canvas.hertzen.com>
  * Copyright (c) 2022 Niklas von Hertzen <https://hertzen.com>
  * Released under MIT License
  */
@@ -44,7 +44,7 @@
     PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
 
-/*! DataTables 1.11.3
+/*! DataTables 1.11.4
  * ©2008-2021 SpryMedia Ltd - datatables.net/license
  */
 
@@ -289,7 +289,7 @@
 /** @license
  *
  * jsPDF - PDF Document creation from JavaScript
- * Version 2.5.0 Built on 2021-12-21T09:44:51.866Z
+ * Version 2.5.1 Built on 2022-01-28T15:37:57.791Z
  *                      CommitID 00000000
  *
  * Copyright (c) 2010-2021 James Hall <james@parall.ax>, https://github.com/MrRio/jsPDF

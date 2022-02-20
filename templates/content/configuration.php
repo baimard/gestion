@@ -9,7 +9,7 @@
         </div>
     </div>
     <h2 id="configuration"><?php p($l->t('Click to edit')); ?> - <a id="HelpSection"><u><?php p($l->t('Need help?')); ?></u></a></h2>
-    <div title="<?php p($l->t('This is the name of the company that will appear in the footer of your quote and invoice. For example, you can set: "Company: Cybercorp" or just "Cybercorp".')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('Name of the company that will appear in the footer of your quote and invoice. For example, you can set: "Company: Cybercorp" or just "Cybercorp".')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="entreprise" class="configuration-content editable" data-table="configuration" data-column="entreprise" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
@@ -25,11 +25,11 @@
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="adresse" class="configuration-content editable" data-table="configuration" data-column="adresse" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
-    <div title="<?php p($l->t('This is the first line in the footer of your Quote/Invoice with all legal information you need')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('First line in the footer of your Quote/Invoice with all legal information you need')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="legal_one" class="configuration-content editable" data-table="configuration" data-column="legal_one" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
-    <div title="<?php p($l->t('This is the second line in the footer of your Quote/Invoice with all legal information you need')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('Second line in the footer of your Quote/Invoice with all legal information you need')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="legal_two" class="configuration-content editable" data-table="configuration" data-column="legal_two" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>

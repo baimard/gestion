@@ -40,9 +40,9 @@
 		<hr/>
 		<h2><?php p($l->t('Company name')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('This is the name of the company that will appear in the footer of your quote and invoice. For example, you can set: "Company: Cybercorp" or just "Cybercorp".')); ?></div>
-		<h2><?php p($l->t('Your company contact surname')); ?></h2>
+		<h2><?php p($l->t('Your company contact first name')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('First name appears in the Quote/Invoice header as a contact.')); ?></div>
-		<h2><?php p($l->t('Your company contact name')); ?></h2>
+		<h2><?php p($l->t('Your company contact last name')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('Last name appears in the Quote/Invoice header as a contact.')); ?></div>
 		<h2><?php p($l->t('Company legal information line one')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('This is the first line in the footer of your Quote/Invoice with all legal information you need.')); ?></div>

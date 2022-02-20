@@ -9,7 +9,7 @@
  */
 return [
     'routes' => [
-	   ['name' => 'page#index',             'url' => '/', 'verb' => 'GET'],
+       ['name' => 'page#index',             'url' => '/', 'verb' => 'GET'],
        ['name' => 'page#devis',             'url' => '/devis', 'verb' => 'GET'],
        ['name' => 'page#facture',           'url' => '/facture', 'verb' => 'GET'],
        ['name' => 'page#produit',           'url' => '/produit', 'verb' => 'GET'],
@@ -17,7 +17,7 @@ return [
        ['name' => 'page#isConfig',          'url' => '/isconfig', 'verb' => 'GET'],
        ['name' => 'page#statistique',          'url' => '/statistique', 'verb' => 'GET'],
 
-	   ['name' => 'page#getClients',        'url' => '/getClients', 'verb' => 'PROPFIND'],
+       ['name' => 'page#getClients',        'url' => '/getClients', 'verb' => 'PROPFIND'],
        ['name' => 'page#getClient',         'url' => '/client', 'verb' => 'POST'],
        ['name' => 'page#getClientbyiddevis',         'url' => '/clientbyiddevis', 'verb' => 'POST'],
        ['name' => 'page#getConfiguration',         'url' => '/getConfiguration', 'verb' => 'PROPFIND'],

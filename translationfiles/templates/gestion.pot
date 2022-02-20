@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-02-12 03:29+0000\n"
+"POT-Creation-Date: 2022-02-20 03:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -181,7 +181,7 @@ msgid "Creation in progress …"
 msgstr ""
 
 #: /app/templates/content/changelog.php:4
-msgid "Welcome to GESTION 2.0.2\t"
+msgid "Welcome to GESTION"
 msgstr ""
 
 #: /app/templates/content/changelog.php:5
@@ -247,7 +247,7 @@ msgid "Changelog"
 msgstr ""
 
 #: /app/templates/content/changelog.php:16
-msgid "Release"
+msgid "Releases"
 msgstr ""
 
 #: /app/templates/content/changelog.php:23
@@ -291,42 +291,35 @@ msgid ""
 msgstr ""
 
 #: /app/templates/content/changelog.php:44
-#: /app/templates/content/configuration.php:16
-msgid "First name appears in the Quote/Invoice header as a contact"
+msgid "First name appears in the Quote/Invoice header as a contact."
 msgstr ""
 
 #: /app/templates/content/changelog.php:46
-#: /app/templates/content/configuration.php:20
-msgid "Last name appears in the Quote/Invoice header as a contact"
+msgid "Last name appears in the Quote/Invoice header as a contact."
 msgstr ""
 
 #: /app/templates/content/changelog.php:48
-#: /app/templates/content/configuration.php:28
 msgid ""
 "This is the first line in the footer of your Quote/Invoice with all legal "
-"information you need"
+"information you need."
 msgstr ""
 
 #: /app/templates/content/changelog.php:50
-#: /app/templates/content/configuration.php:32
 msgid ""
 "This is the second line in the footer of your Quote/Invoice with all legal "
-"information you need"
+"information you need."
 msgstr ""
 
 #: /app/templates/content/changelog.php:52
-#: /app/templates/content/configuration.php:24
-msgid "Show company address in the Quote/Invoice header"
+msgid "Show company address in the Quote/Invoice header."
 msgstr ""
 
 #: /app/templates/content/changelog.php:54
-#: /app/templates/content/configuration.php:36
-msgid "Show phone number in the Quote/Invoice header"
+msgid "Show phone number in the Quote/Invoice header."
 msgstr ""
 
 #: /app/templates/content/changelog.php:56
-#: /app/templates/content/configuration.php:40
-msgid "E-mail address which appears in the header of the Quote/Invoice"
+msgid "E-mail address which appears in the header of the Quote/Invoice."
 msgstr ""
 
 #: /app/templates/content/changelog.php:57
@@ -356,8 +349,7 @@ msgid "Global default Currency"
 msgstr ""
 
 #: /app/templates/content/changelog.php:62
-#: /app/templates/content/configuration.php:52
-msgid "Global currency for the application"
+msgid "Global currency for the application."
 msgstr ""
 
 #: /app/templates/content/changelog.php:63
@@ -365,10 +357,9 @@ msgid "Legal disclaimer/mentions"
 msgstr ""
 
 #: /app/templates/content/changelog.php:64
-#: /app/templates/content/configuration.php:56
 msgid ""
 "Legal disclaimer/mentions you need in your footer - before company "
-"information"
+"information."
 msgstr ""
 
 #: /app/templates/content/configuration.php:8
@@ -397,7 +388,49 @@ msgstr ""
 msgid "Loading …"
 msgstr ""
 
-#: /app/templates/content/devis.php:8 /app/templates/navigation/index.php:12
+#: /app/templates/content/configuration.php:16
+msgid "First name appears in the Quote/Invoice header as a contact"
+msgstr ""
+
+#: /app/templates/content/configuration.php:20
+msgid "Last name appears in the Quote/Invoice header as a contact"
+msgstr ""
+
+#: /app/templates/content/configuration.php:24
+msgid "Show company address in the Quote/Invoice header"
+msgstr ""
+
+#: /app/templates/content/configuration.php:28
+msgid ""
+"This is the first line in the footer of your Quote/Invoice with all legal "
+"information you need"
+msgstr ""
+
+#: /app/templates/content/configuration.php:32
+msgid ""
+"This is the second line in the footer of your Quote/Invoice with all legal "
+"information you need"
+msgstr ""
+
+#: /app/templates/content/configuration.php:36
+msgid "Show phone number in the Quote/Invoice header"
+msgstr ""
+
+#: /app/templates/content/configuration.php:40
+msgid "E-mail address which appears in the header of the Quote/Invoice"
+msgstr ""
+
+#: /app/templates/content/configuration.php:52
+msgid "Global currency for the application"
+msgstr ""
+
+#: /app/templates/content/configuration.php:56
+msgid ""
+"Legal disclaimer/mentions you need in your footer - before company "
+"information"
+msgstr ""
+
+#: /app/templates/content/devis.php:8
 msgid "Quote"
 msgstr ""
 
@@ -499,7 +532,7 @@ msgstr ""
 msgid "Please set in global configuration"
 msgstr ""
 
-#: /app/templates/content/facture.php:8 /app/templates/navigation/index.php:19
+#: /app/templates/content/facture.php:8
 msgid "Invoice"
 msgstr ""
 
@@ -529,7 +562,7 @@ msgstr ""
 msgid "Settlement date"
 msgstr ""
 
-#: /app/templates/content/index.php:8 /app/templates/navigation/index.php:5
+#: /app/templates/content/index.php:8
 msgid "Customer"
 msgstr ""
 
@@ -541,7 +574,7 @@ msgstr ""
 msgid "Legal information"
 msgstr ""
 
-#: /app/templates/content/produit.php:8 /app/templates/navigation/index.php:26
+#: /app/templates/content/produit.php:8
 msgid "Product"
 msgstr ""
 
@@ -612,6 +645,22 @@ msgstr ""
 
 #: /app/templates/navigation/index.php:2
 msgid "Manage"
+msgstr ""
+
+#: /app/templates/navigation/index.php:5
+msgid "Customers"
+msgstr ""
+
+#: /app/templates/navigation/index.php:12
+msgid "Quotes"
+msgstr ""
+
+#: /app/templates/navigation/index.php:19
+msgid "Invoices"
+msgstr ""
+
+#: /app/templates/navigation/index.php:26
+msgid "Products"
 msgstr ""
 
 #: /app/templates/navigation/index.php:35

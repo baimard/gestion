@@ -103,7 +103,6 @@ OC.L10N.register(
     "December" : "December",
     "Total" : "Celkom",
     "Manage" : "Spravovať",
-    "Information" : "Informácia",
     "About" : "O aplikácii",
     "Save folder" : "Uložiť priečinok",
     "Please choose a folder" : "Prosím vyberte priečinok"

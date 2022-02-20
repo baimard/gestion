@@ -1,4 +1,5 @@
 <?php
+	style('gestion', array('style'));
 	script('gestion', array('produit.app', '820.app', '856.app'));
 ?>
 <div id="app">

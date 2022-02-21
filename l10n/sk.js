@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Názov",
     "First name" : "Meno",
     "Limited company" : "Spoločnosť s ručením obmedzeným",
     "Company" : "Spoločnosť",
@@ -18,8 +17,6 @@ OC.L10N.register(
     "Reference" : "Referencia",
     "Designation" : "Označenie",
     "Your company name" : "Názov vašej spoločnosti",
-    "Your company contact surname" : "Priezvisko kontaktnej osoby vašej spločnosti",
-    "Your company contact name" : "Meno kontaktnej osoby vašej spločnosti",
     "Your company email" : "E-mail vašej spoločnosti",
     "Your company phone" : "Telefón vašej spoločnosti",
     "Your company address" : "Adresa vašej spoločnosti",

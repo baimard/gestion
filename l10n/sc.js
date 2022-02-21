@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Nùmene",
     "First name" : "Nùmene",
     "Limited company" : "Sotziedade SRL",
     "Company" : "Sotziedade",

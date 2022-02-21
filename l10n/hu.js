@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Név",
     "First name" : "Keresztnév",
     "Company" : "Vállalat",
     "Phone number" : "Telefonszám",

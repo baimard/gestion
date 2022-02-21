@@ -1,5 +1,4 @@
 { "translations": {
-    "Name" : "名稱",
     "First name" : "名",
     "Limited company" : "有限公司",
     "Company" : "公司",
@@ -16,8 +15,6 @@
     "Reference" : "參考",
     "Designation" : "指定",
     "Your company name" : "您的公司名稱",
-    "Your company contact surname" : "您公司聯絡人姓氏",
-    "Your company contact name" : "您公司聯絡人名字",
     "Company legal information line one" : "公司法律資訊第一行",
     "Company legal information line two" : "公司法律資訊第二行",
     "Your company email" : "您公司的電子郵件",
@@ -81,8 +78,6 @@
     "First name appears in the Quote/Invoice header as a contact" : "名字將會作為聯絡人在報價單或發票的頁首中出現",
     "Last name appears in the Quote/Invoice header as a contact" : "姓氏將會作為聯絡人在報價單或發票的頁首中出現",
     "Show company address in the Quote/Invoice header" : "在報價單／發票頁首中出現的公司地址",
-    "This is the first line in the footer of your Quote/Invoice with all legal information you need" : "這是報價單／發票頁尾的第一行，包含您所需要的所有法律資訊",
-    "This is the second line in the footer of your Quote/Invoice with all legal information you need" : "這是報價單／發票頁尾的第二行，包含您所需要的所有法律資訊",
     "Show phone number in the Quote/Invoice header" : "在報價單／發票頁首中出現的電話號碼",
     "E-mail address which appears in the header of the Quote/Invoice" : "在報價單／發票頁首中出現的電子郵件地址",
     "Global currency for the application" : "應用程式的預設貨幣",

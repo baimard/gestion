@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Ad",
     "First name" : "Ad",
     "Limited company" : "Limited şirket",
     "Company" : "Şirket",
@@ -18,8 +17,6 @@ OC.L10N.register(
     "Reference" : "Referans",
     "Designation" : "Atama",
     "Your company name" : "Şirketinizin adı",
-    "Your company contact surname" : "Şirketinizin temsilcisinin soyadı",
-    "Your company contact name" : "Şirketinizin temsilcisinin adı",
     "Company legal information line one" : "Şirket bilgileri birinci satır",
     "Company legal information line two" : "Şirket bilgileri ikinci satır",
     "Your company email" : "Şirketinizin e-posta adresi",
@@ -83,8 +80,6 @@ OC.L10N.register(
     "First name appears in the Quote/Invoice header as a contact" : "Teklif ya da fatura üst bilgisinde görüntülenecek ilgili kişinin adı",
     "Last name appears in the Quote/Invoice header as a contact" : "Teklif ya da fatura üst bilgisinde görüntülenecek ilgili kişinin soyadı",
     "Show company address in the Quote/Invoice header" : "Teklif ya da fatura üst bilgisinde görüntülenecek şirket adresi",
-    "This is the first line in the footer of your Quote/Invoice with all legal information you need" : "Teklif ya da fatura alt bilgisinde görüntülenecek şirket bilgilerinin birinci satırı",
-    "This is the second line in the footer of your Quote/Invoice with all legal information you need" : "Teklif ya da fatura alt bilgisinde görüntülenecek şirket bilgilerinin ikinci satırı",
     "Show phone number in the Quote/Invoice header" : "Teklif ya da fatura üst bilgisinde görüntülenecek telefon numarası",
     "E-mail address which appears in the header of the Quote/Invoice" : "Teklif ya da fatura üst bilgisinde görüntülenecek e-posta adresi",
     "Global currency for the application" : "Uygulama genelinde kullanılacak para birimi ",

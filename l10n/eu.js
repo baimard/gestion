@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Izena",
     "First name" : "Izena",
     "Limited company" : "Sozietate mugatua",
     "Company" : "Sozietate",
@@ -17,8 +16,6 @@ OC.L10N.register(
     "Reference" : "Erreferentzia",
     "Designation" : "Izendapena",
     "Your company name" : "Zure enpresaren izena",
-    "Your company contact surname" : "Zure enpresaren kontaktu abizena",
-    "Your company contact name" : "Zure enpresaren kontaktu izena",
     "Your company email" : "Zure enpresaren e-posta",
     "Your company phone" : "Zure enpresaren telefonoa",
     "Your company address" : "Zure enpresaren helbidea",

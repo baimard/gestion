@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Naam",
     "First name" : "Voornaam",
     "Limited company" : "Naamloze vennootschap",
     "Company" : "Organisatie",
@@ -17,8 +16,6 @@ OC.L10N.register(
     "Reference" : "Referentie",
     "Designation" : "Benaming",
     "Your company name" : "Je bedrijfsnaam",
-    "Your company contact surname" : "Je bedrijfscontact achternaam",
-    "Your company contact name" : "Je bedrijfscontact naam",
     "Your company email" : "Je bedrijfse-mail",
     "Your company phone" : "Je bedrijfstelefoonnummer",
     "Your company address" : "Je bedrijfsadres",

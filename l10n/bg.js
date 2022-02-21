@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Име",
     "First name" : "Собствено име",
     "Limited company" : "Дружество с ограничена отговорност",
     "Company" : "Фирма",
@@ -17,8 +16,6 @@ OC.L10N.register(
     "Reference" : "Справка",
     "Designation" : "Обозначение",
     "Your company name" : "Името на вашата фирма",
-    "Your company contact surname" : "Презиме за контакт с вашата фирма",
-    "Your company contact name" : "Име за контакт с вашата фирма",
     "Your company email" : "Вашата служебна поща",
     "Your company phone" : "Вашият служебен телефон",
     "Your company address" : "Адресът на вашата фирма",

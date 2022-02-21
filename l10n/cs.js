@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Název",
     "First name" : "Jméno",
     "Limited company" : "s.r.o",
     "Company" : "Společnost",
@@ -18,8 +17,6 @@ OC.L10N.register(
     "Reference" : "Reference",
     "Designation" : "Pověrení",
     "Your company name" : "Název společnosti",
-    "Your company contact surname" : "Příjmení firemního kontaktu",
-    "Your company contact name" : "Jméno firemního kontaktu",
     "Company legal information line one" : "Právní informace o společnosti (řádek 1)",
     "Company legal information line two" : "Právní informace o společnosti (řádek 2)",
     "Your company email" : "Firemní e-mail",
@@ -83,8 +80,6 @@ OC.L10N.register(
     "First name appears in the Quote/Invoice header as a contact" : "Jméno se objeví v záhlaví nabídky/faktury jako kontakt",
     "Last name appears in the Quote/Invoice header as a contact" : "Příjmení se objeví v záhlaví nabídky/faktury jako kontakt",
     "Show company address in the Quote/Invoice header" : "Zobrazit adresu společnosti v záhlaví nabídky/faktury",
-    "This is the first line in the footer of your Quote/Invoice with all legal information you need" : "Toto je první řádek v zápatí vaší nabídky/faktury se všemi právními informacemi, které je třeba uvést",
-    "This is the second line in the footer of your Quote/Invoice with all legal information you need" : "Toto je druhý řádek v zápatí vaší nabídky/faktury se všemi právními informacemi, které je třeba uvést",
     "Show phone number in the Quote/Invoice header" : "Zobrazit telefonní číslo v záhlaví nabídky/faktury",
     "E-mail address which appears in the header of the Quote/Invoice" : "E-mailová adresa která se objeví v záhlaví nabídky/faktury",
     "Global currency for the application" : "Globální měna pro aplikaci",

@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Name",
     "First name" : "Vorname",
     "Limited company" : "Gesellschaft mit beschränkter Haftung (GmbH)",
     "Company" : "Firma",
@@ -18,8 +17,6 @@ OC.L10N.register(
     "Reference" : "Referenz",
     "Designation" : "Bezeichnung",
     "Your company name" : "Dein Firmenname",
-    "Your company contact surname" : "Vorname des Kontakts Deiner Firma",
-    "Your company contact name" : "Kontaktname Deiner Firma",
     "Company legal information line one" : "Rechtliche Informationen des Unternehmens Zeile 1",
     "Company legal information line two" : "Rechtliche Informationen des Unternehmens Zeile 2",
     "Your company email" : "Deine Firmen-E-Mail",
@@ -83,8 +80,6 @@ OC.L10N.register(
     "First name appears in the Quote/Invoice header as a contact" : "Vorname der in der Kopfzeile von Angebot oder Rechnung als Kontakt erscheint",
     "Last name appears in the Quote/Invoice header as a contact" : "Nachname der in der Kopfzeile von Angebot oder Rechnung als Kontakt erscheint",
     "Show company address in the Quote/Invoice header" : "Firmenanschrift in der Kopfzeile von Angebot oder Rechnung anzeigen",
-    "This is the first line in the footer of your Quote/Invoice with all legal information you need" : "Dies ist die 1. Fußzeile von Angebot oder Rechnung mit allen rechtlichen Informationen, die Du benötigst",
-    "This is the second line in the footer of your Quote/Invoice with all legal information you need" : "Dies ist die 2. Fußzeile von Angebot oder Rechnung mit allen rechtlichen Informationen, die Du benötigst",
     "Show phone number in the Quote/Invoice header" : "Telefonnummer in der Kopfzeile von Angebot oder Rechnung anzeigen",
     "E-mail address which appears in the header of the Quote/Invoice" : "E-Mail-Adresse, die in der Kopfzeile von Angebot oder Rechnung erscheint",
     "Global currency for the application" : "Globale Währung für die Anwendung",

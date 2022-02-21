@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Nombre",
     "First name" : "Apellidos",
     "Limited company" : "Empresa Limitada",
     "Company" : "Empresa",
@@ -18,8 +17,6 @@ OC.L10N.register(
     "Reference" : "Referencia",
     "Designation" : "Designación",
     "Your company name" : "Nombre de tu empresa",
-    "Your company contact surname" : "Apellido del contacto en tu empresa",
-    "Your company contact name" : "Nombre del contacto en tu empresa",
     "Your company email" : "Su correo de empresa",
     "Your company phone" : "Teléfono de tu empresa",
     "Your company address" : "Dirección de tu empresa",

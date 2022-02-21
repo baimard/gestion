@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Nome",
     "First name" : "Nome",
     "Limited company" : "Società di capitali",
     "Company" : "Società",
@@ -18,8 +17,6 @@ OC.L10N.register(
     "Reference" : "Referenza",
     "Designation" : "Designazione",
     "Your company name" : "Il nome della tua azienda",
-    "Your company contact surname" : "Il cognome del contatto della tua azienda",
-    "Your company contact name" : "Il nome del contatto della tua azienda",
     "Company legal information line one" : "Riga 1 delle informazioni legali dell'azienda",
     "Company legal information line two" : "Riga 2 delle informazioni legali dell'azienda",
     "Your company email" : "L'email della tua azienda",
@@ -83,8 +80,6 @@ OC.L10N.register(
     "First name appears in the Quote/Invoice header as a contact" : "Il nome viene visualizzato, come contatto, nell'intestazione del Preventivo e della Fattura",
     "Last name appears in the Quote/Invoice header as a contact" : "Il cognome viene visualizzato, come contatto, nell'intestazione del Preventivo e della Fattura",
     "Show company address in the Quote/Invoice header" : "Mostra l'indirizzo dell'azienda nell'intestazione del Preventivo e della Fattura",
-    "This is the first line in the footer of your Quote/Invoice with all legal information you need" : "Questa è la prima riga nel piè di pagina del tuo Preventivo/Fattura con tutte le informazioni legali di cui hai bisogno",
-    "This is the second line in the footer of your Quote/Invoice with all legal information you need" : "Questa è la seconda riga nel piè di pagina del tuo Preventivo/Fattura con tutte le informazioni legali di cui hai bisogno",
     "Show phone number in the Quote/Invoice header" : "Mostra il numero di telefono nell'intestazione del Preventivo e della Fattura",
     "E-mail address which appears in the header of the Quote/Invoice" : "Indirizzo e-mail che compare nell'intestazione del Preventivo e della Fattura",
     "Global currency for the application" : "Valuta globale per l'applicazione",

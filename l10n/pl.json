@@ -1,5 +1,4 @@
 { "translations": {
-    "Name" : "Nazwisko",
     "First name" : "Imię",
     "Limited company" : "Kapitał zakładowy",
     "Company" : "Firma",
@@ -16,8 +15,6 @@
     "Reference" : "Indeks",
     "Designation" : "Nazwa",
     "Your company name" : "Nazwa Twojej firmy",
-    "Your company contact surname" : "Nazwisko osoby do kontaktu w Twojej firmie",
-    "Your company contact name" : "Imię osoby do kontaktu w Twojej firmie",
     "Company legal information line one" : "Pierwsza linia informacji prawnej firmy",
     "Company legal information line two" : "Druga linia informacji prawnej firmy",
     "Your company email" : "E-mail Twojej firmy",
@@ -81,8 +78,6 @@
     "First name appears in the Quote/Invoice header as a contact" : "Imię pojawiające się w nagłówku Oferty/Faktury jako kontakt",
     "Last name appears in the Quote/Invoice header as a contact" : "Nazwisko pojawiające się w nagłówku Oferty/Faktury jako kontakt",
     "Show company address in the Quote/Invoice header" : "Pokaż adres firmy w nagłówku Oferty/Faktury",
-    "This is the first line in the footer of your Quote/Invoice with all legal information you need" : "To jest pierwszy wiersz w stopce Twojej Oferty/Faktury ze wszystkimi potrzebnymi informacjami prawnymi",
-    "This is the second line in the footer of your Quote/Invoice with all legal information you need" : "To jest drugi wiersz w stopce Twojej Oferty/Faktury ze wszystkimi potrzebnymi informacjami prawnymi",
     "Show phone number in the Quote/Invoice header" : "Pokaż numer telefonu w nagłówku Oferty/Faktury",
     "E-mail address which appears in the header of the Quote/Invoice" : "Adres e-mail, który pojawia się w nagłówku Oferty/Faktury",
     "Global currency for the application" : "Ogólna waluta dla aplikacji",

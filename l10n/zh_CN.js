@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "名字",
     "First name" : "姓氏",
     "Limited company" : "有限公司",
     "Company" : "公司",
@@ -17,8 +16,6 @@ OC.L10N.register(
     "Reference" : "参考",
     "Designation" : "指定",
     "Your company name" : "企业名",
-    "Your company contact surname" : "企业联系人姓氏",
-    "Your company contact name" : "企业联系人名字",
     "Your company email" : "企业邮箱",
     "Your company phone" : "企业电话",
     "Your company address" : "企业地址",

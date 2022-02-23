@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Име",
     "First name" : "Име",
     "Limited company" : "Друштво со ограничена одговорност",
     "Company" : "Фирма",

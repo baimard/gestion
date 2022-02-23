@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Ime",
     "First name" : "Osebno ime",
     "Limited company" : "Družba z omejeno odgovornostjo",
     "Company" : "Podjetje",
@@ -17,8 +16,6 @@ OC.L10N.register(
     "Reference" : "Sklic",
     "Designation" : "Poimenovanje",
     "Your company name" : "Ime podjetja",
-    "Your company contact surname" : "Priimek kontaktne osebe",
-    "Your company contact name" : "Ime kontaktne osebe",
     "Your company email" : "Elektronski naslov podjetja",
     "Your company phone" : "Telefonska številka podjetja",
     "Your company address" : "Naslov podjetja",

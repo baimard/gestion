@@ -1,7 +1,6 @@
 OC.L10N.register(
     "gestion",
     {
-    "Name" : "Nimi",
     "First name" : "Etunimi",
     "Company" : "Yritys",
     "Phone number" : "Puhelinnumero",

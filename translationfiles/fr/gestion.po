@@ -7,17 +7,17 @@
 # antemyste, 2021
 # Arnaud Wallon <arnaud@netbeat.be>, 2022
 # Hugo Robert <hugo.robert@protonmail.ch>, 2022
-# Benjamin <benjamin@cybercorp.fr>, 2022
 # Alain Rihs <alainrihs@sunrise.ch>, 2022
+# Benjamin <benjamin@cybercorp.fr>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-02-20 03:28+0000\n"
+"POT-Creation-Date: 2022-02-23 03:29+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Alain Rihs <alainrihs@sunrise.ch>, 2022\n"
+"Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,8 +26,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:21
-msgid "Name"
-msgstr "Nom"
+msgid "Last name"
+msgstr ""
 
 #: /app/lib/Db/Bdd.php:88 /app/templates/content/index.php:20
 msgid "First name"
@@ -98,13 +98,13 @@ msgstr "Désignation"
 msgid "Your company name"
 msgstr "Nom de votre entreprise"
 
-#: /app/lib/Db/Bdd.php:174 /app/templates/content/changelog.php:43
-msgid "Your company contact surname"
-msgstr "Votre nom de contact d'entreprise"
+#: /app/lib/Db/Bdd.php:174 /app/templates/content/changelog.php:45
+msgid "Your company contact last name"
+msgstr ""
 
-#: /app/lib/Db/Bdd.php:175 /app/templates/content/changelog.php:45
-msgid "Your company contact name"
-msgstr "Nom du contact de votre entreprise"
+#: /app/lib/Db/Bdd.php:175 /app/templates/content/changelog.php:43
+msgid "Your company contact first name"
+msgstr ""
 
 #: /app/lib/Db/Bdd.php:176 /app/templates/content/changelog.php:47
 msgid "Company legal information line one"
@@ -188,7 +188,7 @@ msgstr ""
 msgid "Choose work folder"
 msgstr "Choisir le répertoire de travail"
 
-#: /app/src/js/listener/main_listener.js:118
+#: /app/src/js/listener/main_listener.js:127
 msgid "Please create a new product"
 msgstr "Il faut créer un nouveau produit."
 
@@ -311,7 +311,6 @@ msgid "Company name"
 msgstr "Nom de votre entreprise"
 
 #: /app/templates/content/changelog.php:42
-#: /app/templates/content/configuration.php:12
 msgid ""
 "This is the name of the company that will appear in the footer of your quote"
 " and invoice. For example, you can set: \"Company: Cybercorp\" or just "
@@ -323,35 +322,42 @@ msgstr ""
 
 #: /app/templates/content/changelog.php:44
 msgid "First name appears in the Quote/Invoice header as a contact."
-msgstr ""
+msgstr "Prénom qui apparaît dans l'entête des Devis/Facture comme contact."
 
 #: /app/templates/content/changelog.php:46
 msgid "Last name appears in the Quote/Invoice header as a contact."
-msgstr ""
+msgstr "Nom qui apparaît dans l'entête des Devis/Facture comme contact."
 
 #: /app/templates/content/changelog.php:48
 msgid ""
 "This is the first line in the footer of your Quote/Invoice with all legal "
 "information you need."
 msgstr ""
+"Il s'agit de la première ligne du pied de page de votre Devis/Facture qui "
+"contient les informations légales dont vous avez besoin."
 
 #: /app/templates/content/changelog.php:50
 msgid ""
 "This is the second line in the footer of your Quote/Invoice with all legal "
 "information you need."
 msgstr ""
+"Il s'agit de la deuxième ligne du pied de page de votre Devis/Facture qui "
+"contient les informations légales dont vous avez besoin."
 
 #: /app/templates/content/changelog.php:52
 msgid "Show company address in the Quote/Invoice header."
-msgstr ""
+msgstr "Adresse de l'entreprise qui apparaît dans l'entête des Devis/Facture."
 
 #: /app/templates/content/changelog.php:54
 msgid "Show phone number in the Quote/Invoice header."
 msgstr ""
+"Numéro de téléphone de l'entreprise qui apparaît dans l'entête des "
+"Devis/Facture."
 
 #: /app/templates/content/changelog.php:56
 msgid "E-mail address which appears in the header of the Quote/Invoice."
 msgstr ""
+"Courriel de l'entreprise qui apparaît dans l'entête des Devis/Facture."
 
 #: /app/templates/content/changelog.php:57
 msgid "Your company VAT rate"
@@ -363,6 +369,9 @@ msgid ""
 "Global Default VAT rate apply to your Quote/Invoice (globally), to change "
 "it, just insert VAT rate amount without the percent sign."
 msgstr ""
+"Taux de TVA par défaut global appliqué à votre Devis/Facture (globalement), "
+"pour le modifier, simplement insérer le taux de TVA sans le signe "
+"pourcentage."
 
 #: /app/templates/content/changelog.php:59
 msgid "Automatically generated invoice number"
@@ -395,6 +404,8 @@ msgid ""
 "Legal disclaimer/mentions you need in your footer - before company "
 "information."
 msgstr ""
+"Mentions légales/Information importante que vous avez besoin d'afficher dans"
+" votre pied de page, avant les information de l'entreprise."
 
 #: /app/templates/content/configuration.php:8
 #: /app/templates/settings/index.php:4
@@ -408,6 +419,13 @@ msgstr "Cliquer pour modifier"
 #: /app/templates/content/configuration.php:11
 msgid "Need help?"
 msgstr "Besoin d'aide ?"
+
+#: /app/templates/content/configuration.php:12
+msgid ""
+"Name of the company that will appear in the footer of your quote and "
+"invoice. For example, you can set: \"Company: Cybercorp\" or just "
+"\"Cybercorp\"."
+msgstr ""
 
 #: /app/templates/content/configuration.php:14
 #: /app/templates/content/configuration.php:18
@@ -433,23 +451,19 @@ msgstr "Le nom apparaît dans l'entête de votre Devis/Facture comme le contact"
 
 #: /app/templates/content/configuration.php:24
 msgid "Show company address in the Quote/Invoice header"
-msgstr ""
+msgstr "Adresse de l'entreprise affichée dans l'entête de vos Devis/Facture"
 
 #: /app/templates/content/configuration.php:28
 msgid ""
-"This is the first line in the footer of your Quote/Invoice with all legal "
-"information you need"
+"First line in the footer of your Quote/Invoice with all legal information "
+"you need"
 msgstr ""
-"C'est la premier ligne de votre pied de page dans votre Devis/Facture avec "
-"toutes les informations légales dont vous avez besoin. Exemple : SIREN"
 
 #: /app/templates/content/configuration.php:32
 msgid ""
-"This is the second line in the footer of your Quote/Invoice with all legal "
-"information you need"
+"Second line in the footer of your Quote/Invoice with all legal information "
+"you need"
 msgstr ""
-"C'est la second ligne de votre pied de page dans votre Devis/Facture avec "
-"toutes les informations légales dont vous avez besoin. Exemple : SIRET"
 
 #: /app/templates/content/configuration.php:36
 msgid "Show phone number in the Quote/Invoice header"
@@ -694,7 +708,7 @@ msgstr "Clients"
 
 #: /app/templates/navigation/index.php:12
 msgid "Quotes"
-msgstr ""
+msgstr "Devis"
 
 #: /app/templates/navigation/index.php:19
 msgid "Invoices"
@@ -706,7 +720,7 @@ msgstr "Produits"
 
 #: /app/templates/navigation/index.php:35
 msgid "Information"
-msgstr ""
+msgstr "Information"
 
 #: /app/templates/settings/index.php:9
 msgid "About"

@@ -1,5 +1,10 @@
 import { translate as t } from '@nextcloud/l10n'
 
+var format_List = {
+    "en-EN": "en-EN",
+    "fr-FR": "fr-FR"
+}
+
 var currency_list = {
     "AFA": "Afghan Afghani",
     "ALL": "Albanian Lek",
@@ -167,6 +172,20 @@ var currency_list = {
     "ZMK": "Zambian Kwacha"
 };
 
+export function getFormatList(currentFormat) {
+    var list = "";
+    for (const [key, value] of Object.entries(format_List)) {
+        if (currentFormat === key) {
+            list += "<option selected value='" + key + "'>" + value + "</option>";
+        } else {
+            list += "<option value='" + key + "'>" + value + "</option>";
+        }
+
+    }
+    return list;
+}
+
+
 export function getCurrencyList(currentDevise) {
     var list = "";
     for (const [key, value] of Object.entries(currency_list)) {
@@ -186,4 +205,8 @@ export function getAutoIncrement(activate){
     }else{
         return "<option value='0'>" + t('gestion', 'disable') + "</option><option selected value='1'>" + t('gestion', 'enable') + "</option>"
     }
+}
+
+export function getFormatNumber(format){
+
 }

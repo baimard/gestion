@@ -1,7 +1,7 @@
 <div syle="display: none;" id="modalConfig" class="modal">
 	<div class="modal-content">
 		<span class="modalClose">&times;</span>
-		<h2><?php p($l->t('Welcome to GESTION')); ?> 2.0.5</h2>
+		<h2><?php p($l->t('Welcome to GESTION')); ?> 2.0.6</h2>
 		<p style="margin-bottom:20px;"><b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> &#128073; <a href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a></p>
 		<p style="margin-bottom:20px;">&#9888; <u><?php p($l->t('If you have updated this application, do not forget to clear your cache')); ?></u> &#9888;</p>
 		<p style="margin-bottom:20px;"><?php p($l->t('This application is open source and is designed by Benjamin AIMARD.')); ?></p>

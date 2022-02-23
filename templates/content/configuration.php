@@ -53,6 +53,10 @@
         <div class="configuration-icon icon-details"></div>
         <select style="float:none;" id="currency" class="configuration-content editableSelect" data-table="configuration" data-column="devise" data-id=""></select>
     </div>
+    <div title="<?php p($l->t('Global monetary format for the application')); ?>" class="configuration-global">
+        <div class="configuration-icon icon-details"></div>
+        <select style="float:none;" id="format" class="configuration-content editableSelect" data-table="configuration" data-column="format" data-id=""></select>
+    </div>
     <div title="<?php p($l->t('Legal disclaimer/mentions you need in your footer - before company information')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="mentions_default" class="configuration-content editable" data-table="configuration" data-column="mentions_default" data-id=""><?php p($l->t('Loading …')); ?></div>

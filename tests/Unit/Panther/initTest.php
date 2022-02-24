@@ -20,6 +20,8 @@ $client->submitForm("Finish setup", [
     'dbtype' => 'mysql'
 ]);
 
+sleep(5);
+
 $client = Client::createFirefoxClient();
 
 $client->request('GET', 'http://127.0.0.1/login');

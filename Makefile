@@ -153,8 +153,7 @@ appstore:
 
 .PHONY: test
 test:
-	sudo -u www-data $(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.xml --debug --colors
-#$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.integration.xml
+	$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.xml --debug --colors
 
 .PHONY: testPanther
 testPanther:

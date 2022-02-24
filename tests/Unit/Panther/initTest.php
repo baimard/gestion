@@ -3,8 +3,8 @@
 use Symfony\Component\Panther\Client;
 require __DIR__.'/../../../vendor/autoload.php';
 
-$client = Client::createFirefoxClient();
-
+// $client = Client::createFirefoxClient();
+$client = Client::createChromeClient();
 $client->request('GET', 'http://next.cybercorp.fr');
 
 $client->executeScript("document.getElementById('showAdvanced').click()");

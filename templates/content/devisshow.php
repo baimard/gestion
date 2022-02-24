@@ -5,10 +5,10 @@
         </h2>
         <hr />
         <div class="row">
-            <div class="col col-md">
+            <div class="col-5 h-100 m-0" style="min-height:250px;">
                 <?php $res = json_decode($_['configuration'])[0]; ?>
                 <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark"><?php p($l->t('FROM'));?> <?php echo $res->entreprise; ?></h5>
-                <p class="p-3 m-0 text-center text-dark text-center border border-top-0 border-2 border-dark">
+                <p style="min-height:180px;" class="p-3 m-0 h-100 text-center text-dark text-center border border-top-0 border-2 border-dark">
                     <?php echo $res->prenom . " " . $res->nom; ?><br />
                     <?php echo $res->adresse; ?><br />
                     <?php echo $res->mail; ?><br />
@@ -16,9 +16,14 @@
                     <span id="nothing"></span><br />
                 </p>
             </div>
-            <div class="col col-md">
+            <div class="col-2 h-100 m-0" style="min-height:250px;">
+                <?php
+                    echo "<center><a><img alt='".$l->t('Your compagny logo, in /.gestion/logo.png, click if you need information')."' class=\"img-fluid\" src=\"data:image/png;base64, ".$_['logo']."\"/></a></center>";
+                ?>
+            </div>
+            <div class="col-5 h-100 m-0" style="min-height:250px;">
                 <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark"><?php p($l->t('TO'));?> <span id="entreprise"></span></h6>
-                    <p class="p-3 mt-0 mb-4 text-center text-dark text-center border border-top-0 border-2 border-dark">
+                    <p style="min-height:180px;" class="p-3 m-0 h-100 text-center text-dark text-center border border-top-0 border-2 border-dark">
                         <span id="nomprenom" data-id="0" data-table="devis" data-column="id_client"></span><br />
                         <span id="adresse"></span><br />
                         <span id="mail"></span><br />

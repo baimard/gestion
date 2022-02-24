@@ -52,7 +52,7 @@
 
 #content {
 	width:100%;
-  min-width: 1920px; //bug #67
+  /*min-width: 1600px; /*bug #67*/
 }
 
 #contentTable {

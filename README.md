@@ -2,9 +2,10 @@
 
 If you want to support: https://www.buymeacoffee.com/benjaminaimard
 
-**Official store** 👉 https://apps.nextcloud.com/apps/gestion
-**Roadmap**   👉 https://github.com/baimard/gestion/discussions/127
-**Documentation** 👉 https://baimard.github.io/gestion/
+* **Official store** 👉 https://apps.nextcloud.com/apps/gestion
+* **Roadmap**   👉 https://github.com/baimard/gestion/discussions/127
+* **Documentation** 👉 https://baimard.github.io/gestion/
+* **Developper read before work** 👉 https://github.com/baimard/gestion/discussions/129
 
 All the translations are made by transifex team, **thank you to the whole team, for the big work**!
 

@@ -106,7 +106,13 @@ class PageController extends Controller {
 	public function devisshow($numdevis) {
 		$devis = $this->myDb->getOneDevis($numdevis,$this->idNextcloud);
 		$produits = $this->myDb->getListProduit($numdevis, $this->idNextcloud);
-		return new TemplateResponse('gestion', 'devisshow', array('configuration'=> $this->getConfiguration(), 'devis'=>json_decode($devis), 'produit'=>json_decode($produits), 'path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));
+		return new TemplateResponse('gestion', 'devisshow', array(	'configuration'=> $this->getConfiguration(), 
+																	'devis'=>json_decode($devis), 
+																	'produit'=>json_decode($produits), 
+																	'path' => $this->idNextcloud, 
+																	'url' => $this->getNavigationLink(),
+																	'logo' => $this->getLogo()
+																));
 	}
 
 	/**
@@ -117,7 +123,12 @@ class PageController extends Controller {
 	public function factureshow($numfacture) {
 		$facture = $this->myDb->getOneFacture($numfacture,$this->idNextcloud);
 		// $produits = $this->myDb->getListProduit($numdevis);
-		return new TemplateResponse('gestion', 'factureshow', array('path' => $this->idNextcloud, 'configuration'=> $this->getConfiguration(), 'facture'=>json_decode($facture), 'url' => $this->getNavigationLink()));
+		return new TemplateResponse('gestion', 'factureshow', array(	'path' => $this->idNextcloud, 
+																		'configuration'=> $this->getConfiguration(), 
+																		'facture'=>json_decode($facture), 
+																		'url' => $this->getNavigationLink(),
+																		'logo' => $this->getLogo()
+																	));
 	}
 
 	/**
@@ -370,6 +381,16 @@ class PageController extends Controller {
 		// //$file = $userFolder->get('myfile2.txt');
 	}
 
+
+	private function getLogo(){
+		try {
+			$file = $this->storage->get('/.gestion/logo.png');
+		} catch(\OCP\Files\NotFoundException $e) {
+			return "nothing";
+		}
+
+		return base64_encode($file->getContent());
+	}
 
 	/**
 	 * @NoAdminRequired

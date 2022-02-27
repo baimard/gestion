@@ -15,7 +15,7 @@ class Bdd {
     public function __construct(IDbConnection $db,
                                 IL10N $l) {
         
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format");
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->pdo = $db;
@@ -188,6 +188,8 @@ class Bdd {
     }
 
     public function isConfig($idNextcloud){
+        $changelog = 2; //+1 if you want changelog appear for everybody one time !
+
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
         if ( $res < 1 ){
@@ -196,7 +198,7 @@ class Bdd {
             $sql = "SELECT id as id, changelog as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
             $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
             $id = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->id;
-            if($res < 1){
+            if($res < $changelog){
                 $this->gestion_update("configuration","changelog",($res+1),$id,$idNextcloud);
                 return false;
             }else{

@@ -1,7 +1,7 @@
 <div syle="display: none;" id="modalConfig" class="modal">
 	<div class="modal-content">
 		<span class="modalClose">&times;</span>
-		<h2><?php p($l->t('Welcome to GESTION')); ?> 2.0.5</h2>
+		<h2><?php p($l->t('Welcome to GESTION')); ?> 2.0.6</h2>
 		<p style="margin-bottom:20px;"><b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> &#128073; <a href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a></p>
 		<p style="margin-bottom:20px;">&#9888; <u><?php p($l->t('If you have updated this application, do not forget to clear your cache')); ?></u> &#9888;</p>
 		<p style="margin-bottom:20px;"><?php p($l->t('This application is open source and is designed by Benjamin AIMARD.')); ?></p>
@@ -13,6 +13,7 @@
 		<br/>	<?php p($l->t('Want to talk with the community?')); ?> &#128073; <a href="https://github.com/baimard/gestion/discussions"><?php p($l->t('Git discussion')); ?></a>
 		<hr />
 		<h2><?php p($l->t('Changelog')); ?></h2>
+		<?php p($l->t('You can now add a logo to your invoices or quotes! To do this, drop a logo.png file in the .gestion folder at the root of your nextcloud directories. (Remember to show hidden files)')); ?>
 		<p><a href="https://github.com/baimard/gestion/releases"><?php p($l->t('Releases')); ?></a></p>
 	</div>
 </div>

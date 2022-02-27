@@ -4,7 +4,7 @@ import '../css/mycss.less';
 import { configuration} from "./modules/ajaxRequest.mjs";
 import { globalConfiguration } from "./modules/mainFunction.mjs";
 import './listener/main_listener';
-import { getAutoIncrement, getCurrencyList } from './modules/list.mjs';
+import { getAutoIncrement, getCurrencyList, getFormatList } from './modules/list.mjs';
 
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -58,6 +58,9 @@ function loadConfigurationDT(response) {
 
         $('#currency').html(getCurrencyList(myresp.devise));
         $('#currency').data("id", myresp.id);
+
+        $('#format').html(getFormatList(myresp.format));
+        $('#format').data("id", myresp.id);
 
         $('#mentions_default').html(((myresp.mentions_default.length === 0) ? '-' : myresp.mentions_default.replace(/\&amp;/g, '&')));
         $('#mentions_default').data("id", myresp.id);

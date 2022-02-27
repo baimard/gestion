@@ -5,25 +5,35 @@
         </h2>
         <hr/>
         <div class="row">
-            <div class="col col-md">
+            <div class="col-5 h-100 m-0" style="min-height:250px;">
                 <?php $res = json_decode($_['configuration'])[0]; ?>
-                <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark"><?php p($l->t('FROM'));?> <?php echo $res->entreprise;?></h5>
-                <p class="p-3 m-0 text-center text-dark text-center border border-top-0 border-2 border-dark">
-                <?php echo $res->prenom . " " . $res->nom; ?><br/>
-                <?php echo $res->adresse; ?><br/>
-                <?php echo $res->mail; ?><br/>
-                <?php echo $res->telephone; ?>
+                <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark"><?php p($l->t('FROM'));?> <?php echo $res->entreprise; ?></h5>
+                <p style="min-height:180px;" class="p-3 m-0 h-100 text-center text-dark text-center border border-top-0 border-2 border-dark">
+                    <?php echo $res->prenom . " " . $res->nom; ?><br />
+                    <?php echo $res->adresse; ?><br />
+                    <?php echo $res->mail; ?><br />
+                    <?php echo $res->telephone; ?><br/>
+                    <span id="nothing"></span><br />
                 </p>
             </div>
-            <div class="col col-md">
-            <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark"><?php p($l->t('TO'));?> <span id="entreprise"></span></h6>
-                <p class="p-3 mt-0 mb-4 text-center text-dark text-center border border-top-0 border-2 border-dark">
-                    <span id="nomprenom"></span><br/>
-                    <span id="adresse"></span><br/>
-                    <span id="mail"></span><br/>
-                    <span id="telephone"></span><br/>
-                    <span id="legal_one"></span><br/>
-                </p>
+            <div class="col-2 h-100 m-0" style="min-height:250px;">
+                <?php
+                    if(isset($_['logo']) && $_['logo'] !== "nothing"){
+                        echo "<center><a><img alt='".$l->t('Compagny logo')."' class=\"img-fluid\" src=\"data:image/png;base64, ".$_['logo']."\"/></a></center>";
+                    }else{
+                        echo "<span style='font-size:12px' id='Compangy-logo' data-html2canvas-ignore><b><center>".$l->t('You can add your logo brand company here.')."</center></b><br/><i>".$l->t('To do this, drop your logo.png file in ".gestion" folder at the top level of your nextcloud files. Remember to show hidden files')."</i><br/><br/><center>".$l->t('(this message will not appear on generated PDF)')."</center></span>";
+                    }
+                ?>
+            </div>
+            <div class="col-5 h-100 m-0" style="min-height:250px;">
+                <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark"><?php p($l->t('TO'));?> <span id="entreprise"></span></h6>
+                    <p style="min-height:180px;" class="p-3 m-0 h-100 text-center text-dark text-center border border-top-0 border-2 border-dark">
+                        <span id="nomprenom" data-id="0" data-table="devis" data-column="id_client"></span><br />
+                        <span id="adresse"></span><br />
+                        <span id="mail"></span><br />
+                        <span id="telephone"></span><br />
+                        <span id="legal_one"></span><br />
+                    </p>
             </div>
         </div>
         <div class="row">

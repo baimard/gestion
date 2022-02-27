@@ -186,7 +186,7 @@ export function modifyCell(r, positionColumn = -1, data){
  */
  export function getCurrency(response) {
     var myresp = JSON.parse(response)[0];
-    cur = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+    cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
 }
 
 /**

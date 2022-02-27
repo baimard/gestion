@@ -19,7 +19,7 @@ export function sendMail(myData) {
 export function capture(afterCapturefunction) {
   showMessage(t('gestion', 'Creation in progress …'));
 
-  $('.bootstrap-iso').css('width', '1000px')
+  $('.bootstrap-iso').css('width', '1200px')
   $('.bootstrap-iso').css('padding-right', '20px')
   $('.bootstrap-iso').css('padding-left', '20px')
   
@@ -28,23 +28,9 @@ export function capture(afterCapturefunction) {
     scrollY: -window.scrollY,
     dpi: 600,
   }).then((canvas) => {
-    var data = genPDF(canvas.toDataURL("image/png"), canvas);
+    var data = genPDF(canvas.toDataURL("image/jpg"), canvas);
     afterCapturefunction(data);
   });
-
-    // html2canvas($('.bootstrap-iso')[0], {
-    //   onrendered: function(canvas){
-    //     canvas.toBlob(function(blob){
-    //       var urlCreator = window.URL || window.webkitURL;
-    //       var imageUrl = urlCreator.createObjectURL(blob);
-    //       var img = new Image();
-    //       img.src = imageUrl;
-    //       var data = genPDF(img, canvas);
-    //       afterCapturefunction(data);
-    //     })
-    //   }
-    // })
-
 
   $('.bootstrap-iso').css('width', '')
   $('.bootstrap-iso').css('padding-right', '')
@@ -60,13 +46,13 @@ function genPDF(imgData, canvas) {
   var heightLeft = imgHeight;
   var position = 0;
 
-  doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+  doc.addImage(imgData, 'JPG', 0, position, imgWidth, imgHeight);
   heightLeft -= pageHeight;
 
   while (heightLeft >= 0) {
     position += heightLeft - imgHeight;
     doc.addPage();
-    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    doc.addImage(imgData, 'JPG', 0, position, imgWidth, imgHeight);
     heightLeft -= pageHeight;
   }
   var pdf = btoa(doc.output());

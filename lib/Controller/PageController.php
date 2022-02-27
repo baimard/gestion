@@ -123,7 +123,12 @@ class PageController extends Controller {
 	public function factureshow($numfacture) {
 		$facture = $this->myDb->getOneFacture($numfacture,$this->idNextcloud);
 		// $produits = $this->myDb->getListProduit($numdevis);
-		return new TemplateResponse('gestion', 'factureshow', array('path' => $this->idNextcloud, 'configuration'=> $this->getConfiguration(), 'facture'=>json_decode($facture), 'url' => $this->getNavigationLink()));
+		return new TemplateResponse('gestion', 'factureshow', array(	'path' => $this->idNextcloud, 
+																		'configuration'=> $this->getConfiguration(), 
+																		'facture'=>json_decode($facture), 
+																		'url' => $this->getNavigationLink(),
+																		'logo' => $this->getLogo()
+																	));
 	}
 
 	/**

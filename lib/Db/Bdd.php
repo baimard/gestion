@@ -188,6 +188,8 @@ class Bdd {
     }
 
     public function isConfig($idNextcloud){
+        $changelog = 2; //+1 if you want changelog appear for everybody one time !
+
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
         if ( $res < 1 ){
@@ -196,7 +198,7 @@ class Bdd {
             $sql = "SELECT id as id, changelog as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
             $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
             $id = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->id;
-            if($res < 1){
+            if($res < $changelog){
                 $this->gestion_update("configuration","changelog",($res+1),$id,$idNextcloud);
                 return false;
             }else{

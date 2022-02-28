@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-02-27 03:26+0000\n"
+"POT-Creation-Date: 2022-02-28 03:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,7 +66,7 @@ msgid "Invoice number"
 msgstr ""
 
 #: /app/lib/Db/Bdd.php:113 /app/templates/content/facture.php:25
-#: /app/templates/content/factureshow.php:34
+#: /app/templates/content/factureshow.php:44
 msgid "Means of payment"
 msgstr ""
 
@@ -74,14 +74,14 @@ msgstr ""
 msgid "INVOICE"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:124 /app/templates/content/devisshow.php:48
-#: /app/templates/content/factureshow.php:50
+#: /app/lib/Db/Bdd.php:124 /app/templates/content/devisshow.php:57
+#: /app/templates/content/factureshow.php:60
 #: /app/templates/content/produit.php:19
 msgid "Reference"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:124 /app/templates/content/devisshow.php:49
-#: /app/templates/content/factureshow.php:51
+#: /app/lib/Db/Bdd.php:124 /app/templates/content/devisshow.php:58
+#: /app/templates/content/factureshow.php:61
 #: /app/templates/content/produit.php:20
 msgid "Designation"
 msgstr ""
@@ -90,31 +90,31 @@ msgstr ""
 msgid "Your company name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:174 /app/templates/content/changelog.php:45
+#: /app/lib/Db/Bdd.php:174 /app/templates/content/changelog.php:46
 msgid "Your company contact last name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:175 /app/templates/content/changelog.php:43
+#: /app/lib/Db/Bdd.php:175 /app/templates/content/changelog.php:44
 msgid "Your company contact first name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:176 /app/templates/content/changelog.php:47
+#: /app/lib/Db/Bdd.php:176 /app/templates/content/changelog.php:48
 msgid "Company legal information line one"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:177 /app/templates/content/changelog.php:49
+#: /app/lib/Db/Bdd.php:177 /app/templates/content/changelog.php:50
 msgid "Company legal information line two"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:178 /app/templates/content/changelog.php:55
+#: /app/lib/Db/Bdd.php:178 /app/templates/content/changelog.php:56
 msgid "Your company email"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:179 /app/templates/content/changelog.php:53
+#: /app/lib/Db/Bdd.php:179 /app/templates/content/changelog.php:54
 msgid "Your company phone"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:180 /app/templates/content/changelog.php:51
+#: /app/lib/Db/Bdd.php:180 /app/templates/content/changelog.php:52
 msgid "Your company address"
 msgstr ""
 
@@ -247,115 +247,122 @@ msgid "Changelog"
 msgstr ""
 
 #: /app/templates/content/changelog.php:16
+msgid ""
+"You can now add a logo to your invoices or quotes! To do this, drop a logo."
+"png file in the .gestion folder at the root of your nextcloud directories. "
+"(Remember to show hidden files)"
+msgstr ""
+
+#: /app/templates/content/changelog.php:17
 msgid "Releases"
 msgstr ""
 
-#: /app/templates/content/changelog.php:23
+#: /app/templates/content/changelog.php:24
 msgid "Send an email"
 msgstr ""
 
-#: /app/templates/content/changelog.php:24
+#: /app/templates/content/changelog.php:25
 msgid "Your invoice/quote"
 msgstr ""
 
-#: /app/templates/content/changelog.php:26
+#: /app/templates/content/changelog.php:27
 msgid "Dear,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:28
+#: /app/templates/content/changelog.php:29
 msgid "Attached to this email you will find a new document."
 msgstr ""
 
-#: /app/templates/content/changelog.php:30
+#: /app/templates/content/changelog.php:31
 msgid "Best regards,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:32
+#: /app/templates/content/changelog.php:33
 msgid "Send"
 msgstr ""
 
-#: /app/templates/content/changelog.php:39
+#: /app/templates/content/changelog.php:40
 msgid "Configuration help"
 msgstr ""
 
-#: /app/templates/content/changelog.php:41
+#: /app/templates/content/changelog.php:42
 msgid "Company name"
 msgstr ""
 
-#: /app/templates/content/changelog.php:42
+#: /app/templates/content/changelog.php:43
 msgid ""
 "This is the name of the company that will appear in the footer of your quote "
 "and invoice. For example, you can set: \"Company: Cybercorp\" or just "
 "\"Cybercorp\"."
 msgstr ""
 
-#: /app/templates/content/changelog.php:44
+#: /app/templates/content/changelog.php:45
 msgid "First name appears in the Quote/Invoice header as a contact."
 msgstr ""
 
-#: /app/templates/content/changelog.php:46
+#: /app/templates/content/changelog.php:47
 msgid "Last name appears in the Quote/Invoice header as a contact."
 msgstr ""
 
-#: /app/templates/content/changelog.php:48
+#: /app/templates/content/changelog.php:49
 msgid ""
 "This is the first line in the footer of your Quote/Invoice with all legal "
 "information you need."
 msgstr ""
 
-#: /app/templates/content/changelog.php:50
+#: /app/templates/content/changelog.php:51
 msgid ""
 "This is the second line in the footer of your Quote/Invoice with all legal "
 "information you need."
 msgstr ""
 
-#: /app/templates/content/changelog.php:52
+#: /app/templates/content/changelog.php:53
 msgid "Show company address in the Quote/Invoice header."
 msgstr ""
 
-#: /app/templates/content/changelog.php:54
+#: /app/templates/content/changelog.php:55
 msgid "Show phone number in the Quote/Invoice header."
 msgstr ""
 
-#: /app/templates/content/changelog.php:56
+#: /app/templates/content/changelog.php:57
 msgid "E-mail address which appears in the header of the Quote/Invoice."
 msgstr ""
 
-#: /app/templates/content/changelog.php:57
+#: /app/templates/content/changelog.php:58
 msgid "Your company VAT rate"
 msgstr ""
 
-#: /app/templates/content/changelog.php:58
+#: /app/templates/content/changelog.php:59
 #: /app/templates/content/configuration.php:44
 msgid ""
 "Global Default VAT rate apply to your Quote/Invoice (globally), to change "
 "it, just insert VAT rate amount without the percent sign."
 msgstr ""
 
-#: /app/templates/content/changelog.php:59
+#: /app/templates/content/changelog.php:60
 msgid "Automatically generated invoice number"
 msgstr ""
 
-#: /app/templates/content/changelog.php:60
+#: /app/templates/content/changelog.php:61
 #: /app/templates/content/configuration.php:48
 msgid ""
 "If you want to automatically generated an invoice number, set to enable. If "
 "you want to be free, set disable. You can enable and disable when you want."
 msgstr ""
 
-#: /app/templates/content/changelog.php:61
+#: /app/templates/content/changelog.php:62
 msgid "Global default Currency"
 msgstr ""
 
-#: /app/templates/content/changelog.php:62
+#: /app/templates/content/changelog.php:63
 msgid "Global currency for the application."
 msgstr ""
 
-#: /app/templates/content/changelog.php:63
+#: /app/templates/content/changelog.php:64
 msgid "Legal disclaimer/mentions"
 msgstr ""
 
-#: /app/templates/content/changelog.php:64
+#: /app/templates/content/changelog.php:65
 msgid ""
 "Legal disclaimer/mentions you need in your footer - before company "
 "information."
@@ -390,7 +397,7 @@ msgstr ""
 #: /app/templates/content/configuration.php:38
 #: /app/templates/content/configuration.php:42
 #: /app/templates/content/configuration.php:46
-#: /app/templates/content/configuration.php:58
+#: /app/templates/content/configuration.php:62
 msgid "Loading …"
 msgstr ""
 
@@ -431,6 +438,10 @@ msgid "Global currency for the application"
 msgstr ""
 
 #: /app/templates/content/configuration.php:56
+msgid "Global monetary format for the application"
+msgstr ""
+
+#: /app/templates/content/configuration.php:60
 msgid ""
 "Legal disclaimer/mentions you need in your footer - before company "
 "information"
@@ -476,65 +487,87 @@ msgstr ""
 msgid "FROM"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:20
-#: /app/templates/content/factureshow.php:19
+#: /app/templates/content/devisshow.php:22
+#: /app/templates/content/factureshow.php:22
+msgid "Compagny logo"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:24
+#: /app/templates/content/factureshow.php:24
+msgid "You can add your logo brand company here."
+msgstr ""
+
+#: /app/templates/content/devisshow.php:24
+#: /app/templates/content/factureshow.php:24
+msgid ""
+"To do this, drop your logo.png file in \".gestion\" folder at the top level "
+"of your nextcloud files. Remember to show hidden files"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:24
+#: /app/templates/content/factureshow.php:24
+msgid "(this message will not appear on generated PDF)"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:29
+#: /app/templates/content/factureshow.php:29
 msgid "TO"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:33
+#: /app/templates/content/devisshow.php:42
 msgid "Offer valid for 1 month from"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:50
-#: /app/templates/content/factureshow.php:52
+#: /app/templates/content/devisshow.php:59
+#: /app/templates/content/factureshow.php:62
 msgid "Quantity"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:51
-#: /app/templates/content/factureshow.php:53
+#: /app/templates/content/devisshow.php:60
+#: /app/templates/content/factureshow.php:63
 #: /app/templates/content/produit.php:21
 msgid "Unit price without VAT"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:52
-#: /app/templates/content/devisshow.php:66
-#: /app/templates/content/factureshow.php:54
-#: /app/templates/content/factureshow.php:67
+#: /app/templates/content/devisshow.php:61
+#: /app/templates/content/devisshow.php:75
+#: /app/templates/content/factureshow.php:64
+#: /app/templates/content/factureshow.php:77
 msgid "Total without VAT"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:58
+#: /app/templates/content/devisshow.php:67
 #: /app/templates/content/produit.php:12
 msgid "Add product"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:59
-#: /app/templates/content/factureshow.php:60
+#: /app/templates/content/devisshow.php:68
+#: /app/templates/content/factureshow.php:70
 msgid "Save in Nextcloud"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:60
-#: /app/templates/content/factureshow.php:61
+#: /app/templates/content/devisshow.php:69
+#: /app/templates/content/factureshow.php:71
 msgid "Send by email"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:67
-#: /app/templates/content/factureshow.php:68
+#: /app/templates/content/devisshow.php:76
+#: /app/templates/content/factureshow.php:78
 msgid "VAT Rate"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:68
-#: /app/templates/content/factureshow.php:69
+#: /app/templates/content/devisshow.php:77
+#: /app/templates/content/factureshow.php:79
 msgid "Total VAT"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:69
-#: /app/templates/content/factureshow.php:70
+#: /app/templates/content/devisshow.php:78
+#: /app/templates/content/factureshow.php:80
 msgid "Total Price"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:77
-#: /app/templates/content/factureshow.php:78
+#: /app/templates/content/devisshow.php:86
+#: /app/templates/content/factureshow.php:88
 msgid "Please set in global configuration"
 msgstr ""
 
@@ -547,7 +580,7 @@ msgid "Add invoice"
 msgstr ""
 
 #: /app/templates/content/facture.php:23
-#: /app/templates/content/factureshow.php:33
+#: /app/templates/content/factureshow.php:43
 msgid "Date of service"
 msgstr ""
 
@@ -556,7 +589,7 @@ msgid "Payment date"
 msgstr ""
 
 #: /app/templates/content/facture.php:26
-#: /app/templates/content/factureshow.php:34
+#: /app/templates/content/factureshow.php:44
 msgid "Associated quote"
 msgstr ""
 
@@ -564,7 +597,7 @@ msgstr ""
 msgid "Invoice #"
 msgstr ""
 
-#: /app/templates/content/factureshow.php:33
+#: /app/templates/content/factureshow.php:43
 msgid "Settlement date"
 msgstr ""
 

@@ -13,7 +13,7 @@
 		<br/>	<?php p($l->t('Want to talk with the community?')); ?> &#128073; <a href="https://github.com/baimard/gestion/discussions"><?php p($l->t('Git discussion')); ?></a>
 		<hr />
 		<h2><?php p($l->t('Changelog')); ?></h2>
-		<?php p($l->t('You can now add a logo to your invoices or quotes! To do this, drop a logo.png file in the .gestion folder at the root of your nextcloud directories. (Remember to show hidden files)')); ?>
+		<?php p($l->t('You can now add a logo to your invoices or quotes! To do this, drop a logo.png file in the .gestion folder at the root of your Nextcloud Files app. (Remember to set "Show hidden files".)')); ?>
 		<p><a href="https://github.com/baimard/gestion/releases"><?php p($l->t('Releases')); ?></a></p>
 	</div>
 </div>

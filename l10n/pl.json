@@ -87,6 +87,7 @@
     "Show phone number in the Quote/Invoice header" : "Pokaż numer telefonu w nagłówku Oferty/Faktury",
     "E-mail address which appears in the header of the Quote/Invoice" : "Adres e-mail, który pojawia się w nagłówku Oferty/Faktury",
     "Global currency for the application" : "Ogólna waluta dla aplikacji",
+    "Global monetary format for the application" : "Ogólny format walutowy dla aplikacji",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Zastrzeżenie prawne/wzmianki potrzebne w stopce - przed informacjami o firmie",
     "Quote" : "Oferta",
     "Add quote" : "Dodaj ofertę",

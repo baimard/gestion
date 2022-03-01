@@ -87,6 +87,7 @@
     "Show phone number in the Quote/Invoice header" : "Mostra il numero di telefono nell'intestazione del Preventivo e della Fattura",
     "E-mail address which appears in the header of the Quote/Invoice" : "Indirizzo e-mail che compare nell'intestazione del Preventivo e della Fattura",
     "Global currency for the application" : "Valuta globale per l'applicazione",
+    "Global monetary format for the application" : "Formato monetario globale per l'applicazione",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Nota legale/menzioni di cui hai bisogno nel tuo piè di pagina - prima delle informazioni sull'azienda",
     "Quote" : "Preventivo",
     "Add quote" : "Aggiungi preventivo",

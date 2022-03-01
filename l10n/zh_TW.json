@@ -87,6 +87,7 @@
     "Show phone number in the Quote/Invoice header" : "在報價單／發票頁首中出現的電話號碼",
     "E-mail address which appears in the header of the Quote/Invoice" : "在報價單／發票頁首中出現的電子郵件地址",
     "Global currency for the application" : "應用程式的預設貨幣",
+    "Global monetary format for the application" : "應用程式的全域貨幣格式",
     "Legal disclaimer/mentions you need in your footer - before company information" : "頁尾的法律免責聲明 - 在公司資訊之前",
     "Quote" : "報價",
     "Add quote" : "新增報價",

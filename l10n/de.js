@@ -89,6 +89,7 @@ OC.L10N.register(
     "Show phone number in the Quote/Invoice header" : "Telefonnummer in der Kopfzeile von Angebot oder Rechnung anzeigen",
     "E-mail address which appears in the header of the Quote/Invoice" : "E-Mail-Adresse, die in der Kopfzeile von Angebot oder Rechnung erscheint",
     "Global currency for the application" : "Globale Währung für die Anwendung",
+    "Global monetary format for the application" : "Globales Währungsformat für die Anwendung",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Rechtliche Informationen die Du in Deiner Fußzeile vor den Firmeninformationen benötigst",
     "Quote" : "Angebot",
     "Add quote" : "Angebot hinzufügen",

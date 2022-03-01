@@ -89,6 +89,7 @@ OC.L10N.register(
     "Show phone number in the Quote/Invoice header" : "Teklif ya da fatura üst bilgisinde görüntülenecek telefon numarası",
     "E-mail address which appears in the header of the Quote/Invoice" : "Teklif ya da fatura üst bilgisinde görüntülenecek e-posta adresi",
     "Global currency for the application" : "Uygulama genelinde kullanılacak para birimi ",
+    "Global monetary format for the application" : "Uygulama genelinde kullanılacak para biçimi",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Alt bilgi bölümünde gereken yasal sorumluluk reddi ve anmalar  - şirket bilgilerinden önce",
     "Quote" : "Teklif",
     "Add quote" : "Teklif ekle",

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-03-01 03:27+0000\n"
+"POT-Creation-Date: 2022-03-02 03:50+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -100,11 +100,11 @@ msgstr "Nom de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:174 /app/templates/content/changelog.php:46
 msgid "Your company contact last name"
-msgstr ""
+msgstr "Nom du contact de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:175 /app/templates/content/changelog.php:44
 msgid "Your company contact first name"
-msgstr ""
+msgstr "Prénom du contact de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:176 /app/templates/content/changelog.php:48
 msgid "Company legal information line one"
@@ -280,6 +280,10 @@ msgid ""
 "logo.png file in the \".gestion\" folder at the root of your Nextcloud Files"
 " app. (Remember to set \"Show hidden files\".)"
 msgstr ""
+"Vous pouvez maintenant ajouter le logo de votre entreprise à vos devis et "
+"factures ! Pour cela, placer un fichier logo.png dans le dossier "
+"\".gestion\" au plus au niveau de votre application Nextcloud Files. "
+"(N'oubliez pas de cocher la case \"Voir les fichiers cachés\".)"
 
 #: /app/templates/content/changelog.php:17
 msgid "Releases"
@@ -433,6 +437,9 @@ msgid ""
 "invoice. For example, you can set: \"Company: Cybercorp\" or just "
 "\"Cybercorp\"."
 msgstr ""
+"Nom de l'entreprise qui va apparaître dans le pied de page de votre devis ou"
+" facture. Par exemple, vous pouvez mettre : \"Entreprise : Cybercorp\" ou "
+"simplement \"Cybercorp\"."
 
 #: /app/templates/content/configuration.php:14
 #: /app/templates/content/configuration.php:18
@@ -465,12 +472,16 @@ msgid ""
 "First line in the footer of your Quote/Invoice with all legal information "
 "you need"
 msgstr ""
+"Première ligne du pied de page pour votre devis/facture avec les "
+"informations ou mentions légales dont vous avez besoin"
 
 #: /app/templates/content/configuration.php:32
 msgid ""
 "Second line in the footer of your Quote/Invoice with all legal information "
 "you need"
 msgstr ""
+"Seconde ligne du pied de page pour votre devis/facture avec les informations"
+" ou mentions légales dont vous avez besoin"
 
 #: /app/templates/content/configuration.php:36
 msgid "Show phone number in the Quote/Invoice header"
@@ -486,7 +497,7 @@ msgstr "Devise globale de votre application"
 
 #: /app/templates/content/configuration.php:56
 msgid "Global monetary format for the application"
-msgstr ""
+msgstr "Format monétaire global de l'application"
 
 #: /app/templates/content/configuration.php:60
 msgid ""
@@ -539,12 +550,12 @@ msgstr "PAR"
 #: /app/templates/content/devisshow.php:22
 #: /app/templates/content/factureshow.php:22
 msgid "Company logo"
-msgstr ""
+msgstr "logo de votre entreprise"
 
 #: /app/templates/content/devisshow.php:24
 #: /app/templates/content/factureshow.php:24
 msgid "You can add your company logo here."
-msgstr ""
+msgstr "Vous pouvez ajouter le logo de votre entreprise ici."
 
 #: /app/templates/content/devisshow.php:24
 #: /app/templates/content/factureshow.php:24
@@ -552,11 +563,14 @@ msgid ""
 "To do this, drop your logo.png file in \".gestion\" folder at the root of "
 "your Nextcloud Files app. Remember to set \"Show hidden files\"."
 msgstr ""
+"Pour cela, placer un fichier logo.png dans le dossier \".gestion\" au plus "
+"au niveau de votre application Nextcloud Files. (N'oubliez pas de cocher la "
+"case \"Voir les fichiers cachés\".)"
 
 #: /app/templates/content/devisshow.php:24
 #: /app/templates/content/factureshow.php:24
 msgid "(This message will not appear on generated PDF.)"
-msgstr ""
+msgstr "(Ce message n’apparaîtra pas dans les PDF qui sont générés.)"
 
 #: /app/templates/content/devisshow.php:29
 #: /app/templates/content/factureshow.php:29

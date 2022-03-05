@@ -14,5 +14,5 @@ window.addEventListener('DOMContentLoaded', function () {
     Devis.loadDevisDT(dt);
 
     /*Listener*/
-    dt.on('page search', loadClientList);
+    dt.on('page search length', loadClientList);
 });

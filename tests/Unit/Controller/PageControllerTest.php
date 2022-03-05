@@ -68,7 +68,7 @@ class PageControllerTest extends TestCase {
 	}
 
 	public function testDevisShow() {
-		$r = json_decode($this->controller->getDevis())[0]->{"id"};
+		$r = json_decode($this->controller->getDevis())[1]->{"id"};
 		$result = $this->controller->devisshow($r);
 		$this->assertEquals('devisshow', $result->getTemplateName());
 		$this->assertTrue($result instanceof TemplateResponse);

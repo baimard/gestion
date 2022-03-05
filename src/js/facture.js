@@ -14,5 +14,5 @@ window.addEventListener('DOMContentLoaded', function () {
     var dt = new DataTable('.tabledt',optionDatatable);
     Facture.loadFactureDT(dt);
 
-    dt.on('page search', loadDevisList);
+    dt.on('page search length', loadDevisList);
 });

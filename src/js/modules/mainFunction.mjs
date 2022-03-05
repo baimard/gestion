@@ -82,6 +82,15 @@ export function checkSelect(el) {
     })
 }
 
+
+export function checkSelectPurJs(el) {
+    el.forEach(element => {
+        if (element.value == el.getAttribute("data-current")) {
+            element.setAttribute('selected', true);
+        }
+    });
+}
+
 /**
  * 
  * @param {*} DT 
@@ -96,21 +105,6 @@ export function LoadDT(DT, response, cls) {
     });
     DT.columns.adjust(optionDatatable).draw(true);
     configureDT();
-}
-
-/**
- * 
- */
-export function loadDevisList() {
-    Devis.getDevis(function (response) {
-        $('.listDevis').empty();
-        $('.listDevis').append("<option value='0'>" + t('gestion', 'Choose quote') + "</option>");
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            $('.listDevis').append("<option value='" + myresp.id + "'>" + myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom + "</option>");
-        });
-        checkSelect('.listDevis');
-        configuration(checkAutoIncrement);
-    });
 }
 
 /**
@@ -231,3 +225,11 @@ export function updateNumerical(el, format_number=true){
         el.text(el.text())
     }
 }
+
+export function removeOptions(selectElement) {
+    
+    var i, L = selectElement.options.length - 1;
+    for(i = L; i >= 0; i--) {
+       selectElement.remove(i);
+    }
+ }

@@ -1,5 +1,6 @@
 import { generateUrl, getRootUrl } from "@nextcloud/router";
-import { baseUrl, loadClientList, LoadDT, showDone } from "../modules/mainFunction.mjs";
+import { configuration } from "../modules/ajaxRequest.mjs";
+import { baseUrl, checkAutoIncrement, checkSelect, checkSelectPurJs, loadClientList, LoadDT, removeOptions, showDone } from "../modules/mainFunction.mjs";
 
 export class Devis {
 
@@ -82,4 +83,42 @@ export class Devis {
     };
     oReq.send();
   }
+
+  static loadDevisList() {
+    Devis.getDevis(function (response) {
+      var listDevis = document.querySelectorAll(".listDevis");
+
+      listDevis.forEach(function(selectElement){
+        removeOptions(selectElement)
+
+        var option = document.createElement("option");
+        option.value = 0;
+        option.text = t('gestion', 'Choose quote');
+        selectElement.appendChild(option);
+
+        JSON.parse(response).forEach(function(myresp){
+          if( myresp.prenom ||  myresp.nom ){
+            var option = document.createElement("option");
+            option.value = myresp.id;
+            option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
+            selectElement.appendChild(option);
+          }
+        });
+
+        checkSelectPurJs(selectElement);  
+      });
+      
+      configuration(checkAutoIncrement);
+
+        // $('.listDevis').empty();
+        // $('.listDevis').append("<option value='0'>" + t('gestion', 'Choose quote') + "</option>");
+        // $.each(JSON.parse(response), function (arrayID, myresp) {
+        //     if( myresp.prenom != "null" ||  myresp.nom != "null"){
+        //       $('.listDevis').append("<option value='" + myresp.id + "'>" + myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom + "</option>");
+        //     }
+        // });
+        // checkSelect('.listDevis');
+        // configuration(checkAutoIncrement);
+    });
+}
 }

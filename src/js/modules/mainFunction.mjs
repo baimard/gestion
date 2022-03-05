@@ -109,20 +109,6 @@ export function LoadDT(DT, response, cls) {
 
 /**
  * 
- */
-export function loadClientList() {
-    Client.getClients(function (response) {
-        $('.listClient').empty();
-        $('.listClient').append("<option value='0'>" + t('gestion', 'Choose customer') + "</option>");
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            $('.listClient').append("<option value='" + myresp.id + "'>" + myresp.nom + " " + myresp.prenom + "</option>");
-        });
-        checkSelect('.listClient');
-    });
-}
-
-/**
- * 
  * @param {*} ID 
  * @param {*} positionRow 
  * @param {*} positionColumn 
@@ -213,16 +199,18 @@ export function checkAutoIncrement(response){
 }
 
 /**
- * 
- * @param {*} div 
+ * Format number if it's monetary
+ * @param {*} el 
+ * @param {*} format_number 
  */
 export function updateNumerical(el, format_number=true){
-    el.text(el.text().replace(',', '.').replace(/[^0-9.-]+/g,""))
+    el.innerText=el.innerText.replace(',', '.').replace(/[^0-9.-]+/g,"")
+    console.log(el.innerText);
     updateEditable(el);
     if(format_number){
-        el.text(cur.format(el.text()))
+        el.innerText=cur.format(el.innerText)
     }else{
-        el.text(el.text())
+        el.innerText=el.innerText
     }
 }
 

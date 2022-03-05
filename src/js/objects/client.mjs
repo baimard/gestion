@@ -1,4 +1,4 @@
-import { baseUrl, LoadDT, showDone } from "../modules/mainFunction.mjs";
+import { baseUrl, checkSelectPurJs, LoadDT, removeOptions, showDone } from "../modules/mainFunction.mjs";
 
 export class Client {
 
@@ -118,6 +118,32 @@ export class Client {
         });
     }).fail(function (response, code) {
         showError(response);
+    });
+  }
+
+  /**
+   * 
+   */
+  static loadClientList() {
+    Client.getClients(function (response) {
+      var listClients = document.querySelectorAll(".listClient");
+
+      listClients.forEach(selectElement => {
+        removeOptions(selectElement);
+        var option = document.createElement("option");
+        option.value = 0;
+        option.text = t('gestion', 'Choose customer');
+        selectElement.appendChild(option);
+
+        JSON.parse(response).forEach(myresp => {
+          var option = document.createElement("option");
+          option.value = myresp.id;
+          option.text = myresp.prenom + ' ' + myresp.nom;
+          selectElement.appendChild(option);
+        });
+  
+        checkSelectPurJs(selectElement);
+      });
     });
   }
 }

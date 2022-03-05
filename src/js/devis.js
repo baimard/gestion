@@ -4,9 +4,10 @@ import '../css/mycss.less';
 
 
 import DataTable from 'datatables.net';
-import { globalConfiguration, loadClientList, optionDatatable, path } from "./modules/mainFunction.mjs";
+import { globalConfiguration, optionDatatable, path } from "./modules/mainFunction.mjs";
 import { Devis } from './objects/devis.mjs';
 import './listener/main_listener';
+import { Client } from './objects/client.mjs';
 
 window.addEventListener('DOMContentLoaded', function () {
     globalConfiguration();
@@ -14,5 +15,5 @@ window.addEventListener('DOMContentLoaded', function () {
     Devis.loadDevisDT(dt);
 
     /*Listener*/
-    dt.on('page search length', loadClientList);
+    dt.on('page search length', Client.loadClientList);
 });

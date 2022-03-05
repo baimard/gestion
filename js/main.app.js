@@ -30650,12 +30650,9 @@ function getAnnualTurnoverPerMonthNoVat(cur) {
  * @param {*} myCase 
  */
 function ajaxRequest_updateEditable(myCase) {
-    updateDB(myCase.data('table'), myCase.data('column'), myCase.text(), myCase.data('id'));
-    if (myCase.data('modifier') === "getProduitsById") {
-        getProduitsById();
-    }
-    myCase.attr('contenteditable', 'false');
-    myCase.removeAttr('contenteditable');
+    updateDB(myCase.dataset.table, myCase.dataset.column, myCase.innerText, myCase.dataset.id);
+    if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
+    myCase.removeAttribute('contenteditable');
 }
 
 /**
@@ -30739,132 +30736,6 @@ function saveNextcloud (myData) {
   }
 // EXTERNAL MODULE: ./node_modules/@nextcloud/router/dist/index.js
 var router_dist = __webpack_require__(9753);
-;// CONCATENATED MODULE: ./src/js/objects/devis.mjs
-
-
-
-
-class Devis {
-
-  /**
-   * Devis object
-   * @param myresp instantiate devis object
-   */
-  constructor(myresp) {
-    this.id = myresp.id;
-    this.date = ((myresp.date == null || myresp.date.length === 0) ? '-' : myresp.date);
-    this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
-    this.cid = ((myresp.cid == null || myresp.cid.length === 0) ? '-' : myresp.cid);
-    this.version = ((myresp.version == null || myresp.version.length === 0) ? '-' : myresp.version);
-    this.mentions = ((myresp.mentions == null || myresp.mentions.length === 0) ? '-' : myresp.mentions);
-    this.baseUrl = getRootUrl() + generateUrl('/apps/gestion');
-  }
-
-  /**
-   * Get datatable row for a devis
-   */
-  getDTRow() {
-    let myrow = [
-      '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date + ' data-table="devis" data-column="date" data-id="' + this.id + '"/>',
-      '<div class="editable" data-table="devis" data-column="num" data-id="' + this.id + '" style="display:inline">' + this.num + '</div>',
-      '<div data-table="devis" data-column="id_client" data-id="' + this.id + '"><select class="listClient" data-current="' + this.cid + '"></select></div>',
-      '<div class="editable" data-table="devis" data-column="version" data-id="' + this.id + '" style="display:inline">' + this.version + '</div>',
-      '<div class="editable" data-table="devis" data-column="mentions" data-id="' + this.id + '" style="display:inline">' + this.mentions + '</div>',
-      '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl + "/devis/" + this.id + '/show"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="devis" data-id=' + this.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
-    ];
-    return myrow;
-  }
-
-  /**
-   * 
-   * @param {*} dt 
-   */
-  static newDevis(dt) {
-    var oReq = new XMLHttpRequest();
-    oReq.open('POST', baseUrl + '/devis/insert', true);
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        showDone()
-        Devis.loadDevisDT(dt);
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-  }
-
-  /**
-   * Load devis ajax
-   * @param devisDT devis datatable
-   */
-  static loadDevisDT(devisDT) {
-    var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', baseUrl + '/getDevis', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        LoadDT(devisDT, JSON.parse(this.response), Devis);
-        loadClientList();
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-  }
-
-  static getDevis(callback){
-    var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', baseUrl + '/getDevis', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        callback(JSON.parse(this.response));
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-  }
-
-  static loadDevisList() {
-    Devis.getDevis(function (response) {
-      var listDevis = document.querySelectorAll(".listDevis");
-
-      listDevis.forEach(function(selectElement){
-        removeOptions(selectElement)
-
-        var option = document.createElement("option");
-        option.value = 0;
-        option.text = t('gestion', 'Choose quote');
-        selectElement.appendChild(option);
-
-        JSON.parse(response).forEach(function(myresp){
-          if( myresp.prenom ||  myresp.nom ){
-            var option = document.createElement("option");
-            option.value = myresp.id;
-            option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
-            selectElement.appendChild(option);
-          }
-        });
-
-        checkSelectPurJs(selectElement);  
-      });
-      
-      configuration(checkAutoIncrement);
-
-        // $('.listDevis').empty();
-        // $('.listDevis').append("<option value='0'>" + t('gestion', 'Choose quote') + "</option>");
-        // $.each(JSON.parse(response), function (arrayID, myresp) {
-        //     if( myresp.prenom != "null" ||  myresp.nom != "null"){
-        //       $('.listDevis').append("<option value='" + myresp.id + "'>" + myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom + "</option>");
-        //     }
-        // });
-        // checkSelect('.listDevis');
-        // configuration(checkAutoIncrement);
-    });
-}
-}
-
 ;// CONCATENATED MODULE: ./src/js/objects/client.mjs
 /* provided dependency */ var client_$ = __webpack_require__(9755);
 
@@ -30989,6 +30860,152 @@ class client_Client {
         showError(response);
     });
   }
+
+  /**
+   * 
+   */
+  static loadClientList() {
+    client_Client.getClients(function (response) {
+      var listClients = document.querySelectorAll(".listClient");
+
+      listClients.forEach(selectElement => {
+        removeOptions(selectElement);
+        var option = document.createElement("option");
+        option.value = 0;
+        option.text = t('gestion', 'Choose customer');
+        selectElement.appendChild(option);
+
+        JSON.parse(response).forEach(myresp => {
+          var option = document.createElement("option");
+          option.value = myresp.id;
+          option.text = myresp.prenom + ' ' + myresp.nom;
+          selectElement.appendChild(option);
+        });
+  
+        checkSelectPurJs(selectElement);
+      });
+    });
+  }
+}
+
+;// CONCATENATED MODULE: ./src/js/objects/devis.mjs
+
+
+
+
+
+class Devis {
+
+  /**
+   * Devis object
+   * @param myresp instantiate devis object
+   */
+  constructor(myresp) {
+    this.id = myresp.id;
+    this.date = ((myresp.date == null || myresp.date.length === 0) ? '-' : myresp.date);
+    this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
+    this.cid = ((myresp.cid == null || myresp.cid.length === 0) ? '-' : myresp.cid);
+    this.version = ((myresp.version == null || myresp.version.length === 0) ? '-' : myresp.version);
+    this.mentions = ((myresp.mentions == null || myresp.mentions.length === 0) ? '-' : myresp.mentions);
+    this.baseUrl = getRootUrl() + generateUrl('/apps/gestion');
+  }
+
+  /**
+   * Get datatable row for a devis
+   */
+  getDTRow() {
+    let myrow = [
+      '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date + ' data-table="devis" data-column="date" data-id="' + this.id + '"/>',
+      '<div class="editable" data-table="devis" data-column="num" data-id="' + this.id + '" style="display:inline">' + this.num + '</div>',
+      '<div data-table="devis" data-column="id_client" data-id="' + this.id + '"><select class="listClient" data-current="' + this.cid + '"></select></div>',
+      '<div class="editable" data-table="devis" data-column="version" data-id="' + this.id + '" style="display:inline">' + this.version + '</div>',
+      '<div class="editable" data-table="devis" data-column="mentions" data-id="' + this.id + '" style="display:inline">' + this.mentions + '</div>',
+      '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl + "/devis/" + this.id + '/show"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="devis" data-id=' + this.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
+    ];
+    return myrow;
+  }
+
+  /**
+   * 
+   * @param {*} dt 
+   */
+  static newDevis(dt) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('POST', baseUrl + '/devis/insert', true);
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        showDone()
+        Devis.loadDevisDT(dt);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  /**
+   * Load devis ajax
+   * @param devisDT devis datatable
+   */
+  static loadDevisDT(devisDT) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', baseUrl + '/getDevis', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        LoadDT(devisDT, JSON.parse(this.response), Devis);
+        Client.loadClientList();
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  static getDevis(callback){
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', baseUrl + '/getDevis', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        callback(JSON.parse(this.response));
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  /**
+   * 
+   */
+  static loadDevisList() {
+    Devis.getDevis(function (response) {
+      var listDevis = document.querySelectorAll(".listDevis");
+
+      listDevis.forEach(function(selectElement){
+        removeOptions(selectElement);
+
+        var option = document.createElement("option");
+        option.value = 0;
+        option.text = t('gestion', 'Choose quote');
+        selectElement.appendChild(option);
+
+        JSON.parse(response).forEach(function(myresp){
+          if( myresp.prenom ||  myresp.nom ){
+            var option = document.createElement("option");
+            option.value = myresp.id;
+            option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
+            selectElement.appendChild(option);
+          }
+        });
+
+        checkSelectPurJs(selectElement);  
+      });
+      
+      configuration(checkAutoIncrement);
+    });
+}
 }
 
 ;// CONCATENATED MODULE: ./src/js/modules/mainFunction.mjs
@@ -31104,20 +31121,6 @@ function mainFunction_LoadDT(DT, response, cls) {
 
 /**
  * 
- */
-function mainFunction_loadClientList() {
-    Client.getClients(function (response) {
-        mainFunction_$('.listClient').empty();
-        mainFunction_$('.listClient').append("<option value='0'>" + t('gestion', 'Choose customer') + "</option>");
-        mainFunction_$.each(JSON.parse(response), function (arrayID, myresp) {
-            mainFunction_$('.listClient').append("<option value='" + myresp.id + "'>" + myresp.nom + " " + myresp.prenom + "</option>");
-        });
-        checkSelect('.listClient');
-    });
-}
-
-/**
- * 
  * @param {*} ID 
  * @param {*} positionRow 
  * @param {*} positionColumn 
@@ -31208,16 +31211,18 @@ function mainFunction_checkAutoIncrement(response){
 }
 
 /**
- * 
- * @param {*} div 
+ * Format number if it's monetary
+ * @param {*} el 
+ * @param {*} format_number 
  */
 function updateNumerical(el, format_number=true){
-    el.text(el.text().replace(',', '.').replace(/[^0-9.-]+/g,""))
+    el.innerText=el.innerText.replace(',', '.').replace(/[^0-9.-]+/g,"")
+    console.log(el.innerText);
     updateEditable(el);
     if(format_number){
-        el.text(mainFunction_cur.format(el.text()))
+        el.innerText=mainFunction_cur.format(el.innerText)
     }else{
-        el.text(el.text())
+        el.innerText=el.innerText
     }
 }
 

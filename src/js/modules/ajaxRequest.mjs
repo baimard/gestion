@@ -157,12 +157,9 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
  * @param {*} myCase 
  */
 export function updateEditable(myCase) {
-    updateDB(myCase.data('table'), myCase.data('column'), myCase.text(), myCase.data('id'));
-    if (myCase.data('modifier') === "getProduitsById") {
-        getProduitsById();
-    }
-    myCase.attr('contenteditable', 'false');
-    myCase.removeAttr('contenteditable');
+    updateDB(myCase.dataset.table, myCase.dataset.column, myCase.innerText, myCase.dataset.id);
+    if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
+    myCase.removeAttribute('contenteditable');
 }
 
 /**

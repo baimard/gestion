@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-03-10 09:49+0000\n"
+"POT-Creation-Date: 2022-03-11 03:30+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -195,63 +195,65 @@ msgstr "Il faut créer un nouveau produit."
 #: /app/src/js/modules/ajaxRequest.mjs:27
 #: /app/src/js/modules/ajaxRequest.mjs:52
 msgid "Modification saved"
-msgstr ""
+msgstr "Modification enregistrée"
 
 #: /app/src/js/modules/ajaxRequest.mjs:29
 msgid "There is an error with the format, please check the documentation"
 msgstr ""
+"Il y a une erreur dans le format, pourriez vous vérifier à l'aide de la "
+"documentation ?"
 
 #: /app/src/js/modules/ajaxRequest.mjs:44
 msgid "Are you sure you want to delete?"
-msgstr ""
+msgstr "Êtes vous sûr de vouloir supprimer ?"
 
 #: /app/src/js/modules/ajaxRequest.mjs:57
 msgid "Nothing changed"
-msgstr ""
+msgstr "Rien n'a été modifié"
 
 #: /app/src/js/modules/ajaxRequest.mjs:180
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: /app/src/js/modules/ajaxRequest.mjs:241
 msgid "Save in"
-msgstr ""
+msgstr "Sauvegarder dans"
 
 #: /app/src/js/modules/ajaxRequest.mjs:243
 msgid "There is an error"
-msgstr ""
+msgstr "Il y a une erreur"
 
 #: /app/src/js/modules/list.mjs:9
 msgid "Euro"
-msgstr ""
+msgstr "Euro"
 
 #: /app/src/js/modules/list.mjs:10
 msgid "US Dollar"
-msgstr ""
+msgstr "Dollar Américain"
 
 #: /app/src/js/modules/list.mjs:11
 msgid "British Pound Sterling"
-msgstr ""
+msgstr "Livres Sterling"
 
 #: /app/src/js/modules/list.mjs:12
 msgid "Japanese Yen"
-msgstr ""
+msgstr "Japonais Yen"
 
 #: /app/src/js/modules/list.mjs:13
 msgid "Chinese Yuan"
-msgstr ""
+msgstr "Chinois Yuan"
 
 #: /app/src/js/modules/list.mjs:14
 msgid "Afghan Afghani"
-msgstr ""
+msgstr "Afghanistan Afghani"
 
 #: /app/src/js/modules/list.mjs:15
 msgid "Albanian Lek"
-msgstr ""
+msgstr "Albanie Lek"
 
 #: /app/src/js/modules/list.mjs:16
 msgid "Algerian Dinar"
-msgstr ""
+msgstr "Algérie Dinar"
 
 #: /app/src/js/modules/list.mjs:17
 msgid "Angolan Kwanza"
@@ -315,7 +317,7 @@ msgstr ""
 
 #: /app/src/js/modules/list.mjs:32
 msgid "Bitcoin"
-msgstr ""
+msgstr "Bitcoin"
 
 #: /app/src/js/modules/list.mjs:33
 msgid "Bolivian Boliviano"
@@ -707,11 +709,11 @@ msgstr ""
 
 #: /app/src/js/modules/list.mjs:130
 msgid "Romanian Leu"
-msgstr ""
+msgstr "Leu Roumanie"
 
 #: /app/src/js/modules/list.mjs:131
 msgid "Russian Ruble"
-msgstr ""
+msgstr "Rouble Russe"
 
 #: /app/src/js/modules/list.mjs:132
 msgid "Rwandan Franc"
@@ -795,7 +797,7 @@ msgstr ""
 
 #: /app/src/js/modules/list.mjs:152
 msgid "Swiss Franc"
-msgstr ""
+msgstr "Franc Swiss"
 
 #: /app/src/js/modules/list.mjs:153
 msgid "Syrian Pound"
@@ -879,87 +881,87 @@ msgstr ""
 
 #: /app/src/js/modules/list.mjs:204 /app/src/js/modules/list.mjs:206
 msgid "disable"
-msgstr ""
+msgstr "Désactiver"
 
 #: /app/src/js/modules/list.mjs:204 /app/src/js/modules/list.mjs:206
 msgid "enable"
-msgstr ""
+msgstr "Activer"
 
 #: /app/src/js/modules/mainFunction.mjs:19
 msgid "Search"
-msgstr ""
+msgstr "Recherche"
 
 #: /app/src/js/modules/mainFunction.mjs:20
 msgid "No data available in table"
-msgstr ""
+msgstr "Aucune donnée disponible dans le tableau"
 
 #: /app/src/js/modules/mainFunction.mjs:21
 msgid "Showing {start} to {end} of {total} entries"
-msgstr ""
+msgstr "Affichage de {start} à {end} sur {total} entrées"
 
 #: /app/src/js/modules/mainFunction.mjs:22
 msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
+msgstr "Affichage de 0 à 0 sur 0 entrées"
 
 #: /app/src/js/modules/mainFunction.mjs:23
 msgid "Loading records …"
-msgstr ""
+msgstr "Chargement des entrées"
 
 #: /app/src/js/modules/mainFunction.mjs:24
 msgid "Processing …"
-msgstr ""
+msgstr "Traitement en cours ..."
 
 #: /app/src/js/modules/mainFunction.mjs:25
 msgid "{max} entries filtered"
-msgstr ""
+msgstr "filtrées depuis un total de {max} entrées"
 
 #: /app/src/js/modules/mainFunction.mjs:26
 msgid "Show {menu} entries"
-msgstr ""
+msgstr "Afficher {menu} entrées"
 
 #: /app/src/js/modules/mainFunction.mjs:27
 msgid "No corresponding entry"
-msgstr ""
+msgstr "Aucune entrée correspondante trouvée"
 
 #: /app/src/js/modules/mainFunction.mjs:29
 msgid "First"
-msgstr ""
+msgstr "Première"
 
 #: /app/src/js/modules/mainFunction.mjs:30
 msgid "Last"
-msgstr ""
+msgstr "Dernière"
 
 #: /app/src/js/modules/mainFunction.mjs:31
 msgid "Next"
-msgstr ""
+msgstr "Suivante"
 
 #: /app/src/js/modules/mainFunction.mjs:32
 msgid "Previous"
-msgstr ""
+msgstr "Précédente"
 
 #: /app/src/js/modules/mainFunction.mjs:54
 msgid "Editable (Click to change)"
-msgstr ""
+msgstr "Éditable (Cliquer pour modifier)"
 
 #: /app/src/js/modules/mainFunction.mjs:61
 msgid "Your global Nextcloud mail server need to be configured"
-msgstr ""
+msgstr "Le serveur global de courriel(Mail) Nextcloud doit être configuré"
 
 #: /app/src/js/modules/mainFunction.mjs:68
 msgid "Added!"
-msgstr ""
+msgstr "Ajouté !"
 
 #: /app/src/js/modules/mainFunction.mjs:107
 msgid "Choose quote"
-msgstr ""
+msgstr "Choisir un devis"
 
 #: /app/src/js/modules/mainFunction.mjs:122
 msgid "Choose customer"
-msgstr ""
+msgstr "Choisir un client"
 
 #: /app/src/js/objects/devis.mjs:30 /app/src/js/objects/facture.mjs:37
 msgid "Open"
-msgstr ""
+msgstr "Ouvrir"
 
 #: /app/src/js/pdf.js:13
 msgid "Email sent"

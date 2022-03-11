@@ -244,15 +244,15 @@ class Bdd {
      * Annual turnover per month without VAT
      */
     public function getAnnualTurnoverPerMonthNoVat($idNextcloud){
-        $sql = "SELECT  YEAR(".$this->tableprefix."facture.date_paiement) as y, 
-                        MONTH(".$this->tableprefix."facture.date_paiement) as m, 
+        $sql = "SELECT  EXTRACT(YEAR FROM ".$this->tableprefix."facture.date_paiement) as y, 
+                        EXTRACT(MONTH FROM ".$this->tableprefix."facture.date_paiement) as m, 
                         sum(".$this->tableprefix."produit.prix_unitaire * ".$this->tableprefix."produit_devis.quantite) as total
                 FROM `".$this->tableprefix."facture`, `".$this->tableprefix."produit_devis`, `".$this->tableprefix."produit`
                 WHERE ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."produit_devis.devis_id
                 AND ".$this->tableprefix."produit_devis.produit_id = ".$this->tableprefix."produit.id
                 AND ".$this->tableprefix."facture.id_nextcloud = ?
-                GROUP BY YEAR(".$this->tableprefix."facture.date_paiement), MONTH(".$this->tableprefix."facture.date_paiement)
-                ORDER BY YEAR(".$this->tableprefix."facture.date_paiement) DESC, MONTH(".$this->tableprefix."facture.date_paiement);";
+                GROUP BY EXTRACT(YEAR FROM ".$this->tableprefix."facture.date_paiement), EXTRACT(MONTH FROM ".$this->tableprefix."facture.date_paiement)
+                ORDER BY EXTRACT(YEAR FROM ".$this->tableprefix."facture.date_paiement) DESC, EXTRACT(MONTH FROM ".$this->tableprefix."facture.date_paiement);";
         return $this->execSQL($sql, array($idNextcloud));
     }
 

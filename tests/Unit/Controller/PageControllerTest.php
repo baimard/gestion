@@ -27,7 +27,7 @@ class PageControllerTest extends TestCase {
 		$urlGenerator = $this->createMock('OCP\IURLGenerator');
 		
 		$this->db = new Bdd($myDb,$l);
-		$this->controller = new PageController('gestion', 
+		$this->controller = new PageController('gestion',
 												$request, 
 												$this->userId,
 												$this->db,

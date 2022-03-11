@@ -18,7 +18,6 @@
             <tr>
                 <th><?php p($l->t('id'));?></th>
                 <th><?php p($l->t('Company'));?></th>
-                <th><?php p($l->t('Company'));?></th>
                 <th><?php p($l->t('First name'));?></th>
                 <th><?php p($l->t('Last name'));?></th>
                 <th><?php p($l->t('Legal information'));?></th>

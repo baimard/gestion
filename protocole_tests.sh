@@ -33,7 +33,7 @@ docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/
 # sleep 10
 
 echo "Chargement de la base de données"
-docker exec -i database sh -c 'exec mysql -uroot -p"$MARIADB_ROOT_PASSWORD"' < ./tests/dataset.sql
+docker exec -i database sh -c 'exec mysql -uroot -p"$MARIADB_ROOT_PASSWORD" nextcloud' < ./tests/dataset.sql
 # docker exec -i database /bin/bash -c 'PGPASSWORD=$POSTGRES_PASSWORD psql --username $POSTGRES_USER $POSTGRES_DB' < ./tests/datasetpgsql.sql
 
 docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make testPanther"

@@ -22,6 +22,7 @@ export class Client {
    */
   getDTRow() {
     let myrow = [
+      '<div>' + this.id + '</div>',
       '<div class="editable" data-table="client" data-column="entreprise" data-id="' + this.id + '">' + this.entreprise + '</div>',
       '<div class="editable" data-table="client" data-column="prenom" data-id="' + this.id + '">' + this.prenom + '</div>',
       '<div class="editable" data-table="client" data-column="nom" data-id="' + this.id + '">' + this.nom + '</div>',

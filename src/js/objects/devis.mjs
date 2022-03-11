@@ -24,6 +24,7 @@ export class Devis {
    */
   getDTRow() {
     let myrow = [
+      '<div>' + this.id + '</div>',
       '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date + ' data-table="devis" data-column="date" data-id="' + this.id + '"/>',
       '<div class="editable" data-table="devis" data-column="num" data-id="' + this.id + '" style="display:inline">' + this.num + '</div>',
       '<div data-table="devis" data-column="id_client" data-id="' + this.id + '"><select class="listClient" data-current="' + this.cid + '"></select></div>',

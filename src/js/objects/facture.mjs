@@ -28,6 +28,7 @@ export class Facture {
    */
   getDTRow() {
     let myrow = [
+      '<div>' + this.id + '</div>',
       '<div class="factureNum editable" data-table="facture" data-column="num" data-id="' + this.id + '">' + this.num + '</div>',
       '<div class="editable" data-table="facture" data-column="date" data-id="' + this.id + '">' + this.date + '</div>',
       '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date_paiement + ' data-table="facture" data-column="date_paiement" data-id="' + this.id + '"/>',

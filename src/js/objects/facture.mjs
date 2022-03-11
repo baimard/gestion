@@ -1,7 +1,8 @@
 import { showError } from "@nextcloud/dialogs";
 import { generateUrl, getRootUrl } from "@nextcloud/router";
 import { configuration } from "../modules/ajaxRequest.mjs";
-import { baseUrl, checkAutoIncrement, loadDevisList, LoadDT, showDone } from "../modules/mainFunction.mjs";
+import { baseUrl, checkAutoIncrement, LoadDT, showDone } from "../modules/mainFunction.mjs";
+import { Devis } from "./devis.mjs";
 
 export class Facture {
 
@@ -27,6 +28,7 @@ export class Facture {
    */
   getDTRow() {
     let myrow = [
+      '<div>' + this.id + '</div>',
       '<div class="factureNum editable" data-table="facture" data-column="num" data-id="' + this.id + '">' + this.num + '</div>',
       '<div class="editable" data-table="facture" data-column="date" data-id="' + this.id + '">' + this.date + '</div>',
       '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date_paiement + ' data-table="facture" data-column="date_paiement" data-id="' + this.id + '"/>',
@@ -46,7 +48,7 @@ export class Facture {
     oReq.onload = function(e){
       if (this.status == 200) {
         LoadDT(factureDT, JSON.parse(this.response), Facture);
-        loadDevisList();
+        Devis.loadDevisList();
         configuration(checkAutoIncrement);
       }else{
         showError(this.response);

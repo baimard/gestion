@@ -157,12 +157,9 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
  * @param {*} myCase 
  */
 export function updateEditable(myCase) {
-    updateDB(myCase.data('table'), myCase.data('column'), myCase.text(), myCase.data('id'));
-    if (myCase.data('modifier') === "getProduitsById") {
-        getProduitsById();
-    }
-    myCase.attr('contenteditable', 'false');
-    myCase.removeAttr('contenteditable');
+    updateDB(myCase.dataset.table, myCase.dataset.column, myCase.innerText, myCase.dataset.id);
+    if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
+    myCase.removeAttribute('contenteditable');
 }
 
 /**
@@ -214,7 +211,7 @@ export function listProduit(lp, id, produitid) {
         $.each(JSON.parse(response), function (arrayID, myresp) {
             $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="' + deleteDisable + ' deleteItem icon-delete"></div><div style="display:inline;" data-val="' + myresp.pid + '" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
                 '<td>' + myresp.description + '</td>' +
-                '<td><div class="editable getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id=' + myresp.pdid + '>' + myresp.quantite + '</div> </td>' +
+                '<td><div class="editableNumber getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id=' + myresp.pdid + '>' + myresp.quantite + '</div> </td>' +
                 '<td>' + cur.format(myresp.prix_unitaire) + '</td>' +
                 '<td>' + cur.format((myresp.quantite * myresp.prix_unitaire)) + '</td></tr>');
             total += (myresp.quantite * myresp.prix_unitaire);

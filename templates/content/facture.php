@@ -19,6 +19,7 @@
     <table id="facture" class="display tabledt">
         <thead>
             <tr>
+                <th><?php p($l->t('id'));?></th>
                 <th><?php p($l->t('Invoice number'));?></th>
                 <th><?php p($l->t('Date of service'));?></th>
                 <th><?php p($l->t('Payment date'));?></th>

@@ -1,5 +1,3 @@
-USE nextcloud;
-
 INSERT INTO `oc_gestion_client` (`nom`,`prenom`,`legal_one`,`entreprise`,`telephone`,`mail`,`adresse`,`id_nextcloud`)
 VALUES
   ("Giacomo","Preston","322843667874IGR","Ipsum Donec Sollicitudin LLP","1-897-636-5129","eget@yahoo.org","P.O. Box 667, 4464 Ut, Road","nextcloud"),

@@ -41,3 +41,22 @@
 .bootstrap-iso select{
   max-width: 400px;
 }
+
+.tabledt {
+  table-layout: auto;
+  width: 100%;
+  white-space: pre-wrap;
+  background-color: var(--color-main-background);
+}
+
+.tabledt tbody tr td {
+  background-color: var(--color-main-background);
+}
+
+table.dataTable.display tbody tr.odd > [class*="sorting_"] {
+  background-color: var(--color-main-background);
+}
+
+table.dataTable.display tbody tr.even > [class*="sorting_"] {
+  background-color: var(--color-main-background);
+}

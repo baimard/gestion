@@ -1,6 +1,6 @@
-const { FilePicker, showError } = require("@nextcloud/dialogs");
-const { updateDB, configuration, updateEditable, deleteDB, getProduitsById, listProduit } = require("../modules/ajaxRequest.mjs");
-const { path, baseUrl, updateNumerical } = require("../modules/mainFunction.mjs");
+import { FilePicker, showError } from "@nextcloud/dialogs";
+import { updateDB, configuration, updateEditable, deleteDB, getProduitsById, listProduit } from "../modules/ajaxRequest.mjs";
+import { path, baseUrl, updateNumerical } from "../modules/mainFunction.mjs";
 import DataTable from 'datatables.net';
 import { Client } from '../objects/client.mjs';
 import { Devis } from '../objects/devis.mjs';
@@ -13,7 +13,6 @@ $('body').on('click', '#theFolder', function () {
     var f = new FilePicker(choose_folder, false, [], false, 1, true, $("#theFolder").val());
     f.pick().then(
         function (value) {
-            console.log(value)
             updateDB($('#theFolder').data('table'), $('#theFolder').data('column'), value, $('#theFolder').data('id'));
             configuration(path);
         }
@@ -24,22 +23,40 @@ $('body').on('change', '.editableSelect', function () { updateDB($(this).data('t
 $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
-$('body').on('click', '.editable, .editableNumeric, .editableNumber', function () { $(this).attr('contenteditable', 'true'); });
+document.body.addEventListener('click', e => {
+    if(e.target.className.includes("editableNumber")){
+        e.target.setAttribute('contenteditable', 'true');
+        e.target.focus();
+    }else if (e.target.className.includes("editableNumeric")){
+        e.target.setAttribute('contenteditable', 'true');
+        e.target.focus();
+    }else if(e.target.className.includes("editable")){
+        e.target.setAttribute('contenteditable', 'true');
+        e.target.focus();
+    }
+});
 
-$('body').on('blur', '.editable', function () { updateEditable($(this)); });
-$('body').on('keypress', '.editable', function (event) { if (event.key === "Enter") { updateEditable($(this)); } });
+document.body.addEventListener('keydown', e => {
+    if(e.key==="Enter"){
+        if(e.target.className.includes("editableNumber")){
+            updateNumerical(e.target, false);
+        }else if (e.target.className.includes("editableNumeric")){
+            updateNumerical(e.target);
+        }else if(e.target.className.includes("editable")){
+            updateEditable(e.target);
+        }
+    }
+});
 
-$('body').on('blur', '.editableNumeric', function () {updateNumerical($(this));});
-$('body').on('keypress', '.editableNumeric', function (event) {if (event.key === "Enter") {updateNumerical($(this));}});
-
-$('body').on('blur', '.editableNumber', function () {updateNumerical($(this), false);});
-$('body').on('keypress', '.editableNumber', function (event) {if (event.key === "Enter") {updateNumerical($(this), false);}});
-
-//Problem avec les elements dynamique
-// var classEditable = document.getElementsByClassName('editable');
-// classEditable.addEventListener('click', function () { $(this).attr('contenteditable', 'true'); });
-// classEditable.addEventListener('blur', function () { updateEditable($(this)); });
-// classEditable.addEventListener('keypress', function (event) {if (event.key === "Enter") { updateEditable($(this)); } });
+document.body.addEventListener('focusout', e => {
+    if(e.target.className.includes("editableNumber")){
+        updateNumerical(e.target, false);
+    }else if (e.target.className.includes("editableNumeric")){
+        updateNumerical(e.target);
+    }else if(e.target.className.includes("editable")){
+        updateEditable(e.target);
+    }
+});
 
 $('body').on('dblclick', '.selectableDevis', function () {
     var id = $(this).data('id');

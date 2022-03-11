@@ -82,6 +82,15 @@ export function checkSelect(el) {
     })
 }
 
+
+export function checkSelectPurJs(el) {
+    el.forEach(element => {
+        if (element.value == el.getAttribute("data-current")) {
+            element.setAttribute('selected', true);
+        }
+    });
+}
+
 /**
  * 
  * @param {*} DT 
@@ -96,35 +105,6 @@ export function LoadDT(DT, response, cls) {
     });
     DT.columns.adjust(optionDatatable).draw(true);
     configureDT();
-}
-
-/**
- * 
- */
-export function loadDevisList() {
-    Devis.getDevis(function (response) {
-        $('.listDevis').empty();
-        $('.listDevis').append("<option value='0'>" + t('gestion', 'Choose quote') + "</option>");
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            $('.listDevis').append("<option value='" + myresp.id + "'>" + myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom + "</option>");
-        });
-        checkSelect('.listDevis');
-        configuration(checkAutoIncrement);
-    });
-}
-
-/**
- * 
- */
-export function loadClientList() {
-    Client.getClients(function (response) {
-        $('.listClient').empty();
-        $('.listClient').append("<option value='0'>" + t('gestion', 'Choose customer') + "</option>");
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            $('.listClient').append("<option value='" + myresp.id + "'>" + myresp.nom + " " + myresp.prenom + "</option>");
-        });
-        checkSelect('.listClient');
-    });
 }
 
 /**
@@ -219,15 +199,25 @@ export function checkAutoIncrement(response){
 }
 
 /**
- * 
- * @param {*} div 
+ * Format number if it's monetary
+ * @param {*} el 
+ * @param {*} format_number 
  */
 export function updateNumerical(el, format_number=true){
-    el.text(el.text().replace(',', '.').replace(/[^0-9.-]+/g,""))
+    el.innerText=el.innerText.replace(',', '.').replace(/[^0-9.-]+/g,"")
+    console.log(el.innerText);
     updateEditable(el);
     if(format_number){
-        el.text(cur.format(el.text()))
+        el.innerText=cur.format(el.innerText)
     }else{
-        el.text(el.text())
+        el.innerText=el.innerText
     }
 }
+
+export function removeOptions(selectElement) {
+    
+    var i, L = selectElement.options.length - 1;
+    for(i = L; i >= 0; i--) {
+       selectElement.remove(i);
+    }
+ }

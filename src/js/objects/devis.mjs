@@ -1,5 +1,7 @@
 import { generateUrl, getRootUrl } from "@nextcloud/router";
-import { baseUrl, loadClientList, LoadDT, showDone } from "../modules/mainFunction.mjs";
+import { configuration } from "../modules/ajaxRequest.mjs";
+import { baseUrl, checkAutoIncrement, checkSelect, checkSelectPurJs, LoadDT, removeOptions, showDone } from "../modules/mainFunction.mjs";
+import { Client } from "./client.mjs";
 
 export class Devis {
 
@@ -22,6 +24,7 @@ export class Devis {
    */
   getDTRow() {
     let myrow = [
+      '<div>' + this.id + '</div>',
       '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date + ' data-table="devis" data-column="date" data-id="' + this.id + '"/>',
       '<div class="editable" data-table="devis" data-column="num" data-id="' + this.id + '" style="display:inline">' + this.num + '</div>',
       '<div data-table="devis" data-column="id_client" data-id="' + this.id + '"><select class="listClient" data-current="' + this.cid + '"></select></div>',
@@ -61,7 +64,7 @@ export class Devis {
     oReq.onload = function(e){
       if (this.status == 200) {
         LoadDT(devisDT, JSON.parse(this.response), Devis);
-        loadClientList();
+        Client.loadClientList();
       }else{
         showError(this.response);
       }
@@ -82,4 +85,35 @@ export class Devis {
     };
     oReq.send();
   }
+
+  /**
+   * 
+   */
+  static loadDevisList() {
+    Devis.getDevis(function (response) {
+      var listDevis = document.querySelectorAll(".listDevis");
+
+      listDevis.forEach(function(selectElement){
+        removeOptions(selectElement);
+
+        var option = document.createElement("option");
+        option.value = 0;
+        option.text = t('gestion', 'Choose quote');
+        selectElement.appendChild(option);
+
+        JSON.parse(response).forEach(function(myresp){
+          if( myresp.prenom ||  myresp.nom ){
+            var option = document.createElement("option");
+            option.value = myresp.id;
+            option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
+            selectElement.appendChild(option);
+          }
+        });
+
+        checkSelectPurJs(selectElement);  
+      });
+      
+      configuration(checkAutoIncrement);
+    });
+}
 }

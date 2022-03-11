@@ -16,6 +16,7 @@
 	<table id="produit" class="display tabledt">
         <thead>
             <tr>
+                <th><?php p($l->t('id'));?></th>
                 <th><?php p($l->t('Reference'));?></th>
                 <th><?php p($l->t('Designation'));?></th>
                 <th><?php p($l->t('Unit price without VAT'));?></th>

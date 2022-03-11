@@ -384,7 +384,11 @@ class PageController extends Controller {
 
 	private function getLogo(){
 		try {
-			$file = $this->storage->get('/.gestion/logo.png');
+			if(isset($this->storage)){
+				$file = $this->storage->get('/.gestion/logo.png');
+			}else{
+				return "nothing";
+			}
 		} catch(\OCP\Files\NotFoundException $e) {
 			return "nothing";
 		}

@@ -6,8 +6,8 @@ sleep 1
 docker stop -t 0 nextcloud database
 
 echo "Start container MYSQL"
-# docker run -d --rm --network next --name database -p 3306:3306 -e MYSQL_DATABASE=nextcloud -e MARIADB_ROOT_PASSWORD=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud mariadb
-docker run -d --rm --network next --name database -p 5432:5432 -e POSTGRES_DB=nextcloud -e POSTGRES_PASSWORD=nextcloud -e POSTGRES_USER=nextcloud postgres
+docker run -d --rm --network next --name database -p 3306:3306 -e MYSQL_DATABASE=nextcloud -e MARIADB_ROOT_PASSWORD=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud mariadb
+# docker run -d --rm --network next --name database -p 5432:5432 -e POSTGRES_DB=nextcloud -e POSTGRES_PASSWORD=nextcloud -e POSTGRES_USER=nextcloud postgres
 
 sleep 5
 echo "Start nextcloud"
@@ -21,8 +21,8 @@ docker exec -it nextcloud bash -c "git clone https://github.com/baimard/gestion.
 docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make npm-init ; make composer;"
 
 echo "Initialisation de la base de données"
-# docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/Panther/initMysqlTest.php"
-docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/Panther/initPgsqlTest.php"
+docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/Panther/initMysqlTest.php"
+# docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/Panther/initPgsqlTest.php"
 
 
 sleep 10
@@ -33,11 +33,11 @@ docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/
 # sleep 10
 
 echo "Chargement de la base de données"
-# docker exec -i database sh -c 'exec mysql -uroot -p"$MARIADB_ROOT_PASSWORD"' < ./tests/dataset.sql
-docker exec -i database /bin/bash -c 'PGPASSWORD=$POSTGRES_PASSWORD psql --username $POSTGRES_USER $POSTGRES_DB' < ./tests/datasetpgsql.sql
+docker exec -i database sh -c 'exec mysql -uroot -p"$MARIADB_ROOT_PASSWORD"' < ./tests/dataset.sql
+# docker exec -i database /bin/bash -c 'PGPASSWORD=$POSTGRES_PASSWORD psql --username $POSTGRES_USER $POSTGRES_DB' < ./tests/datasetpgsql.sql
 
-# docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make testPanther"
+docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make testPanther"
 
 docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make test"
 
-# docker cp nextcloud:/var/www/html/apps/gestion/tests/Unit/Panther/screens screens
+docker cp nextcloud:/var/www/html/apps/gestion/tests/Unit/Panther/screens screens

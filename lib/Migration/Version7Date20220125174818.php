@@ -147,6 +147,7 @@ class Version7Date20220125174818 extends SimpleMigrationStep {
         }else{
             $column = $table->getColumn('devise');
             $column->setOptions(['default' => 'EUR']);
+            
         }
 
         if (!$table->hasColumn('auto_invoice_number')) {

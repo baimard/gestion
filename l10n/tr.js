@@ -286,6 +286,7 @@ OC.L10N.register(
     "Legal disclaimer/mentions you need in your footer - before company information" : "Alt bilgi bölümünde gereken yasal sorumluluk reddi ve anmalar  - şirket bilgilerinden önce",
     "Quote" : "Teklif",
     "Add quote" : "Teklif ekle",
+    "id" : "kod",
     "Quote date" : "Teklif tarihi",
     "Customer quote" : "Müşteri teklifi",
     "Version" : "Sürüm",

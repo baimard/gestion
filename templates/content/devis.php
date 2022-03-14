@@ -16,7 +16,7 @@
     <table id="devis" class="display tabledt">
         <thead>
             <tr>
-                <th><?php p($l->t('id'));?></th>
+                <th><?php p($l->t('ID'));?></th>
                 <th><?php p($l->t('Quote date'));?></th>
                 <th><?php p($l->t('Quote number'));?></th>
                 <th><?php p($l->t('Customer quote'));?></th>

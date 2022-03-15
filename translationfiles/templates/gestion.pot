@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-03-14 03:30+0000\n"
+"POT-Creation-Date: 2022-03-15 03:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1226,7 +1226,7 @@ msgstr ""
 
 #: /app/templates/content/devis.php:19 /app/templates/content/facture.php:22
 #: /app/templates/content/index.php:19 /app/templates/content/produit.php:19
-msgid "id"
+msgid "ID"
 msgstr ""
 
 #: /app/templates/content/devis.php:20

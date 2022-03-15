@@ -184,7 +184,6 @@ OC.L10N.register(
     "Legal disclaimer/mentions you need in your footer - before company information" : "Zřeknutí se právní zodpovědnosti/zmínění, které potřejete mít v zápatí – ještě před informacemi o společnosti",
     "Quote" : "Nabídka",
     "Add quote" : "Přidat nabídku",
-    "id" : "identif.",
     "Quote date" : "Datum nabídky",
     "Customer quote" : "Nabídka pro zákazníka",
     "Version" : "Verze",

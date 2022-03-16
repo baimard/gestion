@@ -10,6 +10,7 @@ import { baseUrl, cur, getGlobal, insertCell, insertRow, modifyCell } from "./ma
  * @param id 
  */
 export function updateDB(table, column, data, id) {
+    console.log('update');
     var myData = {
         table: table,
         column: column,

@@ -201,9 +201,9 @@ export function getCurrencyList(currentDevise) {
 
 export function getAutoIncrement(activate){
     if(activate == 0){
-        return "<option selected value='0'>" + t('gestion', 'disable') + "</option><option value='1'>" + t('gestion', 'enable') + "</option>"
+        return "<option selected value='0'>" + t('gestion', 'Disable') + "</option><option value='1'>" + t('gestion', 'Enable') + "</option>"
     }else{
-        return "<option value='0'>" + t('gestion', 'disable') + "</option><option selected value='1'>" + t('gestion', 'enable') + "</option>"
+        return "<option value='0'>" + t('gestion', 'Disable') + "</option><option selected value='1'>" + t('gestion', 'Enable') + "</option>"
     }
 }
 

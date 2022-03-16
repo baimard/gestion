@@ -286,6 +286,7 @@ OC.L10N.register(
     "Legal disclaimer/mentions you need in your footer - before company information" : "Zastrzeżenie prawne/wzmianki potrzebne w stopce - przed informacjami o firmie",
     "Quote" : "Oferta",
     "Add quote" : "Dodaj ofertę",
+    "ID" : "ID",
     "Quote date" : "Data oferty",
     "Customer quote" : "Oferta dla klienta",
     "Version" : "Wersja",

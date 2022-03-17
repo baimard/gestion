@@ -126,8 +126,6 @@ OC.L10N.register(
     "Uzbekistan Som" : "Usbekischer Som",
     "Venezuelan Bolivar" : "Venezuelanischer Bolivar",
     "Vietnamese Dong" : "Vietnamesischer Dong",
-    "disable" : "deaktivieren",
-    "enable" : "aktivieren",
     "Search" : "Suche",
     "No data available in table" : "Keine Daten in der Tabelle verfügbar",
     "Showing {start} to {end} of {total} entries" : "{start} bis {end} von {total} Einträgen anzeigen",

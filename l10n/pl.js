@@ -203,8 +203,6 @@ OC.L10N.register(
     "Vietnamese Dong" : "Dong wietnamski",
     "Yemeni Rial" : "Rial jemeński",
     "Zambian Kwacha" : "Kwacha zambijska",
-    "disable" : "wyłączone",
-    "enable" : "włączone",
     "Search" : "Szukaj",
     "No data available in table" : "Brak dostępnych danych w tabeli",
     "Showing {start} to {end} of {total} entries" : "Wyświetlane od {start} do {end} z {total} wpisów",

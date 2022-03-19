@@ -203,6 +203,8 @@ OC.L10N.register(
     "Vietnamese Dong" : "Vietnam Dongu",
     "Yemeni Rial" : "Yemen Riyali",
     "Zambian Kwacha" : "Zambia Kwachası",
+    "Disable" : "Devre dışı bırak",
+    "Enable" : "Etkinleştir",
     "Search" : "Arama",
     "No data available in table" : "Tabloda kullanılabilecek bir veri yok",
     "Showing {start} to {end} of {total} entries" : "{start} - {end} / {total} kayıt görüntüleniyor",

@@ -37,4 +37,4 @@ docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make testPanthe
 
 docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make test"
 
-docker cp nextcloud:/var/www/html/apps/gestion/tests/Unit/Panther/screens tests/Unit/Panther/screens
+docker cp nextcloud:/var/www/html/apps/gestion/tests/Unit/Panther/screens tests/Unit/Panther

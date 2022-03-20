@@ -51,8 +51,6 @@ OC.L10N.register(
     "Romanian Leu" : "Leu Roumanie",
     "Russian Ruble" : "Rouble Russe",
     "Swiss Franc" : "Franc Swiss",
-    "disable" : "Désactiver",
-    "enable" : "Activer",
     "Search" : "Recherche",
     "No data available in table" : "Aucune donnée disponible dans le tableau",
     "Showing {start} to {end} of {total} entries" : "Affichage de {start} à {end} sur {total} entrées",

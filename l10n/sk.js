@@ -203,8 +203,6 @@ OC.L10N.register(
     "Vietnamese Dong" : "Vietnamský Dong",
     "Yemeni Rial" : "Jemenský Rial",
     "Zambian Kwacha" : "Zambijská Kwacha",
-    "disable" : "zakázané",
-    "enable" : "povolené",
     "Search" : "Hľadať",
     "No data available in table" : "V tabuľke nie sú žiadne dáta",
     "Showing {start} to {end} of {total} entries" : "Zobrazujem od {start} do {end} z celkom {total} položiek",

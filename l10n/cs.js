@@ -101,8 +101,6 @@ OC.L10N.register(
     "Ghanaian Cedi" : "ghanský cedi",
     "Gibraltar Pound" : "gibraltarská libra",
     "Greek Drachma" : "řecká drachma",
-    "disable" : "vypnout",
-    "enable" : "zapnout",
     "Search" : "Hledat",
     "No data available in table" : "V tabulce nejsou k dispozici žádná data",
     "Showing {start} to {end} of {total} entries" : "Zobrazuje se {start} až {end} z {total} položek",

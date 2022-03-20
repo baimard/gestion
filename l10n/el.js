@@ -1,6 +1,8 @@
 OC.L10N.register(
     "gestion",
     {
+    "Last name" : "Επώνυμο",
+    "First name" : "Όνομα",
     "Company" : "Εταιρία",
     "Phone number" : "Αριθμός τηλεφώνου",
     "Email" : "Email",

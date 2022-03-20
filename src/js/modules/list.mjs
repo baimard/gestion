@@ -174,13 +174,14 @@ var currency_list = {
 
 export function getFormatList(currentFormat) {
     var list = "";
-    for (const [key, value] of Object.entries(format_List)) {
+    var oEntries = Object.entries(format_List);
+    var oEntriesSort = oEntries.sort((a,b) => a[1].localeCompare(b[1]));
+    for (const [key, value] of oEntriesSort) {
         if (currentFormat === key) {
             list += "<option selected value='" + key + "'>" + value + "</option>";
         } else {
             list += "<option value='" + key + "'>" + value + "</option>";
         }
-
     }
     return list;
 }
@@ -188,13 +189,14 @@ export function getFormatList(currentFormat) {
 
 export function getCurrencyList(currentDevise) {
     var list = "";
-    for (const [key, value] of Object.entries(currency_list)) {
+    var oEntries = Object.entries(currency_list);
+    var oEntriesSort = oEntries.sort((a,b) => a[1].localeCompare(b[1]));
+    for (const [key, value] of oEntriesSort) {
         if (currentDevise === key) {
             list += "<option selected value='" + key + "'>" + value + "</option>";
         } else {
             list += "<option value='" + key + "'>" + value + "</option>";
         }
-
     }
     return list;
 }

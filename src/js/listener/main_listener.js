@@ -19,7 +19,9 @@ $('body').on('click', '#theFolder', function () {
     );
 });
 
-$('body').on('change', '.editableSelect', function () { updateDB($(this).data('table'), $(this).data('column'), $(this).val(), $(this).data('id')); });
+$('body').on('change', '.editableSelect', function () { 
+    updateDB($(this).data('table'), $(this).data('column'), $(this).val(), $(this).data('id')); 
+});
 $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
@@ -30,6 +32,8 @@ document.body.addEventListener('click', e => {
     }else if (e.target.className.includes("editableNumeric")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
+    }else if(e.target.className.includes("editableSelect")){
+        //Prevent
     }else if(e.target.className.includes("editable")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
@@ -42,6 +46,8 @@ document.body.addEventListener('keydown', e => {
             updateNumerical(e.target, false);
         }else if (e.target.className.includes("editableNumeric")){
             updateNumerical(e.target);
+        }else if(e.target.className.includes("editableSelect")){
+                //Prevent
         }else if(e.target.className.includes("editable")){
             updateEditable(e.target);
         }
@@ -53,6 +59,8 @@ document.body.addEventListener('focusout', e => {
         updateNumerical(e.target, false);
     }else if (e.target.className.includes("editableNumeric")){
         updateNumerical(e.target);
+    }else if(e.target.className.includes("editableSelect")){
+            //Prevent
     }else if(e.target.className.includes("editable")){
         updateEditable(e.target);
     }

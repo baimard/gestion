@@ -1,7 +1,7 @@
 <div syle="display: none;" id="modalConfig" class="modal">
 	<div class="modal-content">
 		<span class="modalClose">&times;</span>
-		<h2><?php p($l->t('Welcome to GESTION')); ?> 2.0.8</h2>
+		<h2><?php p($l->t('Welcome to GESTION')); ?> 2.0.9</h2>
 		<p style="margin-bottom:20px;"><b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> &#128073; <a href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a></p>
 		<p style="margin-bottom:20px;">&#9888; <u><?php p($l->t('If you have updated this application, do not forget to clear your cache')); ?></u> &#9888;</p>
 		<p style="margin-bottom:20px;"><?php p($l->t('This application is open source and is designed by Benjamin AIMARD.')); ?></p>
@@ -22,7 +22,13 @@
 	<div class="modal-content">
 		<span class="modalClose">&times;</span>
 		<h2><?php p($l->t('Send an email')); ?></h2>
+		<label for="from"><?php p($l->t('From')); ?></label>
+		<input disabled id="from"style="width:100%" type="text" value="" />
+		<label for="to"><?php p($l->t('To')); ?></label>
+		<input disabled id="to"style="width:100%" type="text" value="" />
+		<label for="subject"><?php p($l->t('Subject')); ?></label>
 		<input id="subject" style="width:100%" type="text" value="<?php p($l->t('Your invoice/quote')); ?>" />
+		<label for="body"><?php p($l->t('Body')); ?></label>
 		<textarea style="width:100%" id="body">
 			<?php p($l->t('Dear,')); ?>
 			<br/>

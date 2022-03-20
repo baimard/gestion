@@ -1,4 +1,6 @@
 { "translations": {
+    "Last name" : "Επώνυμο",
+    "First name" : "Όνομα",
     "Company" : "Εταιρία",
     "Phone number" : "Αριθμός τηλεφώνου",
     "Email" : "Email",

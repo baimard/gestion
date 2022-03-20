@@ -2,21 +2,19 @@
 namespace OCA\Gestion\Controller;
 
 use OCP\IRequest;
+use OCP\Mail\IMailer;
 use OCP\Files\IRootFolder;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 use OCA\Gestion\Db\Bdd;
-use OCP\IL10N;
 use OCP\IURLGenerator;
-
 
 class PageController extends Controller {
 	private $idNextcloud;
 	private $myDb;
-	private $UserId;
-	private $l;
 	private $urlGenerator;
+	private $mailer;
 
 	/** @var IRootStorage */
 	private $storage;
@@ -25,22 +23,19 @@ class PageController extends Controller {
 	 * Constructor
 	 */
 	public function __construct($AppName, 
-								IRequest $request, 
+								IRequest $request,
 								$UserId, 
 								Bdd $myDb, 
-								IRootFolder $rootFolder, 
-								IL10N $l,
-								IURLGenerator $urlGenerator)
-	{
+								IRootFolder $rootFolder,
+								IURLGenerator $urlGenerator,
+								IMailer $mailer){
 
 		parent::__construct($AppName, $request);
+
 		$this->idNextcloud = $UserId;
-		$this->UserId = $UserId;
 		$this->myDb = $myDb;
-		$this->l = $l;
 		$this->urlGenerator = $urlGenerator;
-		$this->$mailer = $mailer;
-	
+		$this->mailer = $mailer;
 		try{
 			$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
 		}catch(\OC\User\NoUserException $e){
@@ -309,14 +304,13 @@ class PageController extends Controller {
 		$clean_name = html_entity_decode($name);
 		try {
 			$data = base64_decode($content);
-			$mailer = \OC::$server->getMailer();
-			$message = $mailer->createMessage();
+			$message = $this->mailer->createMessage();
 			$message->setSubject($subject);
 			$message->setTo((array) json_decode($to));
 			$message->setHtmlBody($body);
-			$content = $mailer->createAttachment($data,$clean_name.".pdf","x-pdf");
+			$content = $this->mailer->createAttachment($data,$clean_name.".pdf","x-pdf");
 			$message->attach($content);
-			$mailer->send($message);
+			$this->mailer->send($message);
 			return new DataResponse("", 200, ['Content-Type' => 'application/json']);
 		} catch (Exception $e) {
 			return new DataResponse("Is your global mail server configured in Nextcloud ?", 500, ['Content-Type' => 'application/json']);

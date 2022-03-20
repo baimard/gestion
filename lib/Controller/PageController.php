@@ -9,12 +9,14 @@ use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 use OCA\Gestion\Db\Bdd;
 use OCP\IURLGenerator;
+use OCP\IConfig;
 
 class PageController extends Controller {
 	private $idNextcloud;
 	private $myDb;
 	private $urlGenerator;
 	private $mailer;
+	private $config;
 
 	/** @var IRootStorage */
 	private $storage;
@@ -28,7 +30,8 @@ class PageController extends Controller {
 								Bdd $myDb, 
 								IRootFolder $rootFolder,
 								IURLGenerator $urlGenerator,
-								IMailer $mailer){
+								IMailer $mailer,
+								Iconfig $config){
 
 		parent::__construct($AppName, $request);
 
@@ -36,6 +39,7 @@ class PageController extends Controller {
 		$this->myDb = $myDb;
 		$this->urlGenerator = $urlGenerator;
 		$this->mailer = $mailer;
+		$this->config = $config;
 		try{
 			$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
 		}catch(\OC\User\NoUserException $e){
@@ -107,6 +111,7 @@ class PageController extends Controller {
 																	'path' => $this->idNextcloud, 
 																	'url' => $this->getNavigationLink(),
 																	'logo' => $this->getLogo()
+																
 																));
 	}
 
@@ -215,8 +220,14 @@ class PageController extends Controller {
 	 * @param string $id
      */
 	public function getClientbyiddevis($id) {
-		
 		return $this->myDb->getClientbyiddevis($id, $this->idNextcloud);
+	}
+
+	/**
+	 * @NoAdminRequired
+     */
+	public function getServerFromMail(){
+		return new DataResponse(['mail' => $this->config->getSystemValue('mail_from_address').'@'.$this->config->getSystemValue('mail_domain')],200, ['Content-Type' => 'application/json']);
 	}
 	
 	/**

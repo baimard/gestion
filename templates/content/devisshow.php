@@ -6,6 +6,7 @@
         <hr />
         <div class="row">
             <div class="col-5 h-100 m-0" style="min-height:250px;">
+
                 <?php $res = json_decode($_['configuration'])[0]; ?>
                 <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark"><?php p($l->t('FROM'));?> <?php echo $res->entreprise; ?></h5>
                 <p style="min-height:180px;" class="p-3 m-0 h-100 text-center text-dark text-center border border-top-0 border-2 border-dark">

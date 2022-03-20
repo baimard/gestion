@@ -10,7 +10,6 @@ import { baseUrl, cur, getGlobal, insertCell, insertRow, modifyCell } from "./ma
  * @param id 
  */
 export function updateDB(table, column, data, id) {
-    console.log('update');
     var myData = {
         table: table,
         column: column,
@@ -229,7 +228,7 @@ export function listProduit(lp, id, produitid) {
  * Save pdf in nextcloud
  * @param {*} myData 
  */
-export function saveNextcloud (myData) {
+export function saveNextcloud(myData) {
     $.ajax({
       url: baseUrl + '/savePDF',
       type: 'POST',
@@ -241,4 +240,19 @@ export function saveNextcloud (myData) {
       showMessage(t('gestion', 'There is an error'));
       error(response);
     });
-  }
+  };
+
+  export function getMailServerFrom(input) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.setRequestHeader("requesttoken", oc_requesttoken);
+    oReq.onload = function(e){
+        if (this.status == 200) {
+            input.value = JSON.parse(this.response)['mail'];
+        }else{
+            showError(this.response);
+        }
+    };
+    oReq.send();
+    }

@@ -22,7 +22,13 @@
 	<div class="modal-content">
 		<span class="modalClose">&times;</span>
 		<h2><?php p($l->t('Send an email')); ?></h2>
+		<label for="from"><?php p($l->t('From')); ?></label>
+		<input disabled id="from"style="width:100%" type="text" value="" />
+		<label for="to"><?php p($l->t('To')); ?></label>
+		<input disabled id="to"style="width:100%" type="text" value="" />
+		<label for="subject"><?php p($l->t('Subject')); ?></label>
 		<input id="subject" style="width:100%" type="text" value="<?php p($l->t('Your invoice/quote')); ?>" />
+		<label for="body"><?php p($l->t('Body')); ?></label>
 		<textarea style="width:100%" id="body">
 			<?php p($l->t('Dear,')); ?>
 			<br/>

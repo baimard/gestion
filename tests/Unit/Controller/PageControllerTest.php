@@ -3,12 +3,13 @@ namespace OCA\Gestion\Tests\Unit\Controller;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
-use OCP\AppFramework\Http\TemplateResponse;
-use OCA\Gestion\Controller\PageController;
 use PHPUnit\Framework\MockObject\MockObject;
+use OCA\Gestion\Controller\PageController;
 use OCA\Gestion\Db\Bdd;
+use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IDBConnection;
-
+use OCP\IConfig;
+use OCP\Mail\IMailer;
 
 /**
  * @covers Controller::
@@ -20,11 +21,13 @@ class PageControllerTest extends TestCase {
 
 	public function setUp(): void{
 		parent::setUp();
-		$request = $this->createMock('OCP\IRequest');
-		$myDb = \OC::$server->getDatabaseConnection();
-		$rootFolder = $this->createMock('OCP\Files\IRootFolder');
-		$l =  $this->createMock('OCP\IL10N');
+		$request = 		$this->createMock('OCP\IRequest');
+		$rootFolder = 	$this->createMock('OCP\Files\IRootFolder');
+		$l =  			$this->createMock('OCP\IL10N');
 		$urlGenerator = $this->createMock('OCP\IURLGenerator');
+		$config = 		$this->createMock('OCP\IConfig');
+		$mailer = 		\OC::$server->getMailer();
+		$myDb = 		\OC::$server->getDatabaseConnection();
 		
 		$this->db = new Bdd($myDb,$l);
 		$this->controller = new PageController('gestion',
@@ -32,9 +35,10 @@ class PageControllerTest extends TestCase {
 												$this->userId,
 												$this->db,
 												$rootFolder,
-												$l,
-												$urlGenerator);
-
+												$urlGenerator,
+												$mailer,
+												$config
+											);
 	}
 	
 	public function testIndex() {

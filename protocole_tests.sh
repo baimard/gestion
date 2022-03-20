@@ -1,8 +1,6 @@
 #!/bin/bash
 
 sudo service apache2 stop
-sleep 1
-
 docker stop -t 0 nextcloud database
 
 echo "Start container MYSQL"

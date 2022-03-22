@@ -293,8 +293,6 @@ OC.L10N.register(
     "FROM" : "OD",
     "Company logo" : "Logo spoločnosti",
     "You can add your company logo here." : "Tu môžete pridať logo vašej spoločnosti.",
-    "To do this, drop your logo.png file in \".gestion\" folder at the root of your Nextcloud Files app. Remember to set \"Show hidden files\"." : "Ak to chcete urobiť, presuňte súbor logo.png do priečinka „.gestion“ v koreňovom adresári aplikácie Nextcloud Files. Nezabudnite nastaviť \"Zobraziť skryté súbory\".",
-    "(This message will not appear on generated PDF.)" : "(Táto správa sa vo vygenerovanom PDF nezobrazí.)",
     "TO" : "KOMU",
     "Offer valid for 1 month from" : "Ponuka je platná 1 mesiac od",
     "Quantity" : "Množstvo",

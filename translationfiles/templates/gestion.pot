@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-03-21 03:30+0000\n"
+"POT-Creation-Date: 2022-03-22 03:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1290,13 +1290,13 @@ msgstr ""
 #: /app/templates/content/devisshow.php:25
 #: /app/templates/content/factureshow.php:24
 msgid ""
-"To do this, drop your logo.png file in \".gestion\" folder at the root of "
+"To add a logo, drop the logo.png file in \".gestion\" folder at the root of "
 "your Nextcloud Files app. Remember to set \"Show hidden files\"."
 msgstr ""
 
 #: /app/templates/content/devisshow.php:25
 #: /app/templates/content/factureshow.php:24
-msgid "(This message will not appear on generated PDF.)"
+msgid "This message will not appear on generated PDF."
 msgstr ""
 
 #: /app/templates/content/devisshow.php:30

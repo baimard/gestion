@@ -152,8 +152,6 @@ OC.L10N.register(
     "FROM" : "由",
     "Company logo" : "公司圖示",
     "You can add your company logo here." : "您可以在此處添加您公司的圖示。",
-    "To do this, drop your logo.png file in \".gestion\" folder at the root of your Nextcloud Files app. Remember to set \"Show hidden files\"." : "為此，請將 logo.png 檔案放到您 Nextcloud Files 應用程式根目錄的「.gestion」資料夾。記得設定「顯示隱藏檔案」。",
-    "(This message will not appear on generated PDF.)" : "（此訊息不會顯示在產生的 PDF 檔案中。）",
     "TO" : "致",
     "Offer valid for 1 month from" : "報價有效期為 1 個月，開始日期為",
     "Quantity" : "數量",

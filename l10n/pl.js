@@ -300,6 +300,8 @@ OC.L10N.register(
     "FROM" : "OD",
     "Company logo" : "Logo firmy",
     "You can add your company logo here." : "Tutaj możesz dodać logo swojej firmy.",
+    "To add a logo, drop the logo.png file in \".gestion\" folder at the root of your Nextcloud Files app. Remember to set \"Show hidden files\"." : "Aby dodać logo, upuść plik logo.png w katalogu \".gestion\" w katalogu głównym aplikacji Pliki Nextcloud. Pamiętaj, aby ustawić \"Pokaż ukryte pliki\".",
+    "This message will not appear on generated PDF." : "Ta wiadomość nie pojawi się w wygenerowanym pliku PDF.",
     "TO" : "DO",
     "Offer valid for 1 month from" : "Oferta ważna 1 miesiąc od",
     "Quantity" : "Ilość",

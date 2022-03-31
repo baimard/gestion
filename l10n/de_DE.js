@@ -64,7 +64,7 @@ OC.L10N.register(
     "Bhutanese Ngultrum" : "Ngultrum aus Bhutan",
     "Bitcoin" : "Bitcoin",
     "Bolivian Boliviano" : "Bolivianischer Boliviano",
-    "Bosnia-Herzegovina Convertible Mark" : "Wandelbare Mark aus Bosnien-Herzegowina",
+    "Bosnia-Herzegovina Convertible Mark" : "Konvertierbare Mark aus Bosnien-Herzegowina",
     "Botswanan Pula" : "Botswanischer Pula",
     "Brazilian Real" : "Brazilianischer Real",
     "Brunei Dollar" : "Brunei-Dollar",

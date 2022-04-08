@@ -27,7 +27,6 @@
     "EUR" : "EUR",
     "Gestion" : "Gestion",
     "Simplified invoice management application" : "簡易發票管理應用程式",
-    "# Gestion Nextcloud application\n\n        This application allows the management of invoicing in a very simple way for Micro-Entreprise.\n\n        Functionality:\n\n        * Add customer\n        * Generate a quote\n        * Generate an invoice\n        * Generate product lines to include in quotes\n        * You can generate PDFs directly from the app and save them to your Nextcloud\n\n        Presentation video in user documentation\n\n        If you need to adapt this application to your country laws, please open issue.\n\n        [Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)" : "# Gestion Nextcloud 應用程式\n\n        此應用程式可以讓微型企業以非常簡單的方式管理發票。\n\n        功能：\n\n        * 新增消費者\n        * 產生報價\n        * 產生發票\n        * 產生可包含在報價中的產品線\n        * 您可以直接使用應用程式產生 PDF 檔，並將其儲存至您的 Nextcloud 中\n\n        使用者文件中的展示影片\n\n        如果您需要將此應用程式調整為適用於您所楚國家的法律，請開啟議題。\n\n        [喜歡我的作品嗎？買杯咖啡給我吧！](https://www.buymeacoffee.com/benjaminaimard)",
     "Choose work folder" : "選擇工作資料夾",
     "Please create a new product" : "請建立新產品",
     "Email sent" : "電子郵件已傳送",

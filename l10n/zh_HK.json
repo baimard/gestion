@@ -27,6 +27,7 @@
     "EUR" : "EUR",
     "Gestion" : "Gestion",
     "Simplified invoice management application" : "簡易發票管理應用程式",
+    "# Gestion company management\n\nThis application allows the management of invoicing in a very simple way for Micro-Entreprise.\n\nFunctionality:\n\n* Add customer\n* Generate a quote\n* Generate an invoice\n* Generate product lines to include in quotes\n* You can generate PDFs directly from the app and save them to your Nextcloud\n\nPresentation video in user documentation\n\nIf you need to adapt this application to your country laws, please open issue.\n\n[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)" : "# Gestion 公司管理\n\n此應用程式允許以非常簡單的方式為微型企業管理發票。\n\n功能：\n\n* 添加客戶\n* 生成報價\n* 生成發票\n* 生成商品線以包含在報價中\n* 您可以直接從應用程式生成 PDF 並將它們保存到您的 Nextcloud。\n\n用戶說明書中的演示視頻\n\n如果您需要將此應用程式調整為您所在國家/地區的法律，請聯絡我。\n\n[喜歡我的作品嗎？ 喜歡的話就請我飲茶啦！](https://www.buymeacoffee.com/benjaminaimard)",
     "Choose work folder" : "選擇工作資料夾",
     "Please create a new product" : "請創建一個新商品",
     "Modification saved" : "修改日期",

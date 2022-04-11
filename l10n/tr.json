@@ -27,6 +27,7 @@
     "EUR" : "EUR",
     "Gestion" : "Gestion",
     "Simplified invoice management application" : "Basit fatura yönetimi uygulaması",
+    "# Gestion company management\n\nThis application allows the management of invoicing in a very simple way for Micro-Entreprise.\n\nFunctionality:\n\n* Add customer\n* Generate a quote\n* Generate an invoice\n* Generate product lines to include in quotes\n* You can generate PDFs directly from the app and save them to your Nextcloud\n\nPresentation video in user documentation\n\nIf you need to adapt this application to your country laws, please open issue.\n\n[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)" : "# Gestion kuruluş yönetimi\n\nBu uygulama, mikro işletmeler için çok basit faturalama işlemlerinin yapılmasını sağlar.\nÖzellikleri:\n\n* Müşteri ekleme\n* Teklif hazırlama\n* Fatura hazırlama\n* Tekliflerdeki ürün satırlarını oluşturma\n* Uygulama üzerinden PDF oluşturulup Nextcloud üzerine kaydedilebilir\n\nSunum görüntüsünü kullanıcı belgeleri içinde bulabilirsiniz\n\nBu uygulamanın ülkenizdeki kanunlara göre uyarlanması için bir destek kaydı açın.\n\n[Uygulamamı beğendiniz mi? Bana bir kahve ısmarlayabilirsiniz!](https://www.buymeacoffee.com/benjaminaimard)",
     "Choose work folder" : "Çalışma klasörünü seçin",
     "Please create a new product" : "Lütfen yeni bir ürün oluşturun",
     "Modification saved" : "Değişiklik kaydedildi",

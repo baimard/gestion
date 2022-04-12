@@ -24,11 +24,13 @@
 		<label for="from"><?php p($l->t('From')); ?></label>
 		<input disabled id="from"style="width:100%" type="text" value="" />
 		<label for="to"><?php p($l->t('To')); ?></label>
-		<input disabled id="to"style="width:100%" type="text" value="" />
+		<input required id="to"style="width:100%" type="text" value="" title="<?php p($l->t('Multiple recipient separate by ";"')); ?>" />
+		<label for="Cc"><?php p($l->t('Cc')); ?></label>
+		<input id="Cc"style="width:100%" type="text" value="" title="<?php p($l->t('Empty if not used')); ?>" />
 		<label for="subject"><?php p($l->t('Subject')); ?></label>
-		<input id="subject" style="width:100%" type="text" value="<?php p($l->t('Your invoice/quote')); ?>" />
+		<input required id="subject" style="width:100%" type="text" value="<?php p($l->t('Your invoice/quote')); ?>" />
 		<label for="body"><?php p($l->t('Body')); ?></label>
-		<textarea style="width:100%" id="body">
+		<textarea required style="width:100%" id="body">
 			<?php p($l->t('Dear,')); ?>
 			<br/>
 			<?php p($l->t('Attached to this email you will find a new document.')); ?>

@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', function () {
         getMailServerFrom(document.getElementById("from"));
         (document.getElementById("modalMail")).style.display = "block";
     });
-    modalMail
+    
     var sendmail = document.getElementById('sendmail');
     sendmail.addEventListener('click', function () {
         capture(sendMail);

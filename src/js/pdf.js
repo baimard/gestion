@@ -23,7 +23,6 @@ export function capture(afterCapturefunction) {
   $('.bootstrap-iso').css('padding-right', '20px')
   $('.bootstrap-iso').css('padding-left', '20px')
   
-  
   html2canvas($('.bootstrap-iso')[0], {
     scrollY: -window.scrollY,
     dpi: 600,
@@ -55,12 +54,13 @@ function genPDF(imgData, canvas) {
     doc.addImage(imgData, 'JPG', 0, position, imgWidth, imgHeight);
     heightLeft -= pageHeight;
   }
+
   var pdf = btoa(doc.output());
-  var n = ""
-  var to = {};
-  to[$('#mail').text()] = $('#nomprenom').text()
-  var subject = $("#subject").val()
-  var body = $("#body").val()
+  var n = "";
+  var to = $("#to").val().split(";");
+  var Cc = $("#Cc").val().split(";");
+  var subject = $("#subject").val();
+  var body = $("#body").val();
 
   if ($("#factureid").length) {
     n = "FACTURE_" + $("#pdf").data("name");
@@ -68,7 +68,7 @@ function genPDF(imgData, canvas) {
     n = "DEVIS_" + $("#pdf").data("name");
   }
 
-  var myData = { name: n, subject: subject, body: body, to: JSON.stringify(to), content: pdf, folder: $("#theFolder").val() + "/" + $("#pdf").data("folder") + "/" };
+  var myData = { name: n, subject: subject, body: body, to: JSON.stringify(to), Cc : JSON.stringify(Cc), content: pdf, folder: $("#theFolder").val() + "/" + $("#pdf").data("folder") + "/" };
 
   return myData;
   //doc.save('devis.pdf');

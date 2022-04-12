@@ -11,6 +11,8 @@ use OCA\Gestion\Db\Bdd;
 use OCP\IURLGenerator;
 use OCP\IConfig;
 
+use function PHPUnit\Framework\isEmpty;
+
 class PageController extends Controller {
 	private $idNextcloud;
 	private $myDb;
@@ -111,7 +113,6 @@ class PageController extends Controller {
 																	'path' => $this->idNextcloud, 
 																	'url' => $this->getNavigationLink(),
 																	'logo' => $this->getLogo()
-																
 																));
 	}
 
@@ -310,14 +311,20 @@ class PageController extends Controller {
 	 * @param string $subject
 	 * @param string $body
 	 * @param string $to
+	 * @param string $Cc
 	 */
-	public function sendPDF($content, $name, $subject, $body, $to){
+	public function sendPDF($content, $name, $subject, $body, $to, $Cc){
 		$clean_name = html_entity_decode($name);
 		try {
 			$data = base64_decode($content);
 			$message = $this->mailer->createMessage();
 			$message->setSubject($subject);
 			$message->setTo((array) json_decode($to));
+			$myrrCc = (array) json_decode($Cc);
+			// return var_dump($myrrCc);
+			if($myrrCc[0] != ""){
+				$message->setCc($myrrCc);
+			}
 			$message->setHtmlBody($body);
 			$content = $this->mailer->createAttachment($data,$clean_name.".pdf","x-pdf");
 			$message->attach($content);
@@ -340,7 +347,6 @@ class PageController extends Controller {
 
 		$clean_folder = html_entity_decode($folder);
 		$clean_name = html_entity_decode($name);
-
 		try {
 			$this->storage->newFolder($clean_folder);
         } catch(\OCP\Files\NotPermittedException $e) {

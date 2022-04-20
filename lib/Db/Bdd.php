@@ -263,6 +263,11 @@ class Bdd {
         return $this->execSQLNoJsonReturn("SELECT LAST_INSERT_ID();",array())[0]['LAST_INSERT_ID()'];
     }
 
+    public function dump(){
+        $sql = "SELECT * FROM ".$this->tableprefix."client";
+        return $this->execSQLNoJsonReturn($sql, array());
+    }
+
     /**
      * @sql
      * @array() //prepare statement

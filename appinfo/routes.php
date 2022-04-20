@@ -46,6 +46,7 @@ return [
        ['name' => 'page#sendPDF',               'url' => '/sendPDF', 'verb' => 'POST'],
        ['name' => 'page#savePDF',               'url' => '/savePDF', 'verb' => 'POST'],
        
+       ['name' => 'admin#dump',                 'url' => '/dump', 'verb' => 'GET'],
 
     ]
 ];

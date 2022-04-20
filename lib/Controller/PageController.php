@@ -11,8 +11,6 @@ use OCA\Gestion\Db\Bdd;
 use OCP\IURLGenerator;
 use OCP\IConfig;
 
-use function PHPUnit\Framework\isEmpty;
-
 class PageController extends Controller {
 	private $idNextcloud;
 	private $myDb;

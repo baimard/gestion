@@ -39,7 +39,6 @@ class AdminController extends Controller {
 		}
 	}
 
-
 	/**
 	 * @NoCSRFRequired
 	 */

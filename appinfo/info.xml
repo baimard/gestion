@@ -22,7 +22,7 @@ If you need to adapt this application to your country laws, please open issue.
 
 [Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)
     ]]></description>
-    <version>2.0.10</version>
+    <version>2.0.11</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>
@@ -47,10 +47,15 @@ If you need to adapt this application to your country laws, please open issue.
         <nextcloud min-version="21" max-version="24"/>
         <php min-version="7.4"/>
     </dependencies>
+    <settings>
+        <admin>OCA\Gestion\Settings\GestionAdmin</admin>
+        <admin-section>OCA\Gestion\Sections\Admin</admin-section>
+    </settings>
     <navigations>
         <navigation>
             <name>Gestion</name>
             <route>gestion.page.index</route>
+            <icon>app.svg</icon>
         </navigation>
     </navigations>
 </info>

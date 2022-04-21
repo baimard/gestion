@@ -165,6 +165,18 @@ module.exports =
   {
     mode: "production",
     performance: { hints: false },
+    entry: ['./src/js/adminSection.js'
+          ],
+    output: {
+      filename: '../js/adminSection.app.js',
+    },
+    optimization: {
+      minimize: true
+    },
+  },
+  {
+    mode: "production",
+    performance: { hints: false },
     entry: ['./src/js/devisShow.js'
           ],
     output: {

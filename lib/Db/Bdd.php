@@ -263,6 +263,35 @@ class Bdd {
         return $this->execSQLNoJsonReturn("SELECT LAST_INSERT_ID();",array())[0]['LAST_INSERT_ID()'];
     }
 
+    public function backup(){
+        $res = array();
+        $res[] = array("===client===");
+        $sql = "SELECT * FROM ".$this->tableprefix."client";
+        $res = array_merge($res, $this->execSQLNoJsonReturn($sql, array()));
+        
+        $res[] = array("===devis===");
+        $sql = "SELECT * FROM ".$this->tableprefix."devis";
+        $res = array_merge($res,$this->execSQLNoJsonReturn($sql, array()));
+
+        $res[] = array("===facture===");
+        $sql = "SELECT * FROM ".$this->tableprefix."facture";
+        $res = array_merge($res,$this->execSQLNoJsonReturn($sql, array()));
+
+        $res[] = array("===produit===");
+        $sql = "SELECT * FROM ".$this->tableprefix."produit";
+        $res = array_merge($res,$this->execSQLNoJsonReturn($sql, array()));
+
+        $res[] = array("===produit_devis===");
+        $sql = "SELECT * FROM ".$this->tableprefix."produit_devis";
+        $res = array_merge($res,$this->execSQLNoJsonReturn($sql, array()));
+
+        $res[] = array("===configuration===");
+        $sql = "SELECT * FROM ".$this->tableprefix."configuration";
+        $res = array_merge($res,$this->execSQLNoJsonReturn($sql, array()));
+
+        return $res;
+    }
+
     /**
      * @sql
      * @array() //prepare statement
@@ -290,4 +319,3 @@ class Bdd {
     }
 
 }
-    

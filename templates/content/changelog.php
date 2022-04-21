@@ -1,7 +1,7 @@
 <div syle="display: none;" id="modalConfig" class="modal">
 	<div class="modal-content">
 		<span class="modalClose">&times;</span>
-		<h2><?php p($l->t('Welcome to GESTION')); ?> 2.0.9</h2>
+		<h2><?php p($l->t('Welcome to GESTION')); ?> 2.0.11</h2>
 		<p style="margin-bottom:20px;"><b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> &#128073; <a href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a></p>
 		<p style="margin-bottom:20px;">&#9888; <u><?php p($l->t('If you have updated this application, do not forget to clear your cache')); ?></u> &#9888;</p>
 		<p style="margin-bottom:20px;"><?php p($l->t('This application is open source and is designed by Benjamin AIMARD.')); ?></p>
@@ -13,7 +13,6 @@
 		<br/>	<?php p($l->t('Want to talk with the community?')); ?> &#128073; <a href="https://github.com/baimard/gestion/discussions"><?php p($l->t('Git discussion')); ?></a>
 		<hr />
 		<h2><?php p($l->t('Changelog')); ?></h2>
-		<?php p($l->t('You can now add a logo to your invoices or quotes! To do this, drop a logo.png file in the ".gestion" folder at the root of your Nextcloud Files app. (Remember to set "Show hidden files".)')); ?>
 		<p><a href="https://github.com/baimard/gestion/releases"><?php p($l->t('Releases')); ?></a></p>
 	</div>
 </div>
@@ -25,11 +24,13 @@
 		<label for="from"><?php p($l->t('From')); ?></label>
 		<input disabled id="from"style="width:100%" type="text" value="" />
 		<label for="to"><?php p($l->t('To')); ?></label>
-		<input disabled id="to"style="width:100%" type="text" value="" />
+		<input required id="to"style="width:100%" type="text" value="" title="<?php p($l->t('Multiple recipient separate by ";"')); ?>" />
+		<label for="Cc"><?php p($l->t('Cc')); ?></label>
+		<input id="Cc"style="width:100%" type="text" value="" title="<?php p($l->t('Empty if not used')); ?>" />
 		<label for="subject"><?php p($l->t('Subject')); ?></label>
-		<input id="subject" style="width:100%" type="text" value="<?php p($l->t('Your invoice/quote')); ?>" />
+		<input required id="subject" style="width:100%" type="text" value="<?php p($l->t('Your invoice/quote')); ?>" />
 		<label for="body"><?php p($l->t('Body')); ?></label>
-		<textarea style="width:100%" id="body">
+		<textarea required style="width:100%" id="body">
 			<?php p($l->t('Dear,')); ?>
 			<br/>
 			<?php p($l->t('Attached to this email you will find a new document.')); ?>

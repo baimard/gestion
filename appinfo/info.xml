@@ -49,7 +49,7 @@ If you need to adapt this application to your country laws, please open issue.
     </dependencies>
     <settings>
         <admin>OCA\Gestion\Settings\GestionAdmin</admin>
-        <admin-section>OCA\Gestion\Sections\Admin</admin-section>
+        <admin-section>OCA\Gestion\Sections\GestionAdmin</admin-section>
     </settings>
     <navigations>
         <navigation>

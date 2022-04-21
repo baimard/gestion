@@ -12,7 +12,7 @@ module.exports =
       filename: '../js/client.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -65,7 +65,7 @@ module.exports =
       filename: '../js/devis.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -118,7 +118,7 @@ module.exports =
       filename: '../js/facture.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -165,13 +165,25 @@ module.exports =
   {
     mode: "production",
     performance: { hints: false },
+    entry: ['./src/js/adminSection.js'
+          ],
+    output: {
+      filename: '../js/adminSection.app.js',
+    },
+    optimization: {
+      minimize: true
+    },
+  },
+  {
+    mode: "production",
+    performance: { hints: false },
     entry: ['./src/js/devisShow.js'
           ],
     output: {
       filename: '../js/devisShow.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -224,7 +236,7 @@ module.exports =
       filename: '../js/factureShow.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -277,7 +289,7 @@ module.exports =
       filename: '../js/produit.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -329,7 +341,7 @@ module.exports =
       filename: '../js/configuration.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -381,7 +393,7 @@ module.exports =
       filename: '../js/statistique.app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
     module: {
         rules: [
@@ -434,7 +446,7 @@ module.exports =
       filename: '../js/[name].app.js',
     },
     optimization: {
-      minimize: false
+      minimize: true
     },
 
     plugins: [

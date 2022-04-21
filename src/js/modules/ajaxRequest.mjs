@@ -256,3 +256,18 @@ export function saveNextcloud(myData) {
     };
     oReq.send();
     }
+
+    export function backup(){
+        var oReq = new XMLHttpRequest();
+        oReq.open('GET', baseUrl + '/backup', true);
+        oReq.setRequestHeader("Content-Type", "application/json");
+        oReq.setRequestHeader("requesttoken", oc_requesttoken);
+        oReq.onload = function(e){
+            if (this.status == 200) {
+                showSuccess(t('gestion', 'Save in ')+JSON.parse(this.response)['name']+t('gestion','\n(don\'t forget to show hidden folder)'));
+            }else{
+                showError(this.response);
+            }
+        };
+        oReq.send();
+    }

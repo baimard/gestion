@@ -6,7 +6,7 @@ use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
 
-class Admin implements IIconSection {
+class GestionAdmin implements IIconSection {
 
 	/** @var IL10N */
 	private $l;

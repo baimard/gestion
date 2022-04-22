@@ -24,7 +24,7 @@
 		<label for="from"><?php p($l->t('From')); ?></label>
 		<input disabled id="from"style="width:100%" type="text" value="" />
 		<label for="to"><?php p($l->t('To')); ?></label>
-		<input required id="to"style="width:100%" type="text" value="" title="<?php p($l->t('Multiple recipient separate by ";"')); ?>" />
+		<input required id="to"style="width:100%" type="text" value="" title="<?php p($l->t('Separate multiple recipients by ";"')); ?>" />
 		<label for="Cc"><?php p($l->t('Cc')); ?></label>
 		<input id="Cc"style="width:100%" type="text" value="" title="<?php p($l->t('Empty if not used')); ?>" />
 		<label for="subject"><?php p($l->t('Subject')); ?></label>

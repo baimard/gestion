@@ -241,7 +241,6 @@
     "Want to talk with the community?" : "Topluluk ile konuşmak ister misiniz?",
     "Git discussion" : "Git tartışmaları",
     "Changelog" : "Değişiklik günlüğü",
-    "You can now add a logo to your invoices or quotes! To do this, drop a logo.png file in the \".gestion\" folder at the root of your Nextcloud Files app. (Remember to set \"Show hidden files\".)" : "Artık faturalarınıza veya tekliflerinize bir logo ekleyebilirsiniz! Bunun için Nextcloud Files uygulamanızın kök klasöründeki \".gestion\" klasörüne bir logo.png dosyası yükleyin (klasörü görebilmek için \"Gizli dosyalar görüntülensin\" seçeneğini etkinleştirmeyi unutmayın).",
     "Releases" : "Sürümler",
     "Send an email" : "E-posta gönder",
     "From" : "Kimden",

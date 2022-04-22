@@ -50,7 +50,6 @@ OC.L10N.register(
     "Want to talk with the community?" : "Vuoi parlare con la community?",
     "Git discussion" : "Discussione su Git",
     "Changelog" : "Cronologia",
-    "You can now add a logo to your invoices or quotes! To do this, drop a logo.png file in the \".gestion\" folder at the root of your Nextcloud Files app. (Remember to set \"Show hidden files\".)" : "Ora puoi aggiungere un logo alle tue fatture o preventivi! Per farlo, lascia un file logo.png nella cartella \".gestion\" nella radice dell'app Nextcloud Files. (Ricorda di impostare \"Mostra file nascosti\".)",
     "Releases" : "Rilasci",
     "Send an email" : "Invia un'email",
     "Your invoice/quote" : "La tua fattura/preventivo",

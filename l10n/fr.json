@@ -240,7 +240,6 @@
     "Want to talk with the community?" : "Envie de parler avec la communauté ?",
     "Git discussion" : "Discussion Git",
     "Changelog" : "Journal des modifications",
-    "You can now add a logo to your invoices or quotes! To do this, drop a logo.png file in the \".gestion\" folder at the root of your Nextcloud Files app. (Remember to set \"Show hidden files\".)" : "Vous pouvez maintenant ajouter le logo de votre entreprise à vos devis et factures ! Pour cela, placer un fichier logo.png dans le dossier \".gestion\" au plus au niveau de votre application Nextcloud Files. (N'oubliez pas de cocher la case \"Voir les fichiers cachés\".)",
     "Releases" : "Versions",
     "Send an email" : "Envoyer un e-mail",
     "From" : "De",

@@ -243,7 +243,6 @@ OC.L10N.register(
     "Want to talk with the community?" : "Искате ли да говорите с общността?",
     "Git discussion" : "Git дискусия",
     "Changelog" : "Списък на промените",
-    "You can now add a logo to your invoices or quotes! To do this, drop a logo.png file in the \".gestion\" folder at the root of your Nextcloud Files app. (Remember to set \"Show hidden files\".)" : "Вече можете да добавите лого към вашите фактури или оферти! За да направите това, пуснете файл logo.png в папка \".gestion\" в основата на приложението Nextcloud Files. (Помнете, че трябва да зададете „Показване на скритите файлове“.)",
     "Releases" : "Версии",
     "Send an email" : "Изпращане на имейл",
     "From" : "От",

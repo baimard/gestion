@@ -243,7 +243,6 @@ OC.L10N.register(
     "Want to talk with the community?" : "Sie möchten mit der Gemeinschaft sprechen?",
     "Git discussion" : "Git-Diskussion",
     "Changelog" : "Liste der Änderungen",
-    "You can now add a logo to your invoices or quotes! To do this, drop a logo.png file in the \".gestion\" folder at the root of your Nextcloud Files app. (Remember to set \"Show hidden files\".)" : "Sie können Ihren Rechnungen oder Angeboten jetzt ein Logo hinzufügen! Legen Sie dazu Ihre logo.png-Datei im Ordner \".gestion\" im Stammverzeichnis Ihrer Nextcloud Dateien-App ab. (Die Anzeige versteckter Dateien muss aktiviert sein.)",
     "Releases" : "Veröffentlichungen",
     "Send an email" : "E-Mail senden",
     "From" : "Von",

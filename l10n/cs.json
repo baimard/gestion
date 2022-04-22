@@ -241,7 +241,6 @@
     "Want to talk with the community?" : "Chcete to probrat v komunitě?",
     "Git discussion" : "Diskuze při Git",
     "Changelog" : "Souhrn změn",
-    "You can now add a logo to your invoices or quotes! To do this, drop a logo.png file in the \".gestion\" folder at the root of your Nextcloud Files app. (Remember to set \"Show hidden files\".)" : "Nyní je možné do faktur a nabídek přidat logo! Toho se dosáhne přetažením souboru nazvaného logo.png do složky „.gestion“ v kořeni složky v aplikaci Nextcloud Soubory. (Nezapomeňte si nastavit „Zobrazovat skryté složky“.)",
     "Releases" : "Vydání",
     "Send an email" : "Odeslat e-mail",
     "From" : "Od",

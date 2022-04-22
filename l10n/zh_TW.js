@@ -50,7 +50,6 @@ OC.L10N.register(
     "Want to talk with the community?" : "想與社群交談？",
     "Git discussion" : "Git 討論",
     "Changelog" : "變更紀錄",
-    "You can now add a logo to your invoices or quotes! To do this, drop a logo.png file in the \".gestion\" folder at the root of your Nextcloud Files app. (Remember to set \"Show hidden files\".)" : "您現在可以在發票或報價單中新增圖示！為此，請將 logo.png 檔案放到您 Nextcloud Files 應用程式根目錄中的「.gestion」資料夾中。（記得設定「顯示隱藏檔案」。）",
     "Releases" : "釋出版本",
     "Send an email" : "傳送電子郵件",
     "Your invoice/quote" : "您的發票／報價",

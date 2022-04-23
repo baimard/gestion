@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-04-22 03:33+0000\n"
+"POT-Creation-Date: 2022-04-23 03:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,6 +191,7 @@ msgid "Cancel"
 msgstr ""
 
 #: /app/src/js/modules/ajaxRequest.mjs:238
+#: /app/src/js/modules/ajaxRequest.mjs:267
 msgid "Save in"
 msgstr ""
 
@@ -199,13 +200,7 @@ msgid "There is an error"
 msgstr ""
 
 #: /app/src/js/modules/ajaxRequest.mjs:267
-msgid "Save in "
-msgstr ""
-
-#: /app/src/js/modules/ajaxRequest.mjs:267
-msgid ""
-"\n"
-"(don't forget to show hidden folder)"
+msgid "(do not forget to show hidden folder)"
 msgstr ""
 
 #: /app/src/js/modules/list.mjs:9
@@ -1043,7 +1038,7 @@ msgid "To"
 msgstr ""
 
 #: /app/templates/content/changelog.php:27
-msgid "Multiple recipient separate by \";\""
+msgid "Separate multiple recipients by \";\""
 msgstr ""
 
 #: /app/templates/content/changelog.php:28
@@ -1525,7 +1520,7 @@ msgid "Backup now!"
 msgstr ""
 
 #: /app/templates/settings/admin.php:9
-msgid "You can restore a backup file for Gestion. (In next release)"
+msgid "You can restore a backup file for Gestion (in next release)."
 msgstr ""
 
 #: /app/templates/settings/admin.php:10

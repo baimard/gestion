@@ -247,6 +247,7 @@ OC.L10N.register(
     "Send an email" : "Bidali posta-mezu bat",
     "From" : "Nork",
     "To" : "Nori",
+    "Cc" : "Cc",
     "Subject" : "Gaia",
     "Your invoice/quote" : "Zure faktura/eskaintza",
     "Body" : "Gorputza",

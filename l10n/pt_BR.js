@@ -247,6 +247,7 @@ OC.L10N.register(
     "Send an email" : "Enviar um e-mail",
     "From" : "De",
     "To" : "Para",
+    "Cc" : "Cc",
     "Subject" : "Assunto",
     "Your invoice/quote" : "Sua fatura/orçamento",
     "Body" : "Corpo",

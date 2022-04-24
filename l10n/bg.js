@@ -247,6 +247,7 @@ OC.L10N.register(
     "Send an email" : "Изпращане на имейл",
     "From" : "От",
     "To" : "До",
+    "Cc" : "Cc",
     "Subject" : "Тема",
     "Your invoice/quote" : "Вашата фактура/оферта",
     "Body" : "Съдържание",

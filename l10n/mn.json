@@ -1,0 +1,28 @@
+{ "translations": {
+    "Last name" : "төгсгөлийн нэр",
+    "First name" : "эхлэх нэр ",
+    "Phone number" : "Утасны дугаар",
+    "Email" : "Цахим шуудан",
+    "Address" : "хаяг",
+    "New" : "Шинэ",
+    "Comment" : "undefined",
+    "Cancel" : "болиулах",
+    "Search" : "Хайх",
+    "Next" : "дараагийх",
+    "Previous" : "өмнөх",
+    "Open" : "Онгойлгох",
+    "Subject" : "Сэдэв",
+    "Send" : "илгээх",
+    "Loading …" : "Уншиж байна...",
+    "ID" : "ID",
+    "Version" : "төрөл",
+    "Status" : "төлөв",
+    "Actions" : "Үйл ажиллагаа",
+    "June" : "Зургадугаар сар",
+    "November" : "Арван нэгдүгээр сар",
+    "Total" : "Нийт",
+    "Manage" : "Зохицуулах",
+    "Information" : "Мэдээлэл",
+    "About" : "Тухай"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

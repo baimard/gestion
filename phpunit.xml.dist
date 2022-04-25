@@ -1,0 +1,4 @@
+<!-- phpunit.xml.dist -->
+<extensions>
+    <extension class="Symfony\Component\Panther\ServerExtension" />
+</extensions>

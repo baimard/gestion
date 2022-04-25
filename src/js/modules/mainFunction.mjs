@@ -15,6 +15,7 @@ export var cur = null;
  export var optionDatatable = {
     autoWidth: false,
     stateSave: true,
+    lengthMenu: [[100, 300, 500, -1], [100, 300, 500, "All"]],
     language: {
         "search": t('gestion', 'Search'),
         "emptyTable": t('gestion', 'No data available in table'),

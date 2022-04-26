@@ -34,7 +34,7 @@ OC.L10N.register(
     "Please create a new product" : "Bitte ein neues Produkt erstellen",
     "Modification saved" : "Änderung gespeichert",
     "There is an error with the format, please check the documentation" : "Es liegt ein Fehler im Format vor, bitte sehen Sie in der Dokumentation nach",
-    "Are you sure you want to delete?" : "Sind Sie sicher, dass Sie löschen möchten?",
+    "Are you sure you want to delete?" : "Möchten Sie wirklich löschen?",
     "Nothing changed" : "Nicht geändert",
     "Cancel" : "Abbrechen",
     "Save in" : "Speichern unter",

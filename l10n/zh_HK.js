@@ -176,7 +176,6 @@ OC.L10N.register(
     "Somali Shilling" : "Somali Shilling",
     "South African Rand" : "South African Rand",
     "South Korean Won" : "South Korean Won",
-    "Special Drawing Rights" : "Special Drawing Rights",
     "Sri Lankan Rupee" : "Sri Lankan Rupee",
     "St. Helena Pound" : "St. Helena Pound",
     "Sudanese Pound" : "Sudanese Pound",

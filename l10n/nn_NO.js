@@ -17,6 +17,7 @@ OC.L10N.register(
     "Documentation" : "Dokumentasjon",
     "Send" : "Send",
     "Configuration" : "Innstillingar",
+    "Need help?" : "Treng du hjelp?",
     "ID" : "ID",
     "Version" : "Utgåve",
     "Status" : "Status",

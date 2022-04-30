@@ -29,7 +29,6 @@ OC.L10N.register(
     "EUR" : "EUR",
     "Gestion" : "Gestão",
     "Simplified invoice management application" : "Aplicativo de gerenciamento de faturas simplificado",
-    "# Gestion company management\n\nThis application allows the management of invoicing in a very simple way for Micro-Entreprise.\n\nFunctionality:\n\n* Add customer\n* Generate a quote\n* Generate an invoice\n* Generate product lines to include in quotes\n* You can generate PDFs directly from the app and save them to your Nextcloud\n\nPresentation video in user documentation\n\nIf you need to adapt this application to your country laws, please open issue.\n\n[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)" : "# Gestão da empresa de gerenciamento\n\nEsta aplicação permite a gestão do faturamento de uma forma muito simples para as Micro-Empresas.\n\nFuncionalidade:\n\n* Adicionar cliente\n* Gerar uma cotação\n* Gerar uma fatura\n* Gerar linhas de produtos para incluir nas cotações\n* Você pode gerar PDFs diretamente do aplicativo e salvá-los em seu Nextcloud\n\nVídeo de apresentação na documentação do usuário\n\nSe você precisar adaptar este aplicativo às leis do seu país, abra o problema.\n\n[Ama meu trabalho? Me compre um café!](https://www.buymeacoffee.com/benjaminaimard)",
     "Choose work folder" : "Escolha a pasta de trabalho",
     "Please create a new product" : "Por favor, crie um novo produto",
     "Modification saved" : "Modificação salva",

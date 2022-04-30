@@ -27,7 +27,6 @@
     "EUR" : "EUR",
     "Gestion" : "Kudeaketa",
     "Simplified invoice management application" : "Fakturak kudeatzeko aplikazio sinplifikatua",
-    "# Gestion company management\n\nThis application allows the management of invoicing in a very simple way for Micro-Entreprise.\n\nFunctionality:\n\n* Add customer\n* Generate a quote\n* Generate an invoice\n* Generate product lines to include in quotes\n* You can generate PDFs directly from the app and save them to your Nextcloud\n\nPresentation video in user documentation\n\nIf you need to adapt this application to your country laws, please open issue.\n\n[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)" : "# Gestion Nextcloud kudeaketa\n\nAplikazio honek fakturak modu oso erraz batean kudeatzeko aukera ematen du Mikro-Enpresentzat.\n\nFuntzionalitatea: \n\n* Gehitu bezeroa \n* Aurrekontua sortu\n* Sortu faktura\n* Sortu produktu-lerroak aurrekontuetan sartzeko \n* Aplikaziotik zuzenean PDFak sor ditzakezu eta zure Nextcloud-en gorde ditzakezu.\n\nAurkezpen bideoa erabiltzailearen dokumentazioan\n\nAplikazio hau zure herrialdeko legeetara egokitu behar baduzu, eman arazoaren berri.\n\n[Nire lana gustatzen zaizu? Ordaindu iezadazu kafe bat!] (Https://www.buymeacoffee.com/benjaminaimard)",
     "Choose work folder" : "Aukeratu lanerako karpeta",
     "Please create a new product" : "Mesedez, sortu produktu berri bat",
     "Modification saved" : "Aldaketa gorde da",

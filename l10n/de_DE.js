@@ -59,7 +59,7 @@ OC.L10N.register(
     "Bermudian Dollar" : "Bermuda-Dollar",
     "Brunei Dollar" : "Brunei-Dollar",
     "Boliviano" : "Bolivar",
-    "Bolivian Mvdol" : "Bolivianischer Mcdol",
+    "Bolivian Mvdol" : "Bolivianischer Mvdol",
     "Brazilian Real" : "Brasilianischer Real",
     "Bahamian Dollar" : "Bahama-Dollar",
     "Bhutanese Ngultrum" : "Ngultrum aus Bhutan",

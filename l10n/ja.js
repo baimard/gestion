@@ -14,6 +14,7 @@ OC.L10N.register(
     "Disable" : "無効",
     "Enable" : "有効にする",
     "Search" : "検索",
+    "Showing 0 to 0 of 0 entries" : "0件中0件から0件を表示",
     "Next" : "次へ",
     "Previous" : "前へ",
     "Open" : "開く",

@@ -44,6 +44,7 @@ OC.L10N.register(
     "Actions" : "Műveletek",
     "Send by email" : "Küldés e-mailben",
     "Invoice" : "Díjbekérő",
+    "Legal information" : "Jogi információk",
     "Year" : "Év",
     "January" : "Január",
     "February" : "Február",

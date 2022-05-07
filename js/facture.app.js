@@ -37391,10 +37391,12 @@ $('body').on('click', '#theFolder', function () {
 $('body').on('change', '.editableSelect', function () { 
     updateDB($(this).data('table'), $(this).data('column'), $(this).val(), $(this).data('id')); 
 });
+
 $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
 document.body.addEventListener('click', e => {
+    console.log("isi");
     if(e.target.className.includes("editableNumber")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
@@ -37405,6 +37407,8 @@ document.body.addEventListener('click', e => {
         Client.loadClientList_cid(e);
     }else if(e.target.className.includes("loadSelect_listdevis")){
         Devis.loadDevisList_dnum(e);
+    }else if(e.target.className.includes("editableSelect")){
+        //prevent
     }else if(e.target.className.includes("editable")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
@@ -37426,6 +37430,7 @@ document.body.addEventListener('keydown', e => {
 });
 
 document.body.addEventListener('focusout', e => {
+    
     if(e.target.className.includes("editableNumber")){
         updateNumerical(e.target, false);
     }else if (e.target.className.includes("editableNumeric")){
@@ -37434,6 +37439,24 @@ document.body.addEventListener('focusout', e => {
         //prevent
     }else if(e.target.className.includes("editable")){
         updateEditable(e.target);
+    }
+});
+
+document.body.addEventListener('mouseover', e => {
+    if( e.target.className.includes("editable") ||
+        e.target.className.includes("loadSelect") ||
+        e.target.className.includes("selectable")
+    ){
+        e.target.style.border = "1px solid " + getComputedStyle(document.documentElement).getPropertyValue('--color-primary-element-light');
+        e.target.style.borderRadius = "5px";
+        e.target.style.padding = "5px";
+        e.target.style.fontWeight = "bold";
+        e.target.addEventListener('mouseout', e => {
+                e.target.style.border = null;
+                e.target.style.padding = null;
+                e.target.style.fontWeight = null;
+                e.target.style.borderRadius = null;
+        });
     }
 });
 

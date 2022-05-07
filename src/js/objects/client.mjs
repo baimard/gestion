@@ -1,3 +1,4 @@
+import { updateDB } from "../modules/ajaxRequest.mjs";
 import { baseUrl, checkSelectPurJs, LoadDT, removeOptions, showDone } from "../modules/mainFunction.mjs";
 
 export class Client {
@@ -145,6 +146,53 @@ export class Client {
   
         checkSelectPurJs(selectElement);
       });
+    });
+  }
+
+  /**
+   * 
+   * @param {*} cid 
+   */
+  static loadClientList_cid(e){
+    Client.getClients(response => {
+
+      var selectElement = document.createElement("select");
+      selectElement.dataset.current = e.target.dataset.current;
+      selectElement.dataset.id = e.target.dataset.id;
+      selectElement.dataset.old = e.target.innerHTML;
+
+      selectElement.addEventListener("change", el=>{
+        if(el.target.value != 0){
+          updateDB(el.target.parentElement.dataset.table,
+            el.target.parentElement.dataset.column,
+            el.target.value,
+            el.target.parentElement.dataset.id
+          );
+
+          var parentElement = el.target.parentElement
+          parentElement.innerHTML = el.target.value + " " + el.target.options[el.target.selectedIndex].text
+        }else{
+          var parentElement = el.target.parentElement
+          parentElement.innerHTML = el.target.dataset.old
+        }
+      });
+
+      var option = document.createElement("option");
+        option.value = 0;
+        option.text = t('gestion', 'Cancel');
+        selectElement.appendChild(option);
+
+      JSON.parse(response).forEach(myresp => {
+        var option = document.createElement("option");
+        option.value = myresp.id;
+        option.text = myresp.prenom + ' ' + myresp.nom;
+        selectElement.appendChild(option);
+      });
+      
+      checkSelectPurJs(selectElement);
+
+      e.target.innerHTML = ''
+      e.target.appendChild(selectElement);
     });
   }
 }

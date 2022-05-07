@@ -32,8 +32,10 @@ document.body.addEventListener('click', e => {
     }else if (e.target.className.includes("editableNumeric")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
-    }else if(e.target.className.includes("editableSelect")){
-        //Prevent
+    }else if(e.target.className.includes("loadSelect_listclient")){
+        Client.loadClientList_cid(e);
+    }else if(e.target.className.includes("loadSelect_listdevis")){
+        Devis.loadDevisList_dnum(e);
     }else if(e.target.className.includes("editable")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
@@ -47,7 +49,7 @@ document.body.addEventListener('keydown', e => {
         }else if (e.target.className.includes("editableNumeric")){
             updateNumerical(e.target);
         }else if(e.target.className.includes("editableSelect")){
-                //Prevent
+            //Prevent
         }else if(e.target.className.includes("editable")){
             updateEditable(e.target);
         }
@@ -60,7 +62,7 @@ document.body.addEventListener('focusout', e => {
     }else if (e.target.className.includes("editableNumeric")){
         updateNumerical(e.target);
     }else if(e.target.className.includes("editableSelect")){
-            //Prevent
+        //prevent
     }else if(e.target.className.includes("editable")){
         updateEditable(e.target);
     }

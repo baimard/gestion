@@ -2,7 +2,6 @@ import { showError } from "@nextcloud/dialogs";
 import { generateUrl, getRootUrl } from "@nextcloud/router";
 import { configuration } from "../modules/ajaxRequest.mjs";
 import { baseUrl, checkAutoIncrement, LoadDT, showDone } from "../modules/mainFunction.mjs";
-import { Devis } from "./devis.mjs";
 
 export class Facture {
 
@@ -18,6 +17,9 @@ export class Facture {
     this.version = ((myresp.version == null || myresp.version.length === 0) ? '-' : myresp.version);
     this.date_paiement = ((myresp.date_paiement == null || myresp.date_paiement.length === 0) ? '-' : myresp.date_paiement);
     this.type_paiement = ((myresp.type_paiement == null || myresp.type_paiement.length === 0) ? '-' : myresp.type_paiement);
+    this.dnum = ((myresp.dnum == null || myresp.dnum.length === 0) ? '-' : myresp.dnum);
+    this.nom = ((myresp.nom == null || myresp.nom.length === 0) ? '-' : myresp.nom);
+    this.prenom = ((myresp.prenom == null || myresp.prenom.length === 0) ? '-' : myresp.prenom);
     this.status_paiement = ((myresp.status_paiement == null || myresp.status_paiement.length === 0) ? '-' : myresp.status_paiement);
     this.id_devis = ((myresp.id_devis == null || myresp.id_devis.length === 0) ? '-' : myresp.id_devis);
     this.baseUrl = getRootUrl() + generateUrl('/apps/gestion');
@@ -33,7 +35,7 @@ export class Facture {
       '<div class="editable" data-table="facture" data-column="date" data-id="' + this.id + '">' + this.date + '</div>',
       '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date_paiement + ' data-table="facture" data-column="date_paiement" data-id="' + this.id + '"/>',
       '<div class="editable" data-table="facture" data-column="type_paiement" data-id="' + this.id + '">' + this.type_paiement + '</div>',
-      '<div data-table="facture" data-column="id_devis" data-id="' + this.id + '"><select class="listDevis" data-current="' + this.id_devis + '"></select></div>',
+      '<div class="loadSelect_listdevis" data-table="facture" data-column="id_devis" data-id="' + this.id + '" data-current="' + this.id_devis + '">' + this.dnum + " " + this.prenom + " " + this.nom + '</div>',
       '<div class="editable" data-table="facture" data-column="version" data-id="' + this.id + '" style="display:inline">' + this.version + '</div>',
       '<div class="editable" data-table="facture" data-column="status_paiement" data-id="' + this.id + '" style="display:inline">' + this.status_paiement + '</div>',
       '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl + '/facture/' + this.id + '/show"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="facture" data-id=' + this.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
@@ -48,7 +50,7 @@ export class Facture {
     oReq.onload = function(e){
       if (this.status == 200) {
         LoadDT(factureDT, JSON.parse(this.response), Facture);
-        Devis.loadDevisList();
+        // Devis.loadDevisList();
         configuration(checkAutoIncrement);
       }else{
         showError(this.response);

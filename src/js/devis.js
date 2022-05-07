@@ -4,7 +4,7 @@ import '../css/mycss.less';
 
 
 import DataTable from 'datatables.net';
-import { globalConfiguration, optionDatatable, path } from "./modules/mainFunction.mjs";
+import { globalConfiguration, optionDatatable } from "./modules/mainFunction.mjs";
 import { Devis } from './objects/devis.mjs';
 import './listener/main_listener';
 import { Client } from './objects/client.mjs';

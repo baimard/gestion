@@ -36719,33 +36719,33 @@ class Devis {
   /**
    * 
    */
-  static loadDevisList() {
-    Devis.getDevis(function (response) {
-      var listDevis = document.querySelectorAll(".listDevis");
+  // static loadDevisList() {
+  //   Devis.getDevis(function (response) {
+  //     var listDevis = document.querySelectorAll(".listDevis");
 
-      listDevis.forEach(function(selectElement){
-        removeOptions(selectElement);
+  //     listDevis.forEach(function(selectElement){
+  //       removeOptions(selectElement);
 
-        var option = document.createElement("option");
-        option.value = 0;
-        option.text = t('gestion', 'Choose quote');
-        selectElement.appendChild(option);
+  //       var option = document.createElement("option");
+  //       option.value = 0;
+  //       option.text = t('gestion', 'Choose quote');
+  //       selectElement.appendChild(option);
 
-        JSON.parse(response).forEach(function(myresp){
-          if( myresp.prenom ||  myresp.nom ){
-            var option = document.createElement("option");
-            option.value = myresp.id;
-            option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
-            selectElement.appendChild(option);
-          }
-        });
+  //       JSON.parse(response).forEach(function(myresp){
+  //         if( myresp.prenom ||  myresp.nom ){
+  //           var option = document.createElement("option");
+  //           option.value = myresp.id;
+  //           option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
+  //           selectElement.appendChild(option);
+  //         }
+  //       });
 
-        checkSelectPurJs(selectElement);  
-      });
+  //       checkSelectPurJs(selectElement);  
+  //     });
       
-      configuration(checkAutoIncrement);
-    });
-  }
+  //     configuration(checkAutoIncrement);
+  //   });
+  // }
 
   static loadDevisList_dnum(e){
     Devis.getDevis( response => {
@@ -36919,28 +36919,28 @@ class Client {
   /**
    * 
    */
-  static loadClientList() {
-    Client.getClients(function (response) {
-      var listClients = document.querySelectorAll(".listClient");
+  // static loadClientList() {
+  //   Client.getClients(function (response) {
+  //     var listClients = document.querySelectorAll(".listClient");
 
-      listClients.forEach(selectElement => {
-        removeOptions(selectElement);
-        var option = document.createElement("option");
-        option.value = 0;
-        option.text = t('gestion', 'Choose customer');
-        selectElement.appendChild(option);
+  //     listClients.forEach(selectElement => {
+  //       removeOptions(selectElement);
+  //       var option = document.createElement("option");
+  //       option.value = 0;
+  //       option.text = t('gestion', 'Choose customer');
+  //       selectElement.appendChild(option);
 
-        JSON.parse(response).forEach(myresp => {
-          var option = document.createElement("option");
-          option.value = myresp.id;
-          option.text = myresp.prenom + ' ' + myresp.nom;
-          selectElement.appendChild(option);
-        });
+  //       JSON.parse(response).forEach(myresp => {
+  //         var option = document.createElement("option");
+  //         option.value = myresp.id;
+  //         option.text = myresp.prenom + ' ' + myresp.nom;
+  //         selectElement.appendChild(option);
+  //       });
   
-        checkSelectPurJs(selectElement);
-      });
-    });
-  }
+  //       checkSelectPurJs(selectElement);
+  //     });
+  //   });
+  // }
 
   /**
    * 
@@ -37396,7 +37396,7 @@ $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).tog
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
 document.body.addEventListener('click', e => {
-    console.log("isi");
+    console.log(e.target.id);
     if(e.target.className.includes("editableNumber")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
@@ -37412,6 +37412,14 @@ document.body.addEventListener('click', e => {
     }else if(e.target.className.includes("editable")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
+    }else if("newClient" === e.target.id){
+        Client.newClient(new (jquery_dataTables_default())('.tabledt'));
+    }else if("newDevis" === e.target.id){
+        Devis.newDevis(new (jquery_dataTables_default())('.tabledt'));
+    }else if("newInvoice" === e.target.id){
+        Facture.newFacture(new (jquery_dataTables_default())('.tabledt'));
+    }else if("newProduit" === e.target.id){
+        Produit.newProduct(new (jquery_dataTables_default())('.tabledt'));
     }
 });
 
@@ -37430,7 +37438,6 @@ document.body.addEventListener('keydown', e => {
 });
 
 document.body.addEventListener('focusout', e => {
-    
     if(e.target.className.includes("editableNumber")){
         updateNumerical(e.target, false);
     }else if (e.target.className.includes("editableNumeric")){
@@ -37547,22 +37554,6 @@ $('body').on('click', '#devisAdd', function () {
     });
 });
 
-$('body').on('click', '#newClient', function () {
-    Client.newClient(new (jquery_dataTables_default())('.tabledt'));
-});
-
-$('body').on('click', '#newDevis', function () {
-    Devis.newDevis(new (jquery_dataTables_default())('.tabledt'));
-});
-
-$('body').on('click', '#newInvoice', function () {
-    Facture.newFacture(new (jquery_dataTables_default())('.tabledt'));
-});
-
-$('body').on('click', '#newProduit', function () {
-    Produit.newProduct(new (jquery_dataTables_default())('.tabledt'));
-});
-
 $('body').on('click', '#about', function () {
     var modal = document.getElementById("modalConfig");
     modal.style.display = "block";
@@ -37584,8 +37575,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
     var dt = new (jquery_dataTables_default())('.tabledt',optionDatatable);
     Facture.loadFactureDT(dt);
-
-    dt.on('page search length', Devis.loadDevisList);
 });
 })();
 

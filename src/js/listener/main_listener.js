@@ -27,7 +27,7 @@ $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).tog
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
 document.body.addEventListener('click', e => {
-    console.log("isi");
+    console.log(e.target.id);
     if(e.target.className.includes("editableNumber")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
@@ -43,6 +43,14 @@ document.body.addEventListener('click', e => {
     }else if(e.target.className.includes("editable")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
+    }else if("newClient" === e.target.id){
+        Client.newClient(new DataTable('.tabledt'));
+    }else if("newDevis" === e.target.id){
+        Devis.newDevis(new DataTable('.tabledt'));
+    }else if("newInvoice" === e.target.id){
+        Facture.newFacture(new DataTable('.tabledt'));
+    }else if("newProduit" === e.target.id){
+        Produit.newProduct(new DataTable('.tabledt'));
     }
 });
 
@@ -61,7 +69,6 @@ document.body.addEventListener('keydown', e => {
 });
 
 document.body.addEventListener('focusout', e => {
-    
     if(e.target.className.includes("editableNumber")){
         updateNumerical(e.target, false);
     }else if (e.target.className.includes("editableNumeric")){
@@ -176,22 +183,6 @@ $('body').on('click', '#devisAdd', function () {
     }).fail(function (response, code) {
         showError(t('gestion', "Please create a new product"));
     });
-});
-
-$('body').on('click', '#newClient', function () {
-    Client.newClient(new DataTable('.tabledt'));
-});
-
-$('body').on('click', '#newDevis', function () {
-    Devis.newDevis(new DataTable('.tabledt'));
-});
-
-$('body').on('click', '#newInvoice', function () {
-    Facture.newFacture(new DataTable('.tabledt'));
-});
-
-$('body').on('click', '#newProduit', function () {
-    Produit.newProduct(new DataTable('.tabledt'));
 });
 
 $('body').on('click', '#about', function () {

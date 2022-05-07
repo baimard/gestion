@@ -36335,33 +36335,33 @@ class Devis {
   /**
    * 
    */
-  static loadDevisList() {
-    Devis.getDevis(function (response) {
-      var listDevis = document.querySelectorAll(".listDevis");
+  // static loadDevisList() {
+  //   Devis.getDevis(function (response) {
+  //     var listDevis = document.querySelectorAll(".listDevis");
 
-      listDevis.forEach(function(selectElement){
-        removeOptions(selectElement);
+  //     listDevis.forEach(function(selectElement){
+  //       removeOptions(selectElement);
 
-        var option = document.createElement("option");
-        option.value = 0;
-        option.text = t('gestion', 'Choose quote');
-        selectElement.appendChild(option);
+  //       var option = document.createElement("option");
+  //       option.value = 0;
+  //       option.text = t('gestion', 'Choose quote');
+  //       selectElement.appendChild(option);
 
-        JSON.parse(response).forEach(function(myresp){
-          if( myresp.prenom ||  myresp.nom ){
-            var option = document.createElement("option");
-            option.value = myresp.id;
-            option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
-            selectElement.appendChild(option);
-          }
-        });
+  //       JSON.parse(response).forEach(function(myresp){
+  //         if( myresp.prenom ||  myresp.nom ){
+  //           var option = document.createElement("option");
+  //           option.value = myresp.id;
+  //           option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
+  //           selectElement.appendChild(option);
+  //         }
+  //       });
 
-        checkSelectPurJs(selectElement);  
-      });
+  //       checkSelectPurJs(selectElement);  
+  //     });
       
-      configuration(checkAutoIncrement);
-    });
-  }
+  //     configuration(checkAutoIncrement);
+  //   });
+  // }
 
   static loadDevisList_dnum(e){
     Devis.getDevis( response => {
@@ -36535,28 +36535,28 @@ class Client {
   /**
    * 
    */
-  static loadClientList() {
-    Client.getClients(function (response) {
-      var listClients = document.querySelectorAll(".listClient");
+  // static loadClientList() {
+  //   Client.getClients(function (response) {
+  //     var listClients = document.querySelectorAll(".listClient");
 
-      listClients.forEach(selectElement => {
-        removeOptions(selectElement);
-        var option = document.createElement("option");
-        option.value = 0;
-        option.text = t('gestion', 'Choose customer');
-        selectElement.appendChild(option);
+  //     listClients.forEach(selectElement => {
+  //       removeOptions(selectElement);
+  //       var option = document.createElement("option");
+  //       option.value = 0;
+  //       option.text = t('gestion', 'Choose customer');
+  //       selectElement.appendChild(option);
 
-        JSON.parse(response).forEach(myresp => {
-          var option = document.createElement("option");
-          option.value = myresp.id;
-          option.text = myresp.prenom + ' ' + myresp.nom;
-          selectElement.appendChild(option);
-        });
+  //       JSON.parse(response).forEach(myresp => {
+  //         var option = document.createElement("option");
+  //         option.value = myresp.id;
+  //         option.text = myresp.prenom + ' ' + myresp.nom;
+  //         selectElement.appendChild(option);
+  //       });
   
-        checkSelectPurJs(selectElement);
-      });
-    });
-  }
+  //       checkSelectPurJs(selectElement);
+  //     });
+  //   });
+  // }
 
   /**
    * 
@@ -37289,7 +37289,7 @@ $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).tog
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
 document.body.addEventListener('click', e => {
-    console.log("isi");
+    console.log(e.target.id);
     if(e.target.className.includes("editableNumber")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
@@ -37305,6 +37305,14 @@ document.body.addEventListener('click', e => {
     }else if(e.target.className.includes("editable")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
+    }else if("newClient" === e.target.id){
+        Client.newClient(new (jquery_dataTables_default())('.tabledt'));
+    }else if("newDevis" === e.target.id){
+        Devis.newDevis(new (jquery_dataTables_default())('.tabledt'));
+    }else if("newInvoice" === e.target.id){
+        Facture.newFacture(new (jquery_dataTables_default())('.tabledt'));
+    }else if("newProduit" === e.target.id){
+        Produit.newProduct(new (jquery_dataTables_default())('.tabledt'));
     }
 });
 
@@ -37323,7 +37331,6 @@ document.body.addEventListener('keydown', e => {
 });
 
 document.body.addEventListener('focusout', e => {
-    
     if(e.target.className.includes("editableNumber")){
         updateNumerical(e.target, false);
     }else if (e.target.className.includes("editableNumeric")){
@@ -37440,22 +37447,6 @@ $('body').on('click', '#devisAdd', function () {
     });
 });
 
-$('body').on('click', '#newClient', function () {
-    Client.newClient(new (jquery_dataTables_default())('.tabledt'));
-});
-
-$('body').on('click', '#newDevis', function () {
-    Devis.newDevis(new (jquery_dataTables_default())('.tabledt'));
-});
-
-$('body').on('click', '#newInvoice', function () {
-    Facture.newFacture(new (jquery_dataTables_default())('.tabledt'));
-});
-
-$('body').on('click', '#newProduit', function () {
-    Produit.newProduct(new (jquery_dataTables_default())('.tabledt'));
-});
-
 $('body').on('click', '#about', function () {
     var modal = document.getElementById("modalConfig");
     modal.style.display = "block";
@@ -37488,7 +37479,6 @@ var currency_list = {
     "BDT": (0,l10n_dist/* translate */.Iu)('gestion', 'Bangladeshi Taka'),
     "BBD": (0,l10n_dist/* translate */.Iu)('gestion', 'Barbadian Dollar'),
     "BYR": (0,l10n_dist/* translate */.Iu)('gestion', 'Belarusian Ruble'),
-    "BEF": (0,l10n_dist/* translate */.Iu)('gestion', 'Belgian Franc'),
     "BZD": (0,l10n_dist/* translate */.Iu)('gestion', 'Belize Dollar'),
     "BMD": (0,l10n_dist/* translate */.Iu)('gestion', 'Bermudan Dollar'),
     "BTN": (0,l10n_dist/* translate */.Iu)('gestion', 'Bhutanese Ngultrum'),
@@ -37513,7 +37503,7 @@ var currency_list = {
     "CDF": (0,l10n_dist/* translate */.Iu)('gestion', 'Congolese Franc'),
     "CRC": (0,l10n_dist/* translate */.Iu)('gestion', 'Costa Rican Colon'),
     "HRK": (0,l10n_dist/* translate */.Iu)('gestion', 'Croatian Kuna'),
-    "CUC": (0,l10n_dist/* translate */.Iu)('gestion', 'Cuban Convertible Peso'),
+    "CUP": (0,l10n_dist/* translate */.Iu)('gestion', 'Cuban Peso'),
     "CZK": (0,l10n_dist/* translate */.Iu)('gestion', 'Czech Republic Koruna'),
     "DKK": (0,l10n_dist/* translate */.Iu)('gestion', 'Danish Krone'),
     "DJF": (0,l10n_dist/* translate */.Iu)('gestion', 'Djiboutian Franc'),
@@ -37521,16 +37511,13 @@ var currency_list = {
     "XCD": (0,l10n_dist/* translate */.Iu)('gestion', 'East Caribbean Dollar'),
     "EGP": (0,l10n_dist/* translate */.Iu)('gestion', 'Egyptian Pound'),
     "ERN": (0,l10n_dist/* translate */.Iu)('gestion', 'Eritrean Nakfa'),
-    "EEK": (0,l10n_dist/* translate */.Iu)('gestion', 'Estonian Kroon'),
     "ETB": (0,l10n_dist/* translate */.Iu)('gestion', 'Ethiopian Birr'),
     "FKP": (0,l10n_dist/* translate */.Iu)('gestion', 'Falkland Islands Pound'),
     "FJD": (0,l10n_dist/* translate */.Iu)('gestion', 'Fijian Dollar'),
     "GMD": (0,l10n_dist/* translate */.Iu)('gestion', 'Gambian Dalasi'),
     "GEL": (0,l10n_dist/* translate */.Iu)('gestion', 'Georgian Lari'),
-    "DEM": (0,l10n_dist/* translate */.Iu)('gestion', 'German Mark'),
     "GHS": (0,l10n_dist/* translate */.Iu)('gestion', 'Ghanaian Cedi'),
     "GIP": (0,l10n_dist/* translate */.Iu)('gestion', 'Gibraltar Pound'),
-    "GRD": (0,l10n_dist/* translate */.Iu)('gestion', 'Greek Drachma'),
     "GTQ": (0,l10n_dist/* translate */.Iu)('gestion', 'Guatemalan Quetzal'),
     "GNF": (0,l10n_dist/* translate */.Iu)('gestion', 'Guinean Franc'),
     "GYD": (0,l10n_dist/* translate */.Iu)('gestion', 'Guyanaese Dollar'),
@@ -37538,13 +37525,12 @@ var currency_list = {
     "HNL": (0,l10n_dist/* translate */.Iu)('gestion', 'Honduran Lempira'),
     "HKD": (0,l10n_dist/* translate */.Iu)('gestion', 'Hong Kong Dollar'),
     "HUF": (0,l10n_dist/* translate */.Iu)('gestion', 'Hungarian Forint'),
-    "ISK": (0,l10n_dist/* translate */.Iu)('gestion', 'Icelandic Kana'),
+    "ISK": (0,l10n_dist/* translate */.Iu)('gestion', 'Icelandic króna'),
     "INR": (0,l10n_dist/* translate */.Iu)('gestion', 'Indian Rupee'),
     "IDR": (0,l10n_dist/* translate */.Iu)('gestion', 'Indonesian Rupiah'),
     "IRR": (0,l10n_dist/* translate */.Iu)('gestion', 'Iranian Rial'),
     "IQD": (0,l10n_dist/* translate */.Iu)('gestion', 'Iraqi Dinar'),
     "ILS": (0,l10n_dist/* translate */.Iu)('gestion', 'Israeli New Sheqel'),
-    "ITL": (0,l10n_dist/* translate */.Iu)('gestion', 'Italian Lira'),
     "JMD": (0,l10n_dist/* translate */.Iu)('gestion', 'Jamaican Dollar'),
     "JOD": (0,l10n_dist/* translate */.Iu)('gestion', 'Jordanian Dinar'),
     "KZT": (0,l10n_dist/* translate */.Iu)('gestion', 'Kazakhstani Tenge'),
@@ -37552,12 +37538,10 @@ var currency_list = {
     "KWD": (0,l10n_dist/* translate */.Iu)('gestion', 'Kuwaiti Dinar'),
     "KGS": (0,l10n_dist/* translate */.Iu)('gestion', 'Kyrgystani Som'),
     "LAK": (0,l10n_dist/* translate */.Iu)('gestion', 'Laotian Kip'),
-    "LVL": (0,l10n_dist/* translate */.Iu)('gestion', 'Latvian Lats'),
     "LBP": (0,l10n_dist/* translate */.Iu)('gestion', 'Lebanese Pound'),
     "LSL": (0,l10n_dist/* translate */.Iu)('gestion', 'Lesotho Loti'),
     "LRD": (0,l10n_dist/* translate */.Iu)('gestion', 'Liberian Dollar'),
     "LYD": (0,l10n_dist/* translate */.Iu)('gestion', 'Libyan Dinar'),
-    "LTL": (0,l10n_dist/* translate */.Iu)('gestion', 'Lithuanian Litas'),
     "MOP": (0,l10n_dist/* translate */.Iu)('gestion', 'Macanese Pataca'),
     "MKD": (0,l10n_dist/* translate */.Iu)('gestion', 'Macedonian Denar'),
     "MGA": (0,l10n_dist/* translate */.Iu)('gestion', 'Malagasy Ariary'),
@@ -37577,7 +37561,7 @@ var currency_list = {
     "ANG": (0,l10n_dist/* translate */.Iu)('gestion', 'Netherlands Antillean Guilder'),
     "TWD": (0,l10n_dist/* translate */.Iu)('gestion', 'New Taiwan Dollar'),
     "NZD": (0,l10n_dist/* translate */.Iu)('gestion', 'New Zealand Dollar'),
-    "NIO": (0,l10n_dist/* translate */.Iu)('gestion', 'Nicaraguan Cadoba'),
+    "NIO": (0,l10n_dist/* translate */.Iu)('gestion', 'Nicaraguan córdoba'),
     "NGN": (0,l10n_dist/* translate */.Iu)('gestion', 'Nigerian Naira'),
     "KPW": (0,l10n_dist/* translate */.Iu)('gestion', 'North Korean Won'),
     "NOK": (0,l10n_dist/* translate */.Iu)('gestion', 'Norwegian Krone'),
@@ -37589,18 +37573,16 @@ var currency_list = {
     "PEN": (0,l10n_dist/* translate */.Iu)('gestion', 'Peruvian Nuevo Sol'),
     "PHP": (0,l10n_dist/* translate */.Iu)('gestion', 'Philippine Peso'),
     "PLN": (0,l10n_dist/* translate */.Iu)('gestion', 'Polish Zloty'),
-    "QAR": (0,l10n_dist/* translate */.Iu)('gestion', 'Qatari Rial'),
+    "QAR": (0,l10n_dist/* translate */.Iu)('gestion', 'Qatari Riyal'),
     "RON": (0,l10n_dist/* translate */.Iu)('gestion', 'Romanian Leu'),
     "RUB": (0,l10n_dist/* translate */.Iu)('gestion', 'Russian Ruble'),
     "RWF": (0,l10n_dist/* translate */.Iu)('gestion', 'Rwandan Franc'),
-    "SVC": (0,l10n_dist/* translate */.Iu)('gestion', 'Salvadoran Colon'),
     "WST": (0,l10n_dist/* translate */.Iu)('gestion', 'Samoan Tala'),
     "SAR": (0,l10n_dist/* translate */.Iu)('gestion', 'Saudi Riyal'),
     "RSD": (0,l10n_dist/* translate */.Iu)('gestion', 'Serbian Dinar'),
     "SCR": (0,l10n_dist/* translate */.Iu)('gestion', 'Seychellois Rupee'),
     "SLL": (0,l10n_dist/* translate */.Iu)('gestion', 'Sierra Leonean Leone'),
     "SGD": (0,l10n_dist/* translate */.Iu)('gestion', 'Singapore Dollar'),
-    "SKK": (0,l10n_dist/* translate */.Iu)('gestion', 'Slovak Koruna'),
     "SBD": (0,l10n_dist/* translate */.Iu)('gestion', 'Solomon Islands Dollar'),
     "SOS": (0,l10n_dist/* translate */.Iu)('gestion', 'Somali Shilling'),
     "ZAR": (0,l10n_dist/* translate */.Iu)('gestion', 'South African Rand'),

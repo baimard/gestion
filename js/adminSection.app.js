@@ -9282,33 +9282,33 @@ class Devis {
   /**
    * 
    */
-  static loadDevisList() {
-    Devis.getDevis(function (response) {
-      var listDevis = document.querySelectorAll(".listDevis");
+  // static loadDevisList() {
+  //   Devis.getDevis(function (response) {
+  //     var listDevis = document.querySelectorAll(".listDevis");
 
-      listDevis.forEach(function(selectElement){
-        removeOptions(selectElement);
+  //     listDevis.forEach(function(selectElement){
+  //       removeOptions(selectElement);
 
-        var option = document.createElement("option");
-        option.value = 0;
-        option.text = t('gestion', 'Choose quote');
-        selectElement.appendChild(option);
+  //       var option = document.createElement("option");
+  //       option.value = 0;
+  //       option.text = t('gestion', 'Choose quote');
+  //       selectElement.appendChild(option);
 
-        JSON.parse(response).forEach(function(myresp){
-          if( myresp.prenom ||  myresp.nom ){
-            var option = document.createElement("option");
-            option.value = myresp.id;
-            option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
-            selectElement.appendChild(option);
-          }
-        });
+  //       JSON.parse(response).forEach(function(myresp){
+  //         if( myresp.prenom ||  myresp.nom ){
+  //           var option = document.createElement("option");
+  //           option.value = myresp.id;
+  //           option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
+  //           selectElement.appendChild(option);
+  //         }
+  //       });
 
-        checkSelectPurJs(selectElement);  
-      });
+  //       checkSelectPurJs(selectElement);  
+  //     });
       
-      configuration(checkAutoIncrement);
-    });
-  }
+  //     configuration(checkAutoIncrement);
+  //   });
+  // }
 
   static loadDevisList_dnum(e){
     Devis.getDevis( response => {
@@ -9482,28 +9482,28 @@ class Client {
   /**
    * 
    */
-  static loadClientList() {
-    Client.getClients(function (response) {
-      var listClients = document.querySelectorAll(".listClient");
+  // static loadClientList() {
+  //   Client.getClients(function (response) {
+  //     var listClients = document.querySelectorAll(".listClient");
 
-      listClients.forEach(selectElement => {
-        removeOptions(selectElement);
-        var option = document.createElement("option");
-        option.value = 0;
-        option.text = t('gestion', 'Choose customer');
-        selectElement.appendChild(option);
+  //     listClients.forEach(selectElement => {
+  //       removeOptions(selectElement);
+  //       var option = document.createElement("option");
+  //       option.value = 0;
+  //       option.text = t('gestion', 'Choose customer');
+  //       selectElement.appendChild(option);
 
-        JSON.parse(response).forEach(myresp => {
-          var option = document.createElement("option");
-          option.value = myresp.id;
-          option.text = myresp.prenom + ' ' + myresp.nom;
-          selectElement.appendChild(option);
-        });
+  //       JSON.parse(response).forEach(myresp => {
+  //         var option = document.createElement("option");
+  //         option.value = myresp.id;
+  //         option.text = myresp.prenom + ' ' + myresp.nom;
+  //         selectElement.appendChild(option);
+  //       });
   
-        checkSelectPurJs(selectElement);
-      });
-    });
-  }
+  //       checkSelectPurJs(selectElement);
+  //     });
+  //   });
+  // }
 
   /**
    * 
@@ -9747,7 +9747,7 @@ function mainFunction_getGlobal(total) {
  * 
  * @param {*} response 
  */
-function mainFunction_checkAutoIncrement(response){
+function checkAutoIncrement(response){
     var myresp = JSON.parse(response)[0];
     if(myresp.auto_invoice_number==1){
         $('.deleteItem').remove();
@@ -9771,7 +9771,7 @@ function updateNumerical(el, format_number=true){
     }
 }
 
-function mainFunction_removeOptions(selectElement) {
+function removeOptions(selectElement) {
     
     var i, L = selectElement.options.length - 1;
     for(i = L; i >= 0; i--) {

@@ -133,8 +133,9 @@ export class Devis {
             el.target.parentElement.dataset.id
           );
 
-          var parentElement = el.target.parentElement
-          parentElement.innerHTML = el.target.options[el.target.selectedIndex].text
+          var parentElement = el.target.parentElement;
+          parentElement.innerHTML = el.target.options[el.target.selectedIndex].text;
+          parentElement.dataset.current = el.target.value;
         }else{
           var parentElement = el.target.parentElement
           parentElement.innerHTML = el.target.dataset.old

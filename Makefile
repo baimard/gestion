@@ -31,7 +31,7 @@ watch-js:
 
 # Linting
 lint:
-	npm run lint
+	./node_modules/.bin/eslint ./src/js/*.js --fix
 
 lint-fix:
 	npm run lint:fix

@@ -7,5 +7,12 @@
         <testsuite name="Bdd">
             <directory>./tests/Unit/Bdd</directory>
         </testsuite>
+        <testsuite name="Ihm">
+            <directory>./tests/Unit/Ihm</directory>
+        </testsuite>
     </testsuites>
+    <php>
+        <!-- <server name="KERNEL_CLASS" value="../../vendor/autoload.php" /> -->
+        <server name="PANTHER_WEB_SERVER_DIR" value="./" />
+    </php>
 </phpunit>

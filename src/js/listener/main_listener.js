@@ -22,6 +22,7 @@ $('body').on('click', '#theFolder', function () {
 $('body').on('change', '.editableSelect', function () { 
     updateDB($(this).data('table'), $(this).data('column'), $(this).val(), $(this).data('id')); 
 });
+
 $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
@@ -32,11 +33,23 @@ document.body.addEventListener('click', e => {
     }else if (e.target.className.includes("editableNumeric")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
+    }else if(e.target.className.includes("loadSelect_listclient")){
+        Client.loadClientList_cid(e);
+    }else if(e.target.className.includes("loadSelect_listdevis")){
+        Devis.loadDevisList_dnum(e);
     }else if(e.target.className.includes("editableSelect")){
-        //Prevent
+        //prevent
     }else if(e.target.className.includes("editable")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
+    }else if("newClient" === e.target.id){
+        Client.newClient(new DataTable('.tabledt'));
+    }else if("newDevis" === e.target.id){
+        Devis.newDevis(new DataTable('.tabledt'));
+    }else if("newInvoice" === e.target.id){
+        Facture.newFacture(new DataTable('.tabledt'));
+    }else if("newProduit" === e.target.id){
+        Produit.newProduct(new DataTable('.tabledt'));
     }
 });
 
@@ -47,7 +60,7 @@ document.body.addEventListener('keydown', e => {
         }else if (e.target.className.includes("editableNumeric")){
             updateNumerical(e.target);
         }else if(e.target.className.includes("editableSelect")){
-                //Prevent
+            //Prevent
         }else if(e.target.className.includes("editable")){
             updateEditable(e.target);
         }
@@ -60,9 +73,27 @@ document.body.addEventListener('focusout', e => {
     }else if (e.target.className.includes("editableNumeric")){
         updateNumerical(e.target);
     }else if(e.target.className.includes("editableSelect")){
-            //Prevent
+        //prevent
     }else if(e.target.className.includes("editable")){
         updateEditable(e.target);
+    }
+});
+
+document.body.addEventListener('mouseover', e => {
+    if( e.target.className.includes("editable") ||
+        e.target.className.includes("loadSelect") ||
+        e.target.className.includes("selectable")
+    ){
+        e.target.style.border = "1px solid " + getComputedStyle(document.documentElement).getPropertyValue('--color-primary-element-light');
+        e.target.style.borderRadius = "5px";
+        e.target.style.padding = "5px";
+        e.target.style.fontWeight = "bold";
+        e.target.addEventListener('mouseout', e => {
+                e.target.style.border = null;
+                e.target.style.padding = null;
+                e.target.style.fontWeight = null;
+                e.target.style.borderRadius = null;
+        });
     }
 });
 
@@ -151,22 +182,6 @@ $('body').on('click', '#devisAdd', function () {
     }).fail(function (response, code) {
         showError(t('gestion', "Please create a new product"));
     });
-});
-
-$('body').on('click', '#newClient', function () {
-    Client.newClient(new DataTable('.tabledt'));
-});
-
-$('body').on('click', '#newDevis', function () {
-    Devis.newDevis(new DataTable('.tabledt'));
-});
-
-$('body').on('click', '#newInvoice', function () {
-    Facture.newFacture(new DataTable('.tabledt'));
-});
-
-$('body').on('click', '#newProduit', function () {
-    Produit.newProduct(new DataTable('.tabledt'));
 });
 
 $('body').on('click', '#about', function () {

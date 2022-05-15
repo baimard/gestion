@@ -206,7 +206,6 @@ export function checkAutoIncrement(response){
  */
 export function updateNumerical(el, format_number=true){
     el.innerText=el.innerText.replace(',', '.').replace(/[^0-9.-]+/g,"")
-    console.log(el.innerText);
     updateEditable(el);
     if(format_number){
         el.innerText=cur.format(el.innerText)

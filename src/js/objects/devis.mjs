@@ -91,7 +91,6 @@ export class Devis {
       var selectElement = document.createElement("select");
       selectElement.dataset.current = e.target.dataset.current;
       selectElement.dataset.id = e.target.dataset.id;
-      console.log(e.target.dataset.current)
       selectElement.dataset.old = e.target.innerHTML;
 
       selectElement.addEventListener("change", el=>{

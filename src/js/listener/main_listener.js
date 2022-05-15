@@ -27,7 +27,6 @@ $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).tog
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
 document.body.addEventListener('click', e => {
-    console.log(e.target.id);
     if(e.target.className.includes("editableNumber")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();

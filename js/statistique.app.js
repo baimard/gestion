@@ -36356,7 +36356,6 @@ class Devis {
     oReq.onload = function(e){
       if (this.status == 200) {
         LoadDT(devisDT, JSON.parse(this.response), Devis);
-        // Client.loadClientList();
       }else{
         showError(this.response);
       }
@@ -36378,42 +36377,12 @@ class Devis {
     oReq.send();
   }
 
-  /**
-   * 
-   */
-  // static loadDevisList() {
-  //   Devis.getDevis(function (response) {
-  //     var listDevis = document.querySelectorAll(".listDevis");
-
-  //     listDevis.forEach(function(selectElement){
-  //       removeOptions(selectElement);
-
-  //       var option = document.createElement("option");
-  //       option.value = 0;
-  //       option.text = t('gestion', 'Choose quote');
-  //       selectElement.appendChild(option);
-
-  //       JSON.parse(response).forEach(function(myresp){
-  //         if( myresp.prenom ||  myresp.nom ){
-  //           var option = document.createElement("option");
-  //           option.value = myresp.id;
-  //           option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
-  //           selectElement.appendChild(option);
-  //         }
-  //       });
-
-  //       checkSelectPurJs(selectElement);  
-  //     });
-      
-  //     configuration(checkAutoIncrement);
-  //   });
-  // }
-
   static loadDevisList_dnum(e){
     Devis.getDevis( response => {
       var selectElement = document.createElement("select");
       selectElement.dataset.current = e.target.dataset.current;
       selectElement.dataset.id = e.target.dataset.id;
+      console.log(e.target.dataset.current)
       selectElement.dataset.old = e.target.innerHTML;
 
       selectElement.addEventListener("change", el=>{
@@ -37342,7 +37311,6 @@ main_listener_$('body').on('click', '.menu', function () { main_listener_$('#men
 main_listener_$('body').on('click', '.modalClose', function () { var modal = main_listener_$(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
 document.body.addEventListener('click', e => {
-    console.log(e.target.id);
     if(e.target.className.includes("editableNumber")){
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();

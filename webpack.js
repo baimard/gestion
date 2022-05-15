@@ -14,6 +14,14 @@ module.exports =
     optimization: {
       minimize: false
     },
+    plugins: [
+      new webpack.ProvidePlugin({
+           $: 'jquery',
+           jQuery: 'jquery',
+           "window.jQuery": "jquery",
+           jquery: 'jquery'
+       }),
+     ],
     module: {
         rules: [
             {
@@ -56,6 +64,7 @@ module.exports =
           ],
       },
   },
+
   {
     mode: "production",
     performance: { hints: false },
@@ -67,6 +76,14 @@ module.exports =
     optimization: {
       minimize: false
     },
+    plugins: [
+      new webpack.ProvidePlugin({
+           $: 'jquery',
+           jQuery: 'jquery',
+           "window.jQuery": "jquery",
+           jquery: 'jquery'
+       }),
+     ],
     module: {
         rules: [
             {
@@ -109,6 +126,7 @@ module.exports =
           ],
       },
   },
+
   {
     mode: "production",
     performance: { hints: false },
@@ -120,6 +138,14 @@ module.exports =
     optimization: {
       minimize: false
     },
+    plugins: [
+      new webpack.ProvidePlugin({
+           $: 'jquery',
+           jQuery: 'jquery',
+           "window.jQuery": "jquery",
+           jquery: 'jquery'
+       }),
+     ],
     module: {
         rules: [
             {
@@ -185,6 +211,14 @@ module.exports =
     optimization: {
       minimize: false
     },
+    plugins: [
+      new webpack.ProvidePlugin({
+           $: 'jquery',
+           jQuery: 'jquery',
+           "window.jQuery": "jquery",
+           jquery: 'jquery'
+       }),
+     ],
     module: {
         rules: [
             {
@@ -238,6 +272,14 @@ module.exports =
     optimization: {
       minimize: false
     },
+    plugins: [
+      new webpack.ProvidePlugin({
+           $: 'jquery',
+           jQuery: 'jquery',
+           "window.jQuery": "jquery",
+           jquery: 'jquery'
+       }),
+     ],
     module: {
         rules: [
             {
@@ -291,6 +333,14 @@ module.exports =
     optimization: {
       minimize: false
     },
+    plugins: [
+      new webpack.ProvidePlugin({
+           $: 'jquery',
+           jQuery: 'jquery',
+           "window.jQuery": "jquery",
+           jquery: 'jquery'
+       }),
+     ],
     module: {
         rules: [
             {
@@ -343,6 +393,14 @@ module.exports =
     optimization: {
       minimize: false
     },
+    plugins: [
+      new webpack.ProvidePlugin({
+           $: 'jquery',
+           jQuery: 'jquery',
+           "window.jQuery": "jquery",
+           jquery: 'jquery'
+       }),
+     ],
     module: {
         rules: [
             {
@@ -395,6 +453,14 @@ module.exports =
     optimization: {
       minimize: false
     },
+    plugins: [
+      new webpack.ProvidePlugin({
+           $: 'jquery',
+           jQuery: 'jquery',
+           "window.jQuery": "jquery",
+           jquery: 'jquery'
+       }),
+     ],
     module: {
         rules: [
             {
@@ -448,13 +514,14 @@ module.exports =
     optimization: {
       minimize: false
     },
-
     plugins: [
       new webpack.ProvidePlugin({
-          $: "jquery",
-          jQuery: "jquery"
-      })
-    ],
+           $: 'jquery',
+           jQuery: 'jquery',
+           "window.jQuery": "jquery",
+           jquery: 'jquery'
+       }),
+     ],
     module: {
         rules: [
             {

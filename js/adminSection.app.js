@@ -8,24 +8,26 @@
 var __webpack_unused_export__;
 
 
-__webpack_require__(4916);
-
-__webpack_require__(5306);
+__webpack_require__(9070);
 
 __webpack_unused_export__ = ({
   value: true
 });
-__webpack_unused_export__ = getLocale;
 __webpack_unused_export__ = getCanonicalLocale;
-__webpack_unused_export__ = getLanguage;
-exports.Iu = translate;
-__webpack_unused_export__ = translatePlural;
-__webpack_unused_export__ = getFirstDay;
 __webpack_unused_export__ = getDayNames;
-__webpack_unused_export__ = getDayNamesShort;
 __webpack_unused_export__ = getDayNamesMin;
+__webpack_unused_export__ = getDayNamesShort;
+__webpack_unused_export__ = getFirstDay;
+__webpack_unused_export__ = getLanguage;
+__webpack_unused_export__ = getLocale;
 __webpack_unused_export__ = getMonthNames;
 __webpack_unused_export__ = getMonthNamesShort;
+exports.Iu = translate;
+__webpack_unused_export__ = translatePlural;
+
+__webpack_require__(4916);
+
+__webpack_require__(5306);
 
 /// <reference types="@nextcloud/typings" />
 
@@ -33,12 +35,7 @@ __webpack_unused_export__ = getMonthNamesShort;
  * Returns the user's locale
  */
 function getLocale() {
-  if (typeof OC === 'undefined') {
-    console.warn('No OC found');
-    return 'en';
-  }
-
-  return OC.getLocale();
+  return document.documentElement.dataset.locale || 'en';
 }
 
 function getCanonicalLocale() {
@@ -50,12 +47,7 @@ function getCanonicalLocale() {
 
 
 function getLanguage() {
-  if (typeof OC === 'undefined') {
-    console.warn('No OC found');
-    return 'en';
-  }
-
-  return OC.getLanguage();
+  return document.documentElement.lang || 'en';
 }
 
 /**
@@ -1371,15 +1363,17 @@ module.exports = function (obj) {
 var fails = __webpack_require__(7293);
 var isCallable = __webpack_require__(614);
 var hasOwn = __webpack_require__(2597);
-var defineProperty = (__webpack_require__(3070).f);
+var DESCRIPTORS = __webpack_require__(9781);
 var CONFIGURABLE_FUNCTION_NAME = (__webpack_require__(6530).CONFIGURABLE);
 var inspectSource = __webpack_require__(2788);
 var InternalStateModule = __webpack_require__(9909);
 
 var enforceInternalState = InternalStateModule.enforce;
 var getInternalState = InternalStateModule.get;
+// eslint-disable-next-line es-x/no-object-defineproperty -- safe
+var defineProperty = Object.defineProperty;
 
-var CONFIGURABLE_LENGTH = !fails(function () {
+var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails(function () {
   return defineProperty(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
 });
 
@@ -1397,6 +1391,11 @@ var makeBuiltIn = module.exports = function (value, name, options) {
   if (CONFIGURABLE_LENGTH && options && hasOwn(options, 'arity') && value.length !== options.arity) {
     defineProperty(value, 'length', { value: options.arity });
   }
+  if (options && hasOwn(options, 'constructor') && options.constructor) {
+    if (DESCRIPTORS) try {
+      defineProperty(value, 'prototype', { writable: false });
+    } catch (error) { /* empty */ }
+  } else value.prototype = undefined;
   var state = enforceInternalState(value);
   if (!hasOwn(state, 'source')) {
     state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
@@ -2113,10 +2112,10 @@ var store = __webpack_require__(5465);
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.22.4',
+  version: '3.22.5',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2014-2022 Denis Pushkarev (zloirock.ru)',
-  license: 'https://github.com/zloirock/core-js/blob/v3.22.4/LICENSE',
+  license: 'https://github.com/zloirock/core-js/blob/v3.22.5/LICENSE',
   source: 'https://github.com/zloirock/core-js'
 });
 
@@ -2422,6 +2421,23 @@ module.exports = function (name) {
     }
   } return WellKnownSymbolsStore[name];
 };
+
+
+/***/ }),
+
+/***/ 9070:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+var $ = __webpack_require__(2109);
+var DESCRIPTORS = __webpack_require__(9781);
+var defineProperty = (__webpack_require__(3070).f);
+
+// `Object.defineProperty` method
+// https://tc39.es/ecma262/#sec-object.defineproperty
+// eslint-disable-next-line es-x/no-object-defineproperty -- safe
+$({ target: 'Object', stat: true, forced: Object.defineProperty !== defineProperty, sham: !DESCRIPTORS }, {
+  defineProperty: defineProperty
+});
 
 
 /***/ }),
@@ -10083,9 +10099,9 @@ function saveNextcloud(myData) {
 ;// CONCATENATED MODULE: ./src/js/adminSection.js
 
 
-window.addEventListener('DOMContentLoaded', function () {
-    var back = document.getElementById('backup');
-    back.addEventListener('click', function(){
+window.addEventListener("DOMContentLoaded", function () {
+    var back = document.getElementById("backup");
+    back.addEventListener("click", function(){
         backup();
     });
 });

@@ -8,24 +8,26 @@
 var __webpack_unused_export__;
 
 
-__webpack_require__(4916);
-
-__webpack_require__(5306);
+__webpack_require__(9070);
 
 __webpack_unused_export__ = ({
   value: true
 });
-__webpack_unused_export__ = getLocale;
 __webpack_unused_export__ = getCanonicalLocale;
-__webpack_unused_export__ = getLanguage;
-exports.Iu = translate;
-__webpack_unused_export__ = translatePlural;
-__webpack_unused_export__ = getFirstDay;
 __webpack_unused_export__ = getDayNames;
-__webpack_unused_export__ = getDayNamesShort;
 __webpack_unused_export__ = getDayNamesMin;
+__webpack_unused_export__ = getDayNamesShort;
+__webpack_unused_export__ = getFirstDay;
+__webpack_unused_export__ = getLanguage;
+__webpack_unused_export__ = getLocale;
 __webpack_unused_export__ = getMonthNames;
 __webpack_unused_export__ = getMonthNamesShort;
+exports.Iu = translate;
+__webpack_unused_export__ = translatePlural;
+
+__webpack_require__(4916);
+
+__webpack_require__(5306);
 
 /// <reference types="@nextcloud/typings" />
 
@@ -33,12 +35,7 @@ __webpack_unused_export__ = getMonthNamesShort;
  * Returns the user's locale
  */
 function getLocale() {
-  if (typeof OC === 'undefined') {
-    console.warn('No OC found');
-    return 'en';
-  }
-
-  return OC.getLocale();
+  return document.documentElement.dataset.locale || 'en';
 }
 
 function getCanonicalLocale() {
@@ -50,12 +47,7 @@ function getCanonicalLocale() {
 
 
 function getLanguage() {
-  if (typeof OC === 'undefined') {
-    console.warn('No OC found');
-    return 'en';
-  }
-
-  return OC.getLanguage();
+  return document.documentElement.lang || 'en';
 }
 
 /**
@@ -1371,15 +1363,17 @@ module.exports = function (obj) {
 var fails = __webpack_require__(7293);
 var isCallable = __webpack_require__(614);
 var hasOwn = __webpack_require__(2597);
-var defineProperty = (__webpack_require__(3070).f);
+var DESCRIPTORS = __webpack_require__(9781);
 var CONFIGURABLE_FUNCTION_NAME = (__webpack_require__(6530).CONFIGURABLE);
 var inspectSource = __webpack_require__(2788);
 var InternalStateModule = __webpack_require__(9909);
 
 var enforceInternalState = InternalStateModule.enforce;
 var getInternalState = InternalStateModule.get;
+// eslint-disable-next-line es-x/no-object-defineproperty -- safe
+var defineProperty = Object.defineProperty;
 
-var CONFIGURABLE_LENGTH = !fails(function () {
+var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails(function () {
   return defineProperty(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
 });
 
@@ -1397,6 +1391,11 @@ var makeBuiltIn = module.exports = function (value, name, options) {
   if (CONFIGURABLE_LENGTH && options && hasOwn(options, 'arity') && value.length !== options.arity) {
     defineProperty(value, 'length', { value: options.arity });
   }
+  if (options && hasOwn(options, 'constructor') && options.constructor) {
+    if (DESCRIPTORS) try {
+      defineProperty(value, 'prototype', { writable: false });
+    } catch (error) { /* empty */ }
+  } else value.prototype = undefined;
   var state = enforceInternalState(value);
   if (!hasOwn(state, 'source')) {
     state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
@@ -2113,10 +2112,10 @@ var store = __webpack_require__(5465);
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.22.4',
+  version: '3.22.5',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2014-2022 Denis Pushkarev (zloirock.ru)',
-  license: 'https://github.com/zloirock/core-js/blob/v3.22.4/LICENSE',
+  license: 'https://github.com/zloirock/core-js/blob/v3.22.5/LICENSE',
   source: 'https://github.com/zloirock/core-js'
 });
 
@@ -2426,6 +2425,23 @@ module.exports = function (name) {
 
 /***/ }),
 
+/***/ 9070:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+var $ = __webpack_require__(2109);
+var DESCRIPTORS = __webpack_require__(9781);
+var defineProperty = (__webpack_require__(3070).f);
+
+// `Object.defineProperty` method
+// https://tc39.es/ecma262/#sec-object.defineproperty
+// eslint-disable-next-line es-x/no-object-defineproperty -- safe
+$({ target: 'Object', stat: true, forced: Object.defineProperty !== defineProperty, sham: !DESCRIPTORS }, {
+  defineProperty: defineProperty
+});
+
+
+/***/ }),
+
 /***/ 4916:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -2686,25 +2702,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".toastify.dialogs{min-width:200px;back
 /* harmony import */ var _css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3645);
 /* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1667);
-/* harmony import */ var _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
 // Imports
 
 
-
-var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(2594), __webpack_require__.b);
-var ___CSS_LOADER_URL_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(8612), __webpack_require__.b);
-var ___CSS_LOADER_URL_IMPORT_2___ = new URL(/* asset import */ __webpack_require__(2923), __webpack_require__.b);
-var ___CSS_LOADER_URL_IMPORT_3___ = new URL(/* asset import */ __webpack_require__(8529), __webpack_require__.b);
-var ___CSS_LOADER_URL_IMPORT_4___ = new URL(/* asset import */ __webpack_require__(2561), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-var ___CSS_LOADER_URL_REPLACEMENT_0___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
-var ___CSS_LOADER_URL_REPLACEMENT_1___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_1___);
-var ___CSS_LOADER_URL_REPLACEMENT_2___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_2___);
-var ___CSS_LOADER_URL_REPLACEMENT_3___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_3___);
-var ___CSS_LOADER_URL_REPLACEMENT_4___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_4___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "table.dataTable th.dt-left,table.dataTable td.dt-left{text-align:left}table.dataTable th.dt-center,table.dataTable td.dt-center,table.dataTable td.dataTables_empty{text-align:center}table.dataTable th.dt-right,table.dataTable td.dt-right{text-align:right}table.dataTable th.dt-justify,table.dataTable td.dt-justify{text-align:justify}table.dataTable th.dt-nowrap,table.dataTable td.dt-nowrap{white-space:nowrap}table.dataTable thead th.dt-head-left,table.dataTable thead td.dt-head-left,table.dataTable tfoot th.dt-head-left,table.dataTable tfoot td.dt-head-left{text-align:left}table.dataTable thead th.dt-head-center,table.dataTable thead td.dt-head-center,table.dataTable tfoot th.dt-head-center,table.dataTable tfoot td.dt-head-center{text-align:center}table.dataTable thead th.dt-head-right,table.dataTable thead td.dt-head-right,table.dataTable tfoot th.dt-head-right,table.dataTable tfoot td.dt-head-right{text-align:right}table.dataTable thead th.dt-head-justify,table.dataTable thead td.dt-head-justify,table.dataTable tfoot th.dt-head-justify,table.dataTable tfoot td.dt-head-justify{text-align:justify}table.dataTable thead th.dt-head-nowrap,table.dataTable thead td.dt-head-nowrap,table.dataTable tfoot th.dt-head-nowrap,table.dataTable tfoot td.dt-head-nowrap{white-space:nowrap}table.dataTable tbody th.dt-body-left,table.dataTable tbody td.dt-body-left{text-align:left}table.dataTable tbody th.dt-body-center,table.dataTable tbody td.dt-body-center{text-align:center}table.dataTable tbody th.dt-body-right,table.dataTable tbody td.dt-body-right{text-align:right}table.dataTable tbody th.dt-body-justify,table.dataTable tbody td.dt-body-justify{text-align:justify}table.dataTable tbody th.dt-body-nowrap,table.dataTable tbody td.dt-body-nowrap{white-space:nowrap}table.dataTable td.dt-control{text-align:center;cursor:pointer}table.dataTable td.dt-control:before{height:1em;width:1em;margin-top:-9px;display:inline-block;color:#fff;border:.15em solid #fff;border-radius:1em;box-shadow:0 0 .2em #444;box-sizing:content-box;text-align:center;text-indent:0 !important;font-family:\"Courier New\",Courier,monospace;line-height:1em;content:\"+\";background-color:#31b131}table.dataTable tr.dt-hasChild td.dt-control:before{content:\"-\";background-color:#d33333}table.dataTable{width:100%;margin:0 auto;clear:both;border-collapse:separate;border-spacing:0}table.dataTable thead th,table.dataTable tfoot th{font-weight:bold}table.dataTable thead th,table.dataTable thead td{padding:10px 18px;border-bottom:1px solid #111}table.dataTable thead th:active,table.dataTable thead td:active{outline:none}table.dataTable tfoot th,table.dataTable tfoot td{padding:10px 18px 6px 18px;border-top:1px solid #111}table.dataTable thead .sorting,table.dataTable thead .sorting_asc,table.dataTable thead .sorting_desc,table.dataTable thead .sorting_asc_disabled,table.dataTable thead .sorting_desc_disabled{cursor:pointer;*cursor:hand;background-repeat:no-repeat;background-position:center right}table.dataTable thead .sorting{background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ")}table.dataTable thead .sorting_asc{background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") !important}table.dataTable thead .sorting_desc{background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") !important}table.dataTable thead .sorting_asc_disabled{background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ")}table.dataTable thead .sorting_desc_disabled{background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ")}table.dataTable tbody tr{background-color:#fff}table.dataTable tbody tr.selected{background-color:#b0bed9}table.dataTable tbody th,table.dataTable tbody td{padding:8px 10px}table.dataTable.row-border tbody th,table.dataTable.row-border tbody td,table.dataTable.display tbody th,table.dataTable.display tbody td{border-top:1px solid #ddd}table.dataTable.row-border tbody tr:first-child th,table.dataTable.row-border tbody tr:first-child td,table.dataTable.display tbody tr:first-child th,table.dataTable.display tbody tr:first-child td{border-top:none}table.dataTable.cell-border tbody th,table.dataTable.cell-border tbody td{border-top:1px solid #ddd;border-right:1px solid #ddd}table.dataTable.cell-border tbody tr th:first-child,table.dataTable.cell-border tbody tr td:first-child{border-left:1px solid #ddd}table.dataTable.cell-border tbody tr:first-child th,table.dataTable.cell-border tbody tr:first-child td{border-top:none}table.dataTable.stripe tbody tr.odd,table.dataTable.display tbody tr.odd{background-color:#f9f9f9}table.dataTable.stripe tbody tr.odd.selected,table.dataTable.display tbody tr.odd.selected{background-color:#acbad4}table.dataTable.hover tbody tr:hover,table.dataTable.display tbody tr:hover{background-color:#f6f6f6}table.dataTable.hover tbody tr:hover.selected,table.dataTable.display tbody tr:hover.selected{background-color:#aab7d1}table.dataTable.order-column tbody tr>.sorting_1,table.dataTable.order-column tbody tr>.sorting_2,table.dataTable.order-column tbody tr>.sorting_3,table.dataTable.display tbody tr>.sorting_1,table.dataTable.display tbody tr>.sorting_2,table.dataTable.display tbody tr>.sorting_3{background-color:#fafafa}table.dataTable.order-column tbody tr.selected>.sorting_1,table.dataTable.order-column tbody tr.selected>.sorting_2,table.dataTable.order-column tbody tr.selected>.sorting_3,table.dataTable.display tbody tr.selected>.sorting_1,table.dataTable.display tbody tr.selected>.sorting_2,table.dataTable.display tbody tr.selected>.sorting_3{background-color:#acbad5}table.dataTable.display tbody tr.odd>.sorting_1,table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{background-color:#f1f1f1}table.dataTable.display tbody tr.odd>.sorting_2,table.dataTable.order-column.stripe tbody tr.odd>.sorting_2{background-color:#f3f3f3}table.dataTable.display tbody tr.odd>.sorting_3,table.dataTable.order-column.stripe tbody tr.odd>.sorting_3{background-color:#f5f5f5}table.dataTable.display tbody tr.odd.selected>.sorting_1,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_1{background-color:#a6b4cd}table.dataTable.display tbody tr.odd.selected>.sorting_2,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_2{background-color:#a8b5cf}table.dataTable.display tbody tr.odd.selected>.sorting_3,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_3{background-color:#a9b7d1}table.dataTable.display tbody tr.even>.sorting_1,table.dataTable.order-column.stripe tbody tr.even>.sorting_1{background-color:#fafafa}table.dataTable.display tbody tr.even>.sorting_2,table.dataTable.order-column.stripe tbody tr.even>.sorting_2{background-color:#fcfcfc}table.dataTable.display tbody tr.even>.sorting_3,table.dataTable.order-column.stripe tbody tr.even>.sorting_3{background-color:#fefefe}table.dataTable.display tbody tr.even.selected>.sorting_1,table.dataTable.order-column.stripe tbody tr.even.selected>.sorting_1{background-color:#acbad5}table.dataTable.display tbody tr.even.selected>.sorting_2,table.dataTable.order-column.stripe tbody tr.even.selected>.sorting_2{background-color:#aebcd6}table.dataTable.display tbody tr.even.selected>.sorting_3,table.dataTable.order-column.stripe tbody tr.even.selected>.sorting_3{background-color:#afbdd8}table.dataTable.display tbody tr:hover>.sorting_1,table.dataTable.order-column.hover tbody tr:hover>.sorting_1{background-color:#eaeaea}table.dataTable.display tbody tr:hover>.sorting_2,table.dataTable.order-column.hover tbody tr:hover>.sorting_2{background-color:#ececec}table.dataTable.display tbody tr:hover>.sorting_3,table.dataTable.order-column.hover tbody tr:hover>.sorting_3{background-color:#efefef}table.dataTable.display tbody tr:hover.selected>.sorting_1,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_1{background-color:#a2aec7}table.dataTable.display tbody tr:hover.selected>.sorting_2,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_2{background-color:#a3b0c9}table.dataTable.display tbody tr:hover.selected>.sorting_3,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_3{background-color:#a5b2cb}table.dataTable.no-footer{border-bottom:1px solid #111}table.dataTable.nowrap th,table.dataTable.nowrap td{white-space:nowrap}table.dataTable.compact thead th,table.dataTable.compact thead td{padding:4px 17px}table.dataTable.compact tfoot th,table.dataTable.compact tfoot td{padding:4px}table.dataTable.compact tbody th,table.dataTable.compact tbody td{padding:4px}table.dataTable th,table.dataTable td{box-sizing:content-box}.dataTables_wrapper{position:relative;clear:both}.dataTables_wrapper .dataTables_length{float:left}.dataTables_wrapper .dataTables_length select{border:1px solid #aaa;border-radius:3px;padding:5px;background-color:rgba(0,0,0,0);padding:4px}.dataTables_wrapper .dataTables_filter{float:right;text-align:right}.dataTables_wrapper .dataTables_filter input{border:1px solid #aaa;border-radius:3px;padding:5px;background-color:rgba(0,0,0,0);margin-left:3px}.dataTables_wrapper .dataTables_info{clear:both;float:left;padding-top:.755em}.dataTables_wrapper .dataTables_paginate{float:right;text-align:right;padding-top:.25em}.dataTables_wrapper .dataTables_paginate .paginate_button{box-sizing:border-box;display:inline-block;min-width:1.5em;padding:.5em 1em;margin-left:2px;text-align:center;text-decoration:none !important;cursor:pointer;*cursor:hand;color:#333 !important;border:1px solid rgba(0,0,0,0);border-radius:2px}.dataTables_wrapper .dataTables_paginate .paginate_button.current,.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{color:#333 !important;border:1px solid #979797;background-color:#fff;background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #dcdcdc));background:-webkit-linear-gradient(top, white 0%, #dcdcdc 100%);background:-moz-linear-gradient(top, white 0%, #dcdcdc 100%);background:-ms-linear-gradient(top, white 0%, #dcdcdc 100%);background:-o-linear-gradient(top, white 0%, #dcdcdc 100%);background:linear-gradient(to bottom, white 0%, #dcdcdc 100%)}.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active{cursor:default;color:#666 !important;border:1px solid rgba(0,0,0,0);background:rgba(0,0,0,0);box-shadow:none}.dataTables_wrapper .dataTables_paginate .paginate_button:hover{color:#fff !important;border:1px solid #111;background-color:#585858;background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #585858), color-stop(100%, #111));background:-webkit-linear-gradient(top, #585858 0%, #111 100%);background:-moz-linear-gradient(top, #585858 0%, #111 100%);background:-ms-linear-gradient(top, #585858 0%, #111 100%);background:-o-linear-gradient(top, #585858 0%, #111 100%);background:linear-gradient(to bottom, #585858 0%, #111 100%)}.dataTables_wrapper .dataTables_paginate .paginate_button:active{outline:none;background-color:#2b2b2b;background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #2b2b2b), color-stop(100%, #0c0c0c));background:-webkit-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);background:-moz-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);background:-ms-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);background:-o-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);background:linear-gradient(to bottom, #2b2b2b 0%, #0c0c0c 100%);box-shadow:inset 0 0 3px #111}.dataTables_wrapper .dataTables_paginate .ellipsis{padding:0 1em}.dataTables_wrapper .dataTables_processing{position:absolute;top:50%;left:50%;width:100%;height:40px;margin-left:-50%;margin-top:-25px;padding-top:20px;text-align:center;font-size:1.2em;background-color:#fff;background:-webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(25%, rgba(255, 255, 255, 0.9)), color-stop(75%, rgba(255, 255, 255, 0.9)), color-stop(100%, rgba(255, 255, 255, 0)));background:-webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);background:-moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);background:-ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);background:-o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);background:linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%)}.dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter,.dataTables_wrapper .dataTables_info,.dataTables_wrapper .dataTables_processing,.dataTables_wrapper .dataTables_paginate{color:#333}.dataTables_wrapper .dataTables_scroll{clear:both}.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody{*margin-top:-1px;-webkit-overflow-scrolling:touch}.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>th,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>td,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>th,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td{vertical-align:middle}.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>th>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>td>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>th>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td>div.dataTables_sizing{height:0;overflow:hidden;margin:0 !important;padding:0 !important}.dataTables_wrapper.no-footer .dataTables_scrollBody{border-bottom:1px solid #111}.dataTables_wrapper.no-footer div.dataTables_scrollHead table.dataTable,.dataTables_wrapper.no-footer div.dataTables_scrollBody>table{border-bottom:none}.dataTables_wrapper:after{visibility:hidden;display:block;content:\"\";clear:both;height:0}@media screen and (max-width: 767px){.dataTables_wrapper .dataTables_info,.dataTables_wrapper .dataTables_paginate{float:none;text-align:center}.dataTables_wrapper .dataTables_paginate{margin-top:.5em}}@media screen and (max-width: 640px){.dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter{float:none;text-align:center}.dataTables_wrapper .dataTables_filter{margin-top:.5em}}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "table.dataTable td.dt-control{text-align:center;cursor:pointer}table.dataTable td.dt-control:before{height:1em;width:1em;margin-top:-9px;display:inline-block;color:#fff;border:.15em solid #fff;border-radius:1em;box-shadow:0 0 .2em #444;box-sizing:content-box;text-align:center;text-indent:0 !important;font-family:\"Courier New\",Courier,monospace;line-height:1em;content:\"+\";background-color:#31b131}table.dataTable tr.dt-hasChild td.dt-control:before{content:\"-\";background-color:#d33333}table.dataTable thead>tr>th.sorting,table.dataTable thead>tr>th.sorting_asc,table.dataTable thead>tr>th.sorting_desc,table.dataTable thead>tr>th.sorting_asc_disabled,table.dataTable thead>tr>th.sorting_desc_disabled,table.dataTable thead>tr>td.sorting,table.dataTable thead>tr>td.sorting_asc,table.dataTable thead>tr>td.sorting_desc,table.dataTable thead>tr>td.sorting_asc_disabled,table.dataTable thead>tr>td.sorting_desc_disabled{cursor:pointer;position:relative;padding-right:26px}table.dataTable thead>tr>th.sorting:before,table.dataTable thead>tr>th.sorting:after,table.dataTable thead>tr>th.sorting_asc:before,table.dataTable thead>tr>th.sorting_asc:after,table.dataTable thead>tr>th.sorting_desc:before,table.dataTable thead>tr>th.sorting_desc:after,table.dataTable thead>tr>th.sorting_asc_disabled:before,table.dataTable thead>tr>th.sorting_asc_disabled:after,table.dataTable thead>tr>th.sorting_desc_disabled:before,table.dataTable thead>tr>th.sorting_desc_disabled:after,table.dataTable thead>tr>td.sorting:before,table.dataTable thead>tr>td.sorting:after,table.dataTable thead>tr>td.sorting_asc:before,table.dataTable thead>tr>td.sorting_asc:after,table.dataTable thead>tr>td.sorting_desc:before,table.dataTable thead>tr>td.sorting_desc:after,table.dataTable thead>tr>td.sorting_asc_disabled:before,table.dataTable thead>tr>td.sorting_asc_disabled:after,table.dataTable thead>tr>td.sorting_desc_disabled:before,table.dataTable thead>tr>td.sorting_desc_disabled:after{position:absolute;display:block;opacity:.125;right:10px;line-height:9px;font-size:.9em}table.dataTable thead>tr>th.sorting:before,table.dataTable thead>tr>th.sorting_asc:before,table.dataTable thead>tr>th.sorting_desc:before,table.dataTable thead>tr>th.sorting_asc_disabled:before,table.dataTable thead>tr>th.sorting_desc_disabled:before,table.dataTable thead>tr>td.sorting:before,table.dataTable thead>tr>td.sorting_asc:before,table.dataTable thead>tr>td.sorting_desc:before,table.dataTable thead>tr>td.sorting_asc_disabled:before,table.dataTable thead>tr>td.sorting_desc_disabled:before{bottom:50%;content:\"▴\"}table.dataTable thead>tr>th.sorting:after,table.dataTable thead>tr>th.sorting_asc:after,table.dataTable thead>tr>th.sorting_desc:after,table.dataTable thead>tr>th.sorting_asc_disabled:after,table.dataTable thead>tr>th.sorting_desc_disabled:after,table.dataTable thead>tr>td.sorting:after,table.dataTable thead>tr>td.sorting_asc:after,table.dataTable thead>tr>td.sorting_desc:after,table.dataTable thead>tr>td.sorting_asc_disabled:after,table.dataTable thead>tr>td.sorting_desc_disabled:after{top:50%;content:\"▾\"}table.dataTable thead>tr>th.sorting_asc:before,table.dataTable thead>tr>th.sorting_desc:after,table.dataTable thead>tr>td.sorting_asc:before,table.dataTable thead>tr>td.sorting_desc:after{opacity:.6}table.dataTable thead>tr>th.sorting_desc_disabled:after,table.dataTable thead>tr>th.sorting_asc_disabled:before,table.dataTable thead>tr>td.sorting_desc_disabled:after,table.dataTable thead>tr>td.sorting_asc_disabled:before{display:none}table.dataTable thead>tr>th:active,table.dataTable thead>tr>td:active{outline:none}div.dataTables_scrollBody table.dataTable thead>tr>th:before,div.dataTables_scrollBody table.dataTable thead>tr>th:after,div.dataTables_scrollBody table.dataTable thead>tr>td:before,div.dataTables_scrollBody table.dataTable thead>tr>td:after{display:none}div.dataTables_processing{position:absolute;top:50%;left:50%;width:200px;margin-left:-100px;margin-top:-26px;text-align:center;padding:2px}div.dataTables_processing>div:last-child{position:relative;width:80px;height:15px;margin:1em auto}div.dataTables_processing>div:last-child>div{position:absolute;top:0;width:13px;height:13px;border-radius:50%;background:rgba(13,110,253,.9);animation-timing-function:cubic-bezier(0, 1, 1, 0)}div.dataTables_processing>div:last-child>div:nth-child(1){left:8px;animation:datatables-loader-1 .6s infinite}div.dataTables_processing>div:last-child>div:nth-child(2){left:8px;animation:datatables-loader-2 .6s infinite}div.dataTables_processing>div:last-child>div:nth-child(3){left:32px;animation:datatables-loader-2 .6s infinite}div.dataTables_processing>div:last-child>div:nth-child(4){left:56px;animation:datatables-loader-3 .6s infinite}@keyframes datatables-loader-1{0%{transform:scale(0)}100%{transform:scale(1)}}@keyframes datatables-loader-3{0%{transform:scale(1)}100%{transform:scale(0)}}@keyframes datatables-loader-2{0%{transform:translate(0, 0)}100%{transform:translate(24px, 0)}}table.dataTable.nowrap th,table.dataTable.nowrap td{white-space:nowrap}table.dataTable th.dt-left,table.dataTable td.dt-left{text-align:left}table.dataTable th.dt-center,table.dataTable td.dt-center,table.dataTable td.dataTables_empty{text-align:center}table.dataTable th.dt-right,table.dataTable td.dt-right{text-align:right}table.dataTable th.dt-justify,table.dataTable td.dt-justify{text-align:justify}table.dataTable th.dt-nowrap,table.dataTable td.dt-nowrap{white-space:nowrap}table.dataTable thead th,table.dataTable thead td,table.dataTable tfoot th,table.dataTable tfoot td{text-align:left}table.dataTable thead th.dt-head-left,table.dataTable thead td.dt-head-left,table.dataTable tfoot th.dt-head-left,table.dataTable tfoot td.dt-head-left{text-align:left}table.dataTable thead th.dt-head-center,table.dataTable thead td.dt-head-center,table.dataTable tfoot th.dt-head-center,table.dataTable tfoot td.dt-head-center{text-align:center}table.dataTable thead th.dt-head-right,table.dataTable thead td.dt-head-right,table.dataTable tfoot th.dt-head-right,table.dataTable tfoot td.dt-head-right{text-align:right}table.dataTable thead th.dt-head-justify,table.dataTable thead td.dt-head-justify,table.dataTable tfoot th.dt-head-justify,table.dataTable tfoot td.dt-head-justify{text-align:justify}table.dataTable thead th.dt-head-nowrap,table.dataTable thead td.dt-head-nowrap,table.dataTable tfoot th.dt-head-nowrap,table.dataTable tfoot td.dt-head-nowrap{white-space:nowrap}table.dataTable tbody th.dt-body-left,table.dataTable tbody td.dt-body-left{text-align:left}table.dataTable tbody th.dt-body-center,table.dataTable tbody td.dt-body-center{text-align:center}table.dataTable tbody th.dt-body-right,table.dataTable tbody td.dt-body-right{text-align:right}table.dataTable tbody th.dt-body-justify,table.dataTable tbody td.dt-body-justify{text-align:justify}table.dataTable tbody th.dt-body-nowrap,table.dataTable tbody td.dt-body-nowrap{white-space:nowrap}table.dataTable{width:100%;margin:0 auto;clear:both;border-collapse:separate;border-spacing:0}table.dataTable thead th,table.dataTable tfoot th{font-weight:bold}table.dataTable thead th,table.dataTable thead td{padding:10px;border-bottom:1px solid rgba(0,0,0,.3)}table.dataTable thead th:active,table.dataTable thead td:active{outline:none}table.dataTable tfoot th,table.dataTable tfoot td{padding:10px 10px 6px 10px;border-top:1px solid rgba(0,0,0,.3)}table.dataTable tbody tr{background-color:rgba(0,0,0,0)}table.dataTable tbody tr.selected>*{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.9);color:#fff}table.dataTable tbody th,table.dataTable tbody td{padding:8px 10px}table.dataTable.row-border tbody th,table.dataTable.row-border tbody td,table.dataTable.display tbody th,table.dataTable.display tbody td{border-top:1px solid rgba(0,0,0,.15)}table.dataTable.row-border tbody tr:first-child th,table.dataTable.row-border tbody tr:first-child td,table.dataTable.display tbody tr:first-child th,table.dataTable.display tbody tr:first-child td{border-top:none}table.dataTable.cell-border tbody th,table.dataTable.cell-border tbody td{border-top:1px solid rgba(0,0,0,.15);border-right:1px solid rgba(0,0,0,.15)}table.dataTable.cell-border tbody tr th:first-child,table.dataTable.cell-border tbody tr td:first-child{border-left:1px solid rgba(0,0,0,.15)}table.dataTable.cell-border tbody tr:first-child th,table.dataTable.cell-border tbody tr:first-child td{border-top:none}table.dataTable.stripe>tbody>tr.odd>*,table.dataTable.display>tbody>tr.odd>*{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.023)}table.dataTable.stripe>tbody>tr.odd.selected>*,table.dataTable.display>tbody>tr.odd.selected>*{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.923)}table.dataTable.hover>tbody>tr:hover>*,table.dataTable.display>tbody>tr:hover>*{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.035)}table.dataTable.hover>tbody>tr.selected:hover>*,table.dataTable.display>tbody>tr.selected:hover>*{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.935)}table.dataTable.order-column>tbody tr>.sorting_1,table.dataTable.order-column>tbody tr>.sorting_2,table.dataTable.order-column>tbody tr>.sorting_3,table.dataTable.display>tbody tr>.sorting_1,table.dataTable.display>tbody tr>.sorting_2,table.dataTable.display>tbody tr>.sorting_3{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.019)}table.dataTable.order-column>tbody tr.selected>.sorting_1,table.dataTable.order-column>tbody tr.selected>.sorting_2,table.dataTable.order-column>tbody tr.selected>.sorting_3,table.dataTable.display>tbody tr.selected>.sorting_1,table.dataTable.display>tbody tr.selected>.sorting_2,table.dataTable.display>tbody tr.selected>.sorting_3{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.919)}table.dataTable.display>tbody>tr.odd>.sorting_1,table.dataTable.order-column.stripe>tbody>tr.odd>.sorting_1{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.054)}table.dataTable.display>tbody>tr.odd>.sorting_2,table.dataTable.order-column.stripe>tbody>tr.odd>.sorting_2{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.047)}table.dataTable.display>tbody>tr.odd>.sorting_3,table.dataTable.order-column.stripe>tbody>tr.odd>.sorting_3{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.039)}table.dataTable.display>tbody>tr.odd.selected>.sorting_1,table.dataTable.order-column.stripe>tbody>tr.odd.selected>.sorting_1{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.954)}table.dataTable.display>tbody>tr.odd.selected>.sorting_2,table.dataTable.order-column.stripe>tbody>tr.odd.selected>.sorting_2{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.947)}table.dataTable.display>tbody>tr.odd.selected>.sorting_3,table.dataTable.order-column.stripe>tbody>tr.odd.selected>.sorting_3{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.939)}table.dataTable.display>tbody>tr.even>.sorting_1,table.dataTable.order-column.stripe>tbody>tr.even>.sorting_1{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.019)}table.dataTable.display>tbody>tr.even>.sorting_2,table.dataTable.order-column.stripe>tbody>tr.even>.sorting_2{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.011)}table.dataTable.display>tbody>tr.even>.sorting_3,table.dataTable.order-column.stripe>tbody>tr.even>.sorting_3{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.003)}table.dataTable.display>tbody>tr.even.selected>.sorting_1,table.dataTable.order-column.stripe>tbody>tr.even.selected>.sorting_1{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.919)}table.dataTable.display>tbody>tr.even.selected>.sorting_2,table.dataTable.order-column.stripe>tbody>tr.even.selected>.sorting_2{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.911)}table.dataTable.display>tbody>tr.even.selected>.sorting_3,table.dataTable.order-column.stripe>tbody>tr.even.selected>.sorting_3{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.903)}table.dataTable.display tbody tr:hover>.sorting_1,table.dataTable.order-column.hover tbody tr:hover>.sorting_1{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.082)}table.dataTable.display tbody tr:hover>.sorting_2,table.dataTable.order-column.hover tbody tr:hover>.sorting_2{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.074)}table.dataTable.display tbody tr:hover>.sorting_3,table.dataTable.order-column.hover tbody tr:hover>.sorting_3{box-shadow:inset 0 0 0 9999px rgba(0,0,0,.062)}table.dataTable.display tbody tr:hover.selected>.sorting_1,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_1{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.982)}table.dataTable.display tbody tr:hover.selected>.sorting_2,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_2{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.974)}table.dataTable.display tbody tr:hover.selected>.sorting_3,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_3{box-shadow:inset 0 0 0 9999px rgba(13,110,253,.962)}table.dataTable.no-footer{border-bottom:1px solid rgba(0,0,0,.3)}table.dataTable.compact thead th,table.dataTable.compact thead td{padding:4px 17px}table.dataTable.compact tfoot th,table.dataTable.compact tfoot td{padding:4px}table.dataTable.compact tbody th,table.dataTable.compact tbody td{padding:4px}table.dataTable th,table.dataTable td{box-sizing:content-box}.dataTables_wrapper{position:relative;clear:both}.dataTables_wrapper .dataTables_length{float:left}.dataTables_wrapper .dataTables_length select{border:1px solid #aaa;border-radius:3px;padding:5px;background-color:rgba(0,0,0,0);padding:4px}.dataTables_wrapper .dataTables_filter{float:right;text-align:right}.dataTables_wrapper .dataTables_filter input{border:1px solid #aaa;border-radius:3px;padding:5px;background-color:rgba(0,0,0,0);margin-left:3px}.dataTables_wrapper .dataTables_info{clear:both;float:left;padding-top:.755em}.dataTables_wrapper .dataTables_paginate{float:right;text-align:right;padding-top:.25em}.dataTables_wrapper .dataTables_paginate .paginate_button{box-sizing:border-box;display:inline-block;min-width:1.5em;padding:.5em 1em;margin-left:2px;text-align:center;text-decoration:none !important;cursor:pointer;color:#333 !important;border:1px solid rgba(0,0,0,0);border-radius:2px}.dataTables_wrapper .dataTables_paginate .paginate_button.current,.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{color:#333 !important;border:1px solid rgba(0,0,0,.3);background-color:rgba(230,230,230,.1);background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(230, 230, 230, 0.1)), color-stop(100%, rgba(0, 0, 0, 0.1)));background:-webkit-linear-gradient(top, rgba(230, 230, 230, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);background:-moz-linear-gradient(top, rgba(230, 230, 230, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);background:-ms-linear-gradient(top, rgba(230, 230, 230, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);background:-o-linear-gradient(top, rgba(230, 230, 230, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);background:linear-gradient(to bottom, rgba(230, 230, 230, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%)}.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active{cursor:default;color:#666 !important;border:1px solid rgba(0,0,0,0);background:rgba(0,0,0,0);box-shadow:none}.dataTables_wrapper .dataTables_paginate .paginate_button:hover{color:#fff !important;border:1px solid #111;background-color:#585858;background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #585858), color-stop(100%, #111));background:-webkit-linear-gradient(top, #585858 0%, #111 100%);background:-moz-linear-gradient(top, #585858 0%, #111 100%);background:-ms-linear-gradient(top, #585858 0%, #111 100%);background:-o-linear-gradient(top, #585858 0%, #111 100%);background:linear-gradient(to bottom, #585858 0%, #111 100%)}.dataTables_wrapper .dataTables_paginate .paginate_button:active{outline:none;background-color:#2b2b2b;background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #2b2b2b), color-stop(100%, #0c0c0c));background:-webkit-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);background:-moz-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);background:-ms-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);background:-o-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);background:linear-gradient(to bottom, #2b2b2b 0%, #0c0c0c 100%);box-shadow:inset 0 0 3px #111}.dataTables_wrapper .dataTables_paginate .ellipsis{padding:0 1em}.dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter,.dataTables_wrapper .dataTables_info,.dataTables_wrapper .dataTables_processing,.dataTables_wrapper .dataTables_paginate{color:#333}.dataTables_wrapper .dataTables_scroll{clear:both}.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody{-webkit-overflow-scrolling:touch}.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>th,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>td,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>th,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td{vertical-align:middle}.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>th>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>td>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>th>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td>div.dataTables_sizing{height:0;overflow:hidden;margin:0 !important;padding:0 !important}.dataTables_wrapper.no-footer .dataTables_scrollBody{border-bottom:1px solid rgba(0,0,0,.3)}.dataTables_wrapper.no-footer div.dataTables_scrollHead table.dataTable,.dataTables_wrapper.no-footer div.dataTables_scrollBody>table{border-bottom:none}.dataTables_wrapper:after{visibility:hidden;display:block;content:\"\";clear:both;height:0}@media screen and (max-width: 767px){.dataTables_wrapper .dataTables_info,.dataTables_wrapper .dataTables_paginate{float:none;text-align:center}.dataTables_wrapper .dataTables_paginate{margin-top:.5em}}@media screen and (max-width: 640px){.dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter{float:none;text-align:center}.dataTables_wrapper .dataTables_filter{margin-top:.5em}}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29516,46 +29519,6 @@ module.exports = __webpack_require__.p + "07723ae878c7e48ad441.svg";
 "use strict";
 module.exports = __webpack_require__.p + "d95251f3f0245772fcf2.svg";
 
-/***/ }),
-
-/***/ 8612:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-module.exports = __webpack_require__.p + "70877b002e38b1438b21.png";
-
-/***/ }),
-
-/***/ 8529:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-module.exports = __webpack_require__.p + "a960f4c060ed06b0adf5.png";
-
-/***/ }),
-
-/***/ 2594:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-module.exports = __webpack_require__.p + "8debc83844d7e6a561da.png";
-
-/***/ }),
-
-/***/ 2923:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-module.exports = __webpack_require__.p + "b58dcb5732c21a44cbc8.png";
-
-/***/ }),
-
-/***/ 2561:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-module.exports = __webpack_require__.p + "76d72a9c9134274cfceb.png";
-
 /***/ })
 
 /******/ 	});
@@ -29675,6 +29638,11 @@ module.exports = __webpack_require__.p + "76d72a9c9134274cfceb.png";
 /******/ 		// no jsonp function
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nc = undefined;
+/******/ 	})();
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
@@ -29792,9 +29760,6 @@ var mycss_update = injectStylesIntoStyleTag_default()(mycss/* default */.Z, mycs
 
        /* harmony default export */ const css_mycss = (mycss/* default */.Z && mycss/* default.locals */.Z.locals ? mycss/* default.locals */.Z.locals : undefined);
 
-// EXTERNAL MODULE: ./node_modules/datatables.net/js/jquery.dataTables.js
-var js_jquery_dataTables = __webpack_require__(1920);
-var jquery_dataTables_default = /*#__PURE__*/__webpack_require__.n(js_jquery_dataTables);
 ;// CONCATENATED MODULE: ./node_modules/@nextcloud/dialogs/dist/index.es.js
 (function() {
     const env = {"TRANSLATIONS":[{"locale":"ar","json":{"charset":"utf-8","headers":{"Last-Translator":"S1 SYSTEMS | BP <info@s1.sa>, 2020","Language-Team":"Arabic (https://www.transifex.com/nextcloud/teams/64236/ar/)","Content-Type":"text/plain; charset=UTF-8","Language":"ar","Plural-Forms":"nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nS1 SYSTEMS | BP <info@s1.sa>, 2020\n"},"msgstr":["Last-Translator: S1 SYSTEMS | BP <info@s1.sa>, 2020\nLanguage-Team: Arabic (https://www.transifex.com/nextcloud/teams/64236/ar/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: ar\nPlural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:191"},"msgstr":["تراجع"]}}}}},{"locale":"ast","json":{"charset":"utf-8","headers":{"Last-Translator":"enolp <enolp@softastur.org>, 2020","Language-Team":"Asturian (https://www.transifex.com/nextcloud/teams/64236/ast/)","Content-Type":"text/plain; charset=UTF-8","Language":"ast","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nenolp <enolp@softastur.org>, 2020\n"},"msgstr":["Last-Translator: enolp <enolp@softastur.org>, 2020\nLanguage-Team: Asturian (https://www.transifex.com/nextcloud/teams/64236/ast/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: ast\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Desfacer"]}}}}},{"locale":"br","json":{"charset":"utf-8","headers":{"Last-Translator":"Kervoas-Le Nabat Ewen <ewenkervoas@free.fr>, 2020","Language-Team":"Breton (https://www.transifex.com/nextcloud/teams/64236/br/)","Content-Type":"text/plain; charset=UTF-8","Language":"br","Plural-Forms":"nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && (n%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 > 19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != 0 && n % 1000000 == 0) ? 3 : 4);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nKervoas-Le Nabat Ewen <ewenkervoas@free.fr>, 2020\n"},"msgstr":["Last-Translator: Kervoas-Le Nabat Ewen <ewenkervoas@free.fr>, 2020\nLanguage-Team: Breton (https://www.transifex.com/nextcloud/teams/64236/br/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: br\nPlural-Forms: nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && (n%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 > 19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != 0 && n % 1000000 == 0) ? 3 : 4);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Disober"]}}}}},{"locale":"ca","json":{"charset":"utf-8","headers":{"Last-Translator":"Marc Riera <marcriera@softcatala.org>, 2020","Language-Team":"Catalan (https://www.transifex.com/nextcloud/teams/64236/ca/)","Content-Type":"text/plain; charset=UTF-8","Language":"ca","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nMarc Riera <marcriera@softcatala.org>, 2020\n"},"msgstr":["Last-Translator: Marc Riera <marcriera@softcatala.org>, 2020\nLanguage-Team: Catalan (https://www.transifex.com/nextcloud/teams/64236/ca/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: ca\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Desfés"]}}}}},{"locale":"cs","json":{"charset":"utf-8","headers":{"Last-Translator":"Pavel Borecki <pavel.borecki@gmail.com>, 2020","Language-Team":"Czech (https://www.transifex.com/nextcloud/teams/64236/cs/)","Content-Type":"text/plain; charset=UTF-8","Language":"cs","Plural-Forms":"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nPavel Borecki <pavel.borecki@gmail.com>, 2020\n"},"msgstr":["Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2020\nLanguage-Team: Czech (https://www.transifex.com/nextcloud/teams/64236/cs/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: cs\nPlural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Zpět"]}}}}},{"locale":"cs_CZ","json":{"charset":"utf-8","headers":{"Last-Translator":"Pavel Borecki <pavel.borecki@gmail.com>, 2020","Language-Team":"Czech (Czech Republic) (https://www.transifex.com/nextcloud/teams/64236/cs_CZ/)","Content-Type":"text/plain; charset=UTF-8","Language":"cs_CZ","Plural-Forms":"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nPavel Borecki <pavel.borecki@gmail.com>, 2020\n"},"msgstr":["Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2020\nLanguage-Team: Czech (Czech Republic) (https://www.transifex.com/nextcloud/teams/64236/cs_CZ/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: cs_CZ\nPlural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Zpět"]}}}}},{"locale":"da","json":{"charset":"utf-8","headers":{"Last-Translator":"Martin Bonde <Martin@maboni.dk>, 2020","Language-Team":"Danish (https://www.transifex.com/nextcloud/teams/64236/da/)","Content-Type":"text/plain; charset=UTF-8","Language":"da","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nMartin Bonde <Martin@maboni.dk>, 2020\n"},"msgstr":["Last-Translator: Martin Bonde <Martin@maboni.dk>, 2020\nLanguage-Team: Danish (https://www.transifex.com/nextcloud/teams/64236/da/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: da\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:192"},"msgstr":["Fortryd"]}}}}},{"locale":"de","json":{"charset":"utf-8","headers":{"Last-Translator":"Mark Ziegler <mark.ziegler@rakekniven.de>, 2020","Language-Team":"German (https://www.transifex.com/nextcloud/teams/64236/de/)","Content-Type":"text/plain; charset=UTF-8","Language":"de","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nMark Ziegler <mark.ziegler@rakekniven.de>, 2020\n"},"msgstr":["Last-Translator: Mark Ziegler <mark.ziegler@rakekniven.de>, 2020\nLanguage-Team: German (https://www.transifex.com/nextcloud/teams/64236/de/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: de\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Rückgängig"]}}}}},{"locale":"de_DE","json":{"charset":"utf-8","headers":{"Last-Translator":"Mark Ziegler <mark.ziegler@rakekniven.de>, 2020","Language-Team":"German (Germany) (https://www.transifex.com/nextcloud/teams/64236/de_DE/)","Content-Type":"text/plain; charset=UTF-8","Language":"de_DE","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nMark Ziegler <mark.ziegler@rakekniven.de>, 2020\n"},"msgstr":["Last-Translator: Mark Ziegler <mark.ziegler@rakekniven.de>, 2020\nLanguage-Team: German (Germany) (https://www.transifex.com/nextcloud/teams/64236/de_DE/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: de_DE\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Rückgängig"]}}}}},{"locale":"el","json":{"charset":"utf-8","headers":{"Last-Translator":"ByteGet, 2020","Language-Team":"Greek (https://www.transifex.com/nextcloud/teams/64236/el/)","Content-Type":"text/plain; charset=UTF-8","Language":"el","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nByteGet, 2020\n"},"msgstr":["Last-Translator: ByteGet, 2020\nLanguage-Team: Greek (https://www.transifex.com/nextcloud/teams/64236/el/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: el\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Αναίρεση"]}}}}},{"locale":"eo","json":{"charset":"utf-8","headers":{"Last-Translator":"Va Milushnikov <va.milushnikov@gmail.com>, 2020","Language-Team":"Esperanto (https://www.transifex.com/nextcloud/teams/64236/eo/)","Content-Type":"text/plain; charset=UTF-8","Language":"eo","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nVa Milushnikov <va.milushnikov@gmail.com>, 2020\n"},"msgstr":["Last-Translator: Va Milushnikov <va.milushnikov@gmail.com>, 2020\nLanguage-Team: Esperanto (https://www.transifex.com/nextcloud/teams/64236/eo/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: eo\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:191"},"msgstr":["Malfari"]}}}}},{"locale":"es","json":{"charset":"utf-8","headers":{"Last-Translator":"Gabriel Anca <gabrielancacorral@gmail.com>, 2020","Language-Team":"Spanish (https://www.transifex.com/nextcloud/teams/64236/es/)","Content-Type":"text/plain; charset=UTF-8","Language":"es","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nGabriel Anca <gabrielancacorral@gmail.com>, 2020\n"},"msgstr":["Last-Translator: Gabriel Anca <gabrielancacorral@gmail.com>, 2020\nLanguage-Team: Spanish (https://www.transifex.com/nextcloud/teams/64236/es/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: es\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:192"},"msgstr":["Deshacer"]}}}}},{"locale":"fa","json":{"charset":"utf-8","headers":{"Last-Translator":"Mostafa Ahangarha <ahangarha@riseup.net>, 2020","Language-Team":"Persian (https://www.transifex.com/nextcloud/teams/64236/fa/)","Content-Type":"text/plain; charset=UTF-8","Language":"fa","Plural-Forms":"nplurals=2; plural=(n > 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nMostafa Ahangarha <ahangarha@riseup.net>, 2020\n"},"msgstr":["Last-Translator: Mostafa Ahangarha <ahangarha@riseup.net>, 2020\nLanguage-Team: Persian (https://www.transifex.com/nextcloud/teams/64236/fa/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: fa\nPlural-Forms: nplurals=2; plural=(n > 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:192"},"msgstr":["بازگردانی"]}}}}},{"locale":"fi_FI","json":{"charset":"utf-8","headers":{"Last-Translator":"teemue, 2020","Language-Team":"Finnish (Finland) (https://www.transifex.com/nextcloud/teams/64236/fi_FI/)","Content-Type":"text/plain; charset=UTF-8","Language":"fi_FI","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nteemue, 2020\n"},"msgstr":["Last-Translator: teemue, 2020\nLanguage-Team: Finnish (Finland) (https://www.transifex.com/nextcloud/teams/64236/fi_FI/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: fi_FI\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:191"},"msgstr":["Kumoa"]}}}}},{"locale":"fr","json":{"charset":"utf-8","headers":{"Last-Translator":"John Molakvoæ <skjnldsv@protonmail.com>, 2020","Language-Team":"French (https://www.transifex.com/nextcloud/teams/64236/fr/)","Content-Type":"text/plain; charset=UTF-8","Language":"fr","Plural-Forms":"nplurals=2; plural=(n > 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nJohn Molakvoæ <skjnldsv@protonmail.com>, 2020\n"},"msgstr":["Last-Translator: John Molakvoæ <skjnldsv@protonmail.com>, 2020\nLanguage-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: fr\nPlural-Forms: nplurals=2; plural=(n > 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Annuler"]}}}}},{"locale":"gl","json":{"charset":"utf-8","headers":{"Last-Translator":"Miguel Anxo Bouzada <mbouzada@gmail.com>, 2020","Language-Team":"Galician (https://www.transifex.com/nextcloud/teams/64236/gl/)","Content-Type":"text/plain; charset=UTF-8","Language":"gl","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nMiguel Anxo Bouzada <mbouzada@gmail.com>, 2020\n"},"msgstr":["Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>, 2020\nLanguage-Team: Galician (https://www.transifex.com/nextcloud/teams/64236/gl/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: gl\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Desfacer"]}}}}},{"locale":"he","json":{"charset":"utf-8","headers":{"Last-Translator":"Yaron Shahrabani <sh.yaron@gmail.com>, 2020","Language-Team":"Hebrew (https://www.transifex.com/nextcloud/teams/64236/he/)","Content-Type":"text/plain; charset=UTF-8","Language":"he","Plural-Forms":"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nYaron Shahrabani <sh.yaron@gmail.com>, 2020\n"},"msgstr":["Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>, 2020\nLanguage-Team: Hebrew (https://www.transifex.com/nextcloud/teams/64236/he/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: he\nPlural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["ביטול"]}}}}},{"locale":"hu_HU","json":{"charset":"utf-8","headers":{"Last-Translator":"Balázs Meskó <meskobalazs@mailbox.org>, 2021","Language-Team":"Hungarian (Hungary) (https://www.transifex.com/nextcloud/teams/64236/hu_HU/)","Content-Type":"text/plain; charset=UTF-8","Language":"hu_HU","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nBalázs Meskó <meskobalazs@mailbox.org>, 2021\n"},"msgstr":["Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>, 2021\nLanguage-Team: Hungarian (Hungary) (https://www.transifex.com/nextcloud/teams/64236/hu_HU/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: hu_HU\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:191"},"msgstr":["Visszavonás"]}}}}},{"locale":"id","json":{"charset":"utf-8","headers":{"Last-Translator":"agus sutrisno <agussutrisno@smamsa.sch.id>, 2020","Language-Team":"Indonesian (https://www.transifex.com/nextcloud/teams/64236/id/)","Content-Type":"text/plain; charset=UTF-8","Language":"id","Plural-Forms":"nplurals=1; plural=0;"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nagus sutrisno <agussutrisno@smamsa.sch.id>, 2020\n"},"msgstr":["Last-Translator: agus sutrisno <agussutrisno@smamsa.sch.id>, 2020\nLanguage-Team: Indonesian (https://www.transifex.com/nextcloud/teams/64236/id/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: id\nPlural-Forms: nplurals=1; plural=0;\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:192"},"msgstr":["Tidak jadi"]}}}}},{"locale":"is","json":{"charset":"utf-8","headers":{"Last-Translator":"Sveinn í Felli <sv1@fellsnet.is>, 2020","Language-Team":"Icelandic (https://www.transifex.com/nextcloud/teams/64236/is/)","Content-Type":"text/plain; charset=UTF-8","Language":"is","Plural-Forms":"nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nSveinn í Felli <sv1@fellsnet.is>, 2020\n"},"msgstr":["Last-Translator: Sveinn í Felli <sv1@fellsnet.is>, 2020\nLanguage-Team: Icelandic (https://www.transifex.com/nextcloud/teams/64236/is/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: is\nPlural-Forms: nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:192"},"msgstr":["Afturkalla"]}}}}},{"locale":"it","json":{"charset":"utf-8","headers":{"Last-Translator":"Vincenzo Reale <vinx.reale@gmail.com>, 2020","Language-Team":"Italian (https://www.transifex.com/nextcloud/teams/64236/it/)","Content-Type":"text/plain; charset=UTF-8","Language":"it","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nVincenzo Reale <vinx.reale@gmail.com>, 2020\n"},"msgstr":["Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>, 2020\nLanguage-Team: Italian (https://www.transifex.com/nextcloud/teams/64236/it/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: it\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Annulla"]}}}}},{"locale":"ja_JP","json":{"charset":"utf-8","headers":{"Last-Translator":"323484, 2020","Language-Team":"Japanese (Japan) (https://www.transifex.com/nextcloud/teams/64236/ja_JP/)","Content-Type":"text/plain; charset=UTF-8","Language":"ja_JP","Plural-Forms":"nplurals=1; plural=0;"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\n323484, 2020\n"},"msgstr":["Last-Translator: 323484, 2020\nLanguage-Team: Japanese (Japan) (https://www.transifex.com/nextcloud/teams/64236/ja_JP/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: ja_JP\nPlural-Forms: nplurals=1; plural=0;\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["元に戻す"]}}}}},{"locale":"lt_LT","json":{"charset":"utf-8","headers":{"Last-Translator":"Moo, 2020","Language-Team":"Lithuanian (Lithuania) (https://www.transifex.com/nextcloud/teams/64236/lt_LT/)","Content-Type":"text/plain; charset=UTF-8","Language":"lt_LT","Plural-Forms":"nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nMoo, 2020\n"},"msgstr":["Last-Translator: Moo, 2020\nLanguage-Team: Lithuanian (Lithuania) (https://www.transifex.com/nextcloud/teams/64236/lt_LT/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: lt_LT\nPlural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Atšaukti"]}}}}},{"locale":"mk","json":{"charset":"utf-8","headers":{"Last-Translator":"Сашко Тодоров, 2020","Language-Team":"Macedonian (https://www.transifex.com/nextcloud/teams/64236/mk/)","Content-Type":"text/plain; charset=UTF-8","Language":"mk","Plural-Forms":"nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nСашко Тодоров, 2020\n"},"msgstr":["Last-Translator: Сашко Тодоров, 2020\nLanguage-Team: Macedonian (https://www.transifex.com/nextcloud/teams/64236/mk/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: mk\nPlural-Forms: nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Врати"]}}}}},{"locale":"nb_NO","json":{"charset":"utf-8","headers":{"Last-Translator":"sverre.vikan <sverre.vikan@gmail.com>, 2020","Language-Team":"Norwegian Bokmål (Norway) (https://www.transifex.com/nextcloud/teams/64236/nb_NO/)","Content-Type":"text/plain; charset=UTF-8","Language":"nb_NO","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nsverre.vikan <sverre.vikan@gmail.com>, 2020\n"},"msgstr":["Last-Translator: sverre.vikan <sverre.vikan@gmail.com>, 2020\nLanguage-Team: Norwegian Bokmål (Norway) (https://www.transifex.com/nextcloud/teams/64236/nb_NO/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: nb_NO\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:192"},"msgstr":["Angre"]}}}}},{"locale":"nl","json":{"charset":"utf-8","headers":{"Last-Translator":"Robin Slot, 2020","Language-Team":"Dutch (https://www.transifex.com/nextcloud/teams/64236/nl/)","Content-Type":"text/plain; charset=UTF-8","Language":"nl","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nRobin Slot, 2020\n"},"msgstr":["Last-Translator: Robin Slot, 2020\nLanguage-Team: Dutch (https://www.transifex.com/nextcloud/teams/64236/nl/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: nl\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:191"},"msgstr":["Ongedaan maken"]}}}}},{"locale":"oc","json":{"charset":"utf-8","headers":{"Last-Translator":"Quentin PAGÈS, 2020","Language-Team":"Occitan (post 1500) (https://www.transifex.com/nextcloud/teams/64236/oc/)","Content-Type":"text/plain; charset=UTF-8","Language":"oc","Plural-Forms":"nplurals=2; plural=(n > 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nQuentin PAGÈS, 2020\n"},"msgstr":["Last-Translator: Quentin PAGÈS, 2020\nLanguage-Team: Occitan (post 1500) (https://www.transifex.com/nextcloud/teams/64236/oc/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: oc\nPlural-Forms: nplurals=2; plural=(n > 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Anullar"]}}}}},{"locale":"pl","json":{"charset":"utf-8","headers":{"Last-Translator":"Robert Szmurło <robert.szmurlo@ee.pw.edu.pl>, 2020","Language-Team":"Polish (https://www.transifex.com/nextcloud/teams/64236/pl/)","Content-Type":"text/plain; charset=UTF-8","Language":"pl","Plural-Forms":"nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nRobert Szmurło <robert.szmurlo@ee.pw.edu.pl>, 2020\n"},"msgstr":["Last-Translator: Robert Szmurło <robert.szmurlo@ee.pw.edu.pl>, 2020\nLanguage-Team: Polish (https://www.transifex.com/nextcloud/teams/64236/pl/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: pl\nPlural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Cofnij"]}}}}},{"locale":"pt_BR","json":{"charset":"utf-8","headers":{"Last-Translator":"Paulo Schopf, 2020","Language-Team":"Portuguese (Brazil) (https://www.transifex.com/nextcloud/teams/64236/pt_BR/)","Content-Type":"text/plain; charset=UTF-8","Language":"pt_BR","Plural-Forms":"nplurals=2; plural=(n > 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nPaulo Schopf, 2020\n"},"msgstr":["Last-Translator: Paulo Schopf, 2020\nLanguage-Team: Portuguese (Brazil) (https://www.transifex.com/nextcloud/teams/64236/pt_BR/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: pt_BR\nPlural-Forms: nplurals=2; plural=(n > 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Desfazer"]}}}}},{"locale":"ru","json":{"charset":"utf-8","headers":{"Last-Translator":"Andrey Atapin <atab@kirovedu.ru>, 2020","Language-Team":"Russian (https://www.transifex.com/nextcloud/teams/64236/ru/)","Content-Type":"text/plain; charset=UTF-8","Language":"ru","Plural-Forms":"nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nAndrey Atapin <atab@kirovedu.ru>, 2020\n"},"msgstr":["Last-Translator: Andrey Atapin <atab@kirovedu.ru>, 2020\nLanguage-Team: Russian (https://www.transifex.com/nextcloud/teams/64236/ru/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: ru\nPlural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:187"},"msgstr":["Отменить"]}}}}},{"locale":"sk_SK","json":{"charset":"utf-8","headers":{"Last-Translator":"vladimirjendrol <vlado@jendrol.sk>, 2020","Language-Team":"Slovak (Slovakia) (https://www.transifex.com/nextcloud/teams/64236/sk_SK/)","Content-Type":"text/plain; charset=UTF-8","Language":"sk_SK","Plural-Forms":"nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nvladimirjendrol <vlado@jendrol.sk>, 2020\n"},"msgstr":["Last-Translator: vladimirjendrol <vlado@jendrol.sk>, 2020\nLanguage-Team: Slovak (Slovakia) (https://www.transifex.com/nextcloud/teams/64236/sk_SK/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: sk_SK\nPlural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:192"},"msgstr":["Späť"]}}}}},{"locale":"sl","json":{"charset":"utf-8","headers":{"Last-Translator":"Matej Urbančič <>, 2020","Language-Team":"Slovenian (https://www.transifex.com/nextcloud/teams/64236/sl/)","Content-Type":"text/plain; charset=UTF-8","Language":"sl","Plural-Forms":"nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nMatej Urbančič <>, 2020\n"},"msgstr":["Last-Translator: Matej Urbančič <>, 2020\nLanguage-Team: Slovenian (https://www.transifex.com/nextcloud/teams/64236/sl/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: sl\nPlural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:191"},"msgstr":["Razveljavi"]}}}}},{"locale":"sv","json":{"charset":"utf-8","headers":{"Last-Translator":"Victor Nyberg <v70123@gmail.com>, 2021","Language-Team":"Swedish (https://www.transifex.com/nextcloud/teams/64236/sv/)","Content-Type":"text/plain; charset=UTF-8","Language":"sv","Plural-Forms":"nplurals=2; plural=(n != 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nVictor Nyberg <v70123@gmail.com>, 2021\n"},"msgstr":["Last-Translator: Victor Nyberg <v70123@gmail.com>, 2021\nLanguage-Team: Swedish (https://www.transifex.com/nextcloud/teams/64236/sv/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: sv\nPlural-Forms: nplurals=2; plural=(n != 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:191"},"msgstr":["Ångra"]}}}}},{"locale":"tr","json":{"charset":"utf-8","headers":{"Last-Translator":"Kaya Zeren <kayazeren@gmail.com>, 2020","Language-Team":"Turkish (https://www.transifex.com/nextcloud/teams/64236/tr/)","Content-Type":"text/plain; charset=UTF-8","Language":"tr","Plural-Forms":"nplurals=2; plural=(n > 1);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nKaya Zeren <kayazeren@gmail.com>, 2020\n"},"msgstr":["Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2020\nLanguage-Team: Turkish (https://www.transifex.com/nextcloud/teams/64236/tr/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: tr\nPlural-Forms: nplurals=2; plural=(n > 1);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:191"},"msgstr":["Geri al"]}}}}},{"locale":"uk","json":{"charset":"utf-8","headers":{"Last-Translator":"777 Svyatoi 777 <exmashana67@gmail.com>, 2020","Language-Team":"Ukrainian (https://www.transifex.com/nextcloud/teams/64236/uk/)","Content-Type":"text/plain; charset=UTF-8","Language":"uk","Plural-Forms":"nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\n777 Svyatoi 777 <exmashana67@gmail.com>, 2020\n"},"msgstr":["Last-Translator: 777 Svyatoi 777 <exmashana67@gmail.com>, 2020\nLanguage-Team: Ukrainian (https://www.transifex.com/nextcloud/teams/64236/uk/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: uk\nPlural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:192"},"msgstr":["Undo"]}}}}},{"locale":"zh_CN","json":{"charset":"utf-8","headers":{"Last-Translator":"Toms Project <tom@projectoms.com>, 2020","Language-Team":"Chinese (China) (https://www.transifex.com/nextcloud/teams/64236/zh_CN/)","Content-Type":"text/plain; charset=UTF-8","Language":"zh_CN","Plural-Forms":"nplurals=1; plural=0;"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nToms Project <tom@projectoms.com>, 2020\n"},"msgstr":["Last-Translator: Toms Project <tom@projectoms.com>, 2020\nLanguage-Team: Chinese (China) (https://www.transifex.com/nextcloud/teams/64236/zh_CN/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: zh_CN\nPlural-Forms: nplurals=1; plural=0;\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:191"},"msgstr":["撤消"]}}}}},{"locale":"zh_HK","json":{"charset":"utf-8","headers":{"Last-Translator":"Cha Wong <cafetango@gmail.com>, 2021","Language-Team":"Chinese (Hong Kong) (https://www.transifex.com/nextcloud/teams/64236/zh_HK/)","Content-Type":"text/plain; charset=UTF-8","Language":"zh_HK","Plural-Forms":"nplurals=1; plural=0;"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nCha Wong <cafetango@gmail.com>, 2021\n"},"msgstr":["Last-Translator: Cha Wong <cafetango@gmail.com>, 2021\nLanguage-Team: Chinese (Hong Kong) (https://www.transifex.com/nextcloud/teams/64236/zh_HK/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: zh_HK\nPlural-Forms: nplurals=1; plural=0;\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:191"},"msgstr":["還原"]}}}}},{"locale":"zh_TW","json":{"charset":"utf-8","headers":{"Last-Translator":"Natashia Maxins <railroad1987@gmail.com>, 2020","Language-Team":"Chinese (Taiwan) (https://www.transifex.com/nextcloud/teams/64236/zh_TW/)","Content-Type":"text/plain; charset=UTF-8","Language":"zh_TW","Plural-Forms":"nplurals=1; plural=0;"},"translations":{"":{"":{"msgid":"","comments":{"translator":"\nTranslators:\nNatashia Maxins <railroad1987@gmail.com>, 2020\n"},"msgstr":["Last-Translator: Natashia Maxins <railroad1987@gmail.com>, 2020\nLanguage-Team: Chinese (Taiwan) (https://www.transifex.com/nextcloud/teams/64236/zh_TW/)\nContent-Type: text/plain; charset=UTF-8\nLanguage: zh_TW\nPlural-Forms: nplurals=1; plural=0;\n"]},"Undo":{"msgid":"Undo","comments":{"reference":"lib/toast.ts:192"},"msgstr":["復原"]}}}}}]};
@@ -36375,281 +36340,6 @@ function showUndo(text, onUndo, options) {
 
 // EXTERNAL MODULE: ./node_modules/@nextcloud/l10n/dist/index.js
 var l10n_dist = __webpack_require__(9944);
-;// CONCATENATED MODULE: ./src/js/modules/ajaxRequest.mjs
-
-
-
-
-/**
- * Update data
- * @param table 
- * @param column 
- * @param data 
- * @param id 
- */
-function updateDB(table, column, data, id) {
-    var myData = {
-        table: table,
-        column: column,
-        data: data,
-        id: id,
-    };
-
-    $.ajax({
-        url: mainFunction_baseUrl + '/update',
-        type: 'POST',
-        async: false,
-        contentType: 'application/json',
-        data: JSON.stringify(myData)
-    }).done(function (response, code) {
-        index_es_showSuccess((0,l10n_dist/* translate */.Iu)('gestion', 'Modification saved'));
-    }).fail(function (response, code) {
-        index_es_showError((0,l10n_dist/* translate */.Iu)('gestion', 'There is an error with the format, please check the documentation'));
-    });
-}
-
-/**
- * Delete data
- * @param table
- * @param id 
- */
-function deleteDB(table, id) {
-    var myData = {
-        table: table,
-        id: id,
-    };
-
-    if(window.confirm((0,l10n_dist/* translate */.Iu)('gestion','Are you sure you want to delete?'))){
-        $.ajax({
-            url: mainFunction_baseUrl + '/delete',
-            type: 'DELETE',
-            async: false,
-            contentType: 'application/json',
-            data: JSON.stringify(myData)
-        }).done(function (response, code) {
-            index_es_showSuccess((0,l10n_dist/* translate */.Iu)('gestion', 'Modification saved'));
-        }).fail(function (response, code) {
-            index_es_showError(response);
-        });
-    }else{
-        index_es_showMessage((0,l10n_dist/* translate */.Iu)('gestion', 'Nothing changed'))
-    }
-}
-
-/**
- * 
- */
-function getStats() {
-    $.ajax({
-        url: mainFunction_baseUrl + '/getStats',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        var res = JSON.parse(response);
-        $("#statsclient").text(res.client);
-        $("#statsdevis").text(res.devis);
-        $("#statsfacture").text(res.facture);
-        $("#statsproduit").text(res.produit);
-    }).fail(function (response, code) {
-        index_es_showError(response);
-    });
-}
-
-
-/**
- * 
- * @param {*} f1 
- */
-function configuration(f1) {
-    $.ajax({
-        url: mainFunction_baseUrl + '/getConfiguration',
-        type: 'PROPFIND',
-        contentType: 'application/json',
-        async: false,
-    }).done(function (response) {
-        f1(response);
-    }).fail(function (response, code) {
-        index_es_showError(response);
-    });
-}
-
-/**
- * 
- */
-function isconfig() {
-    $.ajax({
-        url: mainFunction_baseUrl + '/isconfig',
-        type: 'GET',
-        contentType: 'application/json'
-    }).done(function (response) {
-        if (!response) {
-            var modal = document.getElementById("modalConfig");
-            modal.style.display = "block";
-        }
-    })
-}
-
-/**
- * 
- * @param {*} cur 
- */
-function getAnnualTurnoverPerMonthNoVat(cur) {
-    $.ajax({
-        url: baseUrl + '/getAnnualTurnoverPerMonthNoVat',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        var res = JSON.parse(response);
-        var curY = "";
-        var curRow;
-        var total=0;
-        res.forEach(function(item){
-            if(curY !== item.y){
-                
-                if(curY !== ""){
-                    insertCell(curRow, -1, cur.format(total));
-                    total=0;
-                }
-
-                curY = item.y;
-                curRow = insertRow("Statistical", -1, 0, item.y);
-                modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
-                total+= Math.round(item.total);
-
-            }else{
-
-                modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
-                total+= Math.round(item.total);
-
-            }
-        });
-        // At the end
-        insertCell(curRow, -1, cur.format(total));
-    }).fail(function (response, code) {
-        showError(response);
-    });
-}
-
-/**
- * 
- * @param {*} myCase 
- */
-function updateEditable(myCase) {
-    updateDB(myCase.dataset.table, myCase.dataset.column, myCase.innerText, myCase.dataset.id);
-    if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
-    myCase.removeAttribute('contenteditable');
-}
-
-/**
- * 
- * @param {*} lp 
- * @param {*} id 
- * @param {*} produitid 
- */
-function listProduit(lp, id, produitid) {
-    $.ajax({
-        url: mainFunction_baseUrl + '/getProduits',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">'+(0,l10n_dist/* translate */.Iu)('gestion','Cancel')+'</option>');
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            var selected = "";
-            if (produitid == myresp.id) {
-                selected = "selected";
-            }
-            lp.append('<option ' + selected + ' data-table="produit_devis" data-column="produit_id" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.reference + ' ' + myresp.description + ' ' + cur.format(myresp.prix_unitaire) + '</option>');
-        });
-    }).fail(function (response, code) {
-        index_es_showError(response);
-    });
-}
-
-/**
- * Get a product in database using id
- */
- function getProduitsById() {
-    var devis_id = $('#devisid').data('id');
-    var myData = { numdevis: devis_id, };
-
-    $.ajax({
-        url: mainFunction_baseUrl + '/getProduitsById',
-        type: 'POST',
-        async: false,
-        contentType: 'application/json',
-        data: JSON.stringify(myData)
-    }).done(function (response, code) {
-        $('#produits tbody').empty();
-        var total = 0;
-        var deleteDisable = "";
-        if ($('#produits').data("type") === "facture") {
-            deleteDisable = "d-none";
-        }
-
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="' + deleteDisable + ' deleteItem icon-delete"></div><div style="display:inline;" data-val="' + myresp.pid + '" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
-                '<td>' + myresp.description + '</td>' +
-                '<td><div class="editableNumber getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id=' + myresp.pdid + '>' + myresp.quantite + '</div> </td>' +
-                '<td>' + cur.format(myresp.prix_unitaire) + '</td>' +
-                '<td>' + cur.format((myresp.quantite * myresp.prix_unitaire)) + '</td></tr>');
-            total += (myresp.quantite * myresp.prix_unitaire);
-        });
-
-        $("#totaldevis tbody").empty();
-        getGlobal(total);
-    }).fail(function (response, code) {
-        index_es_showError(response);
-    });
-}
-
-/**
- * Save pdf in nextcloud
- * @param {*} myData 
- */
-function saveNextcloud(myData) {
-    $.ajax({
-      url: baseUrl + '/savePDF',
-      type: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify(myData)
-    }).done(function (response) {
-      showMessage(t('gestion', 'Save in') + " " + $("#theFolder").val() + "/" + $("#pdf").data("folder"));
-    }).fail(function (response, code) {
-      showMessage(t('gestion', 'There is an error'));
-      error(response);
-    });
-  };
-
-  function getMailServerFrom(input) {
-    var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.setRequestHeader("requesttoken", oc_requesttoken);
-    oReq.onload = function(e){
-        if (this.status == 200) {
-            input.value = JSON.parse(this.response)['mail'];
-        }else{
-            showError(this.response);
-        }
-    };
-    oReq.send();
-    }
-
-    function backup(){
-        var oReq = new XMLHttpRequest();
-        oReq.open('GET', baseUrl + '/backup', true);
-        oReq.setRequestHeader("Content-Type", "application/json");
-        oReq.setRequestHeader("requesttoken", oc_requesttoken);
-        oReq.onload = function(e){
-            if (this.status == 200) {
-                showSuccess(t('gestion', 'Save in')+' '+JSON.parse(this.response)['name']+'\n'+t('gestion','(do not forget to show hidden folder)'));
-            }else{
-                showError(this.response);
-            }
-        };
-        oReq.send();
-    }
-
 // EXTERNAL MODULE: ./node_modules/@nextcloud/router/dist/index.js
 var router_dist = __webpack_require__(9753);
 ;// CONCATENATED MODULE: ./src/js/objects/devis.mjs
@@ -36818,6 +36508,7 @@ class Devis {
 }
 
 ;// CONCATENATED MODULE: ./src/js/objects/client.mjs
+/* provided dependency */ var $ = __webpack_require__(9755);
 
 
 
@@ -37019,6 +36710,7 @@ class Client {
 }
 
 ;// CONCATENATED MODULE: ./src/js/modules/mainFunction.mjs
+/* provided dependency */ var mainFunction_$ = __webpack_require__(9755);
 
 
 
@@ -37073,14 +36765,14 @@ function globalConfiguration(checkConfig=true){
  * 
  */
 function configureDT() {
-    $('.editable').attr('title', (0,l10n_dist/* translate */.Iu)('gestion', 'Editable (Click to change)'));
+    mainFunction_$('.editable').attr('title', (0,l10n_dist/* translate */.Iu)('gestion', 'Editable (Click to change)'));
 }
 
 /**
  * 
  */
 function configureShow() {
-    $('.sendmail').attr('title', t('gestion', 'Your global Nextcloud mail server need to be configured'));
+    mainFunction_$('.sendmail').attr('title', t('gestion', 'Your global Nextcloud mail server need to be configured'));
 }
 
 /**
@@ -37095,10 +36787,10 @@ function showDone() {
  * @param {*} el 
  */
 function checkSelect(el) {
-    $(el).each(function (arrayID, elem) {
-        $(elem).find('option').each(function () {
+    mainFunction_$(el).each(function (arrayID, elem) {
+        mainFunction_$(elem).find('option').each(function () {
             if (this.value == elem.getAttribute("data-current")) {
-                $(this).prop('selected', true)
+                mainFunction_$(this).prop('selected', true)
             }
         })
     })
@@ -37121,7 +36813,7 @@ function checkSelectPurJs(el) {
  */
 function LoadDT(DT, response, cls) {
     DT.clear();
-    $.each(JSON.parse(response), function (arrayID, myresp) {
+    mainFunction_$.each(JSON.parse(response), function (arrayID, myresp) {
         let c = new cls(myresp);
         DT.row.add(c.getDTRow());
     });
@@ -37177,8 +36869,8 @@ function mainFunction_modifyCell(r, positionColumn = -1, data){
  */
  function mainFunction_path(res) {
     var myres = JSON.parse(res)[0];
-    $("#theFolder").val(myres.path);
-    $("#theFolder").attr('data-id', myres.id);
+    mainFunction_$("#theFolder").val(myres.path);
+    mainFunction_$("#theFolder").attr('data-id', myres.id);
 };
 
 
@@ -37196,15 +36888,15 @@ function mainFunction_modifyCell(r, positionColumn = -1, data){
  * @param {*} total 
  */
 function getGlobal(total) {
-    $.ajax({
+    mainFunction_$.ajax({
         url: mainFunction_baseUrl + '/getConfiguration',
         type: 'PROPFIND',
         contentType: 'application/json',
     }).done(function (response) {
         var myresp = JSON.parse(response)[0];
         var tva = parseFloat(myresp.tva_default);
-        $('#totaldevis tbody').append('<tr><td>' + cur.format(total) + '</td><td id="tva">' + tva + ' %</td><td id="totaltva">' + cur.format(Math.round((total * tva)) / 100) + '</td><td>' + cur.format(Math.round((total * (tva + 100))) / 100) + '</td></tr>');
-        $('#mentions_default').html(myresp.mentions_default);
+        mainFunction_$('#totaldevis tbody').append('<tr><td>' + cur.format(total) + '</td><td id="tva">' + tva + ' %</td><td id="totaltva">' + cur.format(Math.round((total * tva)) / 100) + '</td><td>' + cur.format(Math.round((total * (tva + 100))) / 100) + '</td></tr>');
+        mainFunction_$('#mentions_default').html(myresp.mentions_default);
     })
 }
 
@@ -37215,8 +36907,8 @@ function getGlobal(total) {
 function checkAutoIncrement(response){
     var myresp = JSON.parse(response)[0];
     if(myresp.auto_invoice_number==1){
-        $('.deleteItem').remove();
-        $(".factureNum").removeClass("editable");
+        mainFunction_$('.deleteItem').remove();
+        mainFunction_$(".factureNum").removeClass("editable");
     }
 }
 
@@ -37243,6 +36935,285 @@ function removeOptions(selectElement) {
        selectElement.remove(i);
     }
  }
+;// CONCATENATED MODULE: ./src/js/modules/ajaxRequest.mjs
+/* provided dependency */ var ajaxRequest_$ = __webpack_require__(9755);
+
+
+
+
+/**
+ * Update data
+ * @param table 
+ * @param column 
+ * @param data 
+ * @param id 
+ */
+function updateDB(table, column, data, id) {
+    var myData = {
+        table: table,
+        column: column,
+        data: data,
+        id: id,
+    };
+
+    ajaxRequest_$.ajax({
+        url: mainFunction_baseUrl + '/update',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(myData)
+    }).done(function (response, code) {
+        index_es_showSuccess((0,l10n_dist/* translate */.Iu)('gestion', 'Modification saved'));
+    }).fail(function (response, code) {
+        index_es_showError((0,l10n_dist/* translate */.Iu)('gestion', 'There is an error with the format, please check the documentation'));
+    });
+}
+
+/**
+ * Delete data
+ * @param table
+ * @param id 
+ */
+function deleteDB(table, id) {
+    var myData = {
+        table: table,
+        id: id,
+    };
+
+    if(window.confirm((0,l10n_dist/* translate */.Iu)('gestion','Are you sure you want to delete?'))){
+        ajaxRequest_$.ajax({
+            url: mainFunction_baseUrl + '/delete',
+            type: 'DELETE',
+            async: false,
+            contentType: 'application/json',
+            data: JSON.stringify(myData)
+        }).done(function (response, code) {
+            index_es_showSuccess((0,l10n_dist/* translate */.Iu)('gestion', 'Modification saved'));
+        }).fail(function (response, code) {
+            index_es_showError(response);
+        });
+    }else{
+        index_es_showMessage((0,l10n_dist/* translate */.Iu)('gestion', 'Nothing changed'))
+    }
+}
+
+/**
+ * 
+ */
+function getStats() {
+    ajaxRequest_$.ajax({
+        url: mainFunction_baseUrl + '/getStats',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        var res = JSON.parse(response);
+        ajaxRequest_$("#statsclient").text(res.client);
+        ajaxRequest_$("#statsdevis").text(res.devis);
+        ajaxRequest_$("#statsfacture").text(res.facture);
+        ajaxRequest_$("#statsproduit").text(res.produit);
+    }).fail(function (response, code) {
+        index_es_showError(response);
+    });
+}
+
+
+/**
+ * 
+ * @param {*} f1 
+ */
+function configuration(f1) {
+    ajaxRequest_$.ajax({
+        url: mainFunction_baseUrl + '/getConfiguration',
+        type: 'PROPFIND',
+        contentType: 'application/json',
+        async: false,
+    }).done(function (response) {
+        f1(response);
+    }).fail(function (response, code) {
+        index_es_showError(response);
+    });
+}
+
+/**
+ * 
+ */
+function isconfig() {
+    ajaxRequest_$.ajax({
+        url: mainFunction_baseUrl + '/isconfig',
+        type: 'GET',
+        contentType: 'application/json'
+    }).done(function (response) {
+        if (!response) {
+            var modal = document.getElementById("modalConfig");
+            modal.style.display = "block";
+        }
+    })
+}
+
+/**
+ * 
+ * @param {*} cur 
+ */
+function getAnnualTurnoverPerMonthNoVat(cur) {
+    ajaxRequest_$.ajax({
+        url: baseUrl + '/getAnnualTurnoverPerMonthNoVat',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        var res = JSON.parse(response);
+        var curY = "";
+        var curRow;
+        var total=0;
+        res.forEach(function(item){
+            if(curY !== item.y){
+                
+                if(curY !== ""){
+                    insertCell(curRow, -1, cur.format(total));
+                    total=0;
+                }
+
+                curY = item.y;
+                curRow = insertRow("Statistical", -1, 0, item.y);
+                modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
+                total+= Math.round(item.total);
+
+            }else{
+
+                modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
+                total+= Math.round(item.total);
+
+            }
+        });
+        // At the end
+        insertCell(curRow, -1, cur.format(total));
+    }).fail(function (response, code) {
+        showError(response);
+    });
+}
+
+/**
+ * 
+ * @param {*} myCase 
+ */
+function updateEditable(myCase) {
+    updateDB(myCase.dataset.table, myCase.dataset.column, myCase.innerText, myCase.dataset.id);
+    if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
+    myCase.removeAttribute('contenteditable');
+}
+
+/**
+ * 
+ * @param {*} lp 
+ * @param {*} id 
+ * @param {*} produitid 
+ */
+function listProduit(lp, id, produitid) {
+    ajaxRequest_$.ajax({
+        url: mainFunction_baseUrl + '/getProduits',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">'+(0,l10n_dist/* translate */.Iu)('gestion','Cancel')+'</option>');
+        ajaxRequest_$.each(JSON.parse(response), function (arrayID, myresp) {
+            var selected = "";
+            if (produitid == myresp.id) {
+                selected = "selected";
+            }
+            lp.append('<option ' + selected + ' data-table="produit_devis" data-column="produit_id" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.reference + ' ' + myresp.description + ' ' + cur.format(myresp.prix_unitaire) + '</option>');
+        });
+    }).fail(function (response, code) {
+        index_es_showError(response);
+    });
+}
+
+/**
+ * Get a product in database using id
+ */
+ function getProduitsById() {
+    var devis_id = ajaxRequest_$('#devisid').data('id');
+    var myData = { numdevis: devis_id, };
+
+    ajaxRequest_$.ajax({
+        url: mainFunction_baseUrl + '/getProduitsById',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(myData)
+    }).done(function (response, code) {
+        ajaxRequest_$('#produits tbody').empty();
+        var total = 0;
+        var deleteDisable = "";
+        if (ajaxRequest_$('#produits').data("type") === "facture") {
+            deleteDisable = "d-none";
+        }
+
+        ajaxRequest_$.each(JSON.parse(response), function (arrayID, myresp) {
+            ajaxRequest_$('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="' + deleteDisable + ' deleteItem icon-delete"></div><div style="display:inline;" data-val="' + myresp.pid + '" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
+                '<td>' + myresp.description + '</td>' +
+                '<td><div class="editableNumber getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id=' + myresp.pdid + '>' + myresp.quantite + '</div> </td>' +
+                '<td>' + cur.format(myresp.prix_unitaire) + '</td>' +
+                '<td>' + cur.format((myresp.quantite * myresp.prix_unitaire)) + '</td></tr>');
+            total += (myresp.quantite * myresp.prix_unitaire);
+        });
+
+        ajaxRequest_$("#totaldevis tbody").empty();
+        getGlobal(total);
+    }).fail(function (response, code) {
+        index_es_showError(response);
+    });
+}
+
+/**
+ * Save pdf in nextcloud
+ * @param {*} myData 
+ */
+function saveNextcloud(myData) {
+    ajaxRequest_$.ajax({
+      url: baseUrl + '/savePDF',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(myData)
+    }).done(function (response) {
+      showMessage(t('gestion', 'Save in') + " " + ajaxRequest_$("#theFolder").val() + "/" + ajaxRequest_$("#pdf").data("folder"));
+    }).fail(function (response, code) {
+      showMessage(t('gestion', 'There is an error'));
+      error(response);
+    });
+  };
+
+  function getMailServerFrom(input) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.setRequestHeader("requesttoken", oc_requesttoken);
+    oReq.onload = function(e){
+        if (this.status == 200) {
+            input.value = JSON.parse(this.response)['mail'];
+        }else{
+            showError(this.response);
+        }
+    };
+    oReq.send();
+    }
+
+    function backup(){
+        var oReq = new XMLHttpRequest();
+        oReq.open('GET', baseUrl + '/backup', true);
+        oReq.setRequestHeader("Content-Type", "application/json");
+        oReq.setRequestHeader("requesttoken", oc_requesttoken);
+        oReq.onload = function(e){
+            if (this.status == 200) {
+                showSuccess(t('gestion', 'Save in')+' '+JSON.parse(this.response)['name']+'\n'+t('gestion','(do not forget to show hidden folder)'));
+            }else{
+                showError(this.response);
+            }
+        };
+        oReq.send();
+    }
+
+// EXTERNAL MODULE: ./node_modules/datatables.net/js/jquery.dataTables.js
+var js_jquery_dataTables = __webpack_require__(1920);
+var jquery_dataTables_default = /*#__PURE__*/__webpack_require__.n(js_jquery_dataTables);
 ;// CONCATENATED MODULE: ./src/js/objects/facture.mjs
 
 
@@ -37395,6 +37366,7 @@ class Produit {
 }
 
 ;// CONCATENATED MODULE: ./src/js/listener/main_listener.js
+/* provided dependency */ var main_listener_$ = __webpack_require__(9755);
 
 
 
@@ -37406,22 +37378,22 @@ class Produit {
 
 var choose_folder = t('gestion', 'Choose work folder');
 
-$('body').on('click', '#theFolder', function () {
-    var f = new FilePicker(choose_folder, false, [], false, 1, true, $("#theFolder").val());
+main_listener_$('body').on('click', '#theFolder', function () {
+    var f = new FilePicker(choose_folder, false, [], false, 1, true, main_listener_$("#theFolder").val());
     f.pick().then(
         function (value) {
-            updateDB($('#theFolder').data('table'), $('#theFolder').data('column'), value, $('#theFolder').data('id'));
+            updateDB(main_listener_$('#theFolder').data('table'), main_listener_$('#theFolder').data('column'), value, main_listener_$('#theFolder').data('id'));
             configuration(mainFunction_path);
         }
     );
 });
 
-$('body').on('change', '.editableSelect', function () { 
-    updateDB($(this).data('table'), $(this).data('column'), $(this).val(), $(this).data('id')); 
+main_listener_$('body').on('change', '.editableSelect', function () { 
+    updateDB(main_listener_$(this).data('table'), main_listener_$(this).data('column'), main_listener_$(this).val(), main_listener_$(this).data('id')); 
 });
 
-$('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
-$('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
+main_listener_$('body').on('click', '.menu', function () { main_listener_$('#menu-' + this.dataset.menu).toggleClass('open'); });
+main_listener_$('body').on('click', '.modalClose', function () { var modal = main_listener_$(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
 document.body.addEventListener('click', e => {
     console.log(e.target.id);
@@ -37495,27 +37467,27 @@ document.body.addEventListener('mouseover', e => {
     }
 });
 
-$('body').on('dblclick', '.selectableDevis', function () {
-    var id = $(this).data('id');
-    var table = $(this).data('table');
-    var column = $(this).data('column');
-    $(this).text("");
-    $(this).html('<select id="listDevis">');
-    listDevis($('#listDevis'), id, table, column);
+main_listener_$('body').on('dblclick', '.selectableDevis', function () {
+    var id = main_listener_$(this).data('id');
+    var table = main_listener_$(this).data('table');
+    var column = main_listener_$(this).data('column');
+    main_listener_$(this).text("");
+    main_listener_$(this).html('<select id="listDevis">');
+    listDevis(main_listener_$('#listDevis'), id, table, column);
 });
 
-$('body').on('dblclick', '.selectable', function () {
-    var id = $(this).data('id');
-    var produitid = $(this).data('val');
-    $(this).text("");
-    $(this).html('<select id="listProduit">');
-    listProduit($('#listProduit'), id, produitid);
+main_listener_$('body').on('dblclick', '.selectable', function () {
+    var id = main_listener_$(this).data('id');
+    var produitid = main_listener_$(this).data('val');
+    main_listener_$(this).text("");
+    main_listener_$(this).html('<select id="listProduit">');
+    listProduit(main_listener_$('#listProduit'), id, produitid);
 });
 
-$('body').on('click', '.deleteItem', function () {
-    var id = $(this).data('id');
-    var table = $(this).data('table');
-    var modifier = $(this).data('modifier');
+main_listener_$('body').on('click', '.deleteItem', function () {
+    var id = main_listener_$(this).data('id');
+    var table = main_listener_$(this).data('table');
+    var modifier = main_listener_$(this).data('modifier');
     deleteDB(table, id);
     var dt = new (jquery_dataTables_default())('.tabledt');
     if (modifier === "getProduitsById") { getProduitsById(); }
@@ -37525,52 +37497,52 @@ $('body').on('click', '.deleteItem', function () {
     if (modifier === "produit") { Produit.loadProduitDT(dt); }
 });
 
-$('body').on('change', '.listClient,.listDevis', function () {
-    var myDiv = $(this).parents("div");
-    var id = $(myDiv).data('id');
+main_listener_$('body').on('change', '.listClient,.listDevis', function () {
+    var myDiv = main_listener_$(this).parents("div");
+    var id = main_listener_$(myDiv).data('id');
     var val = this.value;
-    var column = $(myDiv).data('column');
-    var table = $(myDiv).data('table');
+    var column = main_listener_$(myDiv).data('column');
+    var table = main_listener_$(myDiv).data('table');
     this.setAttribute('data-current', this.value)
     updateDB(table, column, val, id);
 })
 
-$('body').on('change', '.inputDate', function () {
-    var id = $(this).data('id');
+main_listener_$('body').on('change', '.inputDate', function () {
+    var id = main_listener_$(this).data('id');
     var val = this.value;
-    var column = $(this).data('column');
-    var table = $(this).data('table');
+    var column = main_listener_$(this).data('column');
+    var table = main_listener_$(this).data('table');
     updateDB(table, column, val, id);
 })
 
-$('body').on('change', '#listProduit,#listDevis', function () {
-    var id = $(this).find(':selected').data('id')
-    var val = $(this).find(':selected').data('val')
-    var column = $(this).find(':selected').data('column')
-    var table = $(this).find(':selected').data('table')
-    var el = $(this).parent();
+main_listener_$('body').on('change', '#listProduit,#listDevis', function () {
+    var id = main_listener_$(this).find(':selected').data('id')
+    var val = main_listener_$(this).find(':selected').data('val')
+    var column = main_listener_$(this).find(':selected').data('column')
+    var table = main_listener_$(this).find(':selected').data('table')
+    var el = main_listener_$(this).parent();
 
     updateDB(table, column, val, id);
 
     if (el.get(0).className === "selectableClient_devis") {
         getClientByIdDevis(id);
     }
-    if ($(this).attr('id') === "listProduit") {
+    if (main_listener_$(this).attr('id') === "listProduit") {
         getProduitsById();
     }
 
-    el.text($(this).val());
+    el.text(main_listener_$(this).val());
     el.attr('data-val', id);
 
 });
 
-$('body').on('click', '#devisAdd', function () {
-    var devis_id = $('#devisid').data('id');
+main_listener_$('body').on('click', '#devisAdd', function () {
+    var devis_id = main_listener_$('#devisid').data('id');
     var produit_devis = {
         id: devis_id
     };
 
-    $.ajax({
+    main_listener_$.ajax({
         url: mainFunction_baseUrl + '/insertProduitDevis',
         type: 'POST',
         contentType: 'application/json',
@@ -37582,7 +37554,7 @@ $('body').on('click', '#devisAdd', function () {
     });
 });
 
-$('body').on('click', '#about', function () {
+main_listener_$('body').on('click', '#about', function () {
     var modal = document.getElementById("modalConfig");
     modal.style.display = "block";
 });
@@ -37596,14 +37568,10 @@ $('body').on('click', '#about', function () {
 
 
 
-
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener("DOMContentLoaded", function () {
     globalConfiguration();
-    Client.loadClientDT(new (jquery_dataTables_default())('.tabledt',optionDatatable));
-
+    Client.loadClientDT(new (jquery_dataTables_default())(".tabledt",optionDatatable));
 });
-
-
 })();
 
 /******/ })()

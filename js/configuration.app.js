@@ -8,24 +8,26 @@
 var __webpack_unused_export__;
 
 
-__webpack_require__(4916);
-
-__webpack_require__(5306);
+__webpack_require__(9070);
 
 __webpack_unused_export__ = ({
   value: true
 });
-__webpack_unused_export__ = getLocale;
 __webpack_unused_export__ = getCanonicalLocale;
-__webpack_unused_export__ = getLanguage;
-exports.Iu = translate;
-__webpack_unused_export__ = translatePlural;
-__webpack_unused_export__ = getFirstDay;
 __webpack_unused_export__ = getDayNames;
-__webpack_unused_export__ = getDayNamesShort;
 __webpack_unused_export__ = getDayNamesMin;
+__webpack_unused_export__ = getDayNamesShort;
+__webpack_unused_export__ = getFirstDay;
+__webpack_unused_export__ = getLanguage;
+__webpack_unused_export__ = getLocale;
 __webpack_unused_export__ = getMonthNames;
 __webpack_unused_export__ = getMonthNamesShort;
+exports.Iu = translate;
+__webpack_unused_export__ = translatePlural;
+
+__webpack_require__(4916);
+
+__webpack_require__(5306);
 
 /// <reference types="@nextcloud/typings" />
 
@@ -33,12 +35,7 @@ __webpack_unused_export__ = getMonthNamesShort;
  * Returns the user's locale
  */
 function getLocale() {
-  if (typeof OC === 'undefined') {
-    console.warn('No OC found');
-    return 'en';
-  }
-
-  return OC.getLocale();
+  return document.documentElement.dataset.locale || 'en';
 }
 
 function getCanonicalLocale() {
@@ -50,12 +47,7 @@ function getCanonicalLocale() {
 
 
 function getLanguage() {
-  if (typeof OC === 'undefined') {
-    console.warn('No OC found');
-    return 'en';
-  }
-
-  return OC.getLanguage();
+  return document.documentElement.lang || 'en';
 }
 
 /**
@@ -1371,15 +1363,17 @@ module.exports = function (obj) {
 var fails = __webpack_require__(7293);
 var isCallable = __webpack_require__(614);
 var hasOwn = __webpack_require__(2597);
-var defineProperty = (__webpack_require__(3070).f);
+var DESCRIPTORS = __webpack_require__(9781);
 var CONFIGURABLE_FUNCTION_NAME = (__webpack_require__(6530).CONFIGURABLE);
 var inspectSource = __webpack_require__(2788);
 var InternalStateModule = __webpack_require__(9909);
 
 var enforceInternalState = InternalStateModule.enforce;
 var getInternalState = InternalStateModule.get;
+// eslint-disable-next-line es-x/no-object-defineproperty -- safe
+var defineProperty = Object.defineProperty;
 
-var CONFIGURABLE_LENGTH = !fails(function () {
+var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails(function () {
   return defineProperty(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
 });
 
@@ -1397,6 +1391,11 @@ var makeBuiltIn = module.exports = function (value, name, options) {
   if (CONFIGURABLE_LENGTH && options && hasOwn(options, 'arity') && value.length !== options.arity) {
     defineProperty(value, 'length', { value: options.arity });
   }
+  if (options && hasOwn(options, 'constructor') && options.constructor) {
+    if (DESCRIPTORS) try {
+      defineProperty(value, 'prototype', { writable: false });
+    } catch (error) { /* empty */ }
+  } else value.prototype = undefined;
   var state = enforceInternalState(value);
   if (!hasOwn(state, 'source')) {
     state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
@@ -2113,10 +2112,10 @@ var store = __webpack_require__(5465);
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.22.4',
+  version: '3.22.5',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2014-2022 Denis Pushkarev (zloirock.ru)',
-  license: 'https://github.com/zloirock/core-js/blob/v3.22.4/LICENSE',
+  license: 'https://github.com/zloirock/core-js/blob/v3.22.5/LICENSE',
   source: 'https://github.com/zloirock/core-js'
 });
 
@@ -2422,6 +2421,23 @@ module.exports = function (name) {
     }
   } return WellKnownSymbolsStore[name];
 };
+
+
+/***/ }),
+
+/***/ 9070:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+var $ = __webpack_require__(2109);
+var DESCRIPTORS = __webpack_require__(9781);
+var defineProperty = (__webpack_require__(3070).f);
+
+// `Object.defineProperty` method
+// https://tc39.es/ecma262/#sec-object.defineproperty
+// eslint-disable-next-line es-x/no-object-defineproperty -- safe
+$({ target: 'Object', stat: true, forced: Object.defineProperty !== defineProperty, sham: !DESCRIPTORS }, {
+  defineProperty: defineProperty
+});
 
 
 /***/ }),
@@ -29599,6 +29615,11 @@ module.exports = __webpack_require__.p + "d95251f3f0245772fcf2.svg";
 /******/ 		// no jsonp function
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nc = undefined;
+/******/ 	})();
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
@@ -36433,6 +36454,7 @@ class Devis {
 }
 
 ;// CONCATENATED MODULE: ./src/js/objects/client.mjs
+/* provided dependency */ var $ = __webpack_require__(9755);
 
 
 
@@ -36634,6 +36656,7 @@ class Client {
 }
 
 ;// CONCATENATED MODULE: ./src/js/modules/mainFunction.mjs
+/* provided dependency */ var mainFunction_$ = __webpack_require__(9755);
 
 
 
@@ -36688,14 +36711,14 @@ function globalConfiguration(checkConfig=true){
  * 
  */
 function configureDT() {
-    $('.editable').attr('title', (0,l10n_dist/* translate */.Iu)('gestion', 'Editable (Click to change)'));
+    mainFunction_$('.editable').attr('title', (0,l10n_dist/* translate */.Iu)('gestion', 'Editable (Click to change)'));
 }
 
 /**
  * 
  */
 function configureShow() {
-    $('.sendmail').attr('title', t('gestion', 'Your global Nextcloud mail server need to be configured'));
+    mainFunction_$('.sendmail').attr('title', t('gestion', 'Your global Nextcloud mail server need to be configured'));
 }
 
 /**
@@ -36710,10 +36733,10 @@ function showDone() {
  * @param {*} el 
  */
 function checkSelect(el) {
-    $(el).each(function (arrayID, elem) {
-        $(elem).find('option').each(function () {
+    mainFunction_$(el).each(function (arrayID, elem) {
+        mainFunction_$(elem).find('option').each(function () {
             if (this.value == elem.getAttribute("data-current")) {
-                $(this).prop('selected', true)
+                mainFunction_$(this).prop('selected', true)
             }
         })
     })
@@ -36736,7 +36759,7 @@ function checkSelectPurJs(el) {
  */
 function LoadDT(DT, response, cls) {
     DT.clear();
-    $.each(JSON.parse(response), function (arrayID, myresp) {
+    mainFunction_$.each(JSON.parse(response), function (arrayID, myresp) {
         let c = new cls(myresp);
         DT.row.add(c.getDTRow());
     });
@@ -36792,8 +36815,8 @@ function mainFunction_modifyCell(r, positionColumn = -1, data){
  */
  function mainFunction_path(res) {
     var myres = JSON.parse(res)[0];
-    $("#theFolder").val(myres.path);
-    $("#theFolder").attr('data-id', myres.id);
+    mainFunction_$("#theFolder").val(myres.path);
+    mainFunction_$("#theFolder").attr('data-id', myres.id);
 };
 
 
@@ -36811,15 +36834,15 @@ function mainFunction_modifyCell(r, positionColumn = -1, data){
  * @param {*} total 
  */
 function getGlobal(total) {
-    $.ajax({
+    mainFunction_$.ajax({
         url: mainFunction_baseUrl + '/getConfiguration',
         type: 'PROPFIND',
         contentType: 'application/json',
     }).done(function (response) {
         var myresp = JSON.parse(response)[0];
         var tva = parseFloat(myresp.tva_default);
-        $('#totaldevis tbody').append('<tr><td>' + cur.format(total) + '</td><td id="tva">' + tva + ' %</td><td id="totaltva">' + cur.format(Math.round((total * tva)) / 100) + '</td><td>' + cur.format(Math.round((total * (tva + 100))) / 100) + '</td></tr>');
-        $('#mentions_default').html(myresp.mentions_default);
+        mainFunction_$('#totaldevis tbody').append('<tr><td>' + cur.format(total) + '</td><td id="tva">' + tva + ' %</td><td id="totaltva">' + cur.format(Math.round((total * tva)) / 100) + '</td><td>' + cur.format(Math.round((total * (tva + 100))) / 100) + '</td></tr>');
+        mainFunction_$('#mentions_default').html(myresp.mentions_default);
     })
 }
 
@@ -36830,8 +36853,8 @@ function getGlobal(total) {
 function checkAutoIncrement(response){
     var myresp = JSON.parse(response)[0];
     if(myresp.auto_invoice_number==1){
-        $('.deleteItem').remove();
-        $(".factureNum").removeClass("editable");
+        mainFunction_$('.deleteItem').remove();
+        mainFunction_$(".factureNum").removeClass("editable");
     }
 }
 
@@ -36859,6 +36882,7 @@ function removeOptions(selectElement) {
     }
  }
 ;// CONCATENATED MODULE: ./src/js/modules/ajaxRequest.mjs
+/* provided dependency */ var ajaxRequest_$ = __webpack_require__(9755);
 
 
 
@@ -36878,7 +36902,7 @@ function updateDB(table, column, data, id) {
         id: id,
     };
 
-    $.ajax({
+    ajaxRequest_$.ajax({
         url: mainFunction_baseUrl + '/update',
         type: 'POST',
         async: false,
@@ -36903,7 +36927,7 @@ function deleteDB(table, id) {
     };
 
     if(window.confirm((0,l10n_dist/* translate */.Iu)('gestion','Are you sure you want to delete?'))){
-        $.ajax({
+        ajaxRequest_$.ajax({
             url: mainFunction_baseUrl + '/delete',
             type: 'DELETE',
             async: false,
@@ -36923,16 +36947,16 @@ function deleteDB(table, id) {
  * 
  */
 function getStats() {
-    $.ajax({
+    ajaxRequest_$.ajax({
         url: mainFunction_baseUrl + '/getStats',
         type: 'PROPFIND',
         contentType: 'application/json'
     }).done(function (response) {
         var res = JSON.parse(response);
-        $("#statsclient").text(res.client);
-        $("#statsdevis").text(res.devis);
-        $("#statsfacture").text(res.facture);
-        $("#statsproduit").text(res.produit);
+        ajaxRequest_$("#statsclient").text(res.client);
+        ajaxRequest_$("#statsdevis").text(res.devis);
+        ajaxRequest_$("#statsfacture").text(res.facture);
+        ajaxRequest_$("#statsproduit").text(res.produit);
     }).fail(function (response, code) {
         index_es_showError(response);
     });
@@ -36944,7 +36968,7 @@ function getStats() {
  * @param {*} f1 
  */
 function configuration(f1) {
-    $.ajax({
+    ajaxRequest_$.ajax({
         url: mainFunction_baseUrl + '/getConfiguration',
         type: 'PROPFIND',
         contentType: 'application/json',
@@ -36960,7 +36984,7 @@ function configuration(f1) {
  * 
  */
 function isconfig() {
-    $.ajax({
+    ajaxRequest_$.ajax({
         url: mainFunction_baseUrl + '/isconfig',
         type: 'GET',
         contentType: 'application/json'
@@ -36977,7 +37001,7 @@ function isconfig() {
  * @param {*} cur 
  */
 function getAnnualTurnoverPerMonthNoVat(cur) {
-    $.ajax({
+    ajaxRequest_$.ajax({
         url: baseUrl + '/getAnnualTurnoverPerMonthNoVat',
         type: 'PROPFIND',
         contentType: 'application/json'
@@ -37030,13 +37054,13 @@ function updateEditable(myCase) {
  * @param {*} produitid 
  */
 function listProduit(lp, id, produitid) {
-    $.ajax({
+    ajaxRequest_$.ajax({
         url: mainFunction_baseUrl + '/getProduits',
         type: 'PROPFIND',
         contentType: 'application/json'
     }).done(function (response) {
         lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">'+(0,l10n_dist/* translate */.Iu)('gestion','Cancel')+'</option>');
-        $.each(JSON.parse(response), function (arrayID, myresp) {
+        ajaxRequest_$.each(JSON.parse(response), function (arrayID, myresp) {
             var selected = "";
             if (produitid == myresp.id) {
                 selected = "selected";
@@ -37052,25 +37076,25 @@ function listProduit(lp, id, produitid) {
  * Get a product in database using id
  */
  function getProduitsById() {
-    var devis_id = $('#devisid').data('id');
+    var devis_id = ajaxRequest_$('#devisid').data('id');
     var myData = { numdevis: devis_id, };
 
-    $.ajax({
+    ajaxRequest_$.ajax({
         url: mainFunction_baseUrl + '/getProduitsById',
         type: 'POST',
         async: false,
         contentType: 'application/json',
         data: JSON.stringify(myData)
     }).done(function (response, code) {
-        $('#produits tbody').empty();
+        ajaxRequest_$('#produits tbody').empty();
         var total = 0;
         var deleteDisable = "";
-        if ($('#produits').data("type") === "facture") {
+        if (ajaxRequest_$('#produits').data("type") === "facture") {
             deleteDisable = "d-none";
         }
 
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="' + deleteDisable + ' deleteItem icon-delete"></div><div style="display:inline;" data-val="' + myresp.pid + '" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
+        ajaxRequest_$.each(JSON.parse(response), function (arrayID, myresp) {
+            ajaxRequest_$('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="' + deleteDisable + ' deleteItem icon-delete"></div><div style="display:inline;" data-val="' + myresp.pid + '" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
                 '<td>' + myresp.description + '</td>' +
                 '<td><div class="editableNumber getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id=' + myresp.pdid + '>' + myresp.quantite + '</div> </td>' +
                 '<td>' + cur.format(myresp.prix_unitaire) + '</td>' +
@@ -37078,7 +37102,7 @@ function listProduit(lp, id, produitid) {
             total += (myresp.quantite * myresp.prix_unitaire);
         });
 
-        $("#totaldevis tbody").empty();
+        ajaxRequest_$("#totaldevis tbody").empty();
         getGlobal(total);
     }).fail(function (response, code) {
         index_es_showError(response);
@@ -37090,13 +37114,13 @@ function listProduit(lp, id, produitid) {
  * @param {*} myData 
  */
 function saveNextcloud(myData) {
-    $.ajax({
+    ajaxRequest_$.ajax({
       url: baseUrl + '/savePDF',
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify(myData)
     }).done(function (response) {
-      showMessage(t('gestion', 'Save in') + " " + $("#theFolder").val() + "/" + $("#pdf").data("folder"));
+      showMessage(t('gestion', 'Save in') + " " + ajaxRequest_$("#theFolder").val() + "/" + ajaxRequest_$("#pdf").data("folder"));
     }).fail(function (response, code) {
       showMessage(t('gestion', 'There is an error'));
       error(response);
@@ -37288,6 +37312,7 @@ class Produit {
 }
 
 ;// CONCATENATED MODULE: ./src/js/listener/main_listener.js
+/* provided dependency */ var main_listener_$ = __webpack_require__(9755);
 
 
 
@@ -37299,22 +37324,22 @@ class Produit {
 
 var choose_folder = t('gestion', 'Choose work folder');
 
-$('body').on('click', '#theFolder', function () {
-    var f = new FilePicker(choose_folder, false, [], false, 1, true, $("#theFolder").val());
+main_listener_$('body').on('click', '#theFolder', function () {
+    var f = new FilePicker(choose_folder, false, [], false, 1, true, main_listener_$("#theFolder").val());
     f.pick().then(
         function (value) {
-            updateDB($('#theFolder').data('table'), $('#theFolder').data('column'), value, $('#theFolder').data('id'));
+            updateDB(main_listener_$('#theFolder').data('table'), main_listener_$('#theFolder').data('column'), value, main_listener_$('#theFolder').data('id'));
             configuration(mainFunction_path);
         }
     );
 });
 
-$('body').on('change', '.editableSelect', function () { 
-    updateDB($(this).data('table'), $(this).data('column'), $(this).val(), $(this).data('id')); 
+main_listener_$('body').on('change', '.editableSelect', function () { 
+    updateDB(main_listener_$(this).data('table'), main_listener_$(this).data('column'), main_listener_$(this).val(), main_listener_$(this).data('id')); 
 });
 
-$('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
-$('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
+main_listener_$('body').on('click', '.menu', function () { main_listener_$('#menu-' + this.dataset.menu).toggleClass('open'); });
+main_listener_$('body').on('click', '.modalClose', function () { var modal = main_listener_$(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
 document.body.addEventListener('click', e => {
     console.log(e.target.id);
@@ -37388,27 +37413,27 @@ document.body.addEventListener('mouseover', e => {
     }
 });
 
-$('body').on('dblclick', '.selectableDevis', function () {
-    var id = $(this).data('id');
-    var table = $(this).data('table');
-    var column = $(this).data('column');
-    $(this).text("");
-    $(this).html('<select id="listDevis">');
-    listDevis($('#listDevis'), id, table, column);
+main_listener_$('body').on('dblclick', '.selectableDevis', function () {
+    var id = main_listener_$(this).data('id');
+    var table = main_listener_$(this).data('table');
+    var column = main_listener_$(this).data('column');
+    main_listener_$(this).text("");
+    main_listener_$(this).html('<select id="listDevis">');
+    listDevis(main_listener_$('#listDevis'), id, table, column);
 });
 
-$('body').on('dblclick', '.selectable', function () {
-    var id = $(this).data('id');
-    var produitid = $(this).data('val');
-    $(this).text("");
-    $(this).html('<select id="listProduit">');
-    listProduit($('#listProduit'), id, produitid);
+main_listener_$('body').on('dblclick', '.selectable', function () {
+    var id = main_listener_$(this).data('id');
+    var produitid = main_listener_$(this).data('val');
+    main_listener_$(this).text("");
+    main_listener_$(this).html('<select id="listProduit">');
+    listProduit(main_listener_$('#listProduit'), id, produitid);
 });
 
-$('body').on('click', '.deleteItem', function () {
-    var id = $(this).data('id');
-    var table = $(this).data('table');
-    var modifier = $(this).data('modifier');
+main_listener_$('body').on('click', '.deleteItem', function () {
+    var id = main_listener_$(this).data('id');
+    var table = main_listener_$(this).data('table');
+    var modifier = main_listener_$(this).data('modifier');
     deleteDB(table, id);
     var dt = new (jquery_dataTables_default())('.tabledt');
     if (modifier === "getProduitsById") { getProduitsById(); }
@@ -37418,52 +37443,52 @@ $('body').on('click', '.deleteItem', function () {
     if (modifier === "produit") { Produit.loadProduitDT(dt); }
 });
 
-$('body').on('change', '.listClient,.listDevis', function () {
-    var myDiv = $(this).parents("div");
-    var id = $(myDiv).data('id');
+main_listener_$('body').on('change', '.listClient,.listDevis', function () {
+    var myDiv = main_listener_$(this).parents("div");
+    var id = main_listener_$(myDiv).data('id');
     var val = this.value;
-    var column = $(myDiv).data('column');
-    var table = $(myDiv).data('table');
+    var column = main_listener_$(myDiv).data('column');
+    var table = main_listener_$(myDiv).data('table');
     this.setAttribute('data-current', this.value)
     updateDB(table, column, val, id);
 })
 
-$('body').on('change', '.inputDate', function () {
-    var id = $(this).data('id');
+main_listener_$('body').on('change', '.inputDate', function () {
+    var id = main_listener_$(this).data('id');
     var val = this.value;
-    var column = $(this).data('column');
-    var table = $(this).data('table');
+    var column = main_listener_$(this).data('column');
+    var table = main_listener_$(this).data('table');
     updateDB(table, column, val, id);
 })
 
-$('body').on('change', '#listProduit,#listDevis', function () {
-    var id = $(this).find(':selected').data('id')
-    var val = $(this).find(':selected').data('val')
-    var column = $(this).find(':selected').data('column')
-    var table = $(this).find(':selected').data('table')
-    var el = $(this).parent();
+main_listener_$('body').on('change', '#listProduit,#listDevis', function () {
+    var id = main_listener_$(this).find(':selected').data('id')
+    var val = main_listener_$(this).find(':selected').data('val')
+    var column = main_listener_$(this).find(':selected').data('column')
+    var table = main_listener_$(this).find(':selected').data('table')
+    var el = main_listener_$(this).parent();
 
     updateDB(table, column, val, id);
 
     if (el.get(0).className === "selectableClient_devis") {
         getClientByIdDevis(id);
     }
-    if ($(this).attr('id') === "listProduit") {
+    if (main_listener_$(this).attr('id') === "listProduit") {
         getProduitsById();
     }
 
-    el.text($(this).val());
+    el.text(main_listener_$(this).val());
     el.attr('data-val', id);
 
 });
 
-$('body').on('click', '#devisAdd', function () {
-    var devis_id = $('#devisid').data('id');
+main_listener_$('body').on('click', '#devisAdd', function () {
+    var devis_id = main_listener_$('#devisid').data('id');
     var produit_devis = {
         id: devis_id
     };
 
-    $.ajax({
+    main_listener_$.ajax({
         url: mainFunction_baseUrl + '/insertProduitDevis',
         type: 'POST',
         contentType: 'application/json',
@@ -37475,7 +37500,7 @@ $('body').on('click', '#devisAdd', function () {
     });
 });
 
-$('body').on('click', '#about', function () {
+main_listener_$('body').on('click', '#about', function () {
     var modal = document.getElementById("modalConfig");
     modal.style.display = "block";
 });
@@ -37722,6 +37747,7 @@ function getFormatNumber(format){
 }
 
 ;// CONCATENATED MODULE: ./src/js/configuration.js
+/* provided dependency */ var configuration_$ = __webpack_require__(9755);
 
 
 
@@ -37731,80 +37757,48 @@ function getFormatNumber(format){
 
 
 
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener("DOMContentLoaded", function () {
     globalConfiguration(false);
-
-
     configuration(loadConfigurationDT);
 
     /* LISTENER */
-
-    var HelpSection = document.getElementById('HelpSection');
-    HelpSection.addEventListener('click', function(){
+    var HelpSection = document.getElementById("HelpSection");
+    HelpSection.addEventListener("click", function(){
         var modal = document.getElementById("ConfigurationHelp");
         modal.style.display = "block";
     });
-
 });
 
-
 function loadConfigurationDT(response) {
-    $.each(JSON.parse(response), function (arrayID, myresp) {
-        // console.table(myresp)
-        document.getElementById('entreprise').innerHTML             = (((myresp.entreprise.length === 0) ? '-' : myresp.entreprise));
-        document.getElementById('nom').innerHTML                    = ((myresp.nom.length === 0) ? '-' : myresp.nom)
-        document.getElementById('prenom').innerHTML                 = ((myresp.prenom.length === 0) ? '-' : myresp.prenom)
-        document.getElementById('adresse').innerHTML                = ((myresp.adresse.length === 0) ? '-' : myresp.adresse)
-        document.getElementById('legal_one').innerHTML              = ((myresp.legal_one.length === 0) ? '-' : myresp.legal_one)
-        document.getElementById('legal_two').innerHTML              = ((myresp.legal_two.length === 0) ? '-' : myresp.legal_two)
-        document.getElementById('telephone').innerHTML              = ((myresp.telephone.length === 0) ? '-' : myresp.telephone)
-        document.getElementById('mail').innerHTML                   = ((myresp.mail.length === 0) ? '-' : myresp.mail)
-        document.getElementById('tva_default').innerHTML            = ((myresp.tva_default.length === 0) ? '-' : myresp.tva_default)
-        document.getElementById('auto_invoice_number').innerHTML    = getAutoIncrement(myresp.auto_invoice_number)
-        document.getElementById('currency').innerHTML               = getCurrencyList(myresp.devise)
-        document.getElementById('format').innerHTML                 = getFormatList(myresp.format)
-        document.getElementById('mentions_default').innerHTML       = ((myresp.mentions_default.length === 0) ? '-' : myresp.mentions_default.replace(/\&amp;/g, '&'))
-        
-        // $('#nom')               .html(((myresp.nom.length === 0) ? '-' : myresp.nom));
-        // $('#prenom')            .html(((myresp.prenom.length === 0) ? '-' : myresp.prenom));
-        // $('#adresse')           .html(((myresp.adresse.length === 0) ? '-' : myresp.adresse));
-        // $('#legal_one')         .html(((myresp.legal_one.length === 0) ? '-' : myresp.legal_one));
-        // $('#legal_two')         .html(((myresp.legal_two.length === 0) ? '-' : myresp.legal_two));
-        // $('#telephone')         .html(((myresp.telephone.length === 0) ? '-' : myresp.telephone));
-        // $('#mail')              .html(((myresp.mail.length === 0) ? '-' : myresp.mail));
-        // $('#tva_default')       .html(((myresp.tva_default.length === 0) ? '-' : myresp.tva_default));
-        // $('#auto_invoice_number').html(getAutoIncrement(myresp.auto_invoice_number));
-        // $('#currency')          .html(getCurrencyList(myresp.devise));
-        // $('#format')            .html(getFormatList(myresp.format));
-        // $('#mentions_default')  .html(((myresp.mentions_default.length === 0) ? '-' : myresp.mentions_default.replace(/\&amp;/g, '&')));
+    configuration_$.each(JSON.parse(response), function (arrayID, myresp) {
 
-        document.getElementById('entreprise')       .setAttribute("data-id", myresp.id);
-        document.getElementById('nom')       .setAttribute("data-id", myresp.id);
-        document.getElementById('prenom')       .setAttribute("data-id", myresp.id);
-        document.getElementById('adresse')       .setAttribute("data-id", myresp.id);
-        document.getElementById('legal_one')       .setAttribute("data-id", myresp.id);
-        document.getElementById('legal_two')       .setAttribute("data-id", myresp.id);
-        document.getElementById('telephone')       .setAttribute("data-id", myresp.id);
-        document.getElementById('mail')       .setAttribute("data-id", myresp.id);
-        document.getElementById('tva_default')       .setAttribute("data-id", myresp.id);
-        document.getElementById('auto_invoice_number')       .setAttribute("data-id", myresp.id);
-        document.getElementById('currency')       .setAttribute("data-id", myresp.id);
-        document.getElementById('format')       .setAttribute("data-id", myresp.id);
-        document.getElementById('mentions_default')       .setAttribute("data-id", myresp.id);
+        document.getElementById("entreprise").innerHTML             = (((myresp.entreprise.length === 0) ? "-" : myresp.entreprise));
+        document.getElementById("nom").innerHTML                    = ((myresp.nom.length === 0) ? "-" : myresp.nom);
+        document.getElementById("prenom").innerHTML                 = ((myresp.prenom.length === 0) ? "-" : myresp.prenom);
+        document.getElementById("adresse").innerHTML                = ((myresp.adresse.length === 0) ? "-" : myresp.adresse);
+        document.getElementById("legal_one").innerHTML              = ((myresp.legal_one.length === 0) ? "-" : myresp.legal_one);
+        document.getElementById("legal_two").innerHTML              = ((myresp.legal_two.length === 0) ? "-" : myresp.legal_two);
+        document.getElementById("telephone").innerHTML              = ((myresp.telephone.length === 0) ? "-" : myresp.telephone);
+        document.getElementById("mail").innerHTML                   = ((myresp.mail.length === 0) ? "-" : myresp.mail);
+        document.getElementById("tva_default").innerHTML            = ((myresp.tva_default.length === 0) ? "-" : myresp.tva_default);
+        document.getElementById("auto_invoice_number").innerHTML    = getAutoIncrement(myresp.auto_invoice_number);
+        document.getElementById("currency").innerHTML               = getCurrencyList(myresp.devise);
+        document.getElementById("format").innerHTML                 = getFormatList(myresp.format);
+        document.getElementById("mentions_default").innerHTML       = ((myresp.mentions_default.length === 0) ? "-" : myresp.mentions_default.replace(/\&amp;/g, "&"));
 
-        // $('#entreprise')            .setAttribute("data-id", myresp.id);
-        // $('#nom')                   .setAttribute("data-id", myresp.id);
-        // $('#prenom')                .setAttribute("data-id", myresp.id);((myresp.nom.length === 0) ? '-' : myresp.nom)
-        // $('#adresse')               .setAttribute("data-id", myresp.id);
-        // $('#legal_one')             .setAttribute("data-id", myresp.id);
-        // $('#legal_two')             .setAttribute("data-id", myresp.id);
-        // $('#telephone')             .setAttribute("data-id", myresp.id);
-        // $('#mail')                  .setAttribute("data-id", myresp.id);
-        // $('#tva_default')           .setAttribute("data-id", myresp.id);
-        // $('#auto_invoice_number')   .setAttribute("data-id", myresp.id);
-        // $('#currency')              .setAttribute("data-id", myresp.id);
-        // $('#format')                .setAttribute("data-id", myresp.id);
-        // $('#mentions_default')      .setAttribute("data-id", myresp.id);((myresp.nom.length === 0) ? '-' : myresp.nom)
+        document.getElementById("entreprise")       .setAttribute("data-id", myresp.id);
+        document.getElementById("nom")       .setAttribute("data-id", myresp.id);
+        document.getElementById("prenom")       .setAttribute("data-id", myresp.id);
+        document.getElementById("adresse")       .setAttribute("data-id", myresp.id);
+        document.getElementById("legal_one")       .setAttribute("data-id", myresp.id);
+        document.getElementById("legal_two")       .setAttribute("data-id", myresp.id);
+        document.getElementById("telephone")       .setAttribute("data-id", myresp.id);
+        document.getElementById("mail")       .setAttribute("data-id", myresp.id);
+        document.getElementById("tva_default")       .setAttribute("data-id", myresp.id);
+        document.getElementById("auto_invoice_number")       .setAttribute("data-id", myresp.id);
+        document.getElementById("currency")       .setAttribute("data-id", myresp.id);
+        document.getElementById("format")       .setAttribute("data-id", myresp.id);
+        document.getElementById("mentions_default")       .setAttribute("data-id", myresp.id);
 
     });
 }

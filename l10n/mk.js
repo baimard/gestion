@@ -29,7 +29,6 @@ OC.L10N.register(
     "Last" : "Последна",
     "Next" : "Следна",
     "Previous" : "Предходна",
-    "Choose customer" : "Избери потрошувач",
     "Open" : "Отвори",
     "Email sent" : "Е-порака пратена",
     "Creation in progress …" : "Создавање во тек…",

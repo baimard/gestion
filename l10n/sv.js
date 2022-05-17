@@ -14,6 +14,8 @@ OC.L10N.register(
     "Enable" : "Aktivera",
     "Search" : "Sök",
     "Showing 0 to 0 of 0 entries" : "Visar 0 till 0 av 0 poster",
+    "First" : "Första",
+    "Last" : "Sista",
     "Next" : "Nästa",
     "Previous" : "Föregående",
     "Open" : "Öppen",

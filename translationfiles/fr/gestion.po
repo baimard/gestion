@@ -8,17 +8,17 @@
 # Arnaud Wallon <arnaud@netbeat.be>, 2022
 # Hugo Robert <hugo.robert@protonmail.ch>, 2022
 # Alain Rihs <alainrihs@sunrise.ch>, 2022
-# Benjamin <benjamin@cybercorp.fr>, 2022
 # Ldm Public <ldmpub@gmail.com>, 2022
+# Benjamin <benjamin@cybercorp.fr>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-05-16 03:36+0000\n"
+"POT-Creation-Date: 2022-05-17 03:37+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Ldm Public <ldmpub@gmail.com>, 2022\n"
+"Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -268,7 +268,7 @@ msgstr "Taka bangladais"
 
 #: /app/src/js/modules/list.mjs:22
 msgid "Barbadian Dollar"
-msgstr ""
+msgstr "Dollar de la Barbade"
 
 #: /app/src/js/modules/list.mjs:23 /app/src/js/modules/list.mjs:44
 msgid "Belarusian Ruble"
@@ -280,7 +280,7 @@ msgstr "Dollar bélizéen"
 
 #: /app/src/js/modules/list.mjs:25
 msgid "Bermudan Dollar"
-msgstr ""
+msgstr "Dollar des Bermudes"
 
 #: /app/src/js/modules/list.mjs:26 /app/src/js/modules/list.mjs:42
 msgid "Bhutanese Ngultrum"
@@ -288,19 +288,19 @@ msgstr "Ngultrum bhoutanais"
 
 #: /app/src/js/modules/list.mjs:27
 msgid "Bitcoin"
-msgstr ""
+msgstr "Bitcoin"
 
 #: /app/src/js/modules/list.mjs:28
 msgid "Bolivian Boliviano"
-msgstr ""
+msgstr "Boliviano bolivien"
 
 #: /app/src/js/modules/list.mjs:29
 msgid "Bosnia-Herzegovina Convertible Mark"
-msgstr ""
+msgstr "Mark convertible de Bosnie-Herzégovine"
 
 #: /app/src/js/modules/list.mjs:30
 msgid "Botswanan Pula"
-msgstr ""
+msgstr "Pula du Botswana"
 
 #: /app/src/js/modules/list.mjs:31 /app/src/js/modules/list.mjs:40
 msgid "Brazilian Real"

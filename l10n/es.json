@@ -238,5 +238,5 @@
     "About" : "Acerca de",
     "Save folder" : "Directorio de guardado",
     "Please choose a folder" : "Por favor, elige una carpeta"
-},"pluralForm" :"nplurals=2; plural=(n != 1);"
+},"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

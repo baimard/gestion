@@ -165,6 +165,7 @@ OC.L10N.register(
     "Vanuatu Vatu" : "Vanuatuko Vatua",
     "Samoan Tala" : "Samoako tala",
     "CFA Franc BEAC" : "CFA franko BEAC",
+    "Silver" : "Zilarra",
     "Gold" : "Urrea",
     "East Caribbean Dollar" : "Ekialdeko Karibeko dolarra",
     "Special Drawing Rights" : "Marrazketa Eskubide Bereziak",
@@ -317,6 +318,9 @@ OC.L10N.register(
     "Invoices" : "Fakturak",
     "Products" : "Produktuak",
     "Information" : "Informazioa",
+    "Backup all data" : "Babestu datu guztiak",
+    "Backup now!" : "Egin babeskopia orain!",
+    "Restore now!" : "Berezarri orain!",
     "About" : "Honi buruz",
     "Save folder" : "Gorde karpeta",
     "Please choose a folder" : "Mesedez aukeratu karpeta bat"

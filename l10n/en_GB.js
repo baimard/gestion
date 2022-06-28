@@ -29,6 +29,7 @@ OC.L10N.register(
     "Send" : "Send",
     "Configuration" : "Configuration",
     "Need help?" : "Need help?",
+    "Loading …" : "Loading …",
     "ID" : "ID",
     "Customer quote" : "Quote number",
     "Version" : "Version",

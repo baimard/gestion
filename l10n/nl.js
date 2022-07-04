@@ -30,6 +30,7 @@ OC.L10N.register(
     "Cancel" : "Annuleren",
     "Save in" : "Bewaren in",
     "There is an error" : "Er is een fout",
+    "Bitcoin" : "Bitcoin",
     "Algerian Dinar" : "Algerijnse Dinar",
     "Egyptian Pound" : "Egyptische Pond",
     "Euro" : "Euro",

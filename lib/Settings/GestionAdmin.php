@@ -23,14 +23,10 @@ class GestionAdmin implements ISettings {
                                 Bdd $myDb,
                                 IURLGenerator $urlGenerator,
                                 IL10N $l) {
-
         $this->idNextcloud = $UserId;
         $this->myDb = $myDb;
         $this->urlGenerator = $urlGenerator;
         $this->l = $l;
-
-
-
     }
 
     /**
@@ -40,6 +36,9 @@ class GestionAdmin implements ISettings {
         return new TemplateResponse('gestion', 'settings/admin', array("url" => $this->urlGenerator->linkToRouteAbsolute("gestion.admin.dump")));
     }
 
+    /**
+     * @return String
+     */
     public function getSection() {
         return 'gestion';
     }

@@ -59,6 +59,7 @@
                     <tr>
                         <th><?php p($l->t('Reference'));?></th>
                         <th><?php p($l->t('Designation'));?></th>
+                        <th><?php p($l->t('Comment'));?></th>
                         <th><?php p($l->t('Quantity'));?></th>
                         <th><?php p($l->t('Unit price without VAT'));?></th>
                         <th><?php p($l->t('Total without VAT'));?></th>

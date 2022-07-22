@@ -27,7 +27,6 @@ class GestionAdmin implements ISettings {
         $this->idNextcloud = $UserId;
         $this->myDb = $myDb;
         $this->urlGenerator = $urlGenerator;
-        $this->mailer = $mailer;
         $this->l = $l;
 
 

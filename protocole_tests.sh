@@ -20,7 +20,7 @@ docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make npm-init ;
 
 echo "Initialisation de la base de données"
 docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/Panther/initMysqlTest.php"
-docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/Panther/initPgsqlTest.php"
+# docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/Panther/initPgsqlTest.php"
 
 sleep 10
 

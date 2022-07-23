@@ -1,5 +1,5 @@
 <ul class="app-navigation">
-    <li class="app-navigation-entry"><span class="navmarg"></span><b><?php p($l->t('Manage'));?></b></li>
+	<li class="app-navigation-entry"><span class="navmarg"></span><b><?php p($l->t('Manage'));?></b></li>
 	<li class="app-navigation-entry">
 		<ul class="app-navigation">
 			<li class="app-navigation-entry"><span class="navmarg icon-contacts-dark"></span><a class="a-entry" href="<?php echo($_['url']['index']); ?>"><?php p($l->t('Customers'));?></a>
@@ -38,4 +38,5 @@
 			<li class="app-navigation-entry"><span class="navmarg icon-toggle-pictures"></span><a href="<?php echo($_['url']['statistique']); ?>"><?php p($l->t('Statistics'));?></a></li>
 		</ul>
 	</li>
+	<li><center><a href="#"><button id="about" style="margin-left:10px;width:280px;"><?php p($l->t('About'));?></button></a></center></li>
 </ul>

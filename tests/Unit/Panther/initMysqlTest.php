@@ -10,7 +10,7 @@ $client->executeScript("document.getElementById('showAdvanced').click()");
 $client->waitForVisibility('#mysql');
 $client->executeScript("document.getElementById('mysql').click()");
 
-$client->submitForm("Finish setup", [
+$client->submitForm("Install", [
     'adminlogin' => 'nextcloud',
     'adminpass' => 'nextcloud',
     'dbuser' => 'nextcloud',

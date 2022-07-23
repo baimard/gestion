@@ -44,8 +44,8 @@
     PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
 
-/*! DataTables 1.11.5
- * ©2008-2021 SpryMedia Ltd - datatables.net/license
+/*! DataTables 1.12.1
+ * ©2008-2022 SpryMedia Ltd - datatables.net/license
  */
 
 /**

@@ -2,12 +2,11 @@
 	<div class="modal-content">
 		<span class="modalClose">&times;</span>
 		<h2><?php p($l->t('Welcome to GESTION')); ?> 2.1.3</h2>
-		<p style="margin-bottom:20px;"><b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> &#128073; <a href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a></p>
-		<p style="margin-bottom:20px;">&#9888; <u><?php p($l->t('If you have updated this application, do not forget to clear your cache')); ?></u> &#9888;</p>
-		<p style="margin-bottom:20px;"><?php p($l->t('This application is open source and is designed by Benjamin AIMARD.')); ?></p>
-		<p style="margin-bottom:20px;">
-				<?php p($l->t('If you like my work you can:')); ?> &#129321; <a href="https://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a coffee')); ?></a> &#129321;
-		<br/>	<?php p($l->t('If you need documentation, follow this link')); ?> &#128073; <a href="https://baimard.github.io/gestion/"><?php p($l->t('Documentation')); ?></a>
+		<p style="font-size:20px;margin-bottom:20px;"><b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> &#128073;<a style="font-size:20px;" href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a></p>
+		
+		<p style="font-size:20px;"><b><?php p($l->t('If you like my work you can:')); ?> &#129321; <a href="https://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a coffee')); ?></a></b> &#129321;</p>
+		<br/>
+		<p style="margin-bottom:20px;"><?php p($l->t('If you need documentation, follow this link')); ?> &#128073; <a href="https://baimard.github.io/gestion/"><?php p($l->t('Documentation')); ?></a>
 		<br/>	<?php p($l->t('Others questions?')); ?> &#128073; <a href="mailto:contact@cybercorp.fr"><?php p($l->t('Contact')); ?></a>
 		<br/>	<?php p($l->t('Leave me a comment, but only if you like this application :)')); ?> &#128073; <a href="https://apps.nextcloud.com/apps/gestion"><?php p($l->t('Nextcloud apps')); ?></a>
 		<br/>	<?php p($l->t('Want to talk with the community?')); ?> &#128073; <a href="https://github.com/baimard/gestion/discussions"><?php p($l->t('Git discussion')); ?></a>

@@ -142,7 +142,7 @@ class Bdd {
     public function gestion_update($table, $column, $data, $id, $idNextcloud){
         if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
             $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ? AND `id_nextcloud` = ?";
-            $this->execSQLNoData($sql, array(rtrim($data), $id, $idNextcloud));
+            $this->execSQLNoData($sql, array(htmlentities(rtrim($data)), $id, $idNextcloud));
             return true;
         }
         return false;

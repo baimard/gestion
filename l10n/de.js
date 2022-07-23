@@ -106,6 +106,7 @@ OC.L10N.register(
     "CFA Franc BEAC" : "CFA Franken BEAC",
     "CFA Franc BCEAO" : "CFA Franken BCEAO",
     "CFP Franc" : "CFP-Franken",
+    "Disable" : "Benötigt keine Übersetzung. Hier wird nur die formelle Übersetzung verwendet (de_DE). ",
     "Search" : "Suche",
     "No data available in table" : "Keine Daten in der Tabelle vorhanden",
     "Showing {start} to {end} of {total} entries" : "{start} bis {end} von {total} Einträgen anzeigen",

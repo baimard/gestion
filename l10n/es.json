@@ -247,8 +247,6 @@
     "Welcome to GESTION" : "Bienvenido/a a GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Para empezar con esta aplicación debes configurar la información de tu empresa, sigue este enlace",
     "My company" : "Mi empresa",
-    "If you have updated this application, do not forget to clear your cache" : "Si ha actualizado esta aplicación, no olvide borrar su caché",
-    "This application is open source and is designed by Benjamin AIMARD." : "Esta aplicación es de código abierto y está diseñada por Benjamin AIMARD.",
     "If you like my work you can:" : "Si le gusta mi trabajo, puede:",
     "buy me a coffee" : "comprarme un café",
     "If you need documentation, follow this link" : "Si necesitas documentación, sigue este enlace",
@@ -366,12 +364,12 @@
     "Invoices" : "Facturas",
     "Products" : "Productos",
     "Information" : "Información",
+    "About" : "Acerca de",
     "Backup all data" : "Hacer una copia de seguridad de todos los datos",
     "You can save all Gestion app data." : "Puedes guardar todos los datos de la aplicación Gestion.",
     "Backup now!" : "Hacer copia de seguridad ahora",
     "You can restore a backup file for Gestion (in next release)." : "Puede restaurar un archivo de copia de seguridad para Gestion (en la próxima versión).",
     "Restore now!" : "Restaurar ahora",
-    "About" : "Acerca de",
     "Save folder" : "Directorio de guardado",
     "Please choose a folder" : "Por favor, elige una carpeta"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"

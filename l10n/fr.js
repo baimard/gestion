@@ -197,8 +197,6 @@ OC.L10N.register(
     "Welcome to GESTION" : "Bienvenue dans GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Pour commencer avec cette application, vous devez configurer les informations de votre entreprise, suivez ce lien",
     "My company" : "Mon entreprise",
-    "If you have updated this application, do not forget to clear your cache" : "Si vous avez mis à jour l'application, pensez à effacer votre cache",
-    "This application is open source and is designed by Benjamin AIMARD." : "Cette application est open source et a été crée par Benjamin AIMARD.",
     "If you like my work you can:" : "Si vous aimez mon travail vous pouvez :",
     "buy me a coffee" : "m'acheter un café",
     "If you need documentation, follow this link" : "Si vous avez besoin de documentation, suivez ce lien",

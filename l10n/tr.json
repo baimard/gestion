@@ -247,8 +247,6 @@
     "Welcome to GESTION" : "GESTION uygulamasına hoş geldiniz",
     "To start with this application you need to configure your company information, follow this link" : "Bu uygulamayı kullanmaya başlamak için kurum bilgilerinizi eklemelisiniz. Bu bağlantıyı açın",
     "My company" : "Kurumum",
-    "If you have updated this application, do not forget to clear your cache" : "Bu uygulamayı güncellediyseniz ön belleği temizlemeyi unutmayın",
-    "This application is open source and is designed by Benjamin AIMARD." : "Benjamin AIMARD tarafından geliştirilmiş açık kaynaklı bir uygulamadır.",
     "If you like my work you can:" : "Beğendiyseniz:",
     "buy me a coffee" : "bana bir kahve ısmarlayabilirsiniz",
     "If you need documentation, follow this link" : "Belgelere erişmek için bu bağlantıyı açın",
@@ -366,12 +364,12 @@
     "Invoices" : "Faturalar",
     "Products" : "Ürünler",
     "Information" : "Bilgiler",
+    "About" : "Hakkında",
     "Backup all data" : "Tüm verileri yedekle",
     "You can save all Gestion app data." : "Gestion uygulamasındaki tüm verileri kaydedebilirsiniz.",
     "Backup now!" : "Yedekle",
     "You can restore a backup file for Gestion (in next release)." : "Bir Gestion yedek dosyasını geri yükleyebilirsiniz (gelecek sürümde).",
     "Restore now!" : "Geri yükle",
-    "About" : "Hakkında",
     "Save folder" : "Kayıt klasörü",
     "Please choose a folder" : "Lütfen bir klasör seçin"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"

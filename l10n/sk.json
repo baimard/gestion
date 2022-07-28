@@ -238,8 +238,6 @@
     "Welcome to GESTION" : "Vitajte v GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Ak chcete začať s touto aplikáciou, musíte nakonfigurovať informácie o vašej spoločnosti, kliknite na tento odkaz",
     "My company" : "Moja spoločnosť",
-    "If you have updated this application, do not forget to clear your cache" : "Ak ste túto aplikáciu aktualizovali, nezabudnite vymazať vyrovnávaciu pamäť.",
-    "This application is open source and is designed by Benjamin AIMARD." : "Táto aplikácia je open source aplikácia a navrhnutá Benjaminom AIMARD.",
     "If you like my work you can:" : "Ak máte moju prácu radi, môžete:",
     "buy me a coffee" : "kúpiť kávu",
     "If you need documentation, follow this link" : "Ak potrebujete dokumentáciu, nasledujte tento odkaz",
@@ -353,9 +351,9 @@
     "Invoices" : "Faktúry",
     "Products" : "Produkty",
     "Information" : "Informácia",
+    "About" : "O aplikácii",
     "Backup now!" : "Zálohuj teraz!",
     "Restore now!" : "Obnoviť teraz!",
-    "About" : "O aplikácii",
     "Save folder" : "Uložiť priečinok",
     "Please choose a folder" : "Prosím vyberte priečinok"
 },"pluralForm" :"nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"

@@ -56,8 +56,6 @@ OC.L10N.register(
     "Welcome to GESTION" : "Benvenuto in GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Prima di iniziare a utilizzare questo applicativo inserisci in dati della tua azienda, segui questo collegamento",
     "My company" : "Mia azienda",
-    "If you have updated this application, do not forget to clear your cache" : "Se hai aggiornato questa applicazione, non dimenticare di svuotare la cache",
-    "This application is open source and is designed by Benjamin AIMARD." : "Questa applicazione è un programma open source progettata da Benjamin AIMARD.",
     "If you like my work you can:" : "Se ti piace il mio lavoro puoi:",
     "buy me a coffee" : "offrimi un caffè",
     "If you need documentation, follow this link" : "Se hai bisogno della documentazione, segui questo collegamento",

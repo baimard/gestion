@@ -247,8 +247,6 @@
     "Welcome to GESTION" : "Üdvözli a Menedzsment",
     "To start with this application you need to configure your company information, follow this link" : "Az alkalmazás indításához be kell állítania a vállalata adatait, kövesse ezt a hivatkozást",
     "My company" : "Saját vállalat",
-    "If you have updated this application, do not forget to clear your cache" : "Ha frissítette az alkalmazást, akkor ne felejtse el törölni a gyorsítótárat",
-    "This application is open source and is designed by Benjamin AIMARD." : "Ez az alkalmazás nyílt forráskódú, és Benjamin AIMARD tervezte.",
     "If you like my work you can:" : "Ha tetszik a munkám, akkor:",
     "buy me a coffee" : "vegyen nekem egy kávét",
     "If you need documentation, follow this link" : "Ha dokumentációra van szüksége, kövesse ezt a hivatkozást",
@@ -366,12 +364,12 @@
     "Invoices" : "Számlák",
     "Products" : "Termékek",
     "Information" : "Információk",
+    "About" : "Névjegy",
     "Backup all data" : "Összes adat biztonsági mentése",
     "You can save all Gestion app data." : "Elmentheti a Menedzsment összes alkalmazásadatát.",
     "Backup now!" : "Biztonsági mentés most!",
     "You can restore a backup file for Gestion (in next release)." : "Helyreállíthatja a Menedzsment biztonsági mentését (a következő kiadásban).",
     "Restore now!" : "Helyreállítás most!",
-    "About" : "Névjegy",
     "Save folder" : "Mentési mappa",
     "Please choose a folder" : "Válasszon egy mappát"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

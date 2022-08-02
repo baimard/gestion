@@ -28,7 +28,7 @@ class JsTest extends PantherTestCase {
 
         //Check page showing
         $crawler = $client->waitForVisibility('#newClient');
-        $this->assertEquals('Ajouter client',$crawler->filter('#newClient')->text());
+        $this->assertEquals('Add customer',$crawler->filter('#newClient')->text());
 
         //Sorting (this is for the screenshot)
         $client->executeScript("document.getElementById('client').childNodes[1].childNodes[1].childNodes[0].click()");

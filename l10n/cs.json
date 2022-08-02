@@ -247,8 +247,6 @@
     "Welcome to GESTION" : "Vítejte v GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Pokud chcete začít pracovat s touto aplikací, je třeba nastavit údaje o své společnosti – následujte tento odkaz",
     "My company" : "Moje firma",
-    "If you have updated this application, do not forget to clear your cache" : "Po aktualizaci této aplikace nezapomeňte vyprázdnit její mezipaměť",
-    "This application is open source and is designed by Benjamin AIMARD." : "Tato aplikace je open source a tvoří ji Benjamin AIMARD.",
     "If you like my work you can:" : "Pokud se vám můj výtvor líbí, můžete:",
     "buy me a coffee" : "kupte mi kafe",
     "If you need documentation, follow this link" : "Pokud potřebujte dokumentaci, následujte tento odkaz",
@@ -366,12 +364,12 @@
     "Invoices" : "Faktury",
     "Products" : "Produkty",
     "Information" : "Informace",
+    "About" : "O aplikaci",
     "Backup all data" : "Zazálohovat veškerá data",
     "You can save all Gestion app data." : "Je možné si uložit veškerá data aplikace Gestion",
     "Backup now!" : "Zazálohovat nyní!",
     "You can restore a backup file for Gestion (in next release)." : "Je možné obnovit ze souboru se zálohou Gestion (v příštím vydání).",
     "Restore now!" : "Obnovit nyní!",
-    "About" : "O aplikaci",
     "Save folder" : "Složka pro ukládání",
     "Please choose a folder" : "Zvolte složku"
 },"pluralForm" :"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"

@@ -208,7 +208,6 @@
     "Welcome to GESTION" : "Dobrodošli v program GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Za uporabo programa je treba najprej nastaviti nekaj podatkov podjetja na navedenem naslovu.",
     "My company" : "Moje podjetje",
-    "If you have updated this application, do not forget to clear your cache" : "Po posodobitvi programa je priporočljivo počistiti predpomnilnik.",
     "buy me a coffee" : "plačate kavo",
     "If you need documentation, follow this link" : "Če iščete dokumentacijo, sledi te povezavi",
     "Documentation" : "Dokumentacija",
@@ -293,10 +292,10 @@
     "Invoices" : "Računi",
     "Products" : "Izdelki",
     "Information" : "Podrobnosti",
+    "About" : "O programu",
     "Backup all data" : "Varnostno kopiraj vse podatke",
     "Backup now!" : "Varnostno kopiraj zdaj!",
     "Restore now!" : "Obnovi zdaj!",
-    "About" : "O programu",
     "Save folder" : "Shrani mapo",
     "Please choose a folder" : "Izbrati je treba mapo"
 },"pluralForm" :"nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"

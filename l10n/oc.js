@@ -37,6 +37,7 @@ OC.L10N.register(
     "Version" : "Version",
     "Status" : "Estat",
     "Actions" : "Accions",
+    "Invoice" : "Factura",
     "Year" : "Annada",
     "January" : "Genièr",
     "February" : "Febrièr",

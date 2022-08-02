@@ -247,8 +247,6 @@
     "Welcome to GESTION" : "Добре дошли в GESTION",
     "To start with this application you need to configure your company information, follow this link" : "За да стартирате това приложение, трябва да конфигурирате информацията за вашата компания, последвайте тази връзка",
     "My company" : "Моята фирма",
-    "If you have updated this application, do not forget to clear your cache" : "Ако сте обновили това приложение, не забравяйте да изчистите вашият кеш",
-    "This application is open source and is designed by Benjamin AIMARD." : "Това приложение е с отворен код и е по дизайн на Benjamin AIMARD.",
     "If you like my work you can:" : "Ако харесвате работата ми, можете:",
     "buy me a coffee" : "да ми купите кафе",
     "If you need documentation, follow this link" : "Ако имате нужда от документация, последвайте тази връзка",
@@ -366,12 +364,12 @@
     "Invoices" : "Фактури",
     "Products" : "Продукти",
     "Information" : "Информация",
+    "About" : "Относно",
     "Backup all data" : "Архивиране на всички данни",
     "You can save all Gestion app data." : "Можете да запишете всички данни на приложението Gestion.",
     "Backup now!" : "Архивирайте сега!",
     "You can restore a backup file for Gestion (in next release)." : "Можете да възстановите архивиран файл за Gestion (в следващата версия).",
     "Restore now!" : "Възстановете сега!",
-    "About" : "Относно",
     "Save folder" : "Запис на папка",
     "Please choose a folder" : "Моля, изберете папка"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

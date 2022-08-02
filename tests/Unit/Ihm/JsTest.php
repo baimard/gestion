@@ -10,19 +10,21 @@ class JsTest extends PantherTestCase {
 
 	public function setUp(): void{
 		parent::setUp();
-        $this->url = "http://next.cybercorp.fr";
+        $this->url = "http://127.0.0.1";
     }
 
     public function testClient(): void {
         $client = Client::createFirefoxClient();
         $client->request('GET', $this->url.'/index.php/apps/gestion');
 
-        // $client->submitForm('submit-form', [
-        //     'user' => 'nextcloud',
-        //     'password' => 'nextcloud' // Not my real pass ...
-        // ]);
+        $client->submitForm('submit-form', [
+            'user' => 'nextcloud',
+            'password' => 'nextcloud' // Not my real pass ...
+        ]);
 
         $client->request('GET', $this->url.'/index.php/apps/gestion');
+
+        $client->takeScreenshot('tests/Unit/Panther/screens/index_test_first.png');
 
         //Check page showing
         $crawler = $client->waitForVisibility('#newClient');

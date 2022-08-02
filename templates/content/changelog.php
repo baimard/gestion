@@ -4,7 +4,7 @@
 		<h2><?php p($l->t('Welcome to GESTION')); ?> 2.1.5</h2>
 		<p style="font-size:20px;margin-bottom:20px;"><b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> &#128073;<a style="font-size:20px;" href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a></p>
 		
-		<p style="font-size:20px;"><b><?php p($l->t('If you like my work you can:')); ?> &#129321; <a href="https://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a coffee')); ?></a></b> &#129321;</p>
+		<p style="font-size:20px;"><b><?php p($l->t('If you like my work you can:')); ?> &#129321; <a href="hgit ttps://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a coffee')); ?></a></b> &#129321;</p>
 		<br/>
 		<p style="margin-bottom:20px;"><?php p($l->t('If you need documentation, follow this link')); ?> &#128073; <a href="https://baimard.github.io/gestion/"><?php p($l->t('Documentation')); ?></a>
 		<br/>	<?php p($l->t('Others questions?')); ?> &#128073; <a href="mailto:contact@cybercorp.fr"><?php p($l->t('Contact')); ?></a>

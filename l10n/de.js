@@ -148,7 +148,7 @@ OC.L10N.register(
     "Send an email" : "E-Mail senden",
     "From" : "Von",
     "To" : "Bis",
-    "Separate multiple recipients by \";\"" : "Trennen Sie mehrere Empfänger durch \";\".",
+    "Separate multiple recipients by \";\"" : "Trenne mehrere Empfänger durch \";\".",
     "Cc" : "Cc",
     "Empty if not used" : "Leer lassen, falls nicht verwendet",
     "Subject" : "Betreff",

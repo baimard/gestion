@@ -17,7 +17,7 @@ export class Devis {
     this.prenom = ((myresp.prenom == null || myresp.prenom.length === 0) ? '-' : myresp.prenom);
     this.version = ((myresp.version == null || myresp.version.length === 0) ? '-' : myresp.version);
     this.mentions = ((myresp.mentions == null || myresp.mentions.length === 0) ? '-' : myresp.mentions);
-    this.baseUrl = getRootUrl() + generateUrl('/apps/gestion');
+    this.baseUrl = generateUrl(`/apps/gestion/devis/${this.id}/show`);
   }
 
   /**
@@ -31,7 +31,7 @@ export class Devis {
       '<div class="loadSelect_listclient" data-table="devis" data-column="id_client" data-id="' + this.id + '" data-current="' + this.cid + '">'+ this.cid + ' ' + this.prenom + ' ' + this.nom + '</div>',
       '<div class="editable" data-table="devis" data-column="version" data-id="' + this.id + '" style="display:inline">' + this.version + '</div>',
       '<div class="editable" data-table="devis" data-column="mentions" data-id="' + this.id + '" style="display:inline">' + this.mentions + '</div>',
-      '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl + "/devis/" + this.id + '/show"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="devis" data-id=' + this.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
+      '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl + '"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="devis" data-id=' + this.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
     ];
     return myrow;
   }

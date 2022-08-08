@@ -22,7 +22,7 @@ export class Facture {
     this.prenom = ((myresp.prenom == null || myresp.prenom.length === 0) ? '-' : myresp.prenom);
     this.status_paiement = ((myresp.status_paiement == null || myresp.status_paiement.length === 0) ? '-' : myresp.status_paiement);
     this.id_devis = ((myresp.id_devis == null || myresp.id_devis.length === 0) ? '-' : myresp.id_devis);
-    this.baseUrl = getRootUrl() + generateUrl('/apps/gestion');
+    this.baseUrl = generateUrl(`/apps/gestion/facture/${this.id}/show`);
   }
 
   /**
@@ -38,7 +38,7 @@ export class Facture {
       '<div class="loadSelect_listdevis" data-table="facture" data-column="id_devis" data-id="' + this.id + '" data-current="' + this.id_devis + '">' + this.dnum + " " + this.prenom + " " + this.nom + '</div>',
       '<div class="editable" data-table="facture" data-column="version" data-id="' + this.id + '" style="display:inline">' + this.version + '</div>',
       '<div class="editable" data-table="facture" data-column="status_paiement" data-id="' + this.id + '" style="display:inline">' + this.status_paiement + '</div>',
-      '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl + '/facture/' + this.id + '/show"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="facture" data-id=' + this.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
+      '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl +'"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="facture" data-id=' + this.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
     ];
     return myrow;
   }

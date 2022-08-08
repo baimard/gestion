@@ -36,6 +36,7 @@ OC.L10N.register(
     "Status" : "Staða",
     "Actions" : "Aðgerðir",
     "Send by email" : "Senda með tölvupósti",
+    "Invoice" : "Reikningur",
     "Year" : "Ár",
     "January" : "Janúar",
     "February" : "Febrúar",

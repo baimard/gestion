@@ -63,9 +63,9 @@ function genPDF(imgData, canvas) {
   var body = $("#body").val();
 
   if ($("#factureid").length) {
-    n = "FACTURE_" + $("#pdf").data("name");
+    n = t("gestion", "INVOICE") + "_" + $("#pdf").data("name");
   } else {
-    n = "DEVIS_" + $("#pdf").data("name");
+    n = t("gestion", "QUOTE") + "_" + $("#pdf").data("name");
   }
 
   var myData = { name: n, subject: subject, body: body, to: JSON.stringify(to), Cc : JSON.stringify(Cc), content: pdf, folder: $("#theFolder").val() + "/" + $("#pdf").data("folder") + "/" };

@@ -92,6 +92,14 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
      */
+	public function legalnotice() {
+		return new TemplateResponse('gestion', 'legalnotice', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/statistique.php
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+     */
 	public function config() {
 		$this->myDb->checkConfig($this->idNextcloud);
 		return new TemplateResponse('gestion', 'configuration', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/configuration.php
@@ -150,6 +158,7 @@ class PageController extends Controller {
 						"config" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.config"),
 						"isConfig" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.isConfig"),
 						"statistique" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.statistique"),
+						"legalnotice" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.legalnotice"),
 					);
 	}
 

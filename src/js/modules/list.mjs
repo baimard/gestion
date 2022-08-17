@@ -54,7 +54,6 @@ var currency_list = {
     "COP": t('gestion', 'Colombian Peso'),
     "COU": t('gestion', 'Unidad de Valor Real'),
     "CRC": t('gestion', 'Costa Rican Colon'),
-    "CUC": t('gestion', 'Cuban Convertible Peso'),
 	"CUP": t('gestion', 'Cuban Peso'),
     "CVE": t('gestion', 'Cape Verdean Escudo'),
     "CZK": t('gestion', 'Czech Koruna'),

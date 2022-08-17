@@ -265,7 +265,7 @@ export function saveNextcloud(myData) {
         oReq.setRequestHeader("requesttoken", oc_requesttoken);
         oReq.onload = function(e){
             if (this.status == 200) {
-                showSuccess(t('gestion', 'Save in')+' '+JSON.parse(this.response)['name']+'\n'+t('gestion','(do not forget to show hidden folder)'));
+                showSuccess(t('gestion', 'Save in')+' '+JSON.parse(this.response)['name']+'\n'+t('gestion','(do not forget to show hidden folders)'));
             }else{
                 showError(this.response);
             }

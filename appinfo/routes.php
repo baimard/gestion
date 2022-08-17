@@ -10,6 +10,8 @@ return [
        ['name' => 'page#statistique',           'url' => '/statistique', 'verb' => 'GET'],
        ['name' => 'page#legalnotice',           'url' => '/legalnotice', 'verb' => 'GET'],
 
+       ['name' => 'page#france',                'url' => '/legalnotice/france', 'verb' => 'GET'],
+
        ['name' => 'page#getClients',            'url' => '/getClients', 'verb' => 'PROPFIND'],
        ['name' => 'page#getClient',             'url' => '/client', 'verb' => 'POST'],
        ['name' => 'page#getClientbyiddevis',    'url' => '/clientbyiddevis', 'verb' => 'POST'],
@@ -40,6 +42,8 @@ return [
        ['name' => 'page#savePDF',               'url' => '/savePDF', 'verb' => 'POST'],
        
        ['name' => 'admin#backup',                 'url' => '/backup', 'verb' => 'GET'],
+
+
 
     ]
 ];

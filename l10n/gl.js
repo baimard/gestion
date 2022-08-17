@@ -47,6 +47,7 @@ OC.L10N.register(
     "Customer" : "Cliente",
     "Add customer" : "Engadir cliente",
     "Legal information" : "Información legal",
+    "Legal notice" : "Aviso legal",
     "Product" : "Produto",
     "Statistics" : "Estatísticas",
     "Year" : "Ano",

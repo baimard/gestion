@@ -120,6 +120,7 @@ OC.L10N.register(
     "Settlement date" : "Дата расчёта",
     "Customer" : "Клиент",
     "Add customer" : "Добавить клиента",
+    "Legal notice" : "Официальное уведомление",
     "Product" : "Товар",
     "Year" : "Год",
     "January" : "Январь",

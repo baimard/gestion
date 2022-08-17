@@ -47,6 +47,7 @@ OC.L10N.register(
     "Actions" : "アクション",
     "Save in Nextcloud" : "Nextcloudで保存",
     "Send by email" : "メールで送信",
+    "Legal notice" : "法的通知",
     "Year" : "年",
     "January" : "1月",
     "February" : "2月",

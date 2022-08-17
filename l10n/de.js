@@ -227,6 +227,7 @@ OC.L10N.register(
     "Customer" : "Kunde",
     "Add customer" : "Kunde hinzufügen",
     "Legal information" : "Rechtliche Informationen",
+    "Legal notice" : "Impressum",
     "Product" : "Produkt",
     "Statistics" : "Statistiken",
     "Monthly turnover without VAT" : "Monatsumsatz ohne USt.",

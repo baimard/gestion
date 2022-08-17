@@ -330,6 +330,7 @@ OC.L10N.register(
     "Customer" : "Zákazník",
     "Add customer" : "Pridať zákazníka",
     "Legal information" : "Právne informácie",
+    "Legal notice" : "Právne upozornenie",
     "Product" : "Produkt",
     "Statistics" : "Štatistiky",
     "Monthly turnover without VAT" : "Mesačný obrat bez DPH",

@@ -57,6 +57,7 @@ OC.L10N.register(
     "Invoice #" : "Lasku #",
     "Customer" : "Asiakas",
     "Add customer" : "Lisää asiakas",
+    "Legal notice" : "Lainopillinen huomautus",
     "Product" : "Tuote",
     "Year" : "Vuosi",
     "January" : "tammikuu",

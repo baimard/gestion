@@ -343,6 +343,7 @@ OC.L10N.register(
     "Customer" : "Cliente",
     "Add customer" : "Añadir cliente",
     "Legal information" : "Información legal",
+    "Legal notice" : "Aviso legal",
     "Product" : "Producto",
     "Statistics" : "Estadísticas",
     "Monthly turnover without VAT" : "Facturación mensual sin IVA",

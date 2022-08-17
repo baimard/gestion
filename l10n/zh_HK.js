@@ -343,6 +343,7 @@ OC.L10N.register(
     "Customer" : "顧客",
     "Add customer" : "添加顧客",
     "Legal information" : "法律資訊",
+    "Legal notice" : "法律聲明",
     "Product" : "商品",
     "Statistics" : "統計",
     "Monthly turnover without VAT" : "不含增值稅的月營業額",

@@ -343,6 +343,7 @@ OC.L10N.register(
     "Customer" : "Müşteri",
     "Add customer" : "Müşteri ekle",
     "Legal information" : "Yasal bilgiler",
+    "Legal notice" : "Yasal bildirim",
     "Product" : "Ürün",
     "Statistics" : "İstatistikler",
     "Monthly turnover without VAT" : "KDV hariç aylık ciro",

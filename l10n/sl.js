@@ -272,6 +272,7 @@ OC.L10N.register(
     "Customer" : "Stranka",
     "Add customer" : "Dodaj stranko",
     "Legal information" : "Pravne podrobnosti",
+    "Legal notice" : "Pravno obvestilo",
     "Product" : "Izdelek",
     "Statistics" : "Statistika",
     "Year" : "Leto",

@@ -22,6 +22,7 @@ OC.L10N.register(
     "Version" : "Stumm",
     "Status" : "Statud",
     "Actions" : "Oberoù",
+    "Legal notice" : "Meneg lezenn",
     "Information" : "Titouroù",
     "About" : "Diwar-benn"
 },

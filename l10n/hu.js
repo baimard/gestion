@@ -343,6 +343,7 @@ OC.L10N.register(
     "Customer" : "Ügyfél",
     "Add customer" : "Ügyfél hozzáadása",
     "Legal information" : "Jogi információk",
+    "Legal notice" : "Jogi nyilatkozat",
     "Product" : "Termék",
     "Statistics" : "Statisztika",
     "Monthly turnover without VAT" : "Áfa nélküli havi forgalom",

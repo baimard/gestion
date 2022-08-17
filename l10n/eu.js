@@ -343,6 +343,7 @@ OC.L10N.register(
     "Customer" : "Bezeroa",
     "Add customer" : "Gehitu bezeroa",
     "Legal information" : "Informazio legala",
+    "Legal notice" : "Ohar legala",
     "Product" : "Produktua",
     "Statistics" : "Estatistikak",
     "Monthly turnover without VAT" : "Hileko fakturazioa BEZik gabe",

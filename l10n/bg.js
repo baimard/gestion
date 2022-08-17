@@ -343,6 +343,7 @@ OC.L10N.register(
     "Customer" : "Клиент",
     "Add customer" : "Добавяне на клиент",
     "Legal information" : "Правна информация",
+    "Legal notice" : "Правна информация",
     "Product" : "Продукт",
     "Statistics" : "Статистика",
     "Monthly turnover without VAT" : "Месечен оборот без ДДС",

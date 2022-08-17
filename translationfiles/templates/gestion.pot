@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-08-16 03:37+0000\n"
+"POT-Creation-Date: 2022-08-17 03:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,7 +71,7 @@ msgstr ""
 msgid "Means of payment"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:115
+#: /app/lib/Db/Bdd.php:115 /app/src/js/pdf.js:66
 msgid "INVOICE"
 msgstr ""
 
@@ -1029,6 +1029,10 @@ msgstr ""
 msgid "Creation in progress …"
 msgstr ""
 
+#: /app/src/js/pdf.js:68
+msgid "QUOTE"
+msgstr ""
+
 #: /app/templates/content/changelog.php:4
 msgid "Welcome to GESTION"
 msgstr ""
@@ -1480,6 +1484,11 @@ msgstr ""
 msgid "Legal information"
 msgstr ""
 
+#: /app/templates/content/legalnotice.php:8
+#: /app/templates/navigation/index.php:39
+msgid "Legal notice"
+msgstr ""
+
 #: /app/templates/content/produit.php:8
 msgid "Product"
 msgstr ""
@@ -1573,7 +1582,7 @@ msgstr ""
 msgid "Information"
 msgstr ""
 
-#: /app/templates/navigation/index.php:41
+#: /app/templates/navigation/index.php:42
 msgid "About"
 msgstr ""
 

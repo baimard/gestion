@@ -2,17 +2,27 @@
 	<div class="modal-content">
 		<span class="modalClose">&times;</span>
 		<h2><?php p($l->t('Welcome to GESTION')); ?> 2.1.7</h2>
-		<p style="font-size:20px;margin-bottom:20px;"><b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> &#128073;<a style="font-size:20px;" href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a></p>
-		
-		<p style="font-size:20px;"><b><?php p($l->t('If you like my work you can:')); ?> &#129321; <a href="hgit ttps://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a coffee')); ?></a></b> &#129321;</p>
-		<br/>
+		<p style="font-size:14px;margin-bottom:20px;"><b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> &#128073;<a style="font-size:20px;" href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a></p>
+		<p style="font-size:16px;"><b><?php p($l->t('If you like my work you can:')); ?> &#129321; <a href="hgit ttps://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a coffee')); ?></a></b> &#129321;</p>
 		<p style="margin-bottom:20px;"><?php p($l->t('If you need documentation, follow this link')); ?> &#128073; <a href="https://baimard.github.io/gestion/"><?php p($l->t('Documentation')); ?></a>
 		<br/>	<?php p($l->t('Others questions?')); ?> &#128073; <a href="mailto:contact@cybercorp.fr"><?php p($l->t('Contact')); ?></a>
 		<br/>	<?php p($l->t('Leave me a comment, but only if you like this application :)')); ?> &#128073; <a href="https://apps.nextcloud.com/apps/gestion"><?php p($l->t('Nextcloud apps')); ?></a>
 		<br/>	<?php p($l->t('Want to talk with the community?')); ?> &#128073; <a href="https://github.com/baimard/gestion/discussions"><?php p($l->t('Git discussion')); ?></a>
+		<br/>	<?php p($l->t('Have an issue?')); ?> &#128073; <a href="https://github.com/baimard/gestion/issues"><?php p($l->t('Git discussion')); ?></a>
 		<hr />
+		<h2><?php p($l->t('News letter')); ?></h2>
+		<p><?php p($l->t('Gestion is now used by 1000 users! thank you all for the great support!')); ?></p>
+		<hr/>
 		<h2><?php p($l->t('Changelog')); ?></h2>
 		<p><a href="https://github.com/baimard/gestion/releases"><?php p($l->t('Releases')); ?></a></p>
+		<hr/>
+		<h2><?php p($l->t('Special thanks to : ')); ?></h2>
+		<ul>
+			<li>Timo RAINO - <?php p($l->t('for the big work on legal notice for France')); ?></li>
+			<li>Aaron Stevens - <?php p($l->t('for the coffee ;)')); ?></li>
+			<li>@CarlKDE - <?php p($l->t('for the coffee ;)')); ?></li>
+			<li>little5bull - <?php p($l->t('for the coffee ;)')); ?></li>
+		</ul>
 	</div>
 </div>
 

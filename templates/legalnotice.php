@@ -12,7 +12,7 @@
 	<div id="app-content">
 		<div id="app-content-wrapper">
 			<?php print_unescaped($this->inc('content/changelog')); ?>
-			<?php print_unescaped($this->inc('content/legalnotice')); ?>
+			<?php print_unescaped($this->inc($_['page'])); ?>
 		</div>
 	</div>
 </div>

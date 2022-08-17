@@ -92,8 +92,16 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
      */
-	public function legalnotice() {
-		return new TemplateResponse('gestion', 'legalnotice', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/statistique.php
+	public function legalnotice($page) {
+		return new TemplateResponse('gestion', 'legalnotice', array('page' => 'content/legalnotice', 'path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/legalnotice.php
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+     */
+	public function france() {
+		return new TemplateResponse('gestion', 'legalnotice', array('page' => 'legalnotice/france', 'path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/legalnotice.php
 	}
 
 	/**
@@ -159,6 +167,7 @@ class PageController extends Controller {
 						"isConfig" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.isConfig"),
 						"statistique" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.statistique"),
 						"legalnotice" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.legalnotice"),
+						"france" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.france"),
 					);
 	}
 

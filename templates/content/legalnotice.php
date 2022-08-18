@@ -9,7 +9,7 @@
         </div>
     </div>
     <h2><?php p($l->t('Legal notice')); ?></h2>
-    <p><?php p($l->t('This section provide legals informations for differents countrys. All of the legals notices are made by contributor for free, so please respect their works and don\'t copy.')); ?></p>
+    <p><?php p($l->t('This section provides information pertaining to the use of this application under the legal framework applicable in various countries.')); ?></p>
     <p><?php p($l->t('If you want to contribute to this section just contact me by mail')); ?> <b><a style="text-decoration:underline" href="mailto:benjamin@cybercorp.fr">Benjamin A.</a></b></p>
     <hr/>
     <ul style="margin-left:30px;">

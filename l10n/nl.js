@@ -148,6 +148,7 @@ OC.L10N.register(
     "Customer" : "Klant",
     "Add customer" : "Voeg klant toe",
     "Legal information" : "Juridische informatie",
+    "Legal notice" : "Juridische bepalingen",
     "Product" : "Product",
     "Statistics" : "Statistieken",
     "Monthly turnover without VAT" : "Maandelijkse omzet zonder BTW",

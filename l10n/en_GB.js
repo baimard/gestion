@@ -39,6 +39,7 @@ OC.L10N.register(
     "Unit price without VAT" : "Unit price (excluding VAT)",
     "Total without VAT" : "Total (excluding VAT)",
     "Send by email" : "Send by email",
+    "Legal notice" : "Legal notice",
     "January" : "January",
     "February" : "February",
     "March" : "March",

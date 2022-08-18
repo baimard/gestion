@@ -37,6 +37,7 @@ OC.L10N.register(
     "Version" : "Version",
     "Status" : "Status",
     "Actions" : "Handlinger",
+    "Legal notice" : "Juridisk notits",
     "Year" : "År",
     "January" : "Januar",
     "February" : "Februar",

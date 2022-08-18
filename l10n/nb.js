@@ -40,6 +40,7 @@ OC.L10N.register(
     "Status" : "Status",
     "Actions" : "Handlinger",
     "Send by email" : "Send via e-post",
+    "Legal notice" : "Juridisk varsel",
     "Year" : "År",
     "January" : "Januar",
     "February" : "Februar",

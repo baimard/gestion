@@ -79,6 +79,7 @@ OC.L10N.register(
     "Customer" : "Cliente",
     "Add customer" : "Agiunghe cliente",
     "Legal information" : "Informatziones legales",
+    "Legal notice" : "Avisu legale",
     "Product" : "Prodotu",
     "Year" : "Annu",
     "January" : "Ghennàrgiu",

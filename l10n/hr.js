@@ -82,6 +82,7 @@ OC.L10N.register(
     "Customer" : "Kupac",
     "Add customer" : "Dodaj kupca",
     "Legal information" : "Pravne informacije",
+    "Legal notice" : "Pravna obavijest",
     "Product" : "Proizvod",
     "Year" : "Godina",
     "January" : "Siječanj",

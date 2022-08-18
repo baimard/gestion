@@ -37,6 +37,7 @@ OC.L10N.register(
     "Actions" : "Aðgerðir",
     "Send by email" : "Senda með tölvupósti",
     "Invoice" : "Reikningur",
+    "Legal notice" : "Lagaleg atriði",
     "Year" : "Ár",
     "January" : "Janúar",
     "February" : "Febrúar",

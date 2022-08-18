@@ -41,6 +41,7 @@ OC.L10N.register(
     "Actions" : "Åtgärder",
     "Send by email" : "Skicka via e-post",
     "Invoice" : "Faktura",
+    "Legal notice" : "Rättsligt meddelande",
     "Year" : "År",
     "January" : "Januari",
     "February" : "Februari",

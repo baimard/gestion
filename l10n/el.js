@@ -63,6 +63,7 @@ OC.L10N.register(
     "Invoice #" : "Τιμολόγιο #",
     "Customer" : "Πελάτης",
     "Add customer" : "Προσθήκη πελάτη",
+    "Legal notice" : "Νομική ειδοποίηση",
     "Product" : "Προϊόν",
     "Year" : "Έτος",
     "January" : "Ιανουάριος",

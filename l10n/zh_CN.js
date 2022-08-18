@@ -114,6 +114,7 @@ OC.L10N.register(
     "Customer" : "客户",
     "Add customer" : "添加客户",
     "Legal information" : "法律信息",
+    "Legal notice" : "法律声明",
     "Product" : "产品",
     "Year" : "年",
     "January" : "一月",

@@ -39,7 +39,6 @@ OC.L10N.register(
     "Cancel" : "Abbrechen",
     "Save in" : "Speichern unter",
     "There is an error" : "Fehler aufgetreten",
-    "(do not forget to show hidden folder)" : "(Anzeigen des verstecken Ordners nicht vergessen)",
     "Afghan Afghani" : "Afghanischer Afghani",
     "Albanian Lek" : "Albanischer Lek",
     "Armenian Dram" : "Armenischer Dram",

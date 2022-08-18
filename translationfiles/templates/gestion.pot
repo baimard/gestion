@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-08-17 03:37+0000\n"
+"POT-Creation-Date: 2022-08-18 03:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,31 +91,31 @@ msgstr ""
 msgid "Your company name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:173 /app/templates/content/changelog.php:52
+#: /app/lib/Db/Bdd.php:173 /app/templates/content/changelog.php:62
 msgid "Your company contact last name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:174 /app/templates/content/changelog.php:50
+#: /app/lib/Db/Bdd.php:174 /app/templates/content/changelog.php:60
 msgid "Your company contact first name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:175 /app/templates/content/changelog.php:54
+#: /app/lib/Db/Bdd.php:175 /app/templates/content/changelog.php:64
 msgid "Company legal information line one"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:176 /app/templates/content/changelog.php:56
+#: /app/lib/Db/Bdd.php:176 /app/templates/content/changelog.php:66
 msgid "Company legal information line two"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:177 /app/templates/content/changelog.php:62
+#: /app/lib/Db/Bdd.php:177 /app/templates/content/changelog.php:72
 msgid "Your company email"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:178 /app/templates/content/changelog.php:60
+#: /app/lib/Db/Bdd.php:178 /app/templates/content/changelog.php:70
 msgid "Your company phone"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:179 /app/templates/content/changelog.php:58
+#: /app/lib/Db/Bdd.php:179 /app/templates/content/changelog.php:68
 msgid "Your company address"
 msgstr ""
 
@@ -202,7 +202,7 @@ msgid "There is an error"
 msgstr ""
 
 #: /app/src/js/modules/ajaxRequest.mjs:268
-msgid "(do not forget to show hidden folder)"
+msgid "(do not forget to show hidden folders)"
 msgstr ""
 
 #: /app/src/js/modules/list.mjs:9
@@ -378,574 +378,570 @@ msgid "Costa Rican Colon"
 msgstr ""
 
 #: /app/src/js/modules/list.mjs:57
-msgid "Cuban Convertible Peso"
-msgstr ""
-
-#: /app/src/js/modules/list.mjs:58
 msgid "Cuban Peso"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:59
+#: /app/src/js/modules/list.mjs:58
 msgid "Cape Verdean Escudo"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:60
+#: /app/src/js/modules/list.mjs:59
 msgid "Czech Koruna"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:61
+#: /app/src/js/modules/list.mjs:60
 msgid "Djiboutian Franc"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:62
+#: /app/src/js/modules/list.mjs:61
 msgid "Danish Krone"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:63
+#: /app/src/js/modules/list.mjs:62
 msgid "Dominican Peso"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:64
+#: /app/src/js/modules/list.mjs:63
 msgid "Algerian Dinar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:65
+#: /app/src/js/modules/list.mjs:64
 msgid "Egyptian Pound"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:66
+#: /app/src/js/modules/list.mjs:65
 msgid "Eritrean Nakfa"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:67
+#: /app/src/js/modules/list.mjs:66
 msgid "Ethiopian Birr"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:68
+#: /app/src/js/modules/list.mjs:67
 msgid "Euro"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:69
+#: /app/src/js/modules/list.mjs:68
 msgid "Fiji Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:70
+#: /app/src/js/modules/list.mjs:69
 msgid "Falkland Islands Pound"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:71
+#: /app/src/js/modules/list.mjs:70
 msgid "Pound Sterling"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:72
+#: /app/src/js/modules/list.mjs:71
 msgid "Georgian Lari"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:73
+#: /app/src/js/modules/list.mjs:72
 msgid "Ghanaian Cedi"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:74
+#: /app/src/js/modules/list.mjs:73
 msgid "Gibraltar Pound"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:75
+#: /app/src/js/modules/list.mjs:74
 msgid "Gambian Dalasi"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:76
+#: /app/src/js/modules/list.mjs:75
 msgid "Guinean Franc"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:77
+#: /app/src/js/modules/list.mjs:76
 msgid "Guatemalan Quetzal"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:78
+#: /app/src/js/modules/list.mjs:77
 msgid "Guyanese Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:79
+#: /app/src/js/modules/list.mjs:78
 msgid "Hong Kong Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:80
+#: /app/src/js/modules/list.mjs:79
 msgid "Honduran Lempira"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:81
+#: /app/src/js/modules/list.mjs:80
 msgid "Croatian Kuna"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:82
+#: /app/src/js/modules/list.mjs:81
 msgid "Haitian Gourde"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:83
+#: /app/src/js/modules/list.mjs:82
 msgid "Hungarian Forint"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:84
+#: /app/src/js/modules/list.mjs:83
 msgid "Indonesian Rupiah"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:85
+#: /app/src/js/modules/list.mjs:84
 msgid "Israeli New Shekel"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:86
+#: /app/src/js/modules/list.mjs:85
 msgid "Indian Rupee"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:87
+#: /app/src/js/modules/list.mjs:86
 msgid "Iraqi Dinar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:88
+#: /app/src/js/modules/list.mjs:87
 msgid "Iranian Rial"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:89
+#: /app/src/js/modules/list.mjs:88
 msgid "Icelandic Króna"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:90
+#: /app/src/js/modules/list.mjs:89
 msgid "Jamaican Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:91
+#: /app/src/js/modules/list.mjs:90
 msgid "Jordanian Dinar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:92
+#: /app/src/js/modules/list.mjs:91
 msgid "Japanese Yen"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:93
+#: /app/src/js/modules/list.mjs:92
 msgid "Kenyan Shilling"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:94
+#: /app/src/js/modules/list.mjs:93
 msgid "Kyrgyzstani Som"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:95
+#: /app/src/js/modules/list.mjs:94
 msgid "Cambodian Riel"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:96
+#: /app/src/js/modules/list.mjs:95
 msgid "Comoro Franc"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:97
+#: /app/src/js/modules/list.mjs:96
 msgid "North Korean Won"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:98
+#: /app/src/js/modules/list.mjs:97
 msgid "South Korean Won"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:99
+#: /app/src/js/modules/list.mjs:98
 msgid "Kuwaiti Dinar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:100
+#: /app/src/js/modules/list.mjs:99
 msgid "Cayman Islands Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:101
+#: /app/src/js/modules/list.mjs:100
 msgid "Kazakhstani Tenge"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:102
+#: /app/src/js/modules/list.mjs:101
 msgid "Lao Kip"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:103
+#: /app/src/js/modules/list.mjs:102
 msgid "Lebanese Pound"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:104
+#: /app/src/js/modules/list.mjs:103
 msgid "Sri Lankan Rupee"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:105
+#: /app/src/js/modules/list.mjs:104
 msgid "Liberian Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:106
+#: /app/src/js/modules/list.mjs:105
 msgid "Lesotho Loti"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:107
+#: /app/src/js/modules/list.mjs:106
 msgid "Libyan Dinar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:108
+#: /app/src/js/modules/list.mjs:107
 msgid "Moroccan Dirham"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:109
+#: /app/src/js/modules/list.mjs:108
 msgid "Moldovan Leu"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:110
+#: /app/src/js/modules/list.mjs:109
 msgid "Malagasy Ariary"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:111
+#: /app/src/js/modules/list.mjs:110
 msgid "Macedonian Denar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:112
+#: /app/src/js/modules/list.mjs:111
 msgid "Myanmar Kyat"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:113
+#: /app/src/js/modules/list.mjs:112
 msgid "Mongolian Tögrög"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:114
+#: /app/src/js/modules/list.mjs:113
 msgid "Macanese Pataca"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:115
+#: /app/src/js/modules/list.mjs:114
 msgid "Mauritanian Ouguiya"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:116
+#: /app/src/js/modules/list.mjs:115
 msgid "Mauritian Rupee"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:117
+#: /app/src/js/modules/list.mjs:116
 msgid "Maldivian Rufiyaa"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:118
+#: /app/src/js/modules/list.mjs:117
 msgid "Malawian Kwacha"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:119
+#: /app/src/js/modules/list.mjs:118
 msgid "Mexican Peso"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:120
+#: /app/src/js/modules/list.mjs:119
 msgid "Mexican Unidad de Inversion"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:121
+#: /app/src/js/modules/list.mjs:120
 msgid "Malaysian Ringgit"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:122
+#: /app/src/js/modules/list.mjs:121
 msgid "Mozambican Metical"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:123
+#: /app/src/js/modules/list.mjs:122
 msgid "Namibian Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:124
+#: /app/src/js/modules/list.mjs:123
 msgid "Nigerian Naira"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:125
+#: /app/src/js/modules/list.mjs:124
 msgid "Nicaraguan Córdoba"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:126
+#: /app/src/js/modules/list.mjs:125
 msgid "Norwegian Krone"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:127
+#: /app/src/js/modules/list.mjs:126
 msgid "Nepalese Rupee"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:128
+#: /app/src/js/modules/list.mjs:127
 msgid "New Zealand Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:129
+#: /app/src/js/modules/list.mjs:128
 msgid "Omani Rial"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:130
+#: /app/src/js/modules/list.mjs:129
 msgid "Panamanian Balboa"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:131
+#: /app/src/js/modules/list.mjs:130
 msgid "Peruvian Sol"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:132
+#: /app/src/js/modules/list.mjs:131
 msgid "Papua New Guinean Kina"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:133
+#: /app/src/js/modules/list.mjs:132
 msgid "Philippine Peso"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:134
+#: /app/src/js/modules/list.mjs:133
 msgid "Pakistani Rupee"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:135
+#: /app/src/js/modules/list.mjs:134
 msgid "Polish Złoty"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:136
+#: /app/src/js/modules/list.mjs:135
 msgid "Paraguayan Guarani"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:137
+#: /app/src/js/modules/list.mjs:136
 msgid "Qatari Riyal"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:138
+#: /app/src/js/modules/list.mjs:137
 msgid "Romanian Leu"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:139
+#: /app/src/js/modules/list.mjs:138
 msgid "Serbian Dinar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:140
+#: /app/src/js/modules/list.mjs:139
 msgid "Russian Ruble"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:141
+#: /app/src/js/modules/list.mjs:140
 msgid "Rwandan Franc"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:142
+#: /app/src/js/modules/list.mjs:141
 msgid "Saudi Riyal"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:143
+#: /app/src/js/modules/list.mjs:142
 msgid "Slovak Koruna"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:144
+#: /app/src/js/modules/list.mjs:143
 msgid "Solomon Islands Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:145
+#: /app/src/js/modules/list.mjs:144
 msgid "Seychelles Rupee"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:146
+#: /app/src/js/modules/list.mjs:145
 msgid "Sudanese Pound"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:147
+#: /app/src/js/modules/list.mjs:146
 msgid "Swedish Krona"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:148
+#: /app/src/js/modules/list.mjs:147
 msgid "Singapore Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:149
+#: /app/src/js/modules/list.mjs:148
 msgid "Saint Helena Pound"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:150
+#: /app/src/js/modules/list.mjs:149
 msgid "Sierra Leonean Leone"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:151
+#: /app/src/js/modules/list.mjs:150
 msgid "Somali Shilling"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:152
+#: /app/src/js/modules/list.mjs:151
 msgid "Surinamese Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:153
+#: /app/src/js/modules/list.mjs:152
 msgid "South Sudanese Pound"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:154
+#: /app/src/js/modules/list.mjs:153
 msgid "São Tomé and Príncipe Dobra"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:155
+#: /app/src/js/modules/list.mjs:154
 msgid "Salvadoran Colon"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:156
+#: /app/src/js/modules/list.mjs:155
 msgid "Syrian Pound"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:157
+#: /app/src/js/modules/list.mjs:156
 msgid "Swazi Lilangeni"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:158
+#: /app/src/js/modules/list.mjs:157
 msgid "Thai Baht"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:159
+#: /app/src/js/modules/list.mjs:158
 msgid "Tajikistani Somoni"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:160
+#: /app/src/js/modules/list.mjs:159
 msgid "Turkmenistan Manat"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:161
+#: /app/src/js/modules/list.mjs:160
 msgid "Tunisian Dinar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:162
+#: /app/src/js/modules/list.mjs:161
 msgid "Tongan Paʻanga"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:163
+#: /app/src/js/modules/list.mjs:162
 msgid "Turkish Lira"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:164
+#: /app/src/js/modules/list.mjs:163
 msgid "Trinidad and Tobago Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:165
+#: /app/src/js/modules/list.mjs:164
 msgid "New Taiwan Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:166
+#: /app/src/js/modules/list.mjs:165
 msgid "Tanzanian Shilling"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:167
+#: /app/src/js/modules/list.mjs:166
 msgid "Ukrainian Hryvnia"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:168
+#: /app/src/js/modules/list.mjs:167
 msgid "Ugandan Shilling"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:169 /app/src/js/modules/list.mjs:170
+#: /app/src/js/modules/list.mjs:168 /app/src/js/modules/list.mjs:169
 msgid "United States Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:171
+#: /app/src/js/modules/list.mjs:170
 msgid "Uruguay Peso en Unidades Indexadas"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:172
+#: /app/src/js/modules/list.mjs:171
 msgid "Uruguayan Peso"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:173
+#: /app/src/js/modules/list.mjs:172
 msgid "Unidad Previsional"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:174
+#: /app/src/js/modules/list.mjs:173
 msgid "Uzbekistan Som"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:175
+#: /app/src/js/modules/list.mjs:174
 msgid "Venezuelan Bolívar Digital"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:176
+#: /app/src/js/modules/list.mjs:175
 msgid "Venezuelan Bolívar Soberano"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:177
+#: /app/src/js/modules/list.mjs:176
 msgid "Vietnamese Dồng"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:178
+#: /app/src/js/modules/list.mjs:177
 msgid "Vanuatu Vatu"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:179
+#: /app/src/js/modules/list.mjs:178
 msgid "Samoan Tala"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:180
+#: /app/src/js/modules/list.mjs:179
 msgid "CFA Franc BEAC"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:181
+#: /app/src/js/modules/list.mjs:180
 msgid "Silver"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:182
+#: /app/src/js/modules/list.mjs:181
 msgid "Gold"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:183
+#: /app/src/js/modules/list.mjs:182
 msgid "European Composite Unit"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:184
+#: /app/src/js/modules/list.mjs:183
 msgid "European Monetary Unit"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:185
+#: /app/src/js/modules/list.mjs:184
 msgid "European Unit of Account 9"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:186
+#: /app/src/js/modules/list.mjs:185
 msgid "European Unit of Account 17"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:187
+#: /app/src/js/modules/list.mjs:186
 msgid "East Caribbean Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:188
+#: /app/src/js/modules/list.mjs:187
 msgid "Special Drawing Rights"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:189
+#: /app/src/js/modules/list.mjs:188
 msgid "CFA Franc BCEAO"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:190
+#: /app/src/js/modules/list.mjs:189
 msgid "Palladium"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:191
+#: /app/src/js/modules/list.mjs:190
 msgid "CFP Franc"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:192
+#: /app/src/js/modules/list.mjs:191
 msgid "Platinum"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:193
+#: /app/src/js/modules/list.mjs:192
 msgid "SUCRE"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:194
+#: /app/src/js/modules/list.mjs:193
 msgid "ADB Unit of Account"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:195
+#: /app/src/js/modules/list.mjs:194
 msgid "Yemeni Rial"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:196
+#: /app/src/js/modules/list.mjs:195
 msgid "South African Rand"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:197
+#: /app/src/js/modules/list.mjs:196
 msgid "Zambian Kwacha"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:198
+#: /app/src/js/modules/list.mjs:197
 msgid "Zimbabwean Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:232 /app/src/js/modules/list.mjs:234
+#: /app/src/js/modules/list.mjs:231 /app/src/js/modules/list.mjs:233
 msgid "Disable"
 msgstr ""
 
-#: /app/src/js/modules/list.mjs:232 /app/src/js/modules/list.mjs:234
+#: /app/src/js/modules/list.mjs:231 /app/src/js/modules/list.mjs:233
 msgid "Enable"
 msgstr ""
 
@@ -1047,188 +1043,215 @@ msgstr ""
 msgid "My company"
 msgstr ""
 
-#: /app/templates/content/changelog.php:7
+#: /app/templates/content/changelog.php:6
 msgid "If you like my work you can:"
 msgstr ""
 
-#: /app/templates/content/changelog.php:7
+#: /app/templates/content/changelog.php:6
 msgid "buy me a coffee"
 msgstr ""
 
-#: /app/templates/content/changelog.php:9
+#: /app/templates/content/changelog.php:7
 msgid "If you need documentation, follow this link"
 msgstr ""
 
-#: /app/templates/content/changelog.php:9
+#: /app/templates/content/changelog.php:7
 msgid "Documentation"
 msgstr ""
 
-#: /app/templates/content/changelog.php:10
+#: /app/templates/content/changelog.php:8
 msgid "Others questions?"
 msgstr ""
 
-#: /app/templates/content/changelog.php:10
+#: /app/templates/content/changelog.php:8
 msgid "Contact"
 msgstr ""
 
-#: /app/templates/content/changelog.php:11
+#: /app/templates/content/changelog.php:9
 msgid "Leave me a comment, but only if you like this application :)"
 msgstr ""
 
-#: /app/templates/content/changelog.php:11
+#: /app/templates/content/changelog.php:9
 msgid "Nextcloud apps"
 msgstr ""
 
-#: /app/templates/content/changelog.php:12
+#: /app/templates/content/changelog.php:10
 msgid "Want to talk with the community?"
 msgstr ""
 
-#: /app/templates/content/changelog.php:12
+#: /app/templates/content/changelog.php:10
+#: /app/templates/content/changelog.php:11
 msgid "Git discussion"
 msgstr ""
 
+#: /app/templates/content/changelog.php:11
+msgid "Have an issue?"
+msgstr ""
+
+#: /app/templates/content/changelog.php:13
+msgid "News letter"
+msgstr ""
+
 #: /app/templates/content/changelog.php:14
+msgid "Gestion is now used by 1000 users! thank you all for the great support!"
+msgstr ""
+
+#: /app/templates/content/changelog.php:16
 msgid "Changelog"
 msgstr ""
 
-#: /app/templates/content/changelog.php:15
+#: /app/templates/content/changelog.php:17
 msgid "Releases"
 msgstr ""
 
+#: /app/templates/content/changelog.php:19
+msgid "Special thanks to : "
+msgstr ""
+
+#: /app/templates/content/changelog.php:21
+msgid "for the big work on legal notice for France"
+msgstr ""
+
 #: /app/templates/content/changelog.php:22
+#: /app/templates/content/changelog.php:23
+#: /app/templates/content/changelog.php:24
+msgid "for the coffee ;)"
+msgstr ""
+
+#: /app/templates/content/changelog.php:32
 msgid "Send an email"
 msgstr ""
 
-#: /app/templates/content/changelog.php:23
+#: /app/templates/content/changelog.php:33
 msgid "From"
 msgstr ""
 
-#: /app/templates/content/changelog.php:25
+#: /app/templates/content/changelog.php:35
 msgid "To"
 msgstr ""
 
-#: /app/templates/content/changelog.php:26
+#: /app/templates/content/changelog.php:36
 msgid "Separate multiple recipients by \";\""
 msgstr ""
 
-#: /app/templates/content/changelog.php:27
+#: /app/templates/content/changelog.php:37
 msgid "Cc"
 msgstr ""
 
-#: /app/templates/content/changelog.php:28
+#: /app/templates/content/changelog.php:38
 msgid "Empty if not used"
 msgstr ""
 
-#: /app/templates/content/changelog.php:29
+#: /app/templates/content/changelog.php:39
 msgid "Subject"
 msgstr ""
 
-#: /app/templates/content/changelog.php:30
+#: /app/templates/content/changelog.php:40
 msgid "Your invoice/quote"
 msgstr ""
 
-#: /app/templates/content/changelog.php:31
+#: /app/templates/content/changelog.php:41
 msgid "Body"
 msgstr ""
 
-#: /app/templates/content/changelog.php:33
+#: /app/templates/content/changelog.php:43
 msgid "Dear,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:35
+#: /app/templates/content/changelog.php:45
 msgid "Attached to this email you will find a new document."
 msgstr ""
 
-#: /app/templates/content/changelog.php:37
+#: /app/templates/content/changelog.php:47
 msgid "Best regards,"
 msgstr ""
 
-#: /app/templates/content/changelog.php:39
+#: /app/templates/content/changelog.php:49
 msgid "Send"
 msgstr ""
 
-#: /app/templates/content/changelog.php:46
+#: /app/templates/content/changelog.php:56
 msgid "Configuration help"
 msgstr ""
 
-#: /app/templates/content/changelog.php:48
+#: /app/templates/content/changelog.php:58
 msgid "Company name"
 msgstr ""
 
-#: /app/templates/content/changelog.php:49
+#: /app/templates/content/changelog.php:59
 msgid ""
 "This is the name of the company that will appear in the footer of your quote "
 "and invoice. For example, you can set: \"Company: Cybercorp\" or just "
 "\"Cybercorp\"."
 msgstr ""
 
-#: /app/templates/content/changelog.php:51
+#: /app/templates/content/changelog.php:61
 msgid "First name appears in the Quote/Invoice header as a contact."
 msgstr ""
 
-#: /app/templates/content/changelog.php:53
+#: /app/templates/content/changelog.php:63
 msgid "Last name appears in the Quote/Invoice header as a contact."
 msgstr ""
 
-#: /app/templates/content/changelog.php:55
+#: /app/templates/content/changelog.php:65
 msgid ""
 "This is the first line in the footer of your Quote/Invoice with all legal "
 "information you need."
 msgstr ""
 
-#: /app/templates/content/changelog.php:57
+#: /app/templates/content/changelog.php:67
 msgid ""
 "This is the second line in the footer of your Quote/Invoice with all legal "
 "information you need."
 msgstr ""
 
-#: /app/templates/content/changelog.php:59
+#: /app/templates/content/changelog.php:69
 msgid "Show company address in the Quote/Invoice header."
 msgstr ""
 
-#: /app/templates/content/changelog.php:61
+#: /app/templates/content/changelog.php:71
 msgid "Show phone number in the Quote/Invoice header."
 msgstr ""
 
-#: /app/templates/content/changelog.php:63
+#: /app/templates/content/changelog.php:73
 msgid "E-mail address which appears in the header of the Quote/Invoice."
 msgstr ""
 
-#: /app/templates/content/changelog.php:64
+#: /app/templates/content/changelog.php:74
 msgid "Your company VAT rate"
 msgstr ""
 
-#: /app/templates/content/changelog.php:65
+#: /app/templates/content/changelog.php:75
 #: /app/templates/content/configuration.php:44
 msgid ""
 "Global Default VAT rate apply to your Quote/Invoice (globally), to change "
 "it, just insert VAT rate amount without the percent sign."
 msgstr ""
 
-#: /app/templates/content/changelog.php:66
+#: /app/templates/content/changelog.php:76
 msgid "Automatically generated invoice number"
 msgstr ""
 
-#: /app/templates/content/changelog.php:67
+#: /app/templates/content/changelog.php:77
 #: /app/templates/content/configuration.php:48
 msgid ""
 "If you want to automatically generated an invoice number, set to enable. If "
 "you want to be free, set disable. You can enable and disable when you want."
 msgstr ""
 
-#: /app/templates/content/changelog.php:68
+#: /app/templates/content/changelog.php:78
 msgid "Global default Currency"
 msgstr ""
 
-#: /app/templates/content/changelog.php:69
+#: /app/templates/content/changelog.php:79
 msgid "Global currency for the application."
 msgstr ""
 
-#: /app/templates/content/changelog.php:70
+#: /app/templates/content/changelog.php:80
 msgid "Legal disclaimer/mentions"
 msgstr ""
 
-#: /app/templates/content/changelog.php:71
+#: /app/templates/content/changelog.php:81
 msgid ""
 "Legal disclaimer/mentions you need in your footer - before company "
 "information."
@@ -1485,8 +1508,20 @@ msgid "Legal information"
 msgstr ""
 
 #: /app/templates/content/legalnotice.php:8
+#: /app/templates/content/legalnotice.php:11
 #: /app/templates/navigation/index.php:39
 msgid "Legal notice"
+msgstr ""
+
+#: /app/templates/content/legalnotice.php:12
+msgid ""
+"This section provide legals informations for differents countrys. All of the "
+"legals notices are made by contributor for free, so please respect their "
+"works and don't copy."
+msgstr ""
+
+#: /app/templates/content/legalnotice.php:13
+msgid "If you want to contribute to this section just contact me by mail"
 msgstr ""
 
 #: /app/templates/content/produit.php:8

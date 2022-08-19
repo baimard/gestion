@@ -16,7 +16,7 @@
 		<h2><?php p($l->t('Changelog')); ?></h2>
 		<p><a href="https://github.com/baimard/gestion/releases"><?php p($l->t('Releases')); ?></a></p>
 		<hr/>
-		<h2><?php p($l->t('Special thanks to : ')); ?></h2>
+		<h2><?php p($l->t('Special thanks to:')); ?></h2>
 		<ul>
 			<li>Timo RAINO - <?php p($l->t('for the big work on legal notice for France')); ?></li>
 			<li>Aaron Stevens - <?php p($l->t('for the coffee ;)')); ?></li>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-08-18 03:36+0000\n"
+"POT-Creation-Date: 2022-08-19 03:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1515,9 +1515,8 @@ msgstr ""
 
 #: /app/templates/content/legalnotice.php:12
 msgid ""
-"This section provide legals informations for differents countrys. All of the "
-"legals notices are made by contributor for free, so please respect their "
-"works and don't copy."
+"This section provides information pertaining to the use of this application "
+"under the legal framework applicable in various countries."
 msgstr ""
 
 #: /app/templates/content/legalnotice.php:13

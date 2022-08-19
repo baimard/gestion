@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-08-18 03:36+0000\n"
+"POT-Creation-Date: 2022-08-19 03:35+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -170,6 +170,22 @@ msgid ""
 "\n"
 "[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)"
 msgstr ""
+"# Application de \"Gestion\" d'entreprise\n"
+"\n"
+"Cette application permet de gérer simplement la facturation de votre entreprise.\n"
+"\n"
+"fonctionnalité : \n"
+"\n"
+"* Ajouter des clients\n"
+"*  Génération de devis\n"
+"*  Génération de facture\n"
+"*  Vous pouvez générer directement les PDFs depuis l'application and les sauvegarder dans le nextcloud.\n"
+"\n"
+"Vidéo de présentation disponible dans la documentation utilisateur\n"
+"\n"
+"si vous avez besoin d'adapter l'application aux lois de votre pays, vous pouvez ouvrir une issue sur github.\n"
+"\n"
+"[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)"
 
 #: /app/src/js/listener/main_listener.js:10
 msgid "Choose work folder"
@@ -214,7 +230,7 @@ msgstr "Il y a une erreur"
 
 #: /app/src/js/modules/ajaxRequest.mjs:268
 msgid "(do not forget to show hidden folders)"
-msgstr ""
+msgstr "(N'oubliez pas d'afficher les dossiers cachés)"
 
 #: /app/src/js/modules/list.mjs:9
 msgid "United Arab Emirates Dirham"
@@ -258,11 +274,11 @@ msgstr "Manat azerbaïdjanais"
 
 #: /app/src/js/modules/list.mjs:19
 msgid "Bosnia and Herzegovina Convertible Mark"
-msgstr ""
+msgstr "Mark convertible de Bosnie-Herzégovine"
 
 #: /app/src/js/modules/list.mjs:20
 msgid "Barbados Dollar"
-msgstr ""
+msgstr "Dollar de la Barbade"
 
 #: /app/src/js/modules/list.mjs:21
 msgid "Bangladeshi Taka"
@@ -326,15 +342,15 @@ msgstr "Franc burundais"
 
 #: /app/src/js/modules/list.mjs:36
 msgid "Bermudian Dollar"
-msgstr ""
+msgstr "Dollar des bermudes"
 
 #: /app/src/js/modules/list.mjs:38
 msgid "Boliviano"
-msgstr ""
+msgstr "Boliviano"
 
 #: /app/src/js/modules/list.mjs:39
 msgid "Bolivian Mvdol"
-msgstr ""
+msgstr "Mvdol bolivien"
 
 #: /app/src/js/modules/list.mjs:41
 msgid "Bahamian Dollar"
@@ -342,7 +358,7 @@ msgstr "Dollar des Bahamas"
 
 #: /app/src/js/modules/list.mjs:43
 msgid "Botswana Pula"
-msgstr ""
+msgstr "Pula du Botswana"
 
 #: /app/src/js/modules/list.mjs:46
 msgid "Canadian Dollar"
@@ -354,7 +370,7 @@ msgstr "Franc congolais"
 
 #: /app/src/js/modules/list.mjs:48
 msgid "WIR Euro"
-msgstr ""
+msgstr "WIR euros"
 
 #: /app/src/js/modules/list.mjs:49
 msgid "Swiss Franc"
@@ -362,11 +378,11 @@ msgstr "Franc Swiss"
 
 #: /app/src/js/modules/list.mjs:50
 msgid "WIR Franc"
-msgstr ""
+msgstr "Franc WIR"
 
 #: /app/src/js/modules/list.mjs:51
 msgid "Unidad de Fomento"
-msgstr ""
+msgstr "Unité de Fomento"
 
 #: /app/src/js/modules/list.mjs:52
 msgid "Chilean Peso"
@@ -382,7 +398,7 @@ msgstr "Peso colombien"
 
 #: /app/src/js/modules/list.mjs:55
 msgid "Unidad de Valor Real"
-msgstr ""
+msgstr "Unité de valeur Real"
 
 #: /app/src/js/modules/list.mjs:56
 msgid "Costa Rican Colon"
@@ -398,7 +414,7 @@ msgstr "Escudo capverdien"
 
 #: /app/src/js/modules/list.mjs:59
 msgid "Czech Koruna"
-msgstr ""
+msgstr "Couronne tchèque"
 
 #: /app/src/js/modules/list.mjs:60
 msgid "Djiboutian Franc"
@@ -442,7 +458,7 @@ msgstr "Livre des îles Falkland"
 
 #: /app/src/js/modules/list.mjs:70
 msgid "Pound Sterling"
-msgstr ""
+msgstr "Livre sterling"
 
 #: /app/src/js/modules/list.mjs:71
 msgid "Georgian Lari"
@@ -470,7 +486,7 @@ msgstr "Quetzal guatémaltèque"
 
 #: /app/src/js/modules/list.mjs:77
 msgid "Guyanese Dollar"
-msgstr ""
+msgstr "Dollar Guyane"
 
 #: /app/src/js/modules/list.mjs:78
 msgid "Hong Kong Dollar"
@@ -498,7 +514,7 @@ msgstr "Roupie indonésienne"
 
 #: /app/src/js/modules/list.mjs:84
 msgid "Israeli New Shekel"
-msgstr ""
+msgstr "Nouveau Shekel israélien"
 
 #: /app/src/js/modules/list.mjs:85
 msgid "Indian Rupee"
@@ -514,7 +530,7 @@ msgstr "Rial iranien"
 
 #: /app/src/js/modules/list.mjs:88
 msgid "Icelandic Króna"
-msgstr ""
+msgstr "Couronne islandaise"
 
 #: /app/src/js/modules/list.mjs:89
 msgid "Jamaican Dollar"
@@ -534,7 +550,7 @@ msgstr "Shilling kényan"
 
 #: /app/src/js/modules/list.mjs:93
 msgid "Kyrgyzstani Som"
-msgstr ""
+msgstr "Som kirghize"
 
 #: /app/src/js/modules/list.mjs:94
 msgid "Cambodian Riel"
@@ -542,7 +558,7 @@ msgstr "Riel cambodgien"
 
 #: /app/src/js/modules/list.mjs:95
 msgid "Comoro Franc"
-msgstr ""
+msgstr "Franc comorien"
 
 #: /app/src/js/modules/list.mjs:96
 msgid "North Korean Won"
@@ -566,7 +582,7 @@ msgstr "Tenge kazakh"
 
 #: /app/src/js/modules/list.mjs:101
 msgid "Lao Kip"
-msgstr ""
+msgstr "Kip laotien"
 
 #: /app/src/js/modules/list.mjs:102
 msgid "Lebanese Pound"
@@ -610,7 +626,7 @@ msgstr "Kyat du Myanmar"
 
 #: /app/src/js/modules/list.mjs:112
 msgid "Mongolian Tögrög"
-msgstr ""
+msgstr "Tögrög mongol"
 
 #: /app/src/js/modules/list.mjs:113
 msgid "Macanese Pataca"
@@ -638,7 +654,7 @@ msgstr "Peso mexicain"
 
 #: /app/src/js/modules/list.mjs:119
 msgid "Mexican Unidad de Inversion"
-msgstr ""
+msgstr "Unité mexicaine d'inversion"
 
 #: /app/src/js/modules/list.mjs:120
 msgid "Malaysian Ringgit"
@@ -658,7 +674,7 @@ msgstr "Naira nigérian"
 
 #: /app/src/js/modules/list.mjs:124
 msgid "Nicaraguan Córdoba"
-msgstr ""
+msgstr "Nicaraguan Córdoba"
 
 #: /app/src/js/modules/list.mjs:125
 msgid "Norwegian Krone"
@@ -682,7 +698,7 @@ msgstr "Balboa panaméen"
 
 #: /app/src/js/modules/list.mjs:130
 msgid "Peruvian Sol"
-msgstr ""
+msgstr "Sol péruvien"
 
 #: /app/src/js/modules/list.mjs:131
 msgid "Papua New Guinean Kina"
@@ -698,7 +714,7 @@ msgstr "Roupie pakistanaise"
 
 #: /app/src/js/modules/list.mjs:134
 msgid "Polish Złoty"
-msgstr ""
+msgstr "Złoty polonais"
 
 #: /app/src/js/modules/list.mjs:135
 msgid "Paraguayan Guarani"
@@ -706,7 +722,7 @@ msgstr "Guarani paraguayen"
 
 #: /app/src/js/modules/list.mjs:136
 msgid "Qatari Riyal"
-msgstr ""
+msgstr "Rial qatari"
 
 #: /app/src/js/modules/list.mjs:137
 msgid "Romanian Leu"
@@ -738,7 +754,7 @@ msgstr "Dollar des îles Salomon"
 
 #: /app/src/js/modules/list.mjs:144
 msgid "Seychelles Rupee"
-msgstr ""
+msgstr "Roupie seychelloise"
 
 #: /app/src/js/modules/list.mjs:145
 msgid "Sudanese Pound"
@@ -754,7 +770,7 @@ msgstr "Dollar de Singapour"
 
 #: /app/src/js/modules/list.mjs:148
 msgid "Saint Helena Pound"
-msgstr ""
+msgstr "Livre de Sainte-Hélène"
 
 #: /app/src/js/modules/list.mjs:149
 msgid "Sierra Leonean Leone"
@@ -770,11 +786,11 @@ msgstr "Dollar surinamais"
 
 #: /app/src/js/modules/list.mjs:152
 msgid "South Sudanese Pound"
-msgstr ""
+msgstr "Livre sud-soudanaise"
 
 #: /app/src/js/modules/list.mjs:153
 msgid "São Tomé and Príncipe Dobra"
-msgstr ""
+msgstr "Sao Tomé et Principe Dobra"
 
 #: /app/src/js/modules/list.mjs:154
 msgid "Salvadoran Colon"
@@ -798,7 +814,7 @@ msgstr "Somoni tadjik"
 
 #: /app/src/js/modules/list.mjs:159
 msgid "Turkmenistan Manat"
-msgstr ""
+msgstr "Manat du Turkménistan"
 
 #: /app/src/js/modules/list.mjs:160
 msgid "Tunisian Dinar"
@@ -806,7 +822,7 @@ msgstr "Dinar tunisien"
 
 #: /app/src/js/modules/list.mjs:161
 msgid "Tongan Paʻanga"
-msgstr ""
+msgstr "Tonga Paʻanga"
 
 #: /app/src/js/modules/list.mjs:162
 msgid "Turkish Lira"
@@ -814,7 +830,7 @@ msgstr "Lire turque"
 
 #: /app/src/js/modules/list.mjs:163
 msgid "Trinidad and Tobago Dollar"
-msgstr ""
+msgstr "Dollar de Trinité-et-Tobago"
 
 #: /app/src/js/modules/list.mjs:164
 msgid "New Taiwan Dollar"
@@ -834,11 +850,11 @@ msgstr "Shilling ougandais"
 
 #: /app/src/js/modules/list.mjs:168 /app/src/js/modules/list.mjs:169
 msgid "United States Dollar"
-msgstr ""
+msgstr "Dollar des États-Unis"
 
 #: /app/src/js/modules/list.mjs:170
 msgid "Uruguay Peso en Unidades Indexadas"
-msgstr ""
+msgstr "Peso uruguayen en Unidades Indexadas"
 
 #: /app/src/js/modules/list.mjs:171
 msgid "Uruguayan Peso"
@@ -846,7 +862,7 @@ msgstr "Peso uruguayen"
 
 #: /app/src/js/modules/list.mjs:172
 msgid "Unidad Previsional"
-msgstr ""
+msgstr "Unidad prévisionnel"
 
 #: /app/src/js/modules/list.mjs:173
 msgid "Uzbekistan Som"
@@ -854,15 +870,15 @@ msgstr "Ouzbékistan Som"
 
 #: /app/src/js/modules/list.mjs:174
 msgid "Venezuelan Bolívar Digital"
-msgstr ""
+msgstr "Bolivar vénézuélien numérique"
 
 #: /app/src/js/modules/list.mjs:175
 msgid "Venezuelan Bolívar Soberano"
-msgstr ""
+msgstr "Bolívar Soberano vénézuélien"
 
 #: /app/src/js/modules/list.mjs:176
 msgid "Vietnamese Dồng"
-msgstr ""
+msgstr "Dong vietnamien"
 
 #: /app/src/js/modules/list.mjs:177
 msgid "Vanuatu Vatu"
@@ -886,19 +902,19 @@ msgstr "Or"
 
 #: /app/src/js/modules/list.mjs:182
 msgid "European Composite Unit"
-msgstr ""
+msgstr "Unité composite européenne"
 
 #: /app/src/js/modules/list.mjs:183
 msgid "European Monetary Unit"
-msgstr ""
+msgstr "Unité monétaire européenne"
 
 #: /app/src/js/modules/list.mjs:184
 msgid "European Unit of Account 9"
-msgstr ""
+msgstr "Unité de compte européenne 9"
 
 #: /app/src/js/modules/list.mjs:185
 msgid "European Unit of Account 17"
-msgstr ""
+msgstr "Unité de compte européenne 17"
 
 #: /app/src/js/modules/list.mjs:186
 msgid "East Caribbean Dollar"
@@ -914,7 +930,7 @@ msgstr "Franc CFA BCEAO"
 
 #: /app/src/js/modules/list.mjs:189
 msgid "Palladium"
-msgstr ""
+msgstr "Palladium"
 
 #: /app/src/js/modules/list.mjs:190
 msgid "CFP Franc"
@@ -922,15 +938,15 @@ msgstr "Franc CFP"
 
 #: /app/src/js/modules/list.mjs:191
 msgid "Platinum"
-msgstr ""
+msgstr "Platine"
 
 #: /app/src/js/modules/list.mjs:192
 msgid "SUCRE"
-msgstr ""
+msgstr "Système unique de compensation régionale de paiements"
 
 #: /app/src/js/modules/list.mjs:193
 msgid "ADB Unit of Account"
-msgstr ""
+msgstr "Unité de compte BAD"
 
 #: /app/src/js/modules/list.mjs:194
 msgid "Yemeni Rial"
@@ -946,7 +962,7 @@ msgstr "Kwacha zambien"
 
 #: /app/src/js/modules/list.mjs:197
 msgid "Zimbabwean Dollar"
-msgstr ""
+msgstr "Dollar zimbabwéen"
 
 #: /app/src/js/modules/list.mjs:231 /app/src/js/modules/list.mjs:233
 msgid "Disable"
@@ -1100,16 +1116,18 @@ msgstr "Discussion Git"
 
 #: /app/templates/content/changelog.php:11
 msgid "Have an issue?"
-msgstr ""
+msgstr "Vous avez un problème ?"
 
 #: /app/templates/content/changelog.php:13
 msgid "News letter"
-msgstr ""
+msgstr "Lettre d'information"
 
 #: /app/templates/content/changelog.php:14
 msgid ""
 "Gestion is now used by 1000 users! thank you all for the great support!"
 msgstr ""
+"Gestion est désormais utilisé par 1000 utilisateurs ! merci à tous pour "
+"votre soutien !"
 
 #: /app/templates/content/changelog.php:16
 msgid "Changelog"
@@ -1121,17 +1139,17 @@ msgstr "Versions"
 
 #: /app/templates/content/changelog.php:19
 msgid "Special thanks to : "
-msgstr ""
+msgstr "Remerciement spécial à :"
 
 #: /app/templates/content/changelog.php:21
 msgid "for the big work on legal notice for France"
-msgstr ""
+msgstr "pour le gros travail sur les mentions légales pour la France"
 
 #: /app/templates/content/changelog.php:22
 #: /app/templates/content/changelog.php:23
 #: /app/templates/content/changelog.php:24
 msgid "for the coffee ;)"
-msgstr ""
+msgstr "pour le café ;)"
 
 #: /app/templates/content/changelog.php:32
 msgid "Send an email"
@@ -1561,14 +1579,13 @@ msgstr "Notice légale"
 
 #: /app/templates/content/legalnotice.php:12
 msgid ""
-"This section provide legals informations for differents countrys. All of the"
-" legals notices are made by contributor for free, so please respect their "
-"works and don't copy."
+"This section provides information pertaining to the use of this application "
+"under the legal framework applicable in various countries."
 msgstr ""
 
 #: /app/templates/content/legalnotice.php:13
 msgid "If you want to contribute to this section just contact me by mail"
-msgstr ""
+msgstr "Si vous souhaitez contribuer à cette rubrique contactez moi par mail"
 
 #: /app/templates/content/produit.php:8
 msgid "Product"
@@ -1682,10 +1699,12 @@ msgstr "Sauvegarder maintenant !"
 #: /app/templates/settings/admin.php:9
 msgid "You can restore a backup file for Gestion (in next release)."
 msgstr ""
+"Vous pouvez restaurer une sauvegarde de fichier pour Gestion (Dans la "
+"prochaine version)."
 
 #: /app/templates/settings/admin.php:10
 msgid "Restore now!"
-msgstr ""
+msgstr "Restaurer maintenant !"
 
 #: /app/templates/settings/index.php:11
 msgid "Save folder"

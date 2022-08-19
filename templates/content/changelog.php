@@ -10,7 +10,7 @@
 		<br/>	<?php p($l->t('Want to talk with the community?')); ?> &#128073; <a href="https://github.com/baimard/gestion/discussions"><?php p($l->t('Git discussion')); ?></a>
 		<br/>	<?php p($l->t('Have an issue?')); ?> &#128073; <a href="https://github.com/baimard/gestion/issues"><?php p($l->t('Git discussion')); ?></a>
 		<hr />
-		<h2><?php p($l->t('News letter')); ?></h2>
+		<h2><?php p($l->t('Newsletter')); ?></h2>
 		<p><?php p($l->t('Gestion is now used by 1000 users! thank you all for the great support!')); ?></p>
 		<hr/>
 		<h2><?php p($l->t('Changelog')); ?></h2>

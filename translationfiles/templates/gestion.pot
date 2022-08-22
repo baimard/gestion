@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-08-21 03:35+0000\n"
+"POT-Creation-Date: 2022-08-22 03:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1089,11 +1089,11 @@ msgid "Have an issue?"
 msgstr ""
 
 #: /app/templates/content/changelog.php:13
-msgid "News letter"
+msgid "Newsletter"
 msgstr ""
 
 #: /app/templates/content/changelog.php:14
-msgid "Gestion is now used by 1000 users! thank you all for the great support!"
+msgid "Gestion is now used by 1000 users! Thank you all for the great support!"
 msgstr ""
 
 #: /app/templates/content/changelog.php:16
@@ -1105,7 +1105,7 @@ msgid "Releases"
 msgstr ""
 
 #: /app/templates/content/changelog.php:19
-msgid "Special thanks to : "
+msgid "Special thanks to:"
 msgstr ""
 
 #: /app/templates/content/changelog.php:21
@@ -1515,12 +1515,12 @@ msgstr ""
 
 #: /app/templates/content/legalnotice.php:12
 msgid ""
-"This section provides information pertaining to the use of this application "
-"under the legal framework applicable in various countries."
+"This section provides information on the use of this application in "
+"accordance with the laws in various countries."
 msgstr ""
 
 #: /app/templates/content/legalnotice.php:13
-msgid "If you want to contribute to this section just contact me by mail"
+msgid "If you want to contribute to this section just contact me by email"
 msgstr ""
 
 #: /app/templates/content/produit.php:8

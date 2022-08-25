@@ -261,7 +261,7 @@ OC.L10N.register(
     "Git discussion" : "Git-Diskussion",
     "Have an issue?" : "Haben Sie ein Problem?",
     "Newsletter" : "Newsletter",
-    "Gestion is now used by 1000 users! Thank you all for the great support!" : "Gestion wird jetzt von 1000 Benutzern verwendet! Danke an Alle für die große Unterstützung!",
+    "Gestion is now used by 1000 users! Thank you all for the great support!" : "Gestion wird jetzt von 1000 Benutzern verwendet! Wir danken allen für die große Unterstützung!",
     "Changelog" : "Liste der Änderungen",
     "Releases" : "Veröffentlichungen",
     "Special thanks to:" : "Ein besonderer Dank gilt:",

@@ -36,6 +36,7 @@ OC.L10N.register(
     "Status" : "상태",
     "Actions" : "동작",
     "Legal information" : "법률 정보",
+    "Legal notice" : "법적 고지",
     "Year" : "년",
     "January" : "1월",
     "February" : "2월",

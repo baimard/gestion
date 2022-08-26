@@ -35,6 +35,7 @@ OC.L10N.register(
     "Version" : "גרסה",
     "Status" : "מצב",
     "Actions" : "פעולות",
+    "Legal notice" : "הצהרה משפטית",
     "Year" : "שנה",
     "January" : "ינואר",
     "February" : "פברואר",

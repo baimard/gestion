@@ -29,6 +29,7 @@ OC.L10N.register(
     "Version" : "Weergawe",
     "Status" : "Status",
     "Actions" : "Aksies",
+    "Legal notice" : "Regskennisgewing",
     "Total" : "Totaal",
     "Information" : "Inligting",
     "About" : "Oor"

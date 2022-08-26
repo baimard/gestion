@@ -68,6 +68,7 @@ OC.L10N.register(
     "Settlement date" : "Датум на порамнување",
     "Customer" : "Потрошувач",
     "Add customer" : "Додади потрошувач",
+    "Legal notice" : "Правно известување",
     "Product" : "Продукт",
     "Year" : "Година",
     "January" : "Јануари",

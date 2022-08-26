@@ -28,6 +28,7 @@ OC.L10N.register(
     "Version" : "Versión",
     "Status" : "Estatus",
     "Actions" : "Acciones",
+    "Legal notice" : "Aviso legal",
     "January" : "Enero",
     "February" : "Febrero",
     "March" : "Marzo",
@@ -45,4 +46,4 @@ OC.L10N.register(
     "Information" : "Información",
     "About" : "Acerca de"
 },
-"nplurals=2; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
+"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

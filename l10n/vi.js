@@ -35,6 +35,7 @@ OC.L10N.register(
     "Status" : "Trạng thái",
     "Actions" : "Hành động",
     "Invoice" : "Hoá đơn",
+    "Legal notice" : "Thông cáo pháp lý",
     "Year" : "Năm",
     "January" : "Tháng 1",
     "February" : "Tháng 2",

@@ -35,6 +35,7 @@ OC.L10N.register(
     "Version" : "Верзија",
     "Status" : "Статус",
     "Actions" : "Радње",
+    "Legal notice" : "Правно обавештење",
     "Year" : "Година",
     "January" : "Јануар",
     "February" : "Фебруар",

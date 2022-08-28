@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-08-26 03:37+0000\n"
+"POT-Creation-Date: 2022-08-28 03:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1093,7 +1093,18 @@ msgid "Newsletter"
 msgstr ""
 
 #: /app/templates/content/changelog.php:14
-msgid "Gestion is now used by 1000 users! Thank you all for the great support!"
+msgid ""
+"The objective of the MANAGEMENT application is to provide a simple and free "
+"business management solution to all freelancers. There are too many complex "
+"applications on the market which are very expensive and a simple Excel file "
+"does not allow effective management of its activity. So, with each new "
+"version, I try to bring new features that you request from me via github. "
+"Your contributions are essential for me to understand your need. I'm very "
+"happy to help fledgling businesses through open source. To be always more "
+"efficient, we have worked with a lawyer to provide you with valuable legal "
+"assistance. You will therefore find a section with legal notices. We already "
+"have a very complete legal notice for France and we would like to develop "
+"this. If you want to contribute contact us!"
 msgstr ""
 
 #: /app/templates/content/changelog.php:16
@@ -1515,12 +1526,12 @@ msgstr ""
 
 #: /app/templates/content/legalnotice.php:12
 msgid ""
-"This section provides information on the use of this application in "
-"accordance with the laws in various countries."
+"This section provides information pertaining to the use of this application "
+"under the legal framework applicable in various countries."
 msgstr ""
 
 #: /app/templates/content/legalnotice.php:13
-msgid "If you want to contribute to this section just contact me by email"
+msgid "If you want to contribute to this section just contact me by mail"
 msgstr ""
 
 #: /app/templates/content/produit.php:8

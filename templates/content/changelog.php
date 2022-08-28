@@ -11,7 +11,7 @@
 		<br/>	<?php p($l->t('Have an issue?')); ?> &#128073; <a href="https://github.com/baimard/gestion/issues"><?php p($l->t('Git discussion')); ?></a>
 		<hr />
 		<h2><?php p($l->t('Newsletter')); ?></h2>
-		<p><?php p($l->t('The objective of the MANAGEMENT application is to provide a simple and free business management solution to all freelancers. There are too many complex applications on the market which are very expensive and a simple Excel file does not allow effective management of its activity. So, with each new version, I try to bring new features that you request from me via github. Your contributions are essential for me to understand your need. I\'m very happy to help fledgling businesses through open source. To be always more efficient, we have worked with a lawyer to provide you with valuable legal assistance. You will therefore find a section with legal notices. We already have a very complete legal notice for France and we would like to develop this. If you want to contribute contact us!')); ?></p>
+		<p><?php p($l->t('The objective of the MANAGEMENT application is to provide a simple and free business management solution to all freelancers. There are too many complex applications on the market which are very expensive and a simple Excel file does not allow effective management of its activity. So, with each new version, I try to bring new features that you request from me via GitHub. Your contributions are essential for me to understand your need. I\'m very happy to help fledgling businesses through open source. To be always more efficient, we have worked with a lawyer to provide you with valuable legal assistance. You will therefore find a section with legal notices. We already have a very complete legal notice for France and we would like to develop this. If you want to contribute contact us!')); ?></p>
 		<hr/>
 		<h2><?php p($l->t('Changelog')); ?></h2>
 		<p><a href="https://github.com/baimard/gestion/releases"><?php p($l->t('Releases')); ?></a></p>
@@ -31,7 +31,7 @@
 		<span class="modalClose">&times;</span>
 		<h2><?php p($l->t('Send an email')); ?></h2>
 		<label for="from"><?php p($l->t('From')); ?></label>
-		<input disabled id="from"style="width:100%" type="text" value="" />
+		<input disabled id="from"style="width:100%" type="text" value="" />true
 		<label for="to"><?php p($l->t('To')); ?></label>
 		<input required id="to"style="width:100%" type="text" value="" title="<?php p($l->t('Separate multiple recipients by ";"')); ?>" />
 		<label for="Cc"><?php p($l->t('Cc')); ?></label>

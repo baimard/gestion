@@ -31,7 +31,7 @@
 		<span class="modalClose">&times;</span>
 		<h2><?php p($l->t('Send an email')); ?></h2>
 		<label for="from"><?php p($l->t('From')); ?></label>
-		<input disabled id="from"style="width:100%" type="text" value="" />
+		<input disabled id="from"style="width:100%" type="text" value="" />true
 		<label for="to"><?php p($l->t('To')); ?></label>
 		<input required id="to"style="width:100%" type="text" value="" title="<?php p($l->t('Separate multiple recipients by ";"')); ?>" />
 		<label for="Cc"><?php p($l->t('Cc')); ?></label>

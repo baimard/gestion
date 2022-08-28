@@ -349,6 +349,7 @@ OC.L10N.register(
     "Add customer" : "Ajouter client",
     "Legal information" : "Information légale",
     "Legal notice" : "Notice légale",
+    "If you want to contribute to this section just contact me by mail" : "Si vous souhaitez contribuer à cette rubrique contactez moi par mail",
     "Product" : "Produit",
     "Statistics" : "Statistiques",
     "Monthly turnover without VAT" : "Chiffre d'affaires mensuel HT",

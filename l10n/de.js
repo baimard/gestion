@@ -227,6 +227,7 @@ OC.L10N.register(
     "Add customer" : "Kunde hinzufügen",
     "Legal information" : "Rechtliche Informationen",
     "Legal notice" : "Impressum",
+    "If you want to contribute to this section just contact me by mail" : "Wenn du zu diesem Abschnitt beitragen möchtest, nehme einfach per E-Mail mit mir Kontakt auf.",
     "Product" : "Produkt",
     "Statistics" : "Statistiken",
     "Monthly turnover without VAT" : "Monatsumsatz ohne USt.",

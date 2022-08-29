@@ -349,6 +349,7 @@ OC.L10N.register(
     "Add customer" : "Ajouter client",
     "Legal information" : "Information légale",
     "Legal notice" : "Notice légale",
+    "This section provides information pertaining to the use of this application under the legal framework applicable in various countries." : "Cette section fourni des informations sur l'application des lois et leur cadre dans différents pays.",
     "If you want to contribute to this section just contact me by mail" : "Si vous souhaitez contribuer à cette rubrique contactez moi par mail",
     "Product" : "Produit",
     "Statistics" : "Statistiques",

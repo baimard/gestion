@@ -11,15 +11,16 @@
 # Ldm Public <ldmpub@gmail.com>, 2022
 # TVDavidsan, 2022
 # Benjamin <benjamin@cybercorp.fr>, 2022
+# Jérôme Herbinet, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-09-28 03:49+0000\n"
+"POT-Creation-Date: 2022-09-29 03:53+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
+"Last-Translator: Jérôme Herbinet, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1030,7 +1031,7 @@ msgstr "Éditable (Cliquer pour modifier)"
 
 #: /app/src/js/modules/mainFunction.mjs:62
 msgid "Your global Nextcloud mail server need to be configured"
-msgstr "Le serveur global de courriel (Mail) Nextcloud doit être configuré"
+msgstr "Votre serveur global de messagerie Nextcloud doit être configuré."
 
 #: /app/src/js/modules/mainFunction.mjs:69
 msgid "Added!"
@@ -1046,7 +1047,7 @@ msgstr "Email envoyé"
 
 #: /app/src/js/pdf.js:15
 msgid "Is your global mail server configured in Nextcloud?"
-msgstr "Est ce que le serveur courriel est configuré dans Nextcloud ?"
+msgstr "Est-ce que le serveur d'e-mail est configuré dans Nextcloud ?"
 
 #: /app/src/js/pdf.js:20
 msgid "Creation in progress …"
@@ -1268,8 +1269,7 @@ msgstr ""
 
 #: /app/templates/content/changelog.php:73
 msgid "E-mail address which appears in the header of the Quote/Invoice."
-msgstr ""
-"Courriel de l'entreprise qui apparaît dans l'entête des Devis/Facture."
+msgstr "E-mail de l'entreprise qui apparaît dans l'entête des Devis/Facture."
 
 #: /app/templates/content/changelog.php:74
 msgid "Your company VAT rate"
@@ -1390,7 +1390,7 @@ msgstr "Afficher le numéro de téléphone dans l'entête de votre Devis/Facture
 
 #: /app/templates/content/configuration.php:40
 msgid "E-mail address which appears in the header of the Quote/Invoice"
-msgstr "Afficher le courriel dans l'entête de votre Devis/Facture"
+msgstr "Afficher l'e-mail dans l'entête de votre Devis/Facture"
 
 #: /app/templates/content/configuration.php:52
 msgid "Global currency for the application"

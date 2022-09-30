@@ -243,7 +243,7 @@ OC.L10N.register(
     "Added!" : "Ajouté !",
     "Open" : "Ouvrir",
     "Email sent" : "Email envoyé",
-    "Is your global mail server configured in Nextcloud?" : "Est-ce que le serveur d'e-mail est configuré dans Nextcloud ?",
+    "Is your global mail server configured in Nextcloud?" : "Est-ce que le serveur de messagerie est configuré dans Nextcloud ?",
     "Creation in progress …" : "Création en cours",
     "QUOTE" : "DEVIS",
     "Welcome to GESTION" : "Bienvenue dans GESTION",

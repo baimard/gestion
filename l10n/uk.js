@@ -36,6 +36,7 @@ OC.L10N.register(
     "Version" : "Версія",
     "Status" : "Статус",
     "Actions" : "Дії",
+    "Invoice" : "Рахунок",
     "Legal notice" : "Правові застереження",
     "Year" : "рік",
     "January" : "Січень",

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-10-01 15:08+0000\n"
+"POT-Creation-Date: 2022-10-08 03:01+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Jérôme Herbinet, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -50,7 +50,7 @@ msgstr "Téléphone"
 
 #: /app/lib/Db/Bdd.php:91 /app/templates/content/index.php:25
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 #: /app/lib/Db/Bdd.php:92 /app/templates/content/index.php:26
 msgid "Address"
@@ -120,7 +120,7 @@ msgstr "Information légale d'entreprise ligne deux"
 
 #: /app/lib/Db/Bdd.php:177 /app/templates/content/changelog.php:72
 msgid "Your company email"
-msgstr "Email de votre entreprise"
+msgstr "E-mail de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:178 /app/templates/content/changelog.php:70
 msgid "Your company phone"
@@ -1043,7 +1043,7 @@ msgstr "Ouvrir"
 
 #: /app/src/js/pdf.js:13
 msgid "Email sent"
-msgstr "Email envoyé"
+msgstr "E-mail envoyé"
 
 #: /app/src/js/pdf.js:15
 msgid "Is your global mail server configured in Nextcloud?"
@@ -1518,7 +1518,7 @@ msgstr "Sauvegarder dans nextcloud"
 #: /app/templates/content/devisshow.php:71
 #: /app/templates/content/factureshow.php:72
 msgid "Send by email"
-msgstr "Envoyer par email"
+msgstr "Envoyer par e-mail"
 
 #: /app/templates/content/devisshow.php:78
 #: /app/templates/content/factureshow.php:79
@@ -1598,7 +1598,8 @@ msgstr ""
 
 #: /app/templates/content/legalnotice.php:13
 msgid "If you want to contribute to this section just contact me by mail"
-msgstr "Si vous souhaitez contribuer à cette rubrique contactez moi par mail"
+msgstr ""
+"Si vous souhaitez contribuer à cette rubrique, contactez-moi par e-mail"
 
 #: /app/templates/content/produit.php:8
 msgid "Product"

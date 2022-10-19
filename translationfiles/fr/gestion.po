@@ -11,15 +11,16 @@
 # Ldm Public <ldmpub@gmail.com>, 2022
 # TVDavidsan, 2022
 # Benjamin <benjamin@cybercorp.fr>, 2022
+# Jérôme Herbinet, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-08-28 03:36+0000\n"
+"POT-Creation-Date: 2022-10-08 03:01+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2022\n"
+"Last-Translator: Jérôme Herbinet, 2022\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +50,7 @@ msgstr "Téléphone"
 
 #: /app/lib/Db/Bdd.php:91 /app/templates/content/index.php:25
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 #: /app/lib/Db/Bdd.php:92 /app/templates/content/index.php:26
 msgid "Address"
@@ -119,7 +120,7 @@ msgstr "Information légale d'entreprise ligne deux"
 
 #: /app/lib/Db/Bdd.php:177 /app/templates/content/changelog.php:72
 msgid "Your company email"
-msgstr "Email de votre entreprise"
+msgstr "E-mail de votre entreprise"
 
 #: /app/lib/Db/Bdd.php:178 /app/templates/content/changelog.php:70
 msgid "Your company phone"
@@ -1030,7 +1031,7 @@ msgstr "Éditable (Cliquer pour modifier)"
 
 #: /app/src/js/modules/mainFunction.mjs:62
 msgid "Your global Nextcloud mail server need to be configured"
-msgstr "Le serveur global de courriel (Mail) Nextcloud doit être configuré"
+msgstr "Votre serveur global de messagerie Nextcloud doit être configuré."
 
 #: /app/src/js/modules/mainFunction.mjs:69
 msgid "Added!"
@@ -1042,11 +1043,11 @@ msgstr "Ouvrir"
 
 #: /app/src/js/pdf.js:13
 msgid "Email sent"
-msgstr "Email envoyé"
+msgstr "E-mail envoyé"
 
 #: /app/src/js/pdf.js:15
 msgid "Is your global mail server configured in Nextcloud?"
-msgstr "Est ce que le serveur courriel est configuré dans Nextcloud ?"
+msgstr "Est-ce que le serveur de messagerie est configuré dans Nextcloud ?"
 
 #: /app/src/js/pdf.js:20
 msgid "Creation in progress …"
@@ -1128,7 +1129,7 @@ msgid ""
 "business management solution to all freelancers. There are too many complex "
 "applications on the market which are very expensive and a simple Excel file "
 "does not allow effective management of its activity. So, with each new "
-"version, I try to bring new features that you request from me via github. "
+"version, I try to bring new features that you request from me via GitHub. "
 "Your contributions are essential for me to understand your need. I'm very "
 "happy to help fledgling businesses through open source. To be always more "
 "efficient, we have worked with a lawyer to provide you with valuable legal "
@@ -1136,6 +1137,9 @@ msgid ""
 " have a very complete legal notice for France and we would like to develop "
 "this. If you want to contribute contact us!"
 msgstr ""
+"L'objectif de l'application GESTION est d'apporter une solution simple et gratuite de gestion d'entreprise à tous les freelanceurs. Il y a trop d'application complexe sur le marché qui sont très cher et un simple fichier Excel ne permet pas une gestion efficace de son activité. Alors, à chaque nouvelle version, j'essaie d'apporter de nouvelles fonctionnalités que vous me demandez via Github. Vos contributions sont essentielles pour que je comprenne votre besoin. Je suis très heureux d'apporter de l'aide à des entreprises naissantes par le biais de l’open source. \n"
+"\n"
+"Pour être toujours plus efficace, nous avons travaillé avec un avocat pour vous apporter une aide juridique précieuse. Vous trouverez donc une section avec des notices légales. Nous avons déjà une notice légale pour la France très complète et nous souhaiterions développer cela. Si vous souhaitez contribuer contactez nous !"
 
 #: /app/templates/content/changelog.php:16
 msgid "Changelog"
@@ -1265,8 +1269,7 @@ msgstr ""
 
 #: /app/templates/content/changelog.php:73
 msgid "E-mail address which appears in the header of the Quote/Invoice."
-msgstr ""
-"Courriel de l'entreprise qui apparaît dans l'entête des Devis/Facture."
+msgstr "E-mail de l'entreprise qui apparaît dans l'entête des Devis/Facture."
 
 #: /app/templates/content/changelog.php:74
 msgid "Your company VAT rate"
@@ -1387,7 +1390,7 @@ msgstr "Afficher le numéro de téléphone dans l'entête de votre Devis/Facture
 
 #: /app/templates/content/configuration.php:40
 msgid "E-mail address which appears in the header of the Quote/Invoice"
-msgstr "Afficher le courriel dans l'entête de votre Devis/Facture"
+msgstr "Afficher l'e-mail dans l'entête de votre Devis/Facture"
 
 #: /app/templates/content/configuration.php:52
 msgid "Global currency for the application"
@@ -1515,7 +1518,7 @@ msgstr "Sauvegarder dans nextcloud"
 #: /app/templates/content/devisshow.php:71
 #: /app/templates/content/factureshow.php:72
 msgid "Send by email"
-msgstr "Envoyer par email"
+msgstr "Envoyer par e-mail"
 
 #: /app/templates/content/devisshow.php:78
 #: /app/templates/content/factureshow.php:79
@@ -1590,10 +1593,13 @@ msgid ""
 "This section provides information pertaining to the use of this application "
 "under the legal framework applicable in various countries."
 msgstr ""
+"Cette section fourni des informations sur l'application des lois et leur "
+"cadre dans différents pays."
 
 #: /app/templates/content/legalnotice.php:13
 msgid "If you want to contribute to this section just contact me by mail"
-msgstr "Si vous souhaitez contribuer à cette rubrique contactez moi par mail"
+msgstr ""
+"Si vous souhaitez contribuer à cette rubrique, contactez-moi par e-mail"
 
 #: /app/templates/content/produit.php:8
 msgid "Product"

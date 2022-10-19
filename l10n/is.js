@@ -17,6 +17,7 @@ OC.L10N.register(
     "Previous" : "Fyrra",
     "Open" : "Opna",
     "Email sent" : "Tölvupóstur sendur",
+    "My company" : "Fyrirtækið mitt",
     "Documentation" : "Hjálparskjöl",
     "Contact" : "Tengiliður",
     "Changelog" : "Breytingaskrá",
@@ -35,6 +36,7 @@ OC.L10N.register(
     "Version" : "Útgáfa",
     "Status" : "Staða",
     "Actions" : "Aðgerðir",
+    "Quantity" : "Magn",
     "Send by email" : "Senda með tölvupósti",
     "Invoice" : "Reikningur",
     "Legal notice" : "Lagaleg atriði",
@@ -54,6 +56,7 @@ OC.L10N.register(
     "Total" : "Alls",
     "Manage" : "Skipuleggja",
     "Information" : "Upplýsingar",
-    "About" : "Um hugbúnaðinn"
+    "About" : "Um hugbúnaðinn",
+    "Save folder" : "Vista möppu"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

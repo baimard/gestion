@@ -3,10 +3,12 @@ OC.L10N.register(
     {
     "Last name" : "Etternavn",
     "First name" : "Fornavn",
+    "Limited company" : "Aksjeselskap",
     "Company" : "Bedrift",
     "Phone number" : "Telefonnummer",
     "Email" : "E-post",
     "Address" : "Adresse",
+    "Quote number" : "Sitat nummer",
     "New" : "Ny",
     "Comment" : "Kommentar",
     "Cancel" : "Avbryt",

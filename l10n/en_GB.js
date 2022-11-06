@@ -15,6 +15,7 @@ OC.L10N.register(
     "Disable" : "Disable",
     "Enable" : "Enable",
     "Search" : "Search",
+    "Showing 0 to 0 of 0 entries" : "Showing 0 to 0 of 0 entries",
     "Next" : "Next",
     "Previous" : "Previous",
     "Open" : "Open",

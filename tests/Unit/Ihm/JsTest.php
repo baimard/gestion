@@ -15,12 +15,12 @@ class JsTest extends PantherTestCase {
 
     public function testClient(): void {
         $client = Client::createFirefoxClient();
-        $client->request('GET', $this->url.'/index.php/apps/gestion');
+        $crawler = $client->request('GET', $this->url.'/index.php/apps/gestion');
 
-        $client->submitForm('submit-form', [
-            'user' => 'nextcloud',
-            'password' => 'nextcloud' // Not my real pass ...
-        ]);
+        $form = $crawler->selectButton('Log in')->form();
+        $form['user'] = 'nextcloud';
+        $form['password'] = 'nextcloud';
+        $client->submit($form);
 
         $client->request('GET', $this->url.'/index.php/apps/gestion');
 

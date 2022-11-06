@@ -5,11 +5,12 @@ require __DIR__.'/../../../vendor/autoload.php';
 
 $client = Client::createFirefoxClient();
 
-$client->request('GET', 'http://127.0.0.1');
-$client->submitForm('submit-form', [
-    'user' => 'nextcloud',
-    'password' => 'nextcloud' // Not my real pass ...
-]);
+$crawler = $client->request('GET', $this->url.'/index.php/apps/gestion');
+
+$form = $crawler->selectButton('Log in')->form();
+$form['user'] = 'nextcloud';
+$form['password'] = 'nextcloud';
+$client->submit($form);
 
 $client->request('GET', 'http://127.0.0.1/index.php/apps/gestion/config');
 $client->takeScreenshot('tests/Unit/Panther/screens/config.png');

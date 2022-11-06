@@ -9,7 +9,7 @@ docker run -d --rm --network next --name database -p 3306:3306 -e MYSQL_DATABASE
 
 sleep 5
 echo "Start nextcloud"
-docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:24-apache
+docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:22-apache
 
 echo "Installation"
 docker exec -it nextcloud bash -c "apt update ; apt install -y git make nodejs npm firefox-esr unzip wget"

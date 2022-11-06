@@ -9,6 +9,7 @@ OC.L10N.register(
     "Address" : "Adress",
     "New" : "Ny",
     "Comment" : "Kommentar",
+    "Means of payment" : "Betalningsmetod",
     "Cancel" : "Avbryt",
     "Disable" : "Inaktivera",
     "Enable" : "Aktivera",

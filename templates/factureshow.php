@@ -1,6 +1,6 @@
 <?php
 	style('gestion', array('style'));
-	script('gestion', array('factureShow.app', '820.app', '856.app'));
+	script('gestion', array('factureShow.app', '814.app', '856.app'));
 ?>
 <div id="app">
 	<div id="app-navigation">

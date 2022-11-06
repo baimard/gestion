@@ -52,6 +52,7 @@
 
 #content {
 	width:100%;
+  border-radius: none;
   /*min-width: 1600px; /*bug #67*/
 }
 
@@ -64,6 +65,8 @@
 
 #app {
 	width:100%;
+  display: flex;
+  margin-right: 20px;
 }
 
 #Statistical {

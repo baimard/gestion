@@ -19,6 +19,7 @@ OC.L10N.register(
     "Email sent" : "Vēstule nosūtīta",
     "Documentation" : "Dokumentācija",
     "Contact" : "Kontakts",
+    "Changelog" : "Izmaiņu žurnāls",
     "Releases" : "Laidieni",
     "Send an email" : "Sūtīt e-pasta ziņojumu",
     "Subject" : "Temats",

@@ -13,6 +13,7 @@ OC.L10N.register(
     "Disable" : "사용 안함",
     "Enable" : "활성화",
     "Search" : "검색",
+    "Showing 0 to 0 of 0 entries" : "0 항목에서 0부터 0까지 보기",
     "Next" : "다음",
     "Previous" : "이전",
     "Open" : "열기",

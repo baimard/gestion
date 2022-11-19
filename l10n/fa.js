@@ -35,6 +35,7 @@ OC.L10N.register(
     "Status" : "وضعیت",
     "Actions" : "فعالیت ها",
     "Send by email" : "ارسال از طریق ایمیل",
+    "Legal notice" : "توصیهٔ حقوقی",
     "Year" : "سال",
     "January" : "ژانویه",
     "February" : "فبریه",

@@ -20,6 +20,7 @@ OC.L10N.register(
     "Enable" : "Ενεργοποίηση",
     "Search" : "Αναζήτηση",
     "No data available in table" : "Δεν υπάρχουν διαθέσιμα δεδομένα στον πίνακα",
+    "Showing 0 to 0 of 0 entries" : "Εμφάνιση 0 έως 0 από τις 0 καταχωρήσεις",
     "Loading records …" : "Γίνεται φόρτωση εγγραφών …",
     "Processing …" : "Γίνεται επεξεργασία …",
     "No corresponding entry" : "Δεν υπάρχει αντίστοιχη καταχώριση",

@@ -170,6 +170,7 @@ OC.L10N.register(
     "Vanuatu Vatu" : "Vatu",
     "Samoan Tala" : "Samoanischer Tala",
     "CFA Franc BEAC" : "CFA Franken BEAC",
+    "Silver" : "Silber",
     "East Caribbean Dollar" : "Ostkaribischer Dollar",
     "Special Drawing Rights" : "Sonderziehungsrecht",
     "CFA Franc BCEAO" : "CFA Franken BCEAO",

@@ -23,7 +23,7 @@ module.exports =
       filename: '../js/[name].app.js',
     },
     optimization: {
-      minimize: true
+      minimize: false
     },
     plugins: [
       new webpack.ProvidePlugin({
@@ -60,6 +60,13 @@ module.exports =
                     },
                     {
                       loader: 'postcss-loader',
+                      options: {
+                        postcssOptions: {
+                          plugins: () => [
+                            require('autoprefixer')
+                          ]
+                        }
+                      }
                     },
                     {
                       loader: 'sass-loader',

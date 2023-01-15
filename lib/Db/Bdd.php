@@ -47,7 +47,7 @@ class Bdd {
     }
 
     public function getFactures($idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."facture.id, ".$this->tableprefix."facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, ".$this->tableprefix."facture.version, status_paiement FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_nextcloud = ".$this->tableprefix."devis.id_nextcloud) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_nextcloud = ".$this->tableprefix."client.id_nextcloud  WHERE ".$this->tableprefix."facture.id_nextcloud = ?";
+        $sql = "SELECT ".$this->tableprefix."facture.id, ".$this->tableprefix."facture.user_id, ".$this->tableprefix."facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, ".$this->tableprefix."facture.version, status_paiement FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_nextcloud = ".$this->tableprefix."devis.id_nextcloud) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_nextcloud = ".$this->tableprefix."client.id_nextcloud  WHERE ".$this->tableprefix."facture.id_nextcloud = ?";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
@@ -108,14 +108,18 @@ class Bdd {
      * Insert invoice
      */
     public function insertFacture($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."facture` (`date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`) VALUES (?,?,?,NOW(),?,0);";
-        $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('Invoice number'),$this->l->t('Means of payment')));
+        $last=0;
+        $last = $this->lastinsertid("facture", $idNextcloud) + 1;
 
-        if(json_decode($this->getConfiguration(($idNextcloud)))[0]->auto_invoice_number == 1){
-            $this->gestion_update('facture', 'num', $this->l->t('INVOICE')."-".$this->lastinsertid(),$this->lastinsertid(),$idNextcloud);
-        }
-        
-        return true;
+        $sql = "INSERT INTO `".$this->tableprefix."facture` (`date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`,`user_id`) VALUES (?,?,?,NOW(),?,0,?);";
+        $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('INVOICE')."-".$last,$this->l->t('Means of payment'),$last));
+
+        // if(json_decode($this->getConfiguration(($idNextcloud)))[0]->auto_invoice_number == 1){
+            
+        //     $this->gestion_update('facture', 'num', ,$last,$idNextcloud);
+        //     $this->gestion_update('facture', 'user_id',$last,$last,$idNextcloud);
+        // }
+        return $last;
     }
     
     public function insertProduit($idNextcloud){
@@ -258,8 +262,10 @@ class Bdd {
     /**
      * Get last insert id
      */
-    public function lastinsertid(){
-        return $this->execSQLNoJsonReturn("SELECT LAST_INSERT_ID();",array())[0]['LAST_INSERT_ID()'];
+    public function lastinsertid($table,$idNextcloud){
+        $sql = "SELECT max(user_id) as LAST_INSERT_ID FROM `" . $this->tableprefix . $table . "` WHERE " . $this->tableprefix . $table .".id_nextcloud = ?;";
+        $res = $this->execSQLNoJsonReturn($sql,array($idNextcloud));
+        return $res[0]['LAST_INSERT_ID'];
     }
 
     public function backup(){

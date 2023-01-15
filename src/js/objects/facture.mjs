@@ -1,7 +1,6 @@
 import { showError } from "@nextcloud/dialogs";
-import { generateUrl, getRootUrl } from "@nextcloud/router";
-import { configuration } from "../modules/ajaxRequest.mjs";
-import { baseUrl, checkAutoIncrement, LoadDT, showDone } from "../modules/mainFunction.mjs";
+import { generateUrl } from "@nextcloud/router";
+import { baseUrl, LoadDT, showDone } from "../modules/mainFunction.mjs";
 
 export class Facture {
 
@@ -10,8 +9,8 @@ export class Facture {
    * @param myresp instantiate Facture object
    */
   constructor(myresp) {
-
     this.id = myresp.id;
+    this.user_id = myresp.user_id;
     this.date = ((myresp.date == null || myresp.date.length === 0) ? '-' : myresp.date);
     this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
     this.version = ((myresp.version == null || myresp.version.length === 0) ? '-' : myresp.version);
@@ -30,8 +29,8 @@ export class Facture {
    */
   getDTRow() {
     let myrow = [
-      '<div>' + this.id + '</div>',
-      '<div class="factureNum editable" data-table="facture" data-column="num" data-id="' + this.id + '">' + this.num + '</div>',
+      '<div>' + this.user_id + '</div>',
+      '<div class="factureNum" data-table="facture" data-column="num" data-id="' + this.id + '">' + this.num + '</div>',
       '<div class="editable" data-table="facture" data-column="date" data-id="' + this.id + '">' + this.date + '</div>',
       '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date_paiement + ' data-table="facture" data-column="date_paiement" data-id="' + this.id + '"/>',
       '<div class="editable" data-table="facture" data-column="type_paiement" data-id="' + this.id + '">' + this.type_paiement + '</div>',
@@ -51,7 +50,7 @@ export class Facture {
       if (this.status == 200) {
         LoadDT(factureDT, JSON.parse(this.response), Facture);
         // Devis.loadDevisList();
-        configuration(checkAutoIncrement);
+        // configuration(checkAutoIncrement);
       }else{
         showError(this.response);
       }

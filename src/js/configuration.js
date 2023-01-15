@@ -45,7 +45,7 @@ function loadConfigurationDT(response) {
         document.getElementById("telephone")       .setAttribute("data-id", myresp.id);
         document.getElementById("mail")       .setAttribute("data-id", myresp.id);
         document.getElementById("tva_default")       .setAttribute("data-id", myresp.id);
-        document.getElementById("auto_invoice_number")       .setAttribute("data-id", myresp.id);
+        // document.getElementById("auto_invoice_number")       .setAttribute("data-id", myresp.id);
         document.getElementById("currency")       .setAttribute("data-id", myresp.id);
         document.getElementById("format")       .setAttribute("data-id", myresp.id);
         document.getElementById("mentions_default")       .setAttribute("data-id", myresp.id);

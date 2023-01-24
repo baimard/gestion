@@ -12,6 +12,7 @@ OC.L10N.register(
     "Invoice number" : "Laskun numero",
     "Choose work folder" : "Valitse työkansio",
     "Please create a new product" : "Luo uusi tuote",
+    "Are you sure you want to delete?" : "Haluatko varmasti poistaa?",
     "Cancel" : "Peruuta",
     "There is an error" : "Tapahtui virhe",
     "Disable" : "Poista käytöstä",

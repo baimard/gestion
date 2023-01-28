@@ -2,11 +2,10 @@
 
 sudo service apache2 stop
 docker stop -t 0 nextcloud database dev-gestion_database_1 dev-gestion_phpmyadmin_1
-exit 0
+
 echo "Start container MYSQL"
 docker run -d --rm --network next --name database -p 3306:3306 -e MYSQL_DATABASE=nextcloud -e MARIADB_ROOT_PASSWORD=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud mariadb
 # docker run -d --rm --network next --name database -p 5432:5432 -e POSTGRES_DB=nextcloud -e POSTGRES_PASSWORD=nextcloud -e POSTGRES_USER=nextcloud postgres
-
 
 sleep 5
 echo "Start nextcloud"

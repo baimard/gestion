@@ -1,6 +1,6 @@
     <div class="bootstrap-iso">
         <h2 class="mt-3 mb-3 text-center"><?php p($l->t('Invoice #'));?>
-            <div id="factureid" style="display:inline" class="editable" data-table="facture" data-column="num" data-id="<?php echo $_['facture'][0]->id;?>"><?php echo $_['facture'][0]->num;?></div>
+            <div id="factureid" style="display:inline"><?php echo $_['facture'][0]->num;?></div>
             <span data-html2canvas-ignore><?php p($l->t('Version'));?></span> <div data-html2canvas-ignore id="factureversion" style="display:inline" class="editable" data-table="facture" data-column="version" data-id="<?php echo $_['facture'][0]->id; ?>"><?php echo $_['facture'][0]->version; ?></div>
         </h2>
         <hr/>

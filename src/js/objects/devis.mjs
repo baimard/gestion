@@ -1,6 +1,6 @@
-import { generateUrl, getRootUrl } from "@nextcloud/router";
-import { configuration, updateDB } from "../modules/ajaxRequest.mjs";
-import { baseUrl, checkAutoIncrement, checkSelectPurJs, LoadDT, removeOptions, showDone } from "../modules/mainFunction.mjs";
+import { generateUrl } from "@nextcloud/router";
+import { updateDB } from "../modules/ajaxRequest.mjs";
+import { baseUrl, checkSelectPurJs, LoadDT, showDone } from "../modules/mainFunction.mjs";
 
 export class Devis {
 

@@ -24971,7 +24971,7 @@ class Devis {
     this.baseUrl = (0,router_dist/* generateUrl */.nu)(`/apps/gestion/devis/${this.id}/show`);
   }
 
-  /**
+  /**undefined
    * Get datatable row for a devis
    */
   getDTRow() {

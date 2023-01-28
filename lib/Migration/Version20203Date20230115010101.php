@@ -54,7 +54,7 @@ class Version20203Date20230115010101 extends SimpleMigrationStep {
 			$table->addColumn('facture_prefixe', 'string', ['notnull' => false, 'default' => "BILL-"]);
 		}else if ($table->hasColumn('facture_prefixe')) {
             $column = $table->getColumn('facture_prefixe');
-			$column->setOptions(['type' => \Doctrine\DBAL\Types\Type::getType('string'), 'notnull' => false, 'default' => "BILL-"]);
+			$column->setOptions(['type' => \Doctrine\DBAL\Types\Type::getType('string'), 'notnull' => false, 'default' => "INVOICE-"]);
         }
 
 		return $schema;

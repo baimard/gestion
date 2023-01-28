@@ -35395,7 +35395,7 @@ class Devis {
     this.baseUrl = (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_0__/* .generateUrl */ .nu)(`/apps/gestion/devis/${this.id}/show`);
   }
 
-  /**
+  /**undefined
    * Get datatable row for a devis
    */
   getDTRow() {

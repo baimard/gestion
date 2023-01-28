@@ -123,8 +123,11 @@ class Bdd {
         $last=0;
         $last = $this->lastinsertid("facture", $idNextcloud) + 1;
 
+        //PREFIX
+        $pref = $this->execSQLNoJsonReturn("SELECT * FROM ".$this->tableprefix."configuration WHERE id_nextcloud LIKE ?",array($idNextcloud));
+
         $sql = "INSERT INTO `".$this->tableprefix."facture` (`date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`,`user_id`) VALUES (?,?,?,NOW(),?,0,?);";
-        $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('INVOICE')."-".$last,$this->l->t('Means of payment'),$last));
+        $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$pref[0]['facture_prefixe']."-".$last,$this->l->t('Means of payment'),$last));
 
         return $last;
     }
@@ -179,7 +182,7 @@ class Bdd {
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
         if ( $res < 1 ){
-            $sql = "INSERT INTO `".$this->tableprefix."configuration` (`entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?);";
+            $sql = "INSERT INTO `".$this->tableprefix."configuration` (`entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`,`facture_prefixe`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?,?);";
             $this->execSQLNoData($sql, array($this->l->t('Your company name'),
                                         $this->l->t('Your company contact last name'),
                                         $this->l->t('Your company contact first name'),
@@ -190,7 +193,8 @@ class Bdd {
                                         $this->l->t('Your company address'),
                                         $idNextcloud,
                                         $this->l->t('All Legal mentions, disclaimer or everything you want to place in the footer.'),
-                                        $this->l->t('EUR')
+                                        $this->l->t('EUR'),
+                                        $this->l->t('INVOICE')
                                         )
                                     );
         }

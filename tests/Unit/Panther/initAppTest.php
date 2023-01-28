@@ -1,8 +1,5 @@
 <?php
 
-use Symfony\Component\Panther\Client;
-require __DIR__.'/../../../vendor/autoload.php';
-
 $client = Client::createFirefoxClient();
 
 $crawler = $client->request('GET', 'http://127.0.0.1/index.php/apps/gestion');

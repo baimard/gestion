@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\Panther\Client;
+
 $client = Client::createFirefoxClient();
 
 $crawler = $client->request('GET', 'http://127.0.0.1/index.php/apps/gestion');

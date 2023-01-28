@@ -49,6 +49,14 @@ class Version20203Date20230115010101 extends SimpleMigrationStep {
 			$table->addColumn('user_id', 'integer', []);
 		}
 
+		$table = $schema->getTable($tableprefix.'configuration');
+		if (!$table->hasColumn('facture_prefixe')) {
+			$table->addColumn('facture_prefixe', 'string', ['notnull' => false, 'default' => "BILL-"]);
+		}else if ($table->hasColumn('facture_prefixe')) {
+            $column = $table->getColumn('facture_prefixe');
+			$column->setOptions(['type' => \Doctrine\DBAL\Types\Type::getType('string'), 'notnull' => false, 'default' => "BILL-"]);
+        }
+
 		return $schema;
 	}
 
@@ -64,8 +72,7 @@ class Version20203Date20230115010101 extends SimpleMigrationStep {
 		$query	->select('id_nextcloud')->groupBy('id_nextcloud')->from($tableprefix.'facture');
 		$users = $query->execute()->fetchAll();
 
-		
-
+	
 		foreach ($users as $user) {
 			$qb2 = $this->db->getQueryBuilder();
 			$qb2	->select('id')->from($tableprefix.'facture')
@@ -76,6 +83,28 @@ class Version20203Date20230115010101 extends SimpleMigrationStep {
 			foreach ($facture_rows as $fr){
 				$qb = $this->db->getQueryBuilder();
 				$qb->update($tableprefix.'facture')
+					->set('user_id', $qb->createNamedParameter($i))
+					->where($qb->expr()->eq('id', $qb->createNamedParameter($fr['id'])))
+					->execute();
+					$i++;
+			}
+		}
+
+		$query = $this->db->getQueryBuilder();
+		$query	->select('id_nextcloud')->groupBy('id_nextcloud')->from($tableprefix.'devis');
+		$users = $query->execute()->fetchAll();
+
+	
+		foreach ($users as $user) {
+			$qb2 = $this->db->getQueryBuilder();
+			$qb2	->select('id')->from($tableprefix.'devis')
+					->where($qb2->expr()->eq('id_nextcloud', $qb2->createNamedParameter($user['id_nextcloud'])))
+					->orderBy('id', 'asc');
+			$facture_rows = $qb2->execute()->fetchAll();
+			$i = 1;
+			foreach ($facture_rows as $fr){
+				$qb = $this->db->getQueryBuilder();
+				$qb->update($tableprefix.'devis')
 					->set('user_id', $qb->createNamedParameter($i))
 					->where($qb->expr()->eq('id', $qb->createNamedParameter($fr['id'])))
 					->execute();

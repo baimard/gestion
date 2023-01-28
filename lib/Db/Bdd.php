@@ -14,7 +14,7 @@ class Bdd {
 
     public function __construct(IDbConnection $db,
                                 IL10N $l) {
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment", "user_id", "facture_prefixe");
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->pdo = $db;
@@ -42,7 +42,7 @@ class Bdd {
     }
 
     public function getDevis($idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."devis.id, ".$this->tableprefix."client.nom, ".$this->tableprefix."client.prenom, ".$this->tableprefix."client.id as cid, ".$this->tableprefix."devis.num, ".$this->tableprefix."devis.date, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.mentions FROM (".$this->tableprefix."devis LEFT JOIN ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_nextcloud = ".$this->tableprefix."client.id_nextcloud) WHERE ".$this->tableprefix."devis.id_nextcloud = ?;";
+        $sql = "SELECT ".$this->tableprefix."devis.id, ".$this->tableprefix."devis.user_id, ".$this->tableprefix."client.nom, ".$this->tableprefix."client.prenom, ".$this->tableprefix."client.id as cid, ".$this->tableprefix."devis.num, ".$this->tableprefix."devis.date, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.mentions FROM (".$this->tableprefix."devis LEFT JOIN ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_nextcloud = ".$this->tableprefix."client.id_nextcloud) WHERE ".$this->tableprefix."devis.id_nextcloud = ?;";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
@@ -99,8 +99,20 @@ class Bdd {
      * Insert quote
      */
     public function insertDevis($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."devis` (`date`,`id_nextcloud`,`num`,`id_client`,version,mentions,comment) VALUES (NOW(),?,?,0,'0.1',?,?);";
-        $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment')));
+        $last=0;
+        $last = $this->lastinsertid("devis", $idNextcloud) + 1;
+
+        $sql = "INSERT INTO `".$this->tableprefix."devis` ( `date`,
+                                                            `id_nextcloud`,
+                                                            `num`,
+                                                            `id_client`,
+                                                            `version`,
+                                                            `mentions`,
+                                                            `comment`,
+                                                            `user_id`
+                                                        ) 
+                                                VALUES (NOW(),?,?,0,'0.1',?,?,?);";
+        $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment'),$last));
         return true;
     }
 
@@ -114,11 +126,6 @@ class Bdd {
         $sql = "INSERT INTO `".$this->tableprefix."facture` (`date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`,`user_id`) VALUES (?,?,?,NOW(),?,0,?);";
         $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('INVOICE')."-".$last,$this->l->t('Means of payment'),$last));
 
-        // if(json_decode($this->getConfiguration(($idNextcloud)))[0]->auto_invoice_number == 1){
-            
-        //     $this->gestion_update('facture', 'num', ,$last,$idNextcloud);
-        //     $this->gestion_update('facture', 'user_id',$last,$last,$idNextcloud);
-        // }
         return $last;
     }
     

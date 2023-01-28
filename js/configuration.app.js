@@ -24683,6 +24683,7 @@ class Devis {
    */
   constructor(myresp) {
     this.id = myresp.id;
+    this.user_id = myresp.user_id;
     this.date = ((myresp.date == null || myresp.date.length === 0) ? '-' : myresp.date);
     this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
     this.cid = ((myresp.cid == null || myresp.cid.length === 0) ? '-' : myresp.cid);
@@ -24698,7 +24699,7 @@ class Devis {
    */
   getDTRow() {
     let myrow = [
-      '<div>' + this.id + '</div>',
+      '<div>' + this.user_id + '</div>',
       '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date + ' data-table="devis" data-column="date" data-id="' + this.id + '"/>',
       '<div class="editable" data-table="devis" data-column="num" data-id="' + this.id + '" style="display:inline">' + this.num + '</div>',
       '<div class="loadSelect_listclient" data-table="devis" data-column="id_client" data-id="' + this.id + '" data-current="' + this.cid + '">'+ this.cid + ' ' + this.prenom + ' ' + this.nom + '</div>',
@@ -41648,9 +41649,9 @@ function getCurrencyList(currentDevise) {
 
 function getAutoIncrement(activate){
     if(activate == 0){
-        return "<option selected value='0'>" + dist_translate('gestion', 'Disable') + "</option><option value='1'>" + dist_translate('gestion', 'Enable') + "</option>"
+        return "<option selected value='0'>" + t('gestion', 'Disable') + "</option><option value='1'>" + t('gestion', 'Enable') + "</option>"
     }else{
-        return "<option value='0'>" + dist_translate('gestion', 'Disable') + "</option><option selected value='1'>" + dist_translate('gestion', 'Enable') + "</option>"
+        return "<option value='0'>" + t('gestion', 'Disable') + "</option><option selected value='1'>" + t('gestion', 'Enable') + "</option>"
     }
 }
 
@@ -41683,7 +41684,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
 function loadConfigurationDT(response) {
     configuration_$.each(JSON.parse(response), function (arrayID, myresp) {
-
         document.getElementById("entreprise").innerHTML             = (((myresp.entreprise.length === 0) ? "-" : myresp.entreprise));
         document.getElementById("nom").innerHTML                    = ((myresp.nom.length === 0) ? "-" : myresp.nom);
         document.getElementById("prenom").innerHTML                 = ((myresp.prenom.length === 0) ? "-" : myresp.prenom);
@@ -41693,25 +41693,26 @@ function loadConfigurationDT(response) {
         document.getElementById("telephone").innerHTML              = ((myresp.telephone.length === 0) ? "-" : myresp.telephone);
         document.getElementById("mail").innerHTML                   = ((myresp.mail.length === 0) ? "-" : myresp.mail);
         document.getElementById("tva_default").innerHTML            = ((myresp.tva_default.length === 0) ? "-" : myresp.tva_default);
-        document.getElementById("auto_invoice_number").innerHTML    = getAutoIncrement(myresp.auto_invoice_number);
+        document.getElementById("facture_prefixe").innerHTML        = ((myresp.facture_prefixe.length === 0) ? "-" : myresp.facture_prefixe);
+        // document.getElementById("auto_invoice_number").innerHTML    = getAutoIncrement(myresp.auto_invoice_number);
         document.getElementById("currency").innerHTML               = getCurrencyList(myresp.devise);
         document.getElementById("format").innerHTML                 = getFormatList(myresp.format);
         document.getElementById("mentions_default").innerHTML       = ((myresp.mentions_default.length === 0) ? "-" : myresp.mentions_default.replace(/\&amp;/g, "&"));
 
         document.getElementById("entreprise")       .setAttribute("data-id", myresp.id);
-        document.getElementById("nom")       .setAttribute("data-id", myresp.id);
-        document.getElementById("prenom")       .setAttribute("data-id", myresp.id);
-        document.getElementById("adresse")       .setAttribute("data-id", myresp.id);
-        document.getElementById("legal_one")       .setAttribute("data-id", myresp.id);
-        document.getElementById("legal_two")       .setAttribute("data-id", myresp.id);
-        document.getElementById("telephone")       .setAttribute("data-id", myresp.id);
-        document.getElementById("mail")       .setAttribute("data-id", myresp.id);
-        document.getElementById("tva_default")       .setAttribute("data-id", myresp.id);
+        document.getElementById("nom")              .setAttribute("data-id", myresp.id);
+        document.getElementById("prenom")           .setAttribute("data-id", myresp.id);
+        document.getElementById("adresse")          .setAttribute("data-id", myresp.id);
+        document.getElementById("legal_one")        .setAttribute("data-id", myresp.id);
+        document.getElementById("legal_two")        .setAttribute("data-id", myresp.id);
+        document.getElementById("telephone")        .setAttribute("data-id", myresp.id);
+        document.getElementById("mail")             .setAttribute("data-id", myresp.id);
+        document.getElementById("tva_default")      .setAttribute("data-id", myresp.id);
+        document.getElementById("facture_prefixe")  .setAttribute("data-id", myresp.id);
         // document.getElementById("auto_invoice_number")       .setAttribute("data-id", myresp.id);
         document.getElementById("currency")       .setAttribute("data-id", myresp.id);
         document.getElementById("format")       .setAttribute("data-id", myresp.id);
         document.getElementById("mentions_default")       .setAttribute("data-id", myresp.id);
-
     });
 }
 })();

@@ -2,10 +2,11 @@
 
 sudo service apache2 stop
 docker stop -t 0 nextcloud database dev-gestion_database_1 dev-gestion_phpmyadmin_1
-
+exit 0
 echo "Start container MYSQL"
 docker run -d --rm --network next --name database -p 3306:3306 -e MYSQL_DATABASE=nextcloud -e MARIADB_ROOT_PASSWORD=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud mariadb
 # docker run -d --rm --network next --name database -p 5432:5432 -e POSTGRES_DB=nextcloud -e POSTGRES_PASSWORD=nextcloud -e POSTGRES_USER=nextcloud postgres
+
 
 sleep 5
 echo "Start nextcloud"
@@ -16,7 +17,7 @@ docker exec -it nextcloud bash -c "apt update ; apt install -y git make nodejs n
 # docker exec -it nextcloud bash -c "cd /tmp; wget https://github.com/mozilla/geckodriver/releases/download/#v0.30.0/geckodriver-v0.30.0-linux64.tar.gz ; tar xvzf geckodriver-v0.30.0-linux64.tar.gz -C /tmp/ ;  chown -R root:root /tmp/geckodriver* ; mv /tmp/geckodriver* /opt/ ; ln -s /opt/geckodriver/geckodriver /usr/local/bin/geckodriver"
 
 #docker exec -it nextcloud bash -c "git clone https://github.com/baimard/gestion.git /var/www/html/apps/gestion ; cd /var/www/html/apps/gestion ; git checkout dev-2.1.7 ; chown www-data:root -R /var/www/html/apps/gestion"
-docker exec -it nextcloud bash -c "git clone https://github.com/baimard/gestion.git /var/www/html/apps/gestion ; cd /var/www/html/apps/gestion ; chown www-data:root -R /var/www/html/apps/gestion"
+docker exec -it nextcloud bash -c "git clone https://github.com/baimard/gestion.git /var/www/html/apps/gestion ; cd /var/www/html/apps/gestion ; git checkout dev-2023 ; chown www-data:root -R /var/www/html/apps/gestion"
 docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make npm-init ; make composer;"
 
 echo "Initialisation de la base de données"

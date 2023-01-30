@@ -165,7 +165,8 @@ VALUES
   ("2022-06-25","QUOTE-7","aliquet magna a neque. Nullam ut nisi a","nextcloud","2.4","consectetuer",29,0),
   ("2021-11-20","QUOTE-8","quis urna.","nextcloud","4.3","rutrum",13,0),
   ("2022-12-24","QUOTE-9","tincidunt vehicula risus. Nulla eget metus eu","nextcloud","5.0","blandit",16,0),
-  ("2021-07-10","QUOTE-10","neque sed dictum eleifend, nunc risus varius","nextcloud","1.1","Cum",15);
+  ("2021-07-10","QUOTE-10","neque sed dictum eleifend, nunc risus varius","nextcloud","1.1","Cum",15,0);
+
 INSERT INTO `oc_gestion_devis` (`date`,`num`,`comment`,`id_nextcloud`,`version`,`mentions`,`id_client`,`user_id`)
 VALUES
   ("2022-12-01","QUOTE-11","nunc, ullamcorper eu, euismod ac, fermentum vel,","nextcloud","9.5","a,",11,0),
@@ -177,7 +178,8 @@ VALUES
   ("2022-12-13","QUOTE-17","ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam auctor,","nextcloud","6.0","sit",12,0),
   ("2022-08-11","QUOTE-18","augue, eu tempor erat neque non quam.","nextcloud","6.5","morbi",26,0),
   ("2022-10-02","QUOTE-19","dictum mi,","nextcloud","5.1","gravida",31,0),
-  ("2021-09-29","QUOTE-20","sed pede. Cum sociis","nextcloud","7.6","pede",19);
+  ("2021-09-29","QUOTE-20","sed pede. Cum sociis","nextcloud","7.6","pede",19,0);
+
 INSERT INTO `oc_gestion_devis` (`date`,`num`,`comment`,`id_nextcloud`,`version`,`mentions`,`id_client`,`user_id`)
 VALUES
   ("2022-05-11","QUOTE-21","sem ut cursus luctus, ipsum leo elementum sem, vitae aliquam","nextcloud","9.7","iaculis",19,0),
@@ -189,7 +191,7 @@ VALUES
   ("2022-04-23","QUOTE-27","rutrum magna.","nextcloud","7.9","in",31,0),
   ("2022-12-17","QUOTE-28","eu, eleifend nec,","nextcloud","4.2","mauris",27,0),
   ("2021-05-15","QUOTE-29","mauris sit amet lorem semper auctor. Mauris","nextcloud","2.4","arcu.",24,0),
-  ("2022-06-02","QUOTE-30","aliquet. Phasellus fermentum convallis ligula. Donec","nextcloud","3.7","commodo",27);
+  ("2022-06-02","QUOTE-30","aliquet. Phasellus fermentum convallis ligula. Donec","nextcloud","3.7","commodo",27,0);
 INSERT INTO `oc_gestion_devis` (`date`,`num`,`comment`,`id_nextcloud`,`version`,`mentions`,`id_client`,`user_id`)
 VALUES
   ("2022-05-31","QUOTE-31","lacus. Ut nec urna et","nextcloud","3.5","ac",29,0),
@@ -201,7 +203,8 @@ VALUES
   ("2022-01-11","QUOTE-37","nisi dictum augue malesuada malesuada. Integer id","nextcloud","5.2","tincidunt",20,0),
   ("2022-03-08","QUOTE-38","eget, volutpat","nextcloud","3.2","gravida.",27,0),
   ("2021-11-18","QUOTE-39","Morbi vehicula. Pellentesque tincidunt tempus risus. Donec egestas. Duis ac","nextcloud","5.9","penatibus",11,0),
-  ("2021-08-17","QUOTE-40","porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla","nextcloud","1.5","molestie",20);
+  ("2021-08-17","QUOTE-40","porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla","nextcloud","1.5","molestie",20,0);
+
 INSERT INTO `oc_gestion_devis` (`date`,`num`,`comment`,`id_nextcloud`,`version`,`mentions`,`id_client`,`user_id`)
 VALUES
   ("2022-02-28","QUOTE-41","vel, convallis in, cursus et, eros.","nextcloud","7.7","vulputate",11,0),
@@ -828,7 +831,7 @@ VALUES
   ("nextcloud","INVOICE-7","October 10th, 2021","2021-11-17","Credit CARD","WAIT","1.5",57,0),
   ("nextcloud","INVOICE-8","February 23rd, 2022","2021-05-25","BITCOIN","OK","0.9",31,0),
   ("nextcloud","INVOICE-9","March 3rd, 2022","2022-03-04","Credit CARD","RECEIVED","4.2",43,0),
-  ("nextcloud","INVOICE-10","March 15th, 2021","2023-01-09","Transfert","REFUSED","8.3",24);
+  ("nextcloud","INVOICE-10","March 15th, 2021","2023-01-09","Transfert","REFUSED","8.3",24,0);
 INSERT INTO `oc_gestion_facture` (`id_nextcloud`,`num`,`date`,`date_paiement`,`type_paiement`,`status_paiement`,`version`,`id_devis`,`user_id`)
 VALUES
   ("nextcloud","INVOICE-11","June 13th, 2022","2022-01-19","BITCOIN","WAIT","2.1",30,0),
@@ -840,7 +843,7 @@ VALUES
   ("nextcloud","INVOICE-17","July 16th, 2021","2022-05-04","Credit CARD","REFUNDED","8.1",21,0),
   ("nextcloud","INVOICE-18","November 22nd, 2022","2021-10-05","BITCOIN","RECEIVED","8.8",30,0),
   ("nextcloud","INVOICE-19","October 28th, 2021","2022-03-28","Transfert","REFUNDED","3.2",43,0),
-  ("nextcloud","INVOICE-20","November 21st, 2022","2022-08-29","Transfert","REFUSED","6.6",27);
+  ("nextcloud","INVOICE-20","November 21st, 2022","2022-08-29","Transfert","REFUSED","6.6",27,0);
 INSERT INTO `oc_gestion_facture` (`id_nextcloud`,`num`,`date`,`date_paiement`,`type_paiement`,`status_paiement`,`version`,`id_devis`,`user_id`)
 VALUES
   ("nextcloud","INVOICE-21","December 23rd, 2022","2022-03-29","Credit CARD","RECEIVED","8.2",11,0),
@@ -852,7 +855,7 @@ VALUES
   ("nextcloud","INVOICE-27","January 2nd, 2022","2021-05-22","Transfert","RECEIVED","7.8",38,0),
   ("nextcloud","INVOICE-28","November 25th, 2022","2022-07-19","Credit CARD","REFUNDED","1.1",57,0),
   ("nextcloud","INVOICE-29","December 29th, 2022","2022-10-22","BITCOIN","PAID","5.2",24,0),
-  ("nextcloud","INVOICE-30","May 1st, 2021","2022-08-28","Transfert","WAIT","6.5",44);
+  ("nextcloud","INVOICE-30","May 1st, 2021","2022-08-28","Transfert","WAIT","6.5",44,0);
 INSERT INTO `oc_gestion_facture` (`id_nextcloud`,`num`,`date`,`date_paiement`,`type_paiement`,`status_paiement`,`version`,`id_devis`,`user_id`)
 VALUES
   ("nextcloud","INVOICE-31","February 24th, 2021","2021-10-01","BITCOIN","PAID","5.7",38,0),
@@ -864,7 +867,7 @@ VALUES
   ("nextcloud","INVOICE-37","January 14th, 2023","2021-08-30","Transfert","WAIT","2.6",15,0),
   ("nextcloud","INVOICE-38","January 22nd, 2023","2021-10-07","Credit CARD","REFUSED","7.5",35,0),
   ("nextcloud","INVOICE-39","September 29th, 2021","2022-08-09","Credit CARD","OK","4.5",28,0),
-  ("nextcloud","INVOICE-40","September 4th, 2021","2022-07-23","Transfert","REFUNDED","6.7",21);
+  ("nextcloud","INVOICE-40","September 4th, 2021","2022-07-23","Transfert","REFUNDED","6.7",21,0);
 INSERT INTO `oc_gestion_facture` (`id_nextcloud`,`num`,`date`,`date_paiement`,`type_paiement`,`status_paiement`,`version`,`id_devis`,`user_id`)
 VALUES
   ("nextcloud","INVOICE-41","July 25th, 2021","2022-01-23","Transfert","PAID","2.5",32,0),
@@ -876,7 +879,7 @@ VALUES
   ("nextcloud","INVOICE-47","June 7th, 2021","2022-06-15","Transfert","REFUNDED","4.7",52,0),
   ("nextcloud","INVOICE-48","November 15th, 2022","2021-08-15","BITCOIN","PAID","4.1",45,0),
   ("nextcloud","INVOICE-49","July 9th, 2022","2022-02-08","Transfert","RECEIVED","0.5",49,0),
-  ("nextcloud","INVOICE-50","June 19th, 2022","2021-06-17","Credit CARD","OK","3.3",43);
+  ("nextcloud","INVOICE-50","June 19th, 2022","2021-06-17","Credit CARD","OK","3.3",43,0);
 INSERT INTO `oc_gestion_facture` (`id_nextcloud`,`num`,`date`,`date_paiement`,`type_paiement`,`status_paiement`,`version`,`id_devis`,`user_id`)
 VALUES
   ("nextcloud","INVOICE-51","June 19th, 2021","2022-08-19","Credit CARD","WAIT","7.2",22,0),
@@ -888,7 +891,7 @@ VALUES
   ("nextcloud","INVOICE-57","September 24th, 2021","2022-04-01","Credit CARD","CANCELLED","6.6",17,0),
   ("nextcloud","INVOICE-58","April 9th, 2022","2021-03-13","Transfert","PAID","3.3",29,0),
   ("nextcloud","INVOICE-59","January 21st, 2022","2022-03-15","Credit CARD","PAID","6.2",32,0),
-  ("nextcloud","INVOICE-60","June 23rd, 2021","2022-08-19","Transfert","WAIT","8.1",31);
+  ("nextcloud","INVOICE-60","June 23rd, 2021","2022-08-19","Transfert","WAIT","8.1",31,0);
 INSERT INTO `oc_gestion_facture` (`id_nextcloud`,`num`,`date`,`date_paiement`,`type_paiement`,`status_paiement`,`version`,`id_devis`,`user_id`)
 VALUES
   ("nextcloud","INVOICE-61","October 18th, 2021","2021-09-18","Transfert","WAIT","2.9",31,0),
@@ -900,7 +903,7 @@ VALUES
   ("nextcloud","INVOICE-67","September 13th, 2022","2023-01-09","Transfert","WAIT","0.4",29,0),
   ("nextcloud","INVOICE-68","November 24th, 2022","2021-06-29","Credit CARD","REFUNDED","9.0",32,0),
   ("nextcloud","INVOICE-69","July 20th, 2022","2022-06-22","BITCOIN","WAIT","7.0",17,0),
-  ("nextcloud","INVOICE-70","August 29th, 2022","2022-10-28","Credit CARD","RECEIVED","6.3",12);
+  ("nextcloud","INVOICE-70","August 29th, 2022","2022-10-28","Credit CARD","RECEIVED","6.3",12,0);
 INSERT INTO `oc_gestion_facture` (`id_nextcloud`,`num`,`date`,`date_paiement`,`type_paiement`,`status_paiement`,`version`,`id_devis`,`user_id`)
 VALUES
   ("nextcloud","INVOICE-71","July 20th, 2021","2021-08-09","Credit CARD","CANCELLED","2.5",14,0),
@@ -912,7 +915,7 @@ VALUES
   ("nextcloud","INVOICE-77","November 28th, 2021","2021-05-18","Credit CARD","WAIT","6.5",16,0),
   ("nextcloud","INVOICE-78","April 19th, 2022","2022-11-05","Transfert","PAID","6.7",57,0),
   ("nextcloud","INVOICE-79","October 21st, 2022","2022-04-06","Transfert","REFUSED","4.8",54,0),
-  ("nextcloud","INVOICE-80","May 24th, 2022","2022-05-02","Credit CARD","REFUSED","3.7",34);
+  ("nextcloud","INVOICE-80","May 24th, 2022","2022-05-02","Credit CARD","REFUSED","3.7",34,0);
 INSERT INTO `oc_gestion_facture` (`id_nextcloud`,`num`,`date`,`date_paiement`,`type_paiement`,`status_paiement`,`version`,`id_devis`,`user_id`)
 VALUES
   ("nextcloud","INVOICE-81","July 30th, 2021","2022-12-29","BITCOIN","REFUNDED","0.7",27,0),
@@ -924,7 +927,7 @@ VALUES
   ("nextcloud","INVOICE-87","October 18th, 2021","2021-03-20","Transfert","PAID","1.2",17,0),
   ("nextcloud","INVOICE-88","March 3rd, 2021","2021-06-15","Transfert","PAID","8.1",43,0),
   ("nextcloud","INVOICE-89","August 23rd, 2021","2022-12-23","Credit CARD","RECEIVED","0.4",34,0),
-  ("nextcloud","INVOICE-90","March 27th, 2022","2021-02-18","Credit CARD","OK","3.2",38);
+  ("nextcloud","INVOICE-90","March 27th, 2022","2021-02-18","Credit CARD","OK","3.2",38,0);
 INSERT INTO `oc_gestion_facture` (`id_nextcloud`,`num`,`date`,`date_paiement`,`type_paiement`,`status_paiement`,`version`,`id_devis`,`user_id`)
 VALUES
   ("nextcloud","INVOICE-91","June 5th, 2021","2021-04-26","Transfert","REFUNDED","4.7",10,0),

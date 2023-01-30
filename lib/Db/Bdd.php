@@ -202,10 +202,12 @@ class Bdd {
     }
 
     public function isConfig($idNextcloud){
-        $changelog = 8; //+1 if you want changelog appear for everybody one time !
+        $changelog = 9; //+1 if you want changelog appear for everybody one time !
 
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
+
+        // Utilisateur jamais utilisé l'application
         if ( $res < 1 ){
             return false;
         }else{
@@ -218,7 +220,6 @@ class Bdd {
             }else{
                 return true;
             }
-            
         }
     }
 

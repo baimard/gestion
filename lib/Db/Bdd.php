@@ -14,7 +14,7 @@ class Bdd {
 
     public function __construct(IDbConnection $db,
                                 IL10N $l) {
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment", "user_id", "facture_prefixe");
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->pdo = $db;
@@ -42,12 +42,12 @@ class Bdd {
     }
 
     public function getDevis($idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."devis.id, ".$this->tableprefix."client.nom, ".$this->tableprefix."client.prenom, ".$this->tableprefix."client.id as cid, ".$this->tableprefix."devis.num, ".$this->tableprefix."devis.date, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.mentions FROM (".$this->tableprefix."devis LEFT JOIN ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_nextcloud = ".$this->tableprefix."client.id_nextcloud) WHERE ".$this->tableprefix."devis.id_nextcloud = ?;";
+        $sql = "SELECT ".$this->tableprefix."devis.id, ".$this->tableprefix."devis.user_id, ".$this->tableprefix."client.nom, ".$this->tableprefix."client.prenom, ".$this->tableprefix."client.id as cid, ".$this->tableprefix."devis.num, ".$this->tableprefix."devis.date, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.mentions FROM (".$this->tableprefix."devis LEFT JOIN ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_nextcloud = ".$this->tableprefix."client.id_nextcloud) WHERE ".$this->tableprefix."devis.id_nextcloud = ?;";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
     public function getFactures($idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."facture.id, ".$this->tableprefix."facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, ".$this->tableprefix."facture.version, status_paiement FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_nextcloud = ".$this->tableprefix."devis.id_nextcloud) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_nextcloud = ".$this->tableprefix."client.id_nextcloud  WHERE ".$this->tableprefix."facture.id_nextcloud = ?";
+        $sql = "SELECT ".$this->tableprefix."facture.id, ".$this->tableprefix."facture.user_id, ".$this->tableprefix."facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, ".$this->tableprefix."facture.version, status_paiement FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_nextcloud = ".$this->tableprefix."devis.id_nextcloud) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_nextcloud = ".$this->tableprefix."client.id_nextcloud  WHERE ".$this->tableprefix."facture.id_nextcloud = ?";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
@@ -99,8 +99,20 @@ class Bdd {
      * Insert quote
      */
     public function insertDevis($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."devis` (`date`,`id_nextcloud`,`num`,`id_client`,version,mentions,comment) VALUES (NOW(),?,?,0,'0.1',?,?);";
-        $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment')));
+        $last=0;
+        $last = $this->lastinsertid("devis", $idNextcloud) + 1;
+
+        $sql = "INSERT INTO `".$this->tableprefix."devis` ( `date`,
+                                                            `id_nextcloud`,
+                                                            `num`,
+                                                            `id_client`,
+                                                            `version`,
+                                                            `mentions`,
+                                                            `comment`,
+                                                            `user_id`
+                                                        ) 
+                                                VALUES (NOW(),?,?,0,'0.1',?,?,?);";
+        $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment'),$last));
         return true;
     }
 
@@ -108,14 +120,16 @@ class Bdd {
      * Insert invoice
      */
     public function insertFacture($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."facture` (`date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`) VALUES (?,?,?,NOW(),?,0);";
-        $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$this->l->t('Invoice number'),$this->l->t('Means of payment')));
+        $last=0;
+        $last = $this->lastinsertid("facture", $idNextcloud) + 1;
 
-        if(json_decode($this->getConfiguration(($idNextcloud)))[0]->auto_invoice_number == 1){
-            $this->gestion_update('facture', 'num', $this->l->t('INVOICE')."-".$this->lastinsertid(),$this->lastinsertid(),$idNextcloud);
-        }
-        
-        return true;
+        //PREFIX
+        $pref = $this->execSQLNoJsonReturn("SELECT * FROM ".$this->tableprefix."configuration WHERE id_nextcloud LIKE ?",array($idNextcloud));
+
+        $sql = "INSERT INTO `".$this->tableprefix."facture` (`date`,`id_nextcloud`,`num`,`date_paiement`,`type_paiement`,`id_devis`,`user_id`) VALUES (?,?,?,NOW(),?,0,?);";
+        $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$pref[0]['facture_prefixe']."-".$last,$this->l->t('Means of payment'),$last));
+
+        return $last;
     }
     
     public function insertProduit($idNextcloud){
@@ -168,7 +182,7 @@ class Bdd {
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
         if ( $res < 1 ){
-            $sql = "INSERT INTO `".$this->tableprefix."configuration` (`entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?);";
+            $sql = "INSERT INTO `".$this->tableprefix."configuration` (`entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`,`facture_prefixe`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?,?);";
             $this->execSQLNoData($sql, array($this->l->t('Your company name'),
                                         $this->l->t('Your company contact last name'),
                                         $this->l->t('Your company contact first name'),
@@ -179,7 +193,8 @@ class Bdd {
                                         $this->l->t('Your company address'),
                                         $idNextcloud,
                                         $this->l->t('All Legal mentions, disclaimer or everything you want to place in the footer.'),
-                                        $this->l->t('EUR')
+                                        $this->l->t('EUR'),
+                                        $this->l->t('INVOICE')
                                         )
                                     );
         }
@@ -187,10 +202,12 @@ class Bdd {
     }
 
     public function isConfig($idNextcloud){
-        $changelog = 8; //+1 if you want changelog appear for everybody one time !
+        $changelog = 9; //+1 if you want changelog appear for everybody one time !
 
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
+
+        // Utilisateur jamais utilisé l'application
         if ( $res < 1 ){
             return false;
         }else{
@@ -203,7 +220,6 @@ class Bdd {
             }else{
                 return true;
             }
-            
         }
     }
 
@@ -258,8 +274,10 @@ class Bdd {
     /**
      * Get last insert id
      */
-    public function lastinsertid(){
-        return $this->execSQLNoJsonReturn("SELECT LAST_INSERT_ID();",array())[0]['LAST_INSERT_ID()'];
+    public function lastinsertid($table,$idNextcloud){
+        $sql = "SELECT max(user_id) as LAST_INSERT_ID FROM `" . $this->tableprefix . $table . "` WHERE " . $this->tableprefix . $table .".id_nextcloud = ?;";
+        $res = $this->execSQLNoJsonReturn($sql,array($idNextcloud));
+        return $res[0]['LAST_INSERT_ID'];
     }
 
     public function backup(){

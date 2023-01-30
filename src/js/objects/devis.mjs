@@ -1,6 +1,6 @@
-import { generateUrl, getRootUrl } from "@nextcloud/router";
-import { configuration, updateDB } from "../modules/ajaxRequest.mjs";
-import { baseUrl, checkAutoIncrement, checkSelectPurJs, LoadDT, removeOptions, showDone } from "../modules/mainFunction.mjs";
+import { generateUrl } from "@nextcloud/router";
+import { updateDB } from "../modules/ajaxRequest.mjs";
+import { baseUrl, checkSelectPurJs, LoadDT, showDone } from "../modules/mainFunction.mjs";
 
 export class Devis {
 
@@ -10,6 +10,7 @@ export class Devis {
    */
   constructor(myresp) {
     this.id = myresp.id;
+    this.user_id = myresp.user_id;
     this.date = ((myresp.date == null || myresp.date.length === 0) ? '-' : myresp.date);
     this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
     this.cid = ((myresp.cid == null || myresp.cid.length === 0) ? '-' : myresp.cid);
@@ -20,12 +21,12 @@ export class Devis {
     this.baseUrl = generateUrl(`/apps/gestion/devis/${this.id}/show`);
   }
 
-  /**
+  /**undefined
    * Get datatable row for a devis
    */
   getDTRow() {
     let myrow = [
-      '<div>' + this.id + '</div>',
+      '<div>' + this.user_id + '</div>',
       '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date + ' data-table="devis" data-column="date" data-id="' + this.id + '"/>',
       '<div class="editable" data-table="devis" data-column="num" data-id="' + this.id + '" style="display:inline">' + this.num + '</div>',
       '<div class="loadSelect_listclient" data-table="devis" data-column="id_client" data-id="' + this.id + '" data-current="' + this.cid + '">'+ this.cid + ' ' + this.prenom + ' ' + this.nom + '</div>',

@@ -149,7 +149,7 @@ class PageControllerTest extends TestCase {
 	 * 
 	 */
 	public function testDeleteClient() {
-		$id = $this->db->lastinsertid();
+		$id = $this->db->lastinsertid("facture","nextcloud");
 		$table = "client";
 		$result = $this->controller->delete($table,$id);
 		$this->assertTrue($result);
@@ -176,7 +176,7 @@ class PageControllerTest extends TestCase {
 	 * 
 	 */
 	public function testDeleteDevis() {
-		$id = $this->db->lastinsertid();
+		$id = $this->db->lastinsertid("facture","nextcloud");;
 		$table = "devis";
 		$result = $this->controller->delete($table,$id);
 		$this->assertTrue($result);
@@ -192,7 +192,7 @@ class PageControllerTest extends TestCase {
 	 * 
 	 */
 	public function testDeleteFacture() {
-		$id = $this->db->lastinsertid();
+		$id = $this->db->lastinsertid("facture","nextcloud");
 		$table = "facture";
 		$result = $this->controller->delete($table,$id);
 		$this->assertTrue($result);
@@ -210,7 +210,7 @@ class PageControllerTest extends TestCase {
 	}
 
 	public function testDeleteProduitDevis(){
-		$id = $this->db->lastinsertid();
+		$id = $this->db->lastinsertid("facture","nextcloud");;
 		$table = "produit_devis";
 		$result = $this->controller->delete($table,$id);
 		$this->assertTrue($result);
@@ -221,7 +221,7 @@ class PageControllerTest extends TestCase {
 	 * 
 	 */
 	public function testDeleteProduit() {
-		$id = $this->db->lastinsertid();
+		$id = $this->db->lastinsertid("facture","nextcloud");;
 		$table = "produit";
 		$result = $this->controller->delete($table,$id);
 		$this->assertTrue($result);

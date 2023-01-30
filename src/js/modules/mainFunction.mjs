@@ -188,8 +188,9 @@ export function getGlobal(total) {
 }
 
 /**
- * 
+ * //@
  * @param {*} response 
+ * 
  */
 export function checkAutoIncrement(response){
     var myresp = JSON.parse(response)[0];

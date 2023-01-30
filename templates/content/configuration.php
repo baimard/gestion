@@ -45,9 +45,9 @@
         <div class="configuration-icon icon-details"></div>
         <div class="configuration-content" style="float:none;"><div id="tva_default" class="configuration-content editableNumber" data-table="configuration" data-column="tva_default" data-id=""><?php p($l->t('Loading …')); ?></div><div class="configuration-content"> % </div></div>
     </div>
-    <div title="<?php p($l->t('If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want.')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('Set prefixe for generated BILL')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
-        <select style="float:none;" id="auto_invoice_number" class="configuration-content editableSelect" data-table="configuration" data-column="auto_invoice_number" data-id=""></select>
+        <div style="float:none;" id="facture_prefixe" class="configuration-content editable" data-table="configuration" data-column="facture_prefixe" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>
     <div title="<?php p($l->t('Global currency for the application')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>

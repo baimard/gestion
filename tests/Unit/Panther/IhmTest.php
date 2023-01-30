@@ -5,7 +5,7 @@ require __DIR__.'/../../../vendor/autoload.php';
 
 $client = Client::createFirefoxClient();
 
-$crawler = $client->request('GET', $this->url.'/index.php/apps/gestion');
+$crawler = $client->request('GET', 'http://127.0.0.1/index.php/apps/gestion');
 
 $form = $crawler->selectButton('Log in')->form();
 $form['user'] = 'nextcloud';

@@ -309,6 +309,7 @@ OC.L10N.register(
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Second line in the footer of your Quote/Invoice with all legal information you need",
     "Show phone number in the Quote/Invoice header" : "Show phone number in the Quote/Invoice header",
     "E-mail address which appears in the header of the Quote/Invoice" : "E-mail address which appears in the header of the Quote/Invoice",
+    "Set prefixe for generated BILL" : "Set prefix for generated BILL",
     "Global currency for the application" : "Global currency for the application",
     "Global monetary format for the application" : "Global monetary format for the application",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Legal disclaimer/mentions you need in your footer - before company information",

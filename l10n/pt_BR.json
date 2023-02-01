@@ -307,6 +307,7 @@
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Segunda linha no rodapé da sua Cotação/Fatura com todas as informações legais que você precisa",
     "Show phone number in the Quote/Invoice header" : "Mostrar número de telefone no cabeçalho Cotação/Fatura",
     "E-mail address which appears in the header of the Quote/Invoice" : "Endereço de e-mail que aparece no cabeçalho da Cotação/Fatura",
+    "Set prefixe for generated BILL" : "Definir prefixo para CONTA gerada",
     "Global currency for the application" : "Moeda global para o aplicativo",
     "Global monetary format for the application" : "Formato monetário global para o aplicativo",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Isenção de responsabilidade legal/menções que você precisa em seu rodapé - antes das informações da empresa",

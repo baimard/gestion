@@ -309,6 +309,7 @@ OC.L10N.register(
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Втори ред в долния колонтитул на вашата оферта/фактура с цялата необходима ви правна информация",
     "Show phone number in the Quote/Invoice header" : "Показване на телефонния номер в заглавката на оферта/фактура",
     "E-mail address which appears in the header of the Quote/Invoice" : "Имейл адрес, който се появява в заглавката на офертата/фактурата",
+    "Set prefixe for generated BILL" : "Задаване на префикс за генерираният BILL",
     "Global currency for the application" : "Глобална валута за приложението",
     "Global monetary format for the application" : "Глобален паричен формат за приложението",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Преди информацията за компанията, в долния колонтитул трябва да има правен отказ от отговорност/споменавания",

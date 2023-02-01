@@ -45,7 +45,7 @@
         <div class="configuration-icon icon-details"></div>
         <div class="configuration-content" style="float:none;"><div id="tva_default" class="configuration-content editableNumber" data-table="configuration" data-column="tva_default" data-id=""><?php p($l->t('Loading …')); ?></div><div class="configuration-content"> % </div></div>
     </div>
-    <div title="<?php p($l->t('Set prefix for generated Bill')); ?>" class="configuration-global">
+    <div title="<?php p($l->t('Set prefix for generated invoice')); ?>" class="configuration-global">
         <div class="configuration-icon icon-details"></div>
         <div style="float:none;" id="facture_prefixe" class="configuration-content editable" data-table="configuration" data-column="facture_prefixe" data-id=""><?php p($l->t('Loading …')); ?></div>
     </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2023-02-01 03:13+0000\n"
+"POT-Creation-Date: 2023-02-02 03:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1330,7 +1330,7 @@ msgid "E-mail address which appears in the header of the Quote/Invoice"
 msgstr ""
 
 #: /app/templates/content/configuration.php:48
-msgid "Set prefixe for generated BILL"
+msgid "Set prefix for generated invoice"
 msgstr ""
 
 #: /app/templates/content/configuration.php:52

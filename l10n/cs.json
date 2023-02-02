@@ -307,7 +307,6 @@
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Druhý řádek v zápatí vaší nabídky/faktury se všemi právními informacemi, které je třeba uvést",
     "Show phone number in the Quote/Invoice header" : "Zobrazit telefonní číslo v záhlaví nabídky/faktury",
     "E-mail address which appears in the header of the Quote/Invoice" : "E-mailová adresa která se objeví v záhlaví nabídky/faktury",
-    "Set prefixe for generated BILL" : "Nastavit předponu pro vytvořenou fakturu",
     "Global currency for the application" : "Globální měna pro aplikaci",
     "Global monetary format for the application" : "Formát měny pro celou aplikaci",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Zřeknutí se právní zodpovědnosti/zmínění, které potřejete mít v zápatí – ještě před informacemi o společnosti",

@@ -13,7 +13,7 @@ use OCP\IDBConnection;
 /**
  * Auto-generated migration step: Please modify to your needs!
  */
-class Version20203Date20230115010101 extends SimpleMigrationStep {
+class Version20204Date20230202010101 extends SimpleMigrationStep {
 
     private IDbConnection $db;
 
@@ -42,12 +42,18 @@ class Version20203Date20230115010101 extends SimpleMigrationStep {
 		$table = $schema->getTable($tableprefix.'facture');
 		if (!$table->hasColumn('user_id')) {
 			$table->addColumn('user_id', 'integer', ['default' => 0]);
-		}
+		}else if ($table->hasColumn('user_id')) {
+            $column = $table->getColumn('user_id');
+			$column->setOptions(['default' => 0]);
+        }
 
 		$table = $schema->getTable($tableprefix.'devis');
 		if (!$table->hasColumn('user_id')) {
 			$table->addColumn('user_id', 'integer', ['default' => 0]);
-		}
+		}else if ($table->hasColumn('user_id')) {
+            $column = $table->getColumn('user_id');
+			$column->setOptions(['default' => 0]);
+        }
 
 		$table = $schema->getTable($tableprefix.'configuration');
 		if (!$table->hasColumn('facture_prefixe')) {

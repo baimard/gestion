@@ -22,7 +22,11 @@ If you need to adapt this application to your country laws, please open issue.
 
 [Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)
     ]]></description>
+<<<<<<< HEAD
     <version>2.3.1</version>
+=======
+    <version>2.3.0</version>
+>>>>>>> 9fb43d1076bb072586df8e81604f4fdccb02c776
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>

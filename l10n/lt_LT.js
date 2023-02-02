@@ -9,6 +9,7 @@ OC.L10N.register(
     "Address" : "Adresas",
     "New" : "Nauja",
     "Comment" : "Komentaras",
+    "Are you sure you want to delete?" : "Ar tikrai norite ištrinti?",
     "Cancel" : "Atšaukti",
     "There is an error" : "Yra klaida",
     "Disable" : "Išjungti",

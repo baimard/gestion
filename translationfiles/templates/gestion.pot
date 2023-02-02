@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2023-01-15 03:11+0000\n"
+"POT-Creation-Date: 2023-02-02 03:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,87 +45,83 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:103 /app/templates/content/devis.php:21
+#: /app/lib/Db/Bdd.php:115 /app/templates/content/devis.php:21
 msgid "Quote number"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:103
+#: /app/lib/Db/Bdd.php:115
 msgid "New"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:103 /app/templates/content/devisshow.php:60
+#: /app/lib/Db/Bdd.php:115 /app/templates/content/devisshow.php:60
 #: /app/templates/content/factureshow.php:62
 msgid "Comment"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:112
+#: /app/lib/Db/Bdd.php:130
 msgid "Text free"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:112 /app/templates/content/facture.php:23
-msgid "Invoice number"
-msgstr ""
-
-#: /app/lib/Db/Bdd.php:112 /app/templates/content/facture.php:26
+#: /app/lib/Db/Bdd.php:130 /app/templates/content/facture.php:26
 #: /app/templates/content/factureshow.php:44
 msgid "Means of payment"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:115 /app/src/js/pdf.js:66
-msgid "INVOICE"
-msgstr ""
-
-#: /app/lib/Db/Bdd.php:123 /app/templates/content/devisshow.php:58
+#: /app/lib/Db/Bdd.php:137 /app/templates/content/devisshow.php:58
 #: /app/templates/content/factureshow.php:60
 #: /app/templates/content/produit.php:20
 msgid "Reference"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:123 /app/templates/content/devisshow.php:59
+#: /app/lib/Db/Bdd.php:137 /app/templates/content/devisshow.php:59
 #: /app/templates/content/factureshow.php:61
 #: /app/templates/content/produit.php:21
 msgid "Designation"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:172
+#: /app/lib/Db/Bdd.php:186
 msgid "Your company name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:173 /app/templates/content/changelog.php:62
+#: /app/lib/Db/Bdd.php:187 /app/templates/content/changelog.php:62
 msgid "Your company contact last name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:174 /app/templates/content/changelog.php:60
+#: /app/lib/Db/Bdd.php:188 /app/templates/content/changelog.php:60
 msgid "Your company contact first name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:175 /app/templates/content/changelog.php:64
+#: /app/lib/Db/Bdd.php:189 /app/templates/content/changelog.php:64
 msgid "Company legal information line one"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:176 /app/templates/content/changelog.php:66
+#: /app/lib/Db/Bdd.php:190 /app/templates/content/changelog.php:66
 msgid "Company legal information line two"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:177 /app/templates/content/changelog.php:72
+#: /app/lib/Db/Bdd.php:191 /app/templates/content/changelog.php:72
 msgid "Your company email"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:178 /app/templates/content/changelog.php:70
+#: /app/lib/Db/Bdd.php:192 /app/templates/content/changelog.php:70
 msgid "Your company phone"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:179 /app/templates/content/changelog.php:68
+#: /app/lib/Db/Bdd.php:193 /app/templates/content/changelog.php:68
 msgid "Your company address"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:181
+#: /app/lib/Db/Bdd.php:195
 msgid ""
 "All Legal mentions, disclaimer or everything you want to place in the footer."
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:182
+#: /app/lib/Db/Bdd.php:196
 msgid "EUR"
+msgstr ""
+
+#: /app/lib/Db/Bdd.php:197 /app/src/js/pdf.js:66
+msgid "INVOICE"
 msgstr ""
 
 #: /app/lib/Sections/GestionAdmin.php:56
@@ -188,7 +184,7 @@ msgid "Nothing changed"
 msgstr ""
 
 #: /app/src/js/modules/ajaxRequest.mjs:177 /app/src/js/objects/client.mjs:183
-#: /app/src/js/objects/devis.mjs:115
+#: /app/src/js/objects/devis.mjs:116
 msgid "Cancel"
 msgstr ""
 
@@ -1009,7 +1005,7 @@ msgstr ""
 msgid "Added!"
 msgstr ""
 
-#: /app/src/js/objects/devis.mjs:34 /app/src/js/objects/facture.mjs:41
+#: /app/src/js/objects/devis.mjs:35 /app/src/js/objects/facture.mjs:40
 msgid "Open"
 msgstr ""
 
@@ -1244,7 +1240,6 @@ msgid "Automatically generated invoice number"
 msgstr ""
 
 #: /app/templates/content/changelog.php:77
-#: /app/templates/content/configuration.php:48
 msgid ""
 "If you want to automatically generated an invoice number, set to enable. If "
 "you want to be free, set disable. You can enable and disable when you want."
@@ -1297,6 +1292,7 @@ msgstr ""
 #: /app/templates/content/configuration.php:38
 #: /app/templates/content/configuration.php:42
 #: /app/templates/content/configuration.php:46
+#: /app/templates/content/configuration.php:50
 #: /app/templates/content/configuration.php:62
 msgid "Loading …"
 msgstr ""
@@ -1331,6 +1327,10 @@ msgstr ""
 
 #: /app/templates/content/configuration.php:40
 msgid "E-mail address which appears in the header of the Quote/Invoice"
+msgstr ""
+
+#: /app/templates/content/configuration.php:48
+msgid "Set prefix for generated invoice"
 msgstr ""
 
 #: /app/templates/content/configuration.php:52
@@ -1482,6 +1482,10 @@ msgstr ""
 
 #: /app/templates/content/facture.php:12
 msgid "Add invoice"
+msgstr ""
+
+#: /app/templates/content/facture.php:23
+msgid "Invoice number"
 msgstr ""
 
 #: /app/templates/content/facture.php:24

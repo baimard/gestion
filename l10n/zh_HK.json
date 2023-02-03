@@ -307,6 +307,7 @@
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "報價單／發票頁尾的第二行，包含您所需要的所有法律資訊",
     "Show phone number in the Quote/Invoice header" : "在報價/發票標題中顯示電郵地址",
     "E-mail address which appears in the header of the Quote/Invoice" : "在報價/發票標題中顯示電郵地址",
+    "Set prefix for generated invoice" : "為生成的賬單設置前綴",
     "Global currency for the application" : "應用程式的默認貨幣",
     "Global monetary format for the application" : "應用程式的全域貨幣格式",
     "Legal disclaimer/mentions you need in your footer - before company information" : "頁腳中的法律免責聲明 - 在公司資訊之前",

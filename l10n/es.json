@@ -307,6 +307,7 @@
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Segunda línea en el pie de página de su presupuesto/factura con toda la información legal que necesite",
     "Show phone number in the Quote/Invoice header" : "Mostrar el número de teléfono en la cabecera del presupuesto/factura",
     "E-mail address which appears in the header of the Quote/Invoice" : "Dirección de correo electrónico que aparece en la cabecera del presupuesto/factura",
+    "Set prefix for generated invoice" : "Establecer prefijo para factura generada",
     "Global currency for the application" : "Divisa global de la aplicación",
     "Global monetary format for the application" : "Formato monetario global para la aplicación",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Descargo de responsabilidad/menciones que necesitas poner en tu pie de página - antes de la información de la empresa",

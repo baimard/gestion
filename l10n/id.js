@@ -12,6 +12,7 @@ OC.L10N.register(
     "Disable" : "Nonaktifkan",
     "Enable" : "aktifkan",
     "Search" : "Cari",
+    "Showing 0 to 0 of 0 entries" : "Menampilkan 0 hingga 0 dari 0 entri",
     "First" : "Pertama",
     "Next" : "Berikutnya",
     "Previous" : "Sebelumnya",

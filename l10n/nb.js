@@ -11,6 +11,7 @@ OC.L10N.register(
     "Quote number" : "Sitat nummer",
     "New" : "Ny",
     "Comment" : "Kommentar",
+    "Are you sure you want to delete?" : "Er du sikker på at du vil slette?",
     "Cancel" : "Avbryt",
     "Disable" : "Deaktiver",
     "Enable" : "Aktiver",

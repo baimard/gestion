@@ -309,6 +309,7 @@ OC.L10N.register(
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Seconde ligne du pied de page pour votre devis/facture avec les informations ou mentions légales dont vous avez besoin",
     "Show phone number in the Quote/Invoice header" : "Afficher le numéro de téléphone dans l'entête de votre Devis/Facture",
     "E-mail address which appears in the header of the Quote/Invoice" : "Afficher l'e-mail dans l'entête de votre Devis/Facture",
+    "Set prefix for generated invoice" : "Configurer le préfixe des factures générées",
     "Global currency for the application" : "Devise globale de votre application",
     "Global monetary format for the application" : "Format monétaire global de l'application",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Information/Avertissement dont vous avez besoin dans votre pied de page, avant les informations de l'entreprise",

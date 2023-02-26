@@ -307,6 +307,7 @@
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Az árajánlat/számla láblécének második sora az összes szükséges jogi információval",
     "Show phone number in the Quote/Invoice header" : "Telefonszám megjelenítése a árajánlat/számla fejlécében",
     "E-mail address which appears in the header of the Quote/Invoice" : "Az árajánlat/számla fejlécében megjelenő e-mail-cím",
+    "Set prefix for generated invoice" : "Előtag beállítása az előállított számlához",
     "Global currency for the application" : "Az alkalmazás által használt globális pénznem",
     "Global monetary format for the application" : "Az alkalmazás által használt globális pénzformátum",
     "Legal disclaimer/mentions you need in your footer - before company information" : "A láblécben szükséges jogi nyilatkozat – a céginformációk előtt",

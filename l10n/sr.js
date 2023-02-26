@@ -13,6 +13,7 @@ OC.L10N.register(
     "Disable" : "Искључи",
     "Enable" : "Укључи",
     "Search" : "Претрага",
+    "Showing 0 to 0 of 0 entries" : "Приказују се ставке 0 до 0 од 0 укупно",
     "Next" : "Следећа",
     "Previous" : "Претходно",
     "Open" : "Отвори",

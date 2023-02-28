@@ -275,9 +275,9 @@ class Bdd {
      * Get last insert id
      */
     public function lastinsertid($table,$idNextcloud){
-        $sql = "SELECT max(user_id) as LAST_INSERT_ID FROM `" . $this->tableprefix . $table . "` WHERE " . $this->tableprefix . $table .".id_nextcloud = ?;";
+        $sql = "SELECT max(user_id) as last_insert_id FROM `" . $this->tableprefix . $table . "` WHERE " . $this->tableprefix . $table .".id_nextcloud = ?;";
         $res = $this->execSQLNoJsonReturn($sql,array($idNextcloud));
-        return $res[0]['LAST_INSERT_ID'];
+        return $res[0]['last_insert_id'];
     }
 
     public function backup(){

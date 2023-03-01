@@ -1,4 +1,4 @@
-import "@nextcloud/dialogs/styles/toast.scss";
+import "@nextcloud/dialogs/dist/index.css";
 import "datatables.net-dt/css/jquery.dataTables.css";
 import "../css/mycss.less";
 

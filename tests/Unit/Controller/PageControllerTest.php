@@ -184,7 +184,7 @@ class PageControllerTest extends TestCase {
 
 	public function testInsertFacture() {
 		$result = $this->controller->insertFacture();
-		$this->assertTrue($result);
+		$this->assertStringMatchesFormat('%i', $result);
 	}
 
 	/** 

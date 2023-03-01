@@ -2,6 +2,7 @@
 
 sudo service apache2 stop
 sudo docker stop -t 0 nextcloud database dev-gestion_database_1 dev-gestion_phpmyadmin_1
+sudo docker rm nextcloud database dev-gestion_database_1 dev-gestion_phpmyadmin_1
 
 echo "Start container MYSQL"
 sudo docker run -d --rm --network next --name database -p 3306:3306 -e MYSQL_DATABASE=nextcloud -e MARIADB_ROOT_PASSWORD=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud mariadb
@@ -9,7 +10,7 @@ sudo docker run -d --rm --network next --name database -p 3306:3306 -e MYSQL_DAT
 
 sleep 5
 echo "Start nextcloud"
-sudo docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:latest
+sudo docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:stable-apache
 
 echo "Installation"
 sudo docker exec -it nextcloud bash -c "apt update ; apt install -y git make nodejs npm firefox-esr unzip wget"

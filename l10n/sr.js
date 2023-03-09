@@ -53,6 +53,7 @@ OC.L10N.register(
     "December" : "Децембар",
     "Total" : "Укупно",
     "Manage" : "Управљај",
+    "Customers" : "Корисници",
     "Information" : "Информације",
     "About" : "О програму"
 },

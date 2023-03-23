@@ -37,6 +37,7 @@ OC.L10N.register(
     "Status" : "Статус",
     "Actions" : "Радње",
     "Invoice" : "Рачун",
+    "Legal information" : "Правне информације",
     "Legal notice" : "Правно обавештење",
     "Year" : "Година",
     "January" : "Јануар",

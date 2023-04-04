@@ -24,6 +24,7 @@ OC.L10N.register(
     "Send" : "Enviar",
     "Configuration" : "Configuración",
     "Need help?" : "¿Necesitas ayuda?",
+    "Loading …" : "Loading …",
     "ID" : "ID",
     "Version" : "Versión",
     "Status" : "Estatus",

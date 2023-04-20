@@ -89,6 +89,7 @@ OC.L10N.register(
     "Last" : "Ultimo",
     "Next" : "Successivo",
     "Previous" : "Precedente",
+    "Editable (Click to change)" : "Modificabile (clicca per cambiare)",
     "Your global Nextcloud mail server need to be configured" : "Il tuo server di posta Nextcloud globale deve essere configurato",
     "Added!" : "Aggiunto!",
     "Open" : "Apri",

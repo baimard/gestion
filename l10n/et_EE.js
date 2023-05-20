@@ -20,6 +20,8 @@ OC.L10N.register(
     "Changelog" : "Muudatuste logi",
     "Releases" : "Versioonid",
     "Send an email" : "Saada kiri",
+    "From" : "Saatja",
+    "To" : "Saaja",
     "Subject" : "Teema",
     "Send" : "Saada",
     "Configuration" : "Seadistamine",

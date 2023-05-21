@@ -11,6 +11,7 @@ OC.L10N.register(
     "ID" : "ID",
     "Version" : "Versión",
     "Actions" : "Aiciones",
+    "Invoice #" : "Factura #",
     "Year" : "Añu",
     "January" : "Xineru",
     "February" : "Febreru",

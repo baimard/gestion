@@ -48,6 +48,7 @@ OC.L10N.register(
     "Add customer" : "Engadir cliente",
     "Legal information" : "Información legal",
     "Legal notice" : "Aviso legal",
+    "If you want to contribute to this section just contact me by mail" : "Se quere colaborar nesta sección só ten que contactar comigo por correo",
     "Product" : "Produto",
     "Statistics" : "Estatísticas",
     "Year" : "Ano",

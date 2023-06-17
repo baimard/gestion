@@ -14,6 +14,7 @@ OC.L10N.register(
     "Search" : "Otsi",
     "Next" : "Järgmine",
     "Previous" : "Eelmine",
+    "Open" : "Ava",
     "Email sent" : "E-kiri on saadetud",
     "Documentation" : "Dokumentatsioon",
     "Contact" : "Kontakt",

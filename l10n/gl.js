@@ -222,7 +222,7 @@ OC.L10N.register(
     "Status" : "Estado",
     "Actions" : "Accións",
     "Add product" : "Engadir produto",
-    "Save in Nextcloud" : "Gardar no Nextcloud",
+    "Save in Nextcloud" : "Gardar en Nextcloud",
     "Send by email" : "Enviar por correo",
     "Total VAT" : "IVE total",
     "Total Price" : "Prezo total",

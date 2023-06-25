@@ -9,6 +9,7 @@ OC.L10N.register(
     "Address" : "주소",
     "New" : "새로 만들기",
     "Comment" : "설명",
+    "Are you sure you want to delete?" : "삭제하시겠습니까?",
     "Cancel" : "취소",
     "Disable" : "사용 안함",
     "Enable" : "활성화",

@@ -31,6 +31,7 @@ OC.L10N.register(
     "Configuration" : "إعداد",
     "Need help?" : "تحتاج إلى مساعدة؟",
     "Loading …" : "جاري التحميل …",
+    "ID" : "مُعرّف ID",
     "Version" : "الإصدار",
     "Status" : "الحاله",
     "Actions" : "الإجراءات",

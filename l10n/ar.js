@@ -24,6 +24,7 @@ OC.L10N.register(
     "Contact" : "التواصل",
     "Nextcloud apps" : "تطبيقات نكست كلاود",
     "Changelog" : "سجل التغييرات",
+    "Releases" : "الإصدارات",
     "Send an email" : "أرسل إيميلاً",
     "Subject" : "الموضوع",
     "Body" : "المحتوى",

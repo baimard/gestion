@@ -36,6 +36,7 @@ OC.L10N.register(
     "Version" : "الإصدار",
     "Status" : "الحاله",
     "Actions" : "الإجراءات",
+    "Invoice" : "فاتورة",
     "Legal notice" : "ملاحظة قانونية",
     "January" : "جانفي",
     "February" : "فيفري",

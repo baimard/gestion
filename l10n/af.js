@@ -21,6 +21,8 @@ OC.L10N.register(
     "Contact" : "Kontak",
     "Changelog" : "Veranderingslog",
     "Releases" : "Vrystellings",
+    "From" : "Van",
+    "To" : "Aan",
     "Subject" : "Onderwerp",
     "Send" : "Stuur",
     "Need help?" : "Hulp nodig?",

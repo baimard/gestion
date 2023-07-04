@@ -331,19 +331,21 @@ class PageController extends Controller {
 	 */
 	public function sendPDF($content, $name, $subject, $body, $to, $Cc){
 		$clean_name = html_entity_decode($name);
+		
 		try {
+
 			$data = base64_decode($content);
 			$message = $this->mailer->createMessage();
 			$message->setSubject($subject);
 			$message->setTo((array) json_decode($to));
 			$myrrCc = (array) json_decode($Cc);
-			// return var_dump($myrrCc);
 			if($myrrCc[0] != ""){
 				$message->setCc($myrrCc);
 			}
-			$message->setHtmlBody($body);
-			$content = $this->mailer->createAttachment($data,$clean_name.".pdf","x-pdf");
-			$message->attach($content);
+			$message->setBody($body, 'text/html');
+			$AttachementPDF = $this->mailer->createAttachment($data,$clean_name.".pdf","application/pdf");
+			$message->attach($AttachementPDF);
+			
 			$this->mailer->send($message);
 			return new DataResponse("", 200, ['Content-Type' => 'application/json']);
 		} catch (Exception $e) {

@@ -238,7 +238,7 @@ OC.L10N.register(
     "Next" : "Sonraki",
     "Previous" : "Önceki",
     "Editable (Click to change)" : "Düzenlenebilir (değiştirmek için tıklayın)",
-    "Your global Nextcloud mail server need to be configured" : "Genel Nextcloud posta sunucunuzun yapılandırılması gerekli",
+    "Your global Nextcloud mail server need to be configured" : "Genel Nextcloud e-posta sunucunuzun yapılandırılması gerekli",
     "Added!" : "Eklendi!",
     "Open" : "Aç",
     "Email sent" : "E-posta gönderildi",

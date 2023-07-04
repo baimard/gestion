@@ -75,6 +75,7 @@ OC.L10N.register(
     "December" : "joulukuu",
     "Total" : "Yhteensä",
     "Manage" : "Hallitse",
+    "Customers" : "Asiakkaat",
     "Information" : "Tiedot",
     "About" : "Tietoja",
     "Save folder" : "Tallenna kansio"

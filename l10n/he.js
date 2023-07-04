@@ -51,6 +51,7 @@ OC.L10N.register(
     "December" : "דצמבר",
     "Total" : "סך הכול",
     "Manage" : "ניהול",
+    "Customers" : "לקוחות",
     "Information" : "מידע",
     "About" : "על אודות"
 },

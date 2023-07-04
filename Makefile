@@ -183,7 +183,7 @@ fulltest: runContainer testPanther test stopContainer
 runContainer:
 	sudo service apache2 stop
 	docker run -d --rm --network next --name database -p 3306:3306 -e MYSQL_DATABASE=nextcloud -e MARIADB_ROOT_PASSWORD=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud mariadb
-	docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:23-apache
+	docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:27-apache
 	sleep 5
 	killall geckodriver; php tests/Unit/Panther/initTest.php
 

@@ -23,7 +23,7 @@ module.exports =
       filename: '../js/[name].app.js',
     },
     optimization: {
-      minimize: true
+      minimize: false
     },
     plugins: [
       new webpack.ProvidePlugin({

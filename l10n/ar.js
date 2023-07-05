@@ -54,6 +54,7 @@ OC.L10N.register(
     "November" : "نوفمبر",
     "December" : "ديسمبر",
     "Total" : "المجموع",
+    "Customers" : "زبائن",
     "Information" : "معلومات",
     "About" : "عن"
 },

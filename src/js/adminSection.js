@@ -1,4 +1,4 @@
-import { backup } from "./modules/ajaxRequest.mjs";
+import { backup } from "./modules/ajaxRequest.js";
 
 window.addEventListener("DOMContentLoaded", function () {
     var back = document.getElementById("backup");

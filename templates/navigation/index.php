@@ -39,5 +39,10 @@
 			<li class="app-navigation-entry"><span class="navmarg icon-toggle-pictures"></span><a href="<?php echo($_['url']['legalnotice']); ?>"><?php p($l->t('Legal notice'));?></a></li>
 		</ul>
 	</li>
-	<li><center><a href="#"><button id="about" style="margin-left:10px;width:280px;"><?php p($l->t('About'));?></button></a></center></li>
+	
+	<li title="FIX https://github.com/baimard/gestion/issues/351" class="app-navigation-entry"><span class="navmarg"></span><b><?php p($l->t('Save folder'));?></b></li>
+	<li><input style="margin-left:10px;width:270px;" id="theFolder" data-table="configuration" data-column="path" data-id="" type="text" placeholder="<?php p($l->t('Please choose a folder'));?>"></li>
+	
+	<li><center><a href="#"><button id="about" style="margin-left:10px;width:270px;"><?php p($l->t('About'));?></button></a></center></li>
+	<li><center><a href="<?php echo($_['url']['config']); ?>"><button style="margin-left:10px;width:270px;"><?php p($l->t('My company'));?></button></a></center></li>
 </ul>

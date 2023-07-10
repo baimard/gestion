@@ -41730,7 +41730,7 @@ function dist_getMonthNamesShort() {
 
 
 
-;// CONCATENATED MODULE: ./src/js/modules/ajaxRequest.mjs
+;// CONCATENATED MODULE: ./src/js/modules/ajaxRequest.js
 /* provided dependency */ var ajaxRequest_$ = __webpack_require__(9755);
 
 
@@ -42007,7 +42007,7 @@ function saveNextcloud(myData) {
         oReq.send();
     }
 
-;// CONCATENATED MODULE: ./src/js/objects/devis.mjs
+;// CONCATENATED MODULE: ./src/js/objects/devis.js
 
 
 
@@ -42141,7 +42141,7 @@ class Devis {
   }
 }
 
-;// CONCATENATED MODULE: ./src/js/objects/client.mjs
+;// CONCATENATED MODULE: ./src/js/objects/client.js
 /* provided dependency */ var client_$ = __webpack_require__(9755);
 
 
@@ -42343,7 +42343,7 @@ class Client {
   }
 }
 
-;// CONCATENATED MODULE: ./src/js/modules/mainFunction.mjs
+;// CONCATENATED MODULE: ./src/js/modules/mainFunction.js
 /* provided dependency */ var mainFunction_$ = __webpack_require__(9755);
 
 
@@ -42569,7 +42569,7 @@ function removeOptions(selectElement) {
        selectElement.remove(i);
     }
  }
-;// CONCATENATED MODULE: ./src/js/objects/facture.mjs
+;// CONCATENATED MODULE: ./src/js/objects/facture.js
 
 
 
@@ -42651,7 +42651,7 @@ class Facture {
 
 }
 
-;// CONCATENATED MODULE: ./src/js/objects/produit.mjs
+;// CONCATENATED MODULE: ./src/js/objects/produit.js
 
 
 

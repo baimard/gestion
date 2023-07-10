@@ -4,9 +4,9 @@ import "../css/mycss.less";
 
 
 import DataTable from "datatables.net";
-import { globalConfiguration, optionDatatable } from "./modules/mainFunction.mjs";
+import { globalConfiguration, optionDatatable } from "./modules/mainFunction.js";
 import "./listener/main_listener";
-import { Facture } from "./objects/facture.mjs";
+import { Facture } from "./objects/facture.js";
 // import { Devis } from './objects/devis.mjs';
 
 window.addEventListener("DOMContentLoaded", function () {

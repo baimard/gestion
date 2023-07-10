@@ -1,5 +1,5 @@
-import { updateDB } from "../modules/ajaxRequest.mjs";
-import { baseUrl, checkSelectPurJs, LoadDT, removeOptions, showDone } from "../modules/mainFunction.mjs";
+import { updateDB } from "../modules/ajaxRequest.js";
+import { baseUrl, checkSelectPurJs, LoadDT, removeOptions, showDone } from "../modules/mainFunction.js";
 
 export class Client {
 

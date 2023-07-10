@@ -1,11 +1,11 @@
 import { FilePicker, showError } from "@nextcloud/dialogs";
-import { updateDB, configuration, updateEditable, deleteDB, getProduitsById, listProduit } from "../modules/ajaxRequest.mjs";
-import { path, baseUrl, updateNumerical } from "../modules/mainFunction.mjs";
+import { updateDB, configuration, updateEditable, deleteDB, getProduitsById, listProduit } from "../modules/ajaxRequest.js";
+import { path, baseUrl, updateNumerical } from "../modules/mainFunction.js";
 import DataTable from 'datatables.net';
-import { Client } from '../objects/client.mjs';
-import { Devis } from '../objects/devis.mjs';
-import { Facture } from '../objects/facture.mjs';
-import { Produit } from '../objects/produit.mjs';
+import { Client } from '../objects/client.js';
+import { Devis } from '../objects/devis.js';
+import { Facture } from '../objects/facture.js';
+import { Produit } from '../objects/produit.js';
 
 var choose_folder = t('gestion', 'Choose work folder');
 

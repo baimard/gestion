@@ -1,10 +1,10 @@
 import { showSuccess } from "@nextcloud/dialogs";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
-import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest.mjs";
+import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest.js";
 
 import { generateUrl } from "@nextcloud/router";
-import { Devis } from "../objects/devis.mjs";
-import { Client } from "../objects/client.mjs";
+import { Devis } from "../objects/devis.js";
+import { Client } from "../objects/client.js";
 
 export var baseUrl = generateUrl('/apps/gestion');
 export var cur = null;

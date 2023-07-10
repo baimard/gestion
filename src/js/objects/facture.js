@@ -1,6 +1,6 @@
 import { showError } from "@nextcloud/dialogs";
 import { generateUrl } from "@nextcloud/router";
-import { baseUrl, LoadDT, showDone } from "../modules/mainFunction.mjs";
+import { baseUrl, LoadDT, showDone } from "../modules/mainFunction.js";
 
 export class Facture {
 

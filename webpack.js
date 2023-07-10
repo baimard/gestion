@@ -5,7 +5,7 @@ module.exports =
 [
   {
     mode: "production",
-    performance: { hints: false },
+    //performance: { hints: true },
     entry: {
       client: './src/js/client.js',
       devis: './src/js/devis.js',

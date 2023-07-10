@@ -1,10 +1,10 @@
 import "@nextcloud/dialogs/dist/index.css";
 import "../css/mycss.less";
 
-import { configuration} from "./modules/ajaxRequest.mjs";
-import { globalConfiguration } from "./modules/mainFunction.mjs";
+import { configuration} from "./modules/ajaxRequest.js";
+import { globalConfiguration } from "./modules/mainFunction.js";
 import "./listener/main_listener";
-import { getAutoIncrement, getCurrencyList, getFormatList } from "./modules/list.mjs";
+import { getAutoIncrement, getCurrencyList, getFormatList } from "./modules/list.js";
 
 
 window.addEventListener("DOMContentLoaded", function () {

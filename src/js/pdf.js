@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { showMessage } from "@nextcloud/dialogs";
-import { baseUrl } from "./modules/mainFunction.mjs";
+import { baseUrl } from "./modules/mainFunction.js";
 
 export function sendMail(myData) {
   $.ajax({

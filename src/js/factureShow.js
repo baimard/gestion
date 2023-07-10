@@ -2,10 +2,10 @@ import "@nextcloud/dialogs/dist/index.css";
 import "datatables.net-dt/css/jquery.dataTables.css";
 import "../css/mycss.less";
 
-import { getMailServerFrom, getProduitsById, saveNextcloud} from "./modules/ajaxRequest.mjs";
-import { globalConfiguration } from "./modules/mainFunction.mjs";
+import { getMailServerFrom, getProduitsById, saveNextcloud} from "./modules/ajaxRequest.js";
+import { globalConfiguration } from "./modules/mainFunction.js";
 import "./listener/main_listener";
-import { Client } from "./objects/client.mjs";
+import { Client } from "./objects/client.js";
 import { capture, sendMail } from "./pdf";
 
 window.addEventListener("DOMContentLoaded", function () {

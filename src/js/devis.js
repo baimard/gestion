@@ -3,8 +3,8 @@ import "datatables.net-dt/css/jquery.dataTables.css";
 import "../css/mycss.less";
 
 import DataTable from "datatables.net";
-import { globalConfiguration, optionDatatable } from "./modules/mainFunction.mjs";
-import { Devis } from "./objects/devis.mjs";
+import { globalConfiguration, optionDatatable } from "./modules/mainFunction.js";
+import { Devis } from "./objects/devis.js";
 import "./listener/main_listener";
 // import { Client } from './objects/client.mjs';
 

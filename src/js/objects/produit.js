@@ -1,5 +1,5 @@
 import { showError } from "@nextcloud/dialogs";
-import { baseUrl, cur, LoadDT, showDone } from "../modules/mainFunction.mjs";
+import { baseUrl, cur, LoadDT, showDone } from "../modules/mainFunction.js";
 
 export class Produit {
 

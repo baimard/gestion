@@ -1,6 +1,6 @@
 import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
-import { baseUrl, cur, getGlobal, insertCell, insertRow, modifyCell } from "./mainFunction.mjs";
+import { baseUrl, cur, getGlobal, insertCell, insertRow, modifyCell } from "./mainFunction.js";
 
 /**
  * Update data

@@ -9,7 +9,6 @@ return [
        ['name' => 'page#isConfig',              'url' => '/isconfig', 'verb' => 'GET'],
        ['name' => 'page#statistique',           'url' => '/statistique', 'verb' => 'GET'],
        ['name' => 'page#legalnotice',           'url' => '/legalnotice', 'verb' => 'GET'],
-
        ['name' => 'page#france',                'url' => '/legalnotice/france', 'verb' => 'GET'],
 
        ['name' => 'page#getClients',            'url' => '/getClients', 'verb' => 'PROPFIND'],
@@ -27,21 +26,20 @@ return [
        ['name' => 'page#getFactures',           'url' => '/getFactures', 'verb' => 'PROPFIND'],
        ['name' => 'page#factureshow',           'url' => '/facture/{numfacture}/show', 'verb' => 'GET'],
        ['name' => 'page#insertFacture',         'url' => '/facture/insert', 'verb' => 'POST'],
-
+       //PRODUCT
        ['name' => 'page#getProduits',           'url' => '/getProduits', 'verb' => 'PROPFIND'],
        ['name' => 'page#getProduitsById',       'url' => '/getProduitsById', 'verb' => 'POST'],
        ['name' => 'page#insertProduit',         'url' => '/produit/insert', 'verb' => 'POST'],
        ['name' => 'page#delete',                'url' => '/delete', 'verb' => 'DELETE'],
-       
+       //STATS
        ['name' => 'page#getStats',              'url' => '/getStats', 'verb' => 'PROPFIND'],
        ['name' => 'page#getAnnualTurnoverPerMonthNoVat', 'url' => '/getAnnualTurnoverPerMonthNoVat', 'verb' => 'PROPFIND'],
        ['name' => 'page#getServerFromMail',     'url' => '/getServerFromMail', 'verb' => 'PROPFIND'],
-
-       //PDF
+        //PDF
        ['name' => 'page#sendPDF',               'url' => '/sendPDF', 'verb' => 'POST'],
        ['name' => 'page#savePDF',               'url' => '/savePDF', 'verb' => 'POST'],
        
-       ['name' => 'admin#backup',                 'url' => '/backup', 'verb' => 'GET'],
+       ['name' => 'admin#backup',               'url' => '/backup', 'verb' => 'GET'],
 
 
 

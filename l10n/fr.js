@@ -376,13 +376,13 @@ OC.L10N.register(
     "Invoices" : "Factures",
     "Products" : "Produits",
     "Information" : "Information",
+    "Save folder" : "Dossier de sauvegarde",
+    "Please choose a folder" : "Veuillez sélectionner un dossier",
     "About" : "À propos",
     "Backup all data" : "Sauvegarder toutes les données",
     "You can save all Gestion app data." : "Vous pouvez sauvegarder toutes les données de l'application GESTION",
     "Backup now!" : "Sauvegarder maintenant !",
     "You can restore a backup file for Gestion (in next release)." : "Vous pouvez restaurer une sauvegarde de fichier pour Gestion (Dans la prochaine version).",
-    "Restore now!" : "Restaurer maintenant !",
-    "Save folder" : "Dossier de sauvegarde",
-    "Please choose a folder" : "Veuillez sélectionner un dossier"
+    "Restore now!" : "Restaurer maintenant !"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

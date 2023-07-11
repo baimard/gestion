@@ -376,13 +376,13 @@ OC.L10N.register(
     "Invoices" : "Фактури",
     "Products" : "Продукти",
     "Information" : "Информация",
+    "Save folder" : "Запис на папка",
+    "Please choose a folder" : "Моля, изберете папка",
     "About" : "Относно",
     "Backup all data" : "Архивиране на всички данни",
     "You can save all Gestion app data." : "Можете да запишете всички данни на приложението Gestion.",
     "Backup now!" : "Архивирайте сега!",
     "You can restore a backup file for Gestion (in next release)." : "Можете да възстановите архивиран файл за Gestion (в следващата версия).",
-    "Restore now!" : "Възстановете сега!",
-    "Save folder" : "Запис на папка",
-    "Please choose a folder" : "Моля, изберете папка"
+    "Restore now!" : "Възстановете сега!"
 },
 "nplurals=2; plural=(n != 1);");

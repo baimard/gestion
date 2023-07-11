@@ -83,7 +83,7 @@ OC.L10N.register(
     "Manage" : "Διαχείριση",
     "Customers" : "Πελάτες",
     "Information" : "Πληροφορίες",
-    "About" : "Σχετικά με",
-    "Save folder" : "Φάκελος αποθήκευσης"
+    "Save folder" : "Φάκελος αποθήκευσης",
+    "About" : "Σχετικά με"
 },
 "nplurals=2; plural=(n != 1);");

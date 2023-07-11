@@ -97,7 +97,7 @@ OC.L10N.register(
     "Total" : "Totale",
     "Customers" : "Clientes",
     "Information" : "Informatziones",
-    "About" : "In contu de",
-    "Save folder" : "Sarva cartella"
+    "Save folder" : "Sarva cartella",
+    "About" : "In contu de"
 },
 "nplurals=2; plural=(n != 1);");

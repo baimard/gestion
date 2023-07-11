@@ -77,7 +77,7 @@ OC.L10N.register(
     "Manage" : "Hallitse",
     "Customers" : "Asiakkaat",
     "Information" : "Tiedot",
-    "About" : "Tietoja",
-    "Save folder" : "Tallenna kansio"
+    "Save folder" : "Tallenna kansio",
+    "About" : "Tietoja"
 },
 "nplurals=2; plural=(n != 1);");

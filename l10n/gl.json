@@ -374,13 +374,13 @@
     "Invoices" : "Facturas",
     "Products" : "Produtos",
     "Information" : "Información",
+    "Save folder" : "Gardar cartafol",
+    "Please choose a folder" : "Escolla un cartafol.",
     "About" : "Sobre",
     "Backup all data" : "Copia de seguranza de todos os datos",
     "You can save all Gestion app data." : "Pode gardar todos os datos da aplicación Xestión.",
     "Backup now!" : "Facer agora a copia de seguranza",
     "You can restore a backup file for Gestion (in next release)." : "Pode restaurar un ficheiro de copia de seguranza para Xestión (na próxima versión).",
-    "Restore now!" : "Restaurar agora!",
-    "Save folder" : "Gardar cartafol",
-    "Please choose a folder" : "Escolla un cartafol."
+    "Restore now!" : "Restaurar agora!"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

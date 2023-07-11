@@ -376,13 +376,13 @@ OC.L10N.register(
     "Invoices" : "Fakturak",
     "Products" : "Produktuak",
     "Information" : "Informazioa",
+    "Save folder" : "Gorde karpeta",
+    "Please choose a folder" : "Mesedez aukeratu karpeta bat",
     "About" : "Honi buruz",
     "Backup all data" : "Babestu datu guztiak",
     "You can save all Gestion app data." : "Gestion aplikazioaren datu guztiak gorde ditzakezu.",
     "Backup now!" : "Egin babeskopia orain!",
     "You can restore a backup file for Gestion (in next release)." : "Gestion-erako babeskopia fitxategi bat leheneratu dezakezu (hurrengo bertsioan).",
-    "Restore now!" : "Berezarri orain!",
-    "Save folder" : "Gorde karpeta",
-    "Please choose a folder" : "Mesedez aukeratu karpeta bat"
+    "Restore now!" : "Berezarri orain!"
 },
 "nplurals=2; plural=(n != 1);");

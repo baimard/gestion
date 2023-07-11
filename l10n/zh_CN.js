@@ -139,7 +139,7 @@ OC.L10N.register(
     "Manage" : "管理",
     "Customers" : "顾客",
     "Information" : "信息",
-    "About" : "关于",
-    "Save folder" : "用于保存的文件夹"
+    "Save folder" : "用于保存的文件夹",
+    "About" : "关于"
 },
 "nplurals=1; plural=0;");

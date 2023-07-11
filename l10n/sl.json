@@ -291,11 +291,11 @@
     "Invoices" : "Računi",
     "Products" : "Izdelki",
     "Information" : "Podrobnosti",
+    "Save folder" : "Shrani mapo",
+    "Please choose a folder" : "Izbrati je treba mapo",
     "About" : "O programu",
     "Backup all data" : "Varnostno kopiraj vse podatke",
     "Backup now!" : "Varnostno kopiraj zdaj!",
-    "Restore now!" : "Obnovi zdaj!",
-    "Save folder" : "Shrani mapo",
-    "Please choose a folder" : "Izbrati je treba mapo"
+    "Restore now!" : "Obnovi zdaj!"
 },"pluralForm" :"nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 }

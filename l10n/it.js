@@ -216,8 +216,8 @@ OC.L10N.register(
     "Invoices" : "Fatture",
     "Products" : "Prodotti",
     "Information" : "Informazioni",
-    "About" : "Informazioni",
     "Save folder" : "Salva cartella",
-    "Please choose a folder" : "Scegli una cartella"
+    "Please choose a folder" : "Scegli una cartella",
+    "About" : "Informazioni"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

@@ -373,13 +373,13 @@
     "Invoices" : "Faktúry",
     "Products" : "Produkty",
     "Information" : "Informácia",
+    "Save folder" : "Uložiť priečinok",
+    "Please choose a folder" : "Prosím vyberte priečinok",
     "About" : "O aplikácii",
     "Backup all data" : "Zálohovať všetky údaje",
     "You can save all Gestion app data." : "Môžete uložiť všetky údaje aplikácie Gestion.",
     "Backup now!" : "Zálohuj teraz!",
     "You can restore a backup file for Gestion (in next release)." : "Môžete obnoviť súbor so zálohou pre Gestion (ďalšom vydaní).",
-    "Restore now!" : "Obnoviť teraz!",
-    "Save folder" : "Uložiť priečinok",
-    "Please choose a folder" : "Prosím vyberte priečinok"
+    "Restore now!" : "Obnoviť teraz!"
 },"pluralForm" :"nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"
 }

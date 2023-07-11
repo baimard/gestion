@@ -376,13 +376,13 @@ OC.L10N.register(
     "Invoices" : "Invoices",
     "Products" : "Products",
     "Information" : "Information",
+    "Save folder" : "Save folder",
+    "Please choose a folder" : "Please choose a folder",
     "About" : "About",
     "Backup all data" : "Backup all data",
     "You can save all Gestion app data." : "You can save all Gestion app data.",
     "Backup now!" : "Backup now!",
     "You can restore a backup file for Gestion (in next release)." : "You can restore a backup file for Gestion (in next release).",
-    "Restore now!" : "Restore now!",
-    "Save folder" : "Save folder",
-    "Please choose a folder" : "Please choose a folder"
+    "Restore now!" : "Restore now!"
 },
 "nplurals=2; plural=(n != 1);");

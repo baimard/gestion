@@ -64,7 +64,7 @@ OC.L10N.register(
     "Total" : "合計",
     "Manage" : "管理",
     "Information" : "情報",
-    "About" : "詳細",
-    "Save folder" : "フォルダーを保存"
+    "Save folder" : "フォルダーを保存",
+    "About" : "詳細"
 },
 "nplurals=1; plural=0;");

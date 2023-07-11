@@ -374,13 +374,13 @@
     "Invoices" : "Faturalar",
     "Products" : "Ürünler",
     "Information" : "Bilgiler",
+    "Save folder" : "Kayıt klasörü",
+    "Please choose a folder" : "Lütfen bir klasör seçin",
     "About" : "Hakkında",
     "Backup all data" : "Tüm verileri yedekle",
     "You can save all Gestion app data." : "Gestion uygulamasındaki tüm verileri kaydedebilirsiniz.",
     "Backup now!" : "Yedekle",
     "You can restore a backup file for Gestion (in next release)." : "Bir Gestion yedek dosyasını geri yükleyebilirsiniz (gelecek sürümde).",
-    "Restore now!" : "Geri yükle",
-    "Save folder" : "Kayıt klasörü",
-    "Please choose a folder" : "Lütfen bir klasör seçin"
+    "Restore now!" : "Geri yükle"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

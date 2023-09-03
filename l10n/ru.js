@@ -99,6 +99,7 @@ OC.L10N.register(
     "Cc" : "Коп",
     "Subject" : "Тема",
     "Body" : "Тело",
+    "Dear," : "Уважаемый,",
     "Send" : "Отправить",
     "Company name" : "Название компании",
     "Legal disclaimer/mentions" : "Юридическая информация",

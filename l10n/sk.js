@@ -308,7 +308,7 @@ OC.L10N.register(
     "First line in the footer of your Quote/Invoice with all legal information you need" : "Prvý riadok v päte vašej ponuky/faktúry so všetkými právnymi informáciami, ktoré potrebujete",
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Druhý riadok v päte vašej ponuky/faktúry so všetkými právnymi informáciami, ktoré potrebujete",
     "Show phone number in the Quote/Invoice header" : "Zobraziť telefónne číslo v hlavičke ponuky/faktúry",
-    "E-mail address which appears in the header of the Quote/Invoice" : "E-mail adresa ktorá sa zobrazí v hlavičke ponuky/faktúry.",
+    "E-mail address which appears in the header of the Quote/Invoice" : "E-mailová adresa ktorá sa zobrazí v hlavičke ponuky/faktúry.",
     "Global currency for the application" : "Globálna mena pre aplikáciu",
     "Global monetary format for the application" : "Globálna mena pre aplikáciu",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Právne vyhlásenia/podmienky, ktoré potrebujete v päte – pred informáciami o spoločnosti",

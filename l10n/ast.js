@@ -11,6 +11,7 @@ OC.L10N.register(
     "Loading …" : "Cargando…",
     "ID" : "ID",
     "Version" : "Versión",
+    "Status" : "Estáu",
     "Actions" : "Aiciones",
     "Invoice #" : "Factura #",
     "Year" : "Añu",

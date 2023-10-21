@@ -167,7 +167,7 @@ OC.L10N.register(
     "Russian Ruble" : "Ruský Rubeľ",
     "Rwandan Franc" : "Rwandský Frank",
     "Saudi Riyal" : "Saudský Rial",
-    "Slovak Koruna" : "Slovenská Koruna",
+    "Slovak Koruna" : "Slovenská koruna",
     "Solomon Islands Dollar" : "Šalamúnove ostrovy Dolár",
     "Seychelles Rupee" : "Seychelská Rupia",
     "Sudanese Pound" : "Sudánska Libra",

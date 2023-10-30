@@ -31,6 +31,7 @@ OC.L10N.register(
     "Version" : "Versioon",
     "Status" : "Staatus",
     "Actions" : "Tegevused",
+    "Year" : "Aasta",
     "January" : "Jaanuar",
     "February" : "Veebruar",
     "March" : "Märts",

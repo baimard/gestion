@@ -10,6 +10,7 @@ OC.L10N.register(
     "New" : "Ny",
     "Comment" : "Kommentér",
     "Cancel" : "Annuller",
+    "Trinidad and Tobago Dollar" : "Trinidad og Tobago Dollar",
     "Disable" : "Deaktiver",
     "Enable" : "Aktivér",
     "Search" : "Søg",

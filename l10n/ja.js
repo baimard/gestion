@@ -10,6 +10,7 @@ OC.L10N.register(
     "New" : "新規作成",
     "Comment" : "コメント",
     "Your company name" : "あなたの会社名",
+    "Are you sure you want to delete?" : "本当に削除してよろしいですか?",
     "Cancel" : "キャンセル",
     "Australian Dollar" : "オーストラリア・ドル",
     "Bitcoin" : "ビットコイン",

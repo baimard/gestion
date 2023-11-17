@@ -58,6 +58,7 @@ OC.L10N.register(
     "December" : "December",
     "Total" : "Totalt",
     "Manage" : "Hantera",
+    "Customers" : "Kunder",
     "Information" : "Information",
     "About" : "Om"
 },

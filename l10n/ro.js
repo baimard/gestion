@@ -33,6 +33,7 @@ OC.L10N.register(
     "Version" : "Versiune",
     "Status" : "Stare",
     "Actions" : "Acțiuni",
+    "Invoice" : "Factură",
     "Year" : "An",
     "January" : "Ianuarie",
     "February" : "Februarie",

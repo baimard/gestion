@@ -19,6 +19,7 @@ OC.L10N.register(
     "Email sent" : "Mesajul a fost expediat",
     "Documentation" : "Documentație",
     "Contact" : "Contact",
+    "Changelog" : "Listă modificări",
     "Send an email" : "Trimite un email",
     "From" : "De la",
     "To" : "Către",

@@ -374,13 +374,13 @@
     "Invoices" : "Фактуре",
     "Products" : "Производи",
     "Information" : "Информације",
+    "Save folder" : "Фолдер за чување",
+    "Please choose a folder" : "Молимо вас да изаберете фолдер",
     "About" : "О програму",
     "Backup all data" : "Направи резервну копију свих података",
     "You can save all Gestion app data." : "Можете да сачувате све податке апликације Gestion.",
     "Backup now!" : "Направи копију одмах!",
     "You can restore a backup file for Gestion (in next release)." : "Можете да вратите фајл резервене копије апликације Gestion (у наредном издању).",
-    "Restore now!" : "Врати одмах!",
-    "Save folder" : "Фолдер за чување",
-    "Please choose a folder" : "Молимо вас да изаберете фолдер"
+    "Restore now!" : "Врати одмах!"
 },"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
 }

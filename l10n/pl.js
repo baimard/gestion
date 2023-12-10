@@ -376,13 +376,13 @@ OC.L10N.register(
     "Invoices" : "Faktury",
     "Products" : "Produkty",
     "Information" : "Informacje",
+    "Save folder" : "Zapisz katalog",
+    "Please choose a folder" : "Wybierz katalog",
     "About" : "O aplikacji",
     "Backup all data" : "Wykonaj kopię zapasową wszystkich danych",
     "You can save all Gestion app data." : "Możesz zapisać wszystkie dane aplikacji Gestion.",
     "Backup now!" : "Utwórz kopię zapasową teraz!",
     "You can restore a backup file for Gestion (in next release)." : "Możesz przywrócić plik kopii zapasowej dla Gestion (w następnej wersji).",
-    "Restore now!" : "Przywróć teraz!",
-    "Save folder" : "Zapisz katalog",
-    "Please choose a folder" : "Wybierz katalog"
+    "Restore now!" : "Przywróć teraz!"
 },
 "nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);");

@@ -84,7 +84,7 @@ OC.L10N.register(
     "November" : "Ноември",
     "December" : "Декември",
     "Total" : "Вкупно",
-    "About" : "За",
-    "Save folder" : "Папка за зачувување"
+    "Save folder" : "Папка за зачувување",
+    "About" : "За"
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");

@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2023-07-05 01:49+0000\n"
+"POT-Creation-Date: 2023-12-03 01:53+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: Jérémie Tarot <silopolis@gmail.com>, 2023\n"
 "Language-Team: French (https://app.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -193,848 +193,847 @@ msgstr "Choisir le dossier de travail"
 msgid "Please create a new product"
 msgstr "Il faut créer un nouveau produit."
 
-#: /app/src/js/modules/ajaxRequest.mjs:27
-#: /app/src/js/modules/ajaxRequest.mjs:52
+#: /app/src/js/modules/ajaxRequest.js:27 /app/src/js/modules/ajaxRequest.js:52
 msgid "Modification saved"
 msgstr "Modification enregistrée"
 
-#: /app/src/js/modules/ajaxRequest.mjs:29
+#: /app/src/js/modules/ajaxRequest.js:29
 msgid "There is an error with the format, please check the documentation"
 msgstr ""
 "Il y a une erreur dans le format, pourriez vous vérifier à l'aide de la "
 "documentation ?"
 
-#: /app/src/js/modules/ajaxRequest.mjs:44
+#: /app/src/js/modules/ajaxRequest.js:44
 msgid "Are you sure you want to delete?"
 msgstr "Êtes vous sûr de vouloir supprimer ?"
 
-#: /app/src/js/modules/ajaxRequest.mjs:57
+#: /app/src/js/modules/ajaxRequest.js:57
 msgid "Nothing changed"
 msgstr "Rien n'a été modifié"
 
-#: /app/src/js/modules/ajaxRequest.mjs:177 /app/src/js/objects/client.mjs:183
-#: /app/src/js/objects/devis.mjs:116
+#: /app/src/js/modules/ajaxRequest.js:177 /app/src/js/objects/client.js:183
+#: /app/src/js/objects/devis.js:116
 msgid "Cancel"
 msgstr "Annuler"
 
-#: /app/src/js/modules/ajaxRequest.mjs:239
-#: /app/src/js/modules/ajaxRequest.mjs:268
+#: /app/src/js/modules/ajaxRequest.js:239
+#: /app/src/js/modules/ajaxRequest.js:268
 msgid "Save in"
 msgstr "Sauvegarder dans"
 
-#: /app/src/js/modules/ajaxRequest.mjs:241
+#: /app/src/js/modules/ajaxRequest.js:241
 msgid "There is an error"
 msgstr "Il y a une erreur"
 
-#: /app/src/js/modules/ajaxRequest.mjs:268
+#: /app/src/js/modules/ajaxRequest.js:268
 msgid "(do not forget to show hidden folders)"
 msgstr "(N'oubliez pas d'afficher les dossiers cachés)"
 
-#: /app/src/js/modules/list.mjs:9
+#: /app/src/js/modules/list.js:9
 msgid "United Arab Emirates Dirham"
 msgstr "Dirham des Émirats arabes unis"
 
-#: /app/src/js/modules/list.mjs:10
+#: /app/src/js/modules/list.js:10
 msgid "Afghan Afghani"
 msgstr "Afghanistan Afghani"
 
-#: /app/src/js/modules/list.mjs:11
+#: /app/src/js/modules/list.js:11
 msgid "Albanian Lek"
 msgstr "Albanie Lek"
 
-#: /app/src/js/modules/list.mjs:12
+#: /app/src/js/modules/list.js:12
 msgid "Armenian Dram"
 msgstr "Dram arménien"
 
-#: /app/src/js/modules/list.mjs:13
+#: /app/src/js/modules/list.js:13
 msgid "Netherlands Antillean Guilder"
 msgstr "Florin des Antilles néerlandaises"
 
-#: /app/src/js/modules/list.mjs:14
+#: /app/src/js/modules/list.js:14
 msgid "Angolan Kwanza"
 msgstr "Kwanza angolais"
 
-#: /app/src/js/modules/list.mjs:15
+#: /app/src/js/modules/list.js:15
 msgid "Argentine Peso"
 msgstr "Peso argentin"
 
-#: /app/src/js/modules/list.mjs:16
+#: /app/src/js/modules/list.js:16
 msgid "Australian Dollar"
 msgstr "Dollar australien"
 
-#: /app/src/js/modules/list.mjs:17
+#: /app/src/js/modules/list.js:17
 msgid "Aruban Florin"
 msgstr "Florin d'Aruba"
 
-#: /app/src/js/modules/list.mjs:18
+#: /app/src/js/modules/list.js:18
 msgid "Azerbaijani Manat"
 msgstr "Manat azerbaïdjanais"
 
-#: /app/src/js/modules/list.mjs:19
+#: /app/src/js/modules/list.js:19
 msgid "Bosnia and Herzegovina Convertible Mark"
 msgstr "Mark convertible de Bosnie-Herzégovine"
 
-#: /app/src/js/modules/list.mjs:20
+#: /app/src/js/modules/list.js:20
 msgid "Barbados Dollar"
 msgstr "Dollar de la Barbade"
 
-#: /app/src/js/modules/list.mjs:21
+#: /app/src/js/modules/list.js:21
 msgid "Bangladeshi Taka"
 msgstr "Taka bangladais"
 
-#: /app/src/js/modules/list.mjs:22
+#: /app/src/js/modules/list.js:22
 msgid "Barbadian Dollar"
 msgstr "Dollar de la Barbade"
 
-#: /app/src/js/modules/list.mjs:23 /app/src/js/modules/list.mjs:44
+#: /app/src/js/modules/list.js:23 /app/src/js/modules/list.js:44
 msgid "Belarusian Ruble"
 msgstr "Rouble biélorusse"
 
-#: /app/src/js/modules/list.mjs:24 /app/src/js/modules/list.mjs:45
+#: /app/src/js/modules/list.js:24 /app/src/js/modules/list.js:45
 msgid "Belize Dollar"
 msgstr "Dollar bélizéen"
 
-#: /app/src/js/modules/list.mjs:25
+#: /app/src/js/modules/list.js:25
 msgid "Bermudan Dollar"
 msgstr "Dollar des Bermudes"
 
-#: /app/src/js/modules/list.mjs:26 /app/src/js/modules/list.mjs:42
+#: /app/src/js/modules/list.js:26 /app/src/js/modules/list.js:42
 msgid "Bhutanese Ngultrum"
 msgstr "Ngultrum bhoutanais"
 
-#: /app/src/js/modules/list.mjs:27
+#: /app/src/js/modules/list.js:27
 msgid "Bitcoin"
 msgstr "Bitcoin"
 
-#: /app/src/js/modules/list.mjs:28
+#: /app/src/js/modules/list.js:28
 msgid "Bolivian Boliviano"
 msgstr "Boliviano bolivien"
 
-#: /app/src/js/modules/list.mjs:29
+#: /app/src/js/modules/list.js:29
 msgid "Bosnia-Herzegovina Convertible Mark"
 msgstr "Mark convertible de Bosnie-Herzégovine"
 
-#: /app/src/js/modules/list.mjs:30
+#: /app/src/js/modules/list.js:30
 msgid "Botswanan Pula"
 msgstr "Pula du Botswana"
 
-#: /app/src/js/modules/list.mjs:31 /app/src/js/modules/list.mjs:40
+#: /app/src/js/modules/list.js:31 /app/src/js/modules/list.js:40
 msgid "Brazilian Real"
 msgstr "Réal brésilien"
 
-#: /app/src/js/modules/list.mjs:32 /app/src/js/modules/list.mjs:37
+#: /app/src/js/modules/list.js:32 /app/src/js/modules/list.js:37
 msgid "Brunei Dollar"
 msgstr "Dollar de Brunei"
 
-#: /app/src/js/modules/list.mjs:33
+#: /app/src/js/modules/list.js:33
 msgid "Bulgarian Lev"
 msgstr "Lev bulgare"
 
-#: /app/src/js/modules/list.mjs:34
+#: /app/src/js/modules/list.js:34
 msgid "Bahraini Dinar"
 msgstr "Dinar bahreïni"
 
-#: /app/src/js/modules/list.mjs:35
+#: /app/src/js/modules/list.js:35
 msgid "Burundian Franc"
 msgstr "Franc burundais"
 
-#: /app/src/js/modules/list.mjs:36
+#: /app/src/js/modules/list.js:36
 msgid "Bermudian Dollar"
 msgstr "Dollar des bermudes"
 
-#: /app/src/js/modules/list.mjs:38
+#: /app/src/js/modules/list.js:38
 msgid "Boliviano"
 msgstr "Boliviano"
 
-#: /app/src/js/modules/list.mjs:39
+#: /app/src/js/modules/list.js:39
 msgid "Bolivian Mvdol"
 msgstr "Mvdol bolivien"
 
-#: /app/src/js/modules/list.mjs:41
+#: /app/src/js/modules/list.js:41
 msgid "Bahamian Dollar"
 msgstr "Dollar des Bahamas"
 
-#: /app/src/js/modules/list.mjs:43
+#: /app/src/js/modules/list.js:43
 msgid "Botswana Pula"
 msgstr "Pula du Botswana"
 
-#: /app/src/js/modules/list.mjs:46
+#: /app/src/js/modules/list.js:46
 msgid "Canadian Dollar"
 msgstr "Dollar canadien"
 
-#: /app/src/js/modules/list.mjs:47
+#: /app/src/js/modules/list.js:47
 msgid "Congolese Franc"
 msgstr "Franc congolais"
 
-#: /app/src/js/modules/list.mjs:48
+#: /app/src/js/modules/list.js:48
 msgid "WIR Euro"
 msgstr "WIR euros"
 
-#: /app/src/js/modules/list.mjs:49
+#: /app/src/js/modules/list.js:49
 msgid "Swiss Franc"
 msgstr "Franc Swiss"
 
-#: /app/src/js/modules/list.mjs:50
+#: /app/src/js/modules/list.js:50
 msgid "WIR Franc"
 msgstr "Franc WIR"
 
-#: /app/src/js/modules/list.mjs:51
+#: /app/src/js/modules/list.js:51
 msgid "Unidad de Fomento"
 msgstr "Unité de Fomento"
 
-#: /app/src/js/modules/list.mjs:52
+#: /app/src/js/modules/list.js:52
 msgid "Chilean Peso"
 msgstr "Peso chilien"
 
-#: /app/src/js/modules/list.mjs:53
+#: /app/src/js/modules/list.js:53
 msgid "Chinese Yuan"
 msgstr "Chinois Yuan"
 
-#: /app/src/js/modules/list.mjs:54
+#: /app/src/js/modules/list.js:54
 msgid "Colombian Peso"
 msgstr "Peso colombien"
 
-#: /app/src/js/modules/list.mjs:55
+#: /app/src/js/modules/list.js:55
 msgid "Unidad de Valor Real"
 msgstr "Unité de valeur Real"
 
-#: /app/src/js/modules/list.mjs:56
+#: /app/src/js/modules/list.js:56
 msgid "Costa Rican Colon"
 msgstr "Colon du Costa Rica"
 
-#: /app/src/js/modules/list.mjs:57
+#: /app/src/js/modules/list.js:57
 msgid "Cuban Peso"
 msgstr "Peso cubain"
 
-#: /app/src/js/modules/list.mjs:58
+#: /app/src/js/modules/list.js:58
 msgid "Cape Verdean Escudo"
 msgstr "Escudo capverdien"
 
-#: /app/src/js/modules/list.mjs:59
+#: /app/src/js/modules/list.js:59
 msgid "Czech Koruna"
 msgstr "Couronne tchèque"
 
-#: /app/src/js/modules/list.mjs:60
+#: /app/src/js/modules/list.js:60
 msgid "Djiboutian Franc"
 msgstr "Franc djiboutien"
 
-#: /app/src/js/modules/list.mjs:61
+#: /app/src/js/modules/list.js:61
 msgid "Danish Krone"
 msgstr "Couronne danoise"
 
-#: /app/src/js/modules/list.mjs:62
+#: /app/src/js/modules/list.js:62
 msgid "Dominican Peso"
 msgstr "Peso dominicain"
 
-#: /app/src/js/modules/list.mjs:63
+#: /app/src/js/modules/list.js:63
 msgid "Algerian Dinar"
 msgstr "Algérie Dinar"
 
-#: /app/src/js/modules/list.mjs:64
+#: /app/src/js/modules/list.js:64
 msgid "Egyptian Pound"
 msgstr "Livre égyptienne"
 
-#: /app/src/js/modules/list.mjs:65
+#: /app/src/js/modules/list.js:65
 msgid "Eritrean Nakfa"
 msgstr "Nakfa érythréen"
 
-#: /app/src/js/modules/list.mjs:66
+#: /app/src/js/modules/list.js:66
 msgid "Ethiopian Birr"
 msgstr "Birr éthiopien"
 
-#: /app/src/js/modules/list.mjs:67
+#: /app/src/js/modules/list.js:67
 msgid "Euro"
 msgstr "Euro"
 
-#: /app/src/js/modules/list.mjs:68
+#: /app/src/js/modules/list.js:68
 msgid "Fiji Dollar"
 msgstr "Dollar fidjien"
 
-#: /app/src/js/modules/list.mjs:69
+#: /app/src/js/modules/list.js:69
 msgid "Falkland Islands Pound"
 msgstr "Livre des îles Falkland"
 
-#: /app/src/js/modules/list.mjs:70
+#: /app/src/js/modules/list.js:70
 msgid "Pound Sterling"
 msgstr "Livre sterling"
 
-#: /app/src/js/modules/list.mjs:71
+#: /app/src/js/modules/list.js:71
 msgid "Georgian Lari"
 msgstr "Lari géorgien"
 
-#: /app/src/js/modules/list.mjs:72
+#: /app/src/js/modules/list.js:72
 msgid "Ghanaian Cedi"
 msgstr "Cedi ghanéen"
 
-#: /app/src/js/modules/list.mjs:73
+#: /app/src/js/modules/list.js:73
 msgid "Gibraltar Pound"
 msgstr "Livre de Gibraltar"
 
-#: /app/src/js/modules/list.mjs:74
+#: /app/src/js/modules/list.js:74
 msgid "Gambian Dalasi"
 msgstr "Gambian Dalasi"
 
-#: /app/src/js/modules/list.mjs:75
+#: /app/src/js/modules/list.js:75
 msgid "Guinean Franc"
 msgstr "Franc guinéen"
 
-#: /app/src/js/modules/list.mjs:76
+#: /app/src/js/modules/list.js:76
 msgid "Guatemalan Quetzal"
 msgstr "Quetzal guatémaltèque"
 
-#: /app/src/js/modules/list.mjs:77
+#: /app/src/js/modules/list.js:77
 msgid "Guyanese Dollar"
 msgstr "Dollar Guyane"
 
-#: /app/src/js/modules/list.mjs:78
+#: /app/src/js/modules/list.js:78
 msgid "Hong Kong Dollar"
 msgstr "Dollar de Hong Kong"
 
-#: /app/src/js/modules/list.mjs:79
+#: /app/src/js/modules/list.js:79
 msgid "Honduran Lempira"
 msgstr "Lempira hondurien"
 
-#: /app/src/js/modules/list.mjs:80
+#: /app/src/js/modules/list.js:80
 msgid "Croatian Kuna"
 msgstr "Kuna croate"
 
-#: /app/src/js/modules/list.mjs:81
+#: /app/src/js/modules/list.js:81
 msgid "Haitian Gourde"
 msgstr "Gourde haïtienne"
 
-#: /app/src/js/modules/list.mjs:82
+#: /app/src/js/modules/list.js:82
 msgid "Hungarian Forint"
 msgstr "Forint hongrois"
 
-#: /app/src/js/modules/list.mjs:83
+#: /app/src/js/modules/list.js:83
 msgid "Indonesian Rupiah"
 msgstr "Roupie indonésienne"
 
-#: /app/src/js/modules/list.mjs:84
+#: /app/src/js/modules/list.js:84
 msgid "Israeli New Shekel"
 msgstr "Nouveau Shekel israélien"
 
-#: /app/src/js/modules/list.mjs:85
+#: /app/src/js/modules/list.js:85
 msgid "Indian Rupee"
 msgstr "Roupie indienne"
 
-#: /app/src/js/modules/list.mjs:86
+#: /app/src/js/modules/list.js:86
 msgid "Iraqi Dinar"
 msgstr "Dinar irakien"
 
-#: /app/src/js/modules/list.mjs:87
+#: /app/src/js/modules/list.js:87
 msgid "Iranian Rial"
 msgstr "Rial iranien"
 
-#: /app/src/js/modules/list.mjs:88
+#: /app/src/js/modules/list.js:88
 msgid "Icelandic Króna"
 msgstr "Couronne islandaise"
 
-#: /app/src/js/modules/list.mjs:89
+#: /app/src/js/modules/list.js:89
 msgid "Jamaican Dollar"
 msgstr "Dollar jamaïcain"
 
-#: /app/src/js/modules/list.mjs:90
+#: /app/src/js/modules/list.js:90
 msgid "Jordanian Dinar"
 msgstr "Dinar jordanien"
 
-#: /app/src/js/modules/list.mjs:91
+#: /app/src/js/modules/list.js:91
 msgid "Japanese Yen"
 msgstr "Japonais Yen"
 
-#: /app/src/js/modules/list.mjs:92
+#: /app/src/js/modules/list.js:92
 msgid "Kenyan Shilling"
 msgstr "Shilling kényan"
 
-#: /app/src/js/modules/list.mjs:93
+#: /app/src/js/modules/list.js:93
 msgid "Kyrgyzstani Som"
 msgstr "Som kirghize"
 
-#: /app/src/js/modules/list.mjs:94
+#: /app/src/js/modules/list.js:94
 msgid "Cambodian Riel"
 msgstr "Riel cambodgien"
 
-#: /app/src/js/modules/list.mjs:95
+#: /app/src/js/modules/list.js:95
 msgid "Comoro Franc"
 msgstr "Franc comorien"
 
-#: /app/src/js/modules/list.mjs:96
+#: /app/src/js/modules/list.js:96
 msgid "North Korean Won"
 msgstr "Won nord-coréen"
 
-#: /app/src/js/modules/list.mjs:97
+#: /app/src/js/modules/list.js:97
 msgid "South Korean Won"
 msgstr "Won sud-coréen"
 
-#: /app/src/js/modules/list.mjs:98
+#: /app/src/js/modules/list.js:98
 msgid "Kuwaiti Dinar"
 msgstr "Dinar koweïtien"
 
-#: /app/src/js/modules/list.mjs:99
+#: /app/src/js/modules/list.js:99
 msgid "Cayman Islands Dollar"
 msgstr "Dollar des îles Caïmans"
 
-#: /app/src/js/modules/list.mjs:100
+#: /app/src/js/modules/list.js:100
 msgid "Kazakhstani Tenge"
 msgstr "Tenge kazakh"
 
-#: /app/src/js/modules/list.mjs:101
+#: /app/src/js/modules/list.js:101
 msgid "Lao Kip"
 msgstr "Kip laotien"
 
-#: /app/src/js/modules/list.mjs:102
+#: /app/src/js/modules/list.js:102
 msgid "Lebanese Pound"
 msgstr "Livre libanaise"
 
-#: /app/src/js/modules/list.mjs:103
+#: /app/src/js/modules/list.js:103
 msgid "Sri Lankan Rupee"
 msgstr "Roupie sri lankaise"
 
-#: /app/src/js/modules/list.mjs:104
+#: /app/src/js/modules/list.js:104
 msgid "Liberian Dollar"
 msgstr "Dollar libérien"
 
-#: /app/src/js/modules/list.mjs:105
+#: /app/src/js/modules/list.js:105
 msgid "Lesotho Loti"
 msgstr "Loti du Lesotho"
 
-#: /app/src/js/modules/list.mjs:106
+#: /app/src/js/modules/list.js:106
 msgid "Libyan Dinar"
 msgstr "Dinar libyen"
 
-#: /app/src/js/modules/list.mjs:107
+#: /app/src/js/modules/list.js:107
 msgid "Moroccan Dirham"
 msgstr "Dirham marocain"
 
-#: /app/src/js/modules/list.mjs:108
+#: /app/src/js/modules/list.js:108
 msgid "Moldovan Leu"
 msgstr "Leu moldave"
 
-#: /app/src/js/modules/list.mjs:109
+#: /app/src/js/modules/list.js:109
 msgid "Malagasy Ariary"
 msgstr "Ariary malgache"
 
-#: /app/src/js/modules/list.mjs:110
+#: /app/src/js/modules/list.js:110
 msgid "Macedonian Denar"
 msgstr "Denar macédonien"
 
-#: /app/src/js/modules/list.mjs:111
+#: /app/src/js/modules/list.js:111
 msgid "Myanmar Kyat"
 msgstr "Kyat du Myanmar"
 
-#: /app/src/js/modules/list.mjs:112
+#: /app/src/js/modules/list.js:112
 msgid "Mongolian Tögrög"
 msgstr "Tögrög mongol"
 
-#: /app/src/js/modules/list.mjs:113
+#: /app/src/js/modules/list.js:113
 msgid "Macanese Pataca"
 msgstr "Pataca macanaise"
 
-#: /app/src/js/modules/list.mjs:114
+#: /app/src/js/modules/list.js:114
 msgid "Mauritanian Ouguiya"
 msgstr "Ouguiya mauritanien"
 
-#: /app/src/js/modules/list.mjs:115
+#: /app/src/js/modules/list.js:115
 msgid "Mauritian Rupee"
 msgstr "roupie mauricienne"
 
-#: /app/src/js/modules/list.mjs:116
+#: /app/src/js/modules/list.js:116
 msgid "Maldivian Rufiyaa"
 msgstr "Rufiyaa des Maldives"
 
-#: /app/src/js/modules/list.mjs:117
+#: /app/src/js/modules/list.js:117
 msgid "Malawian Kwacha"
 msgstr "Kwacha malawite"
 
-#: /app/src/js/modules/list.mjs:118
+#: /app/src/js/modules/list.js:118
 msgid "Mexican Peso"
 msgstr "Peso mexicain"
 
-#: /app/src/js/modules/list.mjs:119
+#: /app/src/js/modules/list.js:119
 msgid "Mexican Unidad de Inversion"
 msgstr "Unité mexicaine d'inversion"
 
-#: /app/src/js/modules/list.mjs:120
+#: /app/src/js/modules/list.js:120
 msgid "Malaysian Ringgit"
 msgstr "Cloche malaisienne"
 
-#: /app/src/js/modules/list.mjs:121
+#: /app/src/js/modules/list.js:121
 msgid "Mozambican Metical"
 msgstr "Metical mozambicain"
 
-#: /app/src/js/modules/list.mjs:122
+#: /app/src/js/modules/list.js:122
 msgid "Namibian Dollar"
 msgstr "Dollar namibien"
 
-#: /app/src/js/modules/list.mjs:123
+#: /app/src/js/modules/list.js:123
 msgid "Nigerian Naira"
 msgstr "Naira nigérian"
 
-#: /app/src/js/modules/list.mjs:124
+#: /app/src/js/modules/list.js:124
 msgid "Nicaraguan Córdoba"
 msgstr "Nicaraguan Córdoba"
 
-#: /app/src/js/modules/list.mjs:125
+#: /app/src/js/modules/list.js:125
 msgid "Norwegian Krone"
 msgstr "Couronne norvégienne"
 
-#: /app/src/js/modules/list.mjs:126
+#: /app/src/js/modules/list.js:126
 msgid "Nepalese Rupee"
 msgstr "Roupie népalaise"
 
-#: /app/src/js/modules/list.mjs:127
+#: /app/src/js/modules/list.js:127
 msgid "New Zealand Dollar"
 msgstr "Dollar néo-zélandais"
 
-#: /app/src/js/modules/list.mjs:128
+#: /app/src/js/modules/list.js:128
 msgid "Omani Rial"
 msgstr "Rial omanais"
 
-#: /app/src/js/modules/list.mjs:129
+#: /app/src/js/modules/list.js:129
 msgid "Panamanian Balboa"
 msgstr "Balboa panaméen"
 
-#: /app/src/js/modules/list.mjs:130
+#: /app/src/js/modules/list.js:130
 msgid "Peruvian Sol"
 msgstr "Sol péruvien"
 
-#: /app/src/js/modules/list.mjs:131
+#: /app/src/js/modules/list.js:131
 msgid "Papua New Guinean Kina"
 msgstr "Kina de Papouasie-Nouvelle-Guinée"
 
-#: /app/src/js/modules/list.mjs:132
+#: /app/src/js/modules/list.js:132
 msgid "Philippine Peso"
 msgstr "Peso philippin"
 
-#: /app/src/js/modules/list.mjs:133
+#: /app/src/js/modules/list.js:133
 msgid "Pakistani Rupee"
 msgstr "Roupie pakistanaise"
 
-#: /app/src/js/modules/list.mjs:134
+#: /app/src/js/modules/list.js:134
 msgid "Polish Złoty"
 msgstr "Złoty polonais"
 
-#: /app/src/js/modules/list.mjs:135
+#: /app/src/js/modules/list.js:135
 msgid "Paraguayan Guarani"
 msgstr "Guarani paraguayen"
 
-#: /app/src/js/modules/list.mjs:136
+#: /app/src/js/modules/list.js:136
 msgid "Qatari Riyal"
 msgstr "Rial qatari"
 
-#: /app/src/js/modules/list.mjs:137
+#: /app/src/js/modules/list.js:137
 msgid "Romanian Leu"
 msgstr "Leu Roumanie"
 
-#: /app/src/js/modules/list.mjs:138
+#: /app/src/js/modules/list.js:138
 msgid "Serbian Dinar"
 msgstr "Dinar serbe"
 
-#: /app/src/js/modules/list.mjs:139
+#: /app/src/js/modules/list.js:139
 msgid "Russian Ruble"
 msgstr "Rouble Russe"
 
-#: /app/src/js/modules/list.mjs:140
+#: /app/src/js/modules/list.js:140
 msgid "Rwandan Franc"
 msgstr "Franc rwandais"
 
-#: /app/src/js/modules/list.mjs:141
+#: /app/src/js/modules/list.js:141
 msgid "Saudi Riyal"
 msgstr "Rial saoudien"
 
-#: /app/src/js/modules/list.mjs:142
+#: /app/src/js/modules/list.js:142
 msgid "Slovak Koruna"
 msgstr "Couronne slovaque"
 
-#: /app/src/js/modules/list.mjs:143
+#: /app/src/js/modules/list.js:143
 msgid "Solomon Islands Dollar"
 msgstr "Dollar des îles Salomon"
 
-#: /app/src/js/modules/list.mjs:144
+#: /app/src/js/modules/list.js:144
 msgid "Seychelles Rupee"
 msgstr "Roupie seychelloise"
 
-#: /app/src/js/modules/list.mjs:145
+#: /app/src/js/modules/list.js:145
 msgid "Sudanese Pound"
 msgstr "Livre soudanaise"
 
-#: /app/src/js/modules/list.mjs:146
+#: /app/src/js/modules/list.js:146
 msgid "Swedish Krona"
 msgstr "Couronne suédoise"
 
-#: /app/src/js/modules/list.mjs:147
+#: /app/src/js/modules/list.js:147
 msgid "Singapore Dollar"
 msgstr "Dollar de Singapour"
 
-#: /app/src/js/modules/list.mjs:148
+#: /app/src/js/modules/list.js:148
 msgid "Saint Helena Pound"
 msgstr "Livre de Sainte-Hélène"
 
-#: /app/src/js/modules/list.mjs:149
+#: /app/src/js/modules/list.js:149
 msgid "Sierra Leonean Leone"
 msgstr "Leone sierra-léonais"
 
-#: /app/src/js/modules/list.mjs:150
+#: /app/src/js/modules/list.js:150
 msgid "Somali Shilling"
 msgstr "Shilling somalien"
 
-#: /app/src/js/modules/list.mjs:151
+#: /app/src/js/modules/list.js:151
 msgid "Surinamese Dollar"
 msgstr "Dollar surinamais"
 
-#: /app/src/js/modules/list.mjs:152
+#: /app/src/js/modules/list.js:152
 msgid "South Sudanese Pound"
 msgstr "Livre sud-soudanaise"
 
-#: /app/src/js/modules/list.mjs:153
+#: /app/src/js/modules/list.js:153
 msgid "São Tomé and Príncipe Dobra"
 msgstr "Sao Tomé et Principe Dobra"
 
-#: /app/src/js/modules/list.mjs:154
+#: /app/src/js/modules/list.js:154
 msgid "Salvadoran Colon"
 msgstr "Colon salvadorien"
 
-#: /app/src/js/modules/list.mjs:155
+#: /app/src/js/modules/list.js:155
 msgid "Syrian Pound"
 msgstr "Livre syrienne"
 
-#: /app/src/js/modules/list.mjs:156
+#: /app/src/js/modules/list.js:156
 msgid "Swazi Lilangeni"
 msgstr "Swazi Lilangeni"
 
-#: /app/src/js/modules/list.mjs:157
+#: /app/src/js/modules/list.js:157
 msgid "Thai Baht"
 msgstr "Baht thaïlandais"
 
-#: /app/src/js/modules/list.mjs:158
+#: /app/src/js/modules/list.js:158
 msgid "Tajikistani Somoni"
 msgstr "Somoni tadjik"
 
-#: /app/src/js/modules/list.mjs:159
+#: /app/src/js/modules/list.js:159
 msgid "Turkmenistan Manat"
 msgstr "Manat du Turkménistan"
 
-#: /app/src/js/modules/list.mjs:160
+#: /app/src/js/modules/list.js:160
 msgid "Tunisian Dinar"
 msgstr "Dinar tunisien"
 
-#: /app/src/js/modules/list.mjs:161
+#: /app/src/js/modules/list.js:161
 msgid "Tongan Paʻanga"
 msgstr "Tonga Paʻanga"
 
-#: /app/src/js/modules/list.mjs:162
+#: /app/src/js/modules/list.js:162
 msgid "Turkish Lira"
 msgstr "Lire turque"
 
-#: /app/src/js/modules/list.mjs:163
+#: /app/src/js/modules/list.js:163
 msgid "Trinidad and Tobago Dollar"
 msgstr "Dollar de Trinité-et-Tobago"
 
-#: /app/src/js/modules/list.mjs:164
+#: /app/src/js/modules/list.js:164
 msgid "New Taiwan Dollar"
 msgstr "Nouveau dollar taïwanais"
 
-#: /app/src/js/modules/list.mjs:165
+#: /app/src/js/modules/list.js:165
 msgid "Tanzanian Shilling"
 msgstr "Shilling tanzanien"
 
-#: /app/src/js/modules/list.mjs:166
+#: /app/src/js/modules/list.js:166
 msgid "Ukrainian Hryvnia"
 msgstr "Hryvnia ukrainienne"
 
-#: /app/src/js/modules/list.mjs:167
+#: /app/src/js/modules/list.js:167
 msgid "Ugandan Shilling"
 msgstr "Shilling ougandais"
 
-#: /app/src/js/modules/list.mjs:168 /app/src/js/modules/list.mjs:169
+#: /app/src/js/modules/list.js:168 /app/src/js/modules/list.js:169
 msgid "United States Dollar"
 msgstr "Dollar des États-Unis"
 
-#: /app/src/js/modules/list.mjs:170
+#: /app/src/js/modules/list.js:170
 msgid "Uruguay Peso en Unidades Indexadas"
 msgstr "Peso uruguayen en Unidades Indexadas"
 
-#: /app/src/js/modules/list.mjs:171
+#: /app/src/js/modules/list.js:171
 msgid "Uruguayan Peso"
 msgstr "Peso uruguayen"
 
-#: /app/src/js/modules/list.mjs:172
+#: /app/src/js/modules/list.js:172
 msgid "Unidad Previsional"
 msgstr "Unidad prévisionnel"
 
-#: /app/src/js/modules/list.mjs:173
+#: /app/src/js/modules/list.js:173
 msgid "Uzbekistan Som"
 msgstr "Ouzbékistan Som"
 
-#: /app/src/js/modules/list.mjs:174
+#: /app/src/js/modules/list.js:174
 msgid "Venezuelan Bolívar Digital"
 msgstr "Bolivar vénézuélien numérique"
 
-#: /app/src/js/modules/list.mjs:175
+#: /app/src/js/modules/list.js:175
 msgid "Venezuelan Bolívar Soberano"
 msgstr "Bolívar Soberano vénézuélien"
 
-#: /app/src/js/modules/list.mjs:176
+#: /app/src/js/modules/list.js:176
 msgid "Vietnamese Dồng"
 msgstr "Dong vietnamien"
 
-#: /app/src/js/modules/list.mjs:177
+#: /app/src/js/modules/list.js:177
 msgid "Vanuatu Vatu"
 msgstr "Vanuatu Vatu"
 
-#: /app/src/js/modules/list.mjs:178
+#: /app/src/js/modules/list.js:178
 msgid "Samoan Tala"
 msgstr "Tala de Samoa"
 
-#: /app/src/js/modules/list.mjs:179
+#: /app/src/js/modules/list.js:179
 msgid "CFA Franc BEAC"
 msgstr "Franc CFA BEAC"
 
-#: /app/src/js/modules/list.mjs:180
+#: /app/src/js/modules/list.js:180
 msgid "Silver"
 msgstr "Argent"
 
-#: /app/src/js/modules/list.mjs:181
+#: /app/src/js/modules/list.js:181
 msgid "Gold"
 msgstr "Or"
 
-#: /app/src/js/modules/list.mjs:182
+#: /app/src/js/modules/list.js:182
 msgid "European Composite Unit"
 msgstr "Unité composite européenne"
 
-#: /app/src/js/modules/list.mjs:183
+#: /app/src/js/modules/list.js:183
 msgid "European Monetary Unit"
 msgstr "Unité monétaire européenne"
 
-#: /app/src/js/modules/list.mjs:184
+#: /app/src/js/modules/list.js:184
 msgid "European Unit of Account 9"
 msgstr "Unité de compte européenne 9"
 
-#: /app/src/js/modules/list.mjs:185
+#: /app/src/js/modules/list.js:185
 msgid "European Unit of Account 17"
 msgstr "Unité de compte européenne 17"
 
-#: /app/src/js/modules/list.mjs:186
+#: /app/src/js/modules/list.js:186
 msgid "East Caribbean Dollar"
 msgstr "Dollar des Caraïbes orientales"
 
-#: /app/src/js/modules/list.mjs:187
+#: /app/src/js/modules/list.js:187
 msgid "Special Drawing Rights"
 msgstr "Droits de tirage spéciaux"
 
-#: /app/src/js/modules/list.mjs:188
+#: /app/src/js/modules/list.js:188
 msgid "CFA Franc BCEAO"
 msgstr "Franc CFA BCEAO"
 
-#: /app/src/js/modules/list.mjs:189
+#: /app/src/js/modules/list.js:189
 msgid "Palladium"
 msgstr "Palladium"
 
-#: /app/src/js/modules/list.mjs:190
+#: /app/src/js/modules/list.js:190
 msgid "CFP Franc"
 msgstr "Franc CFP"
 
-#: /app/src/js/modules/list.mjs:191
+#: /app/src/js/modules/list.js:191
 msgid "Platinum"
 msgstr "Platine"
 
-#: /app/src/js/modules/list.mjs:192
+#: /app/src/js/modules/list.js:192
 msgid "SUCRE"
 msgstr "Système unique de compensation régionale de paiements"
 
-#: /app/src/js/modules/list.mjs:193
+#: /app/src/js/modules/list.js:193
 msgid "ADB Unit of Account"
 msgstr "Unité de compte BAD"
 
-#: /app/src/js/modules/list.mjs:194
+#: /app/src/js/modules/list.js:194
 msgid "Yemeni Rial"
 msgstr "Rial yéménite"
 
-#: /app/src/js/modules/list.mjs:195
+#: /app/src/js/modules/list.js:195
 msgid "South African Rand"
 msgstr "Rand sud-africain"
 
-#: /app/src/js/modules/list.mjs:196
+#: /app/src/js/modules/list.js:196
 msgid "Zambian Kwacha"
 msgstr "Kwacha zambien"
 
-#: /app/src/js/modules/list.mjs:197
+#: /app/src/js/modules/list.js:197
 msgid "Zimbabwean Dollar"
 msgstr "Dollar zimbabwéen"
 
-#: /app/src/js/modules/list.mjs:231 /app/src/js/modules/list.mjs:233
+#: /app/src/js/modules/list.js:231 /app/src/js/modules/list.js:233
 msgid "Disable"
 msgstr "Désactiver"
 
-#: /app/src/js/modules/list.mjs:231 /app/src/js/modules/list.mjs:233
+#: /app/src/js/modules/list.js:231 /app/src/js/modules/list.js:233
 msgid "Enable"
 msgstr "Activer"
 
-#: /app/src/js/modules/mainFunction.mjs:20
+#: /app/src/js/modules/mainFunction.js:20
 msgid "Search"
 msgstr "Recherche"
 
-#: /app/src/js/modules/mainFunction.mjs:21
+#: /app/src/js/modules/mainFunction.js:21
 msgid "No data available in table"
 msgstr "Aucune donnée disponible dans le tableau"
 
-#: /app/src/js/modules/mainFunction.mjs:22
+#: /app/src/js/modules/mainFunction.js:22
 msgid "Showing {start} to {end} of {total} entries"
 msgstr "Affichage de {start} à {end} sur {total} entrées"
 
-#: /app/src/js/modules/mainFunction.mjs:23
+#: /app/src/js/modules/mainFunction.js:23
 msgid "Showing 0 to 0 of 0 entries"
 msgstr "Affichage de 0 à 0 sur 0 entrées"
 
-#: /app/src/js/modules/mainFunction.mjs:24
+#: /app/src/js/modules/mainFunction.js:24
 msgid "Loading records …"
 msgstr "Chargement des entrées"
 
-#: /app/src/js/modules/mainFunction.mjs:25
+#: /app/src/js/modules/mainFunction.js:25
 msgid "Processing …"
 msgstr "Traitement en cours ..."
 
-#: /app/src/js/modules/mainFunction.mjs:26
+#: /app/src/js/modules/mainFunction.js:26
 msgid "{max} entries filtered"
 msgstr "filtrées depuis un total de {max} entrées"
 
-#: /app/src/js/modules/mainFunction.mjs:27
+#: /app/src/js/modules/mainFunction.js:27
 msgid "Show {menu} entries"
 msgstr "Afficher {menu} entrées"
 
-#: /app/src/js/modules/mainFunction.mjs:28
+#: /app/src/js/modules/mainFunction.js:28
 msgid "No corresponding entry"
 msgstr "Aucune entrée correspondante trouvée"
 
-#: /app/src/js/modules/mainFunction.mjs:30
+#: /app/src/js/modules/mainFunction.js:30
 msgid "First"
 msgstr "Première"
 
-#: /app/src/js/modules/mainFunction.mjs:31
+#: /app/src/js/modules/mainFunction.js:31
 msgid "Last"
 msgstr "Dernière"
 
-#: /app/src/js/modules/mainFunction.mjs:32
+#: /app/src/js/modules/mainFunction.js:32
 msgid "Next"
 msgstr "Suivante"
 
-#: /app/src/js/modules/mainFunction.mjs:33
+#: /app/src/js/modules/mainFunction.js:33
 msgid "Previous"
 msgstr "Précédente"
 
-#: /app/src/js/modules/mainFunction.mjs:55
+#: /app/src/js/modules/mainFunction.js:55
 msgid "Editable (Click to change)"
 msgstr "Éditable (Cliquer pour modifier)"
 
-#: /app/src/js/modules/mainFunction.mjs:62
+#: /app/src/js/modules/mainFunction.js:62
 msgid "Your global Nextcloud mail server need to be configured"
 msgstr "Votre serveur global de messagerie Nextcloud doit être configuré."
 
-#: /app/src/js/modules/mainFunction.mjs:69
+#: /app/src/js/modules/mainFunction.js:69
 msgid "Added!"
 msgstr "Ajouté !"
 
-#: /app/src/js/objects/devis.mjs:35 /app/src/js/objects/facture.mjs:40
+#: /app/src/js/objects/devis.js:35 /app/src/js/objects/facture.js:40
 msgid "Open"
 msgstr "Ouvrir"
 
@@ -1066,7 +1065,8 @@ msgstr ""
 "Pour commencer avec cette application, vous devez configurer les "
 "informations de votre entreprise, suivez ce lien"
 
-#: /app/templates/content/changelog.php:5 /app/templates/settings/index.php:9
+#: /app/templates/content/changelog.php:5
+#: /app/templates/navigation/index.php:47
 msgid "My company"
 msgstr "Mon entreprise"
 
@@ -1316,7 +1316,6 @@ msgstr ""
 " votre pied de page, avant les information de l'entreprise."
 
 #: /app/templates/content/configuration.php:8
-#: /app/templates/settings/index.php:4
 msgid "Configuration"
 msgstr "Configuration"
 
@@ -1699,7 +1698,15 @@ msgstr "Produits"
 msgid "Information"
 msgstr "Information"
 
-#: /app/templates/navigation/index.php:42
+#: /app/templates/navigation/index.php:43
+msgid "Save folder"
+msgstr "Dossier de sauvegarde"
+
+#: /app/templates/navigation/index.php:44 /app/templates/settings/index.php:11
+msgid "Please choose a folder"
+msgstr "Veuillez sélectionner un dossier"
+
+#: /app/templates/navigation/index.php:46
 msgid "About"
 msgstr "À propos"
 
@@ -1724,11 +1731,3 @@ msgstr ""
 #: /app/templates/settings/admin.php:10
 msgid "Restore now!"
 msgstr "Restaurer maintenant !"
-
-#: /app/templates/settings/index.php:11
-msgid "Save folder"
-msgstr "Dossier de sauvegarde"
-
-#: /app/templates/settings/index.php:11
-msgid "Please choose a folder"
-msgstr "Veuillez sélectionner un dossier"

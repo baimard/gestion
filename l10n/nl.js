@@ -287,8 +287,8 @@ OC.L10N.register(
     "Invoices" : "Facturen",
     "Products" : "Producten",
     "Information" : "Informatie",
-    "About" : "Over",
     "Save folder" : "Map om op te slaan",
-    "Please choose a folder" : "Kies alsjeblieft een map"
+    "Please choose a folder" : "Kies alsjeblieft een map",
+    "About" : "Over"
 },
 "nplurals=2; plural=(n != 1);");

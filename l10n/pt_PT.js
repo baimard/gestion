@@ -36,6 +36,7 @@ OC.L10N.register(
     "Status" : "Estado",
     "Actions" : "Acções",
     "Legal notice" : "Informação legal",
+    "Year" : "Year",
     "January" : "Janeiro",
     "February" : "Fevereiro",
     "March" : "Março",

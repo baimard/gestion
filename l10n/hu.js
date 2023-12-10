@@ -376,13 +376,13 @@ OC.L10N.register(
     "Invoices" : "Számlák",
     "Products" : "Termékek",
     "Information" : "Információk",
+    "Save folder" : "Mentési mappa",
+    "Please choose a folder" : "Válasszon egy mappát",
     "About" : "Névjegy",
     "Backup all data" : "Összes adat biztonsági mentése",
     "You can save all Gestion app data." : "Elmentheti a Menedzsment összes alkalmazásadatát.",
     "Backup now!" : "Biztonsági mentés most!",
     "You can restore a backup file for Gestion (in next release)." : "Helyreállíthatja a Menedzsment biztonsági mentését (a következő kiadásban).",
-    "Restore now!" : "Helyreállítás most!",
-    "Save folder" : "Mentési mappa",
-    "Please choose a folder" : "Válasszon egy mappát"
+    "Restore now!" : "Helyreállítás most!"
 },
 "nplurals=2; plural=(n != 1);");

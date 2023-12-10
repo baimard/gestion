@@ -16,6 +16,7 @@ OC.L10N.register(
     "Reference" : "Ссылка",
     "Designation" : "Должность",
     "Your company name" : "Название вашей компании",
+    "Your company email" : "Эл. почта вашей компании",
     "Your company phone" : "Телефон вашей компании",
     "Your company address" : "Адрес вашей компании",
     "EUR" : "EUR",
@@ -99,6 +100,7 @@ OC.L10N.register(
     "Cc" : "Коп",
     "Subject" : "Тема",
     "Body" : "Тело",
+    "Dear," : "Уважаемый,",
     "Send" : "Отправить",
     "Company name" : "Название компании",
     "Legal disclaimer/mentions" : "Юридическая информация",
@@ -139,6 +141,7 @@ OC.L10N.register(
     "Add customer" : "Добавить клиента",
     "Legal information" : "Юридическая информация",
     "Legal notice" : "Официальное уведомление",
+    "If you want to contribute to this section just contact me by mail" : "Если вы хотите внести свой вклад в этот раздел, просто свяжитесь со мной по почте.",
     "Product" : "Товар",
     "Year" : "Год",
     "January" : "Январь",
@@ -157,7 +160,7 @@ OC.L10N.register(
     "Manage" : "Управлять",
     "Customers" : "Клиенты",
     "Information" : "Информация",
-    "About" : "О себе",
-    "Save folder" : "Папка для сохранения"
+    "Save folder" : "Папка для сохранения",
+    "About" : "О себе"
 },
 "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);");

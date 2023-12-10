@@ -8,6 +8,7 @@
     "New" : "新規作成",
     "Comment" : "コメント",
     "Your company name" : "あなたの会社名",
+    "Are you sure you want to delete?" : "本当に削除してよろしいですか?",
     "Cancel" : "キャンセル",
     "Australian Dollar" : "オーストラリア・ドル",
     "Bitcoin" : "ビットコイン",
@@ -62,7 +63,7 @@
     "Total" : "合計",
     "Manage" : "管理",
     "Information" : "情報",
-    "About" : "詳細",
-    "Save folder" : "フォルダーを保存"
+    "Save folder" : "フォルダーを保存",
+    "About" : "詳細"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

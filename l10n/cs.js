@@ -376,13 +376,13 @@ OC.L10N.register(
     "Invoices" : "Faktury",
     "Products" : "Produkty",
     "Information" : "Informace",
+    "Save folder" : "Složka pro ukládání",
+    "Please choose a folder" : "Zvolte složku",
     "About" : "O aplikaci",
     "Backup all data" : "Zazálohovat veškerá data",
     "You can save all Gestion app data." : "Je možné si uložit veškerá data aplikace Gestion",
     "Backup now!" : "Zazálohovat nyní!",
     "You can restore a backup file for Gestion (in next release)." : "Je možné obnovit ze souboru se zálohou Gestion (v příštím vydání).",
-    "Restore now!" : "Obnovit nyní!",
-    "Save folder" : "Složka pro ukládání",
-    "Please choose a folder" : "Zvolte složku"
+    "Restore now!" : "Obnovit nyní!"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");

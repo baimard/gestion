@@ -13,6 +13,10 @@
             </button>
         </div>
     </div>
+
+    <div>
+        <?php var_dump($_['test']); ?>
+</div>
     <table id="client" class="display tabledt" style="font-size:11px;">
         <thead>
             <tr>

@@ -11,12 +11,23 @@ use OCA\Gestion\Db\Bdd;
 use OCP\IURLGenerator;
 use OCP\IConfig;
 
+
+use OCP\IUserManager;
+use OCP\IUser;
+use OCP\Accounts\IAccountManager;
+
 class PageController extends Controller {
 	private $idNextcloud;
 	private $myDb;
 	private $urlGenerator;
 	private $mailer;
 	private $config;
+
+    /** @var IUserManager */
+    private IUserManager $userManager;
+
+    /** @var IAccountManager */
+    private IAccountManager $accountManager;
 
 	/** @var IRootStorage */
 	private $storage;
@@ -31,15 +42,19 @@ class PageController extends Controller {
 								IRootFolder $rootFolder,
 								IURLGenerator $urlGenerator,
 								IMailer $mailer,
-								Iconfig $config){
+								Iconfig $config,
+								IUserManager $userManager,
+								IAccountManager $accountManager){
 
 		parent::__construct($AppName, $request);
-
-		$this->idNextcloud = $UserId;
+		// $this->idNextcloud = $UserId;
+		$this->idNextcloud = 1;
 		$this->myDb = $myDb;
 		$this->urlGenerator = $urlGenerator;
 		$this->mailer = $mailer;
 		$this->config = $config;
+		$this->userManager = $userManager;
+		$this->accountManager = $accountManager;
 		try{
 			$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
 		}catch(\OC\User\NoUserException $e){
@@ -53,7 +68,13 @@ class PageController extends Controller {
 	 *
      */
 	public function index() {
-		return new TemplateResponse('gestion', 'index', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/index.php
+		// $res = $this->userManager->get('nextcloud');
+		// $myaccount = $this->accountManager->getAccount($res);
+		// $prop = [];
+		// foreach($myaccount as $key => $value) {
+		// 	$prop[$key]= $value;
+		// }
+		return new TemplateResponse('gestion', 'index', array('test' => $prop, 'path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/index.php
 	}
 
 	/**

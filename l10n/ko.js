@@ -11,6 +11,8 @@ OC.L10N.register(
     "Comment" : "설명",
     "Are you sure you want to delete?" : "삭제하시겠습니까?",
     "Cancel" : "취소",
+    "North Korean Won" : "북한 원",
+    "South Korean Won" : "대한민국 원",
     "Disable" : "사용 안함",
     "Enable" : "활성화",
     "Search" : "검색",

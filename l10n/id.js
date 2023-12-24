@@ -30,6 +30,7 @@ OC.L10N.register(
     "Status" : "Status",
     "Actions" : "Tindakan",
     "Legal notice" : "Pemberitahuan hukum",
+    "Year" : "Tahun",
     "January" : "Januari",
     "February" : "Februari",
     "March" : "Maret",

@@ -19,6 +19,7 @@ OC.L10N.register(
     "Open" : "Buka",
     "Email sent" : "Surel terkirim",
     "Documentation" : "Dokumentasi",
+    "Contact" : "Kontak",
     "Changelog" : "Log pembaruan",
     "Releases" : "Rilis",
     "Subject" : "Subjek",

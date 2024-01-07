@@ -12,6 +12,7 @@
 	<div id="app-content">
 		<div id="app-content-wrapper">
 			<?php print_unescaped($this->inc('content/changelog')); ?>
+			<?php print_unescaped($this->inc('modal/configuration_modal')); ?>
 			<?php print_unescaped($this->inc('content/configuration')); ?>
 		</div>
 	</div>

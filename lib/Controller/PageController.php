@@ -10,6 +10,8 @@ use OCP\AppFramework\Controller;
 use OCA\Gestion\Db\Bdd;
 use OCP\IURLGenerator;
 use OCP\IConfig;
+use OCP\ISession;
+use OCP\AppFramework\Http\Attribute\UseSession;
 
 
 use OCP\IUserManager;
@@ -17,11 +19,14 @@ use OCP\IUser;
 use OCP\Accounts\IAccountManager;
 
 class PageController extends Controller {
-	private $idNextcloud;
 	private $myDb;
 	private $urlGenerator;
 	private $mailer;
 	private $config;
+	private $myID;
+	
+	/** @var ISession */
+	private ISession $session;
 
     /** @var IUserManager */
     private IUserManager $userManager;
@@ -44,19 +49,25 @@ class PageController extends Controller {
 								IMailer $mailer,
 								Iconfig $config,
 								IUserManager $userManager,
-								IAccountManager $accountManager){
-
+								IAccountManager $accountManager,
+								ISession $session){
 		parent::__construct($AppName, $request);
-		// $this->idNextcloud = $UserId;
-		$this->idNextcloud = 1;
+		$this->$myID = $UserId;
+		//TODO Envoyer la valeur en cours
+		// $this->idNextcloud = ;
 		$this->myDb = $myDb;
 		$this->urlGenerator = $urlGenerator;
 		$this->mailer = $mailer;
 		$this->config = $config;
 		$this->userManager = $userManager;
 		$this->accountManager = $accountManager;
+		
+		$this->session = $session;
+		
+
+
 		try{
-			$this->storage = $rootFolder->getUserFolder($this->idNextcloud);
+			$this->storage = $rootFolder->getUserFolder($this->$myID);
 		}catch(\OC\User\NoUserException $e){
 
 		}
@@ -66,7 +77,9 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 *
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function index() {
 		// $res = $this->userManager->get('nextcloud');
 		// $myaccount = $this->accountManager->getAccount($res);
@@ -74,7 +87,13 @@ class PageController extends Controller {
 		// foreach($myaccount as $key => $value) {
 		// 	$prop[$key]= $value;
 		// }
-		return new TemplateResponse('gestion', 'index', array('test' => $prop, 'path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/index.php
+		return new TemplateResponse('gestion', 'index', array(	'test' => $prop, 
+																'path' => $this->myID, 
+																'url' => $this->getNavigationLink(),
+																'CompaniesList' => $this->getCompaniesList(),
+																'CurrentCompany' => $this->session['CurrentCompany']
+															)
+														);  // templates/index.php
 	}
 
 	/**
@@ -82,7 +101,12 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
      */
 	public function devis() {
-		return new TemplateResponse('gestion', 'devis', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/devis.php
+		return new TemplateResponse('gestion', 'devis', array(	'path' => $this->myID, 
+																'url' => $this->getNavigationLink(),
+																'CompaniesList' => $this->getCompaniesList(),
+																'CurrentCompany' => $this->session['CurrentCompany']
+															)
+														);  // templates/devis.php
 	}
 
 	/**
@@ -90,7 +114,12 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
      */
 	public function facture() {
-		return new TemplateResponse('gestion', 'facture', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/facture.php
+		return new TemplateResponse('gestion', 'facture', array(	'path' => $this->myID, 
+																	'url' => $this->getNavigationLink(),
+																	'CompaniesList' => $this->getCompaniesList(),
+																	'CurrentCompany' => $this->session['CurrentCompany']
+																)
+															);  // templates/facture.php
 	}
 
 	/**
@@ -98,7 +127,12 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
      */
 	public function produit() {
-		return new TemplateResponse('gestion', 'produit', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/produit.php
+		return new TemplateResponse('gestion', 'produit', array(	'path' => $this->myID, 
+																	'url' => $this->getNavigationLink(),
+																	'CompaniesList' => $this->getCompaniesList(),
+																	'CurrentCompany' => $this->session['CurrentCompany']
+																)
+															);  // templates/produit.php
 	}
 
 	/**
@@ -106,7 +140,12 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
      */
 	public function statistique() {
-		return new TemplateResponse('gestion', 'statistique', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/statistique.php
+		return new TemplateResponse('gestion', 'statistique', array(	'path' => $this->myID, 
+																		'url' => $this->getNavigationLink(),
+																		'CompaniesList' => $this->getCompaniesList(),
+																		'CurrentCompany' => $this->session['CurrentCompany']
+																	)
+																);  // templates/statistique.php
 	}
 
 	/**
@@ -114,7 +153,13 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
      */
 	public function legalnotice($page) {
-		return new TemplateResponse('gestion', 'legalnotice', array('page' => 'content/legalnotice', 'path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/legalnotice.php
+		return new TemplateResponse('gestion', 'legalnotice', array(	'page' => 'content/legalnotice', 
+																		'path' => $this->myID, 
+																		'url' => $this->getNavigationLink(),
+																		'CompaniesList' => $this->getCompaniesList(),
+																		'CurrentCompany' => $this->session['CurrentCompany']
+																	)
+																);  // templates/legalnotice.php
 	}
 
 	/**
@@ -122,16 +167,28 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
      */
 	public function france() {
-		return new TemplateResponse('gestion', 'legalnotice', array('page' => 'legalnotice/france', 'path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/legalnotice.php
+		return new TemplateResponse('gestion', 'legalnotice', array('page' => 'legalnotice/france', 
+																	'path' => $this->myID, 
+																	'url' => $this->getNavigationLink(),
+																	'CompaniesList' => $this->getCompaniesList(),
+																	'CurrentCompany' => $this->session['CurrentCompany']
+																)
+															);  // templates/legalnotice.php
 	}
 
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
+	 * TODO a revoir
      */
 	public function config() {
-		$this->myDb->checkConfig($this->idNextcloud);
-		return new TemplateResponse('gestion', 'configuration', array('path' => $this->idNextcloud, 'url' => $this->getNavigationLink()));  // templates/configuration.php
+		$this->myDb->checkConfig($this->session['CurrentCompany']);
+		return new TemplateResponse('gestion', 'configuration', array(	'path' => $this->myID, 
+																		'url' => $this->getNavigationLink(),
+																		'CompaniesList' => $this->getCompaniesList(),
+																		'CurrentCompany' => $this->session['CurrentCompany']
+																	)
+																);  // templates/configuration.php
 	}
 	
 	/**
@@ -140,15 +197,18 @@ class PageController extends Controller {
 	 * @param string $numdevis
      */
 	public function devisshow($numdevis) {
-		$devis = $this->myDb->getOneDevis($numdevis,$this->idNextcloud);
-		$produits = $this->myDb->getListProduit($numdevis, $this->idNextcloud);
+		$devis = $this->myDb->getOneDevis($numdevis,$this->session['CurrentCompany']);
+		$produits = $this->myDb->getListProduit($numdevis, $this->session['CurrentCompany']);
 		return new TemplateResponse('gestion', 'devisshow', array(	'configuration'=> $this->getConfiguration(), 
 																	'devis'=>json_decode($devis), 
 																	'produit'=>json_decode($produits), 
-																	'path' => $this->idNextcloud, 
+																	'path' => $this->myID, 
 																	'url' => $this->getNavigationLink(),
-																	'logo' => $this->getLogo()
-																));
+																	'logo' => $this->getLogo(),
+																	'CompaniesList' => $this->getCompaniesList(),
+																	'CurrentCompany' => $this->session['CurrentCompany']
+																)
+															);
 	}
 
 	/**
@@ -157,22 +217,25 @@ class PageController extends Controller {
 	 * @param string $numfacture
 	 */
 	public function factureshow($numfacture) {
-		$facture = $this->myDb->getOneFacture($numfacture,$this->idNextcloud);
+		$facture = $this->myDb->getOneFacture($numfacture,$this->session['CurrentCompany']);
 		// $produits = $this->myDb->getListProduit($numdevis);
-		return new TemplateResponse('gestion', 'factureshow', array(	'path' => $this->idNextcloud, 
+		return new TemplateResponse('gestion', 'factureshow', array(	'path' => $this->myid, 
 																		'configuration'=> $this->getConfiguration(), 
 																		'facture'=>json_decode($facture), 
 																		'url' => $this->getNavigationLink(),
-																		'logo' => $this->getLogo()
-																	));
-	}
+																		'logo' => $this->getLogo(),
+																		'CompaniesList' => $this->getCompaniesList(),
+																		'CurrentCompany' => $this->session['CurrentCompany']
+																)
+															);
+	}															
 
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
      */
 	public function isConfig() {
-		return $this->myDb->isConfig($this->idNextcloud);
+		return $this->myDb->isConfig($this->session['CurrentCompany']);
 	}
 
 	/**
@@ -193,11 +256,38 @@ class PageController extends Controller {
 	}
 
 	/**
+	* @UseSession
+	*/
+	#[UseSession]
+	private function getCompaniesList(){
+		$CompaniesList = $this->myDb->getCompaniesList($this->$myID);
+
+		if(empty($this->session['CurrentCompany'])){
+			$this->setCurrentCompany($CompaniesList[0]['id']);
+		}
+		
+		return $CompaniesList;
+	}
+
+	/**
+	 * @UseSession
+	 * 
+	 * @param string $companyID
+	 */
+	#[UseSession]
+	public function setCurrentCompany($companyID){
+		$this->session['CurrentCompany'] = $companyID;
+	}
+
+
+
+
+	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
      */
 	public function getClients() {
-		return $this->myDb->getClients($this->idNextcloud);
+		return $this->myDb->getClients($this->session['CurrentCompany']);
 	}
 
 	/**
@@ -205,7 +295,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
      */
 	public function getConfiguration() {
-		return $this->myDb->getConfiguration($this->idNextcloud);
+		return $this->myDb->getConfiguration($this->session['CurrentCompany']);
 	}
 
 	/**
@@ -213,7 +303,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
      */
 	public function getDevis() {
-		return $this->myDb->getDevis($this->idNextcloud);
+		return $this->myDb->getDevis($this->session['CurrentCompany']);
 	}
 
 	/**
@@ -222,7 +312,7 @@ class PageController extends Controller {
      */
 	public function getFactures() {
 		
-		return $this->myDb->getFactures($this->idNextcloud);
+		return $this->myDb->getFactures($this->session['CurrentCompany']);
 	}
 	
 	/**
@@ -231,7 +321,7 @@ class PageController extends Controller {
      */
 	public function getProduits() {
 		
-		return $this->myDb->getProduits($this->idNextcloud);
+		return $this->myDb->getProduits($this->session['CurrentCompany']);
 	}
 
 	/**
@@ -240,7 +330,7 @@ class PageController extends Controller {
 	 * @param string $numdevis
      */
 	public function getProduitsById($numdevis) {
-		return $this->myDb->getListProduit($numdevis, $this->idNextcloud);
+		return $this->myDb->getListProduit($numdevis, $this->session['CurrentCompany']);
 	}
 
 	/**
@@ -249,7 +339,7 @@ class PageController extends Controller {
 	 * @param string $id
      */
 	public function getClient($id) {
-		return $this->myDb->getClient($id, $this->idNextcloud);
+		return $this->myDb->getClient($id, $this->session['CurrentCompany']);
 	}
 
 	/**
@@ -258,7 +348,7 @@ class PageController extends Controller {
 	 * @param string $id
      */
 	public function getClientbyiddevis($id) {
-		return $this->myDb->getClientbyiddevis($id, $this->idNextcloud);
+		return $this->myDb->getClientbyiddevis($id, $this->session['CurrentCompany']);
 	}
 
 	/**
@@ -274,12 +364,12 @@ class PageController extends Controller {
 	 */
 	public function insertClient() {
 		// try {
-		// 	return new DataResponse($this->myDb->insertClient($this->idNextcloud), Http::STATUS_OK, ['Content-Type' => 'application/json']);
+		// 	return new DataResponse($this->myDb->insertClient($this->session['CurrentCompany']), Http::STATUS_OK, ['Content-Type' => 'application/json']);
 		// }
 		// catch( PDOException $Exception ) {
 		// 	return new DataResponse($Exception, 500, ['Content-Type' => 'application/json']);
 		// }
-		return $this->myDb->insertClient($this->idNextcloud);
+		return $this->myDb->insertClient($this->session['CurrentCompany']);
 	}
 
 	/**
@@ -288,7 +378,7 @@ class PageController extends Controller {
 	 * 
 	 */
 	public function insertDevis(){
-		return $this->myDb->insertDevis($this->idNextcloud);
+		return $this->myDb->insertDevis($this->session['CurrentCompany']);
 	}
 
 	/**
@@ -297,7 +387,7 @@ class PageController extends Controller {
 	 * 
 	 */
 	public function insertFacture(){
-		return $this->myDb->insertFacture($this->idNextcloud);
+		return $this->myDb->insertFacture($this->session['CurrentCompany']);
 	}
 
 	/**
@@ -306,7 +396,7 @@ class PageController extends Controller {
 	 * 
 	 */
 	public function insertProduit(){
-		return $this->myDb->insertProduit($this->idNextcloud);
+		return $this->myDb->insertProduit($this->session['CurrentCompany']);
 	}
 
 	/**
@@ -315,7 +405,7 @@ class PageController extends Controller {
 	 * @param string $id
 	 */
 	public function insertProduitDevis($id){
-		return $this->myDb->insertProduitDevis($id, $this->idNextcloud);
+		return $this->myDb->insertProduitDevis($id, $this->session['CurrentCompany']);
 	}
 
 	/**
@@ -327,7 +417,19 @@ class PageController extends Controller {
 	 * @param string $id
 	 */
 	public function update($table, $column, $data, $id) {
-		return $this->myDb->gestion_update($table, $column, $data, $id, $this->idNextcloud);
+		return $this->myDb->gestion_update($table, $column, $data, $id, $this->session['CurrentCompany']);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @param string $table
+	 * @param string $column
+	 * @param string $data
+	 * @param string $id
+	 */
+	public function updateConfiguration($table, $column, $data, $id) {
+		return $this->myDb->gestion_updateConfiguration($table, $column, $data, $id);
 	}
 
 	/**
@@ -337,7 +439,7 @@ class PageController extends Controller {
 	 * @param string $id
 	 */
 	public function delete($table, $id) {
-		return $this->myDb->gestion_delete($table, $id, $this->idNextcloud);
+		return $this->myDb->gestion_delete($table, $id, $this->session['CurrentCompany']);
 	}
 
 	/**
@@ -452,10 +554,10 @@ class PageController extends Controller {
 	 */
 	public function getStats(){
 		$res = array();
-		$res['client'] = json_decode($this->myDb->numberClient($this->idNextcloud))[0]->c;
-		$res['devis'] = json_decode($this->myDb->numberDevis($this->idNextcloud))[0]->c;
-		$res['facture'] = json_decode($this->myDb->numberFacture($this->idNextcloud))[0]->c;
-		$res['produit'] = json_decode($this->myDb->numberProduit($this->idNextcloud))[0]->c;
+		$res['client'] = json_decode($this->myDb->numberClient($this->session['CurrentCompany']))[0]->c;
+		$res['devis'] = json_decode($this->myDb->numberDevis($this->session['CurrentCompany']))[0]->c;
+		$res['facture'] = json_decode($this->myDb->numberFacture($this->session['CurrentCompany']))[0]->c;
+		$res['produit'] = json_decode($this->myDb->numberProduit($this->session['CurrentCompany']))[0]->c;
 		return json_encode($res);
 	}
 
@@ -464,7 +566,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function getAnnualTurnoverPerMonthNoVat(){
-		return $this->myDb->getAnnualTurnoverPerMonthNoVat($this->idNextcloud);
+		return $this->myDb->getAnnualTurnoverPerMonthNoVat($this->session['CurrentCompany']);
 	}
 
 }

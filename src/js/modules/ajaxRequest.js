@@ -31,6 +31,79 @@ export function updateDB(table, column, data, id) {
 }
 
 /**
+ * Update data
+ * @param table 
+ * @param column 
+ * @param data 
+ * @param id 
+ */
+export function updateDBConfiguration(table, column, data, id) {
+    
+    var myData = {
+        table: table,
+        column: column,
+        data: data,
+        id: id,
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', baseUrl + '/updateConfiguration', true); // false for synchronous request
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // Request successful
+            showSuccess(t('gestion', 'Modification saved'));
+        } else {
+            // Request failed
+            showError(t('gestion', 'There is an error with the format, please check the documentation'));
+        }
+    };
+
+    xhr.onerror = function () {
+        // Connection error
+        showError(t('gestion', 'There is an error with the format, please check the documentation'));
+    };
+
+    xhr.send(JSON.stringify(myData));
+}
+
+
+/**
+ * Update session var
+ * @param table 
+ * @param column 
+ */
+export function updateCurrentCompany(companyID) {
+    var myData = {
+        companyID: companyID
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', baseUrl + '/updateSession', false); // false for synchronous request
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader("requesttoken", oc_requesttoken);
+
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // Request successful
+            showSuccess(t('gestion', 'Modification saved'));
+            window.location.reload();
+        } else {
+            // Request failed
+            showError(t('gestion', 'There is an error with the format, please check the documentation'));
+        }
+    };
+
+    xhr.onerror = function () {
+        // Connection error
+        showError(t('gestion', 'There is an error with the format, please check the documentation'));
+    };
+
+    xhr.send(JSON.stringify(myData));
+}
+
+/**
  * Delete data
  * @param table
  * @param id 
@@ -161,6 +234,17 @@ export function updateEditable(myCase) {
     if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
     myCase.removeAttribute('contenteditable');
 }
+
+/**
+ * 
+ * @param {*} myCase 
+ */
+export function updateEditableConfiguration(myCase) {
+    updateDBConfiguration(myCase.dataset.table, myCase.dataset.column, myCase.innerText, myCase.dataset.id);
+    if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
+    myCase.removeAttribute('contenteditable');
+}
+
 
 /**
  * 

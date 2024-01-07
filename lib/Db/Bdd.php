@@ -26,6 +26,11 @@ class Bdd {
         return $this->execSQL($sql, array($idNextcloud));
     }
 
+    public function getCompaniesList($User){
+        $sql = "SELECT id, entreprise FROM `".$this->tableprefix."configuration` WHERE id_nextcloud = ? OR id in (SELECT id_configuration FROM oc_gestion_conf_share WHERE id_nextcloud = ?)";
+        return $this->execSQLNoJsonReturn($sql, array($User, $User));
+    }
+
     public function getClients($idNextcloud){
         $sql = "SELECT * FROM ".$this->tableprefix."client WHERE id_configuration = ?";
         return $this->execSQL($sql, array($idNextcloud));
@@ -124,7 +129,7 @@ class Bdd {
         $last = $this->lastinsertid("facture", $idNextcloud) + 1;
 
         //PREFIX
-        $pref = $this->execSQLNoJsonReturn("SELECT * FROM ".$this->tableprefix."configuration WHERE id_configuration LIKE ?",array($idNextcloud));
+        $pref = $this->execSQLNoJsonReturn("SELECT * FROM ".$this->tableprefix."configuration WHERE id LIKE ?",array($idNextcloud));
 
         $sql = "INSERT INTO `".$this->tableprefix."facture` (`date`,`id_configuration`,`num`,`date_paiement`,`type_paiement`,`id_devis`,`user_id`) VALUES (?,?,?,NOW(),?,0,?);";
         $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$pref[0]['facture_prefixe']."-".$last,$this->l->t('Means of payment'),$last));
@@ -157,6 +162,19 @@ class Bdd {
         if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
             $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ? AND `id_configuration` = ?";
             $this->execSQLNoData($sql, array(htmlentities(rtrim($data)), $id, $idNextcloud));
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * UPDATE CONFIGURATION TABLE
+     * TODO Autorisation à faire cette action par l'utilisateur
+     */
+    public function gestion_updateConfiguration($table, $column, $data, $id){
+        if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
+            $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ?";
+            $this->execSQLNoData($sql, array(htmlentities(rtrim($data)), $id));
             return true;
         }
         return false;

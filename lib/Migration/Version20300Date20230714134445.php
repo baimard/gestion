@@ -91,8 +91,7 @@ class Version20300Date20230714134445 extends SimpleMigrationStep {
 					->from($tableprefix.'produit_devis');
 			$this->rows_produit_devis = $query->execute()->fetchAll();
 		}
-		
-		
+
 	}
 
 	/**

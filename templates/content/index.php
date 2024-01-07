@@ -1,6 +1,6 @@
 <div id="contentTable">
     <div class="breadcrumb" data-html2canvas-ignore>
-        <div class="crumb svg crumbhome">
+        <div class="mdi mdi-home-circle">
             <a href="<?php echo($_['url']['index']); ?>" class="icon-home"></a>
             <span style="display: none;"></span>
         </div>
@@ -13,9 +13,7 @@
             </button>
         </div>
     </div>
-
-    <div>
-        <?php var_dump($_['test']); ?>
+<div>
 </div>
     <table id="client" class="display tabledt" style="font-size:11px;">
         <thead>

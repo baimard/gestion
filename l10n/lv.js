@@ -30,6 +30,7 @@ OC.L10N.register(
     "Version" : "Versija",
     "Status" : "Status",
     "Actions" : "Darbības",
+    "Invoice" : "Rēķins",
     "Year" : "Gads",
     "January" : "Janvāris",
     "February" : "Februāris",

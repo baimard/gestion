@@ -4,55 +4,55 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# antemyste, 2021
-# Arnaud Wallon <arnaud@netbeat.be>, 2022
-# Hugo Robert <hugo.robert@protonmail.ch>, 2022
-# Alain Rihs <alainrihs@sunrise.ch>, 2022
-# Ldm Public <ldmpub@gmail.com>, 2022
-# TVDavidsan, 2022
-# Benjamin <benjamin@cybercorp.fr>, 2022
-# Jérôme HERBINET, 2022
-# Jérémie Tarot <silopolis@gmail.com>, 2023
-# Mordecai, 2024
+# Alexander Diefenbacher <alexander-diefenbacher@gmx.de>, 2021
+# Joachim Sokolowski, 2022
+# René Gieling <github@dartcafe.de>, 2022
+# lollos78, 2022
+# Jasper vom Felde, 2022
+# Mark Ziegler <mark.ziegler@rakekniven.de>, 2022
+# Lars Maier <lh10@tu-clausthal.de>, 2022
+# Jakob Renken, 2023
+# Markus Eckstein, 2023
+# kaekimaster, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-01-17 01:51+0000\n"
+"POT-Creation-Date: 2024-01-14 01:52+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Mordecai, 2024\n"
-"Language-Team: French (https://app.transifex.com/nextcloud/teams/64236/fr/)\n"
+"Last-Translator: kaekimaster, 2023\n"
+"Language-Team: German (https://app.transifex.com/nextcloud/teams/64236/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: /app/lib/Db/Bdd.php:86 /app/templates/content/index.php:22
 msgid "Last name"
-msgstr "Nom"
+msgstr "Nachname"
 
 #: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:21
 msgid "First name"
-msgstr "Prénom"
+msgstr "Vorname"
 
 #: /app/lib/Db/Bdd.php:88
 msgid "Limited company"
-msgstr "Siret"
+msgstr "Gesellschaft mit beschränkter Haftung (GmbH)"
 
 #: /app/lib/Db/Bdd.php:89 /app/templates/content/index.php:20
 msgid "Company"
-msgstr "Société"
+msgstr "Firma"
 
 #: /app/lib/Db/Bdd.php:90 /app/templates/content/index.php:24
 msgid "Phone number"
-msgstr "Téléphone"
+msgstr "Telefonnummer"
 
 #: /app/lib/Db/Bdd.php:91 /app/templates/content/index.php:25
 msgid "Email"
-msgstr "E-mail"
+msgstr "E-Mail"
 
 #: /app/lib/Db/Bdd.php:92 /app/templates/content/index.php:26
 msgid "Address"
@@ -60,77 +60,77 @@ msgstr "Adresse"
 
 #: /app/lib/Db/Bdd.php:115 /app/templates/content/devis.php:21
 msgid "Quote number"
-msgstr "Numéro de devis"
+msgstr "Angebotsnummer"
 
 #: /app/lib/Db/Bdd.php:115
 msgid "New"
-msgstr "Nouveau"
+msgstr "Neu"
 
 #: /app/lib/Db/Bdd.php:115 /app/templates/content/devisshow.php:60
 #: /app/templates/content/factureshow.php:62
 msgid "Comment"
-msgstr "Commentaire"
+msgstr "Kommentar"
 
 #: /app/lib/Db/Bdd.php:130
 msgid "Text free"
-msgstr "Texte libre"
+msgstr "Textfrei"
 
 #: /app/lib/Db/Bdd.php:130 /app/templates/content/facture.php:26
 #: /app/templates/content/factureshow.php:44
 msgid "Means of payment"
-msgstr "Moyen de paiement"
+msgstr "Zahlungsmittel"
 
 #: /app/lib/Db/Bdd.php:137 /app/templates/content/devisshow.php:58
 #: /app/templates/content/factureshow.php:60
 #: /app/templates/content/produit.php:20
 msgid "Reference"
-msgstr "Référence"
+msgstr "Referenz"
 
 #: /app/lib/Db/Bdd.php:137 /app/templates/content/devisshow.php:59
 #: /app/templates/content/factureshow.php:61
 #: /app/templates/content/produit.php:21
 msgid "Designation"
-msgstr "Désignation"
+msgstr "Bezeichnung"
 
 #: /app/lib/Db/Bdd.php:186
 msgid "Your company name"
-msgstr "Nom de votre entreprise"
+msgstr "Dein Firmenname"
 
 #: /app/lib/Db/Bdd.php:187 /app/templates/content/changelog.php:62
 msgid "Your company contact last name"
-msgstr "Nom du contact de votre entreprise"
+msgstr "Der Nachname deines Firmenkontakts"
 
 #: /app/lib/Db/Bdd.php:188 /app/templates/content/changelog.php:60
 msgid "Your company contact first name"
-msgstr "Prénom du contact de votre entreprise"
+msgstr "Der Vorname deines Firmenkontakts"
 
 #: /app/lib/Db/Bdd.php:189 /app/templates/content/changelog.php:64
 msgid "Company legal information line one"
-msgstr "Information légale d'entreprise ligne une"
+msgstr "Rechtliche Informationen des Unternehmens Zeile 1"
 
 #: /app/lib/Db/Bdd.php:190 /app/templates/content/changelog.php:66
 msgid "Company legal information line two"
-msgstr "Information légale d'entreprise ligne deux"
+msgstr "Rechtliche Informationen des Unternehmens Zeile 2"
 
 #: /app/lib/Db/Bdd.php:191 /app/templates/content/changelog.php:72
 msgid "Your company email"
-msgstr "E-mail de votre entreprise"
+msgstr "Deine Firmen-E-Mail"
 
 #: /app/lib/Db/Bdd.php:192 /app/templates/content/changelog.php:70
 msgid "Your company phone"
-msgstr "Numéro de téléphone de votre entreprise"
+msgstr "Telefonnummer deiner Firma"
 
 #: /app/lib/Db/Bdd.php:193 /app/templates/content/changelog.php:68
 msgid "Your company address"
-msgstr "Adresse de votre entreprise"
+msgstr "Anschrift deiner Firma"
 
 #: /app/lib/Db/Bdd.php:195
 msgid ""
 "All Legal mentions, disclaimer or everything you want to place in the "
 "footer."
 msgstr ""
-"Toutes les mentions légales, conditions ou tout ce que vous souhaitez mettre"
-" dans le pied de page."
+"Alle rechtlichen Hinweise, Haftungsausschlüsse oder alles, was du in der "
+"Fußzeile haben möchtest."
 
 #: /app/lib/Db/Bdd.php:196
 msgid "EUR"
@@ -138,7 +138,7 @@ msgstr "EUR"
 
 #: /app/lib/Db/Bdd.php:197 /app/src/js/pdf.js:67
 msgid "INVOICE"
-msgstr "FACTURE"
+msgstr "RECHNUNG"
 
 #: /app/lib/Sections/GestionAdmin.php:56
 #: /app/specialAppInfoFakeDummyForL10nScript.php:2
@@ -147,7 +147,7 @@ msgstr "Gestion"
 
 #: /app/specialAppInfoFakeDummyForL10nScript.php:3
 msgid "Simplified invoice management application"
-msgstr "Application de gestion de facturation simplifiée"
+msgstr "Vereinfachte Anwendung zur Rechnungsverwaltung"
 
 #: /app/specialAppInfoFakeDummyForL10nScript.php:4
 msgid ""
@@ -169,138 +169,138 @@ msgid ""
 "\n"
 "[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)"
 msgstr ""
-"# Application de \"Gestion\" d'entreprise\n"
+"# Firmenverwaltung mit Gestion\n"
 "\n"
-"Cette application permet de gérer simplement la facturation de votre entreprise.\n"
+"Diese Anwendung ermöglicht die Verwaltung der Rechnungserstellung für Kleinunternehmen auf eine sehr einfache Art und Weise.\n"
 "\n"
-"fonctionnalité : \n"
+"Funktionen:\n"
 "\n"
-"* Ajouter des clients\n"
-"*  Génération de devis\n"
-"*  Génération de facture\n"
-"*  Vous pouvez générer directement les PDFs depuis l'application and les sauvegarder dans le nextcloud.\n"
+"* Kunden hinzufügen\n"
+"* Angebot erstellen.\n"
+"* Rechnung erstellen.\n"
+"* Erzeugen von Produktlinien, die in Angebote übernommen werden können.\n"
+"* PDFs direkt aus der App erstellen und sie in deiner Nextcloud speichern.\n"
 "\n"
-"Vidéo de présentation disponible dans la documentation utilisateur\n"
+"Präsentationsvideo in der Benutzerdokumentation\n"
 "\n"
-"si vous avez besoin d'adapter l'application aux lois de votre pays, vous pouvez ouvrir une issue sur github.\n"
+"Wenn du diese Anwendung an die Gesetze deines Landes anpassen möchtest, öffne bitte ein Issue auf GitHub.\n"
 "\n"
-"[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)"
+"[Gefällt dir meine Arbeit? Kaufe mir einen Kaffee!](https://www.buymeacoffee.com/benjaminaimard)"
 
 #: /app/src/js/listener/main_listener.js:10
 msgid "Choose work folder"
-msgstr "Choisir le dossier de travail"
+msgstr "Arbeitsordner auswählen"
 
 #: /app/src/js/listener/main_listener.js:183
 msgid "Please create a new product"
-msgstr "Il faut créer un nouveau produit."
+msgstr "Bitte ein neues Produkt erstellen"
 
 #: /app/src/js/modules/ajaxRequest.js:27 /app/src/js/modules/ajaxRequest.js:52
 msgid "Modification saved"
-msgstr "Modification enregistrée"
+msgstr "Änderung gespeichert"
 
 #: /app/src/js/modules/ajaxRequest.js:29
 msgid "There is an error with the format, please check the documentation"
 msgstr ""
-"Il y a une erreur dans le format, pourriez vous vérifier à l'aide de la "
-"documentation ?"
+"Es liegt ein Fehler im Format vor, bitte schaue in der Dokumentation nach"
 
 #: /app/src/js/modules/ajaxRequest.js:44
 msgid "Are you sure you want to delete?"
-msgstr "Êtes vous sûr de vouloir supprimer ?"
+msgstr "Bist du sicher, dass du löschen möchtest?"
 
 #: /app/src/js/modules/ajaxRequest.js:57
 msgid "Nothing changed"
-msgstr "Rien n'a été modifié"
+msgstr "Nicht geändert"
 
 #: /app/src/js/modules/ajaxRequest.js:177 /app/src/js/objects/client.js:183
 #: /app/src/js/objects/devis.js:116
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Abbrechen"
 
 #: /app/src/js/modules/ajaxRequest.js:239
 #: /app/src/js/modules/ajaxRequest.js:268
 msgid "Save in"
-msgstr "Sauvegarder dans"
+msgstr "Speichern unter"
 
 #: /app/src/js/modules/ajaxRequest.js:241
 msgid "There is an error"
-msgstr "Il y a une erreur"
+msgstr "Fehler aufgetreten"
 
 #: /app/src/js/modules/ajaxRequest.js:268
 msgid "(do not forget to show hidden folders)"
-msgstr "(N'oubliez pas d'afficher les dossiers cachés)"
+msgstr "(nicht vergessen, versteckte Ordner anzuzeigen)"
 
 #: /app/src/js/modules/list.js:9
 msgid "United Arab Emirates Dirham"
-msgstr "Dirham des Émirats arabes unis"
+msgstr "VAE-Dirham"
 
 #: /app/src/js/modules/list.js:10
 msgid "Afghan Afghani"
-msgstr "Afghanistan Afghani"
+msgstr "Afghanischer Afghani"
 
 #: /app/src/js/modules/list.js:11
 msgid "Albanian Lek"
-msgstr "Albanie Lek"
+msgstr "Albanischer Lek"
 
 #: /app/src/js/modules/list.js:12
 msgid "Armenian Dram"
-msgstr "Dram arménien"
+msgstr "Armenischer Dram"
 
 #: /app/src/js/modules/list.js:13
 msgid "Netherlands Antillean Guilder"
-msgstr "Florin des Antilles néerlandaises"
+msgstr "Antillen-Gulden"
 
 #: /app/src/js/modules/list.js:14
 msgid "Angolan Kwanza"
-msgstr "Kwanza angolais"
+msgstr "Angolanische Kwanza"
 
 #: /app/src/js/modules/list.js:15
 msgid "Argentine Peso"
-msgstr "Peso argentin"
+msgstr "Argentinischer Peso"
 
 #: /app/src/js/modules/list.js:16
 msgid "Australian Dollar"
-msgstr "Dollar australien"
+msgstr "Australischer Dollar"
 
 #: /app/src/js/modules/list.js:17
 msgid "Aruban Florin"
-msgstr "Florin d'Aruba"
+msgstr "Aruba Florin"
 
 #: /app/src/js/modules/list.js:18
 msgid "Azerbaijani Manat"
-msgstr "Manat azerbaïdjanais"
+msgstr "Aserbaidschanischer Manat"
 
 #: /app/src/js/modules/list.js:19
 msgid "Bosnia and Herzegovina Convertible Mark"
-msgstr "Mark convertible de Bosnie-Herzégovine"
+msgstr "Konvertible Mark"
 
 #: /app/src/js/modules/list.js:20
 msgid "Barbados Dollar"
-msgstr "Dollar de la Barbade"
+msgstr "Barbados-Dollar"
 
 #: /app/src/js/modules/list.js:21
 msgid "Bangladeshi Taka"
-msgstr "Taka bangladais"
+msgstr "Taka aus Bangladesch"
 
 #: /app/src/js/modules/list.js:22
 msgid "Barbadian Dollar"
-msgstr "Dollar de la Barbade"
+msgstr "Barbadischer Dollar"
 
 #: /app/src/js/modules/list.js:23 /app/src/js/modules/list.js:44
 msgid "Belarusian Ruble"
-msgstr "Rouble biélorusse"
+msgstr "Belarussischer Rubel"
 
 #: /app/src/js/modules/list.js:24 /app/src/js/modules/list.js:45
 msgid "Belize Dollar"
-msgstr "Dollar bélizéen"
+msgstr "Belize-Dollar"
 
 #: /app/src/js/modules/list.js:25
 msgid "Bermudan Dollar"
-msgstr "Dollar des Bermudes"
+msgstr "Bermuda-Dollar"
 
 #: /app/src/js/modules/list.js:26 /app/src/js/modules/list.js:42
 msgid "Bhutanese Ngultrum"
-msgstr "Ngultrum bhoutanais"
+msgstr "Ngultrum aus Bhutan"
 
 #: /app/src/js/modules/list.js:27
 msgid "Bitcoin"
@@ -308,39 +308,39 @@ msgstr "Bitcoin"
 
 #: /app/src/js/modules/list.js:28
 msgid "Bolivian Boliviano"
-msgstr "Boliviano bolivien"
+msgstr "Bolivianischer Boliviano"
 
 #: /app/src/js/modules/list.js:29
 msgid "Bosnia-Herzegovina Convertible Mark"
-msgstr "Mark convertible de Bosnie-Herzégovine"
+msgstr " Konvertible Mark aus Bosnien-Herzegowina"
 
 #: /app/src/js/modules/list.js:30
 msgid "Botswanan Pula"
-msgstr "Pula du Botswana"
+msgstr "Botswanischer Pula"
 
 #: /app/src/js/modules/list.js:31 /app/src/js/modules/list.js:40
 msgid "Brazilian Real"
-msgstr "Réal brésilien"
+msgstr "Brazilianischer Real"
 
 #: /app/src/js/modules/list.js:32 /app/src/js/modules/list.js:37
 msgid "Brunei Dollar"
-msgstr "Dollar de Brunei"
+msgstr "Brunei-Dollar"
 
 #: /app/src/js/modules/list.js:33
 msgid "Bulgarian Lev"
-msgstr "Lev bulgare"
+msgstr "Bulgarischer Lev"
 
 #: /app/src/js/modules/list.js:34
 msgid "Bahraini Dinar"
-msgstr "Dinar bahreïni"
+msgstr "Bahrainischer Dinar"
 
 #: /app/src/js/modules/list.js:35
 msgid "Burundian Franc"
-msgstr "Franc burundais"
+msgstr "Burundischer Franken"
 
 #: /app/src/js/modules/list.js:36
 msgid "Bermudian Dollar"
-msgstr "Dollar des bermudes"
+msgstr "Bermuda-Dollar"
 
 #: /app/src/js/modules/list.js:38
 msgid "Boliviano"
@@ -348,99 +348,99 @@ msgstr "Boliviano"
 
 #: /app/src/js/modules/list.js:39
 msgid "Bolivian Mvdol"
-msgstr "Mvdol bolivien"
+msgstr "Bolivianischer Mvdol"
 
 #: /app/src/js/modules/list.js:41
 msgid "Bahamian Dollar"
-msgstr "Dollar des Bahamas"
+msgstr "Bahama-Dollar"
 
 #: /app/src/js/modules/list.js:43
 msgid "Botswana Pula"
-msgstr "Pula du Botswana"
+msgstr "Botswanischer Pula"
 
 #: /app/src/js/modules/list.js:46
 msgid "Canadian Dollar"
-msgstr "Dollar canadien"
+msgstr "Kanadischer Dollar"
 
 #: /app/src/js/modules/list.js:47
 msgid "Congolese Franc"
-msgstr "Franc congolais"
+msgstr "Kongolesischer Franken"
 
 #: /app/src/js/modules/list.js:48
 msgid "WIR Euro"
-msgstr "WIR euros"
+msgstr "WIR Euro"
 
 #: /app/src/js/modules/list.js:49
 msgid "Swiss Franc"
-msgstr "Franc Swiss"
+msgstr "Schweizer Franken"
 
 #: /app/src/js/modules/list.js:50
 msgid "WIR Franc"
-msgstr "Franc WIR"
+msgstr "WIR Franc"
 
 #: /app/src/js/modules/list.js:51
 msgid "Unidad de Fomento"
-msgstr "Unité de Fomento"
+msgstr "Unidad de Fomento"
 
 #: /app/src/js/modules/list.js:52
 msgid "Chilean Peso"
-msgstr "Peso chilien"
+msgstr "Chilenischer Peso"
 
 #: /app/src/js/modules/list.js:53
 msgid "Chinese Yuan"
-msgstr "Chinois Yuan"
+msgstr "Chinesischer Yuan"
 
 #: /app/src/js/modules/list.js:54
 msgid "Colombian Peso"
-msgstr "Peso colombien"
+msgstr "Kolumbianischer Peso"
 
 #: /app/src/js/modules/list.js:55
 msgid "Unidad de Valor Real"
-msgstr "Unité de valeur Real"
+msgstr "Unidad de Valor Real"
 
 #: /app/src/js/modules/list.js:56
 msgid "Costa Rican Colon"
-msgstr "Colon du Costa Rica"
+msgstr "Costa-Rica-Colón"
 
 #: /app/src/js/modules/list.js:57
 msgid "Cuban Peso"
-msgstr "Peso cubain"
+msgstr "Chilenischer Peso"
 
 #: /app/src/js/modules/list.js:58
 msgid "Cape Verdean Escudo"
-msgstr "Escudo capverdien"
+msgstr "Kapverdischer Escudo"
 
 #: /app/src/js/modules/list.js:59
 msgid "Czech Koruna"
-msgstr "Couronne tchèque"
+msgstr "Tschechische Krone"
 
 #: /app/src/js/modules/list.js:60
 msgid "Djiboutian Franc"
-msgstr "Franc djiboutien"
+msgstr "Komoren-Franken"
 
 #: /app/src/js/modules/list.js:61
 msgid "Danish Krone"
-msgstr "Couronne danoise"
+msgstr "Dänische Krone"
 
 #: /app/src/js/modules/list.js:62
 msgid "Dominican Peso"
-msgstr "Peso dominicain"
+msgstr "Dominikanischer Peso"
 
 #: /app/src/js/modules/list.js:63
 msgid "Algerian Dinar"
-msgstr "Algérie Dinar"
+msgstr "Algerischer Dinar"
 
 #: /app/src/js/modules/list.js:64
 msgid "Egyptian Pound"
-msgstr "Livre égyptienne"
+msgstr "Ägyptisches Pfund"
 
 #: /app/src/js/modules/list.js:65
 msgid "Eritrean Nakfa"
-msgstr "Nakfa érythréen"
+msgstr "Eritreischer Nakfa"
 
 #: /app/src/js/modules/list.js:66
 msgid "Ethiopian Birr"
-msgstr "Birr éthiopien"
+msgstr "Äthiopischer Birr"
 
 #: /app/src/js/modules/list.js:67
 msgid "Euro"
@@ -448,227 +448,227 @@ msgstr "Euro"
 
 #: /app/src/js/modules/list.js:68
 msgid "Fiji Dollar"
-msgstr "Dollar fidjien"
+msgstr "Fidschi-Dollar"
 
 #: /app/src/js/modules/list.js:69
 msgid "Falkland Islands Pound"
-msgstr "Livre des îles Falkland"
+msgstr "Falkland-Pfund"
 
 #: /app/src/js/modules/list.js:70
 msgid "Pound Sterling"
-msgstr "Livre sterling"
+msgstr "Pfund Sterling"
 
 #: /app/src/js/modules/list.js:71
 msgid "Georgian Lari"
-msgstr "Lari géorgien"
+msgstr "Georgischer Lari"
 
 #: /app/src/js/modules/list.js:72
 msgid "Ghanaian Cedi"
-msgstr "Cedi ghanéen"
+msgstr "Cedi"
 
 #: /app/src/js/modules/list.js:73
 msgid "Gibraltar Pound"
-msgstr "Livre de Gibraltar"
+msgstr "Gibraltar-Pfund"
 
 #: /app/src/js/modules/list.js:74
 msgid "Gambian Dalasi"
-msgstr "Gambian Dalasi"
+msgstr "Dalasi"
 
 #: /app/src/js/modules/list.js:75
 msgid "Guinean Franc"
-msgstr "Franc guinéen"
+msgstr "Guinea-Franc"
 
 #: /app/src/js/modules/list.js:76
 msgid "Guatemalan Quetzal"
-msgstr "Quetzal guatémaltèque"
+msgstr "Guatemaltekischer Quetzal"
 
 #: /app/src/js/modules/list.js:77
 msgid "Guyanese Dollar"
-msgstr "Dollar Guyane"
+msgstr "Guyanischer Dollar"
 
 #: /app/src/js/modules/list.js:78
 msgid "Hong Kong Dollar"
-msgstr "Dollar de Hong Kong"
+msgstr "Hong Kong Dollar"
 
 #: /app/src/js/modules/list.js:79
 msgid "Honduran Lempira"
-msgstr "Lempira hondurien"
+msgstr "Lempira"
 
 #: /app/src/js/modules/list.js:80
 msgid "Croatian Kuna"
-msgstr "Kuna croate"
+msgstr "Kroatischer Kuna"
 
 #: /app/src/js/modules/list.js:81
 msgid "Haitian Gourde"
-msgstr "Gourde haïtienne"
+msgstr "Gourde"
 
 #: /app/src/js/modules/list.js:82
 msgid "Hungarian Forint"
-msgstr "Forint hongrois"
+msgstr "Ungarischer Forint"
 
 #: /app/src/js/modules/list.js:83
 msgid "Indonesian Rupiah"
-msgstr "Roupie indonésienne"
+msgstr "Indonesische Rupiah"
 
 #: /app/src/js/modules/list.js:84
 msgid "Israeli New Shekel"
-msgstr "Nouveau Shekel israélien"
+msgstr "Israelischer Neuer Schekel"
 
 #: /app/src/js/modules/list.js:85
 msgid "Indian Rupee"
-msgstr "Roupie indienne"
+msgstr "Indische Rupie"
 
 #: /app/src/js/modules/list.js:86
 msgid "Iraqi Dinar"
-msgstr "Dinar irakien"
+msgstr "Irakischer Dinar"
 
 #: /app/src/js/modules/list.js:87
 msgid "Iranian Rial"
-msgstr "Rial iranien"
+msgstr "Iranischer Rial"
 
 #: /app/src/js/modules/list.js:88
 msgid "Icelandic Króna"
-msgstr "Couronne islandaise"
+msgstr "Isländische Krone"
 
 #: /app/src/js/modules/list.js:89
 msgid "Jamaican Dollar"
-msgstr "Dollar jamaïcain"
+msgstr "Jamaika-Dollar"
 
 #: /app/src/js/modules/list.js:90
 msgid "Jordanian Dinar"
-msgstr "Dinar jordanien"
+msgstr "Jordanischer Dinar"
 
 #: /app/src/js/modules/list.js:91
 msgid "Japanese Yen"
-msgstr "Japonais Yen"
+msgstr "Japanischer Yen"
 
 #: /app/src/js/modules/list.js:92
 msgid "Kenyan Shilling"
-msgstr "Shilling kényan"
+msgstr "Kenia-Schilling"
 
 #: /app/src/js/modules/list.js:93
 msgid "Kyrgyzstani Som"
-msgstr "Som kirghize"
+msgstr "Kirgisischer Som"
 
 #: /app/src/js/modules/list.js:94
 msgid "Cambodian Riel"
-msgstr "Riel cambodgien"
+msgstr "Kambodschanischer Riel"
 
 #: /app/src/js/modules/list.js:95
 msgid "Comoro Franc"
-msgstr "Franc comorien"
+msgstr "Komoren-Franken"
 
 #: /app/src/js/modules/list.js:96
 msgid "North Korean Won"
-msgstr "Won nord-coréen"
+msgstr "Nord-Koreanischer Wong"
 
 #: /app/src/js/modules/list.js:97
 msgid "South Korean Won"
-msgstr "Won sud-coréen"
+msgstr "Südkoreanischer Won"
 
 #: /app/src/js/modules/list.js:98
 msgid "Kuwaiti Dinar"
-msgstr "Dinar koweïtien"
+msgstr "Kuwaitischer Dinar"
 
 #: /app/src/js/modules/list.js:99
 msgid "Cayman Islands Dollar"
-msgstr "Dollar des îles Caïmans"
+msgstr "Kaimaninseln-Dollar"
 
 #: /app/src/js/modules/list.js:100
 msgid "Kazakhstani Tenge"
-msgstr "Tenge kazakh"
+msgstr "Tenge"
 
 #: /app/src/js/modules/list.js:101
 msgid "Lao Kip"
-msgstr "Kip laotien"
+msgstr "Laotischer Kip"
 
 #: /app/src/js/modules/list.js:102
 msgid "Lebanese Pound"
-msgstr "Livre libanaise"
+msgstr "Libanesisches Pfund"
 
 #: /app/src/js/modules/list.js:103
 msgid "Sri Lankan Rupee"
-msgstr "Roupie sri lankaise"
+msgstr "Sri-Lanka-Rupie"
 
 #: /app/src/js/modules/list.js:104
 msgid "Liberian Dollar"
-msgstr "Dollar libérien"
+msgstr "Liberischer Dollar"
 
 #: /app/src/js/modules/list.js:105
 msgid "Lesotho Loti"
-msgstr "Loti du Lesotho"
+msgstr "Lesothischer Loti"
 
 #: /app/src/js/modules/list.js:106
 msgid "Libyan Dinar"
-msgstr "Dinar libyen"
+msgstr "Libyscher Dinar"
 
 #: /app/src/js/modules/list.js:107
 msgid "Moroccan Dirham"
-msgstr "Dirham marocain"
+msgstr "Marokkanischer Dirham"
 
 #: /app/src/js/modules/list.js:108
 msgid "Moldovan Leu"
-msgstr "Leu moldave"
+msgstr "Moldauischer Leu"
 
 #: /app/src/js/modules/list.js:109
 msgid "Malagasy Ariary"
-msgstr "Ariary malgache"
+msgstr "Ariary"
 
 #: /app/src/js/modules/list.js:110
 msgid "Macedonian Denar"
-msgstr "Denar macédonien"
+msgstr "Mazedonischer Denar"
 
 #: /app/src/js/modules/list.js:111
 msgid "Myanmar Kyat"
-msgstr "Kyat du Myanmar"
+msgstr "Kyat"
 
 #: /app/src/js/modules/list.js:112
 msgid "Mongolian Tögrög"
-msgstr "Tögrög mongol"
+msgstr "Mongolian Tögrög"
 
 #: /app/src/js/modules/list.js:113
 msgid "Macanese Pataca"
-msgstr "Pataca macanaise"
+msgstr "Macau-Pataca"
 
 #: /app/src/js/modules/list.js:114
 msgid "Mauritanian Ouguiya"
-msgstr "Ouguiya mauritanien"
+msgstr "Ouguiya"
 
 #: /app/src/js/modules/list.js:115
 msgid "Mauritian Rupee"
-msgstr "roupie mauricienne"
+msgstr "Mauritische Rupie"
 
 #: /app/src/js/modules/list.js:116
 msgid "Maldivian Rufiyaa"
-msgstr "Rufiyaa des Maldives"
+msgstr "Rufiyaa"
 
 #: /app/src/js/modules/list.js:117
 msgid "Malawian Kwacha"
-msgstr "Kwacha malawite"
+msgstr "Malawi-Kwacha"
 
 #: /app/src/js/modules/list.js:118
 msgid "Mexican Peso"
-msgstr "Peso mexicain"
+msgstr "Mexikanischer Peso"
 
 #: /app/src/js/modules/list.js:119
 msgid "Mexican Unidad de Inversion"
-msgstr "Unité mexicaine d'inversion"
+msgstr "Mexikanische Verrechnungseinheit"
 
 #: /app/src/js/modules/list.js:120
 msgid "Malaysian Ringgit"
-msgstr "Cloche malaisienne"
+msgstr "Malaysischer Ringgit"
 
 #: /app/src/js/modules/list.js:121
 msgid "Mozambican Metical"
-msgstr "Metical mozambicain"
+msgstr "Metical"
 
 #: /app/src/js/modules/list.js:122
 msgid "Namibian Dollar"
-msgstr "Dollar namibien"
+msgstr "Namibia-Dollar"
 
 #: /app/src/js/modules/list.js:123
 msgid "Nigerian Naira"
-msgstr "Naira nigérian"
+msgstr "Nigerianischer Naira"
 
 #: /app/src/js/modules/list.js:124
 msgid "Nicaraguan Córdoba"
@@ -676,255 +676,255 @@ msgstr "Nicaraguan Córdoba"
 
 #: /app/src/js/modules/list.js:125
 msgid "Norwegian Krone"
-msgstr "Couronne norvégienne"
+msgstr "Norwegische Krone"
 
 #: /app/src/js/modules/list.js:126
 msgid "Nepalese Rupee"
-msgstr "Roupie népalaise"
+msgstr "Nepalesische Rupie"
 
 #: /app/src/js/modules/list.js:127
 msgid "New Zealand Dollar"
-msgstr "Dollar néo-zélandais"
+msgstr "Neuseeland Dollar"
 
 #: /app/src/js/modules/list.js:128
 msgid "Omani Rial"
-msgstr "Rial omanais"
+msgstr "Omanischer Rial"
 
 #: /app/src/js/modules/list.js:129
 msgid "Panamanian Balboa"
-msgstr "Balboa panaméen"
+msgstr "Panamaischer Balboa"
 
 #: /app/src/js/modules/list.js:130
 msgid "Peruvian Sol"
-msgstr "Sol péruvien"
+msgstr "Peruanischer Sol"
 
 #: /app/src/js/modules/list.js:131
 msgid "Papua New Guinean Kina"
-msgstr "Kina de Papouasie-Nouvelle-Guinée"
+msgstr "Kina"
 
 #: /app/src/js/modules/list.js:132
 msgid "Philippine Peso"
-msgstr "Peso philippin"
+msgstr "Philippinischer Peso"
 
 #: /app/src/js/modules/list.js:133
 msgid "Pakistani Rupee"
-msgstr "Roupie pakistanaise"
+msgstr "Pakistanische Rupie"
 
 #: /app/src/js/modules/list.js:134
 msgid "Polish Złoty"
-msgstr "Złoty polonais"
+msgstr "Polnischer Zloty"
 
 #: /app/src/js/modules/list.js:135
 msgid "Paraguayan Guarani"
-msgstr "Guarani paraguayen"
+msgstr "Paraguayischer Guaraní"
 
 #: /app/src/js/modules/list.js:136
 msgid "Qatari Riyal"
-msgstr "Rial qatari"
+msgstr "Katarischer Rial"
 
 #: /app/src/js/modules/list.js:137
 msgid "Romanian Leu"
-msgstr "Leu Roumanie"
+msgstr "Rumänischer Leu"
 
 #: /app/src/js/modules/list.js:138
 msgid "Serbian Dinar"
-msgstr "Dinar serbe"
+msgstr "Serbischer Dinar"
 
 #: /app/src/js/modules/list.js:139
 msgid "Russian Ruble"
-msgstr "Rouble Russe"
+msgstr "Russicher Rubel"
 
 #: /app/src/js/modules/list.js:140
 msgid "Rwandan Franc"
-msgstr "Franc rwandais"
+msgstr "Ruanda-Franc"
 
 #: /app/src/js/modules/list.js:141
 msgid "Saudi Riyal"
-msgstr "Rial saoudien"
+msgstr "Saudi-Riyal"
 
 #: /app/src/js/modules/list.js:142
 msgid "Slovak Koruna"
-msgstr "Couronne slovaque"
+msgstr "Slowakische Krone"
 
 #: /app/src/js/modules/list.js:143
 msgid "Solomon Islands Dollar"
-msgstr "Dollar des îles Salomon"
+msgstr "Salomonen-Dollar"
 
 #: /app/src/js/modules/list.js:144
 msgid "Seychelles Rupee"
-msgstr "Roupie seychelloise"
+msgstr "Seychellen-Rupie"
 
 #: /app/src/js/modules/list.js:145
 msgid "Sudanese Pound"
-msgstr "Livre soudanaise"
+msgstr "Sudanesisches Pfund"
 
 #: /app/src/js/modules/list.js:146
 msgid "Swedish Krona"
-msgstr "Couronne suédoise"
+msgstr "Schwedische Krone"
 
 #: /app/src/js/modules/list.js:147
 msgid "Singapore Dollar"
-msgstr "Dollar de Singapour"
+msgstr "Singapur-Dollar"
 
 #: /app/src/js/modules/list.js:148
 msgid "Saint Helena Pound"
-msgstr "Livre de Sainte-Hélène"
+msgstr "St. Helena-Pfund"
 
 #: /app/src/js/modules/list.js:149
 msgid "Sierra Leonean Leone"
-msgstr "Leone sierra-léonais"
+msgstr "Sierra-leonischer Leone"
 
 #: /app/src/js/modules/list.js:150
 msgid "Somali Shilling"
-msgstr "Shilling somalien"
+msgstr "Somalia-Schilling"
 
 #: /app/src/js/modules/list.js:151
 msgid "Surinamese Dollar"
-msgstr "Dollar surinamais"
+msgstr "Suriname-Dollar"
 
 #: /app/src/js/modules/list.js:152
 msgid "South Sudanese Pound"
-msgstr "Livre sud-soudanaise"
+msgstr "Süd-Sudanesisches Pfund"
 
 #: /app/src/js/modules/list.js:153
 msgid "São Tomé and Príncipe Dobra"
-msgstr "Sao Tomé et Principe Dobra"
+msgstr "São Tomé und Príncipe Dobra"
 
 #: /app/src/js/modules/list.js:154
 msgid "Salvadoran Colon"
-msgstr "Colon salvadorien"
+msgstr "El-Salvador-Colón"
 
 #: /app/src/js/modules/list.js:155
 msgid "Syrian Pound"
-msgstr "Livre syrienne"
+msgstr "Syrisches Pfund"
 
 #: /app/src/js/modules/list.js:156
 msgid "Swazi Lilangeni"
-msgstr "Swazi Lilangeni"
+msgstr "Lilangeni"
 
 #: /app/src/js/modules/list.js:157
 msgid "Thai Baht"
-msgstr "Baht thaïlandais"
+msgstr "Baht"
 
 #: /app/src/js/modules/list.js:158
 msgid "Tajikistani Somoni"
-msgstr "Somoni tadjik"
+msgstr "Somoni"
 
 #: /app/src/js/modules/list.js:159
 msgid "Turkmenistan Manat"
-msgstr "Manat du Turkménistan"
+msgstr "Turkmenistanischer Manat"
 
 #: /app/src/js/modules/list.js:160
 msgid "Tunisian Dinar"
-msgstr "Dinar tunisien"
+msgstr "Tunesischer Dinar"
 
 #: /app/src/js/modules/list.js:161
 msgid "Tongan Paʻanga"
-msgstr "Tonga Paʻanga"
+msgstr "Tongaischer Pa anga"
 
 #: /app/src/js/modules/list.js:162
 msgid "Turkish Lira"
-msgstr "Lire turque"
+msgstr "Türkische Lira"
 
 #: /app/src/js/modules/list.js:163
 msgid "Trinidad and Tobago Dollar"
-msgstr "Dollar de Trinité-et-Tobago"
+msgstr "Trinidad- und Tobago-Dollar"
 
 #: /app/src/js/modules/list.js:164
 msgid "New Taiwan Dollar"
-msgstr "Nouveau dollar taïwanais"
+msgstr "Neuer Taiwan-Dollar"
 
 #: /app/src/js/modules/list.js:165
 msgid "Tanzanian Shilling"
-msgstr "Shilling tanzanien"
+msgstr "Tansania-Schilling"
 
 #: /app/src/js/modules/list.js:166
 msgid "Ukrainian Hryvnia"
-msgstr "Hryvnia ukrainienne"
+msgstr "Hrywnja"
 
 #: /app/src/js/modules/list.js:167
 msgid "Ugandan Shilling"
-msgstr "Shilling ougandais"
+msgstr "Uganda-Schilling"
 
 #: /app/src/js/modules/list.js:168 /app/src/js/modules/list.js:169
 msgid "United States Dollar"
-msgstr "Dollar des États-Unis"
+msgstr "US-Dollar"
 
 #: /app/src/js/modules/list.js:170
 msgid "Uruguay Peso en Unidades Indexadas"
-msgstr "Peso uruguayen en Unidades Indexadas"
+msgstr "Uruguay Peso en Unidades Indexadas"
 
 #: /app/src/js/modules/list.js:171
 msgid "Uruguayan Peso"
-msgstr "Peso uruguayen"
+msgstr "Uruguayischer Peso"
 
 #: /app/src/js/modules/list.js:172
 msgid "Unidad Previsional"
-msgstr "Unidad prévisionnel"
+msgstr "Unidad Previsional"
 
 #: /app/src/js/modules/list.js:173
 msgid "Uzbekistan Som"
-msgstr "Ouzbékistan Som"
+msgstr "Soʻm"
 
 #: /app/src/js/modules/list.js:174
 msgid "Venezuelan Bolívar Digital"
-msgstr "Bolivar vénézuélien numérique"
+msgstr "Venezuelanischer Digitaler Bolivar"
 
 #: /app/src/js/modules/list.js:175
 msgid "Venezuelan Bolívar Soberano"
-msgstr "Bolívar Soberano vénézuélien"
+msgstr "Venezolanischer Bolívar"
 
 #: /app/src/js/modules/list.js:176
 msgid "Vietnamese Dồng"
-msgstr "Dong vietnamien"
+msgstr "Vietnamese Dồng"
 
 #: /app/src/js/modules/list.js:177
 msgid "Vanuatu Vatu"
-msgstr "Vanuatu Vatu"
+msgstr "Vatu"
 
 #: /app/src/js/modules/list.js:178
 msgid "Samoan Tala"
-msgstr "Tala de Samoa"
+msgstr "Samoanischer Tala"
 
 #: /app/src/js/modules/list.js:179
 msgid "CFA Franc BEAC"
-msgstr "Franc CFA BEAC"
+msgstr "CFA Franken BEAC"
 
 #: /app/src/js/modules/list.js:180
 msgid "Silver"
-msgstr "Argent"
+msgstr "Silber"
 
 #: /app/src/js/modules/list.js:181
 msgid "Gold"
-msgstr "Or"
+msgstr "Gold"
 
 #: /app/src/js/modules/list.js:182
 msgid "European Composite Unit"
-msgstr "Unité composite européenne"
+msgstr "Europäische Rechnungseinheit"
 
 #: /app/src/js/modules/list.js:183
 msgid "European Monetary Unit"
-msgstr "Unité monétaire européenne"
+msgstr "European Monetary Unit"
 
 #: /app/src/js/modules/list.js:184
 msgid "European Unit of Account 9"
-msgstr "Unité de compte européenne 9"
+msgstr "European Unit of Account 9"
 
 #: /app/src/js/modules/list.js:185
 msgid "European Unit of Account 17"
-msgstr "Unité de compte européenne 17"
+msgstr "European Unit of Account 17"
 
 #: /app/src/js/modules/list.js:186
 msgid "East Caribbean Dollar"
-msgstr "Dollar des Caraïbes orientales"
+msgstr "Ostkaribischer Dollar"
 
 #: /app/src/js/modules/list.js:187
 msgid "Special Drawing Rights"
-msgstr "Droits de tirage spéciaux"
+msgstr "Sonderziehungsrecht"
 
 #: /app/src/js/modules/list.js:188
 msgid "CFA Franc BCEAO"
-msgstr "Franc CFA BCEAO"
+msgstr "CFA Franken BCEAO"
 
 #: /app/src/js/modules/list.js:189
 msgid "Palladium"
@@ -932,194 +932,195 @@ msgstr "Palladium"
 
 #: /app/src/js/modules/list.js:190
 msgid "CFP Franc"
-msgstr "Franc CFP"
+msgstr "CFP-Franken"
 
 #: /app/src/js/modules/list.js:191
 msgid "Platinum"
-msgstr "Platine"
+msgstr "Platin"
 
 #: /app/src/js/modules/list.js:192
 msgid "SUCRE"
-msgstr "Système unique de compensation régionale de paiements"
+msgstr "SUCRE"
 
 #: /app/src/js/modules/list.js:193
 msgid "ADB Unit of Account"
-msgstr "Unité de compte BAD"
+msgstr "ADB Unit of Account"
 
 #: /app/src/js/modules/list.js:194
 msgid "Yemeni Rial"
-msgstr "Rial yéménite"
+msgstr "Jemen-Rial"
 
 #: /app/src/js/modules/list.js:195
 msgid "South African Rand"
-msgstr "Rand sud-africain"
+msgstr "Südafrikanischer Rand"
 
 #: /app/src/js/modules/list.js:196
 msgid "Zambian Kwacha"
-msgstr "Kwacha zambien"
+msgstr "Sambischer Kwacha"
 
 #: /app/src/js/modules/list.js:197
 msgid "Zimbabwean Dollar"
-msgstr "Dollar zimbabwéen"
+msgstr "Simbabwe-Dollar"
 
 #: /app/src/js/modules/list.js:231 /app/src/js/modules/list.js:233
 msgid "Disable"
-msgstr "Désactiver"
+msgstr "Deaktivieren"
 
 #: /app/src/js/modules/list.js:231 /app/src/js/modules/list.js:233
 msgid "Enable"
-msgstr "Activer"
+msgstr "Aktivieren"
 
 #: /app/src/js/modules/mainFunction.js:20
 msgid "Search"
-msgstr "Recherche"
+msgstr "Suche"
 
 #: /app/src/js/modules/mainFunction.js:21
 msgid "No data available in table"
-msgstr "Aucune donnée disponible dans le tableau"
+msgstr "Keine Daten in der Tabelle vorhanden"
 
 #: /app/src/js/modules/mainFunction.js:22
 msgid "Showing {start} to {end} of {total} entries"
-msgstr "Affichage de {start} à {end} sur {total} entrées"
+msgstr "{start} bis {end} von {total} Einträgen anzeigen"
 
 #: /app/src/js/modules/mainFunction.js:23
 msgid "Showing 0 to 0 of 0 entries"
-msgstr "Affichage de 0 à 0 sur 0 entrées"
+msgstr "Zeige 0 bis 0 von 0 Einträgen"
 
 #: /app/src/js/modules/mainFunction.js:24
 msgid "Loading records …"
-msgstr "Chargement des entrées"
+msgstr "Lade Einträge …"
 
 #: /app/src/js/modules/mainFunction.js:25
 msgid "Processing …"
-msgstr "Traitement en cours ..."
+msgstr "Verarbeite …"
 
 #: /app/src/js/modules/mainFunction.js:26
 msgid "{max} entries filtered"
-msgstr "filtrées depuis un total de {max} entrées"
+msgstr "{max} Einträge gefiltert"
 
 #: /app/src/js/modules/mainFunction.js:27
 msgid "Show {menu} entries"
-msgstr "Afficher {menu} entrées"
+msgstr "{menu} Einträge anzeigen"
 
 #: /app/src/js/modules/mainFunction.js:28
 msgid "No corresponding entry"
-msgstr "Aucune entrée correspondante trouvée"
+msgstr "Kein korrespondierender Eintrag"
 
 #: /app/src/js/modules/mainFunction.js:30
 msgid "First"
-msgstr "Première"
+msgstr "Erstes"
 
 #: /app/src/js/modules/mainFunction.js:31
 msgid "Last"
-msgstr "Dernière"
+msgstr "Letztes"
 
 #: /app/src/js/modules/mainFunction.js:32
 msgid "Next"
-msgstr "Suivante"
+msgstr "Nächstes"
 
 #: /app/src/js/modules/mainFunction.js:33
 msgid "Previous"
-msgstr "Précédente"
+msgstr "Vorheriges"
 
 #: /app/src/js/modules/mainFunction.js:55
 msgid "Editable (Click to change)"
-msgstr "Éditable (Cliquer pour modifier)"
+msgstr "Änderbar (Zum Ändern klicken)"
 
 #: /app/src/js/modules/mainFunction.js:62
 msgid "Your global Nextcloud mail server need to be configured"
-msgstr "Votre serveur global de messagerie Nextcloud doit être configuré."
+msgstr "Dein globaler Nextcloud-Mailserver muss konfiguriert werden"
 
 #: /app/src/js/modules/mainFunction.js:69
 msgid "Added!"
-msgstr "Ajouté !"
+msgstr "Hinzugefügt!"
 
 #: /app/src/js/objects/devis.js:35 /app/src/js/objects/facture.js:40
 msgid "Open"
-msgstr "Ouvrir"
+msgstr "Öffnen"
 
 #: /app/src/js/pdf.js:13
 msgid "Email sent"
-msgstr "E-mail envoyé"
+msgstr "E-Mail gesendet"
 
 #: /app/src/js/pdf.js:15
 msgid "Is your global mail server configured in Nextcloud?"
-msgstr "Est-ce que le serveur de messagerie est configuré dans Nextcloud ?"
+msgstr "Ist dein globaler Mailserver in Nextcloud konfiguriert?"
 
 #: /app/src/js/pdf.js:20
 msgid "Creation in progress …"
-msgstr "Création en cours"
+msgstr "Erstellung läuft …"
 
 #: /app/src/js/pdf.js:69
 msgid "QUOTE"
-msgstr "DEVIS"
+msgstr "ANGEBOT"
 
 #: /app/templates/content/changelog.php:4
 msgid "Welcome to GESTION"
-msgstr "Bienvenue dans GESTION"
+msgstr "Willkommen bei GESTION"
 
 #: /app/templates/content/changelog.php:5
 msgid ""
 "To start with this application you need to configure your company "
 "information, follow this link"
 msgstr ""
-"Pour commencer avec cette application, vous devez configurer les "
-"informations de votre entreprise, suivez ce lien"
+"Um mit dieser Anwendung zu beginnen, musst du deine Unternehmensdaten "
+"konfigurieren, folge diesem Link"
 
 #: /app/templates/content/changelog.php:5
 #: /app/templates/navigation/index.php:47
 msgid "My company"
-msgstr "Mon entreprise"
+msgstr "Meine Firma"
 
 #: /app/templates/content/changelog.php:6
 msgid "If you like my work you can:"
-msgstr "Si vous aimez mon travail vous pouvez :"
+msgstr "Wenn dir meine Arbeit gefällt, kannst du:"
 
 #: /app/templates/content/changelog.php:6
 msgid "buy me a coffee"
-msgstr "m'acheter un café"
+msgstr "Spendiere mir einen Kaffee"
 
 #: /app/templates/content/changelog.php:7
 msgid "If you need documentation, follow this link"
-msgstr "Si vous avez besoin de documentation, suivez ce lien"
+msgstr "Wenn du eine Dokumentation benötigest, folge diesem Link"
 
 #: /app/templates/content/changelog.php:7
 msgid "Documentation"
-msgstr "Documentation"
+msgstr "Dokumentation"
 
 #: /app/templates/content/changelog.php:8
 msgid "Others questions?"
-msgstr "D'autres questions ?"
+msgstr "Weitere Fragen?"
 
 #: /app/templates/content/changelog.php:8
 msgid "Contact"
-msgstr "Contact"
+msgstr "Kontakt"
 
 #: /app/templates/content/changelog.php:9
 msgid "Leave me a comment, but only if you like this application :)"
 msgstr ""
-"Laissez moi un commentaire, mais seulement si vous aimez l'application :)"
+"Hinterlasse mir eine Bewertung, aber nur, wenn dir diese Anwendung gefällt "
+":)"
 
 #: /app/templates/content/changelog.php:9
 msgid "Nextcloud apps"
-msgstr "Application Nextcloud"
+msgstr "Nextcloud Apps"
 
 #: /app/templates/content/changelog.php:10
 msgid "Want to talk with the community?"
-msgstr "Envie de parler avec la communauté ?"
+msgstr "Möchtest du mit der Gemeinschaft sprechen?"
 
 #: /app/templates/content/changelog.php:10
 #: /app/templates/content/changelog.php:11
 msgid "Git discussion"
-msgstr "Discussion Git"
+msgstr "Git-Diskussion"
 
 #: /app/templates/content/changelog.php:11
 msgid "Have an issue?"
-msgstr "Vous avez un problème ?"
+msgstr "Haben Sie ein Problem?"
 
 #: /app/templates/content/changelog.php:13
 msgid "Newsletter"
-msgstr "Bulletin d'information"
+msgstr "Newsletter"
 
 #: /app/templates/content/changelog.php:14
 msgid ""
@@ -1135,91 +1136,101 @@ msgid ""
 " have a very complete legal notice for France and we would like to develop "
 "this. If you want to contribute contact us!"
 msgstr ""
-"L'objectif de l'application GESTION est d'apporter une solution simple et gratuite de gestion d'entreprise à tous les freelanceurs. Il y a trop d'application complexe sur le marché qui sont très cher et un simple fichier Excel ne permet pas une gestion efficace de son activité. Alors, à chaque nouvelle version, j'essaie d'apporter de nouvelles fonctionnalités que vous me demandez via Github. Vos contributions sont essentielles pour que je comprenne votre besoin. Je suis très heureux d'apporter de l'aide à des entreprises naissantes par le biais de l’open source. \n"
-"\n"
-"Pour être toujours plus efficace, nous avons travaillé avec un avocat pour vous apporter une aide juridique précieuse. Vous trouverez donc une section avec des notices légales. Nous avons déjà une notice légale pour la France très complète et nous souhaiterions développer cela. Si vous souhaitez contribuer contactez nous !"
+"Das Ziel der MANAGEMENT-Anwendung ist es, allen Freiberuflern eine einfache "
+"und kostenlose Lösung für die Unternehmensverwaltung bereitzustellen. Es "
+"gibt zu viele komplexe Anwendungen auf dem Markt, die sehr teuer sind, und "
+"eine einfache Excel-Datei ermöglicht keine effektive Verwaltung ihrer "
+"Aktivitäten. Daher versuche ich, mit jeder neuen Version neue Funktionen zu "
+"bringen, die du von mir über GitHub anforderst. Deine Beiträge sind für mich"
+" unerlässlich, um deine Bedürfnisse zu verstehen. Ich freue mich sehr, "
+"jungen Unternehmen durch Open Source zu helfen. Um immer effizienter zu "
+"sein, haben wir mit einem Anwalt zusammengearbeitet, um dir wertvolle "
+"Rechtshilfe zu leisten. Du  findest daher einen Abschnitt mit rechtlichen "
+"Hinweisen. Wir haben bereits einen sehr vollständigen rechtlichen Hinweis "
+"für Frankreich und möchten diesen weiterentwickeln. Wenn du einen Beitrag "
+"leisten möchtest, kontaktiere uns!"
 
 #: /app/templates/content/changelog.php:16
 msgid "Changelog"
-msgstr "Journal des modifications"
+msgstr "Liste der Veränderungen"
 
 #: /app/templates/content/changelog.php:17
 msgid "Releases"
-msgstr "Versions"
+msgstr "Veröffentlichungen"
 
 #: /app/templates/content/changelog.php:19
 msgid "Special thanks to:"
-msgstr "Remerciements spéciaux à :"
+msgstr "Ein besonderer Dank gilt:"
 
 #: /app/templates/content/changelog.php:21
 msgid "for the big work on legal notice for France"
-msgstr "pour le gros travail sur les mentions légales pour la France"
+msgstr "für die viele Arbeit am Impressum für Frankreich"
 
 #: /app/templates/content/changelog.php:22
 #: /app/templates/content/changelog.php:23
 #: /app/templates/content/changelog.php:24
 msgid "for the coffee ;)"
-msgstr "pour le café ;)"
+msgstr "für den Kaffee ;)"
 
 #: /app/templates/content/changelog.php:32
 msgid "Send an email"
-msgstr "Envoyer un e-mail"
+msgstr "E-Mail senden"
 
 #: /app/templates/content/changelog.php:33
 msgid "From"
-msgstr "De"
+msgstr "Von"
 
 #: /app/templates/content/changelog.php:35
 msgid "To"
-msgstr "À"
+msgstr "Bis"
 
 #: /app/templates/content/changelog.php:36
 msgid "Separate multiple recipients by \";\""
-msgstr "Séparer les destinataires par \";\""
+msgstr "Trenne mehrere Empfänger durch \";\"."
 
 #: /app/templates/content/changelog.php:37
 msgid "Cc"
-msgstr "Copie à"
+msgstr "Cc"
 
 #: /app/templates/content/changelog.php:38
 msgid "Empty if not used"
-msgstr "Vide si non utilisé"
+msgstr "Leer lassen, falls nicht verwendet"
 
 #: /app/templates/content/changelog.php:39
 msgid "Subject"
-msgstr "Sujet"
+msgstr "Betreff"
 
 #: /app/templates/content/changelog.php:40
 msgid "Your invoice/quote"
-msgstr "Votre facture/devis"
+msgstr "Deine Rechnung/Dein Angebot"
 
 #: /app/templates/content/changelog.php:41
 msgid "Body"
-msgstr "Corps"
+msgstr "Inhalt"
 
 #: /app/templates/content/changelog.php:43
 msgid "Dear,"
-msgstr "Cher,"
+msgstr "Sehr geehrte Damen und Herren,"
 
 #: /app/templates/content/changelog.php:45
 msgid "Attached to this email you will find a new document."
-msgstr "Vous trouverez en pièce jointe de cet e-mail un nouveau document."
+msgstr "Im Anhang zu dieser E-Mail findest du ein neues Dokument."
 
 #: /app/templates/content/changelog.php:47
 msgid "Best regards,"
-msgstr "Meilleures salutations,"
+msgstr "Mit freundlichen Grüßen,"
 
 #: /app/templates/content/changelog.php:49
 msgid "Send"
-msgstr "Envoyer"
+msgstr "Senden"
 
 #: /app/templates/content/changelog.php:56
 msgid "Configuration help"
-msgstr "Aide à la configuration"
+msgstr "Konfigurationshilfe"
 
 #: /app/templates/content/changelog.php:58
 msgid "Company name"
-msgstr "Nom de votre entreprise"
+msgstr "Name der Firma"
 
 #: /app/templates/content/changelog.php:59
 msgid ""
@@ -1227,53 +1238,54 @@ msgid ""
 " and invoice. For example, you can set: \"Company: Cybercorp\" or just "
 "\"Cybercorp\"."
 msgstr ""
-"Il s'agit du nom de l'entreprise qui va apparaître dans le pied de page de "
-"votre devis ou facture. Par exemple, vous pouvez définir : \"Entreprise : "
-"Cybercorp\" ou simplement \"Cybercorp\"."
+"Dies ist der Firmenname, der in der Fußzeile deines Angebots oder deiner "
+"Rechnung erscheinen wird. Du kannst zum Beispiel \"Firma: Cybercorp\" oder "
+"einfach \"Cybercorp\" eingeben."
 
 #: /app/templates/content/changelog.php:61
 msgid "First name appears in the Quote/Invoice header as a contact."
-msgstr "Prénom qui apparaît dans l'entête des Devis/Facture comme contact."
+msgstr ""
+"Vorname, der in der Kopfzeile von Angebot oder Rechnung als Kontakt "
+"erscheint."
 
 #: /app/templates/content/changelog.php:63
 msgid "Last name appears in the Quote/Invoice header as a contact."
-msgstr "Nom qui apparaît dans l'entête des Devis/Facture comme contact."
+msgstr ""
+"Nachname, der in der Kopfzeile von Angebot oder Rechnung als Kontakt "
+"erscheint."
 
 #: /app/templates/content/changelog.php:65
 msgid ""
 "This is the first line in the footer of your Quote/Invoice with all legal "
 "information you need."
 msgstr ""
-"Il s'agit de la première ligne du pied de page de votre Devis/Facture qui "
-"contient les informations légales dont vous avez besoin."
+"Dies ist die 1. Fußzeile von deinem Angebot oder deiner Rechnung mit allen "
+"rechtlichen Informationen, die du benötigst. "
 
 #: /app/templates/content/changelog.php:67
 msgid ""
 "This is the second line in the footer of your Quote/Invoice with all legal "
 "information you need."
 msgstr ""
-"Il s'agit de la deuxième ligne du pied de page de votre Devis/Facture qui "
-"contient les informations légales dont vous avez besoin."
+"Dies ist die 2. Fußzeile von deinem Angebot oder deiner Rechnung mit allen "
+"rechtlichen Informationen, die du benötigst."
 
 #: /app/templates/content/changelog.php:69
 msgid "Show company address in the Quote/Invoice header."
-msgstr "Adresse de l'entreprise qui apparaît dans l'entête des Devis/Facture."
+msgstr "Firmenanschrift in der Kopfzeile von Angebot oder Rechnung anzeigen."
 
 #: /app/templates/content/changelog.php:71
 msgid "Show phone number in the Quote/Invoice header."
-msgstr ""
-"Numéro de téléphone de l'entreprise qui apparaît dans l'entête des "
-"Devis/Facture."
+msgstr "Telefonnummer in der Kopfzeile von Angebot oder Rechnung anzeigen."
 
 #: /app/templates/content/changelog.php:73
 msgid "E-mail address which appears in the header of the Quote/Invoice."
 msgstr ""
-"Adresse électronique de l'entreprise qui apparaît dans l'entête des "
-"Devis/Factures."
+"E-Mail-Adresse, die in der Kopfzeile von Angebot oder Rechnung erscheint."
 
 #: /app/templates/content/changelog.php:74
 msgid "Your company VAT rate"
-msgstr "Le taux de TVA de votre entreprise"
+msgstr "Dein Firmen Umsatzsteuersatz"
 
 #: /app/templates/content/changelog.php:75
 #: /app/templates/content/configuration.php:44
@@ -1281,54 +1293,54 @@ msgid ""
 "Global Default VAT rate apply to your Quote/Invoice (globally), to change "
 "it, just insert VAT rate amount without the percent sign."
 msgstr ""
-"Taux de TVA par défaut global appliqué à votre Devis/Facture (globalement), "
-"pour le modifier, simplement insérer le taux de TVA sans le signe "
-"pourcentage."
+"Der globale Standard-USt-Satz gilt für deine Angebote und Rechnungen "
+"(global). Um ihn zu ändern, gib einfach den USt-Satz ohne das Prozentzeichen"
+" ein."
 
 #: /app/templates/content/changelog.php:76
 msgid "Automatically generated invoice number"
-msgstr "Numéro de facture généré automatiquement"
+msgstr "Automatisch generierte Rechnungsnummer"
 
 #: /app/templates/content/changelog.php:77
 msgid ""
 "If you want to automatically generated an invoice number, set to enable. If "
 "you want to be free, set disable. You can enable and disable when you want."
 msgstr ""
-"Si vous souhaitez générer automatiquement vos numéros de facture, activer ce"
-" paramètre. Si vous souhaitez définir librement, désactivez-le. Vous pouvez "
-"en tout temps l'activer ou le désactiver."
+"Aktiviere diese Option, wenn du eine automatisch generierte Rechnungsnummer "
+"haben möchtest. Für eine freie Eingabe deaktiviere diese Option. Du kannst "
+"diese Einstellung jederzeit ändern."
 
 #: /app/templates/content/changelog.php:78
 msgid "Global default Currency"
-msgstr "Devis par défaut globale"
+msgstr "Globale Standardwährung"
 
 #: /app/templates/content/changelog.php:79
 msgid "Global currency for the application."
-msgstr "Devise globale pour toute l'application"
+msgstr "Globale Währung für die Anwendung."
 
 #: /app/templates/content/changelog.php:80
 msgid "Legal disclaimer/mentions"
-msgstr "Avis de non-responsabilité/mentions"
+msgstr "Rechtliche Hinweise und Haftungsausschlüsse"
 
 #: /app/templates/content/changelog.php:81
 msgid ""
 "Legal disclaimer/mentions you need in your footer - before company "
 "information."
 msgstr ""
-"Mentions légales/Information importante que vous avez besoin d'afficher dans"
-" votre pied de page, avant les information de l'entreprise."
+"Rechtliche Informationen, die du in deiner Fußzeile vor den "
+"Firmeninformationen benötigst."
 
 #: /app/templates/content/configuration.php:8
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguration"
 
 #: /app/templates/content/configuration.php:11
 msgid "Click to edit"
-msgstr "Cliquer pour modifier"
+msgstr "Klicken, um zu bearbeiten"
 
 #: /app/templates/content/configuration.php:11
 msgid "Need help?"
-msgstr "Besoin d'aide ?"
+msgstr "Benötigst du Hilfe?"
 
 #: /app/templates/content/configuration.php:12
 msgid ""
@@ -1336,9 +1348,9 @@ msgid ""
 "invoice. For example, you can set: \"Company: Cybercorp\" or just "
 "\"Cybercorp\"."
 msgstr ""
-"Nom de l'entreprise qui va apparaître dans le pied de page de votre devis ou"
-" facture. Par exemple, vous pouvez mettre : \"Entreprise : Cybercorp\" ou "
-"simplement \"Cybercorp\"."
+"Firmenname, der in der Fußzeile deines Angebots oder deiner Rechnung "
+"erscheinen wird. Du kannst zum Beispiel \"Firma: Cybercorp\" oder einfach "
+"\"Cybercorp\" eingeben."
 
 #: /app/templates/content/configuration.php:14
 #: /app/templates/content/configuration.php:18
@@ -1352,72 +1364,75 @@ msgstr ""
 #: /app/templates/content/configuration.php:50
 #: /app/templates/content/configuration.php:62
 msgid "Loading …"
-msgstr "Chargement …"
+msgstr "Wird geladen …"
 
 #: /app/templates/content/configuration.php:16
 msgid "First name appears in the Quote/Invoice header as a contact"
 msgstr ""
-"Le prénom apparaît dans l'entête de votre Devis/Facture comme le contact"
+"Vorname der in der Kopfzeile von Angebot oder Rechnung als Kontakt erscheint"
 
 #: /app/templates/content/configuration.php:20
 msgid "Last name appears in the Quote/Invoice header as a contact"
-msgstr "Le nom apparaît dans l'entête de votre Devis/Facture comme le contact"
+msgstr ""
+"Nachname der in der Kopfzeile von Angebot oder Rechnung als Kontakt "
+"erscheint"
 
 #: /app/templates/content/configuration.php:24
 msgid "Show company address in the Quote/Invoice header"
-msgstr "Adresse de l'entreprise affichée dans l'entête de vos Devis/Facture"
+msgstr "Firmenanschrift in der Kopfzeile von Angebot oder Rechnung anzeigen"
 
 #: /app/templates/content/configuration.php:28
 msgid ""
 "First line in the footer of your Quote/Invoice with all legal information "
 "you need"
 msgstr ""
-"Première ligne du pied de page pour votre devis/facture avec les "
-"informations ou mentions légales dont vous avez besoin"
+"1. Zeile der Fußzeile von Angebot oder Rechnung mit allen rechtlichen "
+"Informationen die du benötigst"
 
 #: /app/templates/content/configuration.php:32
 msgid ""
 "Second line in the footer of your Quote/Invoice with all legal information "
 "you need"
 msgstr ""
-"Seconde ligne du pied de page pour votre devis/facture avec les informations"
-" ou mentions légales dont vous avez besoin"
+"2. Zeile der Fußzeile von Angebot oder Rechnung mit allen rechtlichen "
+"Informationen die du benötigst"
 
 #: /app/templates/content/configuration.php:36
 msgid "Show phone number in the Quote/Invoice header"
-msgstr "Afficher le numéro de téléphone dans l'entête de votre Devis/Facture"
+msgstr "Telefonnummer in der Kopfzeile von Angebot oder Rechnung anzeigen"
 
 #: /app/templates/content/configuration.php:40
 msgid "E-mail address which appears in the header of the Quote/Invoice"
-msgstr "Afficher l'adresse électronique dans l'entête de votre Devis/Facture"
+msgstr ""
+"E-Mail-Adresse, die in der Kopfzeile von Angebot oder Rechnung erscheint"
 
 #: /app/templates/content/configuration.php:48
 msgid "Set prefix for generated invoice"
-msgstr "Configurer le préfixe des factures générées"
+msgstr "Präfix für generierte Rechnung einstellen"
 
 #: /app/templates/content/configuration.php:52
 msgid "Global currency for the application"
-msgstr "Devise globale de votre application"
+msgstr "Globale Währung für die Anwendung"
 
 #: /app/templates/content/configuration.php:56
 msgid "Global monetary format for the application"
-msgstr "Format monétaire global de l'application"
+msgstr "Globales Währungsformat für die Anwendung"
 
 #: /app/templates/content/configuration.php:60
 msgid ""
 "Legal disclaimer/mentions you need in your footer - before company "
 "information"
 msgstr ""
-"Information/Avertissement dont vous avez besoin dans votre pied de page, "
-"avant les informations de l'entreprise"
+"Rechtliche Informationen die du in deiner Fußzeile vor den "
+"Firmeninformationen benötigst"
 
 #: /app/templates/content/devis.php:8
 msgid "Quote"
-msgstr "Devis"
+msgstr "Angebot"
 
 #: /app/templates/content/devis.php:12
 msgid "Add quote"
-msgstr "Ajouter un devis"
+msgstr "Angebot hinzufügen"
 
 #: /app/templates/content/devis.php:19 /app/templates/content/facture.php:22
 #: /app/templates/content/index.php:19 /app/templates/content/produit.php:19
@@ -1426,11 +1441,11 @@ msgstr "ID"
 
 #: /app/templates/content/devis.php:20
 msgid "Quote date"
-msgstr "Date du devis"
+msgstr "Angebotsdatum"
 
 #: /app/templates/content/devis.php:22
 msgid "Customer quote"
-msgstr "Client du devis"
+msgstr "Angebot für Kunden"
 
 #: /app/templates/content/devis.php:23 /app/templates/content/devisshow.php:4
 #: /app/templates/content/facture.php:28
@@ -1440,31 +1455,31 @@ msgstr "Version"
 
 #: /app/templates/content/devis.php:24 /app/templates/content/facture.php:29
 msgid "Status"
-msgstr "État"
+msgstr "Status"
 
 #: /app/templates/content/devis.php:25 /app/templates/content/facture.php:30
 #: /app/templates/content/index.php:27 /app/templates/content/produit.php:23
 msgid "Actions"
-msgstr "Actions"
+msgstr "Aktionen"
 
 #: /app/templates/content/devisshow.php:2
 msgid "Quote #"
-msgstr "DEVIS N°"
+msgstr "Angebot #"
 
 #: /app/templates/content/devisshow.php:11
 #: /app/templates/content/factureshow.php:10
 msgid "FROM"
-msgstr "PAR"
+msgstr "VON"
 
 #: /app/templates/content/devisshow.php:23
 #: /app/templates/content/factureshow.php:22
 msgid "Company logo"
-msgstr "logo de votre entreprise"
+msgstr "Firmen-Logo"
 
 #: /app/templates/content/devisshow.php:25
 #: /app/templates/content/factureshow.php:24
 msgid "You can add your company logo here."
-msgstr "Vous pouvez ajouter le logo de votre entreprise ici."
+msgstr "Du kannst dein Firmen-Logo hier hinzufügen"
 
 #: /app/templates/content/devisshow.php:25
 #: /app/templates/content/factureshow.php:24
@@ -1472,174 +1487,175 @@ msgid ""
 "To add a logo, drop the logo.png file in \".gestion\" folder at the root of "
 "your Nextcloud Files app. Remember to set \"Show hidden files\"."
 msgstr ""
-"Pour ajouter votre logo, ajouter votre fichier logo.png dans le dossier "
-"\".gestion\" à la racine du \"Files\" Nextcloud. N'oubliez pas de cocher le "
-"paramètre \"Voir les fichiers cachés\"."
+"Um ein Logo hinzuzufügen, lege die Datei logo.png im Ordner „.gestion“ im "
+"Stammverzeichnis deiner Nextcloud Files-App ab. Denke daran, \"Versteckte "
+"Dateien anzeigen\" einzustellen."
 
 #: /app/templates/content/devisshow.php:25
 #: /app/templates/content/factureshow.php:24
 msgid "This message will not appear on generated PDF."
-msgstr "Ce message n’apparaîtra pas dans le PDF généré."
+msgstr "Diese Nachricht erscheint nicht im erstellten PDF."
 
 #: /app/templates/content/devisshow.php:30
 #: /app/templates/content/factureshow.php:29
 msgid "TO"
-msgstr "POUR"
+msgstr "AN"
 
 #: /app/templates/content/devisshow.php:43
 msgid "Offer valid for 1 month from"
-msgstr "Offre valide 1 mois à compter du"
+msgstr "Das Angebot ist 1 Monat lang gültig ab"
 
 #: /app/templates/content/devisshow.php:61
 #: /app/templates/content/factureshow.php:63
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Menge"
 
 #: /app/templates/content/devisshow.php:62
 #: /app/templates/content/factureshow.php:64
 #: /app/templates/content/produit.php:22
 msgid "Unit price without VAT"
-msgstr "PU HT"
+msgstr "Einzelpreis ohne USt."
 
 #: /app/templates/content/devisshow.php:63
 #: /app/templates/content/devisshow.php:77
 #: /app/templates/content/factureshow.php:65
 #: /app/templates/content/factureshow.php:78
 msgid "Total without VAT"
-msgstr "Total HT"
+msgstr "Gesamt ohne USt."
 
 #: /app/templates/content/devisshow.php:69
 #: /app/templates/content/produit.php:12
 msgid "Add product"
-msgstr "Ajouter produit"
+msgstr "Produkt hinzufügen"
 
 #: /app/templates/content/devisshow.php:70
 #: /app/templates/content/factureshow.php:71
 msgid "Save in Nextcloud"
-msgstr "Sauvegarder dans nextcloud"
+msgstr "In Nextcloud speichern"
 
 #: /app/templates/content/devisshow.php:71
 #: /app/templates/content/factureshow.php:72
 msgid "Send by email"
-msgstr "Envoyer par e-mail"
+msgstr "Per E-Mail senden"
 
 #: /app/templates/content/devisshow.php:78
 #: /app/templates/content/factureshow.php:79
 msgid "VAT Rate"
-msgstr "Taux TVA"
+msgstr "USt.-Satz"
 
 #: /app/templates/content/devisshow.php:79
 #: /app/templates/content/factureshow.php:80
 msgid "Total VAT"
-msgstr "Total TVA"
+msgstr "Gesamt USt."
 
 #: /app/templates/content/devisshow.php:80
 #: /app/templates/content/factureshow.php:81
 msgid "Total Price"
-msgstr "Total TTC"
+msgstr "Gesamtpreis"
 
 #: /app/templates/content/devisshow.php:88
 #: /app/templates/content/factureshow.php:89
 msgid "Please set in global configuration"
-msgstr "Merci de le renseigner dans la zone de configuration globale"
+msgstr "Bitte in der globalen Konfiguration einstellen"
 
 #: /app/templates/content/facture.php:8
 msgid "Invoice"
-msgstr "Facture"
+msgstr "Rechnung"
 
 #: /app/templates/content/facture.php:12
 msgid "Add invoice"
-msgstr "Ajouter une facture"
+msgstr "Rechnung hinzufügen"
 
 #: /app/templates/content/facture.php:23
 msgid "Invoice number"
-msgstr "Numéro de facture"
+msgstr "Rechnungsnummer"
 
 #: /app/templates/content/facture.php:24
 #: /app/templates/content/factureshow.php:43
 msgid "Date of service"
-msgstr "Date de réalisation"
+msgstr "Datum der Lieferung/Leistung"
 
 #: /app/templates/content/facture.php:25
 msgid "Payment date"
-msgstr "Date de paiement"
+msgstr "Zahlungsdatum"
 
 #: /app/templates/content/facture.php:27
 #: /app/templates/content/factureshow.php:44
 msgid "Associated quote"
-msgstr "Devis associé"
+msgstr "Zugehöriges Angebot"
 
 #: /app/templates/content/factureshow.php:2
 msgid "Invoice #"
-msgstr "Facture N°"
+msgstr "Rechnung #"
 
 #: /app/templates/content/factureshow.php:43
 msgid "Settlement date"
-msgstr "Date de règlement"
+msgstr "Abrechnungsdatum"
 
 #: /app/templates/content/index.php:8
 msgid "Customer"
-msgstr "Client"
+msgstr "Kunde"
 
 #: /app/templates/content/index.php:12
 msgid "Add customer"
-msgstr "Ajouter client"
+msgstr "Kunde hinzufügen"
 
 #: /app/templates/content/index.php:23
 msgid "Legal information"
-msgstr "Information légale"
+msgstr "Rechtliche Informationen"
 
 #: /app/templates/content/legalnotice.php:8
 #: /app/templates/content/legalnotice.php:11
 #: /app/templates/navigation/index.php:39
 msgid "Legal notice"
-msgstr "Notice légale"
+msgstr "Impressum"
 
 #: /app/templates/content/legalnotice.php:12
 msgid ""
 "This section provides information pertaining to the use of this application "
 "under the legal framework applicable in various countries."
 msgstr ""
-"Cette section fourni des informations sur l'application des lois et leur "
-"cadre dans différents pays."
+"Dieser Abschnitt enthält Informationen zur Verwendung dieser Anwendung gemäß"
+" den in verschiedenen Ländern geltenden gesetzlichen Rahmenbedingungen."
 
 #: /app/templates/content/legalnotice.php:13
 msgid "If you want to contribute to this section just contact me by mail"
 msgstr ""
-"Si vous souhaitez contribuer à cette rubrique, contactez-moi par e-mail"
+"Wenn du zu diesem Abschnitt beitragen möchtest, nehme einfach per E-Mail mit"
+" mir Kontakt auf."
 
 #: /app/templates/content/produit.php:8
 msgid "Product"
-msgstr "Produit"
+msgstr "Produkt"
 
 #: /app/templates/content/statistique.php:8
 #: /app/templates/navigation/index.php:38
 msgid "Statistics"
-msgstr "Statistiques"
+msgstr "Statistiken"
 
 #: /app/templates/content/statistique.php:11
 msgid "Monthly turnover without VAT"
-msgstr "Chiffre d'affaires mensuel HT"
+msgstr "Monatsumsatz ohne USt."
 
 #: /app/templates/content/statistique.php:15
 msgid "Year"
-msgstr "Année"
+msgstr "Jahr"
 
 #: /app/templates/content/statistique.php:16
 msgid "January"
-msgstr "Janvier"
+msgstr "Januar"
 
 #: /app/templates/content/statistique.php:17
 msgid "February"
-msgstr "Février"
+msgstr "Februar"
 
 #: /app/templates/content/statistique.php:18
 msgid "March"
-msgstr "Mars"
+msgstr "März"
 
 #: /app/templates/content/statistique.php:19
 msgid "April"
-msgstr "Avril"
+msgstr "April"
 
 #: /app/templates/content/statistique.php:20
 msgid "May"
@@ -1647,55 +1663,55 @@ msgstr "Mai"
 
 #: /app/templates/content/statistique.php:21
 msgid "June"
-msgstr "Juin"
+msgstr "Juni"
 
 #: /app/templates/content/statistique.php:22
 msgid "July"
-msgstr "Juillet"
+msgstr "Juli"
 
 #: /app/templates/content/statistique.php:23
 msgid "August"
-msgstr "Août"
+msgstr "August"
 
 #: /app/templates/content/statistique.php:24
 msgid "September"
-msgstr "Septembre"
+msgstr "September"
 
 #: /app/templates/content/statistique.php:25
 msgid "October"
-msgstr "Octobre"
+msgstr "Oktober"
 
 #: /app/templates/content/statistique.php:26
 msgid "November"
-msgstr "Novembre"
+msgstr "November"
 
 #: /app/templates/content/statistique.php:27
 msgid "December"
-msgstr "Décembre"
+msgstr "Dezember"
 
 #: /app/templates/content/statistique.php:28
 msgid "Total"
-msgstr "Total"
+msgstr "Gesamt"
 
 #: /app/templates/navigation/index.php:2
 msgid "Manage"
-msgstr "Gérer"
+msgstr "Verwalten"
 
 #: /app/templates/navigation/index.php:5
 msgid "Customers"
-msgstr "Clients"
+msgstr "Kunden"
 
 #: /app/templates/navigation/index.php:12
 msgid "Quotes"
-msgstr "Devis"
+msgstr "Angebote"
 
 #: /app/templates/navigation/index.php:19
 msgid "Invoices"
-msgstr "Factures"
+msgstr "Rechnungen"
 
 #: /app/templates/navigation/index.php:26
 msgid "Products"
-msgstr "Produits"
+msgstr "Produkte"
 
 #: /app/templates/navigation/index.php:35
 msgid "Information"
@@ -1703,34 +1719,34 @@ msgstr "Information"
 
 #: /app/templates/navigation/index.php:43
 msgid "Save folder"
-msgstr "Dossier de sauvegarde"
+msgstr "Ordner speichern"
 
 #: /app/templates/navigation/index.php:44 /app/templates/settings/index.php:11
 msgid "Please choose a folder"
-msgstr "Veuillez sélectionner un dossier"
+msgstr "Bitte einen Ordner auswählen"
 
 #: /app/templates/navigation/index.php:46
 msgid "About"
-msgstr "À propos"
+msgstr "Über"
 
 #: /app/templates/settings/admin.php:6
 msgid "Backup all data"
-msgstr "Sauvegarder toutes les données"
+msgstr "Alle Daten sichern"
 
 #: /app/templates/settings/admin.php:7
 msgid "You can save all Gestion app data."
-msgstr "Vous pouvez sauvegarder toutes les données de l'application GESTION"
+msgstr "Du kannst alle Gestion-App-Daten speichern."
 
 #: /app/templates/settings/admin.php:8
 msgid "Backup now!"
-msgstr "Sauvegarder maintenant !"
+msgstr "Jetzt Backup durchführen!"
 
 #: /app/templates/settings/admin.php:9
 msgid "You can restore a backup file for Gestion (in next release)."
 msgstr ""
-"Vous pouvez restaurer une sauvegarde de fichier pour Gestion (Dans la "
-"prochaine version)."
+"Du kannst eine Sicherungsdatei für Gestion wiederherstellen (mit der "
+"nächsten Version)."
 
 #: /app/templates/settings/admin.php:10
 msgid "Restore now!"
-msgstr "Restaurer maintenant !"
+msgstr "Jetzt wiederherstellen!"

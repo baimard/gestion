@@ -39,6 +39,7 @@ OC.L10N.register(
     "Version" : "버전",
     "Status" : "상태",
     "Actions" : "동작",
+    "Invoice" : "청구서",
     "Legal information" : "법률 정보",
     "Legal notice" : "법적 고지",
     "Year" : "년",

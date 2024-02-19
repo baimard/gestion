@@ -1,6 +1,8 @@
 OC.L10N.register(
     "gestion",
     {
+    "Last name" : "Apellíos",
+    "First name" : "Nome",
     "Phone number" : "Númberu de teléfonu",
     "Comment" : "Comentariu",
     "There is an error with the format, please check the documentation" : "Hai un error col formatu, revisa la documentación",

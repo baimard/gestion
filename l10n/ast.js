@@ -12,6 +12,7 @@ OC.L10N.register(
     "Search" : "Buscar",
     "Next" : "Siguiente",
     "Previous" : "Anterior",
+    "Open" : "Abrir",
     "Documentation" : "Documentación",
     "Changelog" : "Rexistru de cambeos",
     "Releases" : "Versiones",

@@ -15,6 +15,7 @@ OC.L10N.register(
     "Previous" : "Anterior",
     "Open" : "Abrir",
     "Documentation" : "Documentación",
+    "Contact" : "Contautu",
     "Changelog" : "Rexistru de cambeos",
     "Releases" : "Versiones",
     "Configuration" : "Configuración",

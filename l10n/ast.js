@@ -5,6 +5,7 @@ OC.L10N.register(
     "First name" : "Nome",
     "Phone number" : "Númberu de teléfonu",
     "Email" : "Corréu electrónicu",
+    "Address" : "Direición",
     "New" : "Nuevu",
     "Comment" : "Comentariu",
     "There is an error with the format, please check the documentation" : "Hai un error col formatu, revisa la documentación",

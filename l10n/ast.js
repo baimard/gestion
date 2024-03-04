@@ -28,6 +28,7 @@ OC.L10N.register(
     "Status" : "Estáu",
     "Actions" : "Aiciones",
     "Invoice #" : "Factura #",
+    "Customer" : "Veceru",
     "Legal notice" : "Avisu llegal",
     "Year" : "Añu",
     "January" : "Xineru",
@@ -41,6 +42,7 @@ OC.L10N.register(
     "September" : "Setiembre",
     "October" : "Ochobre",
     "November" : "Payares",
-    "December" : "Avientu"
+    "December" : "Avientu",
+    "Customers" : "Vecería"
 },
 "nplurals=2; plural=(n != 1);");

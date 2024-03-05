@@ -65,6 +65,7 @@ OC.L10N.register(
     "December" : "12月",
     "Total" : "合計",
     "Manage" : "管理",
+    "Customers" : "顧客",
     "Information" : "情報",
     "Save folder" : "フォルダーを保存",
     "About" : "詳細"

@@ -12,6 +12,8 @@ OC.L10N.register(
     "Cancel" : "Encaboxar",
     "There is an error" : "Hai un error",
     "Platinum" : "Platín",
+    "Disable" : "Desactivar",
+    "Enable" : "Activar",
     "Search" : "Buscar",
     "Next" : "Siguiente",
     "Previous" : "Anterior",

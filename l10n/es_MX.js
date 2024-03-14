@@ -31,6 +31,7 @@ OC.L10N.register(
     "Actions" : "Acciones",
     "Send by email" : "Enviar por correo electrónico",
     "Legal notice" : "Aviso legal",
+    "Year" : "Año",
     "January" : "Enero",
     "February" : "Febrero",
     "March" : "Marzo",

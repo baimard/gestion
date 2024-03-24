@@ -1,20 +1,10 @@
 <div id="contentTable">
-    <div class="breadcrumb" data-html2canvas-ignore>
-        <div class="crumb svg crumbhome">
-            <a href="<?php echo($_['url']['index']); ?>" class="icon-home"></a>
-            <span style="display: none;"></span>
-        </div>
-        <div class="crumb svg crumbhome">
-            <span><?php p($l->t('Invoice'));?></span>
-        </div>
-        <div class="crumb svg crumbhome">
-            <button style="margin-left:3px;" type="button"  id="newInvoice">
-                <?php p($l->t('Add invoice'));?>
-            </button>
-        </div>
-        <!--<div class="crumb svg crumbhome">
-            <a><span id="newInvoice"><?php //p($l->t('Add invoice'));?></span></a>
-        </div>-->
+    <div class="menu-content">
+        <a href="<?php echo($_['url']['index']); ?>"><span class="material-symbols-outlined">home</span></a>
+        <span class="material-symbols-outlined">chevron_right</span>
+        <span><?php p($l->t('Invoice'));?></span>
+        <span class="material-symbols-outlined">chevron_right</span>
+        <button style="margin-left:3px;" type="button"  id="newInvoice"><?php p($l->t('Add invoice'));?></button>
     </div>
     <table id="facture" class="display tabledt">
         <thead>

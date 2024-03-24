@@ -1,4 +1,4 @@
-import "@nextcloud/dialogs/dist/index.css";
+// import "@nextcloud/dialogs/dist/index.css";
 import "../css/mycss.less";
 
 import { configuration, updateDBConfiguration} from "./modules/ajaxRequest.js";

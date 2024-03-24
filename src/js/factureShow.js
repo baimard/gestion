@@ -1,5 +1,5 @@
-import "@nextcloud/dialogs/dist/index.css";
-import "datatables.net-dt/css/jquery.dataTables.css";
+// import "@nextcloud/dialogs/dist/style.css";
+import "datatables.net-dt/css/dataTables.dataTables.css";
 import "../css/mycss.less";
 
 import { getMailServerFrom, getProduitsById, saveNextcloud} from "./modules/ajaxRequest.js";

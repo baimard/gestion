@@ -5,6 +5,7 @@ use OCP\IRequest;
 use OCP\Mail\IMailer;
 use OCP\Files\IRootFolder;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 use OCA\Gestion\Db\Bdd;
@@ -24,6 +25,9 @@ class PageController extends Controller {
 	private $mailer;
 	private $config;
 	private $myID;
+
+	/** @var  ContentSecurityPolicy */
+	private ContentSecurityPolicy $csp;
 	
 	/** @var ISession */
 	private ISession $session;
@@ -50,7 +54,8 @@ class PageController extends Controller {
 								Iconfig $config,
 								IUserManager $userManager,
 								IAccountManager $accountManager,
-								ISession $session){
+								ISession $session,
+								ContentSecurityPolicy $csp){
 		parent::__construct($AppName, $request);
 		$this->$myID = $UserId;
 		//TODO Envoyer la valeur en cours
@@ -61,10 +66,8 @@ class PageController extends Controller {
 		$this->config = $config;
 		$this->userManager = $userManager;
 		$this->accountManager = $accountManager;
-		
+		$this->csp = $csp;
 		$this->session = $session;
-		
-
 
 		try{
 			$this->storage = $rootFolder->getUserFolder($this->$myID);
@@ -87,13 +90,14 @@ class PageController extends Controller {
 		// foreach($myaccount as $key => $value) {
 		// 	$prop[$key]= $value;
 		// }
-		return new TemplateResponse('gestion', 'index', array(	'test' => $prop, 
-																'path' => $this->myID, 
-																'url' => $this->getNavigationLink(),
-																'CompaniesList' => $this->getCompaniesList(),
-																'CurrentCompany' => $this->session['CurrentCompany']
-															)
-														);  // templates/index.php
+		$response = new TemplateResponse(	'gestion', 'index', array(	'test' => $prop, 
+											'path' => $this->myID, 
+											'url' => $this->getNavigationLink(),
+											'CompaniesList' => $this->getCompaniesList(),
+											'CurrentCompany' => $this->session['CurrentCompany']
+												)
+											);  // templates/index.php
+		return $response;
 	}
 
 	/**
@@ -183,12 +187,14 @@ class PageController extends Controller {
      */
 	public function config() {
 		$this->myDb->checkConfig($this->session['CurrentCompany']);
-		return new TemplateResponse('gestion', 'configuration', array(	'path' => $this->myID, 
-																		'url' => $this->getNavigationLink(),
-																		'CompaniesList' => $this->getCompaniesList(),
-																		'CurrentCompany' => $this->session['CurrentCompany']
-																	)
-																);  // templates/configuration.php
+		$response = new TemplateResponse(	'gestion', 'configuration', array(	'path' => $this->myID, 
+											'url' => $this->getNavigationLink(),
+											'CompaniesList' => $this->getCompaniesList(),
+											'CurrentCompany' => $this->session['CurrentCompany']
+										)
+									);  // templates/configuration.php
+		$response->setContentSecurityPolicy($this->csp);
+		return $response;
 	}
 	
 	/**

@@ -28,6 +28,9 @@ module.exports =
     },
     plugins: [
       new VueLoaderPlugin(),
+      new webpack.DefinePlugin({
+        'process.platform': JSON.stringify('browser') // or 'win32' if you need to simulate Windows
+      }),
       new webpack.ProvidePlugin({
            $: 'jquery',
            jQuery: 'jquery',
@@ -36,6 +39,12 @@ module.exports =
        }),
      ],
     resolve: {
+      fallback: {
+          "http": false,
+          "https": false,
+          "stream": false,
+          process: require.resolve('process/browser')
+      },
       alias: {
         "icons": path.resolve(__dirname, "node_modules/vue-material-design-icons")
       },

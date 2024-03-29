@@ -22,6 +22,7 @@ OC.L10N.register(
     "Contact" : "Contautu",
     "Changelog" : "Rexistru de cambeos",
     "Releases" : "Versiones",
+    "Send" : "Unviar",
     "Configuration" : "Configuración",
     "Need help?" : "¿Precises ayuda?",
     "Loading …" : "Cargando…",

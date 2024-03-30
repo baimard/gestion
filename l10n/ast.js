@@ -18,10 +18,12 @@ OC.L10N.register(
     "Next" : "Siguiente",
     "Previous" : "Anterior",
     "Open" : "Abrir",
+    "Email sent" : "Unvióse'l corréu electrónicu",
     "Documentation" : "Documentación",
     "Contact" : "Contautu",
     "Changelog" : "Rexistru de cambeos",
     "Releases" : "Versiones",
+    "Body" : "Cuerpu",
     "Send" : "Unviar",
     "Configuration" : "Configuración",
     "Need help?" : "¿Precises ayuda?",
@@ -46,6 +48,7 @@ OC.L10N.register(
     "October" : "Ochobre",
     "November" : "Payares",
     "December" : "Avientu",
-    "Customers" : "Vecería"
+    "Customers" : "Vecería",
+    "About" : "Tocante a"
 },
 "nplurals=2; plural=(n != 1);");

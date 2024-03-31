@@ -48,6 +48,7 @@ OC.L10N.register(
     "October" : "Ochobre",
     "November" : "Payares",
     "December" : "Avientu",
+    "Manage" : "Xestionar",
     "Customers" : "Vecería",
     "About" : "Tocante a"
 },

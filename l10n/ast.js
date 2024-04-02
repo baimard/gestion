@@ -23,6 +23,8 @@ OC.L10N.register(
     "Contact" : "Contautu",
     "Changelog" : "Rexistru de cambeos",
     "Releases" : "Versiones",
+    "From" : "De",
+    "Subject" : "Asuntu",
     "Body" : "Cuerpu",
     "Send" : "Unviar",
     "Configuration" : "Configuración",

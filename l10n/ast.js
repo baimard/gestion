@@ -24,6 +24,7 @@ OC.L10N.register(
     "Changelog" : "Rexistru de cambeos",
     "Releases" : "Versiones",
     "From" : "De",
+    "To" : "Pa",
     "Subject" : "Asuntu",
     "Body" : "Cuerpu",
     "Send" : "Unviar",
@@ -50,6 +51,7 @@ OC.L10N.register(
     "October" : "Ochobre",
     "November" : "Payares",
     "December" : "Avientu",
+    "Total" : "Total",
     "Manage" : "Xestionar",
     "Customers" : "Vecería",
     "About" : "Tocante a"

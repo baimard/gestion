@@ -22839,7 +22839,6 @@ class Client {
 
 
 
-
 var mainFunction_baseUrl = (0,router_dist/* generateUrl */.Jv)('/apps/gestion');
 var mainFunction_cur = null;
 
@@ -22999,9 +22998,14 @@ function mainFunction_modifyCell(r, positionColumn = -1, data){
  * 
  * @param {*} response 
  */
- function getCurrency(response) {
-    var myresp = JSON.parse(response)[0];
-    mainFunction_cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+function getCurrency(response) {
+    try {
+        var myresp = JSON.parse(response)[0];
+        mainFunction_cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+    } catch (error) {
+        mainFunction_cur = new Intl.NumberFormat("en-EN", { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+        console.log(error);
+    }
 }
 
 /**

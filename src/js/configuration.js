@@ -4,7 +4,7 @@ import "../css/mycss.less";
 import { configuration, updateDBConfiguration} from "./modules/ajaxRequest.js";
 import { globalConfiguration } from "./modules/mainFunction.js";
 import "./listener/main_listener";
-import { getAutoIncrement, getCurrencyList, getFormatList } from "./modules/list.js";
+import { getAutoIncrement, setCurrencyList, setFormatList } from "./modules/list.js";
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -29,6 +29,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    var shareInput = document.getElementById("emailInput");
+    if (shareInput) {
+        shareInput.addEventListener("input", function(){
+            var existingLoader = document.getElementById("ldLoad");
+            if (! existingLoader) {
+                var loader = document.createElement("div");
+                loader.classList.add("loader");
+                loader.id = "ldLoad"; // Add id to the loader div
+                shareInput.parentNode.insertBefore(loader, shareInput.nextSibling);
+                // existingLoader.remove(); // Remove existing loader if it exists
+            }
+
+            var datalist = document.getElementById("search");
+            var option = document.createElement("option");
+            option.text = shareInput.value;
+            datalist.appendChild(option);
+        });
+    }
+
+    var datalist = document.getElementById("search");
+    if (datalist) {
+        datalist.addEventListener("click", function(){
+        });
+    }
+
     document.body.addEventListener('focusout', function(e) {
         callUpdateDBConfiguration(e);
     });
@@ -39,8 +64,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    document.body.addEventListener('change', function(e) {
+
+        callUpdateDBConfiguration(e);
+    });
+
     function callUpdateDBConfiguration(e){
-        if (e.target.classList.contains('editableConfiguration')) {
+        if (e.target.classList.contains('editableConfiguration')
+            || e.target.classList.contains('editableConfigurationSelect')
+            ) {
             var table = e.target.getAttribute('data-table');
             var column = e.target.getAttribute('data-column');
             var value = e.target.value;
@@ -65,8 +97,8 @@ function loadConfigurationDT(response) {
         document.getElementById("tva_default").value            = ((myresp.tva_default.length === 0) ? "-" : myresp.tva_default);
         document.getElementById("facture_prefixe").value        = ((myresp.facture_prefixe.length === 0) ? "-" : myresp.facture_prefixe);
         // document.getElementById("auto_invoice_number").value    = getAutoIncrement(myresp.auto_invoice_number);
-        document.getElementById("currency").value               = getCurrencyList(myresp.devise);
-        document.getElementById("format").value                 = getFormatList(myresp.format);
+        setCurrencyList(myresp.devise, document.getElementById("currency"));
+        setFormatList(myresp.format, document.getElementById("format"));
         document.getElementById("mentions_default").value       = ((myresp.mentions_default.length === 0) ? "-" : myresp.mentions_default.replace(/\&amp;/g, "&"));
 
         document.getElementById("entreprise")       .setAttribute("data-id", myresp.id);
@@ -80,8 +112,8 @@ function loadConfigurationDT(response) {
         document.getElementById("tva_default")      .setAttribute("data-id", myresp.id);
         document.getElementById("facture_prefixe")  .setAttribute("data-id", myresp.id);
         // document.getElementById("auto_invoice_number")       .setAttribute("data-id", myresp.id);
-        document.getElementById("currency")       .setAttribute("data-id", myresp.id);
-        document.getElementById("format")       .setAttribute("data-id", myresp.id);
-        document.getElementById("mentions_default")       .setAttribute("data-id", myresp.id);
+        document.getElementById("currency")         .setAttribute("data-id", myresp.id);
+        document.getElementById("format")           .setAttribute("data-id", myresp.id);
+        document.getElementById("mentions_default") .setAttribute("data-id", myresp.id);
     });
 }

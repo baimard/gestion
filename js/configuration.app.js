@@ -14040,7 +14040,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.bootstrap-iso {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialicons/v141/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/materialicons/v142/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
 }
 .material-icons {
   font-family: 'Material Icons';
@@ -43121,7 +43121,6 @@ class Client {
 
 
 
-
 var mainFunction_baseUrl = (0,router_dist/* generateUrl */.Jv)('/apps/gestion');
 var cur = null;
 
@@ -43281,9 +43280,14 @@ function mainFunction_modifyCell(r, positionColumn = -1, data){
  * 
  * @param {*} response 
  */
- function getCurrency(response) {
-    var myresp = JSON.parse(response)[0];
-    cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+function getCurrency(response) {
+    try {
+        var myresp = JSON.parse(response)[0];
+        cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+    } catch (error) {
+        cur = new Intl.NumberFormat("en-EN", { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+        console.log(error);
+    }
 }
 
 /**
@@ -57581,7 +57585,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var targetClass = e.target.className;
         var targetId = e.target.id;
         
-        if(targetClass.includes("editableNumber") 
+        if(     targetClass.includes("editableSelect") 
+        ||      targetClass.includes("editableConfiguration")
+        ||      targetClass.includes("editableConfigurationSelect")){
+    // Prevent default behavior
+        } else if(targetClass.includes("editableNumber") 
             || targetClass.includes("editableNumeric")
             || targetClass.includes("editable")){
             e.target.setAttribute('contenteditable', 'true');
@@ -57590,8 +57598,6 @@ document.addEventListener('DOMContentLoaded', function() {
             Client.loadClientList_cid(e);
         } else if(targetClass.includes("loadSelect_listdevis")){
             Devis.loadDevisList_dnum(e);
-        } else if(targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration")){
-            // Prevent default behavior
         } else if(targetId === "newClient"){
             Client.newClient(new dataTables('.tabledt'));
         } else if(targetId === "newDevis"){
@@ -57608,8 +57614,10 @@ document.addEventListener('DOMContentLoaded', function() {
             var targetClass = e.target.className;
             if(targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")){
                 updateNumerical(e.target);
-            } else if(targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration")){
-                // Prevent default behavior
+            } else if(  targetClass.includes("editableSelect") 
+            ||  targetClass.includes("editableConfiguration")
+            ||  targetClass.includes("editableConfigurationSelect")){
+        // Prevent default behavior
             } else if(targetClass.includes("editable")){
                 updateEditable(e.target);
             }
@@ -57620,7 +57628,9 @@ document.addEventListener('DOMContentLoaded', function() {
         var targetClass = e.target.className;
         if(targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")){
             updateNumerical(e.target);
-        } else if(targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration")){
+        } else if(  targetClass.includes("editableSelect") 
+                ||  targetClass.includes("editableConfiguration")
+                ||  targetClass.includes("editableConfigurationSelect")){
             // Prevent default behavior
         } else if(targetClass.includes("editable")){
             updateEditable(e.target);
@@ -57640,7 +57650,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var column = event.target.getAttribute('data-column');
             var value = event.target.value;
             var id = event.target.getAttribute('data-id');
-    
+            
             updateDB(table, column, value, id);
         }
 
@@ -57864,6 +57874,11 @@ var currency_list = {
     "ZWL": (0,dist/* translate */.Tl)('gestion', 'Zimbabwean Dollar'),
 };
 
+/**
+ * DEPRECATED
+ * @param {*} currentFormat 
+ * @returns 
+ */
 function getFormatList(currentFormat) {
     var list = "";
     var oEntries = Object.entries(format_List);
@@ -57878,7 +57893,9 @@ function getFormatList(currentFormat) {
     return list;
 }
 
-
+/**
+ * Deprecated
+ */
 function getCurrencyList(currentDevise) {
     var list = "";
     var oEntries = Object.entries(currency_list);
@@ -57891,6 +57908,46 @@ function getCurrencyList(currentDevise) {
         }
     }
     return list;
+}
+
+
+/**
+ * 
+ * @param {*} currentDevise 
+ * @param {*} selectObject 
+ */
+function setCurrencyList(currentDevise, selectObject) {
+    var oEntries = Object.entries(currency_list);
+    var oEntriesSort = oEntries.sort((a,b) => a[1].localeCompare(b[1]));
+    for (const [key, value] of oEntriesSort) {
+        var opt = document.createElement('option');
+        opt.value = key;
+        opt.innerHTML = value;
+        if (currentDevise === key) {
+            opt.selected = true;
+        }
+        selectObject.appendChild(opt);
+    }
+}
+
+/**
+ * 
+ * @param {*} currentFormat 
+ * @param {*} selectObject 
+ * @returns 
+ */
+function setFormatList(currentFormat, selectObject) {
+    var oEntries = Object.entries(format_List);
+    var oEntriesSort = oEntries.sort((a,b) => a[1].localeCompare(b[1]));
+    for (const [key, value] of oEntriesSort) {
+        var opt = document.createElement('option');
+        opt.value = key;
+        opt.innerHTML = value;
+        if (currentFormat === key) {
+            opt.selected = true;
+        }
+        selectObject.appendChild(opt);
+    }
 }
 
 function getAutoIncrement(activate){
@@ -57938,6 +57995,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    var shareInput = document.getElementById("emailInput");
+    if (shareInput) {
+        shareInput.addEventListener("input", function(){
+            var existingLoader = document.getElementById("ldLoad");
+            if (! existingLoader) {
+                var loader = document.createElement("div");
+                loader.classList.add("loader");
+                loader.id = "ldLoad"; // Add id to the loader div
+                shareInput.parentNode.insertBefore(loader, shareInput.nextSibling);
+                // existingLoader.remove(); // Remove existing loader if it exists
+            }
+
+            var datalist = document.getElementById("search");
+            var option = document.createElement("option");
+            option.text = shareInput.value;
+            datalist.appendChild(option);
+        });
+    }
+
+    var datalist = document.getElementById("search");
+    if (datalist) {
+        datalist.addEventListener("click", function(){
+        });
+    }
+
     document.body.addEventListener('focusout', function(e) {
         callUpdateDBConfiguration(e);
     });
@@ -57948,8 +58030,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    document.body.addEventListener('change', function(e) {
+
+        callUpdateDBConfiguration(e);
+    });
+
     function callUpdateDBConfiguration(e){
-        if (e.target.classList.contains('editableConfiguration')) {
+        if (e.target.classList.contains('editableConfiguration')
+            || e.target.classList.contains('editableConfigurationSelect')
+            ) {
             var table = e.target.getAttribute('data-table');
             var column = e.target.getAttribute('data-column');
             var value = e.target.value;
@@ -57974,8 +58063,8 @@ function loadConfigurationDT(response) {
         document.getElementById("tva_default").value            = ((myresp.tva_default.length === 0) ? "-" : myresp.tva_default);
         document.getElementById("facture_prefixe").value        = ((myresp.facture_prefixe.length === 0) ? "-" : myresp.facture_prefixe);
         // document.getElementById("auto_invoice_number").value    = getAutoIncrement(myresp.auto_invoice_number);
-        document.getElementById("currency").value               = getCurrencyList(myresp.devise);
-        document.getElementById("format").value                 = getFormatList(myresp.format);
+        setCurrencyList(myresp.devise, document.getElementById("currency"));
+        setFormatList(myresp.format, document.getElementById("format"));
         document.getElementById("mentions_default").value       = ((myresp.mentions_default.length === 0) ? "-" : myresp.mentions_default.replace(/\&amp;/g, "&"));
 
         document.getElementById("entreprise")       .setAttribute("data-id", myresp.id);
@@ -57989,9 +58078,9 @@ function loadConfigurationDT(response) {
         document.getElementById("tva_default")      .setAttribute("data-id", myresp.id);
         document.getElementById("facture_prefixe")  .setAttribute("data-id", myresp.id);
         // document.getElementById("auto_invoice_number")       .setAttribute("data-id", myresp.id);
-        document.getElementById("currency")       .setAttribute("data-id", myresp.id);
-        document.getElementById("format")       .setAttribute("data-id", myresp.id);
-        document.getElementById("mentions_default")       .setAttribute("data-id", myresp.id);
+        document.getElementById("currency")         .setAttribute("data-id", myresp.id);
+        document.getElementById("format")           .setAttribute("data-id", myresp.id);
+        document.getElementById("mentions_default") .setAttribute("data-id", myresp.id);
     });
 }
 })();

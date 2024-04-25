@@ -1,7 +1,6 @@
 import { showSuccess } from "@nextcloud/dialogs";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest.js";
-
 import { generateUrl } from "@nextcloud/router";
 import { Devis } from "../objects/devis.js";
 import { Client } from "../objects/client.js";
@@ -165,9 +164,14 @@ export function modifyCell(r, positionColumn = -1, data){
  * 
  * @param {*} response 
  */
- export function getCurrency(response) {
-    var myresp = JSON.parse(response)[0];
-    cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+export function getCurrency(response) {
+    try {
+        var myresp = JSON.parse(response)[0];
+        cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+    } catch (error) {
+        cur = new Intl.NumberFormat("en-EN", { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+        console.log(error);
+    }
 }
 
 /**

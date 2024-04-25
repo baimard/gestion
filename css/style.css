@@ -194,3 +194,10 @@
 .statData{
   text-align: right;
 }
+
+.configuration{
+  display:block;
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}

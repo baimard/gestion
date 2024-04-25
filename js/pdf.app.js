@@ -28349,7 +28349,6 @@ function saveNextcloud(myData) {
 
 
 
-
 var baseUrl = (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_5__/* .generateUrl */ .Jv)('/apps/gestion');
 var cur = null;
 
@@ -28509,9 +28508,14 @@ function modifyCell(r, positionColumn = -1, data){
  * 
  * @param {*} response 
  */
- function getCurrency(response) {
-    var myresp = JSON.parse(response)[0];
-    cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+function getCurrency(response) {
+    try {
+        var myresp = JSON.parse(response)[0];
+        cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+    } catch (error) {
+        cur = new Intl.NumberFormat("en-EN", { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+        console.log(error);
+    }
 }
 
 /**

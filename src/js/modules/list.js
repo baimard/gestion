@@ -197,6 +197,11 @@ var currency_list = {
     "ZWL": t('gestion', 'Zimbabwean Dollar'),
 };
 
+/**
+ * DEPRECATED
+ * @param {*} currentFormat 
+ * @returns 
+ */
 export function getFormatList(currentFormat) {
     var list = "";
     var oEntries = Object.entries(format_List);
@@ -211,7 +216,9 @@ export function getFormatList(currentFormat) {
     return list;
 }
 
-
+/**
+ * Deprecated
+ */
 export function getCurrencyList(currentDevise) {
     var list = "";
     var oEntries = Object.entries(currency_list);
@@ -224,6 +231,46 @@ export function getCurrencyList(currentDevise) {
         }
     }
     return list;
+}
+
+
+/**
+ * 
+ * @param {*} currentDevise 
+ * @param {*} selectObject 
+ */
+export function setCurrencyList(currentDevise, selectObject) {
+    var oEntries = Object.entries(currency_list);
+    var oEntriesSort = oEntries.sort((a,b) => a[1].localeCompare(b[1]));
+    for (const [key, value] of oEntriesSort) {
+        var opt = document.createElement('option');
+        opt.value = key;
+        opt.innerHTML = value;
+        if (currentDevise === key) {
+            opt.selected = true;
+        }
+        selectObject.appendChild(opt);
+    }
+}
+
+/**
+ * 
+ * @param {*} currentFormat 
+ * @param {*} selectObject 
+ * @returns 
+ */
+export function setFormatList(currentFormat, selectObject) {
+    var oEntries = Object.entries(format_List);
+    var oEntriesSort = oEntries.sort((a,b) => a[1].localeCompare(b[1]));
+    for (const [key, value] of oEntriesSort) {
+        var opt = document.createElement('option');
+        opt.value = key;
+        opt.innerHTML = value;
+        if (currentFormat === key) {
+            opt.selected = true;
+        }
+        selectObject.appendChild(opt);
+    }
 }
 
 export function getAutoIncrement(activate){

@@ -14040,7 +14040,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.bootstrap-iso {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialicons/v141/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/materialicons/v142/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
 }
 .material-icons {
   font-family: 'Material Icons';
@@ -48474,7 +48474,6 @@ function saveNextcloud(myData) {
 
 
 
-
 var baseUrl = (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_5__/* .generateUrl */ .Jv)('/apps/gestion');
 var cur = null;
 
@@ -48634,9 +48633,14 @@ function modifyCell(r, positionColumn = -1, data){
  * 
  * @param {*} response 
  */
- function getCurrency(response) {
-    var myresp = JSON.parse(response)[0];
-    cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+function getCurrency(response) {
+    try {
+        var myresp = JSON.parse(response)[0];
+        cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+    } catch (error) {
+        cur = new Intl.NumberFormat("en-EN", { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+        console.log(error);
+    }
 }
 
 /**
@@ -67850,7 +67854,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var targetClass = e.target.className;
         var targetId = e.target.id;
         
-        if(targetClass.includes("editableNumber") 
+        if(     targetClass.includes("editableSelect") 
+        ||      targetClass.includes("editableConfiguration")
+        ||      targetClass.includes("editableConfigurationSelect")){
+    // Prevent default behavior
+        } else if(targetClass.includes("editableNumber") 
             || targetClass.includes("editableNumeric")
             || targetClass.includes("editable")){
             e.target.setAttribute('contenteditable', 'true');
@@ -67859,8 +67867,6 @@ document.addEventListener('DOMContentLoaded', function() {
             client/* Client */.K.loadClientList_cid(e);
         } else if(targetClass.includes("loadSelect_listdevis")){
             devis/* Devis */.W.loadDevisList_dnum(e);
-        } else if(targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration")){
-            // Prevent default behavior
         } else if(targetId === "newClient"){
             client/* Client */.K.newClient(new dataTables('.tabledt'));
         } else if(targetId === "newDevis"){
@@ -67877,8 +67883,10 @@ document.addEventListener('DOMContentLoaded', function() {
             var targetClass = e.target.className;
             if(targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")){
                 (0,mainFunction/* updateNumerical */.e$)(e.target);
-            } else if(targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration")){
-                // Prevent default behavior
+            } else if(  targetClass.includes("editableSelect") 
+            ||  targetClass.includes("editableConfiguration")
+            ||  targetClass.includes("editableConfigurationSelect")){
+        // Prevent default behavior
             } else if(targetClass.includes("editable")){
                 (0,ajaxRequest/* updateEditable */.kv)(e.target);
             }
@@ -67889,7 +67897,9 @@ document.addEventListener('DOMContentLoaded', function() {
         var targetClass = e.target.className;
         if(targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")){
             (0,mainFunction/* updateNumerical */.e$)(e.target);
-        } else if(targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration")){
+        } else if(  targetClass.includes("editableSelect") 
+                ||  targetClass.includes("editableConfiguration")
+                ||  targetClass.includes("editableConfigurationSelect")){
             // Prevent default behavior
         } else if(targetClass.includes("editable")){
             (0,ajaxRequest/* updateEditable */.kv)(e.target);
@@ -67909,7 +67919,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var column = event.target.getAttribute('data-column');
             var value = event.target.value;
             var id = event.target.getAttribute('data-id');
-    
+            
             (0,ajaxRequest/* updateDB */.gs)(table, column, value, id);
         }
 

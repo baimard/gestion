@@ -14040,7 +14040,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.bootstrap-iso {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialicons/v141/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/materialicons/v142/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
 }
 .material-icons {
   font-family: 'Material Icons';
@@ -43121,7 +43121,6 @@ class Client {
 
 
 
-
 var mainFunction_baseUrl = (0,router_dist/* generateUrl */.Jv)('/apps/gestion');
 var cur = null;
 
@@ -43281,9 +43280,14 @@ function modifyCell(r, positionColumn = -1, data){
  * 
  * @param {*} response 
  */
- function getCurrency(response) {
-    var myresp = JSON.parse(response)[0];
-    cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+function getCurrency(response) {
+    try {
+        var myresp = JSON.parse(response)[0];
+        cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+    } catch (error) {
+        cur = new Intl.NumberFormat("en-EN", { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+        console.log(error);
+    }
 }
 
 /**
@@ -57581,7 +57585,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var targetClass = e.target.className;
         var targetId = e.target.id;
         
-        if(targetClass.includes("editableNumber") 
+        if(     targetClass.includes("editableSelect") 
+        ||      targetClass.includes("editableConfiguration")
+        ||      targetClass.includes("editableConfigurationSelect")){
+    // Prevent default behavior
+        } else if(targetClass.includes("editableNumber") 
             || targetClass.includes("editableNumeric")
             || targetClass.includes("editable")){
             e.target.setAttribute('contenteditable', 'true');
@@ -57590,8 +57598,6 @@ document.addEventListener('DOMContentLoaded', function() {
             Client.loadClientList_cid(e);
         } else if(targetClass.includes("loadSelect_listdevis")){
             Devis.loadDevisList_dnum(e);
-        } else if(targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration")){
-            // Prevent default behavior
         } else if(targetId === "newClient"){
             Client.newClient(new dataTables('.tabledt'));
         } else if(targetId === "newDevis"){
@@ -57608,8 +57614,10 @@ document.addEventListener('DOMContentLoaded', function() {
             var targetClass = e.target.className;
             if(targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")){
                 updateNumerical(e.target);
-            } else if(targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration")){
-                // Prevent default behavior
+            } else if(  targetClass.includes("editableSelect") 
+            ||  targetClass.includes("editableConfiguration")
+            ||  targetClass.includes("editableConfigurationSelect")){
+        // Prevent default behavior
             } else if(targetClass.includes("editable")){
                 updateEditable(e.target);
             }
@@ -57620,7 +57628,9 @@ document.addEventListener('DOMContentLoaded', function() {
         var targetClass = e.target.className;
         if(targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")){
             updateNumerical(e.target);
-        } else if(targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration")){
+        } else if(  targetClass.includes("editableSelect") 
+                ||  targetClass.includes("editableConfiguration")
+                ||  targetClass.includes("editableConfigurationSelect")){
             // Prevent default behavior
         } else if(targetClass.includes("editable")){
             updateEditable(e.target);
@@ -57640,7 +57650,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var column = event.target.getAttribute('data-column');
             var value = event.target.value;
             var id = event.target.getAttribute('data-id');
-    
+            
             updateDB(table, column, value, id);
         }
 

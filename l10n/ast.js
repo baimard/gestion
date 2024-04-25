@@ -29,6 +29,7 @@ OC.L10N.register(
     "for the coffee ;)" : "pol café ;)",
     "From" : "De",
     "To" : "Pa",
+    "Cc" : "Cc",
     "Subject" : "Asuntu",
     "Body" : "Cuerpu",
     "Send" : "Unviar",

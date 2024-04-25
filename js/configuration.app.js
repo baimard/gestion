@@ -43200,7 +43200,8 @@ function checkSelect(el) {
 
 
 function checkSelectPurJs(el) {
-    el.forEach(element => {
+    console.log(el.options)
+    Array.from(el.options).forEach(element => {
         if (element.value == el.getAttribute("data-current")) {
             element.setAttribute('selected', true);
         }

@@ -186,7 +186,11 @@ class PageController extends Controller {
 	 * TODO a revoir
      */
 	public function config() {
-		$this->myDb->checkConfig($this->session['CurrentCompany']);
+		$res = $this->myDb->checkConfig($this->session['CurrentCompany'], $this->$myID);
+		if($res <1 ){
+			$this->session['CurrentCompany'] = '';
+		}
+		
 		$response = new TemplateResponse(	'gestion', 'configuration', array(	'path' => $this->myID, 
 											'url' => $this->getNavigationLink(),
 											'CompaniesList' => $this->getCompaniesList(),
@@ -241,7 +245,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
      */
 	public function isConfig() {
-		return $this->myDb->isConfig($this->session['CurrentCompany']);
+		return $this->myDb->isConfig($this->session['CurrentCompany'],$this->$myID);
 	}
 
 	/**

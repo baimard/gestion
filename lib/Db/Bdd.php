@@ -168,6 +168,18 @@ class Bdd {
     }
 
     /**
+     * UPDATE
+     */
+    public function gestion_update_configuration($table, $column, $data, $id, $idNextcloud){
+        if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
+            $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ? AND `id_nextcloud` = ?";
+            $this->execSQLNoData($sql, array(htmlentities(rtrim($data)), $id, $idNextcloud));
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * UPDATE CONFIGURATION TABLE
      * TODO Autorisation à faire cette action par l'utilisateur
      */
@@ -197,11 +209,11 @@ class Bdd {
      * TODO id_possesseur à remplacer pour id_nextcloud à changer partout
      */
 
-    public function checkConfig($idNextcloud){
+    public function checkConfig($idConfiguration, $idNextcloud){
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id` = ?";
-        $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
+        $res = json_decode($this->execSQL($sql, array($idConfiguration)))[0]->res;
         if ( $res < 1 ){
-            $sql = "INSERT INTO `".$this->tableprefix."configuration` (`entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_configuration`,`mentions_default`,`tva_default`,`devise`,`facture_prefixe`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?,?);";
+            $sql = "INSERT INTO `".$this->tableprefix."configuration` (`entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`,`facture_prefixe`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?,?);";
             $this->execSQLNoData($sql, array($this->l->t('Your company name'),
                                         $this->l->t('Your company contact last name'),
                                         $this->l->t('Your company contact first name'),
@@ -220,21 +232,20 @@ class Bdd {
         return $res;
     }
 
-    public function isConfig($idNextcloud){
+    public function isConfig($idConfiguration,$idNextcloud){
         $changelog = 9; //+1 if you want changelog appear for everybody one time !
 
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id` = ?";
-        $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
+        $res = json_decode($this->execSQL($sql, array($idConfiguration)))[0]->res;
 
         // Utilisateur jamais utilisé l'application
         if ( $res < 1 ){
             return false;
         }else{
             $sql = "SELECT id as id, changelog as res FROM `".$this->tableprefix."configuration` WHERE `id` = ?";
-            $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
-            $id = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->id;
+            $res = json_decode($this->execSQL($sql, array($idConfiguration)))[0]->res;
             if($res < $changelog){
-                $this->gestion_update("configuration","changelog",$changelog,$id,$idNextcloud);
+                $this->gestion_update_configuration("configuration","changelog",$changelog,$idConfiguration,$idNextcloud);
                 return false;
             }else{
                 return true;

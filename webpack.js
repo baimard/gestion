@@ -1,5 +1,6 @@
 const path = require('path');
-var webpack = require('webpack');
+const webpack = require('webpack');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports =
 [
@@ -23,9 +24,13 @@ module.exports =
       filename: '../js/[name].app.js',
     },
     optimization: {
-      minimize: true
+      minimize: false
     },
     plugins: [
+      new VueLoaderPlugin(),
+      new webpack.DefinePlugin({
+        'process.platform': JSON.stringify('browser') // or 'win32' if you need to simulate Windows
+      }),
       new webpack.ProvidePlugin({
            $: 'jquery',
            jQuery: 'jquery',
@@ -33,8 +38,24 @@ module.exports =
            jquery: 'jquery'
        }),
      ],
+    resolve: {
+      fallback: {
+          "http": false,
+          "https": false,
+          "stream": false,
+          process: require.resolve('process/browser')
+      },
+      alias: {
+        "icons": path.resolve(__dirname, "node_modules/vue-material-design-icons")
+      },
+      extensions: ['.vue', '.js', '.json'] // Assurez-vous d'inclure les extensions existantes
+    },
     module: {
         rules: [
+            {
+              test: /\.vue$/,
+              loader: 'vue-loader'
+            },
             {
               test: /\.less$/,
               use: [

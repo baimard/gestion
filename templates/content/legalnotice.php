@@ -1,12 +1,8 @@
 <div id="contentTable">
-    <div class="breadcrumb" data-html2canvas-ignore>
-        <div class="crumb svg crumbhome">
-            <a href="<?php echo($_['url']['index']); ?>" class="icon-home"></a>
-            <span style="display: none;"></span>
-        </div>
-        <div class="crumb svg crumbhome">
-            <span><?php p($l->t('Legal notice'));?></span></a>
-        </div>
+    <div class="menu-content">
+        <a href="<?php echo($_['url']['index']); ?>"><span class="material-symbols-outlined">home</span></a>
+        <span class="material-symbols-outlined">chevron_right</span>
+        <span><?php p($l->t('Legal notice'));?></span>
     </div>
     <h2><?php p($l->t('Legal notice')); ?></h2>
     <p><?php p($l->t('This section provides information pertaining to the use of this application under the legal framework applicable in various countries.')); ?></p>

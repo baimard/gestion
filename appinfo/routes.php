@@ -16,6 +16,7 @@ return [
        ['name' => 'page#getClientbyiddevis',    'url' => '/clientbyiddevis', 'verb' => 'POST'],
        ['name' => 'page#getConfiguration',      'url' => '/getConfiguration', 'verb' => 'PROPFIND'],
        ['name' => 'page#update',                'url' => '/update', 'verb' => 'POST'],
+       ['name' => 'page#updateConfiguration',   'url' => '/updateConfiguration', 'verb' => 'POST'],
        ['name' => 'page#insertClient',          'url' => '/client/insert', 'verb' => 'POST'],
 
        ['name' => 'page#getDevis',              'url' => '/getDevis', 'verb' => 'PROPFIND'],
@@ -41,7 +42,7 @@ return [
        
        ['name' => 'admin#backup',               'url' => '/backup', 'verb' => 'GET'],
 
-
+       ['name' => 'page#setCurrentCompany',     'url' => '/updateSession', 'verb' => 'POST'],
 
     ]
 ];

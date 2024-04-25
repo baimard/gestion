@@ -1,4 +1,4 @@
-import "@nextcloud/dialogs/dist/index.css";
+// import "@nextcloud/dialogs/dist/style.css";
 import "../css/mycss.less";
 
 import { getAnnualTurnoverPerMonthNoVat} from "./modules/ajaxRequest.js";

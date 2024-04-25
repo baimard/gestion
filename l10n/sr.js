@@ -338,7 +338,7 @@ OC.L10N.register(
     "VAT Rate" : "Стопа ПДВ",
     "Total VAT" : "Укупни ПДВ",
     "Total Price" : "Укупна цена",
-    "Please set in global configuration" : "Молимо васд да поставите у глобалним подешавањима",
+    "Please set in global configuration" : "Молимо вас да поставите у глобалним подешавањима",
     "Invoice" : "Рачун",
     "Add invoice" : "Додај фактуру",
     "Invoice number" : "Број фактуре",

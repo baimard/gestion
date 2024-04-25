@@ -48,6 +48,7 @@ OC.L10N.register(
     "Actions" : "アクション",
     "Save in Nextcloud" : "Nextcloudで保存",
     "Send by email" : "メールで送信",
+    "Invoice" : "請求書",
     "Legal notice" : "法的通知",
     "Year" : "年",
     "January" : "1月",
@@ -64,6 +65,7 @@ OC.L10N.register(
     "December" : "12月",
     "Total" : "合計",
     "Manage" : "管理",
+    "Customers" : "顧客",
     "Information" : "情報",
     "Save folder" : "フォルダーを保存",
     "About" : "詳細"

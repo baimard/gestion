@@ -29,8 +29,7 @@ OC.L10N.register(
     "Body" : "Body",
     "Send" : "Send",
     "Configuration" : "Configuration",
-    "Need help?" : "Need help?",
-    "Loading …" : "Loading …",
+    "Add" : "Add",
     "ID" : "ID",
     "Version" : "Version",
     "Status" : "Status",
@@ -50,6 +49,8 @@ OC.L10N.register(
     "October" : "October",
     "November" : "November",
     "December" : "December",
+    "Loading …" : "Loading …",
+    "Mail" : "წერილი",
     "About" : "About"
 },
 "nplurals=2; plural=(n!=1);");

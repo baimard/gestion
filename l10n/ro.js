@@ -29,8 +29,7 @@ OC.L10N.register(
     "Body" : "Corp",
     "Send" : "Trimite",
     "Configuration" : "Configurație",
-    "Need help?" : "Ai nevoie de ajutor?",
-    "Loading …" : "Se încarcă…",
+    "Add" : "Adaugă",
     "ID" : "ID",
     "Version" : "Versiune",
     "Status" : "Stare",
@@ -50,7 +49,8 @@ OC.L10N.register(
     "October" : "Octombrie",
     "November" : "Noiembrie",
     "December" : "Decembrie",
-    "Information" : "Informații",
+    "Loading …" : "Se încarcă…",
+    "Mail" : "Mail",
     "About" : "Despre"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");

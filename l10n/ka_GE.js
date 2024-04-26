@@ -23,7 +23,6 @@ OC.L10N.register(
     "Subject" : "სათაური",
     "Send" : "გაგზავნა",
     "Configuration" : "კონფიგურაცია",
-    "Need help?" : "გესაჭიროებათ დახმარება?",
     "ID" : "ID",
     "Version" : "ვერსია",
     "Status" : "სტატუსი",
@@ -41,8 +40,7 @@ OC.L10N.register(
     "November" : "ნოემბერი",
     "December" : "დეკემბერი",
     "Total" : "სულ",
-    "Manage" : "მენეჯმენტი",
-    "Information" : "ინფორმაცია",
+    "Mail" : "ფოსტა",
     "About" : "შესახებ"
 },
 "nplurals=2; plural=(n!=1);");

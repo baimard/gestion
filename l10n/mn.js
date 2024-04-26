@@ -15,7 +15,7 @@ OC.L10N.register(
     "Open" : "Онгойлгох",
     "Subject" : "Сэдэв",
     "Send" : "илгээх",
-    "Loading …" : "Уншиж байна...",
+    "Add" : "Нэмэх",
     "ID" : "ID",
     "Version" : "төрөл",
     "Status" : "төлөв",
@@ -23,8 +23,8 @@ OC.L10N.register(
     "June" : "Зургадугаар сар",
     "November" : "Арван нэгдүгээр сар",
     "Total" : "Нийт",
-    "Manage" : "Зохицуулах",
-    "Information" : "Мэдээлэл",
+    "Loading …" : "Уншиж байна...",
+    "Mail" : "Цахим шуудан",
     "About" : "Тухай"
 },
 "nplurals=2; plural=(n != 1);");

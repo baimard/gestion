@@ -35,8 +35,7 @@
     "Body" : "Sisältö",
     "Send" : "Lähetä",
     "Configuration" : "Asetukset",
-    "Need help?" : "Tarvitsetko apua?",
-    "Loading …" : "Ladataan…",
+    "Add" : "Lisää",
     "ID" : "ID",
     "Version" : "Versio",
     "Status" : "Tila",
@@ -72,9 +71,10 @@
     "November" : "marraskuu",
     "December" : "joulukuu",
     "Total" : "Yhteensä",
-    "Manage" : "Hallitse",
+    "Loading …" : "Ladataan…",
+    "Mail" : "Sähköposti",
     "Customers" : "Asiakkaat",
-    "Information" : "Tiedot",
+    "INFORMATION" : "TIEDOT",
     "Save folder" : "Tallenna kansio",
     "About" : "Tietoja"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

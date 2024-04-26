@@ -33,8 +33,7 @@ OC.L10N.register(
     "Body" : "Textyta",
     "Send" : "Skicka",
     "Configuration" : "Inställningar",
-    "Need help?" : "Behövs hjälp?",
-    "Loading …" : "Läser in …",
+    "Add" : "Lägg till",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Version",
@@ -58,9 +57,10 @@ OC.L10N.register(
     "November" : "November",
     "December" : "December",
     "Total" : "Totalt",
-    "Manage" : "Hantera",
+    "Loading …" : "Läser in …",
+    "Mail" : "E-post",
     "Customers" : "Kunder",
-    "Information" : "Information",
+    "INFORMATION" : "INFORMATION",
     "About" : "Om"
 },
 "nplurals=2; plural=(n != 1);");

@@ -24,7 +24,6 @@
     "Subject" : "Teema",
     "Send" : "Saada",
     "Configuration" : "Seadistamine",
-    "Need help?" : "Vajad abi?",
     "ID" : "ID",
     "Version" : "Versioon",
     "Status" : "Staatus",
@@ -43,7 +42,7 @@
     "November" : "November",
     "December" : "Detsember",
     "Total" : "Kokku",
-    "Information" : "Informatsioon",
+    "Mail" : "Kirjad",
     "About" : "Info"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

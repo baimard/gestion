@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-04-25 01:54+0000\n"
+"POT-Creation-Date: 2024-04-26 01:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,110 +17,113 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /app/lib/Db/Bdd.php:86 /app/templates/content/index.php:22
+#: /app/lib/Db/Bdd.php:91 /app/templates/content/index.php:15
+#: /app/templates/modal/configuration_modal.php:19
 msgid "Last name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:87 /app/templates/content/index.php:21
+#: /app/lib/Db/Bdd.php:92 /app/templates/content/index.php:14
+#: /app/templates/modal/configuration_modal.php:13
 msgid "First name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:88
+#: /app/lib/Db/Bdd.php:93
 msgid "Limited company"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:89 /app/templates/content/index.php:20
+#: /app/lib/Db/Bdd.php:94 /app/templates/content/index.php:13
 msgid "Company"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:90 /app/templates/content/index.php:24
+#: /app/lib/Db/Bdd.php:95 /app/templates/content/index.php:17
 msgid "Phone number"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:91 /app/templates/content/index.php:25
+#: /app/lib/Db/Bdd.php:96 /app/templates/content/index.php:18
 msgid "Email"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:92 /app/templates/content/index.php:26
+#: /app/lib/Db/Bdd.php:97 /app/templates/content/index.php:19
+#: /app/templates/modal/configuration_modal.php:25
 msgid "Address"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:115 /app/templates/content/devis.php:21
+#: /app/lib/Db/Bdd.php:120 /app/templates/content/devis.php:14
 msgid "Quote number"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:115
+#: /app/lib/Db/Bdd.php:120
 msgid "New"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:115 /app/templates/content/devisshow.php:60
+#: /app/lib/Db/Bdd.php:120 /app/templates/content/devisshow.php:60
 #: /app/templates/content/factureshow.php:62
 msgid "Comment"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:130
+#: /app/lib/Db/Bdd.php:135
 msgid "Text free"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:130 /app/templates/content/facture.php:26
+#: /app/lib/Db/Bdd.php:135 /app/templates/content/facture.php:16
 #: /app/templates/content/factureshow.php:44
 msgid "Means of payment"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:137 /app/templates/content/devisshow.php:58
+#: /app/lib/Db/Bdd.php:142 /app/templates/content/devisshow.php:58
 #: /app/templates/content/factureshow.php:60
-#: /app/templates/content/produit.php:20
+#: /app/templates/content/produit.php:13
 msgid "Reference"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:137 /app/templates/content/devisshow.php:59
+#: /app/lib/Db/Bdd.php:142 /app/templates/content/devisshow.php:59
 #: /app/templates/content/factureshow.php:61
-#: /app/templates/content/produit.php:21
+#: /app/templates/content/produit.php:14
 msgid "Designation"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:186
+#: /app/lib/Db/Bdd.php:217
 msgid "Your company name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:187 /app/templates/content/changelog.php:62
+#: /app/lib/Db/Bdd.php:218 /app/templates/content/changelog.php:62
 msgid "Your company contact last name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:188 /app/templates/content/changelog.php:60
+#: /app/lib/Db/Bdd.php:219 /app/templates/content/changelog.php:60
 msgid "Your company contact first name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:189 /app/templates/content/changelog.php:64
+#: /app/lib/Db/Bdd.php:220 /app/templates/content/changelog.php:64
 msgid "Company legal information line one"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:190 /app/templates/content/changelog.php:66
+#: /app/lib/Db/Bdd.php:221 /app/templates/content/changelog.php:66
 msgid "Company legal information line two"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:191 /app/templates/content/changelog.php:72
+#: /app/lib/Db/Bdd.php:222 /app/templates/content/changelog.php:72
 msgid "Your company email"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:192 /app/templates/content/changelog.php:70
+#: /app/lib/Db/Bdd.php:223 /app/templates/content/changelog.php:70
 msgid "Your company phone"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:193 /app/templates/content/changelog.php:68
+#: /app/lib/Db/Bdd.php:224 /app/templates/content/changelog.php:68
 msgid "Your company address"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:195
+#: /app/lib/Db/Bdd.php:226
 msgid ""
 "All Legal mentions, disclaimer or everything you want to place in the footer."
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:196
+#: /app/lib/Db/Bdd.php:227
 msgid "EUR"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:197 /app/src/js/pdf.js:67
+#: /app/lib/Db/Bdd.php:228 /app/src/js/pdf.js:67
 msgid "INVOICE"
 msgstr ""
 
@@ -162,41 +165,44 @@ msgstr ""
 msgid "Choose work folder"
 msgstr ""
 
-#: /app/src/js/listener/main_listener.js:183
+#: /app/src/js/listener/main_listener.js:116
 msgid "Please create a new product"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:27 /app/src/js/modules/ajaxRequest.js:52
+#: /app/src/js/modules/ajaxRequest.js:27 /app/src/js/modules/ajaxRequest.js:56
+#: /app/src/js/modules/ajaxRequest.js:90 /app/src/js/modules/ajaxRequest.js:125
 msgid "Modification saved"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:29
+#: /app/src/js/modules/ajaxRequest.js:29 /app/src/js/modules/ajaxRequest.js:59
+#: /app/src/js/modules/ajaxRequest.js:65 /app/src/js/modules/ajaxRequest.js:94
+#: /app/src/js/modules/ajaxRequest.js:100
 msgid "There is an error with the format, please check the documentation"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:44
+#: /app/src/js/modules/ajaxRequest.js:117
 msgid "Are you sure you want to delete?"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:57
+#: /app/src/js/modules/ajaxRequest.js:130
 msgid "Nothing changed"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:177 /app/src/js/objects/client.js:183
+#: /app/src/js/modules/ajaxRequest.js:261 /app/src/js/objects/client.js:183
 #: /app/src/js/objects/devis.js:116
 msgid "Cancel"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:239
-#: /app/src/js/modules/ajaxRequest.js:268
+#: /app/src/js/modules/ajaxRequest.js:323
+#: /app/src/js/modules/ajaxRequest.js:352
 msgid "Save in"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:241
+#: /app/src/js/modules/ajaxRequest.js:325
 msgid "There is an error"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:268
+#: /app/src/js/modules/ajaxRequest.js:352
 msgid "(do not forget to show hidden folders)"
 msgstr ""
 
@@ -932,75 +938,75 @@ msgstr ""
 msgid "Zimbabwean Dollar"
 msgstr ""
 
-#: /app/src/js/modules/list.js:231 /app/src/js/modules/list.js:233
+#: /app/src/js/modules/list.js:278 /app/src/js/modules/list.js:280
 msgid "Disable"
 msgstr ""
 
-#: /app/src/js/modules/list.js:231 /app/src/js/modules/list.js:233
+#: /app/src/js/modules/list.js:278 /app/src/js/modules/list.js:280
 msgid "Enable"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:20
+#: /app/src/js/modules/mainFunction.js:19
 msgid "Search"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:21
+#: /app/src/js/modules/mainFunction.js:20
 msgid "No data available in table"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:22
+#: /app/src/js/modules/mainFunction.js:21
 msgid "Showing {start} to {end} of {total} entries"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:23
+#: /app/src/js/modules/mainFunction.js:22
 msgid "Showing 0 to 0 of 0 entries"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:24
+#: /app/src/js/modules/mainFunction.js:23
 msgid "Loading records …"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:25
+#: /app/src/js/modules/mainFunction.js:24
 msgid "Processing …"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:26
+#: /app/src/js/modules/mainFunction.js:25
 msgid "{max} entries filtered"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:27
+#: /app/src/js/modules/mainFunction.js:26
 msgid "Show {menu} entries"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:28
+#: /app/src/js/modules/mainFunction.js:27
 msgid "No corresponding entry"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:30
+#: /app/src/js/modules/mainFunction.js:29
 msgid "First"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:31
+#: /app/src/js/modules/mainFunction.js:30
 msgid "Last"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:32
+#: /app/src/js/modules/mainFunction.js:31
 msgid "Next"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:33
+#: /app/src/js/modules/mainFunction.js:32
 msgid "Previous"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:55
+#: /app/src/js/modules/mainFunction.js:54
 msgid "Editable (Click to change)"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:62
+#: /app/src/js/modules/mainFunction.js:61
 msgid "Your global Nextcloud mail server need to be configured"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:69
+#: /app/src/js/modules/mainFunction.js:68
 msgid "Added!"
 msgstr ""
 
@@ -1035,7 +1041,7 @@ msgid ""
 msgstr ""
 
 #: /app/templates/content/changelog.php:5
-#: /app/templates/navigation/index.php:47
+#: /app/templates/navigation/index.php:62
 msgid "My company"
 msgstr ""
 
@@ -1182,6 +1188,7 @@ msgid "Configuration help"
 msgstr ""
 
 #: /app/templates/content/changelog.php:58
+#: /app/templates/modal/configuration_modal.php:7
 msgid "Company name"
 msgstr ""
 
@@ -1229,7 +1236,7 @@ msgid "Your company VAT rate"
 msgstr ""
 
 #: /app/templates/content/changelog.php:75
-#: /app/templates/content/configuration.php:44
+#: /app/templates/modal/configuration_modal.php:54
 msgid ""
 "Global Default VAT rate apply to your Quote/Invoice (globally), to change "
 "it, just insert VAT rate amount without the percent sign."
@@ -1263,122 +1270,55 @@ msgid ""
 "information."
 msgstr ""
 
-#: /app/templates/content/configuration.php:8
+#: /app/templates/content/configuration.php:5
 msgid "Configuration"
 msgstr ""
 
-#: /app/templates/content/configuration.php:11
-msgid "Click to edit"
+#: /app/templates/content/configuration.php:7
+msgid "Create new company"
 msgstr ""
 
-#: /app/templates/content/configuration.php:11
-msgid "Need help?"
+#: /app/templates/content/configuration.php:15
+msgid "Modify current company information"
 msgstr ""
 
-#: /app/templates/content/configuration.php:12
-msgid ""
-"Name of the company that will appear in the footer of your quote and "
-"invoice. For example, you can set: \"Company: Cybercorp\" or just \"Cybercorp"
-"\"."
+#: /app/templates/content/configuration.php:23
+msgid "Add"
 msgstr ""
 
-#: /app/templates/content/configuration.php:14
-#: /app/templates/content/configuration.php:18
-#: /app/templates/content/configuration.php:22
-#: /app/templates/content/configuration.php:26
-#: /app/templates/content/configuration.php:30
-#: /app/templates/content/configuration.php:34
-#: /app/templates/content/configuration.php:38
-#: /app/templates/content/configuration.php:42
-#: /app/templates/content/configuration.php:46
-#: /app/templates/content/configuration.php:50
-#: /app/templates/content/configuration.php:62
-msgid "Loading …"
-msgstr ""
-
-#: /app/templates/content/configuration.php:16
-msgid "First name appears in the Quote/Invoice header as a contact"
-msgstr ""
-
-#: /app/templates/content/configuration.php:20
-msgid "Last name appears in the Quote/Invoice header as a contact"
-msgstr ""
-
-#: /app/templates/content/configuration.php:24
-msgid "Show company address in the Quote/Invoice header"
-msgstr ""
-
-#: /app/templates/content/configuration.php:28
-msgid ""
-"First line in the footer of your Quote/Invoice with all legal information "
-"you need"
-msgstr ""
-
-#: /app/templates/content/configuration.php:32
-msgid ""
-"Second line in the footer of your Quote/Invoice with all legal information "
-"you need"
-msgstr ""
-
-#: /app/templates/content/configuration.php:36
-msgid "Show phone number in the Quote/Invoice header"
-msgstr ""
-
-#: /app/templates/content/configuration.php:40
-msgid "E-mail address which appears in the header of the Quote/Invoice"
-msgstr ""
-
-#: /app/templates/content/configuration.php:48
-msgid "Set prefix for generated invoice"
-msgstr ""
-
-#: /app/templates/content/configuration.php:52
-msgid "Global currency for the application"
-msgstr ""
-
-#: /app/templates/content/configuration.php:56
-msgid "Global monetary format for the application"
-msgstr ""
-
-#: /app/templates/content/configuration.php:60
-msgid ""
-"Legal disclaimer/mentions you need in your footer - before company "
-"information"
-msgstr ""
-
-#: /app/templates/content/devis.php:8
+#: /app/templates/content/devis.php:5
 msgid "Quote"
 msgstr ""
 
-#: /app/templates/content/devis.php:12
+#: /app/templates/content/devis.php:7
 msgid "Add quote"
 msgstr ""
 
-#: /app/templates/content/devis.php:19 /app/templates/content/facture.php:22
-#: /app/templates/content/index.php:19 /app/templates/content/produit.php:19
+#: /app/templates/content/devis.php:12 /app/templates/content/facture.php:12
+#: /app/templates/content/index.php:12 /app/templates/content/produit.php:12
 msgid "ID"
 msgstr ""
 
-#: /app/templates/content/devis.php:20
+#: /app/templates/content/devis.php:13
 msgid "Quote date"
 msgstr ""
 
-#: /app/templates/content/devis.php:22
+#: /app/templates/content/devis.php:15
 msgid "Customer quote"
 msgstr ""
 
-#: /app/templates/content/devis.php:23 /app/templates/content/devisshow.php:4
-#: /app/templates/content/facture.php:28
+#: /app/templates/content/devis.php:16 /app/templates/content/devisshow.php:4
+#: /app/templates/content/facture.php:18
 #: /app/templates/content/factureshow.php:4
 msgid "Version"
 msgstr ""
 
-#: /app/templates/content/devis.php:24 /app/templates/content/facture.php:29
+#: /app/templates/content/devis.php:17 /app/templates/content/facture.php:19
 msgid "Status"
 msgstr ""
 
-#: /app/templates/content/devis.php:25 /app/templates/content/facture.php:30
-#: /app/templates/content/index.php:27 /app/templates/content/produit.php:23
+#: /app/templates/content/devis.php:18 /app/templates/content/facture.php:20
+#: /app/templates/content/index.php:20 /app/templates/content/produit.php:16
 msgid "Actions"
 msgstr ""
 
@@ -1429,7 +1369,7 @@ msgstr ""
 
 #: /app/templates/content/devisshow.php:62
 #: /app/templates/content/factureshow.php:64
-#: /app/templates/content/produit.php:22
+#: /app/templates/content/produit.php:15
 msgid "Unit price without VAT"
 msgstr ""
 
@@ -1440,8 +1380,7 @@ msgstr ""
 msgid "Total without VAT"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:69
-#: /app/templates/content/produit.php:12
+#: /app/templates/content/devisshow.php:69 /app/templates/content/produit.php:7
 msgid "Add product"
 msgstr ""
 
@@ -1475,28 +1414,28 @@ msgstr ""
 msgid "Please set in global configuration"
 msgstr ""
 
-#: /app/templates/content/facture.php:8
+#: /app/templates/content/facture.php:5
 msgid "Invoice"
 msgstr ""
 
-#: /app/templates/content/facture.php:12
+#: /app/templates/content/facture.php:7
 msgid "Add invoice"
 msgstr ""
 
-#: /app/templates/content/facture.php:23
+#: /app/templates/content/facture.php:13
 msgid "Invoice number"
 msgstr ""
 
-#: /app/templates/content/facture.php:24
+#: /app/templates/content/facture.php:14
 #: /app/templates/content/factureshow.php:43
 msgid "Date of service"
 msgstr ""
 
-#: /app/templates/content/facture.php:25
+#: /app/templates/content/facture.php:15
 msgid "Payment date"
 msgstr ""
 
-#: /app/templates/content/facture.php:27
+#: /app/templates/content/facture.php:17
 #: /app/templates/content/factureshow.php:44
 msgid "Associated quote"
 msgstr ""
@@ -1509,136 +1448,243 @@ msgstr ""
 msgid "Settlement date"
 msgstr ""
 
-#: /app/templates/content/index.php:8
+#: /app/templates/content/index.php:5
 msgid "Customer"
 msgstr ""
 
-#: /app/templates/content/index.php:12
+#: /app/templates/content/index.php:7
 msgid "Add customer"
 msgstr ""
 
-#: /app/templates/content/index.php:23
+#: /app/templates/content/index.php:16
 msgid "Legal information"
 msgstr ""
 
-#: /app/templates/content/legalnotice.php:8
-#: /app/templates/content/legalnotice.php:11
-#: /app/templates/navigation/index.php:39
+#: /app/templates/content/legalnotice.php:5
+#: /app/templates/content/legalnotice.php:7
+#: /app/templates/navigation/index.php:53
 msgid "Legal notice"
 msgstr ""
 
-#: /app/templates/content/legalnotice.php:12
+#: /app/templates/content/legalnotice.php:8
 msgid ""
 "This section provides information pertaining to the use of this application "
 "under the legal framework applicable in various countries."
 msgstr ""
 
-#: /app/templates/content/legalnotice.php:13
+#: /app/templates/content/legalnotice.php:9
 msgid "If you want to contribute to this section just contact me by mail"
 msgstr ""
 
-#: /app/templates/content/produit.php:8
+#: /app/templates/content/produit.php:5
 msgid "Product"
 msgstr ""
 
-#: /app/templates/content/statistique.php:8
-#: /app/templates/navigation/index.php:38
+#: /app/templates/content/statistique.php:5
+#: /app/templates/navigation/index.php:52
 msgid "Statistics"
 msgstr ""
 
-#: /app/templates/content/statistique.php:11
+#: /app/templates/content/statistique.php:7
 msgid "Monthly turnover without VAT"
 msgstr ""
 
-#: /app/templates/content/statistique.php:15
+#: /app/templates/content/statistique.php:11
 msgid "Year"
 msgstr ""
 
-#: /app/templates/content/statistique.php:16
+#: /app/templates/content/statistique.php:12
 msgid "January"
 msgstr ""
 
-#: /app/templates/content/statistique.php:17
+#: /app/templates/content/statistique.php:13
 msgid "February"
 msgstr ""
 
-#: /app/templates/content/statistique.php:18
+#: /app/templates/content/statistique.php:14
 msgid "March"
 msgstr ""
 
-#: /app/templates/content/statistique.php:19
+#: /app/templates/content/statistique.php:15
 msgid "April"
 msgstr ""
 
-#: /app/templates/content/statistique.php:20
+#: /app/templates/content/statistique.php:16
 msgid "May"
 msgstr ""
 
-#: /app/templates/content/statistique.php:21
+#: /app/templates/content/statistique.php:17
 msgid "June"
 msgstr ""
 
-#: /app/templates/content/statistique.php:22
+#: /app/templates/content/statistique.php:18
 msgid "July"
 msgstr ""
 
-#: /app/templates/content/statistique.php:23
+#: /app/templates/content/statistique.php:19
 msgid "August"
 msgstr ""
 
-#: /app/templates/content/statistique.php:24
+#: /app/templates/content/statistique.php:20
 msgid "September"
 msgstr ""
 
-#: /app/templates/content/statistique.php:25
+#: /app/templates/content/statistique.php:21
 msgid "October"
 msgstr ""
 
-#: /app/templates/content/statistique.php:26
+#: /app/templates/content/statistique.php:22
 msgid "November"
 msgstr ""
 
-#: /app/templates/content/statistique.php:27
+#: /app/templates/content/statistique.php:23
 msgid "December"
 msgstr ""
 
-#: /app/templates/content/statistique.php:28
+#: /app/templates/content/statistique.php:24
 msgid "Total"
 msgstr ""
 
-#: /app/templates/navigation/index.php:2
-msgid "Manage"
+#: /app/templates/modal/configuration_modal.php:6
+msgid ""
+"Name of the company that will appear in the footer of your quote and "
+"invoice. For example, you can set: \"Company: Cybercorp\" or just \"Cybercorp"
+"\"."
 msgstr ""
 
-#: /app/templates/navigation/index.php:5
+#: /app/templates/modal/configuration_modal.php:8
+#: /app/templates/modal/configuration_modal.php:14
+#: /app/templates/modal/configuration_modal.php:20
+#: /app/templates/modal/configuration_modal.php:26
+#: /app/templates/modal/configuration_modal.php:32
+#: /app/templates/modal/configuration_modal.php:38
+#: /app/templates/modal/configuration_modal.php:44
+#: /app/templates/modal/configuration_modal.php:50
+#: /app/templates/modal/configuration_modal.php:56
+#: /app/templates/modal/configuration_modal.php:62
+#: /app/templates/modal/configuration_modal.php:80
+msgid "Loading …"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:12
+msgid "First name appears in the Quote/Invoice header as a contact"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:18
+msgid "Last name appears in the Quote/Invoice header as a contact"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:24
+msgid "Show company address in the Quote/Invoice header"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:30
+msgid ""
+"First line in the footer of your Quote/Invoice with all legal information "
+"you need"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:31
+msgid "Legal One"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:36
+msgid ""
+"Second line in the footer of your Quote/Invoice with all legal information "
+"you need"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:37
+msgid "Legal Two"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:42
+msgid "Show phone number in the Quote/Invoice header"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:43
+msgid "Cellphone"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:48
+msgid "E-mail address which appears in the header of the Quote/Invoice"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:49
+msgid "Mail"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:55
+msgid "TVA Default"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:60
+msgid "Set prefix for generated invoice"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:61
+msgid "Facture Prefixe"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:66
+msgid "Global currency for the application"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:67
+msgid "Currency Select"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:72
+msgid "Global monetary format for the application"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:73
+msgid "Format Select"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:78
+msgid ""
+"Legal disclaimer/mentions you need in your footer - before company "
+"information"
+msgstr ""
+
+#: /app/templates/modal/configuration_modal.php:79
+msgid "Mentions Default"
+msgstr ""
+
+#: /app/templates/navigation/index.php:2
+msgid "COMPANY"
+msgstr ""
+
+#: /app/templates/navigation/index.php:17
 msgid "Customers"
 msgstr ""
 
-#: /app/templates/navigation/index.php:12
+#: /app/templates/navigation/index.php:25
 msgid "Quotes"
 msgstr ""
 
-#: /app/templates/navigation/index.php:19
+#: /app/templates/navigation/index.php:33
 msgid "Invoices"
 msgstr ""
 
-#: /app/templates/navigation/index.php:26
+#: /app/templates/navigation/index.php:41
 msgid "Products"
 msgstr ""
 
-#: /app/templates/navigation/index.php:35
-msgid "Information"
+#: /app/templates/navigation/index.php:49
+msgid "INFORMATION"
 msgstr ""
 
-#: /app/templates/navigation/index.php:43
+#: /app/templates/navigation/index.php:56
 msgid "Save folder"
 msgstr ""
 
-#: /app/templates/navigation/index.php:44 /app/templates/settings/index.php:11
+#: /app/templates/navigation/index.php:58 /app/templates/settings/index.php:11
 msgid "Please choose a folder"
 msgstr ""
 
-#: /app/templates/navigation/index.php:46
+#: /app/templates/navigation/index.php:61
 msgid "About"
 msgstr ""
 

@@ -29,8 +29,7 @@ OC.L10N.register(
     "Body" : "Corpo",
     "Send" : "Enviar",
     "Configuration" : "Configuração",
-    "Need help?" : "Precisa de ajuda?",
-    "Loading …" : "A carregar...",
+    "Add" : "Adicionar",
     "ID" : "ID",
     "Version" : "Versão",
     "Status" : "Estado",
@@ -50,8 +49,8 @@ OC.L10N.register(
     "November" : "Novembro",
     "December" : "Dezembro",
     "Total" : "Total",
-    "Manage" : "Gerir",
-    "Information" : "Informação",
+    "Loading …" : "A carregar...",
+    "Mail" : "Correio",
     "About" : "Sobre"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

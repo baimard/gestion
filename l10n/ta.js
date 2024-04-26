@@ -14,6 +14,7 @@ OC.L10N.register(
     "Previous" : "முன்தைய",
     "Documentation" : "ஆவணமாக்கல்",
     "Configuration" : "தகவமைப்பு",
+    "Add" : "சேர்க்க",
     "Actions" : "செயல்கள்",
     "January" : "தை",
     "February" : "மாசி",

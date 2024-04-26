@@ -25,7 +25,7 @@ OC.L10N.register(
     "Subject" : "Asunto",
     "Send" : "Enviar",
     "Configuration" : "Configuración",
-    "Need help?" : "¿Necesita ayuda?",
+    "Add" : "Agregar",
     "ID" : "ID",
     "Version" : "Versión",
     "Status" : "Estatus",
@@ -45,8 +45,6 @@ OC.L10N.register(
     "November" : "Noviembre",
     "December" : "Diciembre",
     "Total" : "Total",
-    "Manage" : "Administrar",
-    "Information" : "Información",
     "About" : "Acerca de"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

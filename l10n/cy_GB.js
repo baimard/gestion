@@ -21,7 +21,6 @@ OC.L10N.register(
     "Releases" : "Ryddhadau",
     "Subject" : "Pwnc",
     "Send" : "Anfon",
-    "Loading …" : "Yn llwytho …",
     "ID" : "ID",
     "Version" : "Fersiwn",
     "Status" : "Statws",
@@ -40,6 +39,7 @@ OC.L10N.register(
     "October" : "Hydref",
     "November" : "Tachwedd",
     "December" : "Rhagfyr",
+    "Loading …" : "Yn llwytho …",
     "About" : "Ynghylch"
 },
 "nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3;");

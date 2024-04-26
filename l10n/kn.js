@@ -25,6 +25,7 @@ OC.L10N.register(
     "September" : "﻿ಸೆಪ್ಟೆಂಬರ್",
     "October" : "﻿ಅಕ್ಟೋಬರ್",
     "November" : "﻿ನವೆಂಬರ್",
-    "December" : "﻿ಡಿಸೆಂಬರ್"
+    "December" : "﻿ಡಿಸೆಂಬರ್",
+    "Mail" : "ಅಂಚೆ"
 },
 "nplurals=2; plural=(n > 1);");

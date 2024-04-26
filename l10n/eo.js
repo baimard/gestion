@@ -27,8 +27,6 @@ OC.L10N.register(
     "Subject" : "Temo",
     "Send" : "Sendi",
     "Configuration" : "Agordo",
-    "Need help?" : "Ĉu necesas helpo?",
-    "Loading …" : "Ŝargas …",
     "ID" : "Identigilo",
     "Version" : "Versio",
     "Status" : "Stato",
@@ -47,7 +45,7 @@ OC.L10N.register(
     "November" : "Novembro",
     "December" : "Decembro",
     "Total" : "Sumo",
-    "Manage" : "Administri",
+    "Loading …" : "Ŝargas …",
     "About" : "Pri"
 },
 "nplurals=2; plural=(n != 1);");

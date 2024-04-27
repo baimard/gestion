@@ -29,6 +29,7 @@
     "Body" : "Krop",
     "Send" : "Send",
     "Configuration" : "sætning",
+    "Add" : "Tilføj",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Version",
@@ -51,6 +52,7 @@
     "December" : "December",
     "Total" : "Total",
     "Loading …" : "Loading …",
+    "Mail" : "Mail",
     "Customers" : "Kunder",
     "About" : "Om"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

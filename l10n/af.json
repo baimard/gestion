@@ -23,6 +23,7 @@
     "To" : "Aan",
     "Subject" : "Onderwerp",
     "Send" : "Stuur",
+    "Add" : "Voeg toe",
     "ID" : "ID",
     "Version" : "Weergawe",
     "Status" : "Status",
@@ -30,6 +31,7 @@
     "Legal notice" : "Regskennisgewing",
     "Total" : "Totaal",
     "Loading …" : "Laai …",
+    "Mail" : "Pos",
     "About" : "Oor"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

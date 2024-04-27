@@ -31,6 +31,7 @@ OC.L10N.register(
     "Body" : "Krop",
     "Send" : "Send",
     "Configuration" : "sætning",
+    "Add" : "Tilføj",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Version",
@@ -53,6 +54,7 @@ OC.L10N.register(
     "December" : "December",
     "Total" : "Total",
     "Loading …" : "Loading …",
+    "Mail" : "Mail",
     "Customers" : "Kunder",
     "About" : "Om"
 },

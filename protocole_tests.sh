@@ -10,7 +10,7 @@ sudo docker run -d --rm --network next --name database -p 3306:3306 -e MARIADB_D
 sleep 5
 
 echo "Start nextcloud"
-sudo docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:28-apache
+sudo docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:29-apache
 
 echo "Installation"
 sudo docker exec -it nextcloud bash -c "apt update ; apt install -y git make nodejs npm firefox-esr unzip wget"

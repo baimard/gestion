@@ -7,7 +7,7 @@ import DataTable from "datatables.net";
 import { globalConfiguration, optionDatatable } from "./modules/mainFunction.js";
 import { Client } from "./objects/client.js";
 
-window.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     globalConfiguration();
     Client.loadClientDT(new DataTable(".tabledt",optionDatatable));
 });

@@ -68,6 +68,47 @@ export function updateDBConfiguration(table, column, data, id) {
     xhr.send(JSON.stringify(myData));
 }
 
+/**
+ * Create a new company
+ */
+export function createCompany() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('PUT',baseUrl +  '/createCompany', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader("requesttoken", oc_requesttoken);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            showSuccess(t('gestion', 'New company created'));
+            location.reload();
+        } else {
+            showError(t('gestion', 'There is an error.'));
+        }
+    };
+    xhr.send();
+}
+
+/**
+ * Delete a company
+ */
+export function deleteCompany() {
+    if(window.confirm(t('gestion','Are you sure you want to delete? (All data will be lost)'))){
+        var xhr = new XMLHttpRequest();
+        xhr.open('DELETE', baseUrl + '/deleteCompany', true); // false for synchronous request
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader("requesttoken", oc_requesttoken);
+        xhr.onreadystatechange = function (value) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // Request successful
+                showSuccess(t('gestion', 'Company deleted'));
+                location.reload();
+            } else {
+                showError(t('gestion', 'There is an error.'));
+                console.log(value);
+            }
+        };
+        xhr.send();
+    }
+}
 
 /**
  * Update session var
@@ -78,9 +119,9 @@ export function updateCurrentCompany(companyID) {
     var myData = {
         companyID: companyID
     };
-
+    
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', baseUrl + '/updateSession', false); // false for synchronous request
+    xhr.open('POST', baseUrl + '/updateSession', true); // false for synchronous request
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader("requesttoken", oc_requesttoken);
 
@@ -172,6 +213,7 @@ export function configuration(f1) {
  * 
  */
 export function isconfig() {
+    console.log("isconfig");
     $.ajax({
         url: baseUrl + '/isconfig',
         type: 'GET',

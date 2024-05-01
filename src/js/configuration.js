@@ -1,7 +1,7 @@
 // import "@nextcloud/dialogs/dist/index.css";
 import "../css/mycss.less";
 
-import { configuration, updateDBConfiguration} from "./modules/ajaxRequest.js";
+import { configuration, createCompany, deleteCompany, updateDBConfiguration} from "./modules/ajaxRequest.js";
 import { globalConfiguration } from "./modules/mainFunction.js";
 import "./listener/main_listener";
 import { getAutoIncrement, setCurrencyList, setFormatList } from "./modules/list.js";
@@ -45,6 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
             var option = document.createElement("option");
             option.text = shareInput.value;
             datalist.appendChild(option);
+        });
+    }
+
+    var newCompany = document.getElementById("newCompany");
+    if (newCompany) {
+        newCompany.addEventListener("click", function() {
+            createCompany();
+        });
+    }
+
+    var newCompany = document.getElementById("deleteCompany");
+    if (newCompany) {
+        newCompany.addEventListener("click", function() {
+            deleteCompany();
         });
     }
 

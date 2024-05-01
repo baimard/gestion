@@ -73816,6 +73816,47 @@ function updateDBConfiguration(table, column, data, id) {
     xhr.send(JSON.stringify(myData));
 }
 
+/**
+ * Create a new company
+ */
+function createCompany() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('PUT',baseUrl +  '/createCompany', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader("requesttoken", oc_requesttoken);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            showSuccess(t('gestion', 'New company created'));
+            location.reload();
+        } else {
+            showError(t('gestion', 'There is an error.'));
+        }
+    };
+    xhr.send();
+}
+
+/**
+ * Delete a company
+ */
+function deleteCompany() {
+    if(window.confirm(t('gestion','Are you sure you want to delete? (All data will be lost)'))){
+        var xhr = new XMLHttpRequest();
+        xhr.open('DELETE', baseUrl + '/deleteCompany', true); // false for synchronous request
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader("requesttoken", oc_requesttoken);
+        xhr.onreadystatechange = function (value) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // Request successful
+                showSuccess(t('gestion', 'Company deleted'));
+                location.reload();
+            } else {
+                showError(t('gestion', 'There is an error.'));
+                console.log(value);
+            }
+        };
+        xhr.send();
+    }
+}
 
 /**
  * Update session var
@@ -73826,9 +73867,9 @@ function updateCurrentCompany(companyID) {
     var myData = {
         companyID: companyID
     };
-
+    
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', mainFunction_baseUrl + '/updateSession', false); // false for synchronous request
+    xhr.open('POST', mainFunction_baseUrl + '/updateSession', true); // false for synchronous request
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader("requesttoken", oc_requesttoken);
 
@@ -73920,6 +73961,7 @@ function configuration(f1) {
  * 
  */
 function isconfig() {
+    console.log("isconfig");
     ajaxRequest_$.ajax({
         url: mainFunction_baseUrl + '/isconfig',
         type: 'GET',
@@ -74107,140 +74149,236 @@ function saveNextcloud(myData) {
 
 // EXTERNAL MODULE: ./node_modules/@nextcloud/router/dist/index.mjs
 var router_dist = __webpack_require__(3814);
-;// CONCATENATED MODULE: ./src/js/objects/devis.js
+;// CONCATENATED MODULE: ./src/js/modules/mainFunction.js
+/* provided dependency */ var mainFunction_$ = __webpack_require__(4692);
 
 
 
 
-class Devis {
 
-  /**
-   * Devis object
-   * @param myresp instantiate devis object
-   */
-  constructor(myresp) {
-    this.id = myresp.id;
-    this.user_id = myresp.user_id;
-    this.date = ((myresp.date == null || myresp.date.length === 0) ? '-' : myresp.date);
-    this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
-    this.cid = ((myresp.cid == null || myresp.cid.length === 0) ? '-' : myresp.cid);
-    this.nom = ((myresp.nom == null || myresp.nom.length === 0) ? '-' : myresp.nom);
-    this.prenom = ((myresp.prenom == null || myresp.prenom.length === 0) ? '-' : myresp.prenom);
-    this.version = ((myresp.version == null || myresp.version.length === 0) ? '-' : myresp.version);
-    this.mentions = ((myresp.mentions == null || myresp.mentions.length === 0) ? '-' : myresp.mentions);
-    this.baseUrl = (0,router_dist/* generateUrl */.Jv)(`/apps/gestion/devis/${this.id}/show`);
-  }
+var mainFunction_baseUrl = (0,router_dist/* generateUrl */.Jv)('/apps/gestion');
+var cur = null;
 
-  /**undefined
-   * Get datatable row for a devis
-   */
-  getDTRow() {
-    let myrow = [
-      '<div>' + this.user_id + '</div>',
-      '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date + ' data-table="devis" data-column="date" data-id="' + this.id + '"/>',
-      '<div class="editable" data-table="devis" data-column="num" data-id="' + this.id + '" style="display:inline">' + this.num + '</div>',
-      '<div class="loadSelect_listclient" data-table="devis" data-column="id_client" data-id="' + this.id + '" data-current="' + this.cid + '">'+ this.cid + ' ' + this.prenom + ' ' + this.nom + '</div>',
-      '<div class="editable" data-table="devis" data-column="version" data-id="' + this.id + '" style="display:inline">' + this.version + '</div>',
-      '<div class="editable" data-table="devis" data-column="mentions" data-id="' + this.id + '" style="display:inline">' + this.mentions + '</div>',
-      '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl + '"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="devis" data-id=' + this.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
-    ];
-    return myrow;
-  }
-
-  /**
-   * 
-   * @param {*} dt 
-   */
-  static newDevis(dt) {
-    var oReq = new XMLHttpRequest();
-    oReq.open('POST', mainFunction_baseUrl + '/devis/insert', true);
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        showDone()
-        Devis.loadDevisDT(dt);
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-  }
-
-  /**
-   * Load devis ajax
-   * @param devisDT devis datatable
-   */
-  static loadDevisDT(devisDT) {
-    var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', mainFunction_baseUrl + '/getDevis', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        LoadDT(devisDT, JSON.parse(this.response), Devis);
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-  }
-
-  static getDevis(callback){
-    var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', mainFunction_baseUrl + '/getDevis', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        callback(JSON.parse(this.response));
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-  }
-
-  static loadDevisList_dnum(e){
-    Devis.getDevis( response => {
-      var selectElement = document.createElement("select");
-      selectElement.dataset.current = e.target.dataset.current;
-      selectElement.dataset.id = e.target.dataset.id;
-      selectElement.dataset.old = e.target.innerHTML;
-
-      selectElement.addEventListener("change", el=>{
-        if(el.target.value != 0){
-          updateDB(el.target.parentElement.dataset.table,
-            el.target.parentElement.dataset.column,
-            el.target.value,
-            el.target.parentElement.dataset.id
-          );
-
-          var parentElement = el.target.parentElement;
-          parentElement.innerHTML = el.target.options[el.target.selectedIndex].text;
-          parentElement.dataset.current = el.target.value;
-        }else{
-          var parentElement = el.target.parentElement
-          parentElement.innerHTML = el.target.dataset.old
+/**
+ * 
+ */
+ var optionDatatable = {
+    autoWidth: false,
+    stateSave: true,
+    lengthMenu: [[100, 300, 500, -1], [100, 300, 500, "All"]],
+    language: {
+        "search": (0,dist/* translate */.Tl)('gestion', 'Search'),
+        "emptyTable": (0,dist/* translate */.Tl)('gestion', 'No data available in table'),
+        "info": (0,dist/* translate */.Tl)('gestion', 'Showing {start} to {end} of {total} entries', { start: '_START_', end: '_END_', total: '_TOTAL_' }),
+        "infoEmpty": (0,dist/* translate */.Tl)('gestion', 'Showing 0 to 0 of 0 entries'),
+        "loadingRecords": (0,dist/* translate */.Tl)('gestion', 'Loading records …'),
+        "processing": (0,dist/* translate */.Tl)('gestion', 'Processing …'),
+        "infoFiltered": (0,dist/* translate */.Tl)('gestion', '{max} entries filtered', { max: '_MAX_' }),
+        "lengthMenu": (0,dist/* translate */.Tl)('gestion', 'Show {menu} entries', { menu: '_MENU_' }),
+        "zeroRecords": (0,dist/* translate */.Tl)('gestion', 'No corresponding entry'),
+        "paginate": {
+            "first": (0,dist/* translate */.Tl)('gestion', 'First'),
+            "last": (0,dist/* translate */.Tl)('gestion', 'Last'),
+            "next": (0,dist/* translate */.Tl)('gestion', 'Next'),
+            "previous": (0,dist/* translate */.Tl)('gestion', 'Previous'),
         }
-      });
-
-      var option = document.createElement("option");
-        option.value = 0;
-        option.text = t('gestion', 'Cancel');
-        selectElement.appendChild(option);
-
-      JSON.parse(response).forEach(myresp => {
-        var option = document.createElement("option");
-        option.value = myresp.id;
-        option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
-        selectElement.appendChild(option);
-      });
-      
-      checkSelectPurJs(selectElement);
-
-      e.target.innerHTML = ''
-      e.target.appendChild(selectElement);
-    });
-  }
+    }
 }
 
+/**
+ * 
+ * @param {*} checkConfig 
+ */
+function globalConfiguration(checkConfig=true){
+    getStats();
+    
+    if(checkConfig){
+        isconfig();
+    }
+
+    configuration(getCurrency);
+    configuration(mainFunction_path);
+}
+
+/**
+ * 
+ */
+function configureDT() {
+    mainFunction_$('.editable').attr('title', (0,dist/* translate */.Tl)('gestion', 'Editable (Click to change)'));
+}
+
+/**
+ * 
+ */
+function configureShow() {
+    mainFunction_$('.sendmail').attr('title', t('gestion', 'Your global Nextcloud mail server need to be configured'));
+}
+
+/**
+ * Success message
+ */
+function showDone() {
+    (0,_plugin_vue2_normalizer_VrK6B12S.i)((0,dist/* translate */.Tl)('gestion', 'Added!'));
+}
+
+/**
+ * 
+ * @param {*} el 
+ */
+function checkSelect(el) {
+    mainFunction_$(el).each(function (arrayID, elem) {
+        mainFunction_$(elem).find('option').each(function () {
+            if (this.value == elem.getAttribute("data-current")) {
+                mainFunction_$(this).prop('selected', true)
+            }
+        })
+    })
+}
+
+
+function checkSelectPurJs(el) {
+    console.log(el.options)
+    Array.from(el.options).forEach(element => {
+        if (element.value == el.getAttribute("data-current")) {
+            element.setAttribute('selected', true);
+        }
+    });
+}
+
+/**
+ * 
+ * @param {*} DT 
+ * @param {*} response 
+ * @param {*} cls 
+ */
+function LoadDT(DT, response, cls) {
+    DT.clear();
+    mainFunction_$.each(JSON.parse(response), function (arrayID, myresp) {
+        let c = new cls(myresp);
+        DT.row.add(c.getDTRow());
+    });
+    DT.columns.adjust(optionDatatable).draw(true);
+    configureDT();
+}
+
+/**
+ * 
+ * @param {*} ID 
+ * @param {*} positionRow 
+ * @param {*} positionColumn 
+ * @param {*} data 
+ */
+function mainFunction_insertRow(ID, positionRow = -1, positionColumn = -1, data){
+    var t1 = document.getElementById(ID);
+    var r = t1.insertRow(positionRow);
+    mainFunction_insertCell(r, -1, data, "statHead");
+
+    //Ajout de toutes les colonnes
+    for (let i = 1; i < 13; i++) {
+        mainFunction_insertCell(r, -1, cur.format(0));
+    }
+    return r;
+}
+/**
+ * 
+ * @param {*} row
+ * @param {*} positionColumn 
+ * @param {*} data 
+ */
+function mainFunction_insertCell(row, positionColumn = -1, data, className="statData"){
+    var c = row.insertCell(positionColumn);
+    c.appendChild(document.createTextNode(data));
+    c.setAttribute("class", className);
+}
+
+/**
+ * 
+ * @param {*} r 
+ * @param {*} positionColumn 
+ * @param {*} data 
+ */
+function mainFunction_modifyCell(r, positionColumn = -1, data){
+    var cell = r.cells[positionColumn];
+    cell.innerHTML = data;
+}
+
+/**
+ * 
+ * @param {*} res 
+ */
+ function mainFunction_path(res) {
+    var myres = JSON.parse(res)[0];
+    mainFunction_$("#theFolder").val(myres.path);
+    mainFunction_$("#theFolder").attr('data-id', myres.id);
+};
+
+
+/**
+ * 
+ * @param {*} response 
+ */
+function getCurrency(response) {
+    try {
+        var myresp = JSON.parse(response)[0];
+        cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+    } catch (error) {
+        cur = new Intl.NumberFormat("en-EN", { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+        console.log(error);
+    }
+}
+
+/**
+ * 
+ * @param {*} total 
+ */
+function getGlobal(total) {
+    mainFunction_$.ajax({
+        url: mainFunction_baseUrl + '/getConfiguration',
+        type: 'PROPFIND',
+        contentType: 'application/json',
+    }).done(function (response) {
+        var myresp = JSON.parse(response)[0];
+        var tva = parseFloat(myresp.tva_default);
+        mainFunction_$('#totaldevis tbody').append('<tr><td>' + cur.format(total) + '</td><td id="tva">' + tva + ' %</td><td id="totaltva">' + cur.format(Math.round((total * tva)) / 100) + '</td><td>' + cur.format(Math.round((total * (tva + 100))) / 100) + '</td></tr>');
+        mainFunction_$('#mentions_default').html(myresp.mentions_default);
+    })
+}
+
+/**
+ * //@
+ * @param {*} response 
+ * 
+ */
+function checkAutoIncrement(response){
+    var myresp = JSON.parse(response)[0];
+    if(myresp.auto_invoice_number==1){
+        mainFunction_$('.deleteItem').remove();
+        mainFunction_$(".factureNum").removeClass("editable");
+    }
+}
+
+/**
+ * Format number if it's monetary
+ * @param {*} el 
+ * @param {*} format_number 
+ */
+function updateNumerical(el, format_number=true){
+    el.innerText=el.innerText.replace(',', '.').replace(/[^0-9.-]+/g,"")
+    updateEditable(el);
+    if(format_number){
+        el.innerText=cur.format(el.innerText)
+    }else{
+        el.innerText=el.innerText
+    }
+}
+
+function removeOptions(selectElement) {
+    
+    var i, L = selectElement.options.length - 1;
+    for(i = L; i >= 0; i--) {
+       selectElement.remove(i);
+    }
+ }
 ;// CONCATENATED MODULE: ./src/js/objects/client.js
 /* provided dependency */ var client_$ = __webpack_require__(4692);
 
@@ -74443,237 +74581,140 @@ class Client {
   }
 }
 
-;// CONCATENATED MODULE: ./src/js/modules/mainFunction.js
-/* provided dependency */ var mainFunction_$ = __webpack_require__(4692);
+;// CONCATENATED MODULE: ./src/js/objects/devis.js
 
 
 
 
+class Devis {
 
+  /**
+   * Devis object
+   * @param myresp instantiate devis object
+   */
+  constructor(myresp) {
+    this.id = myresp.id;
+    this.user_id = myresp.user_id;
+    this.date = ((myresp.date == null || myresp.date.length === 0) ? '-' : myresp.date);
+    this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
+    this.cid = ((myresp.cid == null || myresp.cid.length === 0) ? '-' : myresp.cid);
+    this.nom = ((myresp.nom == null || myresp.nom.length === 0) ? '-' : myresp.nom);
+    this.prenom = ((myresp.prenom == null || myresp.prenom.length === 0) ? '-' : myresp.prenom);
+    this.version = ((myresp.version == null || myresp.version.length === 0) ? '-' : myresp.version);
+    this.mentions = ((myresp.mentions == null || myresp.mentions.length === 0) ? '-' : myresp.mentions);
+    this.baseUrl = (0,router_dist/* generateUrl */.Jv)(`/apps/gestion/devis/${this.id}/show`);
+  }
 
+  /**undefined
+   * Get datatable row for a devis
+   */
+  getDTRow() {
+    let myrow = [
+      '<div>' + this.user_id + '</div>',
+      '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date + ' data-table="devis" data-column="date" data-id="' + this.id + '"/>',
+      '<div class="editable" data-table="devis" data-column="num" data-id="' + this.id + '" style="display:inline">' + this.num + '</div>',
+      '<div class="loadSelect_listclient" data-table="devis" data-column="id_client" data-id="' + this.id + '" data-current="' + this.cid + '">'+ this.cid + ' ' + this.prenom + ' ' + this.nom + '</div>',
+      '<div class="editable" data-table="devis" data-column="version" data-id="' + this.id + '" style="display:inline">' + this.version + '</div>',
+      '<div class="editable" data-table="devis" data-column="mentions" data-id="' + this.id + '" style="display:inline">' + this.mentions + '</div>',
+      '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl + '"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="devis" data-id=' + this.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
+    ];
+    return myrow;
+  }
 
-var mainFunction_baseUrl = (0,router_dist/* generateUrl */.Jv)('/apps/gestion');
-var cur = null;
+  /**
+   * 
+   * @param {*} dt 
+   */
+  static newDevis(dt) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('POST', mainFunction_baseUrl + '/devis/insert', true);
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        showDone()
+        Devis.loadDevisDT(dt);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
 
-/**
- * 
- */
- var optionDatatable = {
-    autoWidth: false,
-    stateSave: true,
-    lengthMenu: [[100, 300, 500, -1], [100, 300, 500, "All"]],
-    language: {
-        "search": (0,dist/* translate */.Tl)('gestion', 'Search'),
-        "emptyTable": (0,dist/* translate */.Tl)('gestion', 'No data available in table'),
-        "info": (0,dist/* translate */.Tl)('gestion', 'Showing {start} to {end} of {total} entries', { start: '_START_', end: '_END_', total: '_TOTAL_' }),
-        "infoEmpty": (0,dist/* translate */.Tl)('gestion', 'Showing 0 to 0 of 0 entries'),
-        "loadingRecords": (0,dist/* translate */.Tl)('gestion', 'Loading records …'),
-        "processing": (0,dist/* translate */.Tl)('gestion', 'Processing …'),
-        "infoFiltered": (0,dist/* translate */.Tl)('gestion', '{max} entries filtered', { max: '_MAX_' }),
-        "lengthMenu": (0,dist/* translate */.Tl)('gestion', 'Show {menu} entries', { menu: '_MENU_' }),
-        "zeroRecords": (0,dist/* translate */.Tl)('gestion', 'No corresponding entry'),
-        "paginate": {
-            "first": (0,dist/* translate */.Tl)('gestion', 'First'),
-            "last": (0,dist/* translate */.Tl)('gestion', 'Last'),
-            "next": (0,dist/* translate */.Tl)('gestion', 'Next'),
-            "previous": (0,dist/* translate */.Tl)('gestion', 'Previous'),
+  /**
+   * Load devis ajax
+   * @param devisDT devis datatable
+   */
+  static loadDevisDT(devisDT) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', mainFunction_baseUrl + '/getDevis', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        LoadDT(devisDT, JSON.parse(this.response), Devis);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  static getDevis(callback){
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', mainFunction_baseUrl + '/getDevis', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        callback(JSON.parse(this.response));
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  static loadDevisList_dnum(e){
+    Devis.getDevis( response => {
+      var selectElement = document.createElement("select");
+      selectElement.dataset.current = e.target.dataset.current;
+      selectElement.dataset.id = e.target.dataset.id;
+      selectElement.dataset.old = e.target.innerHTML;
+
+      selectElement.addEventListener("change", el=>{
+        if(el.target.value != 0){
+          updateDB(el.target.parentElement.dataset.table,
+            el.target.parentElement.dataset.column,
+            el.target.value,
+            el.target.parentElement.dataset.id
+          );
+
+          var parentElement = el.target.parentElement;
+          parentElement.innerHTML = el.target.options[el.target.selectedIndex].text;
+          parentElement.dataset.current = el.target.value;
+        }else{
+          var parentElement = el.target.parentElement
+          parentElement.innerHTML = el.target.dataset.old
         }
-    }
-}
+      });
 
-/**
- * 
- * @param {*} checkConfig 
- */
-function globalConfiguration(checkConfig=true){
-    getStats();
-    if(checkConfig){
-        isconfig();
-    }
-    configuration(getCurrency);
-    configuration(mainFunction_path);
-}
+      var option = document.createElement("option");
+        option.value = 0;
+        option.text = t('gestion', 'Cancel');
+        selectElement.appendChild(option);
 
-/**
- * 
- */
-function configureDT() {
-    mainFunction_$('.editable').attr('title', (0,dist/* translate */.Tl)('gestion', 'Editable (Click to change)'));
-}
+      JSON.parse(response).forEach(myresp => {
+        var option = document.createElement("option");
+        option.value = myresp.id;
+        option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
+        selectElement.appendChild(option);
+      });
+      
+      checkSelectPurJs(selectElement);
 
-/**
- * 
- */
-function configureShow() {
-    mainFunction_$('.sendmail').attr('title', t('gestion', 'Your global Nextcloud mail server need to be configured'));
-}
-
-/**
- * Success message
- */
-function showDone() {
-    (0,_plugin_vue2_normalizer_VrK6B12S.i)((0,dist/* translate */.Tl)('gestion', 'Added!'));
-}
-
-/**
- * 
- * @param {*} el 
- */
-function checkSelect(el) {
-    mainFunction_$(el).each(function (arrayID, elem) {
-        mainFunction_$(elem).find('option').each(function () {
-            if (this.value == elem.getAttribute("data-current")) {
-                mainFunction_$(this).prop('selected', true)
-            }
-        })
-    })
-}
-
-
-function checkSelectPurJs(el) {
-    console.log(el.options)
-    Array.from(el.options).forEach(element => {
-        if (element.value == el.getAttribute("data-current")) {
-            element.setAttribute('selected', true);
-        }
+      e.target.innerHTML = ''
+      e.target.appendChild(selectElement);
     });
+  }
 }
 
-/**
- * 
- * @param {*} DT 
- * @param {*} response 
- * @param {*} cls 
- */
-function LoadDT(DT, response, cls) {
-    DT.clear();
-    mainFunction_$.each(JSON.parse(response), function (arrayID, myresp) {
-        let c = new cls(myresp);
-        DT.row.add(c.getDTRow());
-    });
-    DT.columns.adjust(optionDatatable).draw(true);
-    configureDT();
-}
-
-/**
- * 
- * @param {*} ID 
- * @param {*} positionRow 
- * @param {*} positionColumn 
- * @param {*} data 
- */
-function mainFunction_insertRow(ID, positionRow = -1, positionColumn = -1, data){
-    
-    t = document.getElementById(ID);
-    var r = t.insertRow(positionRow);
-    mainFunction_insertCell(r, -1, data, "statHead");
-
-    //Ajout de toutes les colonnes
-    for (let i = 1; i < 13; i++) {
-        mainFunction_insertCell(r, -1, cur.format(0));
-    }
-    return r;
-}
-/**
- * 
- * @param {*} row
- * @param {*} positionColumn 
- * @param {*} data 
- */
-function mainFunction_insertCell(row, positionColumn = -1, data, className="statData"){
-    var c = row.insertCell(positionColumn);
-    c.appendChild(document.createTextNode(data));
-    c.setAttribute("class", className);
-}
-
-/**
- * 
- * @param {*} r 
- * @param {*} positionColumn 
- * @param {*} data 
- */
-function mainFunction_modifyCell(r, positionColumn = -1, data){
-    var cell = r.cells[positionColumn];
-    cell.innerHTML = data;
-}
-
-/**
- * 
- * @param {*} res 
- */
- function mainFunction_path(res) {
-    var myres = JSON.parse(res)[0];
-    mainFunction_$("#theFolder").val(myres.path);
-    mainFunction_$("#theFolder").attr('data-id', myres.id);
-};
-
-
-/**
- * 
- * @param {*} response 
- */
-function getCurrency(response) {
-    try {
-        var myresp = JSON.parse(response)[0];
-        cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
-    } catch (error) {
-        cur = new Intl.NumberFormat("en-EN", { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
-        console.log(error);
-    }
-}
-
-/**
- * 
- * @param {*} total 
- */
-function getGlobal(total) {
-    mainFunction_$.ajax({
-        url: mainFunction_baseUrl + '/getConfiguration',
-        type: 'PROPFIND',
-        contentType: 'application/json',
-    }).done(function (response) {
-        var myresp = JSON.parse(response)[0];
-        var tva = parseFloat(myresp.tva_default);
-        mainFunction_$('#totaldevis tbody').append('<tr><td>' + cur.format(total) + '</td><td id="tva">' + tva + ' %</td><td id="totaltva">' + cur.format(Math.round((total * tva)) / 100) + '</td><td>' + cur.format(Math.round((total * (tva + 100))) / 100) + '</td></tr>');
-        mainFunction_$('#mentions_default').html(myresp.mentions_default);
-    })
-}
-
-/**
- * //@
- * @param {*} response 
- * 
- */
-function checkAutoIncrement(response){
-    var myresp = JSON.parse(response)[0];
-    if(myresp.auto_invoice_number==1){
-        mainFunction_$('.deleteItem').remove();
-        mainFunction_$(".factureNum").removeClass("editable");
-    }
-}
-
-/**
- * Format number if it's monetary
- * @param {*} el 
- * @param {*} format_number 
- */
-function updateNumerical(el, format_number=true){
-    el.innerText=el.innerText.replace(',', '.').replace(/[^0-9.-]+/g,"")
-    updateEditable(el);
-    if(format_number){
-        el.innerText=cur.format(el.innerText)
-    }else{
-        el.innerText=el.innerText
-    }
-}
-
-function removeOptions(selectElement) {
-    
-    var i, L = selectElement.options.length - 1;
-    for(i = L; i >= 0; i--) {
-       selectElement.remove(i);
-    }
- }
 ;// CONCATENATED MODULE: ./src/js/objects/facture.js
 
 
@@ -74855,6 +74896,7 @@ document.body.addEventListener('click', function (event) {
                     
                     updateDBConfiguration(table, column, values[0], id);
                     configuration(mainFunction_path);
+                    document.getElementById('theFolder').value = values[0];
                 },
             })
             .build()

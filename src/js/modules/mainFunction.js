@@ -2,8 +2,6 @@ import { showSuccess } from "@nextcloud/dialogs";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest.js";
 import { generateUrl } from "@nextcloud/router";
-import { Devis } from "../objects/devis.js";
-import { Client } from "../objects/client.js";
 
 export var baseUrl = generateUrl('/apps/gestion');
 export var cur = null;
@@ -40,9 +38,11 @@ export var cur = null;
  */
 export function globalConfiguration(checkConfig=true){
     getStats();
+    
     if(checkConfig){
         isconfig();
     }
+
     configuration(getCurrency);
     configuration(path);
 }
@@ -116,9 +116,8 @@ export function LoadDT(DT, response, cls) {
  * @param {*} data 
  */
 export function insertRow(ID, positionRow = -1, positionColumn = -1, data){
-    
-    t = document.getElementById(ID);
-    var r = t.insertRow(positionRow);
+    var t1 = document.getElementById(ID);
+    var r = t1.insertRow(positionRow);
     insertCell(r, -1, data, "statHead");
 
     //Ajout de toutes les colonnes

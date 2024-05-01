@@ -21,9 +21,11 @@ use OCP\Accounts\IAccountManager;
 
 class PageController extends Controller {
 	private $myDb;
+
 	private $urlGenerator;
 	private $mailer;
 	private $config;
+
 	private $myID;
 
 	/** @var  ContentSecurityPolicy */
@@ -57,7 +59,7 @@ class PageController extends Controller {
 								ISession $session,
 								ContentSecurityPolicy $csp){
 		parent::__construct($AppName, $request);
-		$this->$myID = $UserId;
+		$this->myID = $UserId;
 		//TODO Envoyer la valeur en cours
 		// $this->idNextcloud = ;
 		$this->myDb = $myDb;
@@ -69,8 +71,10 @@ class PageController extends Controller {
 		$this->csp = $csp;
 		$this->session = $session;
 
+
+
 		try{
-			$this->storage = $rootFolder->getUserFolder($this->$myID);
+			$this->storage = $rootFolder->getUserFolder($this->myID);
 		}catch(\OC\User\NoUserException $e){
 
 		}
@@ -103,7 +107,10 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 *
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function devis() {
 		return new TemplateResponse('gestion', 'devis', array(	'path' => $this->myID, 
 																'url' => $this->getNavigationLink(),
@@ -116,7 +123,10 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 *
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function facture() {
 		return new TemplateResponse('gestion', 'facture', array(	'path' => $this->myID, 
 																	'url' => $this->getNavigationLink(),
@@ -129,7 +139,10 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 *
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function produit() {
 		return new TemplateResponse('gestion', 'produit', array(	'path' => $this->myID, 
 																	'url' => $this->getNavigationLink(),
@@ -142,7 +155,10 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 *
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function statistique() {
 		return new TemplateResponse('gestion', 'statistique', array(	'path' => $this->myID, 
 																		'url' => $this->getNavigationLink(),
@@ -155,7 +171,10 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 *
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function legalnotice($page) {
 		return new TemplateResponse('gestion', 'legalnotice', array(	'page' => 'content/legalnotice', 
 																		'path' => $this->myID, 
@@ -169,7 +188,10 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 *
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function france() {
 		return new TemplateResponse('gestion', 'legalnotice', array('page' => 'legalnotice/france', 
 																	'path' => $this->myID, 
@@ -183,11 +205,13 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-	 * TODO a revoir
-     */
+	 *
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function config() {
-		$res = $this->myDb->checkConfig($this->session['CurrentCompany'], $this->$myID);
-		if($res <1 ){
+		$res = $this->myDb->checkConfig($this->session['CurrentCompany'], $this->myID);
+		if($res < 1 ){
 			$this->session['CurrentCompany'] = '';
 		}
 		
@@ -197,6 +221,7 @@ class PageController extends Controller {
 											'CurrentCompany' => $this->session['CurrentCompany']
 										)
 									);  // templates/configuration.php
+
 		$response->setContentSecurityPolicy($this->csp);
 		return $response;
 	}
@@ -205,7 +230,9 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @param string $numdevis
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function devisshow($numdevis) {
 		$devis = $this->myDb->getOneDevis($numdevis,$this->session['CurrentCompany']);
 		$produits = $this->myDb->getListProduit($numdevis, $this->session['CurrentCompany']);
@@ -225,11 +252,13 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @param string $numfacture
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function factureshow($numfacture) {
 		$facture = $this->myDb->getOneFacture($numfacture,$this->session['CurrentCompany']);
 		// $produits = $this->myDb->getListProduit($numdevis);
-		return new TemplateResponse('gestion', 'factureshow', array(	'path' => $this->myid, 
+		return new TemplateResponse('gestion', 'factureshow', array(	'path' => $this->myID, 
 																		'configuration'=> $this->getConfiguration(), 
 																		'facture'=>json_decode($facture), 
 																		'url' => $this->getNavigationLink(),
@@ -243,15 +272,19 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function isConfig() {
-		return $this->myDb->isConfig($this->session['CurrentCompany'],$this->$myID);
+		return $this->myDb->isConfig($this->session['CurrentCompany'],$this->myID);
 	}
 
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getNavigationLink(){
 		return array(	"index" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.index"),
 						"devis" => $this->urlGenerator->linkToRouteAbsolute("gestion.page.devis"),
@@ -270,9 +303,9 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	private function getCompaniesList(){
-		$CompaniesList = $this->myDb->getCompaniesList($this->$myID);
+		$CompaniesList = $this->myDb->getCompaniesList($this->myID);
 
-		if(empty($this->session['CurrentCompany'])){
+		if(empty($this->session['CurrentCompany']) || $this->session['CurrentCompany'] == ''){
 			$this->setCurrentCompany($CompaniesList[0]['id']);
 		}
 		
@@ -290,12 +323,33 @@ class PageController extends Controller {
 	}
 
 
+	/**
+	 * @UseSession
+	 */
+	#[UseSession]
+	public function createCompany(){
+		$this->myDb->createCompany($this->myID);
+	}
 
+	/**
+	 * @UseSession
+	 */
+	#[UseSession]
+	public function deleteCompany(){
+		if($this->myDb->deleteCompany($this->session['CurrentCompany'], $this->myID)){
+			$this->session['CurrentCompany'] = '';
+			return new DataResponse("", 200, ['Content-Type' => 'application/json']);
+		}else{
+			return new DataResponse([$this->session['CurrentCompany'],$this->myID], 401, ['Content-Type' => 'application/json']);
+		}
+	}
 
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getClients() {
 		return $this->myDb->getClients($this->session['CurrentCompany']);
 	}
@@ -303,7 +357,9 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getConfiguration() {
 		return $this->myDb->getConfiguration($this->session['CurrentCompany']);
 	}
@@ -311,7 +367,9 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getDevis() {
 		return $this->myDb->getDevis($this->session['CurrentCompany']);
 	}
@@ -319,7 +377,9 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getFactures() {
 		
 		return $this->myDb->getFactures($this->session['CurrentCompany']);
@@ -328,7 +388,9 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getProduits() {
 		
 		return $this->myDb->getProduits($this->session['CurrentCompany']);
@@ -338,7 +400,9 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @param string $numdevis
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getProduitsById($numdevis) {
 		return $this->myDb->getListProduit($numdevis, $this->session['CurrentCompany']);
 	}
@@ -347,7 +411,9 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @param string $id
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getClient($id) {
 		return $this->myDb->getClient($id, $this->session['CurrentCompany']);
 	}
@@ -356,14 +422,18 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @param string $id
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getClientbyiddevis($id) {
 		return $this->myDb->getClientbyiddevis($id, $this->session['CurrentCompany']);
 	}
 
 	/**
 	 * @NoAdminRequired
-     */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getServerFromMail(){
 		return new DataResponse(['mail' => $this->config->getSystemValue('mail_from_address').'@'.$this->config->getSystemValue('mail_domain')],200, ['Content-Type' => 'application/json']);
 	}
@@ -371,7 +441,9 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function insertClient() {
 		// try {
 		// 	return new DataResponse($this->myDb->insertClient($this->session['CurrentCompany']), Http::STATUS_OK, ['Content-Type' => 'application/json']);
@@ -385,8 +457,9 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-	 * 
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function insertDevis(){
 		return $this->myDb->insertDevis($this->session['CurrentCompany']);
 	}
@@ -394,8 +467,9 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-	 * 
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function insertFacture(){
 		return $this->myDb->insertFacture($this->session['CurrentCompany']);
 	}
@@ -403,8 +477,9 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-	 * 
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function insertProduit(){
 		return $this->myDb->insertProduit($this->session['CurrentCompany']);
 	}
@@ -413,7 +488,9 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @param string $id
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function insertProduitDevis($id){
 		return $this->myDb->insertProduitDevis($id, $this->session['CurrentCompany']);
 	}
@@ -425,7 +502,9 @@ class PageController extends Controller {
 	 * @param string $column
 	 * @param string $data
 	 * @param string $id
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function update($table, $column, $data, $id) {
 		return $this->myDb->gestion_update($table, $column, $data, $id, $this->session['CurrentCompany']);
 	}
@@ -437,7 +516,9 @@ class PageController extends Controller {
 	 * @param string $column
 	 * @param string $data
 	 * @param string $id
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function updateConfiguration($table, $column, $data, $id) {
 		return $this->myDb->gestion_updateConfiguration($table, $column, $data, $id);
 	}
@@ -447,7 +528,9 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 * @param string $table
 	 * @param string $id
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function delete($table, $id) {
 		return $this->myDb->gestion_delete($table, $id, $this->session['CurrentCompany']);
 	}
@@ -461,7 +544,9 @@ class PageController extends Controller {
 	 * @param string $body
 	 * @param string $to
 	 * @param string $Cc
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function sendPDF($content, $name, $subject, $body, $to, $Cc){
 		$clean_name = html_entity_decode($name);
 		
@@ -493,7 +578,9 @@ class PageController extends Controller {
 	 * @param string $content
 	 * @param string $folder
 	 * @param string $name
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function savePDF($content, $folder, $name){
 
 		$clean_folder = html_entity_decode($folder);
@@ -561,7 +648,9 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getStats(){
 		$res = array();
 		$res['client'] = json_decode($this->myDb->numberClient($this->session['CurrentCompany']))[0]->c;
@@ -574,7 +663,9 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-	 */
+	 * @UseSession
+	*/
+	#[UseSession]
 	public function getAnnualTurnoverPerMonthNoVat(){
 		return $this->myDb->getAnnualTurnoverPerMonthNoVat($this->session['CurrentCompany']);
 	}

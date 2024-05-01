@@ -158,10 +158,10 @@ class Bdd {
     /**
      * UPDATE
      */
-    public function gestion_update($table, $column, $data, $id, $idNextcloud){
+    public function gestion_update($table, $column, $data, $id, $id_configuration){
         if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
-            $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ? AND `id_nextcloud` = ?";
-            $this->execSQLNoData($sql, array(htmlentities(rtrim($data)), $id, $idNextcloud));
+            $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ? AND `id_configuration` = ?";
+            $this->execSQLNoData($sql, array(htmlentities(rtrim($data)), $id, $id_configuration));
             return true;
         }
         return false;
@@ -210,33 +210,75 @@ class Bdd {
      */
 
     public function checkConfig($idConfiguration, $idNextcloud){
-        $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id` = ?";
-        $res = json_decode($this->execSQL($sql, array($idConfiguration)))[0]->res;
+        $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
+        $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
         if ( $res < 1 ){
-            $sql = "INSERT INTO `".$this->tableprefix."configuration` (`entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`,`facture_prefixe`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?,?);";
-            $this->execSQLNoData($sql, array($this->l->t('Your company name'),
-                                        $this->l->t('Your company contact last name'),
-                                        $this->l->t('Your company contact first name'),
-                                        $this->l->t('Company legal information line one'),
-                                        $this->l->t('Company legal information line two'),
-                                        $this->l->t('Your company email'),
-                                        $this->l->t('Your company phone'),
-                                        $this->l->t('Your company address'),
-                                        $idNextcloud,
-                                        $this->l->t('All Legal mentions, disclaimer or everything you want to place in the footer.'),
-                                        $this->l->t('EUR'),
-                                        $this->l->t('INVOICE')
-                                        )
-                                    );
+            $this->createCompany($idNextcloud);
         }
         return $res;
+    }
+
+    /**
+     * Create a new company
+     */
+    public function createCompany($idNextcloud){
+        $sql = "INSERT INTO `".$this->tableprefix."configuration` (`entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`,`facture_prefixe`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?,?);";
+        $this->execSQLNoData($sql, array(
+            $this->l->t('Your company name'),
+            $this->l->t('Your company contact last name'),
+            $this->l->t('Your company contact first name'),
+            $this->l->t('Company legal information line one'),
+            $this->l->t('Company legal information line two'),
+            $this->l->t('Your company email'),
+            $this->l->t('Your company phone'),
+            $this->l->t('Your company address'),
+            $idNextcloud,
+            $this->l->t('All Legal mentions, disclaimer or everything you want to place in the footer.'),
+            $this->l->t('EUR'),
+            $this->l->t('INVOICE')
+        ));
+        return true;
+    }
+
+    public function deleteCompany($idCompany, $idNextcloud){
+        $sql = "SELECT * FROM `".$this->tableprefix."configuration` WHERE `id` = ?";
+        $res = $this->execSQLNoJsonReturn($sql, array($idCompany));
+        
+        if ($res[0]['id_nextcloud'] == $idNextcloud){
+
+            $sql = "DELETE FROM `".$this->tableprefix."configuration` WHERE `id` = ? AND `id_nextcloud` = ?";
+            $this->execSQLNoData($sql, array($idCompany, $idNextcloud));
+
+            $sql = "DELETE FROM `".$this->tableprefix."client` WHERE `id_configuration` = ?";
+            $this->execSQLNoData($sql, array($idCompany));
+
+            $sql = "DELETE FROM `".$this->tableprefix."devis` WHERE `id_configuration` = ?";
+            $this->execSQLNoData($sql, array($idCompany));
+
+            $sql = "DELETE FROM `".$this->tableprefix."facture` WHERE `id_configuration` = ?";
+            $this->execSQLNoData($sql, array($idCompany));
+
+            $sql = "DELETE FROM `".$this->tableprefix."produit` WHERE `id_configuration` = ?";
+            $this->execSQLNoData($sql, array($idCompany));
+
+            $sql = "DELETE FROM `".$this->tableprefix."produit_devis` WHERE `id_configuration` = ?";
+            $this->execSQLNoData($sql, array($idCompany));
+
+            $sql = "DELETE FROM `".$this->tableprefix."conf_share` WHERE `id_configuration` = ?";
+            $this->execSQLNoData($sql, array($idCompany));
+            
+            return true;
+        }else{
+
+            return false;
+        }
     }
 
     public function isConfig($idConfiguration,$idNextcloud){
         $changelog = 9; //+1 if you want changelog appear for everybody one time !
 
-        $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id` = ?";
-        $res = json_decode($this->execSQL($sql, array($idConfiguration)))[0]->res;
+        $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
+        $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
 
         // Utilisateur jamais utilisé l'application
         if ( $res < 1 ){
@@ -280,15 +322,15 @@ class Bdd {
     /**
      * Number produit
      */
-    public function numberProduit($idNextcloud){
+    public function numberProduit($id_configuration){
         $sql = "SELECT count(*) as c from ".$this->tableprefix."produit WHERE `id_configuration` = ?;";
-        return $this->execSQL($sql, array($idNextcloud));
+        return $this->execSQL($sql, array($id_configuration));
     }
 
     /**
      * Annual turnover per month without VAT
      */
-    public function getAnnualTurnoverPerMonthNoVat($idNextcloud){
+    public function getAnnualTurnoverPerMonthNoVat($id_configuration){
         $sql = "SELECT  EXTRACT(YEAR FROM ".$this->tableprefix."facture.date_paiement) as y, 
                         EXTRACT(MONTH FROM ".$this->tableprefix."facture.date_paiement) as m, 
                         sum(".$this->tableprefix."produit.prix_unitaire * ".$this->tableprefix."produit_devis.quantite) as total
@@ -298,7 +340,7 @@ class Bdd {
                 AND ".$this->tableprefix."facture.id_configuration = ?
                 GROUP BY EXTRACT(YEAR FROM ".$this->tableprefix."facture.date_paiement), EXTRACT(MONTH FROM ".$this->tableprefix."facture.date_paiement)
                 ORDER BY EXTRACT(YEAR FROM ".$this->tableprefix."facture.date_paiement) DESC, EXTRACT(MONTH FROM ".$this->tableprefix."facture.date_paiement);";
-        return $this->execSQL($sql, array($idNextcloud));
+        return $this->execSQL($sql, array($id_configuration));
     }
 
     /**

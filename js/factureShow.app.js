@@ -50867,7 +50867,7 @@ if (inBrowser) {
 /* harmony export */   kv: () => (/* binding */ updateEditable),
 /* harmony export */   v4: () => (/* binding */ isconfig)
 /* harmony export */ });
-/* unused harmony exports getAnnualTurnoverPerMonthNoVat, updateEditableConfiguration, backup */
+/* unused harmony exports createCompany, deleteCompany, getAnnualTurnoverPerMonthNoVat, updateEditableConfiguration, backup */
 /* harmony import */ var _nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5168);
 /* harmony import */ var _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3334);
 /* harmony import */ var _mainFunction_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4315);
@@ -50942,6 +50942,47 @@ function updateDBConfiguration(table, column, data, id) {
     xhr.send(JSON.stringify(myData));
 }
 
+/**
+ * Create a new company
+ */
+function createCompany() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('PUT',baseUrl +  '/createCompany', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader("requesttoken", oc_requesttoken);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            showSuccess(t('gestion', 'New company created'));
+            location.reload();
+        } else {
+            showError(t('gestion', 'There is an error.'));
+        }
+    };
+    xhr.send();
+}
+
+/**
+ * Delete a company
+ */
+function deleteCompany() {
+    if(window.confirm(t('gestion','Are you sure you want to delete? (All data will be lost)'))){
+        var xhr = new XMLHttpRequest();
+        xhr.open('DELETE', baseUrl + '/deleteCompany', true); // false for synchronous request
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader("requesttoken", oc_requesttoken);
+        xhr.onreadystatechange = function (value) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // Request successful
+                showSuccess(t('gestion', 'Company deleted'));
+                location.reload();
+            } else {
+                showError(t('gestion', 'There is an error.'));
+                console.log(value);
+            }
+        };
+        xhr.send();
+    }
+}
 
 /**
  * Update session var
@@ -50952,9 +50993,9 @@ function updateCurrentCompany(companyID) {
     var myData = {
         companyID: companyID
     };
-
+    
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', _mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .baseUrl */ .pc + '/updateSession', false); // false for synchronous request
+    xhr.open('POST', _mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .baseUrl */ .pc + '/updateSession', true); // false for synchronous request
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader("requesttoken", oc_requesttoken);
 
@@ -51046,6 +51087,7 @@ function configuration(f1) {
  * 
  */
 function isconfig() {
+    console.log("isconfig");
     $.ajax({
         url: _mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .baseUrl */ .pc + '/isconfig',
         type: 'GET',
@@ -51253,18 +51295,14 @@ function saveNextcloud(myData) {
 /* harmony import */ var _nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5168);
 /* harmony import */ var _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3334);
 /* harmony import */ var _ajaxRequest_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1343);
-/* harmony import */ var _nextcloud_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(3814);
-/* harmony import */ var _objects_devis_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8794);
-/* harmony import */ var _objects_client_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4002);
+/* harmony import */ var _nextcloud_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3814);
 /* provided dependency */ var $ = __webpack_require__(4692);
 
 
 
 
 
-
-
-var baseUrl = (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_5__/* .generateUrl */ .Jv)('/apps/gestion');
+var baseUrl = (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_3__/* .generateUrl */ .Jv)('/apps/gestion');
 var cur = null;
 
 /**
@@ -51299,9 +51337,11 @@ var cur = null;
  */
 function globalConfiguration(checkConfig=true){
     ;(0,_ajaxRequest_js__WEBPACK_IMPORTED_MODULE_2__/* .getStats */ .GT)();
+    
     if(checkConfig){
         (0,_ajaxRequest_js__WEBPACK_IMPORTED_MODULE_2__/* .isconfig */ .v4)();
     }
+
     (0,_ajaxRequest_js__WEBPACK_IMPORTED_MODULE_2__/* .configuration */ .HF)(getCurrency);
     (0,_ajaxRequest_js__WEBPACK_IMPORTED_MODULE_2__/* .configuration */ .HF)(path);
 }
@@ -51375,9 +51415,8 @@ function LoadDT(DT, response, cls) {
  * @param {*} data 
  */
 function insertRow(ID, positionRow = -1, positionColumn = -1, data){
-    
-    t = document.getElementById(ID);
-    var r = t.insertRow(positionRow);
+    var t1 = document.getElementById(ID);
+    var r = t1.insertRow(positionRow);
     insertCell(r, -1, data, "statHead");
 
     //Ajout de toutes les colonnes
@@ -51486,365 +51525,6 @@ function removeOptions(selectElement) {
        selectElement.remove(i);
     }
  }
-
-/***/ }),
-
-/***/ 4002:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   K: () => (/* binding */ Client)
-/* harmony export */ });
-/* harmony import */ var _modules_ajaxRequest_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1343);
-/* harmony import */ var _modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4315);
-/* provided dependency */ var $ = __webpack_require__(4692);
-
-
-
-class Client {
-
-  /**
-   * 
-   * @param myresp instantiate client object
-   */
-  constructor(myresp) {
-    this.id = myresp.id;
-    this.entreprise = ((myresp.entreprise.length === 0) ? '-' : myresp.entreprise);
-    this.prenom = ((myresp.prenom.length === 0) ? '-' : myresp.prenom);
-    this.nom = ((myresp.nom.length === 0) ? '-' : myresp.nom);
-    this.legal_one = ((myresp.legal_one.length === 0) ? '-' : myresp.legal_one);
-    this.telephone = ((myresp.telephone.length === 0) ? '-' : myresp.telephone);
-    this.mail = ((myresp.mail.length === 0) ? '-' : myresp.mail);
-    this.adresse = ((myresp.adresse.length === 0) ? '-' : myresp.adresse);
-  }
-
-  /**
-   * Get datatable row for a client
-   */
-  getDTRow() {
-    let myrow = [
-      '<div>' + this.id + '</div>',
-      '<div class="editable" data-table="client" data-column="entreprise" data-id="' + this.id + '">' + this.entreprise + '</div>',
-      '<div class="editable" data-table="client" data-column="prenom" data-id="' + this.id + '">' + this.prenom + '</div>',
-      '<div class="editable" data-table="client" data-column="nom" data-id="' + this.id + '">' + this.nom + '</div>',
-      '<div class="editable" data-table="client" data-column="legal_one" data-id="' + this.id + '">' + this.legal_one + '</div>',
-      '<div class="editable" data-table="client" data-column="telephone" data-id="' + this.id + '">' + this.telephone + '</div>',
-      '<div class="editable" data-table="client" data-column="mail" data-id="' + this.id + '">' + this.mail + '</div>',
-      '<div class="editable" data-table="client" data-column="adresse" data-id="' + this.id + '">' + this.adresse + '</div>',
-      '<center><div data-modifier="client" data-id=' + this.id + ' data-table="client" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div></center>'
-    ];
-    return myrow;
-  }
-
-  /**
-   * 
-   * @param {*} dt 
-   */
-  static newClient(dt) {
-    var oReq = new XMLHttpRequest();
-    oReq.open('POST', _modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .baseUrl */ .pc + '/client/insert', true);
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        (0,_modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .showDone */ .It)()
-        Client.loadClientDT(dt);
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-  }
-
-  /**
-   * 
-   * @param {*} clientDT 
-   */
-  static loadClientDT(clientDT) {
-    var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', _modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .baseUrl */ .pc + '/getClients', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        (0,_modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .LoadDT */ .lG)(clientDT, JSON.parse(this.response), Client);
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-  }
-
-  /**
-   * 
-   * @param {*} callback 
-   */
-  static getClients(callback) {
-    var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', _modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .baseUrl */ .pc + '/getClients', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        callback(JSON.parse(this.response));
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-    }
-
-  /**
-   * 
-   * @param {*} id 
-   */
-  static getClientByIdDevis(id) {
-    var myData = { id: id, };
-    $.ajax({
-        url: _modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .baseUrl */ .pc + '/clientbyiddevis',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(myData)
-    }).done(function (response, code) {
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            $("#nomprenom").html(myresp.prenom + ' ' + myresp.nom);
-            $("#nomprenom").attr('data-id', id);
-            $("#entreprise").html(myresp.entreprise);
-            $("#adresse").html(myresp.adresse);
-            $("#mail").html(myresp.mail);
-            $("#telephone").html(myresp.telephone);
-            $("#legal_one").html(myresp.legal_one);
-            $("#pdf").attr("data-folder", myresp.num);
-            if ($("#factureid").length) {
-                $("#pdf").data('name', myresp.entreprise + "_" + $("#factureid").text() + "_v" + $('#factureversion').text());
-            } else {
-                $("#pdf").data('name', myresp.entreprise + "_" + myresp.num + "_v" + $('#devisversion').text());
-            }
-
-        });
-    }).fail(function (response, code) {
-        showError(response);
-    });
-  }
-
-  /**
-   * 
-   */
-  // static loadClientList() {
-  //   Client.getClients(function (response) {
-  //     var listClients = document.querySelectorAll(".listClient");
-
-  //     listClients.forEach(selectElement => {
-  //       removeOptions(selectElement);
-  //       var option = document.createElement("option");
-  //       option.value = 0;
-  //       option.text = t('gestion', 'Choose customer');
-  //       selectElement.appendChild(option);
-
-  //       JSON.parse(response).forEach(myresp => {
-  //         var option = document.createElement("option");
-  //         option.value = myresp.id;
-  //         option.text = myresp.prenom + ' ' + myresp.nom;
-  //         selectElement.appendChild(option);
-  //       });
-  
-  //       checkSelectPurJs(selectElement);
-  //     });
-  //   });
-  // }
-
-  /**
-   * 
-   * @param {*} cid 
-   */
-  static loadClientList_cid(e){
-    Client.getClients(response => {
-
-      var selectElement = document.createElement("select");
-      selectElement.dataset.current = e.target.dataset.current;
-      selectElement.dataset.id = e.target.dataset.id;
-      selectElement.dataset.old = e.target.innerHTML;
-
-      selectElement.addEventListener("change", el=>{
-        if(el.target.value != 0){
-          (0,_modules_ajaxRequest_js__WEBPACK_IMPORTED_MODULE_0__/* .updateDB */ .gs)(el.target.parentElement.dataset.table,
-            el.target.parentElement.dataset.column,
-            el.target.value,
-            el.target.parentElement.dataset.id
-          );
-
-          var parentElement = el.target.parentElement
-          parentElement.innerHTML = el.target.value + " " + el.target.options[el.target.selectedIndex].text;
-          parentElement.dataset.current = el.target.value;
-        }else{
-          var parentElement = el.target.parentElement
-          parentElement.innerHTML = el.target.dataset.old
-        }
-      });
-
-      var option = document.createElement("option");
-        option.value = 0;
-        option.text = t('gestion', 'Cancel');
-        selectElement.appendChild(option);
-
-      JSON.parse(response).forEach(myresp => {
-        var option = document.createElement("option");
-        option.value = myresp.id;
-        option.text = myresp.prenom + ' ' + myresp.nom;
-        selectElement.appendChild(option);
-      });
-      
-      (0,_modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .checkSelectPurJs */ .pq)(selectElement);
-
-      e.target.innerHTML = ''
-      e.target.appendChild(selectElement);
-    });
-  }
-}
-
-
-/***/ }),
-
-/***/ 8794:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   W: () => (/* binding */ Devis)
-/* harmony export */ });
-/* harmony import */ var _nextcloud_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3814);
-/* harmony import */ var _modules_ajaxRequest_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1343);
-/* harmony import */ var _modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4315);
-
-
-
-
-class Devis {
-
-  /**
-   * Devis object
-   * @param myresp instantiate devis object
-   */
-  constructor(myresp) {
-    this.id = myresp.id;
-    this.user_id = myresp.user_id;
-    this.date = ((myresp.date == null || myresp.date.length === 0) ? '-' : myresp.date);
-    this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
-    this.cid = ((myresp.cid == null || myresp.cid.length === 0) ? '-' : myresp.cid);
-    this.nom = ((myresp.nom == null || myresp.nom.length === 0) ? '-' : myresp.nom);
-    this.prenom = ((myresp.prenom == null || myresp.prenom.length === 0) ? '-' : myresp.prenom);
-    this.version = ((myresp.version == null || myresp.version.length === 0) ? '-' : myresp.version);
-    this.mentions = ((myresp.mentions == null || myresp.mentions.length === 0) ? '-' : myresp.mentions);
-    this.baseUrl = (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_2__/* .generateUrl */ .Jv)(`/apps/gestion/devis/${this.id}/show`);
-  }
-
-  /**undefined
-   * Get datatable row for a devis
-   */
-  getDTRow() {
-    let myrow = [
-      '<div>' + this.user_id + '</div>',
-      '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date + ' data-table="devis" data-column="date" data-id="' + this.id + '"/>',
-      '<div class="editable" data-table="devis" data-column="num" data-id="' + this.id + '" style="display:inline">' + this.num + '</div>',
-      '<div class="loadSelect_listclient" data-table="devis" data-column="id_client" data-id="' + this.id + '" data-current="' + this.cid + '">'+ this.cid + ' ' + this.prenom + ' ' + this.nom + '</div>',
-      '<div class="editable" data-table="devis" data-column="version" data-id="' + this.id + '" style="display:inline">' + this.version + '</div>',
-      '<div class="editable" data-table="devis" data-column="mentions" data-id="' + this.id + '" style="display:inline">' + this.mentions + '</div>',
-      '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl + '"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="devis" data-id=' + this.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
-    ];
-    return myrow;
-  }
-
-  /**
-   * 
-   * @param {*} dt 
-   */
-  static newDevis(dt) {
-    var oReq = new XMLHttpRequest();
-    oReq.open('POST', _modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .baseUrl */ .pc + '/devis/insert', true);
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        (0,_modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .showDone */ .It)()
-        Devis.loadDevisDT(dt);
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-  }
-
-  /**
-   * Load devis ajax
-   * @param devisDT devis datatable
-   */
-  static loadDevisDT(devisDT) {
-    var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', _modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .baseUrl */ .pc + '/getDevis', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        (0,_modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .LoadDT */ .lG)(devisDT, JSON.parse(this.response), Devis);
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-  }
-
-  static getDevis(callback){
-    var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', _modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .baseUrl */ .pc + '/getDevis', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        callback(JSON.parse(this.response));
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send();
-  }
-
-  static loadDevisList_dnum(e){
-    Devis.getDevis( response => {
-      var selectElement = document.createElement("select");
-      selectElement.dataset.current = e.target.dataset.current;
-      selectElement.dataset.id = e.target.dataset.id;
-      selectElement.dataset.old = e.target.innerHTML;
-
-      selectElement.addEventListener("change", el=>{
-        if(el.target.value != 0){
-          (0,_modules_ajaxRequest_js__WEBPACK_IMPORTED_MODULE_0__/* .updateDB */ .gs)(el.target.parentElement.dataset.table,
-            el.target.parentElement.dataset.column,
-            el.target.value,
-            el.target.parentElement.dataset.id
-          );
-
-          var parentElement = el.target.parentElement;
-          parentElement.innerHTML = el.target.options[el.target.selectedIndex].text;
-          parentElement.dataset.current = el.target.value;
-        }else{
-          var parentElement = el.target.parentElement
-          parentElement.innerHTML = el.target.dataset.old
-        }
-      });
-
-      var option = document.createElement("option");
-        option.value = 0;
-        option.text = t('gestion', 'Cancel');
-        selectElement.appendChild(option);
-
-      JSON.parse(response).forEach(myresp => {
-        var option = document.createElement("option");
-        option.value = myresp.id;
-        option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
-        selectElement.appendChild(option);
-      });
-      
-      (0,_modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .checkSelectPurJs */ .pq)(selectElement);
-
-      e.target.innerHTML = ''
-      e.target.appendChild(selectElement);
-    });
-  }
-}
-
 
 /***/ }),
 
@@ -84892,12 +84572,344 @@ $.each( DataTable, function ( prop, val ) {
 
 /* harmony default export */ const dataTables = (DataTable);
 
-// EXTERNAL MODULE: ./src/js/objects/client.js
-var client = __webpack_require__(4002);
-// EXTERNAL MODULE: ./src/js/objects/devis.js
-var devis = __webpack_require__(8794);
+;// CONCATENATED MODULE: ./src/js/objects/client.js
+/* provided dependency */ var client_$ = __webpack_require__(4692);
+
+
+
+class Client {
+
+  /**
+   * 
+   * @param myresp instantiate client object
+   */
+  constructor(myresp) {
+    this.id = myresp.id;
+    this.entreprise = ((myresp.entreprise.length === 0) ? '-' : myresp.entreprise);
+    this.prenom = ((myresp.prenom.length === 0) ? '-' : myresp.prenom);
+    this.nom = ((myresp.nom.length === 0) ? '-' : myresp.nom);
+    this.legal_one = ((myresp.legal_one.length === 0) ? '-' : myresp.legal_one);
+    this.telephone = ((myresp.telephone.length === 0) ? '-' : myresp.telephone);
+    this.mail = ((myresp.mail.length === 0) ? '-' : myresp.mail);
+    this.adresse = ((myresp.adresse.length === 0) ? '-' : myresp.adresse);
+  }
+
+  /**
+   * Get datatable row for a client
+   */
+  getDTRow() {
+    let myrow = [
+      '<div>' + this.id + '</div>',
+      '<div class="editable" data-table="client" data-column="entreprise" data-id="' + this.id + '">' + this.entreprise + '</div>',
+      '<div class="editable" data-table="client" data-column="prenom" data-id="' + this.id + '">' + this.prenom + '</div>',
+      '<div class="editable" data-table="client" data-column="nom" data-id="' + this.id + '">' + this.nom + '</div>',
+      '<div class="editable" data-table="client" data-column="legal_one" data-id="' + this.id + '">' + this.legal_one + '</div>',
+      '<div class="editable" data-table="client" data-column="telephone" data-id="' + this.id + '">' + this.telephone + '</div>',
+      '<div class="editable" data-table="client" data-column="mail" data-id="' + this.id + '">' + this.mail + '</div>',
+      '<div class="editable" data-table="client" data-column="adresse" data-id="' + this.id + '">' + this.adresse + '</div>',
+      '<center><div data-modifier="client" data-id=' + this.id + ' data-table="client" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div></center>'
+    ];
+    return myrow;
+  }
+
+  /**
+   * 
+   * @param {*} dt 
+   */
+  static newClient(dt) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('POST', mainFunction/* baseUrl */.pc + '/client/insert', true);
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        (0,mainFunction/* showDone */.It)()
+        Client.loadClientDT(dt);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  /**
+   * 
+   * @param {*} clientDT 
+   */
+  static loadClientDT(clientDT) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', mainFunction/* baseUrl */.pc + '/getClients', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        (0,mainFunction/* LoadDT */.lG)(clientDT, JSON.parse(this.response), Client);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  /**
+   * 
+   * @param {*} callback 
+   */
+  static getClients(callback) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', mainFunction/* baseUrl */.pc + '/getClients', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        callback(JSON.parse(this.response));
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+    }
+
+  /**
+   * 
+   * @param {*} id 
+   */
+  static getClientByIdDevis(id) {
+    var myData = { id: id, };
+    client_$.ajax({
+        url: mainFunction/* baseUrl */.pc + '/clientbyiddevis',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(myData)
+    }).done(function (response, code) {
+        client_$.each(JSON.parse(response), function (arrayID, myresp) {
+            client_$("#nomprenom").html(myresp.prenom + ' ' + myresp.nom);
+            client_$("#nomprenom").attr('data-id', id);
+            client_$("#entreprise").html(myresp.entreprise);
+            client_$("#adresse").html(myresp.adresse);
+            client_$("#mail").html(myresp.mail);
+            client_$("#telephone").html(myresp.telephone);
+            client_$("#legal_one").html(myresp.legal_one);
+            client_$("#pdf").attr("data-folder", myresp.num);
+            if (client_$("#factureid").length) {
+                client_$("#pdf").data('name', myresp.entreprise + "_" + client_$("#factureid").text() + "_v" + client_$('#factureversion').text());
+            } else {
+                client_$("#pdf").data('name', myresp.entreprise + "_" + myresp.num + "_v" + client_$('#devisversion').text());
+            }
+
+        });
+    }).fail(function (response, code) {
+        showError(response);
+    });
+  }
+
+  /**
+   * 
+   */
+  // static loadClientList() {
+  //   Client.getClients(function (response) {
+  //     var listClients = document.querySelectorAll(".listClient");
+
+  //     listClients.forEach(selectElement => {
+  //       removeOptions(selectElement);
+  //       var option = document.createElement("option");
+  //       option.value = 0;
+  //       option.text = t('gestion', 'Choose customer');
+  //       selectElement.appendChild(option);
+
+  //       JSON.parse(response).forEach(myresp => {
+  //         var option = document.createElement("option");
+  //         option.value = myresp.id;
+  //         option.text = myresp.prenom + ' ' + myresp.nom;
+  //         selectElement.appendChild(option);
+  //       });
+  
+  //       checkSelectPurJs(selectElement);
+  //     });
+  //   });
+  // }
+
+  /**
+   * 
+   * @param {*} cid 
+   */
+  static loadClientList_cid(e){
+    Client.getClients(response => {
+
+      var selectElement = document.createElement("select");
+      selectElement.dataset.current = e.target.dataset.current;
+      selectElement.dataset.id = e.target.dataset.id;
+      selectElement.dataset.old = e.target.innerHTML;
+
+      selectElement.addEventListener("change", el=>{
+        if(el.target.value != 0){
+          (0,ajaxRequest/* updateDB */.gs)(el.target.parentElement.dataset.table,
+            el.target.parentElement.dataset.column,
+            el.target.value,
+            el.target.parentElement.dataset.id
+          );
+
+          var parentElement = el.target.parentElement
+          parentElement.innerHTML = el.target.value + " " + el.target.options[el.target.selectedIndex].text;
+          parentElement.dataset.current = el.target.value;
+        }else{
+          var parentElement = el.target.parentElement
+          parentElement.innerHTML = el.target.dataset.old
+        }
+      });
+
+      var option = document.createElement("option");
+        option.value = 0;
+        option.text = t('gestion', 'Cancel');
+        selectElement.appendChild(option);
+
+      JSON.parse(response).forEach(myresp => {
+        var option = document.createElement("option");
+        option.value = myresp.id;
+        option.text = myresp.prenom + ' ' + myresp.nom;
+        selectElement.appendChild(option);
+      });
+      
+      (0,mainFunction/* checkSelectPurJs */.pq)(selectElement);
+
+      e.target.innerHTML = ''
+      e.target.appendChild(selectElement);
+    });
+  }
+}
+
 // EXTERNAL MODULE: ./node_modules/@nextcloud/router/dist/index.mjs
 var router_dist = __webpack_require__(3814);
+;// CONCATENATED MODULE: ./src/js/objects/devis.js
+
+
+
+
+class Devis {
+
+  /**
+   * Devis object
+   * @param myresp instantiate devis object
+   */
+  constructor(myresp) {
+    this.id = myresp.id;
+    this.user_id = myresp.user_id;
+    this.date = ((myresp.date == null || myresp.date.length === 0) ? '-' : myresp.date);
+    this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
+    this.cid = ((myresp.cid == null || myresp.cid.length === 0) ? '-' : myresp.cid);
+    this.nom = ((myresp.nom == null || myresp.nom.length === 0) ? '-' : myresp.nom);
+    this.prenom = ((myresp.prenom == null || myresp.prenom.length === 0) ? '-' : myresp.prenom);
+    this.version = ((myresp.version == null || myresp.version.length === 0) ? '-' : myresp.version);
+    this.mentions = ((myresp.mentions == null || myresp.mentions.length === 0) ? '-' : myresp.mentions);
+    this.baseUrl = (0,router_dist/* generateUrl */.Jv)(`/apps/gestion/devis/${this.id}/show`);
+  }
+
+  /**undefined
+   * Get datatable row for a devis
+   */
+  getDTRow() {
+    let myrow = [
+      '<div>' + this.user_id + '</div>',
+      '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date + ' data-table="devis" data-column="date" data-id="' + this.id + '"/>',
+      '<div class="editable" data-table="devis" data-column="num" data-id="' + this.id + '" style="display:inline">' + this.num + '</div>',
+      '<div class="loadSelect_listclient" data-table="devis" data-column="id_client" data-id="' + this.id + '" data-current="' + this.cid + '">'+ this.cid + ' ' + this.prenom + ' ' + this.nom + '</div>',
+      '<div class="editable" data-table="devis" data-column="version" data-id="' + this.id + '" style="display:inline">' + this.version + '</div>',
+      '<div class="editable" data-table="devis" data-column="mentions" data-id="' + this.id + '" style="display:inline">' + this.mentions + '</div>',
+      '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl + '"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="devis" data-id=' + this.id + ' data-table="devis" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>'
+    ];
+    return myrow;
+  }
+
+  /**
+   * 
+   * @param {*} dt 
+   */
+  static newDevis(dt) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('POST', mainFunction/* baseUrl */.pc + '/devis/insert', true);
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        (0,mainFunction/* showDone */.It)()
+        Devis.loadDevisDT(dt);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  /**
+   * Load devis ajax
+   * @param devisDT devis datatable
+   */
+  static loadDevisDT(devisDT) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', mainFunction/* baseUrl */.pc + '/getDevis', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        (0,mainFunction/* LoadDT */.lG)(devisDT, JSON.parse(this.response), Devis);
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  static getDevis(callback){
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', mainFunction/* baseUrl */.pc + '/getDevis', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.onload = function(e){
+      if (this.status == 200) {
+        callback(JSON.parse(this.response));
+      }else{
+        showError(this.response);
+      }
+    };
+    oReq.send();
+  }
+
+  static loadDevisList_dnum(e){
+    Devis.getDevis( response => {
+      var selectElement = document.createElement("select");
+      selectElement.dataset.current = e.target.dataset.current;
+      selectElement.dataset.id = e.target.dataset.id;
+      selectElement.dataset.old = e.target.innerHTML;
+
+      selectElement.addEventListener("change", el=>{
+        if(el.target.value != 0){
+          (0,ajaxRequest/* updateDB */.gs)(el.target.parentElement.dataset.table,
+            el.target.parentElement.dataset.column,
+            el.target.value,
+            el.target.parentElement.dataset.id
+          );
+
+          var parentElement = el.target.parentElement;
+          parentElement.innerHTML = el.target.options[el.target.selectedIndex].text;
+          parentElement.dataset.current = el.target.value;
+        }else{
+          var parentElement = el.target.parentElement
+          parentElement.innerHTML = el.target.dataset.old
+        }
+      });
+
+      var option = document.createElement("option");
+        option.value = 0;
+        option.text = t('gestion', 'Cancel');
+        selectElement.appendChild(option);
+
+      JSON.parse(response).forEach(myresp => {
+        var option = document.createElement("option");
+        option.value = myresp.id;
+        option.text = myresp.num + ' ' + myresp.prenom + ' ' + myresp.nom;
+        selectElement.appendChild(option);
+      });
+      
+      (0,mainFunction/* checkSelectPurJs */.pq)(selectElement);
+
+      e.target.innerHTML = ''
+      e.target.appendChild(selectElement);
+    });
+  }
+}
+
 ;// CONCATENATED MODULE: ./src/js/objects/facture.js
 
 
@@ -85079,6 +85091,7 @@ document.body.addEventListener('click', function (event) {
                     
                     (0,ajaxRequest/* updateDBConfiguration */.ct)(table, column, values[0], id);
                     (0,ajaxRequest/* configuration */.HF)(mainFunction/* path */.Ae);
+                    document.getElementById('theFolder').value = values[0];
                 },
             })
             .build()
@@ -85114,8 +85127,8 @@ main_listener_$('body').on('click', '.deleteItem', function () {
     (0,ajaxRequest/* deleteDB */.MR)(table, id);
     var dt = new dataTables('.tabledt');
     if (modifier === "getProduitsById") { (0,ajaxRequest/* getProduitsById */.TD)(); }
-    if (modifier === "client") { client/* Client */.K.loadClientDT(dt); }
-    if (modifier === "devis") { devis/* Devis */.W.loadDevisDT(dt); }
+    if (modifier === "client") { Client.loadClientDT(dt); }
+    if (modifier === "devis") { Devis.loadDevisDT(dt); }
     if (modifier === "facture") { Facture.loadFactureDT(dt); }
     if (modifier === "produit") { Produit.loadProduitDT(dt); }
 });
@@ -85203,13 +85216,13 @@ document.body.addEventListener('click', function(e) {
         e.target.setAttribute('contenteditable', 'true');
         e.target.focus();
     } else if(targetClass.includes("loadSelect_listclient")){
-        client/* Client */.K.loadClientList_cid(e);
+        Client.loadClientList_cid(e);
     } else if(targetClass.includes("loadSelect_listdevis")){
-        devis/* Devis */.W.loadDevisList_dnum(e);
+        Devis.loadDevisList_dnum(e);
     } else if(targetId === "newClient"){
-        client/* Client */.K.newClient(new dataTables('.tabledt'));
+        Client.newClient(new dataTables('.tabledt'));
     } else if(targetId === "newDevis"){
-        devis/* Devis */.W.newDevis(new dataTables('.tabledt'));
+        Devis.newDevis(new dataTables('.tabledt'));
     } else if(targetId === "newInvoice"){
         Facture.newFacture(new dataTables('.tabledt'));
     } else if(targetId === "newProduit"){
@@ -85298,7 +85311,7 @@ var js_pdf = __webpack_require__(1941);
 window.addEventListener("DOMContentLoaded", function () {
     (0,mainFunction/* globalConfiguration */.Sy)();
 
-    client/* Client */.K.getClientByIdDevis(factureShow_$("#devisid").data("id"));
+    Client.getClientByIdDevis(factureShow_$("#devisid").data("id"));
     (0,ajaxRequest/* getProduitsById */.TD)();
 
     var pdf = document.getElementById("pdf");

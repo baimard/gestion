@@ -97,6 +97,21 @@
   }
 }
 
+.app-navigation-entry {
+  display: flex;
+  align-items: center; /* Vertically centers the flex items */
+  justify-content: space-between; /* Spaces out the <a> and <span> */
+  margin-top: 15px;
+}
+
+.app-navigation-item{
+  margin-top: 15px;
+}
+
+.nav-link, .nav-stats {
+  display: flex;
+  align-items: left; /* This ensures that if the text or loader has different heights, they will be aligned in the center */
+}
 
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
@@ -119,12 +134,9 @@
   width: 30px;
  }
 
-.navmarg {
-  margin-left:10px;
-}
-
 #app-navigation:not(.vue) > ul > li > a, #app-navigation:not(.vue) > ul > li > ul > li > a {
-  padding:0 12px 0 15px;
+  padding:0 20px 0 20px;
+  font-size: 20px;
 }
 
 .inputDate{
@@ -181,4 +193,11 @@
 
 .statData{
   text-align: right;
+}
+
+.configuration{
+  display:block;
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }

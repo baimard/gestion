@@ -26,11 +26,11 @@ OC.L10N.register(
     "Subject" : "Teema",
     "Send" : "Saada",
     "Configuration" : "Seadistamine",
-    "Need help?" : "Vajad abi?",
     "ID" : "ID",
     "Version" : "Versioon",
     "Status" : "Staatus",
     "Actions" : "Tegevused",
+    "Year" : "Aasta",
     "January" : "Jaanuar",
     "February" : "Veebruar",
     "March" : "Märts",
@@ -44,7 +44,7 @@ OC.L10N.register(
     "November" : "November",
     "December" : "Detsember",
     "Total" : "Kokku",
-    "Information" : "Informatsioon",
+    "Mail" : "Kirjad",
     "About" : "Info"
 },
 "nplurals=2; plural=(n != 1);");

@@ -42,8 +42,7 @@ OC.L10N.register(
     "Body" : "Σώμα",
     "Send" : "Αποστολή",
     "Configuration" : "Ρύθμιση",
-    "Need help?" : "Θέλετε βοήθεια;",
-    "Loading …" : "Φόρτωση...",
+    "Add" : "Προσθήκη",
     "ID" : "ID",
     "Version" : "Έκδοση",
     "Status" : "Κατάσταση",
@@ -80,10 +79,11 @@ OC.L10N.register(
     "November" : "Νοέμβριος",
     "December" : "Δεκέμβριος",
     "Total" : "Σύνολο",
-    "Manage" : "Διαχείριση",
+    "Loading …" : "Φόρτωση...",
+    "Mail" : "Αλληλογραφία",
     "Customers" : "Πελάτες",
-    "Information" : "Πληροφορίες",
-    "About" : "Σχετικά με",
-    "Save folder" : "Φάκελος αποθήκευσης"
+    "INFORMATION" : "ΠΛΗΡΟΦΟΡΙΕΣ",
+    "Save folder" : "Φάκελος αποθήκευσης",
+    "About" : "Σχετικά με"
 },
 "nplurals=2; plural=(n != 1);");

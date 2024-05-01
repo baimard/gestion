@@ -31,8 +31,7 @@
     "Body" : "Textyta",
     "Send" : "Skicka",
     "Configuration" : "Inställningar",
-    "Need help?" : "Behövs hjälp?",
-    "Loading …" : "Läser in …",
+    "Add" : "Lägg till",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Version",
@@ -40,6 +39,7 @@
     "Actions" : "Åtgärder",
     "Send by email" : "Skicka via e-post",
     "Invoice" : "Faktura",
+    "Legal information" : "Juridisk information",
     "Legal notice" : "Rättsligt meddelande",
     "Year" : "År",
     "January" : "Januari",
@@ -55,8 +55,10 @@
     "November" : "November",
     "December" : "December",
     "Total" : "Totalt",
-    "Manage" : "Hantera",
-    "Information" : "Information",
+    "Loading …" : "Läser in …",
+    "Mail" : "E-post",
+    "Customers" : "Kunder",
+    "INFORMATION" : "INFORMATION",
     "About" : "Om"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

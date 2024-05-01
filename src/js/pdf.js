@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { showMessage } from "@nextcloud/dialogs";
-import { baseUrl } from "./modules/mainFunction.mjs";
+import { baseUrl } from "./modules/mainFunction.js";
 
 export function sendMail(myData) {
   $.ajax({
@@ -56,6 +56,7 @@ function genPDF(imgData, canvas) {
   }
 
   var pdf = btoa(doc.output());
+
   var n = "";
   var to = $("#to").val().split(";");
   var Cc = $("#Cc").val().split(";");
@@ -69,7 +70,7 @@ function genPDF(imgData, canvas) {
   }
 
   var myData = { name: n, subject: subject, body: body, to: JSON.stringify(to), Cc : JSON.stringify(Cc), content: pdf, folder: $("#theFolder").val() + "/" + $("#pdf").data("folder") + "/" };
-
+  console.log(pdf);
   return myData;
   //doc.save('devis.pdf');
 }

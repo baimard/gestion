@@ -1,13 +1,13 @@
-import "@nextcloud/dialogs/dist/index.css";
-import "datatables.net-dt/css/jquery.dataTables.css";
+// import "@nextcloud/dialogs/dist/index.css";
+import "datatables.net-dt/css/dataTables.dataTables.css";
 import "../css/mycss.less";
 import "./listener/main_listener";
 
 import DataTable from "datatables.net";
-import { globalConfiguration, optionDatatable } from "./modules/mainFunction.mjs";
-import { Client } from "./objects/client.mjs";
+import { globalConfiguration, optionDatatable } from "./modules/mainFunction.js";
+import { Client } from "./objects/client.js";
 
-window.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     globalConfiguration();
     Client.loadClientDT(new DataTable(".tabledt",optionDatatable));
 });

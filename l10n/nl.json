@@ -224,9 +224,7 @@
     "Global default Currency" : "Algemene standaard Valuta",
     "Legal disclaimer/mentions" : "Rechtelijke disclaimer/vermeldingen",
     "Configuration" : "Configuratie",
-    "Click to edit" : "Klik om aan te passen",
-    "Need help?" : "Hulp nodig?",
-    "Loading …" : "Laden ...",
+    "Add" : "Toevoegen",
     "Quote" : "Quote",
     "Add quote" : "Toevoegen offerte",
     "ID" : "ID",
@@ -279,14 +277,15 @@
     "November" : "November",
     "December" : "December",
     "Total" : "Totaal",
-    "Manage" : "Beheren",
+    "Loading …" : "Laden ...",
+    "Mail" : "E-mail",
     "Customers" : "Klanten",
     "Quotes" : "Offertes",
     "Invoices" : "Facturen",
     "Products" : "Producten",
-    "Information" : "Informatie",
-    "About" : "Over",
+    "INFORMATION" : "INFORMATIE",
     "Save folder" : "Map om op te slaan",
-    "Please choose a folder" : "Kies alsjeblieft een map"
+    "Please choose a folder" : "Kies alsjeblieft een map",
+    "About" : "Over"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

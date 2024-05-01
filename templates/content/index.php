@@ -1,17 +1,10 @@
 <div id="contentTable">
-    <div class="breadcrumb" data-html2canvas-ignore>
-        <div class="crumb svg crumbhome">
-            <a href="<?php echo($_['url']['index']); ?>" class="icon-home"></a>
-            <span style="display: none;"></span>
-        </div>
-        <div class="crumb svg crumbhome">
-            <span><?php p($l->t('Customer'));?></span>
-        </div>
-        <div class="crumb svg crumbhome">
-            <button style="margin-left:3px;" type="button"  id="newClient">
-                <?php p($l->t('Add customer'));?>
-            </button>
-        </div>
+    <div class="menu-content">
+        <a href="<?php echo($_['url']['index']); ?>"><span class="material-symbols-outlined">home</span></a>
+        <span class="material-symbols-outlined">chevron_right</span>
+        <span><?php p($l->t('Customer'));?></span>
+        <span class="material-symbols-outlined">chevron_right</span>
+        <button style="margin-left:3px;" type="button"  id="newClient"><?php p($l->t('Add customer'));?></button>
     </div>
     <table id="client" class="display tabledt" style="font-size:11px;">
         <thead>

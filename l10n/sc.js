@@ -47,8 +47,7 @@ OC.L10N.register(
     "Body" : "Corpus",
     "Send" : "Imbia",
     "Configuration" : "Cunfiguratzione",
-    "Need help?" : "Boles agiudu?",
-    "Loading …" : "Carrigamentu...",
+    "Add" : "Agiunghe",
     "Quote" : "Preventivu",
     "ID" : "ID",
     "Quote date" : "Data de su preventivu",
@@ -95,9 +94,11 @@ OC.L10N.register(
     "November" : "Sant'Andria",
     "December" : "Nadale",
     "Total" : "Totale",
+    "Loading …" : "Carrigamentu...",
+    "Mail" : "Posta ",
     "Customers" : "Clientes",
-    "Information" : "Informatziones",
-    "About" : "In contu de",
-    "Save folder" : "Sarva cartella"
+    "INFORMATION" : "INFORMATZIONE",
+    "Save folder" : "Sarva cartella",
+    "About" : "In contu de"
 },
 "nplurals=2; plural=(n != 1);");

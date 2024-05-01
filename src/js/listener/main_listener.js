@@ -1,101 +1,43 @@
-import { FilePicker, showError } from "@nextcloud/dialogs";
-import { updateDB, configuration, updateEditable, deleteDB, getProduitsById, listProduit } from "../modules/ajaxRequest.mjs";
-import { path, baseUrl, updateNumerical } from "../modules/mainFunction.mjs";
+import { getFilePickerBuilder, showError } from "@nextcloud/dialogs";
+import { updateDB, configuration, updateEditable, deleteDB, getProduitsById, listProduit, updateCurrentCompany, updateDBConfiguration } from "../modules/ajaxRequest.js";
+import { path, baseUrl, updateNumerical } from "../modules/mainFunction.js";
 import DataTable from 'datatables.net';
-import { Client } from '../objects/client.mjs';
-import { Devis } from '../objects/devis.mjs';
-import { Facture } from '../objects/facture.mjs';
-import { Produit } from '../objects/produit.mjs';
+import { Client } from '../objects/client.js';
+import { Devis } from '../objects/devis.js';
+import { Facture } from '../objects/facture.js';
+import { Produit } from '../objects/produit.js';
 
 var choose_folder = t('gestion', 'Choose work folder');
 
-$('body').on('click', '#theFolder', function () {
-    var f = new FilePicker(choose_folder, false, [], false, 1, true, $("#theFolder").val());
-    f.pick().then(
-        function (value) {
-            updateDB($('#theFolder').data('table'), $('#theFolder').data('column'), value, $('#theFolder').data('id'));
-            configuration(path);
-        }
-    );
-});
-
-$('body').on('change', '.editableSelect', function () { 
-    updateDB($(this).data('table'), $(this).data('column'), $(this).val(), $(this).data('id')); 
+document.body.addEventListener('click', function (event) {
+    // Check if the clicked element is the one with id 'theFolder'
+    if (event.target && event.target.id === 'theFolder') {
+        getFilePickerBuilder(choose_folder)
+            .allowDirectories(true)
+            .setMultiSelect(false)
+            .addButton({
+                label: t('gestion', 'Choose'),
+                callback: (nodes) => {
+                    // Get the values of the picked nodes
+                    const values = nodes.map(node => node.path);
+                    var theFolder = document.getElementById('theFolder');
+                    var table = theFolder.getAttribute('data-table');
+                    var column = theFolder.getAttribute('data-column');
+                    var id = theFolder.getAttribute('data-id');
+                    
+                    updateDBConfiguration(table, column, values[0], id);
+                    configuration(path);
+                    document.getElementById('theFolder').value = values[0];
+                },
+            })
+            .build()
+            .pick()
+    }
 });
 
 $('body').on('click', '.menu', function () { $('#menu-' + this.dataset.menu).toggleClass('open'); });
 $('body').on('click', '.modalClose', function () { var modal = $(this)[0].parentElement.parentElement; modal.style.display = "none"; });
 
-document.body.addEventListener('click', e => {
-    if(e.target.className.includes("editableNumber")){
-        e.target.setAttribute('contenteditable', 'true');
-        e.target.focus();
-    }else if (e.target.className.includes("editableNumeric")){
-        e.target.setAttribute('contenteditable', 'true');
-        e.target.focus();
-    }else if(e.target.className.includes("loadSelect_listclient")){
-        Client.loadClientList_cid(e);
-    }else if(e.target.className.includes("loadSelect_listdevis")){
-        Devis.loadDevisList_dnum(e);
-    }else if(e.target.className.includes("editableSelect")){
-        //prevent
-    }else if(e.target.className.includes("editable")){
-        e.target.setAttribute('contenteditable', 'true');
-        e.target.focus();
-    }else if("newClient" === e.target.id){
-        Client.newClient(new DataTable('.tabledt'));
-    }else if("newDevis" === e.target.id){
-        Devis.newDevis(new DataTable('.tabledt'));
-    }else if("newInvoice" === e.target.id){
-        Facture.newFacture(new DataTable('.tabledt'));
-    }else if("newProduit" === e.target.id){
-        Produit.newProduct(new DataTable('.tabledt'));
-    }
-});
-
-document.body.addEventListener('keydown', e => {
-    if(e.key==="Enter"){
-        if(e.target.className.includes("editableNumber")){
-            updateNumerical(e.target, false);
-        }else if (e.target.className.includes("editableNumeric")){
-            updateNumerical(e.target);
-        }else if(e.target.className.includes("editableSelect")){
-            //Prevent
-        }else if(e.target.className.includes("editable")){
-            updateEditable(e.target);
-        }
-    }
-});
-
-document.body.addEventListener('focusout', e => {
-    if(e.target.className.includes("editableNumber")){
-        updateNumerical(e.target, false);
-    }else if (e.target.className.includes("editableNumeric")){
-        updateNumerical(e.target);
-    }else if(e.target.className.includes("editableSelect")){
-        //prevent
-    }else if(e.target.className.includes("editable")){
-        updateEditable(e.target);
-    }
-});
-
-document.body.addEventListener('mouseover', e => {
-    if( e.target.className.includes("editable") ||
-        e.target.className.includes("loadSelect") ||
-        e.target.className.includes("selectable")
-    ){
-        e.target.style.border = "1px solid " + getComputedStyle(document.documentElement).getPropertyValue('--color-primary-element-light');
-        e.target.style.borderRadius = "5px";
-        e.target.style.padding = "5px";
-        e.target.style.fontWeight = "bold";
-        e.target.addEventListener('mouseout', e => {
-                e.target.style.border = null;
-                e.target.style.padding = null;
-                e.target.style.fontWeight = null;
-                e.target.style.borderRadius = null;
-        });
-    }
-});
 
 $('body').on('dblclick', '.selectableDevis', function () {
     var id = $(this).data('id');
@@ -184,7 +126,106 @@ $('body').on('click', '#devisAdd', function () {
     });
 });
 
-$('body').on('click', '#about', function () {
-    var modal = document.getElementById("modalConfig");
-    modal.style.display = "block";
+document.addEventListener('DOMContentLoaded', function() {
+
+    var aboutButton = document.getElementById('about');
+    if (aboutButton) {
+        aboutButton.addEventListener('click', function() {
+            var modal = document.getElementById("modalConfig");
+            if (modal) {
+                modal.style.display = "block";
+            }
+        });
+    }
 });
+document.body.addEventListener('click', function(e) {
+    var targetClass = e.target.className;
+    var targetId = e.target.id;
+    
+    if(     targetClass.includes("editableSelect") 
+    ||      targetClass.includes("editableConfiguration")
+    ||      targetClass.includes("editableConfigurationSelect")){
+// Prevent default behavior
+    } else if(targetClass.includes("editableNumber") 
+        || targetClass.includes("editableNumeric")
+        || targetClass.includes("editable")){
+        e.target.setAttribute('contenteditable', 'true');
+        e.target.focus();
+    } else if(targetClass.includes("loadSelect_listclient")){
+        Client.loadClientList_cid(e);
+    } else if(targetClass.includes("loadSelect_listdevis")){
+        Devis.loadDevisList_dnum(e);
+    } else if(targetId === "newClient"){
+        Client.newClient(new DataTable('.tabledt'));
+    } else if(targetId === "newDevis"){
+        Devis.newDevis(new DataTable('.tabledt'));
+    } else if(targetId === "newInvoice"){
+        Facture.newFacture(new DataTable('.tabledt'));
+    } else if(targetId === "newProduit"){
+        Produit.newProduct(new DataTable('.tabledt'));
+    }
+});
+
+document.body.addEventListener('keydown', function(e) {
+    if(e.key === "Enter"){
+        var targetClass = e.target.className;
+        if(targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")){
+            updateNumerical(e.target);
+        } else if(  targetClass.includes("editableSelect") 
+        ||  targetClass.includes("editableConfiguration")
+        ||  targetClass.includes("editableConfigurationSelect")){
+    // Prevent default behavior
+        } else if(targetClass.includes("editable")){
+            updateEditable(e.target);
+        }
+    }
+});
+
+document.body.addEventListener('focusout', function(e) {
+    var targetClass = e.target.className;
+    if(targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")){
+        updateNumerical(e.target);
+    } else if(  targetClass.includes("editableSelect") 
+            ||  targetClass.includes("editableConfiguration")
+            ||  targetClass.includes("editableConfigurationSelect")){
+        // Prevent default behavior
+    } else if(targetClass.includes("editable")){
+        updateEditable(e.target);
+    }
+});
+
+document.body.addEventListener('mouseover', function(e) {
+    var targetClass = e.target.className;
+    if(targetClass.includes("editable") || targetClass.includes("loadSelect") || targetClass.includes("selectable")){
+        applyMouseOverStyles(e.target);
+    }
+});
+
+document.body.addEventListener('change', function(event) {
+    if (event.target.classList.contains('editableSelect')) {
+        var table = event.target.getAttribute('data-table');
+        var column = event.target.getAttribute('data-column');
+        var value = event.target.value;
+        var id = event.target.getAttribute('data-id');
+        
+        updateDB(table, column, value, id);
+    }
+
+    if(event.target.id === "CurrentCompany-select"){
+        var value = event.target.value;
+        updateCurrentCompany(value);
+    }
+});
+
+function applyMouseOverStyles(element) {
+    element.style.border = "1px solid " + getComputedStyle(document.documentElement).getPropertyValue('--color-primary-element-light');
+    element.style.borderRadius = "5px";
+    element.style.padding = "5px";
+    element.style.fontWeight = "bold";
+    element.addEventListener('mouseout', function(e) {
+        e.target.style.border = null;
+        e.target.style.padding = null;
+        e.target.style.fontWeight = null;
+        e.target.style.borderRadius = null;
+    });
+}

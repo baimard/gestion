@@ -1,6 +1,6 @@
 <?php
 	style('gestion', array('style'));
-	script('gestion', array('client.app', '814.app', '856.app'));
+	script('gestion', array('client.app'))
 ?>
 
 <div id="app">

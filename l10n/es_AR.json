@@ -11,6 +11,7 @@
     "Disable" : "Deshabilitar",
     "Enable" : "Habilitar",
     "Search" : "Buscar",
+    "Showing 0 to 0 of 0 entries" : "Mostrando 0 a 0 de 0 entradas",
     "Next" : "Siguiente",
     "Previous" : "Anterior",
     "Open" : "Abrir",
@@ -22,12 +23,13 @@
     "Subject" : "Asunto",
     "Send" : "Enviar",
     "Configuration" : "Configuración",
-    "Need help?" : "¿Necesita ayuda?",
+    "Add" : "Agregar",
     "ID" : "ID",
     "Version" : "Versión",
     "Status" : "Estatus",
     "Actions" : "Acciones",
     "Send by email" : "Enviar por correo electrónico",
+    "Year" : "Año",
     "January" : "Enero",
     "February" : "Febrero",
     "March" : "Marzo",
@@ -41,8 +43,6 @@
     "November" : "Noviembre",
     "December" : "Diciembre",
     "Total" : "Total",
-    "Manage" : "Administrar",
-    "Information" : "Información",
     "About" : "Acerca de"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

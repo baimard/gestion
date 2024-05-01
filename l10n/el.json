@@ -40,8 +40,7 @@
     "Body" : "Σώμα",
     "Send" : "Αποστολή",
     "Configuration" : "Ρύθμιση",
-    "Need help?" : "Θέλετε βοήθεια;",
-    "Loading …" : "Φόρτωση...",
+    "Add" : "Προσθήκη",
     "ID" : "ID",
     "Version" : "Έκδοση",
     "Status" : "Κατάσταση",
@@ -78,10 +77,11 @@
     "November" : "Νοέμβριος",
     "December" : "Δεκέμβριος",
     "Total" : "Σύνολο",
-    "Manage" : "Διαχείριση",
+    "Loading …" : "Φόρτωση...",
+    "Mail" : "Αλληλογραφία",
     "Customers" : "Πελάτες",
-    "Information" : "Πληροφορίες",
-    "About" : "Σχετικά με",
-    "Save folder" : "Φάκελος αποθήκευσης"
+    "INFORMATION" : "ΠΛΗΡΟΦΟΡΙΕΣ",
+    "Save folder" : "Φάκελος αποθήκευσης",
+    "About" : "Σχετικά με"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

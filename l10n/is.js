@@ -30,8 +30,7 @@ OC.L10N.register(
     "Body" : "Meginmál",
     "Send" : "Senda",
     "Configuration" : "Uppsetning",
-    "Need help?" : "Þarftu hjálp?",
-    "Loading …" : "Hleð inn …",
+    "Add" : "Bæta við",
     "ID" : "ID",
     "Version" : "Útgáfa",
     "Status" : "Staða",
@@ -54,9 +53,10 @@ OC.L10N.register(
     "November" : "Nóvember",
     "December" : "Desember",
     "Total" : "Alls",
-    "Manage" : "Skipuleggja",
-    "Information" : "Upplýsingar",
-    "About" : "Um hugbúnaðinn",
-    "Save folder" : "Vista möppu"
+    "Loading …" : "Hleð inn …",
+    "Mail" : "Póstur",
+    "INFORMATION" : "UPPLÝSINGAR",
+    "Save folder" : "Vista möppu",
+    "About" : "Um hugbúnaðinn"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

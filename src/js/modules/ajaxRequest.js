@@ -1,0 +1,400 @@
+import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
+import { translate as t, translatePlural as n } from '@nextcloud/l10n'
+import { baseUrl, cur, getGlobal, insertCell, insertRow, modifyCell } from "./mainFunction.js";
+
+/**
+ * Update data
+ * @param table 
+ * @param column 
+ * @param data 
+ * @param id 
+ */
+export function updateDB(table, column, data, id) {
+    var myData = {
+        table: table,
+        column: column,
+        data: data,
+        id: id,
+    };
+
+    $.ajax({
+        url: baseUrl + '/update',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(myData)
+    }).done(function (response, code) {
+        showSuccess(t('gestion', 'Modification saved'));
+    }).fail(function (response, code) {
+        showError(t('gestion', 'There is an error with the format, please check the documentation'));
+    });
+}
+
+/**
+ * Update data
+ * @param table 
+ * @param column 
+ * @param data 
+ * @param id 
+ */
+export function updateDBConfiguration(table, column, data, id) {
+    
+    var myData = {
+        table: table,
+        column: column,
+        data: data,
+        id: id,
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', baseUrl + '/updateConfiguration', true); // false for synchronous request
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // Request successful
+            showSuccess(t('gestion', 'Modification saved'));
+        } else {
+            // Request failed
+            showError(t('gestion', 'There is an error with the format, please check the documentation'));
+        }
+    };
+
+    xhr.onerror = function () {
+        // Connection error
+        showError(t('gestion', 'There is an error with the format, please check the documentation'));
+    };
+
+    xhr.send(JSON.stringify(myData));
+}
+
+/**
+ * Create a new company
+ */
+export function createCompany() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('PUT',baseUrl +  '/createCompany', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader("requesttoken", oc_requesttoken);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            showSuccess(t('gestion', 'New company created'));
+            location.reload();
+        } else {
+            showError(t('gestion', 'There is an error.'));
+        }
+    };
+    xhr.send();
+}
+
+/**
+ * Delete a company
+ */
+export function deleteCompany() {
+    if(window.confirm(t('gestion','Are you sure you want to delete? (All data will be lost)'))){
+        var xhr = new XMLHttpRequest();
+        xhr.open('DELETE', baseUrl + '/deleteCompany', true); // false for synchronous request
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader("requesttoken", oc_requesttoken);
+        xhr.onreadystatechange = function (value) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // Request successful
+                showSuccess(t('gestion', 'Company deleted'));
+                location.reload();
+            } else {
+                showError(t('gestion', 'There is an error.'));
+                console.log(value);
+            }
+        };
+        xhr.send();
+    }
+}
+
+/**
+ * Update session var
+ * @param table 
+ * @param column 
+ */
+export function updateCurrentCompany(companyID) {
+    var myData = {
+        companyID: companyID
+    };
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', baseUrl + '/updateSession', true); // false for synchronous request
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader("requesttoken", oc_requesttoken);
+
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // Request successful
+            showSuccess(t('gestion', 'Modification saved'));
+            window.location.reload();
+        } else {
+            // Request failed
+            showError(t('gestion', 'There is an error with the format, please check the documentation'));
+        }
+    };
+
+    xhr.onerror = function () {
+        // Connection error
+        showError(t('gestion', 'There is an error with the format, please check the documentation'));
+    };
+
+    xhr.send(JSON.stringify(myData));
+}
+
+/**
+ * Delete data
+ * @param table
+ * @param id 
+ */
+export function deleteDB(table, id) {
+    var myData = {
+        table: table,
+        id: id,
+    };
+
+    if(window.confirm(t('gestion','Are you sure you want to delete?'))){
+        $.ajax({
+            url: baseUrl + '/delete',
+            type: 'DELETE',
+            async: false,
+            contentType: 'application/json',
+            data: JSON.stringify(myData)
+        }).done(function (response, code) {
+            showSuccess(t('gestion', 'Modification saved'));
+        }).fail(function (response, code) {
+            showError(response);
+        });
+    }else{
+        showMessage(t('gestion', 'Nothing changed'))
+    }
+}
+
+/**
+ * 
+ */
+export function getStats() {
+    $.ajax({
+        url: baseUrl + '/getStats',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        var res = JSON.parse(response);
+        $("#statsclient").text(res.client);
+        $("#statsdevis").text(res.devis);
+        $("#statsfacture").text(res.facture);
+        $("#statsproduit").text(res.produit);
+    }).fail(function (response, code) {
+        showError(response);
+    });
+}
+
+
+/**
+ * 
+ * @param {*} f1 
+ */
+export function configuration(f1) {
+    $.ajax({
+        url: baseUrl + '/getConfiguration',
+        type: 'PROPFIND',
+        contentType: 'application/json',
+        async: false,
+    }).done(function (response) {
+        f1(response);
+    }).fail(function (response, code) {
+        showError(response);
+    });
+}
+
+/**
+ * 
+ */
+export function isconfig() {
+    console.log("isconfig");
+    $.ajax({
+        url: baseUrl + '/isconfig',
+        type: 'GET',
+        contentType: 'application/json'
+    }).done(function (response) {
+        if (!response) {
+            var modal = document.getElementById("modalConfig");
+            modal.style.display = "block";
+        }
+    })
+}
+
+/**
+ * 
+ * @param {*} cur 
+ */
+export function getAnnualTurnoverPerMonthNoVat(cur) {
+    $.ajax({
+        url: baseUrl + '/getAnnualTurnoverPerMonthNoVat',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        var res = JSON.parse(response);
+        var curY = "";
+        var curRow;
+        var total=0;
+        res.forEach(function(item){
+            if(curY !== item.y){
+                
+                if(curY !== ""){
+                    insertCell(curRow, -1, cur.format(total));
+                    total=0;
+                }
+
+                curY = item.y;
+                curRow = insertRow("Statistical", -1, 0, item.y);
+                modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
+                total+= Math.round(item.total);
+
+            }else{
+
+                modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
+                total+= Math.round(item.total);
+
+            }
+        });
+        // At the end
+        insertCell(curRow, -1, cur.format(total));
+    }).fail(function (response, code) {
+        showError(response);
+    });
+}
+
+/**
+ * 
+ * @param {*} myCase 
+ */
+export function updateEditable(myCase) {
+    updateDB(myCase.dataset.table, myCase.dataset.column, myCase.innerText, myCase.dataset.id);
+    if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
+    myCase.removeAttribute('contenteditable');
+}
+
+/**
+ * 
+ * @param {*} myCase 
+ */
+export function updateEditableConfiguration(myCase) {
+    updateDBConfiguration(myCase.dataset.table, myCase.dataset.column, myCase.innerText, myCase.dataset.id);
+    if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
+    myCase.removeAttribute('contenteditable');
+}
+
+
+/**
+ * 
+ * @param {*} lp 
+ * @param {*} id 
+ * @param {*} produitid 
+ */
+export function listProduit(lp, id, produitid) {
+    $.ajax({
+        url: baseUrl + '/getProduits',
+        type: 'PROPFIND',
+        contentType: 'application/json'
+    }).done(function (response) {
+        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">'+t('gestion','Cancel')+'</option>');
+        $.each(JSON.parse(response), function (arrayID, myresp) {
+            var selected = "";
+            if (produitid == myresp.id) {
+                selected = "selected";
+            }
+            lp.append('<option ' + selected + ' data-table="produit_devis" data-column="produit_id" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.reference + ' ' + myresp.description + ' ' + cur.format(myresp.prix_unitaire) + '</option>');
+        });
+    }).fail(function (response, code) {
+        showError(response);
+    });
+}
+
+/**
+ * Get a product in database using id
+ */
+ export function getProduitsById() {
+    var devis_id = $('#devisid').data('id');
+    var myData = { numdevis: devis_id, };
+
+    $.ajax({
+        url: baseUrl + '/getProduitsById',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(myData)
+    }).done(function (response, code) {
+        $('#produits tbody').empty();
+        var total = 0;
+        var deleteDisable = "";
+        if ($('#produits').data("type") === "facture") {
+            deleteDisable = "d-none";
+        }
+
+        $.each(JSON.parse(response), function (arrayID, myresp) {
+            $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="' + deleteDisable + ' deleteItem icon-delete"></div><div style="display:inline;" data-val="' + myresp.pid + '" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
+                '<td>' + myresp.description + '</td>' +
+                '<td><div class="editable" data-table="produit_devis" data-column="comment" data-id="' + myresp.pdid + '">' + ((myresp.comment.length === 0) ? '-' : myresp.comment) + '</div></td>' +
+                '<td><div class="editableNumber getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id=' + myresp.pdid + '>' + myresp.quantite + '</div> </td>' +
+                '<td>' + cur.format(myresp.prix_unitaire) + '</td>' +
+                '<td>' + cur.format((myresp.quantite * myresp.prix_unitaire)) + '</td></tr>');
+            total += (myresp.quantite * myresp.prix_unitaire);
+        });
+
+        $("#totaldevis tbody").empty();
+        getGlobal(total);
+    }).fail(function (response, code) {
+        showError(response);
+    });
+}
+
+/**
+ * Save pdf in nextcloud
+ * @param {*} myData 
+ */
+export function saveNextcloud(myData) {
+    $.ajax({
+      url: baseUrl + '/savePDF',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(myData)
+    }).done(function (response) {
+      showMessage(t('gestion', 'Save in') + " " + $("#theFolder").val() + "/" + $("#pdf").data("folder"));
+    }).fail(function (response, code) {
+      showMessage(t('gestion', 'There is an error'));
+      error(response);
+    });
+  };
+
+  export function getMailServerFrom(input) {
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.setRequestHeader("requesttoken", oc_requesttoken);
+    oReq.onload = function(e){
+        if (this.status == 200) {
+            input.value = JSON.parse(this.response)['mail'];
+        }else{
+            showError(this.response);
+        }
+    };
+    oReq.send();
+    }
+
+    export function backup(){
+        var oReq = new XMLHttpRequest();
+        oReq.open('GET', baseUrl + '/backup', true);
+        oReq.setRequestHeader("Content-Type", "application/json");
+        oReq.setRequestHeader("requesttoken", oc_requesttoken);
+        oReq.onload = function(e){
+            if (this.status == 200) {
+                showSuccess(t('gestion', 'Save in')+' '+JSON.parse(this.response)['name']+'\n'+t('gestion','(do not forget to show hidden folders)'));
+            }else{
+                showError(this.response);
+            }
+        };
+        oReq.send();
+    }

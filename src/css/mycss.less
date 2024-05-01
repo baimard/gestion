@@ -1,7 +1,7 @@
 .bootstrap-iso {
     @import (less) 'bootstrap/dist/css/bootstrap.css';
 
-     .icon-delete {
+    .icon-delete {
       display:inline-block;
       margin-right:10px;
       width: 30px;
@@ -38,6 +38,8 @@
     }
 }
 
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 .bootstrap-iso select{
   max-width: 400px;
 }
@@ -59,4 +61,33 @@ table.dataTable.display tbody tr.odd > [class*="sorting_"] {
 
 table.dataTable.display tbody tr.even > [class*="sorting_"] {
   background-color: var(--color-main-background);
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Icons';
+  font-size: 30px;
+  margin-right: 5px;
+  display: inline-block;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  vertical-align: middle;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.menu-content {
+  font-size:20px;
+  margin-bottom: 10px;
+  margin-left: 25px;
 }

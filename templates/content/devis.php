@@ -1,17 +1,10 @@
 <div id="contentTable">
-    <div class="breadcrumb" data-html2canvas-ignore>
-        <div class="crumb svg crumbhome">
-            <a href="<?php echo($_['url']['index']); ?>" class="icon-home"></a>
-            <span style="display: none;"></span>
-        </div>
-        <div class="crumb svg crumbhome">
-            <span><?php p($l->t('Quote'));?></span>
-        </div>
-        <div class="crumb svg crumbhome">
-            <button style="margin-left:3px;" type="button"  id="newDevis">
-                <?php p($l->t('Add quote'));?>
-            </button>
-        </div>
+    <div class="menu-content">
+        <a href="<?php echo($_['url']['index']); ?>"><span class="material-symbols-outlined">home</span></a>
+        <span class="material-symbols-outlined">chevron_right</span>
+        <span><?php p($l->t('Quote'));?></span>
+        <span class="material-symbols-outlined">chevron_right</span>
+        <button style="margin-left:3px;" type="button"  id="newDevis"><?php p($l->t('Add quote'));?></button>
     </div>
     <table id="devis" class="display tabledt">
         <thead>

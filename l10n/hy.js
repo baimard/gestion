@@ -26,6 +26,7 @@ OC.L10N.register(
     "October" : "Հոկտեմբեր",
     "November" : "Նոյեմբեր",
     "December" : "Դեկտեմբեր",
+    "Mail" : "Փոստ",
     "About" : "էջի վերաբերյալ"
 },
 "nplurals=2; plural=(n != 1);");

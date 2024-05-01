@@ -42,8 +42,7 @@ OC.L10N.register(
     "Subject" : "Наслов",
     "Send" : "Испрати",
     "Configuration" : "Конфигурација",
-    "Need help?" : "Ви треба помош?",
-    "Loading …" : "Се вчитува…",
+    "Add" : "Додади",
     "ID" : "ID",
     "Version" : "Верзија",
     "Status" : "Статус",
@@ -84,7 +83,10 @@ OC.L10N.register(
     "November" : "Ноември",
     "December" : "Декември",
     "Total" : "Вкупно",
-    "About" : "За",
-    "Save folder" : "Папка за зачувување"
+    "Loading …" : "Се вчитува…",
+    "Mail" : "Електронска пошта",
+    "INFORMATION" : "ИНФОРМАЦИЈА",
+    "Save folder" : "Папка за зачувување",
+    "About" : "За"
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");

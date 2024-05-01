@@ -14,6 +14,7 @@
     "Email sent" : "Email geschéckt",
     "Documentation" : "Dokumentatioun",
     "Send" : "Schécken",
+    "Add" : "Dobäisetzen",
     "Actions" : "Aktiounen",
     "January" : "Januar",
     "February" : "Februar",
@@ -27,6 +28,7 @@
     "October" : "Oktober",
     "November" : "November",
     "December" : "Dezember",
+    "Mail" : "Mail",
     "About" : "Iwwer"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -31,8 +31,7 @@ OC.L10N.register(
     "Subject" : "Tema",
     "Send" : "Siųsti",
     "Configuration" : "Konfigūracija",
-    "Need help?" : "Reikia pagalbos?",
-    "Loading …" : "Įkeliama…",
+    "Add" : "Pridėti",
     "ID" : "ID",
     "Version" : "Versija",
     "Status" : "Būsena",
@@ -53,8 +52,9 @@ OC.L10N.register(
     "November" : "Lapkritis",
     "December" : "Gruodis",
     "Total" : "Iš viso",
-    "Manage" : "Tvarkyti",
-    "Information" : "Informacija",
+    "Loading …" : "Įkeliama…",
+    "Mail" : "Paštas",
+    "INFORMATION" : "INFORMACIJA",
     "About" : "Apie"
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");

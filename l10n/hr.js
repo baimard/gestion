@@ -50,8 +50,7 @@ OC.L10N.register(
     "Body" : "Tijelo",
     "Send" : "Pošalji",
     "Configuration" : "Konfiguracija",
-    "Need help?" : "Treba li vam pomoć?",
-    "Loading …" : "Učitavanje…",
+    "Add" : "Dodaj",
     "Quote" : "Ponuda",
     "ID" : "ID",
     "Quote date" : "Datum ponude",
@@ -98,10 +97,11 @@ OC.L10N.register(
     "November" : "Studeni",
     "December" : "Prosinac",
     "Total" : "Ukupno",
-    "Manage" : "Upravljanje",
+    "Loading …" : "Učitavanje…",
+    "Mail" : "Pošta",
     "Customers" : "Korisnici",
-    "Information" : "Informacije",
-    "About" : "Informacije",
-    "Save folder" : "Spremi mapu"
+    "INFORMATION" : "INFORMACIJE",
+    "Save folder" : "Spremi mapu",
+    "About" : "Informacije"
 },
 "nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;");

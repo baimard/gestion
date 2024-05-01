@@ -31,8 +31,7 @@ OC.L10N.register(
     "Body" : "Còs",
     "Send" : "Enviar",
     "Configuration" : "Configuracion",
-    "Need help?" : "Besonh d’ajuda ?",
-    "Loading …" : "Cargament…",
+    "Add" : "Apondre",
     "ID" : "ID",
     "Version" : "Version",
     "Status" : "Estat",
@@ -51,8 +50,9 @@ OC.L10N.register(
     "October" : "Octòbre",
     "November" : "Novembre",
     "December" : "Decembre",
+    "Loading …" : "Cargament…",
+    "Mail" : "Mail",
     "Customers" : "Clients",
-    "Information" : "Informacions",
     "About" : "A prepaus"
 },
 "nplurals=2; plural=(n > 1);");

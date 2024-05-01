@@ -13,9 +13,12 @@ OC.L10N.register(
     "Previous" : "Əvvələ",
     "Email sent" : "Məktub göndərildi",
     "Documentation" : "Sənədlər",
+    "Changelog" : "Dəyişikliklər jurnalı",
+    "Subject" : "Mövzu",
     "Send" : "Göndər",
     "Configuration" : "Konfiqurasiya",
     "Version" : "Versiya",
+    "Status" : "Status",
     "Actions" : "İşlər",
     "January" : "Yanvar",
     "February" : "Fevral",
@@ -29,6 +32,7 @@ OC.L10N.register(
     "October" : "Oktyabr",
     "November" : "Noyabr.",
     "December" : "Dekabr",
+    "Mail" : "Məktub",
     "About" : "Haqqında"
 },
 "nplurals=2; plural=(n != 1);");

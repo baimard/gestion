@@ -17,17 +17,20 @@
 	"private": true,
 	"scripts": {
 		"webpack": "webpack",
-		"build": "NODE_ENV=production webpack --config webpack.js",
+		"build": "GENERATE_SOURCEMAP=false NODE_ENV=production webpack --progress --config webpack.js",
 		"dev": "NODE_ENV=production webpack --config webpack.js",
 		"watch": "NODE_ENV=production webpack --watch --config webpack.js"
 	},
 	"engines": {
-		"node": ">=10.0.0"
+		"node": "^20.10.0"
 	},
 	"devDependencies": {
-		"@nextcloud/l10n": ">=1.4.1",
-		"@nextcloud/router": ">=1.2.0",
-		"bootstrap": ">=4.6.0",
+		"@nextcloud/browserslist-config": "^3.0.1",
+		"@nextcloud/dialogs": ">=5.3.1",
+		"@nextcloud/l10n": ">=2.2.0",
+		"@nextcloud/router": ">=2.2.0",
+		"@nextcloud/vue": "^8.4.0",
+		"bootstrap": ">=5.3.2",
 		"bootstrap-icons": ">=1.4.0",
 		"canvg": ">=3.0.9",
 		"css": ">=3.0.0",
@@ -35,22 +38,28 @@
 		"datatables.net": ">=1.10.23",
 		"datatables.net-dt": ">=1.10.23",
 		"datatables.net-plugins": ">=1.10.24",
-		"eslint": "^8.15.0",
-		"eslint-webpack-plugin": "^3.1.1",
-		"file-loader": ">=6.2.0",
+		"eslint": ">=8.15.0",
+		"eslint-webpack-plugin": ">=3.1.1",
+		"file-loader": "^6.2.0",
 		"html2canvas": "^1.0.0-rc.1",
 		"jquery": ">=3.6.0",
 		"jspdf": ">=2.3.1",
 		"less": ">=4.1.1",
 		"less-loader": ">=8.0.0",
-		"nextcloud-webdav-filepicker": ">=0.0.14",
-		"popper.js": ">=1.16.1",
+		"nextcloud-webdav-filepicker": ">=1.0.6",
+		"path": "^0.12.7",
 		"postcss-loader": ">=7.2.4",
+		"process": "^0.11.10",
 		"sass": ">=1.32.8",
 		"sass-loader": ">=11.0.1",
 		"style": ">=0.0.3",
 		"style-loader": ">=2.0.0",
-		"webpack": ">=5.76.0",
+		"vue-loader": "^15.11.1",
+		"webpack": ">=5.89.0",
 		"webpack-cli": ">=4.5.0"
+	},
+	"dependencies": {
+		"14": "^3.1.6",
+		"20": "^3.1.9"
 	}
 }

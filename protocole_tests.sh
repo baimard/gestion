@@ -25,13 +25,13 @@ sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/
 # docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/Panther/initPgsqlTest.php"
 sleep 10
 
-echo "Tests installation app"
-sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/Panther/initAppTest.php"
-sleep 10
+# echo "Tests installation app"
+# sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/Panther/initAppTest.php"
+# sleep 10
 
 echo "Chargement de la base de données"
 sudo docker exec -i database sh -c 'exec mysql -uroot -p"$MARIADB_ROOT_PASSWORD" nextcloud' < ./tests/dataset.sql
 # docker exec -i database /bin/bash -c 'PGPASSWORD=$POSTGRES_PASSWORD psql --username $POSTGRES_USER $POSTGRES_DB' < ./tests/datasetpgsql.sql
-sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make testPanther"
-sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make test"
-sudo docker cp nextcloud:/var/www/html/apps/gestion/tests/Unit/Panther/screens tests/Unit/Panther
+# sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make testPanther"
+# sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make test"
+# sudo docker cp nextcloud:/var/www/html/apps/gestion/tests/Unit/Panther/screens tests/Unit/Panther

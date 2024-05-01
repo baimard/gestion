@@ -33,7 +33,7 @@ OC.L10N.register(
     "November" : "Novembre",
     "December" : "Decembre",
     "Total" : "Total",
-    "Manage" : "Administrar",
+    "Mail" : "Posta",
     "About" : "A proposito"
 },
 "nplurals=2; plural=(n != 1);");

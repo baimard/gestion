@@ -15,6 +15,7 @@
     "Documentation" : "নথিবদ্ধকরণ",
     "Send" : "পাঠাও",
     "Configuration" : "কনফিগারেসন",
+    "Add" : "যোগ কর",
     "Version" : "ভার্সন",
     "Actions" : "পদক্ষেপসমূহ",
     "January" : "জানুয়ারি",
@@ -29,6 +30,7 @@
     "October" : "অক্টোবর",
     "November" : "নভেম্বর",
     "December" : "ডিসেম্বর",
+    "Mail" : "মেইল",
     "About" : "সমপরকে"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

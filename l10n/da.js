@@ -31,8 +31,7 @@ OC.L10N.register(
     "Body" : "Krop",
     "Send" : "Send",
     "Configuration" : "sætning",
-    "Need help?" : "Brug for hjælp?",
-    "Loading …" : "Loading …",
+    "Add" : "Tilføj",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Version",
@@ -54,9 +53,9 @@ OC.L10N.register(
     "November" : "November",
     "December" : "December",
     "Total" : "Total",
-    "Manage" : "Administrer ",
+    "Loading …" : "Loading …",
+    "Mail" : "Mail",
     "Customers" : "Kunder",
-    "Information" : "Information",
     "About" : "Om"
 },
 "nplurals=2; plural=(n != 1);");

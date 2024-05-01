@@ -23,7 +23,7 @@
     "Subject" : "Subjek",
     "Send" : "Kirim",
     "Configuration" : "Konfigurasi",
-    "Need help?" : "Butuh bantuan?",
+    "Add" : "Tambah",
     "ID" : "ID",
     "Version" : "Versi",
     "Status" : "Status",
@@ -43,7 +43,7 @@
     "November" : "November",
     "December" : "Desember",
     "Total" : "Total",
-    "Information" : "Informasi",
+    "Mail" : "Surat",
     "About" : "Tentang."
 },"pluralForm" :"nplurals=1; plural=0;"
 }

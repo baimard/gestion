@@ -31,8 +31,7 @@
     "Body" : "Textyta",
     "Send" : "Skicka",
     "Configuration" : "Inställningar",
-    "Need help?" : "Behövs hjälp?",
-    "Loading …" : "Läser in …",
+    "Add" : "Lägg till",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Version",
@@ -56,9 +55,10 @@
     "November" : "November",
     "December" : "December",
     "Total" : "Totalt",
-    "Manage" : "Hantera",
+    "Loading …" : "Läser in …",
+    "Mail" : "E-post",
     "Customers" : "Kunder",
-    "Information" : "Information",
+    "INFORMATION" : "INFORMATION",
     "About" : "Om"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

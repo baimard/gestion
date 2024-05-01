@@ -23,7 +23,7 @@ OC.L10N.register(
     "Subject" : "Temë",
     "Send" : "Dërgo",
     "Configuration" : "Formësim",
-    "Need help?" : "Ju duhet ndihmë?",
+    "Add" : "Shto ",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Versioni",
@@ -43,8 +43,7 @@ OC.L10N.register(
     "November" : "Nëntor",
     "December" : "Dhjetor",
     "Total" : "Total",
-    "Manage" : "Menaxho",
-    "Information" : "Informacion",
+    "Mail" : "Posta",
     "About" : "Rreth "
 },
 "nplurals=2; plural=(n != 1);");

@@ -16,6 +16,7 @@ OC.L10N.register(
     "Documentation" : "កម្រង​ឯកសារ",
     "Send" : "ផ្ញើ",
     "Configuration" : "ការ​កំណត់​សណ្ឋាន",
+    "Add" : "បន្ថែម",
     "Version" : "កំណែ",
     "Year" : "ឆ្នាំ",
     "January" : "ខែមករា",
@@ -30,6 +31,7 @@ OC.L10N.register(
     "October" : "ខែតុលា",
     "November" : "ខែវិច្ឆិកា",
     "December" : "ខែធ្នូ",
+    "Mail" : "សំបុត្រ",
     "About" : "អំពី"
 },
 "nplurals=1; plural=0;");

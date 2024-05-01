@@ -21,7 +21,6 @@
     "Subject" : "სათაური",
     "Send" : "გაგზავნა",
     "Configuration" : "კონფიგურაცია",
-    "Need help?" : "გესაჭიროებათ დახმარება?",
     "ID" : "ID",
     "Version" : "ვერსია",
     "Status" : "სტატუსი",
@@ -39,8 +38,7 @@
     "November" : "ნოემბერი",
     "December" : "დეკემბერი",
     "Total" : "სულ",
-    "Manage" : "მენეჯმენტი",
-    "Information" : "ინფორმაცია",
+    "Mail" : "ფოსტა",
     "About" : "შესახებ"
 },"pluralForm" :"nplurals=2; plural=(n!=1);"
 }

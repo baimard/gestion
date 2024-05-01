@@ -32,6 +32,7 @@ OC.L10N.register(
     "October" : "Oktyabr",
     "November" : "Noyabr.",
     "December" : "Dekabr",
+    "Mail" : "Məktub",
     "About" : "Haqqında"
 },
 "nplurals=2; plural=(n != 1);");

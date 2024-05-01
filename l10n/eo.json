@@ -25,8 +25,6 @@
     "Subject" : "Temo",
     "Send" : "Sendi",
     "Configuration" : "Agordo",
-    "Need help?" : "Ĉu necesas helpo?",
-    "Loading …" : "Ŝargas …",
     "ID" : "Identigilo",
     "Version" : "Versio",
     "Status" : "Stato",
@@ -45,7 +43,7 @@
     "November" : "Novembro",
     "December" : "Decembro",
     "Total" : "Sumo",
-    "Manage" : "Administri",
+    "Loading …" : "Ŝargas …",
     "About" : "Pri"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

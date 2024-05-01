@@ -20,7 +20,6 @@ OC.L10N.register(
     "Changelog" : "บันทึกการเปลี่ยนแปลง",
     "Send" : "ส่ง",
     "Configuration" : "การกำหนดค่า",
-    "Need help?" : "ต้องการความช่วยเหลือ?",
     "ID" : "ID",
     "Version" : "รุ่น",
     "Status" : "สถานะ",
@@ -37,6 +36,7 @@ OC.L10N.register(
     "October" : "ตุลาคม",
     "November" : "พฤศจิกายน",
     "December" : "ธันวาคม",
+    "Mail" : "จดหมาย",
     "About" : "เกี่ยวกับ"
 },
 "nplurals=1; plural=0;");

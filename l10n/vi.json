@@ -26,8 +26,7 @@
     "Body" : "Thân",
     "Send" : "Gửi",
     "Configuration" : "Cấu hình",
-    "Need help?" : "Cần hỗ trợ ?",
-    "Loading …" : "Đang tải...",
+    "Add" : "Thêm",
     "ID" : "ID",
     "Version" : "Phiên bản",
     "Status" : "Trạng thái",
@@ -48,7 +47,8 @@
     "November" : "Tháng 11",
     "December" : "Tháng 12",
     "Total" : "Tổng cộng",
-    "Manage" : "Quản lý",
+    "Loading …" : "Đang tải...",
+    "Mail" : "Thư",
     "About" : "Giới thiệu"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

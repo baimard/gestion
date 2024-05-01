@@ -25,7 +25,6 @@ OC.L10N.register(
     "Subject" : "Temats",
     "Send" : "Sūtīt",
     "Configuration" : "Konfigurācija",
-    "Need help?" : "Vajadzīga palīdzība?",
     "Quote" : "Citāts",
     "Version" : "Versija",
     "Status" : "Status",
@@ -45,7 +44,7 @@ OC.L10N.register(
     "November" : "Novembris",
     "December" : "Decembris",
     "Total" : "Kopā",
-    "Information" : "Informācija",
+    "Mail" : "E-pasts",
     "About" : "Par"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);");

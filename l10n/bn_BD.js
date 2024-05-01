@@ -17,6 +17,7 @@ OC.L10N.register(
     "Documentation" : "নথিবদ্ধকরণ",
     "Send" : "পাঠাও",
     "Configuration" : "কনফিগারেসন",
+    "Add" : "যোগ কর",
     "Version" : "ভার্সন",
     "Actions" : "পদক্ষেপসমূহ",
     "January" : "জানুয়ারি",
@@ -31,6 +32,7 @@ OC.L10N.register(
     "October" : "অক্টোবর",
     "November" : "নভেম্বর",
     "December" : "ডিসেম্বর",
+    "Mail" : "মেইল",
     "About" : "সমপরকে"
 },
 "nplurals=2; plural=(n != 1);");

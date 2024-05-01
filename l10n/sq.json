@@ -21,7 +21,7 @@
     "Subject" : "Temë",
     "Send" : "Dërgo",
     "Configuration" : "Formësim",
-    "Need help?" : "Ju duhet ndihmë?",
+    "Add" : "Shto ",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Versioni",
@@ -41,8 +41,7 @@
     "November" : "Nëntor",
     "December" : "Dhjetor",
     "Total" : "Total",
-    "Manage" : "Menaxho",
-    "Information" : "Informacion",
+    "Mail" : "Posta",
     "About" : "Rreth "
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

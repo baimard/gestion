@@ -40,8 +40,7 @@
     "Subject" : "Наслов",
     "Send" : "Испрати",
     "Configuration" : "Конфигурација",
-    "Need help?" : "Ви треба помош?",
-    "Loading …" : "Се вчитува…",
+    "Add" : "Додади",
     "ID" : "ID",
     "Version" : "Верзија",
     "Status" : "Статус",
@@ -82,6 +81,9 @@
     "November" : "Ноември",
     "December" : "Декември",
     "Total" : "Вкупно",
+    "Loading …" : "Се вчитува…",
+    "Mail" : "Електронска пошта",
+    "INFORMATION" : "ИНФОРМАЦИЈА",
     "Save folder" : "Папка за зачувување",
     "About" : "За"
 },"pluralForm" :"nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"

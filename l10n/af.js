@@ -25,15 +25,15 @@ OC.L10N.register(
     "To" : "Aan",
     "Subject" : "Onderwerp",
     "Send" : "Stuur",
-    "Need help?" : "Hulp nodig?",
-    "Loading …" : "Laai …",
+    "Add" : "Voeg toe",
     "ID" : "ID",
     "Version" : "Weergawe",
     "Status" : "Status",
     "Actions" : "Aksies",
     "Legal notice" : "Regskennisgewing",
     "Total" : "Totaal",
-    "Information" : "Inligting",
+    "Loading …" : "Laai …",
+    "Mail" : "Pos",
     "About" : "Oor"
 },
 "nplurals=2; plural=(n != 1);");

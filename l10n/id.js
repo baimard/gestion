@@ -25,7 +25,7 @@ OC.L10N.register(
     "Subject" : "Subjek",
     "Send" : "Kirim",
     "Configuration" : "Konfigurasi",
-    "Need help?" : "Butuh bantuan?",
+    "Add" : "Tambah",
     "ID" : "ID",
     "Version" : "Versi",
     "Status" : "Status",
@@ -45,7 +45,7 @@ OC.L10N.register(
     "November" : "November",
     "December" : "Desember",
     "Total" : "Total",
-    "Information" : "Informasi",
+    "Mail" : "Surat",
     "About" : "Tentang."
 },
 "nplurals=1; plural=0;");

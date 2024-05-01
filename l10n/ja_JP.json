@@ -37,9 +37,7 @@
     "Send" : "送信",
     "Company name" : "会社名",
     "Configuration" : "設定",
-    "Click to edit" : "クリックして編集",
-    "Need help?" : "ヘルプが必要ですか？",
-    "Loading …" : "読み込み中…",
+    "Add" : "追加",
     "ID" : "ID",
     "Version" : "バージョン",
     "Status" : "ステータス",
@@ -62,9 +60,10 @@
     "November" : "11月",
     "December" : "12月",
     "Total" : "合計",
-    "Manage" : "管理",
+    "Loading …" : "読み込み中…",
+    "Mail" : "メール",
     "Customers" : "顧客",
-    "Information" : "情報",
+    "INFORMATION" : "情報",
     "Save folder" : "フォルダーを保存",
     "About" : "詳細"
 },"pluralForm" :"nplurals=1; plural=0;"

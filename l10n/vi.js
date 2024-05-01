@@ -28,8 +28,7 @@ OC.L10N.register(
     "Body" : "Thân",
     "Send" : "Gửi",
     "Configuration" : "Cấu hình",
-    "Need help?" : "Cần hỗ trợ ?",
-    "Loading …" : "Đang tải...",
+    "Add" : "Thêm",
     "ID" : "ID",
     "Version" : "Phiên bản",
     "Status" : "Trạng thái",
@@ -50,7 +49,8 @@ OC.L10N.register(
     "November" : "Tháng 11",
     "December" : "Tháng 12",
     "Total" : "Tổng cộng",
-    "Manage" : "Quản lý",
+    "Loading …" : "Đang tải...",
+    "Mail" : "Thư",
     "About" : "Giới thiệu"
 },
 "nplurals=1; plural=0;");

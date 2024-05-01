@@ -24,6 +24,7 @@ OC.L10N.register(
     "October" : "Oktober",
     "November" : "November",
     "December" : "Disember",
+    "Mail" : "Mel",
     "About" : "Mengenai"
 },
 "nplurals=1; plural=0;");

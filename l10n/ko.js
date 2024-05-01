@@ -33,8 +33,7 @@ OC.L10N.register(
     "Body" : "몸통",
     "Send" : "보내기",
     "Configuration" : "설정",
-    "Need help?" : "도움이 필요한가요?",
-    "Loading …" : "불러오는 중 ...",
+    "Add" : "추가",
     "ID" : "ID",
     "Version" : "버전",
     "Status" : "상태",
@@ -56,9 +55,9 @@ OC.L10N.register(
     "November" : "11월",
     "December" : "12월",
     "Total" : "합계",
-    "Manage" : "관리",
+    "Loading …" : "불러오는 중 ...",
+    "Mail" : "메일",
     "Customers" : "고객",
-    "Information" : "정보",
     "About" : "정보"
 },
 "nplurals=1; plural=0;");

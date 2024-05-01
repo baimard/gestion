@@ -28,8 +28,7 @@
     "Body" : "Meginmál",
     "Send" : "Senda",
     "Configuration" : "Uppsetning",
-    "Need help?" : "Þarftu hjálp?",
-    "Loading …" : "Hleð inn …",
+    "Add" : "Bæta við",
     "ID" : "ID",
     "Version" : "Útgáfa",
     "Status" : "Staða",
@@ -52,8 +51,9 @@
     "November" : "Nóvember",
     "December" : "Desember",
     "Total" : "Alls",
-    "Manage" : "Skipuleggja",
-    "Information" : "Upplýsingar",
+    "Loading …" : "Hleð inn …",
+    "Mail" : "Póstur",
+    "INFORMATION" : "UPPLÝSINGAR",
     "Save folder" : "Vista möppu",
     "About" : "Um hugbúnaðinn"
 },"pluralForm" :"nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);"

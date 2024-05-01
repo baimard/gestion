@@ -18,8 +18,7 @@ OC.L10N.register(
     "Email sent" : "විද්‍යුත් තැපෑල යවන ලදි",
     "Body" : "අන්තර්ගතය",
     "Send" : "යවන්න",
-    "Need help?" : "උපකාරයක් අවශ්‍යයද?",
-    "Loading …" : "පූරණය වෙමින් …",
+    "Add" : "එකතු කරන්න",
     "Version" : "අනුවාදය",
     "Actions" : "ක්‍රියාමාර්ග",
     "Year" : "වර්ෂය",
@@ -35,7 +34,8 @@ OC.L10N.register(
     "October" : "ඔක්තෝම්බර්",
     "November" : "නොවැම්බර්",
     "December" : "දෙසැම්බර්",
-    "Information" : "තොරතුරු",
+    "Loading …" : "පූරණය වෙමින් …",
+    "Mail" : "තැපෑල",
     "About" : "පිළිබඳව"
 },
 "nplurals=2; plural=(n != 1);");

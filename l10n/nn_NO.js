@@ -17,7 +17,6 @@ OC.L10N.register(
     "Documentation" : "Dokumentasjon",
     "Send" : "Send",
     "Configuration" : "Innstillingar",
-    "Need help?" : "Treng du hjelp?",
     "ID" : "ID",
     "Version" : "Utgåve",
     "Status" : "Status",
@@ -36,7 +35,7 @@ OC.L10N.register(
     "November" : "November",
     "December" : "Desember",
     "Total" : "Totalt",
-    "Information" : "Informasjon",
+    "Mail" : "Post",
     "About" : "Om"
 },
 "nplurals=2; plural=(n != 1);");

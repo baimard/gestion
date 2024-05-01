@@ -16,6 +16,7 @@ OC.L10N.register(
     "Email sent" : "Email geschéckt",
     "Documentation" : "Dokumentatioun",
     "Send" : "Schécken",
+    "Add" : "Dobäisetzen",
     "Actions" : "Aktiounen",
     "January" : "Januar",
     "February" : "Februar",
@@ -29,6 +30,7 @@ OC.L10N.register(
     "October" : "Oktober",
     "November" : "November",
     "December" : "Dezember",
+    "Mail" : "Mail",
     "About" : "Iwwer"
 },
 "nplurals=2; plural=(n != 1);");

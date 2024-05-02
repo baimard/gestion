@@ -300,6 +300,7 @@ OC.L10N.register(
     "Configuration" : "Konfiguration",
     "Create new company" : "Neue Firma erstellen",
     "Modify current company information" : "Aktuelle Unternehmensinformationen ändern",
+    "Share with ..." : "Teilen mit…",
     "Add" : "Hinzufügen",
     "Quote" : "Angebot",
     "Add quote" : "Angebot hinzufügen",

@@ -7,6 +7,7 @@ OC.L10N.register(
     "Address" : "Adress",
     "New" : "Nei",
     "Comment" : "Kommentar",
+    "Choose" : "Auswielen",
     "Cancel" : "Ofbriechen",
     "Disable" : "Ofschalten",
     "Enable" : "Aschalten",

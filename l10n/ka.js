@@ -8,6 +8,7 @@ OC.L10N.register(
     "Address" : "Address",
     "New" : "New",
     "Comment" : "Comment",
+    "Choose" : "Choose",
     "Are you sure you want to delete?" : "Are you sure you want to delete?",
     "Cancel" : "Cancel",
     "Disable" : "Disable",

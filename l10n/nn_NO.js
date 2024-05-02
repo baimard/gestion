@@ -7,6 +7,7 @@ OC.L10N.register(
     "Address" : "Adresse",
     "New" : "Ny",
     "Comment" : "Kommentér",
+    "Choose" : "Vel",
     "Cancel" : "Avbryt",
     "Disable" : "Slå av",
     "Enable" : "Slå på",

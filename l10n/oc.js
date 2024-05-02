@@ -10,6 +10,7 @@ OC.L10N.register(
     "New" : "Nòu",
     "Comment" : "Comentaris",
     "Reference" : "Referéncia",
+    "Choose" : "Causir",
     "Cancel" : "Anullar",
     "Disable" : "Desactivar",
     "Enable" : "Activar",

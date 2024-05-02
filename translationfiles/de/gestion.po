@@ -15,15 +15,16 @@
 # Ettore Atalan <atalanttore@googlemail.com>, 2024
 # Markus Eckstein, 2024
 # Mark Ziegler <mark.ziegler@rakekniven.de>, 2024
+# Oliver Gramberg <oliver.gramberg@gmx.de>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-04-27 01:54+0000\n"
+"POT-Creation-Date: 2024-05-02 01:53+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Mark Ziegler <mark.ziegler@rakekniven.de>, 2024\n"
+"Last-Translator: Oliver Gramberg <oliver.gramberg@gmx.de>, 2024\n"
 "Language-Team: German (https://app.transifex.com/nextcloud/teams/64236/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -96,39 +97,39 @@ msgstr "Referenz"
 msgid "Designation"
 msgstr "Bezeichnung"
 
-#: /app/lib/Db/Bdd.php:217
+#: /app/lib/Db/Bdd.php:227
 msgid "Your company name"
 msgstr "Dein Firmenname"
 
-#: /app/lib/Db/Bdd.php:218 /app/templates/content/changelog.php:62
+#: /app/lib/Db/Bdd.php:228 /app/templates/content/changelog.php:66
 msgid "Your company contact last name"
 msgstr "Der Nachname deines Firmenkontakts"
 
-#: /app/lib/Db/Bdd.php:219 /app/templates/content/changelog.php:60
+#: /app/lib/Db/Bdd.php:229 /app/templates/content/changelog.php:64
 msgid "Your company contact first name"
 msgstr "Der Vorname deines Firmenkontakts"
 
-#: /app/lib/Db/Bdd.php:220 /app/templates/content/changelog.php:64
+#: /app/lib/Db/Bdd.php:230 /app/templates/content/changelog.php:68
 msgid "Company legal information line one"
 msgstr "Rechtliche Informationen des Unternehmens Zeile 1"
 
-#: /app/lib/Db/Bdd.php:221 /app/templates/content/changelog.php:66
+#: /app/lib/Db/Bdd.php:231 /app/templates/content/changelog.php:70
 msgid "Company legal information line two"
 msgstr "Rechtliche Informationen des Unternehmens Zeile 2"
 
-#: /app/lib/Db/Bdd.php:222 /app/templates/content/changelog.php:72
+#: /app/lib/Db/Bdd.php:232 /app/templates/content/changelog.php:76
 msgid "Your company email"
 msgstr "Deine Firmen-E-Mail"
 
-#: /app/lib/Db/Bdd.php:223 /app/templates/content/changelog.php:70
+#: /app/lib/Db/Bdd.php:233 /app/templates/content/changelog.php:74
 msgid "Your company phone"
 msgstr "Telefonnummer deiner Firma"
 
-#: /app/lib/Db/Bdd.php:224 /app/templates/content/changelog.php:68
+#: /app/lib/Db/Bdd.php:234 /app/templates/content/changelog.php:72
 msgid "Your company address"
 msgstr "Anschrift deiner Firma"
 
-#: /app/lib/Db/Bdd.php:226
+#: /app/lib/Db/Bdd.php:236
 msgid ""
 "All Legal mentions, disclaimer or everything you want to place in the "
 "footer."
@@ -136,11 +137,11 @@ msgstr ""
 "Alle rechtlichen Hinweise, Haftungsausschlüsse oder alles, was du in der "
 "Fußzeile haben möchtest."
 
-#: /app/lib/Db/Bdd.php:227
+#: /app/lib/Db/Bdd.php:237
 msgid "EUR"
 msgstr "EUR"
 
-#: /app/lib/Db/Bdd.php:228 /app/src/js/pdf.js:67
+#: /app/lib/Db/Bdd.php:238 /app/src/js/pdf.js:67
 msgid "INVOICE"
 msgstr "RECHNUNG"
 
@@ -195,46 +196,68 @@ msgstr ""
 msgid "Choose work folder"
 msgstr "Arbeitsordner auswählen"
 
-#: /app/src/js/listener/main_listener.js:116
+#: /app/src/js/listener/main_listener.js:19
+msgid "Choose"
+msgstr ""
+
+#: /app/src/js/listener/main_listener.js:125
 msgid "Please create a new product"
 msgstr "Bitte ein neues Produkt erstellen"
 
 #: /app/src/js/modules/ajaxRequest.js:27 /app/src/js/modules/ajaxRequest.js:56
-#: /app/src/js/modules/ajaxRequest.js:90
-#: /app/src/js/modules/ajaxRequest.js:125
+#: /app/src/js/modules/ajaxRequest.js:131
+#: /app/src/js/modules/ajaxRequest.js:166
 msgid "Modification saved"
 msgstr "Änderung gespeichert"
 
 #: /app/src/js/modules/ajaxRequest.js:29 /app/src/js/modules/ajaxRequest.js:59
-#: /app/src/js/modules/ajaxRequest.js:65 /app/src/js/modules/ajaxRequest.js:94
-#: /app/src/js/modules/ajaxRequest.js:100
+#: /app/src/js/modules/ajaxRequest.js:65
+#: /app/src/js/modules/ajaxRequest.js:135
+#: /app/src/js/modules/ajaxRequest.js:141
 msgid "There is an error with the format, please check the documentation"
 msgstr ""
 "Es liegt ein Fehler im Format vor, bitte schaue in der Dokumentation nach"
 
-#: /app/src/js/modules/ajaxRequest.js:117
+#: /app/src/js/modules/ajaxRequest.js:81
+msgid "New company created"
+msgstr ""
+
+#: /app/src/js/modules/ajaxRequest.js:84
+#: /app/src/js/modules/ajaxRequest.js:105
+msgid "There is an error."
+msgstr ""
+
+#: /app/src/js/modules/ajaxRequest.js:94
+msgid "Are you sure you want to delete? (All data will be lost)"
+msgstr ""
+
+#: /app/src/js/modules/ajaxRequest.js:102
+msgid "Company deleted"
+msgstr ""
+
+#: /app/src/js/modules/ajaxRequest.js:158
 msgid "Are you sure you want to delete?"
 msgstr "Bist du sicher, dass du löschen möchtest?"
 
-#: /app/src/js/modules/ajaxRequest.js:130
+#: /app/src/js/modules/ajaxRequest.js:171
 msgid "Nothing changed"
 msgstr "Nicht geändert"
 
-#: /app/src/js/modules/ajaxRequest.js:261 /app/src/js/objects/client.js:183
+#: /app/src/js/modules/ajaxRequest.js:303 /app/src/js/objects/client.js:183
 #: /app/src/js/objects/devis.js:116
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: /app/src/js/modules/ajaxRequest.js:323
-#: /app/src/js/modules/ajaxRequest.js:352
+#: /app/src/js/modules/ajaxRequest.js:365
+#: /app/src/js/modules/ajaxRequest.js:394
 msgid "Save in"
 msgstr "Speichern unter"
 
-#: /app/src/js/modules/ajaxRequest.js:325
+#: /app/src/js/modules/ajaxRequest.js:367
 msgid "There is an error"
 msgstr "Fehler aufgetreten"
 
-#: /app/src/js/modules/ajaxRequest.js:352
+#: /app/src/js/modules/ajaxRequest.js:394
 msgid "(do not forget to show hidden folders)"
 msgstr "(nicht vergessen, versteckte Ordner anzuzeigen)"
 
@@ -978,55 +1001,55 @@ msgstr "Deaktivieren"
 msgid "Enable"
 msgstr "Aktivieren"
 
-#: /app/src/js/modules/mainFunction.js:19
+#: /app/src/js/modules/mainFunction.js:17
 msgid "Search"
 msgstr "Suche"
 
-#: /app/src/js/modules/mainFunction.js:20
+#: /app/src/js/modules/mainFunction.js:18
 msgid "No data available in table"
 msgstr "Keine Daten in der Tabelle vorhanden"
 
-#: /app/src/js/modules/mainFunction.js:21
+#: /app/src/js/modules/mainFunction.js:19
 msgid "Showing {start} to {end} of {total} entries"
 msgstr "{start} bis {end} von {total} Einträgen anzeigen"
 
-#: /app/src/js/modules/mainFunction.js:22
+#: /app/src/js/modules/mainFunction.js:20
 msgid "Showing 0 to 0 of 0 entries"
 msgstr "Zeige 0 bis 0 von 0 Einträgen"
 
-#: /app/src/js/modules/mainFunction.js:23
+#: /app/src/js/modules/mainFunction.js:21
 msgid "Loading records …"
 msgstr "Lade Einträge …"
 
-#: /app/src/js/modules/mainFunction.js:24
+#: /app/src/js/modules/mainFunction.js:22
 msgid "Processing …"
 msgstr "Verarbeite …"
 
-#: /app/src/js/modules/mainFunction.js:25
+#: /app/src/js/modules/mainFunction.js:23
 msgid "{max} entries filtered"
 msgstr "{max} Einträge gefiltert"
 
-#: /app/src/js/modules/mainFunction.js:26
+#: /app/src/js/modules/mainFunction.js:24
 msgid "Show {menu} entries"
 msgstr "{menu} Einträge anzeigen"
 
-#: /app/src/js/modules/mainFunction.js:27
+#: /app/src/js/modules/mainFunction.js:25
 msgid "No corresponding entry"
 msgstr "Kein korrespondierender Eintrag"
 
-#: /app/src/js/modules/mainFunction.js:29
+#: /app/src/js/modules/mainFunction.js:27
 msgid "First"
 msgstr "Erstes"
 
-#: /app/src/js/modules/mainFunction.js:30
+#: /app/src/js/modules/mainFunction.js:28
 msgid "Last"
 msgstr "Letztes"
 
-#: /app/src/js/modules/mainFunction.js:31
+#: /app/src/js/modules/mainFunction.js:29
 msgid "Next"
 msgstr "Nächstes"
 
-#: /app/src/js/modules/mainFunction.js:32
+#: /app/src/js/modules/mainFunction.js:30
 msgid "Previous"
 msgstr "Vorheriges"
 
@@ -1177,71 +1200,75 @@ msgstr "für die viele Arbeit am Impressum für Frankreich"
 #: /app/templates/content/changelog.php:22
 #: /app/templates/content/changelog.php:23
 #: /app/templates/content/changelog.php:24
+#: /app/templates/content/changelog.php:25
+#: /app/templates/content/changelog.php:26
+#: /app/templates/content/changelog.php:27
+#: /app/templates/content/changelog.php:28
 msgid "for the coffee ;)"
 msgstr "für den Kaffee ;)"
 
-#: /app/templates/content/changelog.php:32
+#: /app/templates/content/changelog.php:36
 msgid "Send an email"
 msgstr "E-Mail senden"
 
-#: /app/templates/content/changelog.php:33
+#: /app/templates/content/changelog.php:37
 msgid "From"
 msgstr "Von"
 
-#: /app/templates/content/changelog.php:35
+#: /app/templates/content/changelog.php:39
 msgid "To"
 msgstr "Bis"
 
-#: /app/templates/content/changelog.php:36
+#: /app/templates/content/changelog.php:40
 msgid "Separate multiple recipients by \";\""
 msgstr "Trenne mehrere Empfänger durch \";\"."
 
-#: /app/templates/content/changelog.php:37
+#: /app/templates/content/changelog.php:41
 msgid "Cc"
 msgstr "Cc"
 
-#: /app/templates/content/changelog.php:38
+#: /app/templates/content/changelog.php:42
 msgid "Empty if not used"
 msgstr "Leer lassen, falls nicht verwendet"
 
-#: /app/templates/content/changelog.php:39
+#: /app/templates/content/changelog.php:43
 msgid "Subject"
 msgstr "Betreff"
 
-#: /app/templates/content/changelog.php:40
+#: /app/templates/content/changelog.php:44
 msgid "Your invoice/quote"
 msgstr "Deine Rechnung/Dein Angebot"
 
-#: /app/templates/content/changelog.php:41
+#: /app/templates/content/changelog.php:45
 msgid "Body"
 msgstr "Inhalt"
 
-#: /app/templates/content/changelog.php:43
+#: /app/templates/content/changelog.php:47
 msgid "Dear,"
 msgstr "Sehr geehrte Damen und Herren,"
 
-#: /app/templates/content/changelog.php:45
+#: /app/templates/content/changelog.php:49
 msgid "Attached to this email you will find a new document."
 msgstr "Im Anhang zu dieser E-Mail findest du ein neues Dokument."
 
-#: /app/templates/content/changelog.php:47
+#: /app/templates/content/changelog.php:51
 msgid "Best regards,"
 msgstr "Mit freundlichen Grüßen,"
 
-#: /app/templates/content/changelog.php:49
+#: /app/templates/content/changelog.php:53
 msgid "Send"
 msgstr "Senden"
 
-#: /app/templates/content/changelog.php:56
+#: /app/templates/content/changelog.php:60
 msgid "Configuration help"
 msgstr "Konfigurationshilfe"
 
-#: /app/templates/content/changelog.php:58
+#: /app/templates/content/changelog.php:62
 #: /app/templates/modal/configuration_modal.php:7
 msgid "Company name"
 msgstr "Name der Firma"
 
-#: /app/templates/content/changelog.php:59
+#: /app/templates/content/changelog.php:63
 msgid ""
 "This is the name of the company that will appear in the footer of your quote"
 " and invoice. For example, you can set: \"Company: Cybercorp\" or just "
@@ -1251,19 +1278,19 @@ msgstr ""
 "Rechnung erscheinen wird. Du kannst zum Beispiel \"Firma: Cybercorp\" oder "
 "einfach \"Cybercorp\" eingeben."
 
-#: /app/templates/content/changelog.php:61
+#: /app/templates/content/changelog.php:65
 msgid "First name appears in the Quote/Invoice header as a contact."
 msgstr ""
 "Vorname, der in der Kopfzeile von Angebot oder Rechnung als Kontakt "
 "erscheint."
 
-#: /app/templates/content/changelog.php:63
+#: /app/templates/content/changelog.php:67
 msgid "Last name appears in the Quote/Invoice header as a contact."
 msgstr ""
 "Nachname, der in der Kopfzeile von Angebot oder Rechnung als Kontakt "
 "erscheint."
 
-#: /app/templates/content/changelog.php:65
+#: /app/templates/content/changelog.php:69
 msgid ""
 "This is the first line in the footer of your Quote/Invoice with all legal "
 "information you need."
@@ -1271,7 +1298,7 @@ msgstr ""
 "Dies ist die 1. Fußzeile von deinem Angebot oder deiner Rechnung mit allen "
 "rechtlichen Informationen, die du benötigst. "
 
-#: /app/templates/content/changelog.php:67
+#: /app/templates/content/changelog.php:71
 msgid ""
 "This is the second line in the footer of your Quote/Invoice with all legal "
 "information you need."
@@ -1279,24 +1306,24 @@ msgstr ""
 "Dies ist die 2. Fußzeile von deinem Angebot oder deiner Rechnung mit allen "
 "rechtlichen Informationen, die du benötigst."
 
-#: /app/templates/content/changelog.php:69
+#: /app/templates/content/changelog.php:73
 msgid "Show company address in the Quote/Invoice header."
 msgstr "Firmenanschrift in der Kopfzeile von Angebot oder Rechnung anzeigen."
 
-#: /app/templates/content/changelog.php:71
+#: /app/templates/content/changelog.php:75
 msgid "Show phone number in the Quote/Invoice header."
 msgstr "Telefonnummer in der Kopfzeile von Angebot oder Rechnung anzeigen."
 
-#: /app/templates/content/changelog.php:73
+#: /app/templates/content/changelog.php:77
 msgid "E-mail address which appears in the header of the Quote/Invoice."
 msgstr ""
 "E-Mail-Adresse, die in der Kopfzeile von Angebot oder Rechnung erscheint."
 
-#: /app/templates/content/changelog.php:74
+#: /app/templates/content/changelog.php:78
 msgid "Your company VAT rate"
 msgstr "Dein Firmen Umsatzsteuersatz"
 
-#: /app/templates/content/changelog.php:75
+#: /app/templates/content/changelog.php:79
 #: /app/templates/modal/configuration_modal.php:54
 msgid ""
 "Global Default VAT rate apply to your Quote/Invoice (globally), to change "
@@ -1306,11 +1333,11 @@ msgstr ""
 "(global). Um ihn zu ändern, gib einfach den USt-Satz ohne das Prozentzeichen"
 " ein."
 
-#: /app/templates/content/changelog.php:76
+#: /app/templates/content/changelog.php:80
 msgid "Automatically generated invoice number"
 msgstr "Automatisch generierte Rechnungsnummer"
 
-#: /app/templates/content/changelog.php:77
+#: /app/templates/content/changelog.php:81
 msgid ""
 "If you want to automatically generated an invoice number, set to enable. If "
 "you want to be free, set disable. You can enable and disable when you want."
@@ -1319,19 +1346,19 @@ msgstr ""
 "haben möchtest. Für eine freie Eingabe deaktiviere diese Option. Du kannst "
 "diese Einstellung jederzeit ändern."
 
-#: /app/templates/content/changelog.php:78
+#: /app/templates/content/changelog.php:82
 msgid "Global default Currency"
 msgstr "Globale Standardwährung"
 
-#: /app/templates/content/changelog.php:79
+#: /app/templates/content/changelog.php:83
 msgid "Global currency for the application."
 msgstr "Globale Währung für die Anwendung."
 
-#: /app/templates/content/changelog.php:80
+#: /app/templates/content/changelog.php:84
 msgid "Legal disclaimer/mentions"
 msgstr "Rechtliche Hinweise und Haftungsausschlüsse"
 
-#: /app/templates/content/changelog.php:81
+#: /app/templates/content/changelog.php:85
 msgid ""
 "Legal disclaimer/mentions you need in your footer - before company "
 "information."
@@ -1351,9 +1378,17 @@ msgstr ""
 msgid "Modify current company information"
 msgstr ""
 
-#: /app/templates/content/configuration.php:23
+#: /app/templates/content/configuration.php:20
+msgid "Share with ..."
+msgstr "Teilen mit …"
+
+#: /app/templates/content/configuration.php:24
 msgid "Add"
 msgstr "Hinzufügen"
+
+#: /app/templates/content/configuration.php:27
+msgid "Delete Company"
+msgstr ""
 
 #: /app/templates/content/devis.php:5
 msgid "Quote"

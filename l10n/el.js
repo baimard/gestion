@@ -42,6 +42,7 @@ OC.L10N.register(
     "Body" : "Σώμα",
     "Send" : "Αποστολή",
     "Configuration" : "Ρύθμιση",
+    "Share with ..." : "Διαμοιρασμός με ...",
     "Add" : "Προσθήκη",
     "ID" : "ID",
     "Version" : "Έκδοση",

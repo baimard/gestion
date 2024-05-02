@@ -8,6 +8,7 @@ OC.L10N.register(
     "Address" : "ที่อยู่",
     "New" : "ใหม่",
     "Comment" : "ความคิดเห็น",
+    "Choose" : "เลือก",
     "Cancel" : "ยกเลิก",
     "Disable" : "ปิดใช้งาน",
     "Enable" : "เปิดใช้งาน",

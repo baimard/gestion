@@ -298,6 +298,7 @@ OC.L10N.register(
     "Legal disclaimer/mentions" : "Rechtliche Hinweise und Haftungsausschlüsse",
     "Legal disclaimer/mentions you need in your footer - before company information." : "Rechtliche Informationen, die du in deiner Fußzeile vor den Firmeninformationen benötigst.",
     "Configuration" : "Konfiguration",
+    "Share with ..." : "Teilen mit …",
     "Add" : "Hinzufügen",
     "Quote" : "Angebot",
     "Add quote" : "Angebot hinzufügen",

@@ -9,6 +9,7 @@ OC.L10N.register(
     "Address" : "Địa chỉ",
     "New" : "Tạo mới",
     "Comment" : "Bình luận",
+    "Choose" : "Chọn",
     "Cancel" : "Hủy",
     "Disable" : "Tắt",
     "Enable" : "Bật",

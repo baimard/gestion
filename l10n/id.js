@@ -8,6 +8,7 @@ OC.L10N.register(
     "Address" : "Alamat",
     "New" : "Baru",
     "Comment" : "Komentar",
+    "Choose" : "Pilih",
     "Cancel" : "Membatalkan",
     "Disable" : "Nonaktifkan",
     "Enable" : "aktifkan",

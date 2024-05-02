@@ -9,6 +9,7 @@ OC.L10N.register(
     "Address" : "Адреса",
     "New" : "Створити",
     "Comment" : "Коментар",
+    "Choose" : "Вибрати",
     "Cancel" : "Скасувати",
     "Disable" : "Вимкнути",
     "Enable" : "Увімкнути",

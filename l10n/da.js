@@ -31,6 +31,7 @@ OC.L10N.register(
     "Body" : "Krop",
     "Send" : "Send",
     "Configuration" : "sætning",
+    "Share with ..." : "Del med…",
     "Add" : "Tilføj",
     "Quote" : "Citat",
     "ID" : "ID",

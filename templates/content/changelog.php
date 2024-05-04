@@ -25,7 +25,6 @@
 			<li>Someone - <?php p($l->t('for the coffee ;)')); ?></li>
 			<li>somerandomNCuser - <?php p($l->t('for the coffee ;)')); ?></li>
 			<li>OursSansPlus - <?php p($l->t('for the coffee ;)')); ?></li>
-			<li>little5bull - <?php p($l->t('for the coffee ;)')); ?></li>
 		</ul>
 	</div>
 </div>

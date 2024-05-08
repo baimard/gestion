@@ -15,17 +15,17 @@
 # Lyanis Souidi <lyanis.souidi@hotmail.com>, 2024
 # Stéphane Parunakian, 2024
 # Gwendal Raballand <gwendal.raballand@gmail.com>, 2024
-# Jérôme HERBINET, 2024
 # Mordecai, 2024
+# Jérôme HERBINET, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-05-03 01:53+0000\n"
+"POT-Creation-Date: 2024-05-08 01:59+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Mordecai, 2024\n"
+"Last-Translator: Jérôme HERBINET, 2024\n"
 "Language-Team: French (https://app.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1201,7 +1201,7 @@ msgstr "pour le café ;)"
 
 #: /app/templates/content/changelog.php:36
 msgid "Send an email"
-msgstr "Envoyer un courriel"
+msgstr "Envoyer un e-mail"
 
 #: /app/templates/content/changelog.php:37
 msgid "From"
@@ -1307,7 +1307,7 @@ msgstr ""
 #: /app/templates/content/changelog.php:77
 msgid "E-mail address which appears in the header of the Quote/Invoice."
 msgstr ""
-"Adresse électronique de l’entreprise qui apparaît dans l’entête des "
+"Adresse e-mail de l’entreprise qui apparaît dans l’entête des "
 "Devis/Factures."
 
 #: /app/templates/content/changelog.php:78
@@ -1718,7 +1718,7 @@ msgstr ""
 
 #: /app/templates/modal/configuration_modal.php:48
 msgid "E-mail address which appears in the header of the Quote/Invoice"
-msgstr "Afficher l’adresse électronique dans l’entête de votre Devis/Facture"
+msgstr "Afficher l’adresse e-mail dans l’entête de votre Devis/Facture"
 
 #: /app/templates/modal/configuration_modal.php:49
 msgid "Mail"

@@ -8,6 +8,7 @@ OC.L10N.register(
     "Address" : "Cyfeiriad",
     "New" : "Newydd",
     "Comment" : "Sylw",
+    "Choose" : "Dewisa",
     "Cancel" : "Diddymu",
     "Disable" : "Analluogi",
     "Search" : "Chwilio",

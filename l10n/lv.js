@@ -8,7 +8,7 @@ OC.L10N.register(
     "Email" : "E-pasts",
     "Address" : "Adrese",
     "New" : "Jauns",
-    "Comment" : "Komentārs",
+    "Comment" : "Piebilde",
     "Choose" : "Izvēlies",
     "Cancel" : "Atcelt",
     "Disable" : "Deaktivēt",

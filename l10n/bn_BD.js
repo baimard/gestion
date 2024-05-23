@@ -7,6 +7,7 @@ OC.L10N.register(
     "Address" : "ঠিকানা",
     "New" : "নতুন",
     "Comment" : "মন্তব্য",
+    "Choose" : "বেছে নিন",
     "Cancel" : "বাতির",
     "Disable" : "নিষ্ক্রিয়",
     "Enable" : "সক্রিয় ",

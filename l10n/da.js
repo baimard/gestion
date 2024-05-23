@@ -9,6 +9,7 @@ OC.L10N.register(
     "Address" : "Adresse",
     "New" : "Ny",
     "Comment" : "Kommentér",
+    "Choose" : "Vælg",
     "Cancel" : "Annuller",
     "Trinidad and Tobago Dollar" : "Trinidad og Tobago Dollar",
     "Disable" : "Deaktiver",

@@ -12,6 +12,7 @@ OC.L10N.register(
     "Means of payment" : "Τρόπος πληρωμής",
     "Reference" : "Αναφορά",
     "Designation" : "Προσδιορισμός",
+    "Choose" : "Επιλογή",
     "Cancel" : "Ακύρωση",
     "Save in" : "Αποθήκευση σε",
     "There is an error" : "Παρουσιάστηκε σφάλμα",

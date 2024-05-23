@@ -7,6 +7,7 @@ OC.L10N.register(
     "Address" : "Adresa",
     "New" : "Novo",
     "Comment" : "Komentar",
+    "Choose" : "Izaberite",
     "Cancel" : "Otkaži",
     "Disable" : "Onemogući",
     "Enable" : "Omogući",

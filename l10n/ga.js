@@ -1,0 +1,26 @@
+OC.L10N.register(
+    "gestion",
+    {
+    "Phone number" : "Uimhir teileafón",
+    "Email" : "Ríomhphost",
+    "Comment" : "Trácht",
+    "Choose" : "Roghnaigh",
+    "Cancel" : "Cealaigh",
+    "Disable" : "Díchumasaigh",
+    "Enable" : "Cumasaigh",
+    "Search" : "Cuardach",
+    "Previous" : "Roimhe Seo",
+    "Open" : "Oscail",
+    "Email sent" : "Ríomhphost seolta",
+    "Documentation" : "Doiciméadúchán",
+    "Changelog" : "Loga athrú",
+    "Body" : "Corp",
+    "Add" : "Cuir",
+    "Version" : "Leagan",
+    "Actions" : "Gníomhartha",
+    "Legal notice" : "Fógra dlíthiúil",
+    "Loading …" : "Á lódáil…",
+    "Mail" : "Post",
+    "About" : "Faoi"
+},
+"nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);");

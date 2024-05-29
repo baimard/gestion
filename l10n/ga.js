@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Phone number" : "Uimhir teileafón",
     "Email" : "Ríomhphost",
+    "Address" : "Seoladh",
+    "New" : "Nua",
     "Comment" : "Trácht",
     "Choose" : "Roghnaigh",
     "Cancel" : "Cealaigh",
@@ -21,6 +23,7 @@ OC.L10N.register(
     "Version" : "Leagan",
     "Actions" : "Gníomhartha",
     "Legal notice" : "Fógra dlíthiúil",
+    "Year" : "Bliain",
     "Loading …" : "Á lódáil…",
     "Mail" : "Post",
     "About" : "Faoi"

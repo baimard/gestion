@@ -23,6 +23,7 @@ OC.L10N.register(
     "Releases" : "Scaoileadh",
     "Body" : "Corp",
     "Send" : "Seol",
+    "Configuration" : "Cumraíocht",
     "Add" : "Cuir",
     "ID" : "ID",
     "Version" : "Leagan",

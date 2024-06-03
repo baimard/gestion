@@ -10,6 +10,7 @@ OC.L10N.register(
     "New" : "Створити",
     "Comment" : "Коментар",
     "Choose" : "Вибрати",
+    "Are you sure you want to delete?" : "Ви впевнені, що хочете видалити?",
     "Cancel" : "Скасувати",
     "Disable" : "Вимкнути",
     "Enable" : "Увімкнути",

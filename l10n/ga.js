@@ -9,6 +9,7 @@ OC.L10N.register(
     "New" : "Nua",
     "Comment" : "Trácht",
     "Choose" : "Roghnaigh",
+    "Are you sure you want to delete?" : "An bhfuil tú cinnte gur mhaith leat a scriosadh?",
     "Cancel" : "Cealaigh",
     "Disable" : "Díchumasaigh",
     "Enable" : "Cumasaigh",

@@ -34,6 +34,7 @@ OC.L10N.register(
     "Version" : "Leagan",
     "Status" : "Stádas",
     "Actions" : "Gníomhartha",
+    "Customer" : "Custaiméir",
     "Legal notice" : "Fógra dlíthiúil",
     "Year" : "Bliain",
     "January" : "Eanáir",
@@ -50,6 +51,7 @@ OC.L10N.register(
     "December" : "Nollaig",
     "Loading …" : "Á lódáil…",
     "Mail" : "Post",
+    "Customers" : "Custaiméirí",
     "About" : "Faoi"
 },
 "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);");

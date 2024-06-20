@@ -46,6 +46,7 @@ OC.L10N.register(
     "November" : "Novembris",
     "December" : "Decembris",
     "Total" : "Kopā",
+    "Loading …" : "Ielādē…",
     "Mail" : "E-pasts",
     "About" : "Par"
 },

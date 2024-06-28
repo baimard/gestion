@@ -371,6 +371,7 @@ OC.L10N.register(
     "Set prefix for generated invoice" : "Estabelecer o prefixo para a factura xerada",
     "Global currency for the application" : "Moeda global para a aplicación.",
     "Global monetary format for the application" : "Formato de moeda global para a aplicación",
+    "Format Select" : "Seleccione Formato",
     "Legal disclaimer/mentions you need in your footer - before company information" : "Exención de responsabilidade legal/mencións que necesita no seu rodapé, antes da información da empresa.",
     "Customers" : "Clientes",
     "Quotes" : "Orzamentos",

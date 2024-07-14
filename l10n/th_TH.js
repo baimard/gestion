@@ -25,6 +25,7 @@ OC.L10N.register(
     "Version" : "รุ่น",
     "Status" : "สถานะ",
     "Actions" : "การกระทำ",
+    "Year" : "ปี",
     "January" : "มกราคม",
     "February" : "กุมภาพันธ์",
     "March" : "มีนาคม",

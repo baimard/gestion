@@ -22,6 +22,8 @@ OC.L10N.register(
     "Enable" : "有効にする",
     "Search" : "検索",
     "Showing 0 to 0 of 0 entries" : "0件中0件から0件を表示",
+    "First" : "最初",
+    "Last" : "最後",
     "Next" : "次へ",
     "Previous" : "前へ",
     "Open" : "開く",

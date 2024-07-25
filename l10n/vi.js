@@ -52,6 +52,7 @@ OC.L10N.register(
     "Total" : "Tổng cộng",
     "Loading …" : "Đang tải...",
     "Mail" : "Thư",
+    "Customers" : "Khách hàng",
     "About" : "Giới thiệu"
 },
 "nplurals=1; plural=0;");

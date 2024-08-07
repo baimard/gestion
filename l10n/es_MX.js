@@ -9,6 +9,7 @@ OC.L10N.register(
     "New" : "Nuevo",
     "Comment" : "Comentario",
     "Choose" : "Seleccionar",
+    "Are you sure you want to delete?" : "¿Está seguro que quiere eliminarlo?",
     "Cancel" : "Cancelar",
     "Disable" : "Deshabilitar",
     "Enable" : "Habilitar",

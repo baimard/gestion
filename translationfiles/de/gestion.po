@@ -16,15 +16,16 @@
 # Mark Ziegler <mark.ziegler@rakekniven.de>, 2024
 # Oliver Gramberg <oliver.gramberg@gmx.de>, 2024
 # Markus Eckstein, 2024
+# Andy Scherzinger <info@andy-scherzinger.de>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-08-12 01:55+0000\n"
+"POT-Creation-Date: 2024-08-20 02:01+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Markus Eckstein, 2024\n"
+"Last-Translator: Andy Scherzinger <info@andy-scherzinger.de>, 2024\n"
 "Language-Team: German (https://app.transifex.com/nextcloud/teams/64236/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -220,20 +221,20 @@ msgstr ""
 
 #: /app/src/js/modules/ajaxRequest.js:81
 msgid "New company created"
-msgstr ""
+msgstr "Neues Unternehmen erstellt"
 
 #: /app/src/js/modules/ajaxRequest.js:84
 #: /app/src/js/modules/ajaxRequest.js:105
 msgid "There is an error."
-msgstr ""
+msgstr "Fehler aufgetreten."
 
 #: /app/src/js/modules/ajaxRequest.js:94
 msgid "Are you sure you want to delete? (All data will be lost)"
-msgstr ""
+msgstr "Möchtest du wirklich löschen? (Alle Daten gehen verloren)"
 
 #: /app/src/js/modules/ajaxRequest.js:102
 msgid "Company deleted"
-msgstr ""
+msgstr "Unternehmen gelöscht"
 
 #: /app/src/js/modules/ajaxRequest.js:158
 msgid "Are you sure you want to delete?"
@@ -1372,11 +1373,11 @@ msgstr "Konfiguration"
 
 #: /app/templates/content/configuration.php:7
 msgid "Create new company"
-msgstr ""
+msgstr "Neue Firma erstellen"
 
 #: /app/templates/content/configuration.php:15
 msgid "Modify current company information"
-msgstr ""
+msgstr "Aktuelle Unternehmensinformationen ändern"
 
 #: /app/templates/content/configuration.php:20
 msgid "Share with ..."
@@ -1388,7 +1389,7 @@ msgstr "Hinzufügen"
 
 #: /app/templates/content/configuration.php:27
 msgid "Delete Company"
-msgstr ""
+msgstr "Unternehmen löschen"
 
 #: /app/templates/content/devis.php:5
 msgid "Quote"
@@ -1706,7 +1707,7 @@ msgstr ""
 
 #: /app/templates/modal/configuration_modal.php:31
 msgid "Legal One"
-msgstr ""
+msgstr "Rechtliches Eins"
 
 #: /app/templates/modal/configuration_modal.php:36
 msgid ""
@@ -1718,7 +1719,7 @@ msgstr ""
 
 #: /app/templates/modal/configuration_modal.php:37
 msgid "Legal Two"
-msgstr ""
+msgstr "Rechtliches Zwei"
 
 #: /app/templates/modal/configuration_modal.php:42
 msgid "Show phone number in the Quote/Invoice header"
@@ -1726,7 +1727,7 @@ msgstr "Telefonnummer in der Kopfzeile von Angebot oder Rechnung anzeigen"
 
 #: /app/templates/modal/configuration_modal.php:43
 msgid "Cellphone"
-msgstr ""
+msgstr "Mobiltelefon"
 
 #: /app/templates/modal/configuration_modal.php:48
 msgid "E-mail address which appears in the header of the Quote/Invoice"
@@ -1739,7 +1740,7 @@ msgstr "E-Mail"
 
 #: /app/templates/modal/configuration_modal.php:55
 msgid "TVA Default"
-msgstr ""
+msgstr "USt.-Standard"
 
 #: /app/templates/modal/configuration_modal.php:60
 msgid "Set prefix for generated invoice"
@@ -1747,7 +1748,7 @@ msgstr "Präfix für generierte Rechnung einstellen"
 
 #: /app/templates/modal/configuration_modal.php:61
 msgid "Facture Prefixe"
-msgstr ""
+msgstr "Rechnungspräfix"
 
 #: /app/templates/modal/configuration_modal.php:66
 msgid "Global currency for the application"
@@ -1755,7 +1756,7 @@ msgstr "Globale Währung für die Anwendung"
 
 #: /app/templates/modal/configuration_modal.php:67
 msgid "Currency Select"
-msgstr ""
+msgstr "Währung wählen"
 
 #: /app/templates/modal/configuration_modal.php:72
 msgid "Global monetary format for the application"
@@ -1763,7 +1764,7 @@ msgstr "Globales Währungsformat für die Anwendung"
 
 #: /app/templates/modal/configuration_modal.php:73
 msgid "Format Select"
-msgstr ""
+msgstr "Format wählen"
 
 #: /app/templates/modal/configuration_modal.php:78
 msgid ""
@@ -1775,11 +1776,11 @@ msgstr ""
 
 #: /app/templates/modal/configuration_modal.php:79
 msgid "Mentions Default"
-msgstr ""
+msgstr "Erwähnungen-Standard"
 
 #: /app/templates/navigation/index.php:2
 msgid "COMPANY"
-msgstr ""
+msgstr "FIRMA"
 
 #: /app/templates/navigation/index.php:17
 msgid "Customers"

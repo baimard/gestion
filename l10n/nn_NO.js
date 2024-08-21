@@ -16,6 +16,7 @@ OC.L10N.register(
     "Previous" : "Førre",
     "Email sent" : "E-post sendt",
     "Documentation" : "Dokumentasjon",
+    "Contact" : "Kontakt",
     "Send" : "Send",
     "Configuration" : "Innstillingar",
     "ID" : "ID",

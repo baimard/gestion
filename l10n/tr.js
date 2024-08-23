@@ -320,7 +320,7 @@ OC.L10N.register(
     "FROM" : "BAŞLANGIÇ",
     "Company logo" : "Şirket logosu",
     "You can add your company logo here." : "Şirketinizin markasını ve logosunu buradan ekleyebilirsiniz.",
-    "To add a logo, drop the logo.png file in \".gestion\" folder at the root of your Nextcloud Files app. Remember to set \"Show hidden files\"." : "Logo eklemek için logo.png dosyanızı sürükleyip Nextcloud Files uygulamanızın kök klasöründeki \".gestion\" klasörüne bırakın. Klasörü görebilmek için \"Gizli dosyalar görüntülensin\" seçeneğini etkinleştirmeyi unutmayın",
+    "To add a logo, drop the logo.png file in \".gestion\" folder at the root of your Nextcloud Files app. Remember to set \"Show hidden files\"." : "Logo eklemek için logo.png dosyanızı sürükleyip Nextcloud Dosyalar uygulamanızın kök klasöründeki \".gestion\" klasörüne bırakın. Klasörü görebilmek için \"Gizli dosyalar görüntülensin\" seçeneğini etkinleştirmeyi unutmayın",
     "This message will not appear on generated PDF." : "Bu ileti oluşturulan PDF belgesinde görüntülenmez.",
     "TO" : "BİTİŞ",
     "Offer valid for 1 month from" : "Teklif şu tarihten itibaren 1 ay süreyle geçerlidir",

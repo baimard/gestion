@@ -39,7 +39,7 @@ OC.L10N.register(
     "Are you sure you want to delete? (All data will be lost)" : "Confirma que a quere eliminar? (Perderanse todos os datos)",
     "Company deleted" : "Empresa eliminada",
     "Are you sure you want to delete?" : "Confirma que a quere eliminar?",
-    "Nothing changed" : "Non cambiou nada",
+    "Nothing changed" : "Non cambiou ren",
     "Cancel" : "Cancelar",
     "Save in" : "Gardar en",
     "There is an error" : "Hai un erro",

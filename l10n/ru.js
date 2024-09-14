@@ -109,6 +109,7 @@ OC.L10N.register(
     "Company name" : "Название компании",
     "This is the name of the company that will appear in the footer of your quote and invoice. For example, you can set: \"Company: Cybercorp\" or just \"Cybercorp\"." : "Это название компании, которое будет отображаться в нижнем колонтитуле вашей сметы и счета-фактуры. Например, вы можете указать: «Компания: Cybercorp» или просто «Cybercorp».",
     "E-mail address which appears in the header of the Quote/Invoice." : "Адрес электронной почты, который указан в заголовке сметы/счета-фактуры.",
+    "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "К вашему предложению/счету-фактуре применяется глобальная ставка НДС по умолчанию (глобально). Чтобы изменить ее, просто введите сумму ставки НДС без знака процента.",
     "Legal disclaimer/mentions" : "Юридическая информация",
     "Configuration" : "Настройки",
     "Create new company" : "Создать новую компанию",

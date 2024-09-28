@@ -60865,15 +60865,22 @@ function updateDB(table, column, data, id) {
         id: id,
     };
 
-    ajaxRequest_$.ajax({
-        url: mainFunction_baseUrl + '/update',
-        type: 'POST',
-        async: false,
-        contentType: 'application/json',
-        data: JSON.stringify(myData)
-    }).done(function (response, code) {
-        (0,_plugin_vue2_normalizer_VrK6B12S.i)((0,dist/* translate */.Tl)('gestion', 'Modification saved'));
-    }).fail(function (response, code) {
+    fetch(mainFunction_baseUrl + '/update', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.ok) {
+            (0,_plugin_vue2_normalizer_VrK6B12S.i)((0,dist/* translate */.Tl)('gestion', 'Modification saved'));
+        } else {
+            (0,_plugin_vue2_normalizer_VrK6B12S.l)((0,dist/* translate */.Tl)('gestion', 'There is an error with the format, please check the documentation'));
+        }
+    })
+    .catch(error => {
         (0,_plugin_vue2_normalizer_VrK6B12S.l)((0,dist/* translate */.Tl)('gestion', 'There is an error with the format, please check the documentation'));
     });
 }
@@ -60886,7 +60893,6 @@ function updateDB(table, column, data, id) {
  * @param id 
  */
 function updateDBConfiguration(table, column, data, id) {
-    
     var myData = {
         table: table,
         column: column,
@@ -60894,67 +60900,75 @@ function updateDBConfiguration(table, column, data, id) {
         id: id,
     };
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', mainFunction_baseUrl + '/updateConfiguration', true); // false for synchronous request
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    xhr.onload = function () {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            // Request successful
+    fetch(mainFunction_baseUrl + '/updateConfiguration', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.ok) {
             (0,_plugin_vue2_normalizer_VrK6B12S.i)((0,dist/* translate */.Tl)('gestion', 'Modification saved'));
         } else {
-            // Request failed
             (0,_plugin_vue2_normalizer_VrK6B12S.l)((0,dist/* translate */.Tl)('gestion', 'There is an error with the format, please check the documentation'));
         }
-    };
-
-    xhr.onerror = function () {
-        // Connection error
+    })
+    .catch(error => {
         (0,_plugin_vue2_normalizer_VrK6B12S.l)((0,dist/* translate */.Tl)('gestion', 'There is an error with the format, please check the documentation'));
-    };
-
-    xhr.send(JSON.stringify(myData));
+    });
 }
 
 /**
  * Create a new company
  */
 function createCompany() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('PUT',baseUrl +  '/createCompany', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader("requesttoken", oc_requesttoken);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+    fetch(baseUrl + '/createCompany', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        }
+    })
+    .then(response => {
+        if (response.ok) {
             showSuccess(t('gestion', 'New company created'));
             location.reload();
         } else {
             showError(t('gestion', 'There is an error.'));
         }
-    };
-    xhr.send();
+    })
+    .catch(error => {
+        showError(t('gestion', 'There is an error.'));
+    });
 }
 
 /**
  * Delete a company
  */
 function deleteCompany() {
-    if(window.confirm(t('gestion','Are you sure you want to delete? (All data will be lost)'))){
-        var xhr = new XMLHttpRequest();
-        xhr.open('DELETE', baseUrl + '/deleteCompany', true); // false for synchronous request
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.setRequestHeader("requesttoken", oc_requesttoken);
-        xhr.onreadystatechange = function (value) {
-            if (xhr.status >= 200 && xhr.status < 300) {
+    if (window.confirm(t('gestion', 'Are you sure you want to delete? (All data will be lost)'))) {
+        fetch(baseUrl + '/deleteCompany', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'requesttoken': OC.requestToken
+            }
+        })
+        .then(response => {
+            if (response.ok) {
                 // Request successful
                 showSuccess(t('gestion', 'Company deleted'));
                 location.reload();
             } else {
                 showError(t('gestion', 'There is an error.'));
-                console.log(value);
             }
-        };
-        xhr.send();
+        })
+        .catch(error => {
+            showError(t('gestion', 'There is an error.'));
+            console.log(error);
+        });
     }
 }
 
@@ -60968,13 +60982,16 @@ function updateCurrentCompany(companyID) {
         companyID: companyID
     };
     
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', mainFunction_baseUrl + '/updateSession', true); // false for synchronous request
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader("requesttoken", oc_requesttoken);
-
-    xhr.onload = function () {
-        if (xhr.status >= 200 && xhr.status < 300) {
+    fetch(mainFunction_baseUrl + '/updateSession', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.ok) {
             // Request successful
             (0,_plugin_vue2_normalizer_VrK6B12S.i)((0,dist/* translate */.Tl)('gestion', 'Modification saved'));
             window.location.reload();
@@ -60982,14 +60999,11 @@ function updateCurrentCompany(companyID) {
             // Request failed
             (0,_plugin_vue2_normalizer_VrK6B12S.l)((0,dist/* translate */.Tl)('gestion', 'There is an error with the format, please check the documentation'));
         }
-    };
-
-    xhr.onerror = function () {
+    })
+    .catch(error => {
         // Connection error
         (0,_plugin_vue2_normalizer_VrK6B12S.l)((0,dist/* translate */.Tl)('gestion', 'There is an error with the format, please check the documentation'));
-    };
-
-    xhr.send(JSON.stringify(myData));
+    });
 }
 
 /**
@@ -60997,26 +61011,34 @@ function updateCurrentCompany(companyID) {
  * @param table
  * @param id 
  */
-function deleteDB(table, id) {
+function deleteDB(table, id, callback=null, modifier=null) {
     var myData = {
         table: table,
         id: id,
     };
 
-    if(window.confirm((0,dist/* translate */.Tl)('gestion','Are you sure you want to delete?'))){
-        ajaxRequest_$.ajax({
-            url: mainFunction_baseUrl + '/delete',
-            type: 'DELETE',
-            async: false,
-            contentType: 'application/json',
-            data: JSON.stringify(myData)
-        }).done(function (response, code) {
-            (0,_plugin_vue2_normalizer_VrK6B12S.i)((0,dist/* translate */.Tl)('gestion', 'Modification saved'));
-        }).fail(function (response, code) {
-            (0,_plugin_vue2_normalizer_VrK6B12S.l)(response);
+    if (window.confirm((0,dist/* translate */.Tl)('gestion', 'Are you sure you want to delete?'))) {
+        fetch(mainFunction_baseUrl + '/delete', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'requesttoken': OC.requestToken
+            },
+            body: JSON.stringify(myData)
+        })
+        .then(response => {
+            if (response.ok) {
+                (0,_plugin_vue2_normalizer_VrK6B12S.i)((0,dist/* translate */.Tl)('gestion', 'Modification saved'));
+                callback(modifier);
+            } else {
+                (0,_plugin_vue2_normalizer_VrK6B12S.l)(response);
+            }
+        })
+        .catch(error => {
+            (0,_plugin_vue2_normalizer_VrK6B12S.l)(error);
         });
-    }else{
-        (0,_plugin_vue2_normalizer_VrK6B12S.s)((0,dist/* translate */.Tl)('gestion', 'Nothing changed'))
+    } else {
+        (0,_plugin_vue2_normalizer_VrK6B12S.s)((0,dist/* translate */.Tl)('gestion', 'Nothing changed'));
     }
 }
 
@@ -61024,18 +61046,28 @@ function deleteDB(table, id) {
  * 
  */
 function getStats() {
-    ajaxRequest_$.ajax({
-        url: mainFunction_baseUrl + '/getStats',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        var res = JSON.parse(response);
-        ajaxRequest_$("#statsclient").text(res.client);
-        ajaxRequest_$("#statsdevis").text(res.devis);
-        ajaxRequest_$("#statsfacture").text(res.facture);
-        ajaxRequest_$("#statsproduit").text(res.produit);
-    }).fail(function (response, code) {
-        (0,_plugin_vue2_normalizer_VrK6B12S.l)(response);
+    fetch(mainFunction_baseUrl + '/getStats', {
+        method: 'PROPFIND',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error: ' + response.status);
+        }
+    })
+    .then(data => {
+        document.getElementById("statsclient").textContent = data.client;
+        document.getElementById("statsdevis").textContent = data.devis;
+        document.getElementById("statsfacture").textContent = data.facture;
+        document.getElementById("statsproduit").textContent = data.produit;
+    })
+    .catch(error => {
+        (0,_plugin_vue2_normalizer_VrK6B12S.l)(error);
     });
 }
 
@@ -61079,39 +61111,45 @@ function isconfig() {
  * @param {*} cur 
  */
 function getAnnualTurnoverPerMonthNoVat(cur) {
-    ajaxRequest_$.ajax({
-        url: mainFunction_baseUrl + '/getAnnualTurnoverPerMonthNoVat',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        var res = JSON.parse(response);
+    fetch(mainFunction_baseUrl + '/getAnnualTurnoverPerMonthNoVat', {
+        method: 'PROPFIND',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error: ' + response.status);
+        }
+    })
+    .then(data => {
+        var res = JSON.parse(data);
         var curY = "";
         var curRow;
-        var total=0;
-        res.forEach(function(item){
-            if(curY !== item.y){
-                
-                if(curY !== ""){
+        var total = 0;
+        res.forEach(function(item) {
+            if (curY !== item.y) {
+                if (curY !== "") {
                     insertCell(curRow, -1, cur.format(total));
-                    total=0;
+                    total = 0;
                 }
-
                 curY = item.y;
                 curRow = insertRow("Statistical", -1, 0, item.y);
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
-                total+= Math.round(item.total);
-
-            }else{
-
+                total += Math.round(item.total);
+            } else {
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
-                total+= Math.round(item.total);
-
+                total += Math.round(item.total);
             }
         });
         // At the end
         insertCell(curRow, -1, cur.format(total));
-    }).fail(function (response, code) {
-        (0,_plugin_vue2_normalizer_VrK6B12S.l)(response);
+    })
+    .catch(error => {
+        (0,_plugin_vue2_normalizer_VrK6B12S.l)(error);
     });
 }
 
@@ -61143,22 +61181,47 @@ function updateEditableConfiguration(myCase) {
  * @param {*} produitid 
  */
 function listProduit(lp, id, produitid) {
-    ajaxRequest_$.ajax({
-        url: mainFunction_baseUrl + '/getProduits',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">'+(0,dist/* translate */.Tl)('gestion','Cancel')+'</option>');
-        ajaxRequest_$.each(JSON.parse(response), function (arrayID, myresp) {
-            var selected = "";
+    fetch(mainFunction_baseUrl + '/getProduits', {
+        method: 'PROPFIND',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error: ' + response.status);
+        }
+    })
+    .then(data => {
+        var res = JSON.parse(data);
+        lp.appendChild(listeproduit_add_option('produit_devis', 'produit_id', produitid, id, (0,dist/* translate */.Tl)('gestion', 'Cancel')));
+        res.forEach(function(myresp) {
+            var _selected = false;
             if (produitid == myresp.id) {
-                selected = "selected";
+                _selected = true;
             }
-            lp.append('<option ' + selected + ' data-table="produit_devis" data-column="produit_id" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.reference + ' ' + myresp.description + ' ' + cur.format(myresp.prix_unitaire) + '</option>');
+
+            var text_display = myresp.reference + ' ' + myresp.description + ' ' + cur.format(myresp.prix_unitaire);
+            lp.appendChild(listeproduit_add_option('produit_devis', 'produit_id', myresp.id, id,text_display,_selected));
         });
-    }).fail(function (response, code) {
-        (0,_plugin_vue2_normalizer_VrK6B12S.l)(response);
+    })
+    .catch(error => {
+        (0,_plugin_vue2_normalizer_VrK6B12S.l)(error);
     });
+}
+
+function listeproduit_add_option(table, column, val, id, textContent, _selected=false){
+    var option = document.createElement('option');
+    option.dataset.table = table;
+    option.dataset.column = column;
+    option.dataset.val = val;
+    option.dataset.id = id;
+    option.textContent = textContent;
+    option.selected = _selected;
+    return option;
 }
 
 /**
@@ -74814,7 +74877,6 @@ class Produit {
 }
 
 ;// CONCATENATED MODULE: ./src/js/listener/main_listener.js
-/* provided dependency */ var main_listener_$ = __webpack_require__(4692);
 
 
 
@@ -74850,175 +74912,155 @@ document.body.addEventListener('click', function (event) {
             .build()
             .pick()
     }
-});
 
-main_listener_$('body').on('click', '.menu', function () { main_listener_$('#menu-' + this.dataset.menu).toggleClass('open'); });
-main_listener_$('body').on('click', '.modalClose', function () { var modal = main_listener_$(this)[0].parentElement.parentElement; modal.style.display = "none"; });
-
-
-main_listener_$('body').on('dblclick', '.selectableDevis', function () {
-    var id = main_listener_$(this).data('id');
-    var table = main_listener_$(this).data('table');
-    var column = main_listener_$(this).data('column');
-    main_listener_$(this).text("");
-    main_listener_$(this).html('<select id="listDevis">');
-    listDevis(main_listener_$('#listDevis'), id, table, column);
-});
-
-main_listener_$('body').on('dblclick', '.selectable', function () {
-    var id = main_listener_$(this).data('id');
-    var produitid = main_listener_$(this).data('val');
-    main_listener_$(this).text("");
-    main_listener_$(this).html('<select id="listProduit">');
-    listProduit(main_listener_$('#listProduit'), id, produitid);
-});
-
-main_listener_$('body').on('click', '.deleteItem', function () {
-    var id = main_listener_$(this).data('id');
-    var table = main_listener_$(this).data('table');
-    var modifier = main_listener_$(this).data('modifier');
-    deleteDB(table, id);
-    var dt = new dataTables('.tabledt');
-    if (modifier === "getProduitsById") { getProduitsById(); }
-    if (modifier === "client") { Client.loadClientDT(dt); }
-    if (modifier === "devis") { Devis.loadDevisDT(dt); }
-    if (modifier === "facture") { Facture.loadFactureDT(dt); }
-    if (modifier === "produit") { Produit.loadProduitDT(dt); }
-});
-
-main_listener_$('body').on('change', '.listClient,.listDevis', function () {
-    var myDiv = main_listener_$(this).parents("div");
-    var id = main_listener_$(myDiv).data('id');
-    var val = this.value;
-    var column = main_listener_$(myDiv).data('column');
-    var table = main_listener_$(myDiv).data('table');
-    this.setAttribute('data-current', this.value)
-    updateDB(table, column, val, id);
-})
-
-main_listener_$('body').on('change', '.inputDate', function () {
-    var id = main_listener_$(this).data('id');
-    var val = this.value;
-    var column = main_listener_$(this).data('column');
-    var table = main_listener_$(this).data('table');
-    updateDB(table, column, val, id);
-})
-
-main_listener_$('body').on('change', '#listProduit,#listDevis', function () {
-    var id = main_listener_$(this).find(':selected').data('id')
-    var val = main_listener_$(this).find(':selected').data('val')
-    var column = main_listener_$(this).find(':selected').data('column')
-    var table = main_listener_$(this).find(':selected').data('table')
-    var el = main_listener_$(this).parent();
-
-    updateDB(table, column, val, id);
-
-    if (el.get(0).className === "selectableClient_devis") {
-        getClientByIdDevis(id);
-    }
-    if (main_listener_$(this).attr('id') === "listProduit") {
-        getProduitsById();
-    }
-
-    el.text(main_listener_$(this).val());
-    el.attr('data-val', id);
-
-});
-
-main_listener_$('body').on('click', '#devisAdd', function () {
-    var devis_id = main_listener_$('#devisid').data('id');
-    var produit_devis = {
-        id: devis_id
-    };
-
-    main_listener_$.ajax({
-        url: mainFunction_baseUrl + '/insertProduitDevis',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(produit_devis)
-    }).done(function (response) {
-        getProduitsById();
-    }).fail(function (response, code) {
-        (0,_plugin_vue2_normalizer_VrK6B12S.l)(t('gestion', "Please create a new product"));
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    var aboutButton = document.getElementById('about');
-    if (aboutButton) {
-        aboutButton.addEventListener('click', function() {
-            var modal = document.getElementById("modalConfig");
-            if (modal) {
-                modal.style.display = "block";
+    if (
+        event.target.classList.contains("editableSelect") ||
+        event.target.classList.contains("editableConfiguration") ||
+        event.target.classList.contains("editableConfigurationSelect")
+    ) {
+        // Empêcher le comportement par défaut
+    } else {
+        if (
+            event.target.classList.contains("editableNumber") ||
+            event.target.classList.contains("editableNumeric") ||
+            event.target.classList.contains("editable")
+        ) {
+            event.target.setAttribute('contenteditable', 'true');
+            event.target.focus();
+        } else if (event.target.classList.contains("loadSelect_listclient")) {
+            Client.loadClientList_cid(event);
+        } else if (event.target.classList.contains("loadSelect_listdevis")) {
+            Devis.loadDevisList_dnum(event);
+        } else {
+            switch (event.target.id) {
+                case "newClient":
+                    Client.newClient(new dataTables('.tabledt'));
+                    break;
+                case "newDevis":
+                    Devis.newDevis(new dataTables('.tabledt'));
+                    break;
+                case "newInvoice":
+                    Facture.newFacture(new dataTables('.tabledt'));
+                    break;
+                case "newProduit":
+                    Produit.newProduct(new dataTables('.tabledt'));
+                    break;
+                default:
+                    // Gérer les autres cas si nécessaire
+                    break;
             }
-        });
-    }
-});
-document.body.addEventListener('click', function(e) {
-    var targetClass = e.target.className;
-    var targetId = e.target.id;
-    
-    if(     targetClass.includes("editableSelect") 
-    ||      targetClass.includes("editableConfiguration")
-    ||      targetClass.includes("editableConfigurationSelect")){
-// Prevent default behavior
-    } else if(targetClass.includes("editableNumber") 
-        || targetClass.includes("editableNumeric")
-        || targetClass.includes("editable")){
-        e.target.setAttribute('contenteditable', 'true');
-        e.target.focus();
-    } else if(targetClass.includes("loadSelect_listclient")){
-        Client.loadClientList_cid(e);
-    } else if(targetClass.includes("loadSelect_listdevis")){
-        Devis.loadDevisList_dnum(e);
-    } else if(targetId === "newClient"){
-        Client.newClient(new dataTables('.tabledt'));
-    } else if(targetId === "newDevis"){
-        Devis.newDevis(new dataTables('.tabledt'));
-    } else if(targetId === "newInvoice"){
-        Facture.newFacture(new dataTables('.tabledt'));
-    } else if(targetId === "newProduit"){
-        Produit.newProduct(new dataTables('.tabledt'));
-    }
-});
-
-document.body.addEventListener('keydown', function(e) {
-    if(e.key === "Enter"){
-        var targetClass = e.target.className;
-        if(targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")){
-            updateNumerical(e.target);
-        } else if(  targetClass.includes("editableSelect") 
-        ||  targetClass.includes("editableConfiguration")
-        ||  targetClass.includes("editableConfigurationSelect")){
-    // Prevent default behavior
-        } else if(targetClass.includes("editable")){
-            updateEditable(e.target);
         }
     }
-});
-
-document.body.addEventListener('focusout', function(e) {
-    var targetClass = e.target.className;
-    if(targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")){
-        updateNumerical(e.target);
-    } else if(  targetClass.includes("editableSelect") 
-            ||  targetClass.includes("editableConfiguration")
-            ||  targetClass.includes("editableConfigurationSelect")){
-        // Prevent default behavior
-    } else if(targetClass.includes("editable")){
-        updateEditable(e.target);
+    
+    if (event.target.classList.contains('menu')) {
+        var menuId = event.target.dataset.menu;
+        var menu = document.getElementById('menu-' + menuId);
+        menu.classList.toggle('open');
     }
+
+    if (event.target.classList.contains('modalClose')) {
+        var modal = event.target.parentElement.parentElement;
+        modal.style.display = "none";
+    }
+
+    if (event.target.classList.contains('deleteItem')) {
+        var id = event.target.dataset.id;
+        var table = event.target.dataset.table;
+        var modifier = event.target.dataset.modifier;
+        deleteDB(table, id, reloadDataTable, modifier);
+        
+    }
+
+    if (event.target.id === 'devisAdd') {
+        var devis_id = document.getElementById('devisid').dataset.id;
+        var produit_devis = {
+            id: devis_id
+        };
+
+        fetch(mainFunction_baseUrl + '/insertProduitDevis', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(produit_devis)
+        })
+        .then(function(response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        })
+        .then(function() {
+            getProduitsById();
+        })
+        .catch(function() {
+            (0,_plugin_vue2_normalizer_VrK6B12S.l)(t('gestion', "Please create a new product"));
+        });
+    }
+
 });
 
-document.body.addEventListener('mouseover', function(e) {
-    var targetClass = e.target.className;
-    if(targetClass.includes("editable") || targetClass.includes("loadSelect") || targetClass.includes("selectable")){
-        applyMouseOverStyles(e.target);
+
+// $('body').on('dblclick', '.selectableDevis', function () {
+//     var id = $(this).data('id');
+//     var table = $(this).data('table');
+//     var column = $(this).data('column');
+//     $(this).text("");
+//     $(this).html('<select id="listDevis">');
+//     listDevis($('#listDevis'), id, table, column);
+// });
+
+document.body.addEventListener('dblclick', function(event) {
+    if (event.target.classList.contains('selectable')) {
+        var id = event.target.dataset.id;
+        var produitid = event.target.dataset.val;
+        event.target.textContent = "";
+        event.target.innerHTML = '<select id="listProduit">';
+        listProduit(document.getElementById('listProduit'), id, produitid);
     }
 });
 
 document.body.addEventListener('change', function(event) {
+    if (event.target.classList.contains('listClient') || event.target.classList.contains('listDevis')) {
+        var myDiv = event.target.closest("div");
+        var id = myDiv.dataset.id;
+        var val = event.target.value;
+        var column = myDiv.dataset.column;
+        var table = myDiv.dataset.table;
+        event.target.setAttribute('data-current', event.target.value);
+        updateDB(table, column, val, id);
+    }
+
+    if (event.target.classList.contains('inputDate')) {
+        var id = event.target.dataset.id;
+        var val = event.target.value;
+        var column = event.target.dataset.column;
+        var table = event.target.dataset.table;
+        updateDB(table, column, val, id);
+    }
+
+    if (event.target.id === 'listProduit' || event.target.id === 'listDevis') {
+        var id = event.target.options[event.target.selectedIndex].dataset.id;
+        var val = event.target.options[event.target.selectedIndex].dataset.val;
+        var column = event.target.options[event.target.selectedIndex].dataset.column;
+        var table = event.target.options[event.target.selectedIndex].dataset.table;
+        var el = event.target.parentNode;
+
+        updateDB(table, column, val, id);
+
+        if (el.className === 'selectableClient_devis') {
+            getClientByIdDevis(id);
+        }
+
+        if (event.target.id === 'listProduit') {
+            getProduitsById();
+        }
+
+        el.textContent = event.target.value;
+        el.dataset.val = id;
+    }
+
     if (event.target.classList.contains('editableSelect')) {
         var table = event.target.getAttribute('data-table');
         var column = event.target.getAttribute('data-column');
@@ -75034,10 +75076,60 @@ document.body.addEventListener('change', function(event) {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+
+    var aboutButton = document.getElementById('about');
+    if (aboutButton) {
+        aboutButton.addEventListener('click', function() {
+            var modal = document.getElementById("modalConfig");
+            if (modal) {
+                modal.style.display = "block";
+            }
+        });
+    }
+});
+
+var lastKeyEventTime = 0;
+
+document.body.addEventListener('keydown', function(e) {
+    if (e.key === "Enter") {
+        lastKeyEventTime = Date.now(); // Mettre à jour le temps du dernier événement keydown
+        var targetClass = e.target.className;
+        if (targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")) {
+            updateNumerical(e.target);
+        } else if (targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration") || targetClass.includes("editableConfigurationSelect")) {
+            // Empêcher le comportement par défaut
+        } else if (targetClass.includes("editable")) {
+            updateEditable(e.target);
+        }
+    }
+});
+
+document.body.addEventListener('focusout', function(e) {
+    // Vérifier si keydown a été utilisé récemment (dans les 100 ms)
+    if (Date.now() - lastKeyEventTime < 100) {
+        e.preventDefault(); // Empêcher l'exécution de focusout
+        return;
+    }
+
+    var targetClass = e.target.className;
+    if (targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")) {
+        updateNumerical(e.target);
+    } else if (targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration") || targetClass.includes("editableConfigurationSelect")) {
+        // Empêcher le comportement par défaut
+    } else if (targetClass.includes("editable")) {
+        updateEditable(e.target);
+    }
+});
+
+
+document.body.addEventListener('mouseover', function(event) {
+    if(event.target.classList.contains("editable") || event.target.classList.contains("loadSelect") || event.target.classList.contains("selectable")){
+        applyMouseOverStyles(event.target);
+    }
+});
+
 function applyMouseOverStyles(element) {
-    element.style.border = "1px solid " + getComputedStyle(document.documentElement).getPropertyValue('--color-primary-element-light');
-    element.style.borderRadius = "5px";
-    element.style.padding = "5px";
     element.style.fontWeight = "bold";
     element.addEventListener('mouseout', function(e) {
         e.target.style.border = null;
@@ -75047,6 +75139,14 @@ function applyMouseOverStyles(element) {
     });
 }
 
+function reloadDataTable(modifier) {
+    var dt = new dataTables('.tabledt');
+    if (modifier === "getProduitsById") { getProduitsById(); }
+    if (modifier === "client") { Client.loadClientDT(dt); }
+    if (modifier === "devis") { Devis.loadDevisDT(dt); }
+    if (modifier === "facture") { Facture.loadFactureDT(dt); }
+    if (modifier === "produit") { Produit.loadProduitDT(dt); }
+}
 ;// CONCATENATED MODULE: ./src/js/statistique.js
 // import "@nextcloud/dialogs/dist/style.css";
 

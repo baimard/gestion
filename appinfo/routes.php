@@ -48,5 +48,7 @@ return [
         ['name' => 'page#createCompany', 'url' => '/createCompany', 'verb' => 'PUT'],
         ['name' => 'page#deleteCompany', 'url' => '/deleteCompany', 'verb' => 'DELETE'],
         ['name' => 'page#setCurrentCompany', 'url' => '/updateSession', 'verb' => 'POST'],
+        ['name' => 'page#addShareUser', 'url' => '/addShareUser', 'verb' => 'POST'],
+        ['name' => 'page#delShareUser', 'url' => '/delShareUser', 'verb' => 'DELETE'],
     ]
 ];

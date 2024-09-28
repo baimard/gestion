@@ -1,4 +1,4 @@
-import { getFilePickerBuilder, showError } from "@nextcloud/dialogs";
+import { FilePicker, getFilePickerBuilder, showError } from "@nextcloud/dialogs";
 import { updateDB, configuration, updateEditable, deleteDB, getProduitsById, updateCurrentCompany, updateDBConfiguration, listProduit } from "../modules/ajaxRequest.js";
 import { path, baseUrl, updateNumerical } from "../modules/mainFunction.js";
 import DataTable from 'datatables.net';
@@ -32,6 +32,7 @@ document.body.addEventListener('click', function (event) {
             })
             .build()
             .pick()
+
     }
 
     if (

@@ -3,7 +3,7 @@
 /***/ 8785:
 /***/ (function(module) {
 
-/*! @license DOMPurify 2.5.2 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.5.2/LICENSE */
+/*! @license DOMPurify 2.5.7 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.5.7/LICENSE */
 
 (function (global, factory) {
    true ? module.exports = factory() :
@@ -291,7 +291,7 @@
      * Version label, exposed for easier checks
      * if DOMPurify is up to date or not
      */
-    DOMPurify.version = '2.5.2';
+    DOMPurify.version = '2.5.7';
 
     /**
      * Array of elements that DOMPurify removed during sanitation.
@@ -517,9 +517,6 @@
     /* Keep a reference to config to pass to hooks */
     var CONFIG = null;
 
-    /* Specify the maximum element nesting depth to prevent mXSS */
-    var MAX_NESTING_DEPTH = 255;
-
     /* Ideally, do not touch anything below this line */
     /* ______________________________________________ */
 
@@ -681,7 +678,7 @@
       CONFIG = cfg;
     };
     var MATHML_TEXT_INTEGRATION_POINTS = addToSet({}, ['mi', 'mo', 'mn', 'ms', 'mtext']);
-    var HTML_INTEGRATION_POINTS = addToSet({}, ['foreignobject', 'annotation-xml']);
+    var HTML_INTEGRATION_POINTS = addToSet({}, ['annotation-xml']);
 
     // Certain elements are allowed in both SVG and HTML
     // namespace. We need to specify them explicitly
@@ -914,7 +911,7 @@
      * @return {Boolean} true if clobbered, false if safe
      */
     var _isClobbered = function _isClobbered(elm) {
-      return elm instanceof HTMLFormElement && (typeof elm.__depth !== 'undefined' && typeof elm.__depth !== 'number' || typeof elm.__removalCount !== 'undefined' && typeof elm.__removalCount !== 'number' || typeof elm.nodeName !== 'string' || typeof elm.textContent !== 'string' || typeof elm.removeChild !== 'function' || !(elm.attributes instanceof NamedNodeMap) || typeof elm.removeAttribute !== 'function' || typeof elm.setAttribute !== 'function' || typeof elm.namespaceURI !== 'string' || typeof elm.insertBefore !== 'function' || typeof elm.hasChildNodes !== 'function');
+      return elm instanceof HTMLFormElement && (typeof elm.nodeName !== 'string' || typeof elm.textContent !== 'string' || typeof elm.removeChild !== 'function' || !(elm.attributes instanceof NamedNodeMap) || typeof elm.removeAttribute !== 'function' || typeof elm.setAttribute !== 'function' || typeof elm.namespaceURI !== 'string' || typeof elm.insertBefore !== 'function' || typeof elm.hasChildNodes !== 'function');
     };
 
     /**
@@ -1156,6 +1153,7 @@
         hookEvent.forceKeepAttr = undefined; // Allows developers to see this is a property they can set
         _executeHook('uponSanitizeAttribute', currentNode, hookEvent);
         value = hookEvent.attrValue;
+
         /* Did the hooks approve of the attribute? */
         if (hookEvent.forceKeepAttr) {
           continue;
@@ -1199,6 +1197,12 @@
           value = SANITIZE_NAMED_PROPS_PREFIX + value;
         }
 
+        /* Work around a security issue with comments inside attributes */
+        if (SAFE_FOR_XML && regExpTest(/((--!?|])>)|<\/(style|title)/i, value)) {
+          _removeAttribute(name, currentNode);
+          continue;
+        }
+
         /* Handle attributes that require Trusted Types */
         if (trustedTypesPolicy && _typeof(trustedTypes) === 'object' && typeof trustedTypes.getAttributeType === 'function') {
           if (namespaceURI) ; else {
@@ -1225,7 +1229,11 @@
             /* Fallback to setAttribute() for browser-unrecognized namespaces e.g. "x-schema". */
             currentNode.setAttribute(name, value);
           }
-          arrayPop(DOMPurify.removed);
+          if (_isClobbered(currentNode)) {
+            _forceRemove(currentNode);
+          } else {
+            arrayPop(DOMPurify.removed);
+          }
         } catch (_) {}
       }
 
@@ -1252,29 +1260,9 @@
         if (_sanitizeElements(shadowNode)) {
           continue;
         }
-        var parentNode = getParentNode(shadowNode);
-
-        /* Set the nesting depth of an element */
-        if (shadowNode.nodeType === 1) {
-          if (parentNode && parentNode.__depth) {
-            /*
-              We want the depth of the node in the original tree, which can
-              change when it's removed from its parent.
-            */
-            shadowNode.__depth = (shadowNode.__removalCount || 0) + parentNode.__depth + 1;
-          } else {
-            shadowNode.__depth = 1;
-          }
-        }
-
-        /* Remove an element if nested too deeply to avoid mXSS */
-        if (shadowNode.__depth >= MAX_NESTING_DEPTH) {
-          _forceRemove(shadowNode);
-        }
 
         /* Deep shadow DOM detected */
         if (shadowNode.content instanceof DocumentFragment) {
-          shadowNode.content.__depth = shadowNode.__depth;
           _sanitizeShadowDOM(shadowNode.content);
         }
 
@@ -1404,29 +1392,9 @@
         if (_sanitizeElements(currentNode)) {
           continue;
         }
-        var parentNode = getParentNode(currentNode);
-
-        /* Set the nesting depth of an element */
-        if (currentNode.nodeType === 1) {
-          if (parentNode && parentNode.__depth) {
-            /*
-              We want the depth of the node in the original tree, which can
-              change when it's removed from its parent.
-            */
-            currentNode.__depth = (currentNode.__removalCount || 0) + parentNode.__depth + 1;
-          } else {
-            currentNode.__depth = 1;
-          }
-        }
-
-        /* Remove an element if nested too deeply to avoid mXSS */
-        if (currentNode.__depth >= MAX_NESTING_DEPTH) {
-          _forceRemove(currentNode);
-        }
 
         /* Shadow DOM detected, sanitize it */
         if (currentNode.content instanceof DocumentFragment) {
-          currentNode.content.__depth = currentNode.__depth;
           _sanitizeShadowDOM(currentNode.content);
         }
 

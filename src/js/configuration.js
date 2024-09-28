@@ -1,7 +1,7 @@
 // import "@nextcloud/dialogs/dist/index.css";
 import "../css/mycss.less";
 
-import { configuration, createCompany, deleteCompany, updateDBConfiguration} from "./modules/ajaxRequest.js";
+import { addShareUser, configuration, createCompany, deleteCompany, delShareUser, updateDBConfiguration} from "./modules/ajaxRequest.js";
 import { globalConfiguration } from "./modules/mainFunction.js";
 import "./listener/main_listener";
 import { getAutoIncrement, setCurrencyList, setFormatList } from "./modules/list.js";
@@ -29,22 +29,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    var shareInput = document.getElementById("emailInput");
-    if (shareInput) {
-        shareInput.addEventListener("input", function(){
-            var existingLoader = document.getElementById("ldLoad");
-            if (! existingLoader) {
-                var loader = document.createElement("div");
-                loader.classList.add("loader");
-                loader.id = "ldLoad"; // Add id to the loader div
-                shareInput.parentNode.insertBefore(loader, shareInput.nextSibling);
-                // existingLoader.remove(); // Remove existing loader if it exists
-            }
+    var submitEmail = document.getElementById("submitEmail");
+    if (submitEmail) {
+        submitEmail.addEventListener('click', function() {
+            addShareUser(document.getElementById("emailInput").value);
+        });
+    }
 
-            var datalist = document.getElementById("search");
-            var option = document.createElement("option");
-            option.text = shareInput.value;
-            datalist.appendChild(option);
+    var deleteShareUsers = document.querySelectorAll(".deleteShareUser");
+
+    if (deleteShareUsers.length > 0) {
+        deleteShareUsers.forEach(function(deleteShareUser) {
+            deleteShareUser.addEventListener('click', function() {
+                delShareUser(this.getAttribute('data-uid'));
+            });
         });
     }
 
@@ -79,9 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.body.addEventListener('change', function(e) {
-
         callUpdateDBConfiguration(e);
     });
+
+
+
 
     function callUpdateDBConfiguration(e){
         if (e.target.classList.contains('editableConfiguration')

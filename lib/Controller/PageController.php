@@ -214,10 +214,17 @@ class PageController extends Controller {
 			$this->session['CurrentCompany'] = '';
 		}
 		
+		if($this->session['CurrentCompany'] != ''){
+			foreach($this->myDb->getUsersShared($this->session['CurrentCompany']) as $user) {
+				$shareUsers[] = $this->userManager->get($user['id_nextcloud']);
+			}
+		}
+
 		$response = new TemplateResponse(	'gestion', 'configuration', array(	'path' => $this->myID, 
 											'url' => $this->getNavigationLink(),
 											'CompaniesList' => $this->getCompaniesList(),
-											'CurrentCompany' => $this->session['CurrentCompany']
+											'CurrentCompany' => $this->session['CurrentCompany'],
+											'shareUsers' => $shareUsers,
 										)
 									);  // templates/configuration.php
 
@@ -275,6 +282,8 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function isConfig() {
+		
+
 		return $this->myDb->isConfig($this->session['CurrentCompany'],$this->myID);
 	}
 
@@ -298,6 +307,8 @@ class PageController extends Controller {
 	}
 
 	/**
+	* @NoAdminRequired
+	* @NoCSRFRequired
 	* @UseSession
 	*/
 	#[UseSession]
@@ -312,6 +323,8 @@ class PageController extends Controller {
 	}
 
 	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 * @UseSession
 	 * 
 	 * @param string $companyID
@@ -323,6 +336,8 @@ class PageController extends Controller {
 
 
 	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 * @UseSession
 	 */
 	#[UseSession]
@@ -331,6 +346,8 @@ class PageController extends Controller {
 	}
 
 	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 * @UseSession
 	 */
 	#[UseSession]
@@ -341,6 +358,58 @@ class PageController extends Controller {
 		}else{
 			return new DataResponse([$this->session['CurrentCompany'],$this->myID], 401, ['Content-Type' => 'application/json']);
 		}
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @param string $email
+	 * @UseSession
+	*/
+	#[UseSession]
+	public function addShareUser($email){
+		$found = false;
+		$ownedCompanies = $this->myDb->getCompaniesOwner($this->myID);
+		foreach ($ownedCompanies as $company) {
+			if ($company['id'] == $this->session['CurrentCompany']) {
+				$found = true;
+			}
+		}	
+
+		if($found){
+			$users = $this->userManager->search('');
+			foreach ($users as $user) {
+				if ($user->getEMailAddress() === $email) {
+					$this->myDb->addShareUser($this->session['CurrentCompany'],$user->getUID());
+					return new DataResponse(['status' => 'success', 'data' => $user->getDisplayName()]);
+				}
+			}
+			return new Dataresponse(['status' => 'not found','data'=> 'User not found']);
+		}
+
+		return new Dataresponse(['status' => 'Not owner','data'=> 'You are not the owner of this company']);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @param string $uid
+	 * @UseSession
+	*/
+	#[UseSession]
+	public function delShareUser($uid){
+		$found = false;
+		$ownedCompanies = $this->myDb->getCompaniesOwner($this->myID);
+		foreach ($ownedCompanies as $company) {
+			if ($company['id'] == $this->session['CurrentCompany']) {
+				$found = true;
+			}
+		}	
+
+		if($found){
+			$this->myDb->delShareUser($this->session['CurrentCompany'],$uid);
+			return new DataResponse(['status' => 'success', 'data' => 'User deleted']);
+		}
+
+		return new Dataresponse(['status' => 'Not owner','data'=> 'You are not the owner of this company'], 401);
 	}
 
 	/**

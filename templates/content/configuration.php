@@ -23,6 +23,27 @@
             <datalist id="search"></datalist>
             <button id="submitEmail"><?= p($l->t('Add')) ?></button>
         </p>
+        <div id="shareUsers">
+            <table id="shareUsersTable">
+                <thead>
+                    <tr>
+                        <th><?= p($l->t('User Diplay Name')) ?></th>
+                        <th><?= p($l->t('Delete')) ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        foreach ($_['shareUsers'] as $user){
+                            echo '<tr>';
+                            echo '<td>'.$user->getDisplayName().'</td>';
+                            echo '<td><button class="deleteShareUser" data-uid="'.$user->getUID().'">X</button></td>';
+                            echo '</tr>';
+                        } 
+                    ?>
+                </tbody>
+            </table>
+        </div>
+
         <hr/>
         <button id="deleteCompany" style="background-color: red; color: white;"><?= p($l->t('Delete Company')) ?></button>
     </div>

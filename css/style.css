@@ -201,3 +201,39 @@
   margin-top: 20px;
   margin-bottom: 10px;
 }
+
+#emailInput{
+  width: 30%;
+}
+
+#shareUsersTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+#shareUsersTable thead th {
+    padding: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+#shareUsersTable tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+#shareUsersTable tbody td {
+    padding: 10px;
+}
+
+#shareUsersTable tbody td button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}

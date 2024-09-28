@@ -58191,7 +58191,6 @@ function deleteDB(table, id, callback=null, modifier=null) {
         table: table,
         id: id,
     };
-
     if (window.confirm((0,dist/* translate */.Tl)('gestion', 'Are you sure you want to delete?'))) {
         fetch(mainFunction_baseUrl + '/delete', {
             method: 'DELETE',
@@ -58456,36 +58455,90 @@ function saveNextcloud(myData) {
     });
   };
 
-  function getMailServerFrom(input) {
+function getMailServerFrom(input) {
+var oReq = new XMLHttpRequest();
+oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
+oReq.setRequestHeader("Content-Type", "application/json");
+oReq.setRequestHeader("requesttoken", oc_requesttoken);
+oReq.onload = function(e){
+    if (this.status == 200) {
+        input.value = JSON.parse(this.response)['mail'];
+    }else{
+        showError(this.response);
+    }
+};
+oReq.send();
+}
+
+/**
+ * 
+ */
+function backup(){
     var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
+    oReq.open('GET', baseUrl + '/backup', true);
     oReq.setRequestHeader("Content-Type", "application/json");
     oReq.setRequestHeader("requesttoken", oc_requesttoken);
-    oReq.onload = function(e){
+    oReq.onload = function(){
         if (this.status == 200) {
-            input.value = JSON.parse(this.response)['mail'];
+            showSuccess(t('gestion', 'Save in')+' '+JSON.parse(this.response)['name']+'\n'+t('gestion','(do not forget to show hidden folders)'));
         }else{
             showError(this.response);
         }
     };
     oReq.send();
-    }
+}
 
-    function backup(){
-        var oReq = new XMLHttpRequest();
-        oReq.open('GET', baseUrl + '/backup', true);
-        oReq.setRequestHeader("Content-Type", "application/json");
-        oReq.setRequestHeader("requesttoken", oc_requesttoken);
-        oReq.onload = function(e){
-            if (this.status == 200) {
-                showSuccess(t('gestion', 'Save in')+' '+JSON.parse(this.response)['name']+'\n'+t('gestion','(do not forget to show hidden folders)'));
-            }else{
-                showError(this.response);
-            }
-        };
-        oReq.send();
-    }
+function addShareUser(email){
+    var myData = {
+        email: email
+    };
 
+    fetch(mainFunction_baseUrl + '/addShareUser', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.status >= 200 && response.status < 300) {
+            window.location.reload();
+        } else {
+            return response.json();
+        }
+    })
+    .then(data => {
+        (0,_plugin_vue2_normalizer_CQ6iBklL.s)((0,dist/* translate */.Tl)('gestion', 'Information : ') + data.data);
+        console.log(data);
+    })
+    
+};
+
+function delShareUser(uid){
+    var myData = {
+        uid: uid
+    };
+
+    fetch(mainFunction_baseUrl + '/delShareUser', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.status >= 200 && response.status < 300) {
+            window.location.reload();
+        } else {
+            return response.json();
+        }
+    })
+    .then(data => {
+        (0,_plugin_vue2_normalizer_CQ6iBklL.l)((0,dist/* translate */.Tl)('gestion', 'Information : ') + data.data);
+    })
+};
 // EXTERNAL MODULE: ./node_modules/jquery/dist/jquery.js
 var jquery = __webpack_require__(4692);
 ;// ./node_modules/datatables.net/js/dataTables.mjs
@@ -73119,22 +73172,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    var shareInput = document.getElementById("emailInput");
-    if (shareInput) {
-        shareInput.addEventListener("input", function(){
-            var existingLoader = document.getElementById("ldLoad");
-            if (! existingLoader) {
-                var loader = document.createElement("div");
-                loader.classList.add("loader");
-                loader.id = "ldLoad"; // Add id to the loader div
-                shareInput.parentNode.insertBefore(loader, shareInput.nextSibling);
-                // existingLoader.remove(); // Remove existing loader if it exists
-            }
+    var submitEmail = document.getElementById("submitEmail");
+    if (submitEmail) {
+        submitEmail.addEventListener('click', function() {
+            addShareUser(document.getElementById("emailInput").value);
+        });
+    }
 
-            var datalist = document.getElementById("search");
-            var option = document.createElement("option");
-            option.text = shareInput.value;
-            datalist.appendChild(option);
+    var deleteShareUsers = document.querySelectorAll(".deleteShareUser");
+
+    if (deleteShareUsers.length > 0) {
+        deleteShareUsers.forEach(function(deleteShareUser) {
+            deleteShareUser.addEventListener('click', function() {
+                delShareUser(this.getAttribute('data-uid'));
+            });
         });
     }
 
@@ -73169,9 +73220,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.body.addEventListener('change', function(e) {
-
         callUpdateDBConfiguration(e);
     });
+
+
+
 
     function callUpdateDBConfiguration(e){
         if (e.target.classList.contains('editableConfiguration')

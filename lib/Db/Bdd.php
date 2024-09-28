@@ -31,6 +31,16 @@ class Bdd {
         return $this->execSQLNoJsonReturn($sql, array($User, $User));
     }
 
+    public function getCompaniesOwner($User){
+        $sql = "SELECT id FROM `".$this->tableprefix."configuration` WHERE id_nextcloud = ?";
+        return $this->execSQLNoJsonReturn($sql, array($User));
+    }
+
+    public function getUsersShared($idConfiguration){
+        $sql = "SELECT id_nextcloud FROM `".$this->tableprefix."conf_share` WHERE id_configuration = ?";
+        return $this->execSQLNoJsonReturn($sql, array($idConfiguration));
+    }
+
     public function getClients($idNextcloud){
         $sql = "SELECT * FROM ".$this->tableprefix."client WHERE id_configuration = ?";
         return $this->execSQL($sql, array($idNextcloud));
@@ -74,6 +84,18 @@ class Bdd {
     public function getListProduit($numdevis, $idNextcloud){
         $sql = "SELECT ".$this->tableprefix."produit.id as pid,".$this->tableprefix."produit_devis.id as pdid, reference, description,".$this->tableprefix."produit_devis.comment, quantite, prix_unitaire FROM ".$this->tableprefix."produit, ".$this->tableprefix."devis, ".$this->tableprefix."produit_devis WHERE ".$this->tableprefix."produit.id = produit_id AND ".$this->tableprefix."devis.id = devis_id AND ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_configuration = ? AND ".$this->tableprefix."produit.id_configuration = ?";
         return $this->execSQL($sql, array($numdevis, $idNextcloud, $idNextcloud));
+    }
+
+    public function addShareUser($idConfiguration, $idNextcloud){
+        $sql = "INSERT INTO `".$this->tableprefix."conf_share` (`id_configuration`, `id_nextcloud`) VALUES (?,?)";
+        $this->execSQLNoData($sql, array($idConfiguration, $idNextcloud));
+        return true;
+    } 
+
+    public function delShareUser($idConfiguration, $idNextcloud){
+        $sql = "DELETE FROM `".$this->tableprefix."conf_share` WHERE `id_configuration` = ? AND `id_nextcloud` = ?";
+        $this->execSQLNoData($sql, array($idConfiguration, $idNextcloud));
+        return true;
     }
 
     private function getFunctionCall(){

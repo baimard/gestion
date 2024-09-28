@@ -58191,7 +58191,6 @@ function deleteDB(table, id, callback=null, modifier=null) {
         table: table,
         id: id,
     };
-
     if (window.confirm((0,dist/* translate */.Tl)('gestion', 'Are you sure you want to delete?'))) {
         fetch(mainFunction_baseUrl + '/delete', {
             method: 'DELETE',
@@ -58456,36 +58455,90 @@ function saveNextcloud(myData) {
     });
   };
 
-  function getMailServerFrom(input) {
+function getMailServerFrom(input) {
+var oReq = new XMLHttpRequest();
+oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
+oReq.setRequestHeader("Content-Type", "application/json");
+oReq.setRequestHeader("requesttoken", oc_requesttoken);
+oReq.onload = function(e){
+    if (this.status == 200) {
+        input.value = JSON.parse(this.response)['mail'];
+    }else{
+        showError(this.response);
+    }
+};
+oReq.send();
+}
+
+/**
+ * 
+ */
+function backup(){
     var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
+    oReq.open('GET', baseUrl + '/backup', true);
     oReq.setRequestHeader("Content-Type", "application/json");
     oReq.setRequestHeader("requesttoken", oc_requesttoken);
-    oReq.onload = function(e){
+    oReq.onload = function(){
         if (this.status == 200) {
-            input.value = JSON.parse(this.response)['mail'];
+            showSuccess(t('gestion', 'Save in')+' '+JSON.parse(this.response)['name']+'\n'+t('gestion','(do not forget to show hidden folders)'));
         }else{
             showError(this.response);
         }
     };
     oReq.send();
-    }
+}
 
-    function backup(){
-        var oReq = new XMLHttpRequest();
-        oReq.open('GET', baseUrl + '/backup', true);
-        oReq.setRequestHeader("Content-Type", "application/json");
-        oReq.setRequestHeader("requesttoken", oc_requesttoken);
-        oReq.onload = function(e){
-            if (this.status == 200) {
-                showSuccess(t('gestion', 'Save in')+' '+JSON.parse(this.response)['name']+'\n'+t('gestion','(do not forget to show hidden folders)'));
-            }else{
-                showError(this.response);
-            }
-        };
-        oReq.send();
-    }
+function addShareUser(email){
+    var myData = {
+        email: email
+    };
 
+    fetch(baseUrl + '/addShareUser', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.status >= 200 && response.status < 300) {
+            window.location.reload();
+        } else {
+            return response.json();
+        }
+    })
+    .then(data => {
+        showMessage(t('gestion', 'Information : ') + data.data);
+        console.log(data);
+    })
+    
+};
+
+function delShareUser(uid){
+    var myData = {
+        uid: uid
+    };
+
+    fetch(baseUrl + '/delShareUser', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.status >= 200 && response.status < 300) {
+            window.location.reload();
+        } else {
+            return response.json();
+        }
+    })
+    .then(data => {
+        showError(t('gestion', 'Information : ') + data.data);
+    })
+};
 // EXTERNAL MODULE: ./node_modules/jquery/dist/jquery.js
 var jquery = __webpack_require__(4692);
 ;// ./node_modules/datatables.net/js/dataTables.mjs

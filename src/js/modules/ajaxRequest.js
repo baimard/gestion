@@ -17,15 +17,22 @@ export function updateDB(table, column, data, id) {
         id: id,
     };
 
-    $.ajax({
-        url: baseUrl + '/update',
-        type: 'POST',
-        async: false,
-        contentType: 'application/json',
-        data: JSON.stringify(myData)
-    }).done(function (response, code) {
-        showSuccess(t('gestion', 'Modification saved'));
-    }).fail(function (response, code) {
+    fetch(baseUrl + '/update', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.ok) {
+            showSuccess(t('gestion', 'Modification saved'));
+        } else {
+            showError(t('gestion', 'There is an error with the format, please check the documentation'));
+        }
+    })
+    .catch(error => {
         showError(t('gestion', 'There is an error with the format, please check the documentation'));
     });
 }
@@ -38,7 +45,6 @@ export function updateDB(table, column, data, id) {
  * @param id 
  */
 export function updateDBConfiguration(table, column, data, id) {
-    
     var myData = {
         table: table,
         column: column,
@@ -46,67 +52,75 @@ export function updateDBConfiguration(table, column, data, id) {
         id: id,
     };
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', baseUrl + '/updateConfiguration', true); // false for synchronous request
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    xhr.onload = function () {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            // Request successful
+    fetch(baseUrl + '/updateConfiguration', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.ok) {
             showSuccess(t('gestion', 'Modification saved'));
         } else {
-            // Request failed
             showError(t('gestion', 'There is an error with the format, please check the documentation'));
         }
-    };
-
-    xhr.onerror = function () {
-        // Connection error
+    })
+    .catch(error => {
         showError(t('gestion', 'There is an error with the format, please check the documentation'));
-    };
-
-    xhr.send(JSON.stringify(myData));
+    });
 }
 
 /**
  * Create a new company
  */
 export function createCompany() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('PUT',baseUrl +  '/createCompany', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader("requesttoken", oc_requesttoken);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+    fetch(baseUrl + '/createCompany', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        }
+    })
+    .then(response => {
+        if (response.ok) {
             showSuccess(t('gestion', 'New company created'));
             location.reload();
         } else {
             showError(t('gestion', 'There is an error.'));
         }
-    };
-    xhr.send();
+    })
+    .catch(error => {
+        showError(t('gestion', 'There is an error.'));
+    });
 }
 
 /**
  * Delete a company
  */
 export function deleteCompany() {
-    if(window.confirm(t('gestion','Are you sure you want to delete? (All data will be lost)'))){
-        var xhr = new XMLHttpRequest();
-        xhr.open('DELETE', baseUrl + '/deleteCompany', true); // false for synchronous request
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.setRequestHeader("requesttoken", oc_requesttoken);
-        xhr.onreadystatechange = function (value) {
-            if (xhr.status >= 200 && xhr.status < 300) {
+    if (window.confirm(t('gestion', 'Are you sure you want to delete? (All data will be lost)'))) {
+        fetch(baseUrl + '/deleteCompany', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'requesttoken': OC.requestToken
+            }
+        })
+        .then(response => {
+            if (response.ok) {
                 // Request successful
                 showSuccess(t('gestion', 'Company deleted'));
                 location.reload();
             } else {
                 showError(t('gestion', 'There is an error.'));
-                console.log(value);
             }
-        };
-        xhr.send();
+        })
+        .catch(error => {
+            showError(t('gestion', 'There is an error.'));
+            console.log(error);
+        });
     }
 }
 
@@ -120,13 +134,16 @@ export function updateCurrentCompany(companyID) {
         companyID: companyID
     };
     
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', baseUrl + '/updateSession', true); // false for synchronous request
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader("requesttoken", oc_requesttoken);
-
-    xhr.onload = function () {
-        if (xhr.status >= 200 && xhr.status < 300) {
+    fetch(baseUrl + '/updateSession', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.ok) {
             // Request successful
             showSuccess(t('gestion', 'Modification saved'));
             window.location.reload();
@@ -134,14 +151,11 @@ export function updateCurrentCompany(companyID) {
             // Request failed
             showError(t('gestion', 'There is an error with the format, please check the documentation'));
         }
-    };
-
-    xhr.onerror = function () {
+    })
+    .catch(error => {
         // Connection error
         showError(t('gestion', 'There is an error with the format, please check the documentation'));
-    };
-
-    xhr.send(JSON.stringify(myData));
+    });
 }
 
 /**
@@ -149,26 +163,34 @@ export function updateCurrentCompany(companyID) {
  * @param table
  * @param id 
  */
-export function deleteDB(table, id) {
+export function deleteDB(table, id, callback=null, modifier=null) {
     var myData = {
         table: table,
         id: id,
     };
 
-    if(window.confirm(t('gestion','Are you sure you want to delete?'))){
-        $.ajax({
-            url: baseUrl + '/delete',
-            type: 'DELETE',
-            async: false,
-            contentType: 'application/json',
-            data: JSON.stringify(myData)
-        }).done(function (response, code) {
-            showSuccess(t('gestion', 'Modification saved'));
-        }).fail(function (response, code) {
-            showError(response);
+    if (window.confirm(t('gestion', 'Are you sure you want to delete?'))) {
+        fetch(baseUrl + '/delete', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'requesttoken': OC.requestToken
+            },
+            body: JSON.stringify(myData)
+        })
+        .then(response => {
+            if (response.ok) {
+                showSuccess(t('gestion', 'Modification saved'));
+                callback(modifier);
+            } else {
+                showError(response);
+            }
+        })
+        .catch(error => {
+            showError(error);
         });
-    }else{
-        showMessage(t('gestion', 'Nothing changed'))
+    } else {
+        showMessage(t('gestion', 'Nothing changed'));
     }
 }
 
@@ -176,18 +198,29 @@ export function deleteDB(table, id) {
  * 
  */
 export function getStats() {
-    $.ajax({
-        url: baseUrl + '/getStats',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        var res = JSON.parse(response);
-        $("#statsclient").text(res.client);
-        $("#statsdevis").text(res.devis);
-        $("#statsfacture").text(res.facture);
-        $("#statsproduit").text(res.produit);
-    }).fail(function (response, code) {
-        showError(response);
+    fetch(baseUrl + '/getStats', {
+        method: 'PROPFIND',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error: ' + response.status);
+        }
+    })
+    .then(data => {
+        console.log(data);
+        document.getElementById("statsclient").textContent = data.client;
+        document.getElementById("statsdevis").textContent = data.devis;
+        document.getElementById("statsfacture").textContent = data.facture;
+        document.getElementById("statsproduit").textContent = data.produit;
+    })
+    .catch(error => {
+        showError(error);
     });
 }
 
@@ -231,39 +264,45 @@ export function isconfig() {
  * @param {*} cur 
  */
 export function getAnnualTurnoverPerMonthNoVat(cur) {
-    $.ajax({
-        url: baseUrl + '/getAnnualTurnoverPerMonthNoVat',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        var res = JSON.parse(response);
+    fetch(baseUrl + '/getAnnualTurnoverPerMonthNoVat', {
+        method: 'PROPFIND',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error: ' + response.status);
+        }
+    })
+    .then(data => {
+        var res = JSON.parse(data);
         var curY = "";
         var curRow;
-        var total=0;
-        res.forEach(function(item){
-            if(curY !== item.y){
-                
-                if(curY !== ""){
+        var total = 0;
+        res.forEach(function(item) {
+            if (curY !== item.y) {
+                if (curY !== "") {
                     insertCell(curRow, -1, cur.format(total));
-                    total=0;
+                    total = 0;
                 }
-
                 curY = item.y;
                 curRow = insertRow("Statistical", -1, 0, item.y);
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
-                total+= Math.round(item.total);
-
-            }else{
-
+                total += Math.round(item.total);
+            } else {
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
-                total+= Math.round(item.total);
-
+                total += Math.round(item.total);
             }
         });
         // At the end
         insertCell(curRow, -1, cur.format(total));
-    }).fail(function (response, code) {
-        showError(response);
+    })
+    .catch(error => {
+        showError(error);
     });
 }
 
@@ -295,22 +334,47 @@ export function updateEditableConfiguration(myCase) {
  * @param {*} produitid 
  */
 export function listProduit(lp, id, produitid) {
-    $.ajax({
-        url: baseUrl + '/getProduits',
-        type: 'PROPFIND',
-        contentType: 'application/json'
-    }).done(function (response) {
-        lp.append('<option data-table="produit_devis" data-column="produit_id" data-val="' + produitid + '" data-id="' + id + '">'+t('gestion','Cancel')+'</option>');
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            var selected = "";
+    fetch(baseUrl + '/getProduits', {
+        method: 'PROPFIND',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error: ' + response.status);
+        }
+    })
+    .then(data => {
+        var res = JSON.parse(data);
+        lp.appendChild(listeproduit_add_option('produit_devis', 'produit_id', produitid, id, t('gestion', 'Cancel')));
+        res.forEach(function(myresp) {
+            var _selected = false;
             if (produitid == myresp.id) {
-                selected = "selected";
+                _selected = true;
             }
-            lp.append('<option ' + selected + ' data-table="produit_devis" data-column="produit_id" data-val="' + myresp.id + '" data-id="' + id + '">' + myresp.reference + ' ' + myresp.description + ' ' + cur.format(myresp.prix_unitaire) + '</option>');
+
+            var text_display = myresp.reference + ' ' + myresp.description + ' ' + cur.format(myresp.prix_unitaire);
+            lp.appendChild(listeproduit_add_option('produit_devis', 'produit_id', myresp.id, id,text_display,_selected));
         });
-    }).fail(function (response, code) {
-        showError(response);
+    })
+    .catch(error => {
+        showError(error);
     });
+}
+
+function listeproduit_add_option(table, column, val, id, textContent, _selected=false){
+    var option = document.createElement('option');
+    option.dataset.table = table;
+    option.dataset.column = column;
+    option.dataset.val = val;
+    option.dataset.id = id;
+    option.textContent = textContent;
+    option.selected = _selected;
+    return option;
 }
 
 /**

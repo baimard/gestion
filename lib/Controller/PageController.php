@@ -83,7 +83,6 @@ class PageController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-	 *
 	 * @UseSession
 	*/
 	#[UseSession]

@@ -6,13 +6,13 @@
 		"contact@cybercorp.fr"
 	],
 	"bugs": {
-		"url": "https://gitlab.com/baimard/gestion/-/issues"
+		"url": "https://github.com/baimard/gestion/-/issues"
 	},
 	"repository": {
-		"url": "https://gitlab.com/baimard/gestion",
+		"url": "https://github.com/baimard/gestion",
 		"type": "git"
 	},
-	"homepage": "https://gitlab.com/baimard/gestion",
+	"homepage": "https://github.com/baimard/gestion",
 	"license": "agpl",
 	"private": true,
 	"scripts": {
@@ -25,11 +25,11 @@
 		"node": "^20.10.0"
 	},
 	"devDependencies": {
-		"@nextcloud/browserslist-config": "^3.0.1",
-		"@nextcloud/dialogs": ">=5.3.1",
-		"@nextcloud/l10n": ">=2.2.0",
+		"@nextcloud/browserslist-config": ">=3.0.1",
+		"@nextcloud/dialogs": "^5.3.7",
+		"@nextcloud/l10n": "^1.0.1",
 		"@nextcloud/router": ">=2.2.0",
-		"@nextcloud/vue": "^8.4.0",
+		"@nextcloud/vue": "^8.19.0",
 		"bootstrap": ">=5.3.2",
 		"bootstrap-icons": ">=1.4.0",
 		"canvg": ">=3.0.9",
@@ -40,26 +40,25 @@
 		"datatables.net-plugins": ">=1.10.24",
 		"eslint": ">=8.15.0",
 		"eslint-webpack-plugin": ">=3.1.1",
-		"file-loader": "^6.2.0",
-		"html2canvas": "^1.0.0-rc.1",
+		"file-loader": ">=6.2.0",
+		"html2canvas": ">=1.0.0-rc.1",
 		"jquery": ">=3.6.0",
 		"jspdf": ">=2.3.1",
 		"less": ">=4.1.1",
 		"less-loader": ">=8.0.0",
-		"nextcloud-webdav-filepicker": ">=1.0.6",
-		"path": "^0.12.7",
+		"path": ">=0.12.7",
 		"postcss-loader": ">=7.2.4",
-		"process": "^0.11.10",
+		"process": ">=0.11.10",
 		"sass": ">=1.32.8",
 		"sass-loader": ">=11.0.1",
 		"style": ">=0.0.3",
 		"style-loader": ">=2.0.0",
-		"vue-loader": "^15.11.1",
+		"vue-loader": ">=17.4.2",
 		"webpack": ">=5.94.0",
 		"webpack-cli": ">=4.5.0"
 	},
 	"dependencies": {
-		"14": "^3.1.6",
-		"20": "^3.1.9"
+		"14": "^1.0.1",
+		"20": "^1.0.0"
 	}
 }

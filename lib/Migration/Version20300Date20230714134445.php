@@ -113,7 +113,7 @@ class Version20300Date20230714134445 extends SimpleMigrationStep {
 			}
 
 			if (!$table->hasColumn('id_configuration')) {
-				$table->addColumn('id_configuration', 'integer', ['length' => 11]);
+				$table->addColumn('id_configuration', 'integer', ['length' => 11, notnull => false]);
 			}
 		}
 		
@@ -133,7 +133,7 @@ class Version20300Date20230714134445 extends SimpleMigrationStep {
         }
 
         if (!$table->hasColumn('id_configuration')) {
-            $table->addColumn('id_configuration', 'integer', ['length' => 11]);
+            $table->addColumn('id_configuration', 'integer', ['length' => 11, notnull => false]);
         }
 
 

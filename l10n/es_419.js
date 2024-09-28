@@ -8,6 +8,7 @@ OC.L10N.register(
     "Address" : "Dirección",
     "New" : "Nuevo",
     "Comment" : "Comentario",
+    "Choose" : "Seleccionar",
     "Cancel" : "Cancelar",
     "Disable" : "Deshabilitar",
     "Enable" : "Habilitar",
@@ -41,6 +42,7 @@ OC.L10N.register(
     "November" : "Noviembre",
     "December" : "Diciembre",
     "Total" : "Total",
+    "Mail" : "Correo",
     "About" : "Acerca de"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

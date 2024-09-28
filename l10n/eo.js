@@ -9,6 +9,7 @@ OC.L10N.register(
     "Address" : "Adreso",
     "New" : "Nova",
     "Comment" : "Komento",
+    "Choose" : "Elekti",
     "Cancel" : "Nuligi",
     "Disable" : "Malŝalti",
     "Enable" : "Ŝalti la opcion",
@@ -46,6 +47,7 @@ OC.L10N.register(
     "December" : "Decembro",
     "Total" : "Sumo",
     "Loading …" : "Ŝargas …",
+    "Mail" : "Retpoŝtilo",
     "About" : "Pri"
 },
 "nplurals=2; plural=(n != 1);");

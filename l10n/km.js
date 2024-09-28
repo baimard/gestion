@@ -5,6 +5,7 @@ OC.L10N.register(
     "Address" : "អាសយដ្ឋាន",
     "New" : "ថ្មី",
     "Comment" : "មតិ",
+    "Choose" : "ជ្រើស",
     "Cancel" : "បោះបង់",
     "Disable" : "បិទ",
     "Enable" : "បើក",

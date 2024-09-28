@@ -9,6 +9,7 @@ OC.L10N.register(
     "Address" : "ලිපිනය",
     "New" : "නව",
     "Comment" : "අදහස",
+    "Choose" : "තෝරන්න",
     "Cancel" : "අවලංගු කරන්න",
     "Disable" : "අබල කරන්න",
     "Search" : "සොයන්න",

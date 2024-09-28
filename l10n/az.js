@@ -5,6 +5,7 @@ OC.L10N.register(
     "Address" : "Ünvan",
     "New" : "Yeni",
     "Comment" : "Komentariya",
+    "Choose" : "Seç",
     "Cancel" : "Dayandır",
     "Disable" : "Dayandır",
     "Enable" : "İşə sal",

@@ -8,6 +8,7 @@ OC.L10N.register(
     "Address" : "Aadress",
     "New" : "Uus",
     "Comment" : "Kommentaar",
+    "Choose" : "Vali",
     "Cancel" : "Loobu",
     "Disable" : "Lülita välja",
     "Enable" : "Lülita sisse",

@@ -6,7 +6,8 @@
     "Email" : "E-pasts",
     "Address" : "Adrese",
     "New" : "Jauns",
-    "Comment" : "Komentārs",
+    "Comment" : "Piebilde",
+    "Choose" : "Izvēlies",
     "Cancel" : "Atcelt",
     "Disable" : "Deaktivēt",
     "Enable" : "Iespējo",
@@ -23,6 +24,7 @@
     "Subject" : "Temats",
     "Send" : "Sūtīt",
     "Configuration" : "Konfigurācija",
+    "Share with ..." : "Koplietot ar...",
     "Quote" : "Citāts",
     "Version" : "Versija",
     "Status" : "Status",
@@ -42,6 +44,7 @@
     "November" : "Novembris",
     "December" : "Decembris",
     "Total" : "Kopā",
+    "Loading …" : "Ielādē…",
     "Mail" : "E-pasts",
     "About" : "Par"
 },"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);"

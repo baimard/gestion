@@ -7,6 +7,7 @@
     "Address" : "Adreso",
     "New" : "Nova",
     "Comment" : "Komento",
+    "Choose" : "Elekti",
     "Cancel" : "Nuligi",
     "Disable" : "Malŝalti",
     "Enable" : "Ŝalti la opcion",
@@ -44,6 +45,7 @@
     "December" : "Decembro",
     "Total" : "Sumo",
     "Loading …" : "Ŝargas …",
+    "Mail" : "Retpoŝtilo",
     "About" : "Pri"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

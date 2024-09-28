@@ -8,6 +8,7 @@ OC.L10N.register(
     "Address" : "хаяг",
     "New" : "Шинэ",
     "Comment" : "undefined",
+    "Choose" : "Сонгох",
     "Cancel" : "болиулах",
     "Search" : "Хайх",
     "Next" : "дараагийх",

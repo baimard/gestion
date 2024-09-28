@@ -16,6 +16,7 @@ OC.L10N.register(
     "Designation" : "Designatzione",
     "Gestion" : "Gestione",
     "Choose work folder" : "Sèbera sa cartella de traballu",
+    "Choose" : "Sèbera",
     "Cancel" : "Annulla",
     "Save in" : "Sarva in",
     "There is an error" : "B'at un'errore",

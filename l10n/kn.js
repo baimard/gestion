@@ -4,6 +4,7 @@ OC.L10N.register(
     "Email" : "﻿ಇ-ಅಂಚೆ",
     "Address" : "ವಿಳಾಸ",
     "New" : "﻿ಹೊಸ",
+    "Choose" : "﻿ಆಯ್ಕೆ",
     "Cancel" : "﻿ರದ್ದು",
     "Disable" : "﻿ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ",
     "Enable" : "ಸಕ್ರಿಯಗೊಳಿಸು",

@@ -7,6 +7,7 @@ OC.L10N.register(
     "Address" : "Հասցե",
     "New" : "Նոր",
     "Comment" : "Մեկնաբանել",
+    "Choose" : "Ընտրել",
     "Cancel" : "ընդհատել",
     "Search" : "Search",
     "Next" : "Հաջորդ",

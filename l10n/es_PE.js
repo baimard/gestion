@@ -8,6 +8,7 @@ OC.L10N.register(
     "Address" : "Dirección",
     "New" : "Nuevo",
     "Comment" : "Comentario",
+    "Choose" : "Seleccionar",
     "Cancel" : "Cancelar",
     "Disable" : "Deshabilitar",
     "Enable" : "Habilitar",

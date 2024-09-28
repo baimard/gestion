@@ -8,6 +8,7 @@ OC.L10N.register(
     "Address" : "მისამართი",
     "New" : "ახალი",
     "Comment" : "კომენტარი",
+    "Choose" : "აირჩიეთ",
     "Cancel" : "უარყოფა",
     "Disable" : "გამორთვა",
     "Enable" : "ჩართვა",

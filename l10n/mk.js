@@ -14,6 +14,7 @@ OC.L10N.register(
     "Reference" : "Референца",
     "Designation" : "Означување",
     "Choose work folder" : "Избери работна папка",
+    "Choose" : "Избери",
     "Cancel" : "Откажи",
     "Save in" : "Зачувај во",
     "There is an error" : "Настана грешка",

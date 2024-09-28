@@ -7,6 +7,7 @@ OC.L10N.register(
     "Address" : "Chom-lec'h",
     "New" : "Nevez",
     "Comment" : "Displegadenn",
+    "Choose" : "Dibab",
     "Cancel" : "Arrest",
     "Disable" : "Disaotreañ",
     "Enable" : "Enaouiñ",

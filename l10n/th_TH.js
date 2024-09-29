@@ -21,6 +21,7 @@ OC.L10N.register(
     "Changelog" : "บันทึกการเปลี่ยนแปลง",
     "Send" : "ส่ง",
     "Configuration" : "การกำหนดค่า",
+    "Delete" : "ลบ",
     "ID" : "ID",
     "Version" : "รุ่น",
     "Status" : "สถานะ",

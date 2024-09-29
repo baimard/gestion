@@ -14,6 +14,7 @@ OC.L10N.register(
     "Documentation" : "قوللانما",
     "Send" : "يوللا",
     "Configuration" : "سەپلىمە",
+    "Delete" : "ئۆچۈر",
     "Version" : "نەشرى",
     "Actions" : "مەشغۇلاتلار",
     "January" : "قەھرىتان",

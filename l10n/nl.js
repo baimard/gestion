@@ -229,6 +229,7 @@ OC.L10N.register(
     "Configuration" : "Configuratie",
     "Share with ..." : "Delen met ...",
     "Add" : "Toevoegen",
+    "Delete" : "Verwijder",
     "Quote" : "Quote",
     "Add quote" : "Toevoegen offerte",
     "ID" : "ID",

@@ -30,6 +30,7 @@ OC.L10N.register(
     "Send" : "Gửi",
     "Configuration" : "Cấu hình",
     "Add" : "Thêm",
+    "Delete" : "Xóa",
     "ID" : "ID",
     "Version" : "Phiên bản",
     "Status" : "Trạng thái",

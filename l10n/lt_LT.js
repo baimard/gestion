@@ -33,6 +33,7 @@ OC.L10N.register(
     "Send" : "Siųsti",
     "Configuration" : "Konfigūracija",
     "Add" : "Pridėti",
+    "Delete" : "Ištrinti",
     "ID" : "ID",
     "Version" : "Versija",
     "Status" : "Būsena",

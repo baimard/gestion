@@ -36,6 +36,7 @@ OC.L10N.register(
     "Configuration" : "Inställningar",
     "Share with ..." : "Dela med ...",
     "Add" : "Lägg till",
+    "Delete" : "Radera",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Version",

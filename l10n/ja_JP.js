@@ -44,6 +44,7 @@ OC.L10N.register(
     "Configuration" : "設定",
     "Share with ..." : "共有 ...",
     "Add" : "追加",
+    "Delete" : "削除",
     "ID" : "ID",
     "Version" : "バージョン",
     "Status" : "ステータス",

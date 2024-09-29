@@ -35,6 +35,7 @@ OC.L10N.register(
     "Configuration" : "sætning",
     "Share with ..." : "Del med…",
     "Add" : "Tilføj",
+    "Delete" : "Slet",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Version",

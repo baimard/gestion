@@ -18,6 +18,7 @@ OC.L10N.register(
     "Send" : "ផ្ញើ",
     "Configuration" : "ការ​កំណត់​សណ្ឋាន",
     "Add" : "បន្ថែម",
+    "Delete" : "លុប",
     "Version" : "កំណែ",
     "Year" : "ឆ្នាំ",
     "January" : "ខែមករា",

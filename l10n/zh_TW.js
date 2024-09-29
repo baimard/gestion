@@ -100,6 +100,7 @@ OC.L10N.register(
     "Legal disclaimer/mentions you need in your footer - before company information." : "頁尾的法律免責聲明 - 在公司資訊之前。",
     "Configuration" : "設定",
     "Add" : "新增",
+    "Delete" : "刪除",
     "Quote" : "報價",
     "Add quote" : "新增報價",
     "ID" : "ID",

@@ -27,6 +27,7 @@ OC.L10N.register(
     "Send" : "Sūtīt",
     "Configuration" : "Konfigurācija",
     "Share with ..." : "Koplietot ar...",
+    "Delete" : "Dzēst",
     "Quote" : "Citāts",
     "Version" : "Versija",
     "Status" : "Status",

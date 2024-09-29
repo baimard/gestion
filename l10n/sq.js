@@ -25,6 +25,7 @@ OC.L10N.register(
     "Send" : "Dërgo",
     "Configuration" : "Formësim",
     "Add" : "Shto ",
+    "Delete" : "Fshi",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Versioni",

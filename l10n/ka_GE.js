@@ -24,6 +24,7 @@ OC.L10N.register(
     "Subject" : "სათაური",
     "Send" : "გაგზავნა",
     "Configuration" : "კონფიგურაცია",
+    "Delete" : "წაშლა",
     "ID" : "ID",
     "Version" : "ვერსია",
     "Status" : "სტატუსი",

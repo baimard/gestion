@@ -31,6 +31,7 @@ OC.L10N.register(
     "Send" : "Enviar",
     "Configuration" : "Configuração",
     "Add" : "Adicionar",
+    "Delete" : "Eliminar",
     "ID" : "ID",
     "Version" : "Versão",
     "Status" : "Estado",

@@ -33,6 +33,7 @@ OC.L10N.register(
     "Configuration" : "Uppsetning",
     "Share with ..." : "Deila með ...",
     "Add" : "Bæta við",
+    "Delete" : "Eyða",
     "ID" : "ID",
     "Version" : "Útgáfa",
     "Status" : "Staða",

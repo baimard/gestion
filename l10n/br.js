@@ -18,6 +18,7 @@ OC.L10N.register(
     "Documentation" : "Diellvadur",
     "Send" : "Kas",
     "Configuration" : "Stumm",
+    "Delete" : "Lemel",
     "Version" : "Stumm",
     "Status" : "Statud",
     "Actions" : "Oberoù",

@@ -18,6 +18,7 @@ OC.L10N.register(
     "Subject" : "Mövzu",
     "Send" : "Göndər",
     "Configuration" : "Konfiqurasiya",
+    "Delete" : "Sil",
     "Version" : "Versiya",
     "Status" : "Status",
     "Actions" : "İşlər",

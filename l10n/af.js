@@ -28,6 +28,7 @@ OC.L10N.register(
     "Send" : "Stuur",
     "Share with ..." : "Deel met …",
     "Add" : "Voeg toe",
+    "Delete" : "Skrap",
     "ID" : "ID",
     "Version" : "Weergawe",
     "Status" : "Status",

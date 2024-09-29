@@ -87,6 +87,7 @@ OC.L10N.register(
     "Configuration" : "配置",
     "Share with ..." : "分享给 ...",
     "Add" : "添加",
+    "Delete" : "删除",
     "Quote" : "报价",
     "ID" : "ID",
     "Quote date" : "报价日期",

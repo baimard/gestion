@@ -17,6 +17,7 @@ OC.L10N.register(
     "Subject" : "Сэдэв",
     "Send" : "илгээх",
     "Add" : "Нэмэх",
+    "Delete" : "Устгах",
     "ID" : "ID",
     "Version" : "төрөл",
     "Status" : "төлөв",

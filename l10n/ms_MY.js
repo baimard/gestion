@@ -12,6 +12,7 @@ OC.L10N.register(
     "Previous" : "Sebelum",
     "Documentation" : "Dokumentasi",
     "Send" : "Hantar",
+    "Delete" : "Padam",
     "January" : "Januari",
     "February" : "Februari",
     "March" : "Mac",

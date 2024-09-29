@@ -19,6 +19,7 @@ OC.L10N.register(
     "Contact" : "Kontakt",
     "Send" : "Send",
     "Configuration" : "Innstillingar",
+    "Delete" : "Slett",
     "ID" : "ID",
     "Version" : "Utgåve",
     "Status" : "Status",

@@ -45,6 +45,7 @@ OC.L10N.register(
     "Configuration" : "Ρύθμιση",
     "Share with ..." : "Διαμοιρασμός με ...",
     "Add" : "Προσθήκη",
+    "Delete" : "Διαγραφή",
     "ID" : "ID",
     "Version" : "Έκδοση",
     "Status" : "Κατάσταση",

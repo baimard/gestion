@@ -299,6 +299,7 @@ OC.L10N.register(
     "Legal disclaimer/mentions you need in your footer - before company information." : "Legal disclaimer/mentions you need in your footer - before company information.",
     "Configuration" : "پیکربندی",
     "Share with ..." : "به اشتراک گذاشتن با ...",
+    "Delete" : "حذف",
     "Quote" : "Quote",
     "Add quote" : "Add quote",
     "ID" : "شناسه",

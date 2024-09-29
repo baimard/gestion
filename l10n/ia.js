@@ -18,6 +18,7 @@ OC.L10N.register(
     "Documentation" : "Documentation",
     "Send" : "Inviar",
     "Configuration" : "Configuration",
+    "Delete" : "Deler",
     "Version" : "Version",
     "Actions" : "Actiones",
     "January" : "Januario",

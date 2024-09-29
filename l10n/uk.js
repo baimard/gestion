@@ -34,6 +34,7 @@ OC.L10N.register(
     "Send" : "Надіслати",
     "Configuration" : "Налаштування",
     "Add" : "Додати",
+    "Delete" : "Вилучати",
     "ID" : "ID",
     "Version" : "Версія",
     "Status" : "Статус",

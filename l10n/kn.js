@@ -14,6 +14,7 @@ OC.L10N.register(
     "Email sent" : "ಇ-ಅಂಚೆ ಕಳುಹಿಸಲಾಗಿದೆ",
     "Documentation" : "ದಸ್ತಾವೇಜು",
     "Send" : "﻿ಕಳುಹಿಸಿ",
+    "Delete" : "﻿ಅಳಿಸಿ",
     "Version" : "﻿ಆವೃತ್ತಿ",
     "January" : "﻿ಜನವರಿ",
     "February" : "﻿ಫೆಬ್ರುವರಿ",

@@ -19,6 +19,7 @@ OC.L10N.register(
     "Send" : "পাঠাও",
     "Configuration" : "কনফিগারেসন",
     "Add" : "যোগ কর",
+    "Delete" : "মুছে",
     "Version" : "ভার্সন",
     "Actions" : "পদক্ষেপসমূহ",
     "January" : "জানুয়ারি",

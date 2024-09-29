@@ -40,6 +40,7 @@ OC.L10N.register(
     "Configuration" : "Asetukset",
     "Share with ..." : "Jaa...",
     "Add" : "Lisää",
+    "Delete" : "Poista",
     "ID" : "ID",
     "Version" : "Versio",
     "Status" : "Tila",

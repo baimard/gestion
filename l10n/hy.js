@@ -14,6 +14,7 @@ OC.L10N.register(
     "Previous" : "Նախորդ",
     "Email sent" : "Էլ. նամակը ուղարկվեց",
     "Send" : "Ուղարկել",
+    "Delete" : "հեռացնել",
     "Version" : "Տարբերակ",
     "January" : "Հունվար",
     "February" : "Փետրվար",

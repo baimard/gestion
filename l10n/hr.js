@@ -53,6 +53,7 @@ OC.L10N.register(
     "Configuration" : "Konfiguracija",
     "Share with ..." : "Dijeli s…",
     "Add" : "Dodaj",
+    "Delete" : "Izbriši",
     "Quote" : "Ponuda",
     "ID" : "ID",
     "Quote date" : "Datum ponude",

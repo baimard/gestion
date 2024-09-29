@@ -236,6 +236,7 @@ OC.L10N.register(
     "Configuration" : "Nastavitve",
     "Share with ..." : "Omogoči souporabo ...",
     "Add" : "Dodaj",
+    "Delete" : "Izbriši",
     "Quote" : "Ponudba",
     "Add quote" : "Dodaj ponudbo",
     "ID" : "ID",

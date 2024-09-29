@@ -18,6 +18,7 @@ OC.L10N.register(
     "Documentation" : "Dokumentatioun",
     "Send" : "Schécken",
     "Add" : "Dobäisetzen",
+    "Delete" : "Läschen",
     "Actions" : "Aktiounen",
     "January" : "Januar",
     "February" : "Februar",

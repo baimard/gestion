@@ -49,6 +49,7 @@ OC.L10N.register(
     "Send" : "Imbia",
     "Configuration" : "Cunfiguratzione",
     "Add" : "Agiunghe",
+    "Delete" : "Cantzella",
     "Quote" : "Preventivu",
     "ID" : "ID",
     "Quote date" : "Data de su preventivu",

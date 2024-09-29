@@ -113,7 +113,7 @@ class Version20300Date20230714134445 extends SimpleMigrationStep {
 			}
 
 			if (!$table->hasColumn('id_configuration')) {
-				$table->addColumn('id_configuration', 'integer', ['length' => 11, notnull => false]);
+				$table->addColumn('id_configuration', 'integer', ['length' => 11, 'notnull' => false]);
 			}
 		}
 		
@@ -133,7 +133,7 @@ class Version20300Date20230714134445 extends SimpleMigrationStep {
         }
 
         if (!$table->hasColumn('id_configuration')) {
-            $table->addColumn('id_configuration', 'integer', ['length' => 11, notnull => false]);
+            $table->addColumn('id_configuration', 'integer', ['length' => 11, 'notnull' => false]);
         }
 
 
@@ -180,22 +180,3 @@ class Version20300Date20230714134445 extends SimpleMigrationStep {
 		$this->changeId($this->rows_produit_devis,"produit_devis");
 	}
 }
-
-// ALTER TABLE `oc_gestion_client` CHANGE `id_configuration` `id_nextcloud` VARCHAR(64) NOT NULL; 
-// ALTER TABLE `oc_gestion_devis` CHANGE `id_configuration` `id_nextcloud` VARCHAR(64) NOT NULL; 
-// ALTER TABLE `oc_gestion_facture` CHANGE `id_configuration` `id_nextcloud` VARCHAR(64) NOT NULL; 
-// ALTER TABLE `oc_gestion_produit` CHANGE `id_configuration` `id_nextcloud` VARCHAR(64) NOT NULL; 
-// ALTER TABLE `oc_gestion_produit_devis` CHANGE `id_configuration` `id_nextcloud` VARCHAR(64) NOT NULL; 
-
-
-// UPDATE `oc_gestion_client` SET `id_nextcloud` = 'nextcloud' WHERE `oc_gestion_client`.`id` = 1; 
-// UPDATE `oc_gestion_client` SET `id_nextcloud` = 'nextcloud' WHERE `oc_gestion_client`.`id` = 2; 
-// UPDATE `oc_gestion_client` SET `id_nextcloud` = 'test' WHERE `oc_gestion_client`.`id` = 3;
-
-// UPDATE `oc_gestion_produit` SET `id_nextcloud` = 'nextcloud' WHERE `oc_gestion_produit`.`id` = 1; 
-// UPDATE `oc_gestion_produit` SET `id_nextcloud` = 'test' WHERE `oc_gestion_produit`.`id` = 2; 
-
-// UPDATE `oc_gestion_devis` SET `id_nextcloud` = 'nextcloud' WHERE `oc_gestion_devis`.`id` = 1; 
-
-// UPDATE `oc_gestion_produit_devis` SET `id_nextcloud` = 'nextcloud' WHERE `oc_gestion_produit_devis`.`id` = 1; 
-

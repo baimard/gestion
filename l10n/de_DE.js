@@ -308,7 +308,7 @@ OC.L10N.register(
     "Modify current company information" : "Aktuelle Unternehmensinformationen ändern",
     "Share with ..." : "Teilen mit …",
     "Add" : "Hinzufügen",
-    "User Diplay Name" : "Anzeigename des Nutzers",
+    "User Diplay Name" : "Anzeigename des Benutzers",
     "Delete" : "Löschen",
     "Delete Company" : "Unternehmen löschen",
     "Quote" : "Angebot",

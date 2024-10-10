@@ -11,7 +11,7 @@
 		<br/>	<?php p($l->t('Have an issue?')); ?> &#128073; <a href="https://github.com/baimard/gestion/issues"><?php p($l->t('Git discussion')); ?></a>
 		<hr />
 		<h2><?php p($l->t('Newsletter')); ?></h2>
-		<p><?php p($l->t('You can now share a company with others users !')); ?></p>
+		<p><?php p($l->t('You can now share a company with others users!')); ?></p>
 		<hr/>
 		<h2><?php p($l->t('Changelog')); ?></h2>
 		<p><a href="https://github.com/baimard/gestion/releases"><?php p($l->t('Releases')); ?></a></p>

@@ -27,7 +27,7 @@
             <table id="shareUsersTable">
                 <thead>
                     <tr>
-                        <th><?= p($l->t('User Diplay Name')) ?></th>
+                        <th><?= p($l->t('User Display Name')) ?></th>
                         <th><?= p($l->t('Delete')) ?></th>
                     </tr>
                 </thead>

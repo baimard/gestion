@@ -52,7 +52,7 @@
 
         <!-- TVA Default -->
         <div title="<?php p($l->t('Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign.')); ?>" class="configuration-global">
-            <label class="configuration" for="tva_default"><span class="material-symbols-outlined">store</span><?php p($l->t('TVA Default'));?></label>
+            <label class="configuration" for="tva_default"><span class="material-symbols-outlined">store</span><?php p($l->t('VAT Default'));?></label>
             <input type="number" style="float:none;width:80%;" id="tva_default" class="configuration-content editableConfiguration" data-table="configuration" data-column="tva_default" data-id="" value="<?php p($l->t('Loading …')); ?>" /> %
         </div>
 

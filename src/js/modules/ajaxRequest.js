@@ -486,7 +486,7 @@ export function addShareUser(email){
         }
     })
     .then(data => {
-        showMessage(t('gestion', 'Information : ') + data.data);
+        showMessage(t('gestion', 'Information:') + data.data);
         console.log(data);
     })
     
@@ -513,6 +513,6 @@ export function delShareUser(uid){
         }
     })
     .then(data => {
-        showError(t('gestion', 'Information : ') + data.data);
+        showError(t('gestion', 'Information:') + data.data);
     })
 };

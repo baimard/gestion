@@ -369,6 +369,7 @@ OC.L10N.register(
     "Cellphone" : "Sakelako telefonoa",
     "E-mail address which appears in the header of the Quote/Invoice" : "Aurrekontuaren/fakturaren goiburuan agertzen den helbide elektronikoa",
     "Mail" : "Epostaz",
+    "VAT Default" : "BEZ lehenetsia",
     "Set prefix for generated invoice" : "Ezarri sortutako fakturarako aurrizkia",
     "Global currency for the application" : " \nAplikaziorako moneta globala",
     "Global monetary format for the application" : "Aplikaziorako diru formatu globala",

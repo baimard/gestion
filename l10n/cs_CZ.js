@@ -368,6 +368,7 @@ OC.L10N.register(
     "Show phone number in the Quote/Invoice header" : "Zobrazit telefonní číslo v záhlaví nabídky/faktury",
     "E-mail address which appears in the header of the Quote/Invoice" : "E-mailová adresa která se objeví v záhlaví nabídky/faktury",
     "Mail" : "E-mail",
+    "VAT Default" : "Výchozí DPH",
     "Set prefix for generated invoice" : "Nastavit předponu pro vytvořenou fakturu",
     "Global currency for the application" : "Globální měna pro aplikaci",
     "Global monetary format for the application" : "Formát měny pro celou aplikaci",

@@ -284,6 +284,7 @@ OC.L10N.register(
     "Total" : "Totaal",
     "Loading …" : "Laden ...",
     "Mail" : "E-mail",
+    "VAT Default" : "BTW Standaard",
     "Customers" : "Klanten",
     "Quotes" : "Offertes",
     "Invoices" : "Facturen",

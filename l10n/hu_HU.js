@@ -378,7 +378,6 @@ OC.L10N.register(
     "Cellphone" : "Mobil",
     "E-mail address which appears in the header of the Quote/Invoice" : "Az árajánlat/számla fejlécében megjelenő e-mail-cím",
     "Mail" : "E-mail",
-    "TVA Default" : "Alapértelmezett TVA",
     "Set prefix for generated invoice" : "Előtag beállítása az előállított számlához",
     "Facture Prefixe" : "Számla előtag",
     "Global currency for the application" : "Az alkalmazás által használt globális pénznem",

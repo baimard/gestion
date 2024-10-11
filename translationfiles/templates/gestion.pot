@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-10-10 02:00+0000\n"
+"POT-Creation-Date: 2024-10-11 02:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -232,7 +232,7 @@ msgstr ""
 
 #: /app/src/js/modules/ajaxRequest.js:489
 #: /app/src/js/modules/ajaxRequest.js:516
-msgid "Information : "
+msgid "Information:"
 msgstr ""
 
 #: /app/src/js/modules/list.js:9
@@ -1124,7 +1124,7 @@ msgid "Newsletter"
 msgstr ""
 
 #: /app/templates/content/changelog.php:14
-msgid "You can now share a company with others users !"
+msgid "You can now share a company with others users!"
 msgstr ""
 
 #: /app/templates/content/changelog.php:16
@@ -1312,7 +1312,7 @@ msgid "Add"
 msgstr ""
 
 #: /app/templates/content/configuration.php:30
-msgid "User Diplay Name"
+msgid "User Display Name"
 msgstr ""
 
 #: /app/templates/content/configuration.php:31
@@ -1652,7 +1652,7 @@ msgid "Mail"
 msgstr ""
 
 #: /app/templates/modal/configuration_modal.php:55
-msgid "TVA Default"
+msgid "VAT Default"
 msgstr ""
 
 #: /app/templates/modal/configuration_modal.php:60

@@ -378,7 +378,6 @@ OC.L10N.register(
     "Cellphone" : "Mobiltelefon",
     "E-mail address which appears in the header of the Quote/Invoice" : "E-postadresse som vises i overskriften på tilbudet/fakturaen",
     "Mail" : "E-post",
-    "TVA Default" : "TVA standard",
     "Set prefix for generated invoice" : "Angi prefiks for generert faktura",
     "Facture Prefixe" : "Fakturaprefiks",
     "Global currency for the application" : "Global valuta for applikasjonen",

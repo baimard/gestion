@@ -375,6 +375,7 @@ OC.L10N.register(
     "Show phone number in the Quote/Invoice header" : "Afficher le numéro de téléphone dans l'entête de votre Devis/Facture",
     "E-mail address which appears in the header of the Quote/Invoice" : "Afficher l’adresse e-mail dans l’entête de votre Devis/Facture",
     "Mail" : "E-mail",
+    "VAT Default" : "TVA par défaut",
     "Set prefix for generated invoice" : "Configurer le préfixe des factures générées",
     "Global currency for the application" : "Devise globale de votre application",
     "Global monetary format for the application" : "Format monétaire global de l'application",

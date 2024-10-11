@@ -368,6 +368,7 @@ OC.L10N.register(
     "Show phone number in the Quote/Invoice header" : "Pokaż numer telefonu w nagłówku Oferty/Faktury",
     "E-mail address which appears in the header of the Quote/Invoice" : "Adres e-mail, który pojawia się w nagłówku Oferty/Faktury",
     "Mail" : "Poczta",
+    "VAT Default" : "Domyślny VAT",
     "Set prefix for generated invoice" : "Ustaw prefiks dla wygenerowanej faktury",
     "Global currency for the application" : "Ogólna waluta dla aplikacji",
     "Global monetary format for the application" : "Ogólny format walutowy dla aplikacji",

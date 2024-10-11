@@ -15,17 +15,17 @@
 # Ettore Atalan <atalanttore@googlemail.com>, 2024
 # Mark Ziegler <mark.ziegler@rakekniven.de>, 2024
 # Oliver Gramberg <oliver.gramberg@gmx.de>, 2024
-# Markus Eckstein, 2024
 # Andy Scherzinger <info@andy-scherzinger.de>, 2024
+# Markus Eckstein, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-10-01 02:01+0000\n"
+"POT-Creation-Date: 2024-10-11 02:06+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Andy Scherzinger <info@andy-scherzinger.de>, 2024\n"
+"Last-Translator: Markus Eckstein, 2024\n"
 "Language-Team: German (https://app.transifex.com/nextcloud/teams/64236/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -265,8 +265,8 @@ msgstr "(nicht vergessen, versteckte Ordner anzuzeigen)"
 
 #: /app/src/js/modules/ajaxRequest.js:489
 #: /app/src/js/modules/ajaxRequest.js:516
-msgid "Information : "
-msgstr "Information:"
+msgid "Information:"
+msgstr ""
 
 #: /app/src/js/modules/list.js:9
 msgid "United Arab Emirates Dirham"
@@ -1161,8 +1161,8 @@ msgid "Newsletter"
 msgstr "Newsletter"
 
 #: /app/templates/content/changelog.php:14
-msgid "You can now share a company with others users !"
-msgstr "Du kannst jetzt ein Unternehmen mit anderen Benutzern teilen!"
+msgid "You can now share a company with others users!"
+msgstr ""
 
 #: /app/templates/content/changelog.php:16
 msgid "Changelog"
@@ -1369,8 +1369,8 @@ msgid "Add"
 msgstr "Hinzufügen"
 
 #: /app/templates/content/configuration.php:30
-msgid "User Diplay Name"
-msgstr "Anzeigename des Benutzers"
+msgid "User Display Name"
+msgstr ""
 
 #: /app/templates/content/configuration.php:31
 msgid "Delete"
@@ -1728,7 +1728,7 @@ msgid "Mail"
 msgstr "E-Mail"
 
 #: /app/templates/modal/configuration_modal.php:55
-msgid "TVA Default"
+msgid "VAT Default"
 msgstr "USt.-Standard"
 
 #: /app/templates/modal/configuration_modal.php:60

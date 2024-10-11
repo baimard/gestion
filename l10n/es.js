@@ -378,7 +378,6 @@ OC.L10N.register(
     "Cellphone" : "Móvil",
     "E-mail address which appears in the header of the Quote/Invoice" : "Dirección de correo electrónico que aparece en la cabecera del presupuesto/factura",
     "Mail" : "Correo",
-    "TVA Default" : "TVA por defecto",
     "Set prefix for generated invoice" : "Establecer prefijo para factura generada",
     "Facture Prefixe" : "Prefijo de factura",
     "Global currency for the application" : "Divisa global de la aplicación",

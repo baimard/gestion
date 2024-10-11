@@ -9,7 +9,6 @@
 # Hugo Robert <hugo.robert@protonmail.ch>, 2022
 # Ldm Public <ldmpub@gmail.com>, 2022
 # TVDavidsan, 2022
-# Benjamin <benjamin@cybercorp.fr>, 2022
 # Jérémie Tarot <silopolis@gmail.com>, 2023
 # Lyanis Souidi <lyanis.souidi@hotmail.com>, 2024
 # Stéphane Parunakian, 2024
@@ -17,15 +16,16 @@
 # Mordecai, 2024
 # Jérôme HERBINET, 2024
 # Alain Rihs <alainrihs@sunrise.ch>, 2024
+# Benjamin <benjamin@cybercorp.fr>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-09-29 02:16+0000\n"
+"POT-Creation-Date: 2024-10-11 02:06+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Alain Rihs <alainrihs@sunrise.ch>, 2024\n"
+"Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2024\n"
 "Language-Team: French (https://app.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -267,7 +267,7 @@ msgstr "(N'oubliez pas d'afficher les dossiers cachés)"
 
 #: /app/src/js/modules/ajaxRequest.js:489
 #: /app/src/js/modules/ajaxRequest.js:516
-msgid "Information : "
+msgid "Information:"
 msgstr ""
 
 #: /app/src/js/modules/list.js:9
@@ -1162,7 +1162,7 @@ msgid "Newsletter"
 msgstr "Bulletin d'information"
 
 #: /app/templates/content/changelog.php:14
-msgid "You can now share a company with others users !"
+msgid "You can now share a company with others users!"
 msgstr ""
 
 #: /app/templates/content/changelog.php:16
@@ -1369,7 +1369,7 @@ msgid "Add"
 msgstr "Ajouter"
 
 #: /app/templates/content/configuration.php:30
-msgid "User Diplay Name"
+msgid "User Display Name"
 msgstr ""
 
 #: /app/templates/content/configuration.php:31
@@ -1724,8 +1724,8 @@ msgid "Mail"
 msgstr "E-mail"
 
 #: /app/templates/modal/configuration_modal.php:55
-msgid "TVA Default"
-msgstr ""
+msgid "VAT Default"
+msgstr "TVA par défaut"
 
 #: /app/templates/modal/configuration_modal.php:60
 msgid "Set prefix for generated invoice"

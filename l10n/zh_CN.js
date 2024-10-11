@@ -138,6 +138,7 @@ OC.L10N.register(
     "Total" : "总量",
     "Loading …" : "加载中 ...",
     "Mail" : "邮箱",
+    "VAT Default" : "增值税默认值",
     "Global currency for the application" : "应用的默认币种",
     "Customers" : "顾客",
     "INFORMATION" : "信息",

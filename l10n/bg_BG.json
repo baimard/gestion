@@ -365,6 +365,7 @@
     "Show phone number in the Quote/Invoice header" : "Показване на телефонния номер в заглавката на оферта/фактура",
     "E-mail address which appears in the header of the Quote/Invoice" : "Имейл адрес, който се появява в заглавката на офертата/фактурата",
     "Mail" : "Поща",
+    "VAT Default" : "ДДС по подразбиране",
     "Set prefix for generated invoice" : "Задаване на префикс за генерираната фактура",
     "Global currency for the application" : "Глобална валута за приложението",
     "Global monetary format for the application" : "Глобален паричен формат за приложението",

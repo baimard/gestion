@@ -236,7 +236,7 @@ OC.L10N.register(
     "Showing 0 to 0 of 0 entries" : "عرض من 0 إلى 0 من مجموع 0 من المفردات",
     "Loading records …" : "جارٍ تحميل السجلات ...",
     "Processing …" : "جار المعالجة …",
-    "{max} entries filtered" : "تمّت فلترة {max} من الإدخالات",
+    "{max} entries filtered" : "تمّت تصفية {max} من الإدخالات",
     "Show {menu} entries" : "عرض {menu} الإدخالات ",
     "No corresponding entry" : "لا يوجد إدخال مطابق",
     "First" : "الأول",

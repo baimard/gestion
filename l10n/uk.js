@@ -16,6 +16,7 @@ OC.L10N.register(
     "Enable" : "Увімкнути",
     "Search" : "Пошук",
     "Showing 0 to 0 of 0 entries" : "Показано від 0 до 0 із 0 записів",
+    "First" : "Перший",
     "Last" : "Останній",
     "Next" : "Далі",
     "Previous" : "Назад",

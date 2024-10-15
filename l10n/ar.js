@@ -313,7 +313,7 @@ OC.L10N.register(
     "Delete Company" : "حذف شركة",
     "Quote" : "عرض الأسعار",
     "Add quote" : "أضف عرض أسعار",
-    "ID" : "مُعرّف ID",
+    "ID" : "معرف ID",
     "Quote date" : "تاريخ عرض الأسعار",
     "Customer quote" : "عرض سعر العميل",
     "Version" : "الإصدار",

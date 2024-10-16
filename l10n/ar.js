@@ -244,7 +244,7 @@ OC.L10N.register(
     "Next" : "التالي",
     "Previous" : "السابق",
     "Editable (Click to change)" : "قابل للتعديل (أنقُر للتغيير)",
-    "Your global Nextcloud mail server need to be configured" : "يلزم تهيئة خادوم بريد نكست كالود الشامل",
+    "Your global Nextcloud mail server need to be configured" : "يلزم تهيئة خادم بريد نكست كلاود الشامل",
     "Added!" : "تمّت الإضافة!",
     "Open" : "إفتح",
     "Email sent" : "تمّ إرسال الإيميل",

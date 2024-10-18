@@ -2,7 +2,7 @@ OC.L10N.register(
     "gestion",
     {
     "Last name" : "اللقب",
-    "First name" : "الإسم",
+    "First name" : "الاسم",
     "Limited company" : "شركة ذات مسئولية محدودة",
     "Company" : "الشركة",
     "Phone number" : "رقم الهاتف",

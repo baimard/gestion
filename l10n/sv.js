@@ -11,6 +11,7 @@ OC.L10N.register(
     "Comment" : "Kommentar",
     "Means of payment" : "Betalningsmetod",
     "Choose" : "Välj",
+    "Are you sure you want to delete?" : "Är du säker på att du vill ta bort?",
     "Cancel" : "Avbryt",
     "Disable" : "Inaktivera",
     "Enable" : "Aktivera",

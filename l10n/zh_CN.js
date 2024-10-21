@@ -67,6 +67,7 @@ OC.L10N.register(
     "Nextcloud apps" : "NextCloud 应用",
     "Want to talk with the community?" : "想和社区交谈？",
     "Have an issue?" : "有问题吗？",
+    "Newsletter" : "通讯",
     "Changelog" : "更新日志",
     "Releases" : "发行版",
     "Send an email" : "发送一封电子邮件",

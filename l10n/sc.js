@@ -17,6 +17,7 @@ OC.L10N.register(
     "Gestion" : "Gestione",
     "Choose work folder" : "Sèbera sa cartella de traballu",
     "Choose" : "Sèbera",
+    "Please create a new product" : "Crea unu produtu nou",
     "Cancel" : "Annulla",
     "Save in" : "Sarva in",
     "There is an error" : "B'at un'errore",

@@ -17,15 +17,16 @@
 # Jérôme HERBINET, 2024
 # Alain Rihs <alainrihs@sunrise.ch>, 2024
 # Benjamin <benjamin@cybercorp.fr>, 2024
+# DEV314R, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-10-25 02:06+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Benjamin <benjamin@cybercorp.fr>, 2024\n"
+"Last-Translator: DEV314R, 2024\n"
 "Language-Team: French (https://app.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -268,7 +269,7 @@ msgstr "(N'oubliez pas d'afficher les dossiers cachés)"
 #: /app/src/js/modules/ajaxRequest.js:489
 #: /app/src/js/modules/ajaxRequest.js:516
 msgid "Information:"
-msgstr ""
+msgstr "Information:"
 
 #: /app/src/js/modules/list.js:9
 msgid "United Arab Emirates Dirham"
@@ -1370,7 +1371,7 @@ msgstr "Ajouter"
 
 #: /app/templates/content/configuration.php:30
 msgid "User Display Name"
-msgstr ""
+msgstr "Nom d'affichage de l'utilisateur"
 
 #: /app/templates/content/configuration.php:31
 msgid "Delete"
@@ -1713,7 +1714,7 @@ msgstr "Afficher le numéro de téléphone dans l'entête de votre Devis/Facture
 
 #: /app/templates/modal/configuration_modal.php:43
 msgid "Cellphone"
-msgstr ""
+msgstr "Téléphone portable"
 
 #: /app/templates/modal/configuration_modal.php:48
 msgid "E-mail address which appears in the header of the Quote/Invoice"
@@ -1741,7 +1742,7 @@ msgstr "Devise globale de votre application"
 
 #: /app/templates/modal/configuration_modal.php:67
 msgid "Currency Select"
-msgstr ""
+msgstr "Devise sélectionner"
 
 #: /app/templates/modal/configuration_modal.php:72
 msgid "Global monetary format for the application"
@@ -1749,7 +1750,7 @@ msgstr "Format monétaire global de l'application"
 
 #: /app/templates/modal/configuration_modal.php:73
 msgid "Format Select"
-msgstr ""
+msgstr "Format sélectionner"
 
 #: /app/templates/modal/configuration_modal.php:78
 msgid ""
@@ -1761,7 +1762,7 @@ msgstr ""
 
 #: /app/templates/modal/configuration_modal.php:79
 msgid "Mentions Default"
-msgstr ""
+msgstr "Mentions par défaut"
 
 #: /app/templates/navigation/index.php:2
 msgid "COMPANY"

@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-10-25 02:06+0000\n"
+"POT-Creation-Date: 2024-10-27 02:05+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: DEV314R, 2024\n"
 "Language-Team: French (https://app.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -1165,6 +1165,7 @@ msgstr "Bulletin d'information"
 #: /app/templates/content/changelog.php:14
 msgid "You can now share a company with others users!"
 msgstr ""
+"Vous pouvez désormais partager une entreprise avec d'autres utilisateurs!"
 
 #: /app/templates/content/changelog.php:16
 msgid "Changelog"
@@ -1734,7 +1735,7 @@ msgstr "Configurer le préfixe des factures générées"
 
 #: /app/templates/modal/configuration_modal.php:61
 msgid "Facture Prefixe"
-msgstr ""
+msgstr "Préfixe Facture"
 
 #: /app/templates/modal/configuration_modal.php:66
 msgid "Global currency for the application"

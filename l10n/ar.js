@@ -258,7 +258,7 @@ OC.L10N.register(
     "buy me a coffee" : "أطلب لي قهوه",
     "If you need documentation, follow this link" : "إذا كنت بحاجة إلى توثيق، فاتبع هذا الرابط",
     "Documentation" : "الدليل",
-    "Others questions?" : "أية أسئلة أخرى؟",
+    "Others questions?" : "أي أسئلة أخرى؟",
     "Contact" : "التواصل",
     "Leave me a comment, but only if you like this application :)" : "اترك لي تعليقًا إذا أعجبك هذا التطبيق :)",
     "Nextcloud apps" : "تطبيقات نكست كلاود",

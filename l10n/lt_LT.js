@@ -41,6 +41,7 @@ OC.L10N.register(
     "Status" : "Būsena",
     "Actions" : "Veiksmai",
     "Send by email" : "Siųsti el. paštu",
+    "Legal information" : "Teisinė informacija",
     "Legal notice" : "Teisinis pranešimas",
     "Year" : "Metai",
     "January" : "Sausis",

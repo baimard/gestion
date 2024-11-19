@@ -14,6 +14,7 @@ OC.L10N.register(
     "Disable" : "Deaktivēt",
     "Enable" : "Iespējo",
     "Search" : "Meklēt",
+    "Showing 0 to 0 of 0 entries" : "Rāda 0 līdz 0 no 0 ierakstiem",
     "Next" : "Nākamā",
     "Previous" : "Iepriekšējā",
     "Open" : "Atvērt",

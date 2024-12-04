@@ -40,6 +40,7 @@ OC.L10N.register(
     "Save in" : "Gorde hemen:",
     "There is an error" : "Errore bat dago",
     "(do not forget to show hidden folders)" : "(ez ahaztu ezkutuko karpetak erakustea)",
+    "Information:" : "Informazioa:",
     "United Arab Emirates Dirham" : "Arabiar Emirerri Batuetako dirhama",
     "Afghan Afghani" : "Afganiako afgania",
     "Albanian Lek" : "Albaniako Lek",

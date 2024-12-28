@@ -241,8 +241,21 @@ class Bdd {
             if($table == "facture"){
                 $res[0]['num'] = $this->execSQLNoJsonReturn("SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?", array($CurrentCompany))[0]['facture_prefixe']."-".$res[0]['user_id'];
             }
-
             $this->execSQLNoData($sql, array_values($res[0]));
+            
+            if($table == "devis"){
+                $sql = "SELECT * FROM ".$this->tableprefix."produit_devis WHERE `devis_id` = ? AND `id_configuration` = ?";
+                $res_produit_devis = $this->execSQLNoJsonReturn($sql, array($id, $CurrentCompany));
+
+                $sql = "SELECT max(id) FROM ".$this->tableprefix."devis";
+                $id_devis = $this->execSQLNoJsonReturn($sql, array())[0]['max(id)'];
+
+                $sql = "INSERT INTO ".$this->tableprefix."produit_devis (devis_id, id_configuration, produit_id, quantite, discount) VALUES (?,?,?,?,?)";
+                foreach($res_produit_devis as $key => $value){
+                    $this->execSQLNoData($sql, array($id_devis, $CurrentCompany, $value['produit_id'], $value['quantite'], $value['discount']));
+                }
+            }
+            
             return true;
         }
         return false;

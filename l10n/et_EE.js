@@ -27,6 +27,7 @@ OC.L10N.register(
     "Subject" : "Teema",
     "Send" : "Saada",
     "Configuration" : "Seadistamine",
+    "Delete" : "Kustuta",
     "ID" : "ID",
     "Version" : "Versioon",
     "Status" : "Staatus",

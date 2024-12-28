@@ -28,6 +28,7 @@ OC.L10N.register(
     "Subject" : "Temo",
     "Send" : "Sendi",
     "Configuration" : "Agordo",
+    "Delete" : "Forigi",
     "ID" : "Identigilo",
     "Version" : "Versio",
     "Status" : "Stato",

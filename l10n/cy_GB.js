@@ -22,6 +22,7 @@ OC.L10N.register(
     "Releases" : "Ryddhadau",
     "Subject" : "Pwnc",
     "Send" : "Anfon",
+    "Delete" : "Dileu",
     "ID" : "ID",
     "Version" : "Fersiwn",
     "Status" : "Statws",

@@ -32,6 +32,7 @@ OC.L10N.register(
     "Configuration" : "Configurație",
     "Share with ..." : "Împarte cu... ",
     "Add" : "Adaugă",
+    "Delete" : "Șterge",
     "ID" : "ID",
     "Version" : "Versiune",
     "Status" : "Stare",

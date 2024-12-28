@@ -36,6 +36,7 @@ OC.L10N.register(
     "Configuration" : "설정",
     "Share with ..." : "공유 대상 ...",
     "Add" : "추가",
+    "Delete" : "삭제",
     "ID" : "ID",
     "Version" : "버전",
     "Status" : "상태",

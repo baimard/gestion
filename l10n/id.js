@@ -27,6 +27,7 @@ OC.L10N.register(
     "Send" : "Kirim",
     "Configuration" : "Konfigurasi",
     "Add" : "Tambah",
+    "Delete" : "Hapus",
     "ID" : "ID",
     "Version" : "Versi",
     "Status" : "Status",

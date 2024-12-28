@@ -44,6 +44,7 @@ OC.L10N.register(
     "Send" : "Испрати",
     "Configuration" : "Конфигурација",
     "Add" : "Додади",
+    "Delete" : "Избриши",
     "ID" : "ID",
     "Version" : "Верзија",
     "Status" : "Статус",

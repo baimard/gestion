@@ -17,6 +17,7 @@ OC.L10N.register(
     "Email sent" : "E-pošta je poslana",
     "Documentation" : "Dokumentacija",
     "Send" : "Pošalji",
+    "Delete" : "Obriši",
     "Version" : "Verzija",
     "Status" : "Status",
     "Actions" : "Radnje",

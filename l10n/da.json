@@ -10,6 +10,7 @@
     "Choose" : "Vælg",
     "Are you sure you want to delete?" : "Er du sikker på at du vil slette?",
     "Cancel" : "Annuller",
+    "Information:" : "Information:",
     "Trinidad and Tobago Dollar" : "Trinidad og Tobago Dollar",
     "Disable" : "Deaktiver",
     "Enable" : "Aktivér",
@@ -21,6 +22,7 @@
     "Email sent" : "Email sendt",
     "Documentation" : "Dokumentation",
     "Contact" : "Kontakt",
+    "You can now share a company with others users!" : "Du kan nu dele en virksomhed med andre brugere!",
     "Changelog" : "Ændringslog",
     "Releases" : "Udgivelser",
     "Send an email" : "Send en email",
@@ -33,6 +35,8 @@
     "Configuration" : "sætning",
     "Share with ..." : "Del med…",
     "Add" : "Tilføj",
+    "User Display Name" : "Bruger vist navn",
+    "Delete" : "Slet",
     "Quote" : "Citat",
     "ID" : "ID",
     "Version" : "Version",
@@ -56,6 +60,7 @@
     "Total" : "Total",
     "Loading …" : "Loading …",
     "Mail" : "Mail",
+    "VAT Default" : "moms Standard",
     "Customers" : "Kunder",
     "About" : "Om"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

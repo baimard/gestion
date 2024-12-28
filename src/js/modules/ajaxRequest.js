@@ -158,6 +158,43 @@ export function updateCurrentCompany(companyID) {
     });
 }
 
+
+/**
+ * Duplicate data
+ * @param table
+ * @param id 
+ */
+export function duplicateDB(table, id, callback=null, modifier=null) {
+    var myData = {
+        table: table,
+        id: id,
+    };
+    if (window.confirm(t('gestion', 'Are you sure you want to duplicate?'))) {
+        fetch(baseUrl + '/duplicate', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'requesttoken': OC.requestToken
+            },
+            body: JSON.stringify(myData)
+        })
+        .then(response => {
+            if (response.ok) {
+                showSuccess(t('gestion', 'Duplicated'));
+                callback(modifier);
+            } else {
+                showError(response);
+            }
+        })
+        .catch(error => {
+            showError(error);
+        });
+    } else {
+        showMessage(t('gestion', 'Nothing changed'));
+    }
+}
+
+
 /**
  * Delete data
  * @param table
@@ -419,32 +456,40 @@ function listeproduit_add_option(table, column, val, id, textContent, _selected=
  * @param {*} myData 
  */
 export function saveNextcloud(myData) {
-    $.ajax({
-      url: baseUrl + '/savePDF',
-      type: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify(myData)
-    }).done(function (response) {
-      showMessage(t('gestion', 'Save in') + " " + $("#theFolder").val() + "/" + $("#pdf").data("folder"));
-    }).fail(function (response, code) {
-      showMessage(t('gestion', 'There is an error'));
-      error(response);
+    fetch(baseUrl + '/savePDF', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.ok) {
+            showMessage(t('gestion', 'Save in') + " " + $("#theFolder").val() + "/" + $("#pdf").data("folder"));
+        } else {
+            throw new Error('There is an error');
+        }
+    })
+    .catch(error => {
+        showMessage(t('gestion', 'There is an error'));
+        console.error(error);
     });
   };
 
 export function getMailServerFrom(input) {
-var oReq = new XMLHttpRequest();
-oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
-oReq.setRequestHeader("Content-Type", "application/json");
-oReq.setRequestHeader("requesttoken", oc_requesttoken);
-oReq.onload = function(e){
-    if (this.status == 200) {
-        input.value = JSON.parse(this.response)['mail'];
-    }else{
-        showError(this.response);
-    }
-};
-oReq.send();
+    var oReq = new XMLHttpRequest();
+    oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.setRequestHeader("requesttoken", oc_requesttoken);
+    oReq.onload = function(e){
+        if (this.status == 200) {
+            input.value = JSON.parse(this.response)['mail'];
+        }else{
+            showError(this.response);
+        }
+    };
+    oReq.send();
 }
 
 /**
@@ -486,7 +531,7 @@ export function addShareUser(email){
         }
     })
     .then(data => {
-        showMessage(t('gestion', 'Information:') + data.data);
+        showMessage(t('gestion', 'Information : ') + data.data);
         console.log(data);
     })
     
@@ -513,6 +558,6 @@ export function delShareUser(uid){
         }
     })
     .then(data => {
-        showError(t('gestion', 'Information:') + data.data);
+        showError(t('gestion', 'Information : ') + data.data);
     })
 };

@@ -27,7 +27,7 @@ class Bdd {
     }
 
     public function getCompaniesList($User){
-        $sql = "SELECT id, entreprise FROM `".$this->tableprefix."configuration` WHERE id_nextcloud = ? OR id in (SELECT id_configuration FROM oc_gestion_conf_share WHERE id_nextcloud = ?)";
+        $sql = "SELECT id, entreprise FROM `".$this->tableprefix."configuration` WHERE id_nextcloud = ? OR id in (SELECT id_configuration FROM `".$this->tableprefix."conf_share` WHERE id_nextcloud = ?)";
         return $this->execSQLNoJsonReturn($sql, array($User, $User));
     }
 
@@ -57,7 +57,7 @@ class Bdd {
     }
 
     public function getDevis($idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."devis.id, ".$this->tableprefix."devis.user_id, ".$this->tableprefix."client.nom, ".$this->tableprefix."client.prenom, ".$this->tableprefix."client.id as cid, ".$this->tableprefix."devis.num, ".$this->tableprefix."devis.date, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.mentions FROM (".$this->tableprefix."devis LEFT JOIN ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration) WHERE ".$this->tableprefix."devis.id_configuration = ?;";
+        $sql = "SELECT ".$this->tableprefix."devis.id, ".$this->tableprefix."devis.user_id, ".$this->tableprefix."client.entreprise, ".$this->tableprefix."client.nom, ".$this->tableprefix."client.prenom, ".$this->tableprefix."client.id as cid, ".$this->tableprefix."devis.num, ".$this->tableprefix."devis.date, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.mentions FROM (".$this->tableprefix."devis LEFT JOIN ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration) WHERE ".$this->tableprefix."devis.id_configuration = ?;";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
@@ -215,12 +215,59 @@ class Bdd {
     }
 
     /**
+     * DUPLICATE
+     */
+    public function gestion_duplicate($table, $id, $CurrentCompany){
+        if(in_array($table, $this->whiteTable)){
+            $sql = "SELECT * FROM ".$this->tableprefix.$table." WHERE `id` = ? AND `id_configuration` = ?";
+            $res = $this->execSQLNoJsonReturn($sql, array($id, $CurrentCompany));
+            
+            $sql = "INSERT INTO ".$this->tableprefix.$table." (";
+            $sql2 = " VALUES (";
+            foreach($res[0] as $key => $value){
+                if($key != "id"){
+                    $sql .= $key.",";
+                    $sql2 .= "?,";
+                }
+            }
+            
+            $sql = rtrim($sql, ",");
+            $sql2 = rtrim($sql2, ",");
+            $sql .= ")".$sql2.")";
+            
+            unset($res[0]['id']);
+            $res[0]['user_id'] = $this->lastinsertid($table, $CurrentCompany) + 1;
+
+            if($table == "facture"){
+                $res[0]['num'] = $this->execSQLNoJsonReturn("SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?", array($CurrentCompany))[0]['facture_prefixe']."-".$res[0]['user_id'];
+            }
+            $this->execSQLNoData($sql, array_values($res[0]));
+            
+            if($table == "devis"){
+                $sql = "SELECT * FROM ".$this->tableprefix."produit_devis WHERE `devis_id` = ? AND `id_configuration` = ?";
+                $res_produit_devis = $this->execSQLNoJsonReturn($sql, array($id, $CurrentCompany));
+
+                $sql = "SELECT max(id) FROM ".$this->tableprefix."devis";
+                $id_devis = $this->execSQLNoJsonReturn($sql, array())[0]['max(id)'];
+
+                $sql = "INSERT INTO ".$this->tableprefix."produit_devis (devis_id, id_configuration, produit_id, quantite, discount) VALUES (?,?,?,?,?)";
+                foreach($res_produit_devis as $key => $value){
+                    $this->execSQLNoData($sql, array($id_devis, $CurrentCompany, $value['produit_id'], $value['quantite'], $value['discount']));
+                }
+            }
+            
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * DELETE
      */
-    public function gestion_delete($table, $id, $idNextcloud){
+    public function gestion_delete($table, $id, $CurrentCompany){
         if(in_array($table, $this->whiteTable)){
             $sql = "DELETE FROM ".$this->tableprefix.$table." WHERE `id` = ? AND `id_configuration` = ?";
-            $this->execSQLNoData($sql, array($id, $idNextcloud));
+            $this->execSQLNoData($sql, array($id, $CurrentCompany));
             return true;
         }
         return false;

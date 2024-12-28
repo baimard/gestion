@@ -9,7 +9,6 @@
     <table id="client" class="display tabledt" style="font-size:11px;">
         <thead>
             <tr>
-                <th><?php p($l->t('ID'));?></th>
                 <th><?php p($l->t('Company'));?></th>
                 <th><?php p($l->t('First name'));?></th>
                 <th><?php p($l->t('Last name'));?></th>

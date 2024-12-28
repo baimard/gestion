@@ -23,7 +23,6 @@ export class Client {
    */
   getDTRow() {
     let myrow = [
-      '<div>' + this.id + '</div>',
       '<div class="editable" data-table="client" data-column="entreprise" data-id="' + this.id + '">' + this.entreprise + '</div>',
       '<div class="editable" data-table="client" data-column="prenom" data-id="' + this.id + '">' + this.prenom + '</div>',
       '<div class="editable" data-table="client" data-column="nom" data-id="' + this.id + '">' + this.nom + '</div>',
@@ -125,32 +124,6 @@ export class Client {
 
   /**
    * 
-   */
-  // static loadClientList() {
-  //   Client.getClients(function (response) {
-  //     var listClients = document.querySelectorAll(".listClient");
-
-  //     listClients.forEach(selectElement => {
-  //       removeOptions(selectElement);
-  //       var option = document.createElement("option");
-  //       option.value = 0;
-  //       option.text = t('gestion', 'Choose customer');
-  //       selectElement.appendChild(option);
-
-  //       JSON.parse(response).forEach(myresp => {
-  //         var option = document.createElement("option");
-  //         option.value = myresp.id;
-  //         option.text = myresp.prenom + ' ' + myresp.nom;
-  //         selectElement.appendChild(option);
-  //       });
-  
-  //       checkSelectPurJs(selectElement);
-  //     });
-  //   });
-  // }
-
-  /**
-   * 
    * @param {*} cid 
    */
   static loadClientList_cid(e){
@@ -186,7 +159,7 @@ export class Client {
       JSON.parse(response).forEach(myresp => {
         var option = document.createElement("option");
         option.value = myresp.id;
-        option.text = myresp.prenom + ' ' + myresp.nom;
+        option.text = myresp.entreprise + " - " + myresp.prenom + ' ' + myresp.nom;
         selectElement.appendChild(option);
       });
       

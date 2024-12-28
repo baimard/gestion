@@ -32,6 +32,9 @@ return [
         ['name' => 'page#getProduits', 'url' => '/getProduits', 'verb' => 'PROPFIND'],
         ['name' => 'page#getProduitsById', 'url' => '/getProduitsById', 'verb' => 'POST'],
         ['name' => 'page#insertProduit', 'url' => '/produit/insert', 'verb' => 'POST'],
+
+        // GLOBAL
+        ['name' => 'page#duplicate', 'url' => '/duplicate', 'verb' => 'PUT'],
         ['name' => 'page#delete', 'url' => '/delete', 'verb' => 'DELETE'],
         
         // STATS

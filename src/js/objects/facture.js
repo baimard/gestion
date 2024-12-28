@@ -29,15 +29,19 @@ export class Facture {
    */
   getDTRow() {
     let myrow = [
-      '<div>' + this.user_id + '</div>',
-      '<div class="factureNum" data-table="facture" data-column="num" data-id="' + this.id + '">' + this.num + '</div>',
-      '<div class="editable" data-table="facture" data-column="date" data-id="' + this.id + '">' + this.date + '</div>',
-      '<input style="margin:0;padding:0;" class="inputDate" type="date" value=' + this.date_paiement + ' data-table="facture" data-column="date_paiement" data-id="' + this.id + '"/>',
-      '<div class="editable" data-table="facture" data-column="type_paiement" data-id="' + this.id + '">' + this.type_paiement + '</div>',
-      '<div class="loadSelect_listdevis" data-table="facture" data-column="id_devis" data-id="' + this.id + '" data-current="' + this.id_devis + '">' + this.dnum + " " + this.prenom + " " + this.nom + '</div>',
-      '<div class="editable" data-table="facture" data-column="version" data-id="' + this.id + '" style="display:inline">' + this.version + '</div>',
-      '<div class="editable" data-table="facture" data-column="status_paiement" data-id="' + this.id + '" style="display:inline">' + this.status_paiement + '</div>',
-      '<div style="display:inline-block;margin-right:0px;width:80%;"><a href="' + this.baseUrl +'"><button>' + t('gestion', 'Open') + '</button></a></div><div data-modifier="facture" data-id=' + this.id + ' data-table="facture" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
+      `<div>${this.user_id}</div>`,
+      `<div class="factureNum" data-table="facture" data-column="num" data-id="${this.id}">${this.num}</div>`,
+      `<div class="editable" data-table="facture" data-column="date" data-id="${this.id}">${this.date}</div>`,
+      `<input style="margin:0;padding:0;" class="inputDate" type="date" value=${this.date_paiement} data-table="facture" data-column="date_paiement" data-id="${this.id}"/>`,
+      `<div class="editable" data-table="facture" data-column="type_paiement" data-id="${this.id}">${this.type_paiement}</div>`,
+      `<div class="loadSelect_listdevis" data-table="facture" data-column="id_devis" data-id="${this.id}" data-current="${this.id_devis}">${this.dnum} ${this.prenom} ${this.nom}</div>`,
+      `<div class="editable" data-table="facture" data-column="version" data-id="${this.id}" style="display:inline">${this.version}</div>`,
+      `<div class="editable" data-table="facture" data-column="status_paiement" data-id="${this.id}" style="display:inline">${this.status_paiement}</div>`,
+      `<div class="material-symbols">
+        <span title="${t('gestion', 'Open')}"><a href="${this.baseUrl}">open_in_new</a></span>
+        <span title="${t('gestion', 'Duplicate')}" data-modifier="facture" data-id=${this.id} data-table="facture" class="link duplicateItem">content_copy</span>
+        <span title="${t('gestion', 'Delete')}" data-modifier="facture" data-id=${this.id} data-table="facture" class="link deleteItem">delete</span>
+      </div>`
     ];
     return myrow;
   }

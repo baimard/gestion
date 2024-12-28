@@ -593,7 +593,21 @@ class PageController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
+	 * @param string $table
+	 * @param string $id
+	 * @UseSession
+	*/
+	#[UseSession]
+	public function duplicate($table, $id) {
+		if($this->myDb->gestion_duplicate($table, $id, $this->session['CurrentCompany'])){
+			return new DataResponse("", 200, ['Content-Type' => 'application/json']);
+		}else{
+			return new DataResponse("", 500, ['Content-Type' => 'application/json']);
+		}
+	}
+
+	/**
+	 * @NoAdminRequired
 	 * @param string $table
 	 * @param string $id
 	 * @UseSession

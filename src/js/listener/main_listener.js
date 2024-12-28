@@ -1,5 +1,5 @@
 import { FilePicker, getFilePickerBuilder, showError } from "@nextcloud/dialogs";
-import { updateDB, configuration, updateEditable, deleteDB, getProduitsById, updateCurrentCompany, updateDBConfiguration, listProduit } from "../modules/ajaxRequest.js";
+import { updateDB, configuration, updateEditable, duplicateDB, deleteDB, getProduitsById, updateCurrentCompany, updateDBConfiguration, listProduit } from "../modules/ajaxRequest.js";
 import { path, baseUrl, updateNumerical } from "../modules/mainFunction.js";
 import DataTable from 'datatables.net';
 import { Client } from '../objects/client.js';
@@ -85,12 +85,18 @@ document.body.addEventListener('click', function (event) {
         modal.style.display = "none";
     }
 
+    if (event.target.classList.contains('duplicateItem')) {
+        var id = event.target.dataset.id;
+        var table = event.target.dataset.table;
+        var modifier = event.target.dataset.modifier;
+        duplicateDB(table, id, reloadDataTable, modifier);
+    }
+
     if (event.target.classList.contains('deleteItem')) {
         var id = event.target.dataset.id;
         var table = event.target.dataset.table;
         var modifier = event.target.dataset.modifier;
         deleteDB(table, id, reloadDataTable, modifier);
-        
     }
 
     if (event.target.id === 'devisAdd') {

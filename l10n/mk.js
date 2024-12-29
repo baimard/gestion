@@ -29,7 +29,6 @@ OC.L10N.register(
     "Last" : "Последна",
     "Next" : "Следна",
     "Previous" : "Предходна",
-    "Open" : "Отвори",
     "Email sent" : "Е-порака пратена",
     "Creation in progress …" : "Создавање во тек…",
     "My company" : "Моја компанија",

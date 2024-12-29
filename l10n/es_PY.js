@@ -15,7 +15,6 @@ OC.L10N.register(
     "Search" : "Buscar",
     "Next" : "Siguiente",
     "Previous" : "Anterior",
-    "Open" : "Abrir",
     "Email sent" : "Correo electrónico enviado",
     "Documentation" : "Documentación",
     "Contact" : "Contacto",

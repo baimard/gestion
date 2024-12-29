@@ -19,7 +19,6 @@ OC.L10N.register(
     "Last" : "Últmo",
     "Next" : "Siguiente",
     "Previous" : "Previo",
-    "Open" : "Abrir",
     "Email sent" : "Correo electrónico enviado",
     "Documentation" : "Documentación",
     "Contact" : "Contacto",

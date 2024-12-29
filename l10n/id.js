@@ -17,7 +17,6 @@ OC.L10N.register(
     "First" : "Pertama",
     "Next" : "Berikutnya",
     "Previous" : "Sebelumnya",
-    "Open" : "Buka",
     "Email sent" : "Surel terkirim",
     "Documentation" : "Dokumentasi",
     "Contact" : "Kontak",

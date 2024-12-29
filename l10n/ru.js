@@ -82,7 +82,6 @@ OC.L10N.register(
     "Last" : "Последний",
     "Next" : "Далее",
     "Previous" : "Назад",
-    "Open" : "Открыть",
     "Email sent" : "Письмо успешно отправлено",
     "Creation in progress …" : "Идёт создание ...",
     "To start with this application you need to configure your company information, follow this link" : "Чтобы начать работу с этим приложением, вам необходимо настроить информацию о вашей компании, перейдите по этой ссылке",

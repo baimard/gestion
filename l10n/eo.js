@@ -16,7 +16,6 @@ OC.L10N.register(
     "Search" : "Serĉi",
     "Next" : "Sekva",
     "Previous" : "Antaŭa",
-    "Open" : "Malfermi",
     "Email sent" : "La retmesaĝo sendiĝis",
     "Documentation" : "Dokumentaro",
     "Contact" : "Kontakto",

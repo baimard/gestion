@@ -16,7 +16,6 @@ OC.L10N.register(
     "Search" : "Search",
     "Next" : "Næsta",
     "Previous" : "Fyrra",
-    "Open" : "Opna",
     "Email sent" : "Tölvupóstur sendur",
     "My company" : "Fyrirtækið mitt",
     "Documentation" : "Hjálparskjöl",

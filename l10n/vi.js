@@ -17,7 +17,6 @@ OC.L10N.register(
     "Showing 0 to 0 of 0 entries" : "Đang xem 0 đến 0 của 0 mục",
     "Next" : "Tiếp theo",
     "Previous" : "Trước",
-    "Open" : "Mở",
     "Email sent" : "Email đã được gửi",
     "Documentation" : "Tài liệu",
     "Contact" : "Liên hệ",

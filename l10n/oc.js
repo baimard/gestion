@@ -20,7 +20,6 @@ OC.L10N.register(
     "Last" : "Darrièr",
     "Next" : "Seguent",
     "Previous" : "Precedent",
-    "Open" : "Dobrir",
     "Email sent" : "Corrièl mandat",
     "Welcome to GESTION" : "Benvengut a GESTION",
     "Documentation" : "Documentacion",

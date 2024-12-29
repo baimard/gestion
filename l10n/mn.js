@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search" : "Хайх",
     "Next" : "дараагийх",
     "Previous" : "өмнөх",
-    "Open" : "Онгойлгох",
     "Subject" : "Сэдэв",
     "Send" : "илгээх",
     "Add" : "Нэмэх",

@@ -14,7 +14,6 @@ OC.L10N.register(
     "Search" : "Chwilio",
     "Next" : "Nesaf",
     "Previous" : "Blaenorol",
-    "Open" : "Ar Agor",
     "Email sent" : "Anfonwyd yr e-bost",
     "Documentation" : "Dogfennaeth",
     "Contact" : "Cyswllt",

@@ -38,6 +38,7 @@ OC.L10N.register(
     "There is an error." : "Hai un erro.",
     "Are you sure you want to delete? (All data will be lost)" : "Confirma que a quere eliminar? (Perderanse todos os datos)",
     "Company deleted" : "Empresa eliminada",
+    "Duplicated" : "Duplicado",
     "Nothing changed" : "Non cambiou ren",
     "Are you sure you want to delete?" : "Confirma que a quere eliminar?",
     "Cancel" : "Cancelar",

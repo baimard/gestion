@@ -38,6 +38,8 @@ OC.L10N.register(
     "There is an error." : "There is an error.",
     "Are you sure you want to delete? (All data will be lost)" : "Are you sure you want to delete? (All data will be lost)",
     "Company deleted" : "Company deleted",
+    "Are you sure you want to duplicate?" : "Are you sure you want to duplicate?",
+    "Duplicated" : "Duplicated",
     "Nothing changed" : "Nothing changed",
     "Are you sure you want to delete?" : "Are you sure you want to delete?",
     "Cancel" : "Cancel",

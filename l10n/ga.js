@@ -38,6 +38,8 @@ OC.L10N.register(
     "There is an error." : "Tá earráid ann.",
     "Are you sure you want to delete? (All data will be lost)" : "An bhfuil tú cinnte gur mhaith leat a scriosadh? (Caillfear na sonraí go léir)",
     "Company deleted" : "Cuideachta scriosta",
+    "Are you sure you want to duplicate?" : "An bhfuil tú cinnte gur mhaith leat dúbailt?",
+    "Duplicated" : "Dúbailte",
     "Nothing changed" : "Ní dhéanfaidh aon ní athrú",
     "Are you sure you want to delete?" : "An bhfuil tú cinnte gur mhaith leat a scriosadh?",
     "Cancel" : "Cealaigh",

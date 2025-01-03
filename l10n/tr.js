@@ -38,6 +38,8 @@ OC.L10N.register(
     "There is an error." : "Bir sorun çıktı.",
     "Are you sure you want to delete? (All data will be lost)" : "Silmek istediğinize emin misiniz? (Tüm veriler kaybolacak)",
     "Company deleted" : "Kuruluş silindi",
+    "Are you sure you want to duplicate?" : "Kopyalamak istediğinize emin misiniz?",
+    "Duplicated" : "Kopyalandı",
     "Nothing changed" : "Herhangi bir değişiklik yapılmamış",
     "Are you sure you want to delete?" : "Silmek istediğinize emin misiniz?",
     "Cancel" : "İptal",

@@ -300,6 +300,7 @@ OC.L10N.register(
     "Share with ..." : "Zdieľať s…",
     "Add" : "Pridať",
     "Delete" : "Vymazať",
+    "Delete Company" : "Vymazať Spoločnosť",
     "Quote" : "Ponuka",
     "Add quote" : "Pridať ponuku",
     "ID" : "ID",

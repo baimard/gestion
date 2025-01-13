@@ -10,6 +10,7 @@ OC.L10N.register(
     "New" : "Nauja",
     "Comment" : "Komentaras",
     "Choose" : "Pasirinkite",
+    "Nothing changed" : "Nieko nepasikeitė",
     "Are you sure you want to delete?" : "Ar tikrai norite ištrinti?",
     "Cancel" : "Atsisakyti",
     "There is an error" : "Yra klaida",

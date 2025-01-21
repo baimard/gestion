@@ -38,6 +38,7 @@ OC.L10N.register(
     "There is an error." : "Hai un erro.",
     "Are you sure you want to delete? (All data will be lost)" : "Confirma que a quere eliminar? (Perderanse todos os datos)",
     "Company deleted" : "Empresa eliminada",
+    "Are you sure you want to duplicate?" : "Confirma que a quere facer un duplicado?",
     "Duplicated" : "Duplicado",
     "Nothing changed" : "Non cambiou ren",
     "Are you sure you want to delete?" : "Confirma que a quere eliminar?",
@@ -268,7 +269,7 @@ OC.L10N.register(
     "Newsletter" : "Boletín informativo",
     "You can now share a company with others users!" : "Agora pode compartir unha empresa con outros usuarios!",
     "Changelog" : "Notas da versión",
-    "Releases" : "Publicación de versións",
+    "Releases" : "Edicións",
     "Special thanks to:" : "Agradecemento especial a:",
     "for the big work on legal notice for France" : "polo gran traballo de aviso legal para Francia",
     "for the coffee ;)" : "polo café ;)",
@@ -402,7 +403,7 @@ OC.L10N.register(
     "Backup all data" : "Copia de seguranza de todos os datos",
     "You can save all Gestion app data." : "Pode gardar todos os datos da aplicación Xestión.",
     "Backup now!" : "Facer agora a copia de seguranza",
-    "You can restore a backup file for Gestion (in next release)." : "Pode restaurar un ficheiro de copia de seguranza para Xestión (na próxima versión).",
+    "You can restore a backup file for Gestion (in next release)." : "Pode restaurar un ficheiro de copia de seguranza para Xestión (na próxima edición).",
     "Restore now!" : "Restaurar agora!"
 },
 "nplurals=2; plural=(n != 1);");

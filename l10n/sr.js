@@ -38,6 +38,8 @@ OC.L10N.register(
     "There is an error." : "Дошло је до грешке.",
     "Are you sure you want to delete? (All data will be lost)" : "Да ли сте сигурни да желите да обришете? (Изгубићете све податке)",
     "Company deleted" : "Компанија је обрисана",
+    "Are you sure you want to duplicate?" : "Да ли сте сигурни да желите да дуплирате?",
+    "Duplicated" : "Дуплирано",
     "Nothing changed" : "Ништа се није изменило",
     "Are you sure you want to delete?" : "Да ли сте сигурни да желите да обришете?",
     "Cancel" : "Поништи",

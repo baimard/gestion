@@ -16,16 +16,16 @@
 # Mark Ziegler <mark.ziegler@rakekniven.de>, 2024
 # Oliver Gramberg <oliver.gramberg@gmx.de>, 2024
 # Markus Eckstein, 2024
-# Andy Scherzinger <info@andy-scherzinger.de>, 2024
+# Andy Scherzinger <info@andy-scherzinger.de>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2025-01-19 02:09+0000\n"
+"POT-Creation-Date: 2025-01-25 02:26+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Andy Scherzinger <info@andy-scherzinger.de>, 2024\n"
+"Last-Translator: Andy Scherzinger <info@andy-scherzinger.de>, 2025\n"
 "Language-Team: German (https://app.transifex.com/nextcloud/teams/64236/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -239,11 +239,11 @@ msgstr "Unternehmen gelöscht"
 
 #: /app/src/js/modules/ajaxRequest.js:172
 msgid "Are you sure you want to duplicate?"
-msgstr ""
+msgstr "Möchtest du dies wirklich duplizieren?"
 
 #: /app/src/js/modules/ajaxRequest.js:183
 msgid "Duplicated"
-msgstr ""
+msgstr "Dupliziert"
 
 #: /app/src/js/modules/ajaxRequest.js:193
 #: /app/src/js/modules/ajaxRequest.js:229

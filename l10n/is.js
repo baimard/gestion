@@ -14,6 +14,8 @@ OC.L10N.register(
     "Disable" : "Gera óvirkt",
     "Enable" : "Virkja",
     "Search" : "Search",
+    "First" : "fyrsta",
+    "Last" : "síðasta",
     "Next" : "Næsta",
     "Previous" : "Fyrra",
     "Email sent" : "Tölvupóstur sendur",

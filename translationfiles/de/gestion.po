@@ -7,7 +7,7 @@
 # Alexander Diefenbacher <alexander-diefenbacher@gmx.de>, 2021
 # Joachim Sokolowski, 2022
 # René Gieling <github@dartcafe.de>, 2022
-# lollos78, 2022
+# Lollo, 2022
 # Jasper vom Felde, 2022
 # Lars Maier <lh10@tu-clausthal.de>, 2022
 # Jakob Renken, 2023
@@ -17,15 +17,16 @@
 # Oliver Gramberg <oliver.gramberg@gmx.de>, 2024
 # Markus Eckstein, 2024
 # Andy Scherzinger <info@andy-scherzinger.de>, 2025
+# Martin Wilichowski, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2025-01-25 02:26+0000\n"
+"POT-Creation-Date: 2025-02-01 02:07+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Andy Scherzinger <info@andy-scherzinger.de>, 2025\n"
+"Last-Translator: Martin Wilichowski, 2025\n"
 "Language-Team: German (https://app.transifex.com/nextcloud/teams/64236/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1445,7 +1446,7 @@ msgid ""
 "To add a logo, drop the logo.png file in \".gestion\" folder at the root of "
 "your Nextcloud Files app. Remember to set \"Show hidden files\"."
 msgstr ""
-"Um ein Logo hinzuzufügen, lege die Datei logo.png im Ordner „.gestion“ im "
+"Um ein Logo hinzuzufügen, lege die Datei logo.png im Ordner \".gestion\" im "
 "Stammverzeichnis deiner Nextcloud Files-App ab. Denke daran, \"Versteckte "
 "Dateien anzeigen\" einzustellen."
 

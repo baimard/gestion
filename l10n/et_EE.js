@@ -45,6 +45,7 @@ OC.L10N.register(
     "November" : "November",
     "December" : "Detsember",
     "Total" : "Kokku",
+    "Loading …" : "Laadimine ...",
     "Mail" : "Kirjad",
     "About" : "Info"
 },

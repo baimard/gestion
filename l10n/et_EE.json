@@ -43,6 +43,7 @@
     "November" : "November",
     "December" : "Detsember",
     "Total" : "Kokku",
+    "Loading …" : "Laadimine ...",
     "Mail" : "Kirjad",
     "About" : "Info"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

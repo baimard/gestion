@@ -34,7 +34,7 @@ OC.L10N.register(
     "ID" : "ID",
     "Version" : "Versão",
     "Status" : "Estado",
-    "Actions" : "Acções",
+    "Actions" : "Ações",
     "Legal notice" : "Informação legal",
     "Year" : "Year",
     "January" : "Janeiro",

@@ -17,6 +17,7 @@ OC.L10N.register(
     "Enable" : "Aktiver",
     "Search" : "Søg",
     "Showing 0 to 0 of 0 entries" : "Viser 0 til 0 af 0 poster",
+    "Show {menu} entries" : "Vis% n indgange",
     "Next" : "Næste",
     "Previous" : "Tidligere",
     "Email sent" : "E-mail sendt",

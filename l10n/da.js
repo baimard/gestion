@@ -18,6 +18,8 @@ OC.L10N.register(
     "Search" : "Søg",
     "Showing 0 to 0 of 0 entries" : "Viser 0 til 0 af 0 poster",
     "Show {menu} entries" : "Vis {menu} poster",
+    "First" : "Første",
+    "Last" : "Sidste",
     "Next" : "Næste",
     "Previous" : "Tidligere",
     "Email sent" : "E-mail sendt",

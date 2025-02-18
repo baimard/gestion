@@ -9,7 +9,7 @@ OC.L10N.register(
     "Address" : "Adrese",
     "New" : "Jauns",
     "Comment" : "Piebilde",
-    "Choose" : "Izvēlies",
+    "Choose" : "Izvēlēties",
     "Cancel" : "Atcelt",
     "Disable" : "Deaktivēt",
     "Enable" : "Iespējo",

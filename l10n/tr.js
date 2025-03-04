@@ -11,7 +11,7 @@ OC.L10N.register(
     "Quote number" : "Teklif numarası",
     "New" : "Yeni",
     "Comment" : "Yorum",
-    "Text free" : "Serbest metin",
+    "Text free" : "Uygun metni",
     "Means of payment" : "Ödeme araçları",
     "Reference" : "Referans",
     "Designation" : "Atama",

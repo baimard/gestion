@@ -18,7 +18,6 @@ OC.L10N.register(
     "Search" : "Buscar",
     "Next" : "Siguiente",
     "Previous" : "Anterior",
-    "Open" : "Abrir",
     "Email sent" : "Unvióse'l corréu electrónicu",
     "Documentation" : "Documentación",
     "Contact" : "Contautu",

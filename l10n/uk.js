@@ -20,7 +20,6 @@ OC.L10N.register(
     "Last" : "Останній",
     "Next" : "Далі",
     "Previous" : "Назад",
-    "Open" : "Відкрити",
     "Email sent" : "Лист надіслано",
     "Documentation" : "Документація",
     "Contact" : "Контакт",

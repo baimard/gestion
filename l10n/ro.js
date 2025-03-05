@@ -16,7 +16,6 @@ OC.L10N.register(
     "Search" : "Caută",
     "Next" : "Următorul",
     "Previous" : "Precedentul",
-    "Open" : "Deschide",
     "Email sent" : "Mesajul a fost expediat",
     "Documentation" : "Documentație",
     "Contact" : "Contact",

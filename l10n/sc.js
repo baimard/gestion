@@ -33,7 +33,6 @@ OC.L10N.register(
     "Last" : "Ùrtimu",
     "Next" : "Imbeniente",
     "Previous" : "Pretzedente",
-    "Open" : "Aberi",
     "Email sent" : "Email imbiada",
     "Creation in progress …" : "Creatzione in cursu ...",
     "My company" : "Sotziedade mia",

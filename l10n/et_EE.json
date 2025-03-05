@@ -13,7 +13,6 @@
     "Search" : "Otsi",
     "Next" : "Järgmine",
     "Previous" : "Eelmine",
-    "Open" : "Ava",
     "Email sent" : "E-kiri on saadetud",
     "Documentation" : "Dokumentatsioon",
     "Contact" : "Kontakt",
@@ -44,6 +43,7 @@
     "November" : "November",
     "December" : "Detsember",
     "Total" : "Kokku",
+    "Loading …" : "Laadimine ...",
     "Mail" : "Kirjad",
     "About" : "Info"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

@@ -21,7 +21,6 @@ OC.L10N.register(
     "Last" : "Sista",
     "Next" : "Nästa",
     "Previous" : "Föregående",
-    "Open" : "Öppen",
     "Email sent" : "E-post skickades",
     "Documentation" : "Dokumentation",
     "Contact" : "Kontakt",

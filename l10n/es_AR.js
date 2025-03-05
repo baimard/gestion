@@ -17,7 +17,6 @@ OC.L10N.register(
     "Showing 0 to 0 of 0 entries" : "Mostrando 0 a 0 de 0 entradas",
     "Next" : "Siguiente",
     "Previous" : "Anterior",
-    "Open" : "Abrir",
     "Email sent" : "Correo electrónico enviado",
     "Documentation" : "Documentación",
     "Contact" : "Contacto",

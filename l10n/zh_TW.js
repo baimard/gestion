@@ -50,7 +50,6 @@ OC.L10N.register(
     "Last" : "最後",
     "Next" : "下一步",
     "Previous" : "上一步",
-    "Open" : "開啟",
     "Email sent" : "電子郵件已傳送",
     "Is your global mail server configured in Nextcloud?" : "您的全域郵件伺服器是否已在 Nextcloud 設定好了？",
     "Creation in progress …" : "正在建立……",

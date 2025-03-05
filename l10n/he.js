@@ -16,7 +16,6 @@ OC.L10N.register(
     "Search" : "חיפוש",
     "Next" : "הבא",
     "Previous" : "הקודם",
-    "Open" : "פתוח",
     "Email sent" : "הודעת הדוא״ל נשלחה",
     "Documentation" : "תיעוד",
     "Contact" : "איש/אשת קשר",

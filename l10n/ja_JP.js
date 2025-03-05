@@ -26,7 +26,6 @@ OC.L10N.register(
     "Last" : "最後",
     "Next" : "次へ",
     "Previous" : "前へ",
-    "Open" : "開く",
     "Email sent" : "メールを送信しました",
     "Documentation" : "ドキュメント",
     "Contact" : "連絡先",

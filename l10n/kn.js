@@ -10,7 +10,6 @@ OC.L10N.register(
     "Enable" : "ಸಕ್ರಿಯಗೊಳಿಸು",
     "Search" : "Search",
     "Next" : "ಮುಂದೆ",
-    "Open" : "ತೆರೆಯಿರಿ",
     "Email sent" : "ಇ-ಅಂಚೆ ಕಳುಹಿಸಲಾಗಿದೆ",
     "Documentation" : "ದಸ್ತಾವೇಜು",
     "Send" : "﻿ಕಳುಹಿಸಿ",

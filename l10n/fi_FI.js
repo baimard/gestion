@@ -23,7 +23,6 @@ OC.L10N.register(
     "Last" : "Viimeinen",
     "Next" : "Seuraava",
     "Previous" : "Edellinen",
-    "Open" : "Avaa",
     "Email sent" : "Sähköposti lähetetty",
     "My company" : "Yritykseni",
     "Documentation" : "Dokumentaatio",

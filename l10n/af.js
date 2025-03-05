@@ -16,7 +16,6 @@ OC.L10N.register(
     "Search" : "Soek",
     "Next" : "Volgende",
     "Previous" : "Vorige",
-    "Open" : "Open",
     "Email sent" : "E-pos gestuur",
     "Documentation" : "Dokumentasie",
     "Contact" : "Kontak",

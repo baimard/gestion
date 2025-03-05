@@ -15,7 +15,6 @@ OC.L10N.register(
     "Search" : "Otsi",
     "Next" : "Järgmine",
     "Previous" : "Eelmine",
-    "Open" : "Ava",
     "Email sent" : "E-kiri on saadetud",
     "Documentation" : "Dokumentatsioon",
     "Contact" : "Kontakt",
@@ -46,6 +45,7 @@ OC.L10N.register(
     "November" : "November",
     "December" : "Detsember",
     "Total" : "Kokku",
+    "Loading …" : "Laadimine ...",
     "Mail" : "Kirjad",
     "About" : "Info"
 },

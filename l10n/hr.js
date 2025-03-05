@@ -35,7 +35,6 @@ OC.L10N.register(
     "Last" : "Zadnji",
     "Next" : "Dalje",
     "Previous" : "Natrag",
-    "Open" : "Otvori",
     "Email sent" : "E-pošta je poslana",
     "Creation in progress …" : "Stvaranje je u tijeku...",
     "My company" : "Moja tvrtka",

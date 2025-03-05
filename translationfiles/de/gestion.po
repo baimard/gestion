@@ -7,7 +7,7 @@
 # Alexander Diefenbacher <alexander-diefenbacher@gmx.de>, 2021
 # Joachim Sokolowski, 2022
 # René Gieling <github@dartcafe.de>, 2022
-# lollos78, 2022
+# Lollo, 2022
 # Jasper vom Felde, 2022
 # Lars Maier <lh10@tu-clausthal.de>, 2022
 # Jakob Renken, 2023
@@ -16,16 +16,17 @@
 # Mark Ziegler <mark.ziegler@rakekniven.de>, 2024
 # Oliver Gramberg <oliver.gramberg@gmx.de>, 2024
 # Markus Eckstein, 2024
-# Andy Scherzinger <info@andy-scherzinger.de>, 2024
+# Andy Scherzinger <info@andy-scherzinger.de>, 2025
+# Martin Wilichowski, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-12-08 02:35+0000\n"
+"POT-Creation-Date: 2025-02-22 02:07+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Andy Scherzinger <info@andy-scherzinger.de>, 2024\n"
+"Last-Translator: Martin Wilichowski, 2025\n"
 "Language-Team: German (https://app.transifex.com/nextcloud/teams/64236/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,12 +34,12 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: /app/lib/Db/Bdd.php:113 /app/templates/content/index.php:15
+#: /app/lib/Db/Bdd.php:113 /app/templates/content/index.php:14
 #: /app/templates/modal/configuration_modal.php:19
 msgid "Last name"
 msgstr "Nachname"
 
-#: /app/lib/Db/Bdd.php:114 /app/templates/content/index.php:14
+#: /app/lib/Db/Bdd.php:114 /app/templates/content/index.php:13
 #: /app/templates/modal/configuration_modal.php:13
 msgid "First name"
 msgstr "Vorname"
@@ -47,19 +48,19 @@ msgstr "Vorname"
 msgid "Limited company"
 msgstr "Gesellschaft mit beschränkter Haftung (GmbH)"
 
-#: /app/lib/Db/Bdd.php:116 /app/templates/content/index.php:13
+#: /app/lib/Db/Bdd.php:116 /app/templates/content/index.php:12
 msgid "Company"
 msgstr "Firma"
 
-#: /app/lib/Db/Bdd.php:117 /app/templates/content/index.php:17
+#: /app/lib/Db/Bdd.php:117 /app/templates/content/index.php:16
 msgid "Phone number"
 msgstr "Telefonnummer"
 
-#: /app/lib/Db/Bdd.php:118 /app/templates/content/index.php:18
+#: /app/lib/Db/Bdd.php:118 /app/templates/content/index.php:17
 msgid "Email"
 msgstr "E-Mail"
 
-#: /app/lib/Db/Bdd.php:119 /app/templates/content/index.php:19
+#: /app/lib/Db/Bdd.php:119 /app/templates/content/index.php:18
 #: /app/templates/modal/configuration_modal.php:25
 msgid "Address"
 msgstr "Adresse"
@@ -88,49 +89,49 @@ msgstr "Zahlungsmittel"
 
 #: /app/lib/Db/Bdd.php:164 /app/templates/content/devisshow.php:58
 #: /app/templates/content/factureshow.php:60
-#: /app/templates/content/produit.php:13
+#: /app/templates/content/produit.php:12
 msgid "Reference"
 msgstr "Referenz"
 
 #: /app/lib/Db/Bdd.php:164 /app/templates/content/devisshow.php:59
 #: /app/templates/content/factureshow.php:61
-#: /app/templates/content/produit.php:14
+#: /app/templates/content/produit.php:13
 msgid "Designation"
 msgstr "Bezeichnung"
 
-#: /app/lib/Db/Bdd.php:249
+#: /app/lib/Db/Bdd.php:296
 msgid "Your company name"
 msgstr "Dein Firmenname"
 
-#: /app/lib/Db/Bdd.php:250 /app/templates/content/changelog.php:65
+#: /app/lib/Db/Bdd.php:297 /app/templates/content/changelog.php:65
 msgid "Your company contact last name"
 msgstr "Der Nachname deines Firmenkontakts"
 
-#: /app/lib/Db/Bdd.php:251 /app/templates/content/changelog.php:63
+#: /app/lib/Db/Bdd.php:298 /app/templates/content/changelog.php:63
 msgid "Your company contact first name"
 msgstr "Der Vorname deines Firmenkontakts"
 
-#: /app/lib/Db/Bdd.php:252 /app/templates/content/changelog.php:67
+#: /app/lib/Db/Bdd.php:299 /app/templates/content/changelog.php:67
 msgid "Company legal information line one"
 msgstr "Rechtliche Informationen des Unternehmens Zeile 1"
 
-#: /app/lib/Db/Bdd.php:253 /app/templates/content/changelog.php:69
+#: /app/lib/Db/Bdd.php:300 /app/templates/content/changelog.php:69
 msgid "Company legal information line two"
 msgstr "Rechtliche Informationen des Unternehmens Zeile 2"
 
-#: /app/lib/Db/Bdd.php:254 /app/templates/content/changelog.php:75
+#: /app/lib/Db/Bdd.php:301 /app/templates/content/changelog.php:75
 msgid "Your company email"
 msgstr "Deine Firmen-E-Mail"
 
-#: /app/lib/Db/Bdd.php:255 /app/templates/content/changelog.php:73
+#: /app/lib/Db/Bdd.php:302 /app/templates/content/changelog.php:73
 msgid "Your company phone"
 msgstr "Telefonnummer deiner Firma"
 
-#: /app/lib/Db/Bdd.php:256 /app/templates/content/changelog.php:71
+#: /app/lib/Db/Bdd.php:303 /app/templates/content/changelog.php:71
 msgid "Your company address"
 msgstr "Anschrift deiner Firma"
 
-#: /app/lib/Db/Bdd.php:258
+#: /app/lib/Db/Bdd.php:305
 msgid ""
 "All Legal mentions, disclaimer or everything you want to place in the "
 "footer."
@@ -138,11 +139,11 @@ msgstr ""
 "Alle rechtlichen Hinweise, Haftungsausschlüsse oder alles, was du in der "
 "Fußzeile haben möchtest."
 
-#: /app/lib/Db/Bdd.php:259
+#: /app/lib/Db/Bdd.php:306
 msgid "EUR"
 msgstr "EUR"
 
-#: /app/lib/Db/Bdd.php:260 /app/src/js/pdf.js:67
+#: /app/lib/Db/Bdd.php:307 /app/src/js/pdf.js:75
 msgid "INVOICE"
 msgstr "RECHNUNG"
 
@@ -201,13 +202,13 @@ msgstr "Arbeitsordner auswählen"
 msgid "Choose"
 msgstr "Auswählen"
 
-#: /app/src/js/listener/main_listener.js:120
+#: /app/src/js/listener/main_listener.js:126
 msgid "Please create a new product"
 msgstr "Bitte ein neues Produkt erstellen"
 
 #: /app/src/js/modules/ajaxRequest.js:30 /app/src/js/modules/ajaxRequest.js:65
 #: /app/src/js/modules/ajaxRequest.js:148
-#: /app/src/js/modules/ajaxRequest.js:182
+#: /app/src/js/modules/ajaxRequest.js:219
 msgid "Modification saved"
 msgstr "Änderung gespeichert"
 
@@ -237,35 +238,44 @@ msgstr "Möchtest du wirklich löschen? (Alle Daten gehen verloren)"
 msgid "Company deleted"
 msgstr "Unternehmen gelöscht"
 
-#: /app/src/js/modules/ajaxRequest.js:171
-msgid "Are you sure you want to delete?"
-msgstr "Bist du sicher, dass du löschen möchtest?"
+#: /app/src/js/modules/ajaxRequest.js:172
+msgid "Are you sure you want to duplicate?"
+msgstr "Möchtest du dies wirklich duplizieren?"
 
-#: /app/src/js/modules/ajaxRequest.js:192
+#: /app/src/js/modules/ajaxRequest.js:183
+msgid "Duplicated"
+msgstr "Dupliziert"
+
+#: /app/src/js/modules/ajaxRequest.js:193
+#: /app/src/js/modules/ajaxRequest.js:229
 msgid "Nothing changed"
 msgstr "Nicht geändert"
 
-#: /app/src/js/modules/ajaxRequest.js:352 /app/src/js/objects/client.js:183
-#: /app/src/js/objects/devis.js:116
+#: /app/src/js/modules/ajaxRequest.js:208
+msgid "Are you sure you want to delete?"
+msgstr "Bist du sicher, dass du löschen möchtest?"
+
+#: /app/src/js/modules/ajaxRequest.js:389 /app/src/js/objects/client.js:156
+#: /app/src/js/objects/devis.js:126
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: /app/src/js/modules/ajaxRequest.js:428
-#: /app/src/js/modules/ajaxRequest.js:460
+#: /app/src/js/modules/ajaxRequest.js:469
+#: /app/src/js/modules/ajaxRequest.js:505
 msgid "Save in"
 msgstr "Speichern unter"
 
-#: /app/src/js/modules/ajaxRequest.js:430
+#: /app/src/js/modules/ajaxRequest.js:475
 msgid "There is an error"
 msgstr "Fehler aufgetreten"
 
-#: /app/src/js/modules/ajaxRequest.js:460
+#: /app/src/js/modules/ajaxRequest.js:505
 msgid "(do not forget to show hidden folders)"
 msgstr "(nicht vergessen, versteckte Ordner anzuzeigen)"
 
-#: /app/src/js/modules/ajaxRequest.js:489
-#: /app/src/js/modules/ajaxRequest.js:516
-msgid "Information:"
+#: /app/src/js/modules/ajaxRequest.js:534
+#: /app/src/js/modules/ajaxRequest.js:561
+msgid "Information : "
 msgstr "Information:"
 
 #: /app/src/js/modules/list.js:9
@@ -1072,23 +1082,19 @@ msgstr "Dein globaler Nextcloud-Mailserver muss konfiguriert werden"
 msgid "Added!"
 msgstr "Hinzugefügt!"
 
-#: /app/src/js/objects/devis.js:35 /app/src/js/objects/facture.js:40
-msgid "Open"
-msgstr "Öffnen"
-
-#: /app/src/js/pdf.js:13
+#: /app/src/js/pdf.js:21
 msgid "Email sent"
 msgstr "E-Mail gesendet"
 
-#: /app/src/js/pdf.js:15
+#: /app/src/js/pdf.js:24
 msgid "Is your global mail server configured in Nextcloud?"
 msgstr "Ist dein globaler Mailserver in Nextcloud konfiguriert?"
 
-#: /app/src/js/pdf.js:20
+#: /app/src/js/pdf.js:29
 msgid "Creation in progress …"
 msgstr "Erstellung läuft …"
 
-#: /app/src/js/pdf.js:69
+#: /app/src/js/pdf.js:77
 msgid "QUOTE"
 msgstr "ANGEBOT"
 
@@ -1389,7 +1395,6 @@ msgid "Add quote"
 msgstr "Angebot hinzufügen"
 
 #: /app/templates/content/devis.php:12 /app/templates/content/facture.php:12
-#: /app/templates/content/index.php:12 /app/templates/content/produit.php:12
 msgid "ID"
 msgstr "ID"
 
@@ -1412,7 +1417,7 @@ msgid "Status"
 msgstr "Status"
 
 #: /app/templates/content/devis.php:18 /app/templates/content/facture.php:20
-#: /app/templates/content/index.php:20 /app/templates/content/produit.php:16
+#: /app/templates/content/index.php:19 /app/templates/content/produit.php:15
 msgid "Actions"
 msgstr "Aktionen"
 
@@ -1441,7 +1446,7 @@ msgid ""
 "To add a logo, drop the logo.png file in \".gestion\" folder at the root of "
 "your Nextcloud Files app. Remember to set \"Show hidden files\"."
 msgstr ""
-"Um ein Logo hinzuzufügen, lege die Datei logo.png im Ordner „.gestion“ im "
+"Um ein Logo hinzuzufügen, lege die Datei logo.png im Ordner \".gestion\" im "
 "Stammverzeichnis deiner Nextcloud Files-App ab. Denke daran, \"Versteckte "
 "Dateien anzeigen\" einzustellen."
 
@@ -1466,7 +1471,7 @@ msgstr "Menge"
 
 #: /app/templates/content/devisshow.php:62
 #: /app/templates/content/factureshow.php:64
-#: /app/templates/content/produit.php:15
+#: /app/templates/content/produit.php:14
 msgid "Unit price without VAT"
 msgstr "Einzelpreis ohne USt."
 
@@ -1554,7 +1559,7 @@ msgstr "Kunde"
 msgid "Add customer"
 msgstr "Kunde hinzufügen"
 
-#: /app/templates/content/index.php:16
+#: /app/templates/content/index.php:15
 msgid "Legal information"
 msgstr "Rechtliche Informationen"
 

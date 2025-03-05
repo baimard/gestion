@@ -15,7 +15,6 @@ OC.L10N.register(
     "Search" : "ค้นหา",
     "Next" : "ถัดไป",
     "Previous" : "ก่อนหน้า",
-    "Open" : "เปิด",
     "Email sent" : "ส่งอีเมลแล้ว",
     "Documentation" : "เอกสารประกอบ",
     "Changelog" : "บันทึกการเปลี่ยนแปลง",

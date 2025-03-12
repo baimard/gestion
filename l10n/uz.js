@@ -1,0 +1,26 @@
+OC.L10N.register(
+    "gestion",
+    {
+    "Email" : "Email",
+    "Address" : "Address",
+    "New" : "New",
+    "Choose" : "Choose",
+    "Cancel" : "Cancel",
+    "Disable" : "Oʻchirish",
+    "Enable" : "Enable",
+    "Search" : "Search",
+    "Email sent" : "Email sent",
+    "From" : "Dan",
+    "To" : "Gacha",
+    "Send" : "Send",
+    "Add" : "Add",
+    "Delete" : "Delete",
+    "Status" : "Status",
+    "Actions" : "Actions",
+    "Year" : "Yil",
+    "January" : "January",
+    "Total" : "Total",
+    "Mail" : "Mail",
+    "About" : "About"
+},
+"nplurals=1; plural=0;");

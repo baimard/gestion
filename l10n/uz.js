@@ -9,6 +9,7 @@ OC.L10N.register(
     "Disable" : "Oʻchirish",
     "Enable" : "Enable",
     "Search" : "Search",
+    "Previous" : "Oldingi",
     "Email sent" : "Email sent",
     "From" : "Dan",
     "To" : "Gacha",

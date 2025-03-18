@@ -12,6 +12,8 @@ OC.L10N.register(
     "Showing 0 to 0 of 0 entries" : "0 ta yozuvdan 0 dan 0 gacha koʻrsatilmoqda",
     "Previous" : "Oldingi",
     "Email sent" : "Email sent",
+    "Documentation" : "Hujjatlar",
+    "Contact" : "Aloqa",
     "Releases" : "Relizlar",
     "From" : "Dan",
     "To" : "Gacha",

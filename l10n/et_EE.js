@@ -9,6 +9,7 @@ OC.L10N.register(
     "New" : "Uus",
     "Comment" : "Kommentaar",
     "Choose" : "Vali",
+    "Are you sure you want to delete?" : "Kas oled kindel, et tahad kustutada?",
     "Cancel" : "Loobu",
     "Disable" : "Lülita välja",
     "Enable" : "Lülita sisse",

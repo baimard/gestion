@@ -32,6 +32,7 @@ OC.L10N.register(
     "Version" : "Versioon",
     "Status" : "Staatus",
     "Actions" : "Tegevused",
+    "Legal notice" : "Juriidiline teave",
     "Year" : "Aasta",
     "January" : "Jaanuar",
     "February" : "Veebruar",

@@ -127,11 +127,16 @@
   100% { transform: rotate(360deg); }
 }
 
-.icon-details {
+[class^=icon-], [class*=" icon-"]  {
   display:inline-block;
   margin-right: 20px ;
   margin-left:10px;
   width: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
  }
 
 #app-navigation:not(.vue) > ul > li > a, #app-navigation:not(.vue) > ul > li > ul > li > a {

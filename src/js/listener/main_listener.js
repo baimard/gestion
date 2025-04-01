@@ -1,5 +1,5 @@
 import { FilePicker, getFilePickerBuilder, showError } from "@nextcloud/dialogs";
-import { updateDB, configuration, updateEditable, duplicateDB, deleteDB, getProduitsById, updateCurrentCompany, updateDBConfiguration, listProduit } from "../modules/ajaxRequest.js";
+import { updateDB, configuration, updateEditable, duplicateDB, deleteDB, getProduitsById, updateCurrentCompany, updateDBConfiguration, listProduit, drop } from "../modules/ajaxRequest.js";
 import { path, baseUrl, updateNumerical } from "../modules/mainFunction.js";
 import DataTable from 'datatables.net';
 import { Client } from '../objects/client.js';
@@ -92,6 +92,18 @@ document.body.addEventListener('click', function (event) {
         duplicateDB(table, id, reloadDataTable, modifier);
     }
 
+    if (event.target.classList.contains('drop_down')) {
+        var id = event.target.dataset.id;
+        var modifier = event.target.dataset.modifier;
+        drop(id, reloadDataTable, modifier, 'down');
+    }
+
+    if (event.target.classList.contains('drop_up')) {
+        var id = event.target.dataset.id;
+        var modifier = event.target.dataset.modifier;
+        drop(id, reloadDataTable, modifier, 'up');
+    }
+
     if (event.target.classList.contains('deleteItem')) {
         var id = event.target.dataset.id;
         var table = event.target.dataset.table;
@@ -169,24 +181,7 @@ document.body.addEventListener('change', function(event) {
     }
 
     if (event.target.id === 'listProduit' || event.target.id === 'listDevis') {
-        var id = event.target.options[event.target.selectedIndex].dataset.id;
-        var val = event.target.options[event.target.selectedIndex].dataset.val;
-        var column = event.target.options[event.target.selectedIndex].dataset.column;
-        var table = event.target.options[event.target.selectedIndex].dataset.table;
-        var el = event.target.parentNode;
-
-        updateDB(table, column, val, id);
-
-        if (el.className === 'selectableClient_devis') {
-            getClientByIdDevis(id);
-        }
-
-        if (event.target.id === 'listProduit') {
-            getProduitsById();
-        }
-
-        el.textContent = event.target.value;
-        el.dataset.val = id;
+        waitforUpdateProduits(event, table, column, val, id)
     }
 
     if (event.target.classList.contains('editableSelect')) {
@@ -274,4 +269,25 @@ function reloadDataTable(modifier) {
     if (modifier === "devis") { Devis.loadDevisDT(dt); }
     if (modifier === "facture") { Facture.loadFactureDT(dt); }
     if (modifier === "produit") { Produit.loadProduitDT(dt); }
+}
+
+async function waitforUpdateProduits(event, table, column, val, id){
+
+    var id = event.target.options[event.target.selectedIndex].dataset.id;
+    var val = event.target.options[event.target.selectedIndex].dataset.val;
+    var column = event.target.options[event.target.selectedIndex].dataset.column;
+    var table = event.target.options[event.target.selectedIndex].dataset.table;
+
+    await updateDB(table, column, val, id);
+
+    if (event.target.parentNode.className === 'selectableClient_devis') {
+        getClientByIdDevis(id);
+    }
+
+    if (event.target.id === 'listProduit') {
+        getProduitsById();
+    }
+
+    event.target.parentNode.textContent = event.target.value;
+    event.target.parentNode.dataset.val = id;
 }

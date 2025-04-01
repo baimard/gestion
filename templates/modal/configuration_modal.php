@@ -77,7 +77,9 @@
         <!-- Mentions Default -->
         <div title="<?php p($l->t('Legal disclaimer/mentions you need in your footer - before company information')); ?>" class="configuration-global">
             <label class="configuration" for="mentions_default"><span class="material-symbols-outlined">store</span><?php p($l->t('Mentions Default'));?></label>
-            <input type="text" style="float:none;width:80%;" id="mentions_default" class="configuration-content editableConfiguration" data-table="configuration" data-column="mentions_default" data-id="" value="<?php p($l->t('Loading …')); ?>" />
+            <textarea type="text" style="float:none;width:80%;" id="mentions_default" class="configuration-content editableConfiguration" data-table="configuration" data-column="mentions_default" data-id="" rows="5"/>
+                <?php p($l->t('Loading …')); ?>
+            </textarea>
         </div>
     </div>
 </div>

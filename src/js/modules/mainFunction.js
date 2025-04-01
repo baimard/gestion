@@ -2,7 +2,6 @@ import { showSuccess } from "@nextcloud/dialogs";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest.js";
 import { generateUrl } from "@nextcloud/router";
-
 export var baseUrl = generateUrl('/apps/gestion');
 export var cur = null;
 
@@ -179,16 +178,39 @@ export function getCurrency(response) {
  * @param {*} total 
  */
 export function getGlobal(total) {
-    $.ajax({
-        url: baseUrl + '/getConfiguration',
-        type: 'PROPFIND',
-        contentType: 'application/json',
-    }).done(function (response) {
-        var myresp = JSON.parse(response)[0];
-        var tva = parseFloat(myresp.tva_default);
-        $('#totaldevis tbody').append('<tr><td>' + cur.format(total) + '</td><td id="tva">' + tva + ' %</td><td id="totaltva">' + cur.format(Math.round((total * tva)) / 100) + '</td><td>' + cur.format(Math.round((total * (tva + 100))) / 100) + '</td></tr>');
-        $('#mentions_default').html(myresp.mentions_default);
+const url = baseUrl + '/getConfiguration';
+const options = {
+    method: 'PROPFIND',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+};
+
+
+fetch(url, options)
+    .then(response => response.json())
+    .then(data => {
+        const myresp = JSON.parse(data)[0];
+        const tva = parseFloat(myresp.tva_default);
+        const totalRow = `
+            <tr>
+                <td>${cur.format(total)}</td>
+                <td id="tva">${tva} %</td>
+                <td id="totaltva">${cur.format(Math.round((total * tva)) / 100)}</td>
+                <td>${cur.format(Math.round((total * (tva + 100))) / 100)}</td>
+            </tr>
+        `;
+
+        document.querySelector('#totaldevis tbody').insertAdjacentHTML('beforeend', totalRow);
+
+        let mentionsDefault = myresp.mentions_default;
+        mentionsDefault = mentionsDefault.replace(/\n/g, '<br/>');
+        console.log(mentionsDefault);
+        document.getElementById('mentions_default').innerHTML = unescapeHtml(mentionsDefault);
     })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
 }
 
 /**
@@ -219,6 +241,9 @@ export function updateNumerical(el, format_number=true){
     }
 }
 
+/**
+ * 
+ */
 export function removeOptions(selectElement) {
     
     var i, L = selectElement.options.length - 1;
@@ -226,3 +251,12 @@ export function removeOptions(selectElement) {
        selectElement.remove(i);
     }
  }
+
+ /**
+  * 
+  */
+ export function unescapeHtml(escapedHtml) {
+    const textArea = document.createElement("textarea");
+    textArea.innerHTML = escapedHtml;
+    return textArea.value;
+}

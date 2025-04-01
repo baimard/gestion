@@ -9,33 +9,35 @@ import { baseUrl, cur, getGlobal, insertCell, insertRow, modifyCell } from "./ma
  * @param data 
  * @param id 
  */
-export function updateDB(table, column, data, id) {
-    var myData = {
+export async function updateDB(table, column, data, id) {
+    const myData = {
         table: table,
         column: column,
         data: data,
         id: id,
     };
+    console.log("debut update");
+    try {
+        const response = await fetch(baseUrl + '/update', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'requesttoken': OC.requestToken
+            },
+            body: JSON.stringify(myData)
+        });
 
-    fetch(baseUrl + '/update', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        },
-        body: JSON.stringify(myData)
-    })
-    .then(response => {
         if (response.ok) {
             showSuccess(t('gestion', 'Modification saved'));
         } else {
             showError(t('gestion', 'There is an error with the format, please check the documentation'));
         }
-    })
-    .catch(error => {
+    } catch (error) {
         showError(t('gestion', 'There is an error with the format, please check the documentation'));
-    });
+    }
+    console.log("fin update");
 }
+
 
 /**
  * Update data
@@ -231,6 +233,39 @@ export function deleteDB(table, id, callback=null, modifier=null) {
 }
 
 /**
+ * Delete data
+ * @param table
+ * @param id 
+ */
+export function drop(id, callback=null, modifier=null, value='up') {
+    var myData = {
+        table: 'produit_devis',
+        id: id,
+        value: value
+    };
+    
+    fetch(baseUrl + '/drop', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (response.ok) {
+            callback(modifier);
+        } else {
+            showError(response);
+        }
+    })
+    .catch(error => {
+        showError(error);
+    });
+
+}
+
+/**
  * 
  */
 export function getStats() {
@@ -416,40 +451,81 @@ function listeproduit_add_option(table, column, val, id, textContent, _selected=
 /**
  * Get a product in database using id
  */
- export function getProduitsById() {
-    var devis_id = $('#devisid').data('id');
-    var myData = { numdevis: devis_id, };
+export function getProduitsById() {
+    const devis_id = document.getElementById('devisid').dataset.id;
+    const myData = { numdevis: devis_id };
 
-    $.ajax({
-        url: baseUrl + '/getProduitsById',
-        type: 'POST',
-        async: false,
-        contentType: 'application/json',
-        data: JSON.stringify(myData)
-    }).done(function (response, code) {
-        $('#produits tbody').empty();
-        var total = 0;
-        var deleteDisable = "";
-        if ($('#produits').data("type") === "facture") {
+    fetch(baseUrl + '/getProduitsById', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(myData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        const produitsBody = document.querySelector('#produits tbody');
+        produitsBody.innerHTML = '';
+        let total = 0;
+        let deleteDisable = '';
+
+        if (document.getElementById('produits').dataset.type === "facture") {
             deleteDisable = "d-none";
         }
+        var res = JSON.parse(data);
 
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            $('#produits tbody').append('<tr><td><div data-html2canvas-ignore data-modifier="getProduitsById" data-id="' + myresp.pdid + '" data-table="produit_devis" class="' + deleteDisable + ' deleteItem icon-delete"></div><div style="display:inline;" data-val="' + myresp.pid + '" data-id="' + myresp.pdid + '" class="selectable">' + myresp.reference + '</div></td>' +
-                '<td>' + myresp.description + '</td>' +
-                '<td><div class="editable" data-table="produit_devis" data-column="comment" data-id="' + myresp.pdid + '">' + ((myresp.comment.length === 0) ? '-' : myresp.comment) + '</div></td>' +
-                '<td><div class="editableNumber getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id=' + myresp.pdid + '>' + myresp.quantite + '</div> </td>' +
-                '<td>' + cur.format(myresp.prix_unitaire) + '</td>' +
-                '<td>' + cur.format((myresp.quantite * myresp.prix_unitaire)) + '</td></tr>');
+        res.forEach(myresp => {
+            if(myresp.header > 0){
+                produitsBody.innerHTML += `<tr style="background-color:rgb(198, 198, 198);">
+                    <td COLSPAN="6">
+                        <div>
+                            <div style="display:inline;" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="selectable"><b>${myresp.reference}</b></div>
+                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" class="drop_up material-symbols ${deleteDisable}">arrow_drop_up</div>
+                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="drop_down material-symbols ${deleteDisable}">arrow_drop_down</div>
+                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
+                        </div>
+                    </td>
+                </tr>
+                `
+            }else{
+                produitsBody.innerHTML += `<tr>
+                <td>
+                    <div>
+                        <div style="display:inline;" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="selectable">${myresp.reference}</div>
+                        <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" class="drop_up material-symbols ${deleteDisable}">arrow_drop_up</div>
+                        <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="drop_down material-symbols ${deleteDisable}">arrow_drop_down</div>
+                        <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
+                    </div>
+                </td>
+                <td>${myresp.description}</td>
+                <td>
+                    <div class="editable" data-table="produit_devis" data-column="comment" data-id="${myresp.pdid}">${myresp.comment.length === 0 ? '-' : myresp.comment}</div>
+                </td>
+                <td>
+                    <div class="editableNumber getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id="${myresp.pdid}">${myresp.quantite}</div>
+                </td>
+                <td>${cur.format(myresp.prix_unitaire)}</td>
+                <td>${cur.format(myresp.quantite * myresp.prix_unitaire)}</td>
+            </tr>`;
+           
+            }
+
             total += (myresp.quantite * myresp.prix_unitaire);
-        });
+        }); 
 
-        $("#totaldevis tbody").empty();
+        document.getElementById('totaldevis').querySelector('tbody').innerHTML = '';
         getGlobal(total);
-    }).fail(function (response, code) {
-        showError(response);
+    })
+    .catch(error => {
+        showError(error);
     });
 }
+
 
 /**
  * Save pdf in nextcloud

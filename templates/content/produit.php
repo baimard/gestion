@@ -12,6 +12,7 @@
                 <th><?php p($l->t('Reference'));?></th>
                 <th><?php p($l->t('Designation'));?></th>
                 <th><?php p($l->t('Unit price without VAT'));?></th>
+                <th><?php p($l->t('Header'));?></th>
                 <th><?php p($l->t('Actions'));?></th>
             </tr>
         </thead>

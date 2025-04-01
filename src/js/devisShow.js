@@ -1,4 +1,3 @@
-// import "@nextcloud/dialogs/dist/index.css";
 import "datatables.net-dt/css/dataTables.dataTables.css";
 import "../css/mycss.less";
 

@@ -19,6 +19,8 @@ sudo docker exec -it nextcloud bash -c "apt update ; apt install -y git make nod
 sudo docker exec -it nextcloud bash -c "git clone https://github.com/baimard/gestion.git /var/www/html/apps/gestion ; cd /var/www/html/apps/gestion ; git checkout dev ; chown www-data:root -R /var/www/html/apps/gestion"
 # sudo docker exec -it nextcloud bash -c "cd /root ; wget https://github.com/baimard/gestion/releases/download/2.3.3/gestion.tar.gz ; tar -zxf /root/gestion.tar.gz --directory /var/www/html/apps ; chown www-data:root -R /var/www/html/apps/gestion"
 sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make npm-init ; make composer;"
+sleep 10
+
 
 echo "Initialisation de la base de données"
 sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; php tests/Unit/Panther/initMysqlTest.php"

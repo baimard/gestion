@@ -40,7 +40,7 @@ class Version20600Date20250326154440 extends SimpleMigrationStep {
 		$table = $schema->getTable($tableprefix.'devis');
 
 		if (!$table->hasColumn('delay')) {
-			$table->addColumn('delay', 'text', []);
+			$table->addColumn('delay', 'text', ['default' => 'Offer valid for 1 month']);
 		}
 
 		$table = $schema->getTable($tableprefix.'produit_devis');

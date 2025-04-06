@@ -99,35 +99,38 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loadConfigurationDT(response) {
-    $.each(JSON.parse(response), function (arrayID, myresp) {
-        document.getElementById("entreprise").value             = (((myresp.entreprise.length === 0) ? "-" : myresp.entreprise));
-        document.getElementById("nom").value                    = ((myresp.nom.length === 0) ? "-" : myresp.nom);
-        document.getElementById("prenom").value                 = ((myresp.prenom.length === 0) ? "-" : myresp.prenom);
-        document.getElementById("adresse").value                = ((myresp.adresse.length === 0) ? "-" : myresp.adresse);
-        document.getElementById("legal_one").value              = ((myresp.legal_one.length === 0) ? "-" : myresp.legal_one);
-        document.getElementById("legal_two").value              = ((myresp.legal_two.length === 0) ? "-" : myresp.legal_two);
-        document.getElementById("telephone").value              = ((myresp.telephone.length === 0) ? "-" : myresp.telephone);
-        document.getElementById("mail").value                   = ((myresp.mail.length === 0) ? "-" : myresp.mail);
-        document.getElementById("tva_default").value            = ((myresp.tva_default.length === 0) ? "-" : myresp.tva_default);
-        document.getElementById("facture_prefixe").value        = ((myresp.facture_prefixe.length === 0) ? "-" : myresp.facture_prefixe);
-        // document.getElementById("auto_invoice_number").value    = getAutoIncrement(myresp.auto_invoice_number);
+    // Parse the JSON response
+    const data = JSON.parse(response);
+
+    // Iterate over each item in the parsed JSON array
+    data.forEach(function (myresp) {
+        // Set the value of each form field, using "-" if the value is an empty string
+        document.getElementById("entreprise").value = myresp.entreprise.length === 0 ? "-" : myresp.entreprise;
+        document.getElementById("nom").value = myresp.nom.length === 0 ? "-" : myresp.nom;
+        document.getElementById("prenom").value = myresp.prenom.length === 0 ? "-" : myresp.prenom;
+        document.getElementById("adresse").value = myresp.adresse.length === 0 ? "-" : myresp.adresse;
+        document.getElementById("legal_one").value = myresp.legal_one.length === 0 ? "-" : myresp.legal_one;
+        document.getElementById("legal_two").value = myresp.legal_two.length === 0 ? "-" : myresp.legal_two;
+        document.getElementById("telephone").value = myresp.telephone.length === 0 ? "-" : myresp.telephone;
+        document.getElementById("mail").value = myresp.mail.length === 0 ? "-" : myresp.mail;
+        document.getElementById("tva_default").value = myresp.tva_default.length === 0 ? "-" : myresp.tva_default;
+        document.getElementById("facture_prefixe").value = myresp.facture_prefixe.length === 0 ? "-" : myresp.facture_prefixe;
+
+        // Call external functions with the appropriate parameters
         setCurrencyList(myresp.devise, document.getElementById("currency"));
         setFormatList(myresp.format, document.getElementById("format"));
-        document.getElementById("mentions_default").value       = ((myresp.mentions_default.length === 0) ? "-" : myresp.mentions_default.replace(/\&amp;/g, "&"));
 
-        document.getElementById("entreprise")       .setAttribute("data-id", myresp.id);
-        document.getElementById("nom")              .setAttribute("data-id", myresp.id);
-        document.getElementById("prenom")           .setAttribute("data-id", myresp.id);
-        document.getElementById("adresse")          .setAttribute("data-id", myresp.id);
-        document.getElementById("legal_one")        .setAttribute("data-id", myresp.id);
-        document.getElementById("legal_two")        .setAttribute("data-id", myresp.id);
-        document.getElementById("telephone")        .setAttribute("data-id", myresp.id);
-        document.getElementById("mail")             .setAttribute("data-id", myresp.id);
-        document.getElementById("tva_default")      .setAttribute("data-id", myresp.id);
-        document.getElementById("facture_prefixe")  .setAttribute("data-id", myresp.id);
-        // document.getElementById("auto_invoice_number")       .setAttribute("data-id", myresp.id);
-        document.getElementById("currency")         .setAttribute("data-id", myresp.id);
-        document.getElementById("format")           .setAttribute("data-id", myresp.id);
-        document.getElementById("mentions_default") .setAttribute("data-id", myresp.id);
+        document.getElementById("mentions_default").innerHTML = myresp.mentions_default.length === 0 ? "-" : myresp.mentions_default.replace(/\&amp;/g, "&");
+        
+        // Set the data-id attribute for each form field
+        const fields = [
+            "entreprise", "nom", "prenom", "adresse", "legal_one", "legal_two",
+            "telephone", "mail", "tva_default", "facture_prefixe", "currency",
+            "format", "mentions_default"
+        ];
+
+        fields.forEach(function (field) {
+            document.getElementById(field).setAttribute("data-id", myresp.id);
+        });
     });
 }

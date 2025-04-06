@@ -247,7 +247,8 @@ class PageController extends Controller {
 																	'produit'=>json_decode($produits), 
 																	'path' => $this->myID, 
 																	'url' => $this->getNavigationLink(),
-																	'logo' => $this->getLogo(),
+																	'logo' => $this->getLogo('logo.png'),
+																	'logo_header' => $this->getLogo('logo_header.png'),
 																	'CompaniesList' => $this->getCompaniesList(),
 																	'CurrentCompany' => $this->session['CurrentCompany']
 																)
@@ -268,7 +269,8 @@ class PageController extends Controller {
 																		'configuration'=> $this->getConfiguration(), 
 																		'facture'=>json_decode($facture), 
 																		'url' => $this->getNavigationLink(),
-																		'logo' => $this->getLogo(),
+																		'logo' => $this->getLogo('logo.png'),
+																		'logo_header' => $this->getLogo('logo_header.png'),
 																		'CompaniesList' => $this->getCompaniesList(),
 																		'CurrentCompany' => $this->session['CurrentCompany']
 																)
@@ -608,6 +610,17 @@ class PageController extends Controller {
 
 	/**
 	 * @NoAdminRequired
+	 * @param string $id
+	 * @param string $value
+	 * @UseSession
+	*/
+	#[UseSession]
+	public function drop($id, $value) {
+		return $this->myDb->gestion_drop($id, $value, $this->session['CurrentCompany']);
+	}
+
+	/**
+	 * @NoAdminRequired
 	 * @param string $table
 	 * @param string $id
 	 * @UseSession
@@ -713,10 +726,10 @@ class PageController extends Controller {
 	}
 
 
-	private function getLogo(){
+	private function getLogo($name){
 		try {
 			if(isset($this->storage)){
-				$file = $this->storage->get('/.gestion/logo.png');
+				$file = $this->storage->get('/.gestion/'.$name);
 			}else{
 				return "nothing";
 			}

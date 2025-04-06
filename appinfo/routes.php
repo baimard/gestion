@@ -36,6 +36,7 @@ return [
         // GLOBAL
         ['name' => 'page#duplicate', 'url' => '/duplicate', 'verb' => 'PUT'],
         ['name' => 'page#delete', 'url' => '/delete', 'verb' => 'DELETE'],
+        ['name' => 'page#drop', 'url' => '/drop', 'verb' => 'POST'],
         
         // STATS
         ['name' => 'page#getStats', 'url' => '/getStats', 'verb' => 'PROPFIND'],

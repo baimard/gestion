@@ -1,9 +1,25 @@
 <div class="bootstrap-iso">
-        <h2 class="mt-3 mb-3 text-center"> <?php p($l->t('Quote #'));?>
+
+    <div class="row">
+
+        <div class="h-50 m-0 text-center">
+            <?php
+                if(isset($_['logo_header']) && $_['logo_header'] !== "nothing"){
+                    echo "<center><a><img alt='".$l->t('Company logo')."' class=\"img-fluid\" src=\"data:image/png;base64, ".$_['logo_header']."\"/></a></center>";
+                }else{
+                    echo "<span style='font-size:12px' id='Company-logo' data-html2canvas-ignore><b>".$l->t('You can add your company logo here.')."</center></b><br/><i>".$l->t('To add a logo, drop the logo_header.png file in ".gestion" folder at the root of your Nextcloud Files app. Remember to set "Show hidden files".')."</i><br/><br/><center>".$l->t('This message will not appear on generated PDF.')."</span>";
+                }
+            ?>
+        </div>
+
+    <div/>
+
+    <div class="row">
+        <h2 class="mt-3 mb-3 text-center">
         <div id="devisid" style="display:inline" class="editable" data-table="devis" data-column="num" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->num; ?></div>
         <span data-html2canvas-ignore><?php p($l->t('Version'));?></span> <div data-html2canvas-ignore id="devisversion" style="display:inline" class="editable" data-table="devis" data-column="version" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->version; ?></div>
         </h2>
-        <hr />
+    <div/>
         <div class="row">
             <div class="col-5 h-100 m-0" style="min-height:250px;">
 
@@ -40,7 +56,7 @@
         <div class="row">
             <div class="col col-md">
                 <hr />
-                <div class="col col-xl mb-3 text-center"><b><span><?php p($l->t('Offer valid for 1 month from'));?> : </span><span><?php echo (new DateTime($_['devis'][0]->date))->format('d-m-Y'); ?></span></b></div>
+                <div class="col col-xl mb-3 text-center"><b><div id="delay" style="display:inline" class="editable" data-table="devis" data-column="delay" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo ($_['devis'][0]->delay == "" ) ? p($l->t('Offer valid for 1 month from : ')) : $_['devis'][0]->delay ;?></div><span><?php echo (new DateTime($_['devis'][0]->date))->format('d-m-Y'); ?></span></b></div>
                 <hr />
             </div>
         </div>
@@ -90,5 +106,18 @@
         <hr />
         <div class="col m-0 pb-0 alert alert-info text-center">
             <p><?php echo $res->entreprise; ?><br /><?php echo $res->adresse; ?><br /><?php echo $res->legal_one; ?><br/><?php echo $res->legal_two; ?></p>
+        </div>
+        <div class="zone-signature" style="width: 50%; margin: 50px auto;">
+            <h2 style="text-align: center;"><?php p($l->t('Approved for Agreement'));?></h2>
+            <table style="width: 100%;border-collapse: collapse;">
+                <tr>
+                    <th style="border: 1px solid #ccc; height: 30px; vertical-align: top;"><?php p($l->t('Date:'));?></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #ccc; height: 100px; vertical-align: top;"><?php p($l->t('Signature'));?></th>
+                    <td></td>
+                </tr>
+            </table>
         </div>
     </div>

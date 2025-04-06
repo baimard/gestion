@@ -1,10 +1,28 @@
     <div class="bootstrap-iso">
-        <h2 class="mt-3 mb-3 text-center"><?php p($l->t('Invoice #'));?>
-            <div id="factureid" style="display:inline"><?php echo $_['facture'][0]->num;?></div>
-            <span data-html2canvas-ignore><?php p($l->t('Version'));?></span> <div data-html2canvas-ignore id="factureversion" style="display:inline" class="editable" data-table="facture" data-column="version" data-id="<?php echo $_['facture'][0]->id; ?>"><?php echo $_['facture'][0]->version; ?></div>
-        </h2>
-        <hr/>
+
         <div class="row">
+
+            <div class="h-50 m-0 text-center">
+                <?php
+                    if(isset($_['logo_header']) && $_['logo_header'] !== "nothing"){
+                        echo "<center><a><img alt='".$l->t('Company logo')."' class=\"img-fluid\" src=\"data:image/png;base64, ".$_['logo_header']."\"/></a></center>";
+                    }else{
+                        echo "<span style='font-size:12px' id='Company-logo' data-html2canvas-ignore><b>".$l->t('You can add your company logo here.')."</center></b><br/><i>".$l->t('To add a logo, drop the logo_header.png file in ".gestion" folder at the root of your Nextcloud Files app. Remember to set "Show hidden files".')."</i><br/><br/><center>".$l->t('This message will not appear on generated PDF.')."</span>";
+                    }
+                ?>
+            </div>
+
+        <div/>
+
+        <div class="row">
+            <h2 class="mt-3 mb-3 text-center">
+                <div id="factureid" style="display:inline"><?php echo $_['facture'][0]->num;?></div>
+                <span data-html2canvas-ignore><?php p($l->t('Version'));?></span> <div data-html2canvas-ignore id="factureversion" style="display:inline" class="editable" data-table="facture" data-column="version" data-id="<?php echo $_['facture'][0]->id; ?>"><?php echo $_['facture'][0]->version; ?></div>
+            </h2>
+        <div/>
+
+        <div class="row">
+        
             <div class="col-5 h-100 m-0" style="min-height:250px;">
                 <?php $res = json_decode($_['configuration'])[0]; ?>
                 <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark"><?php p($l->t('FROM'));?> <?php echo $res->entreprise; ?></h5>
@@ -16,6 +34,7 @@
                     <span id="nothing"></span><br />
                 </p>
             </div>
+            
             <div class="col-2 h-100 m-0" style="min-height:250px;">
                 <?php
                     if(isset($_['logo']) && $_['logo'] !== "nothing"){
@@ -25,8 +44,9 @@
                     }
                 ?>
             </div>
+
             <div class="col-5 h-100 m-0" style="min-height:250px;">
-                <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark"><?php p($l->t('TO'));?> <span id="entreprise"></span></h6>
+                <h5 class="p-3 m-0 text-dark text-center border border-2 border-dark"><?php p($l->t('TO'));?> <span id="entreprise"></span></h5>
                     <p style="min-height:180px;" class="p-3 m-0 h-100 text-center text-dark text-center border border-top-0 border-2 border-dark">
                         <span id="nomprenom" data-id="0" data-table="devis" data-column="id_client"></span><br />
                         <span id="adresse"></span><br />
@@ -35,9 +55,12 @@
                         <span id="legal_one"></span><br />
                     </p>
             </div>
+
         </div>
+
         <div class="row">
-            <div class="col col-md">
+        
+        <div class="col col-md">
                 <hr/>
                     <div class="col col-xl mb-3 text-center">
                         <span><?php p($l->t('Settlement date'));?> : <b><?php echo (new DateTime($_['facture'][0]->date_paiement))->format('d-m-Y');?></b>, </span><span><?php p($l->t('Date of service'));?> : <b><?php echo $_['facture'][0]->date;?></b></span><br/>

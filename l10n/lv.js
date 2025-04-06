@@ -17,7 +17,7 @@ OC.L10N.register(
     "Showing 0 to 0 of 0 entries" : "Rāda 0 līdz 0 no 0 ierakstiem",
     "Next" : "Nākamā",
     "Previous" : "Iepriekšējā",
-    "Email sent" : "Vēstule nosūtīta",
+    "Email sent" : "E-pasta ziņojums nosūtīts",
     "Documentation" : "Dokumentācija",
     "Contact" : "Kontakts",
     "Changelog" : "Izmaiņu žurnāls",

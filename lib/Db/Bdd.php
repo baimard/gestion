@@ -136,10 +136,11 @@ class Bdd {
                                                             `version`,
                                                             `mentions`,
                                                             `comment`,
-                                                            `user_id`
+                                                            `user_id`,
+                                                            `delay`
                                                         ) 
-                                                VALUES (NOW(),?,?,0,'0.1',?,?,?);";
-        $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment'),$last));
+                                                VALUES (NOW(),?,?,0,'0.1',?,?,?,?);";
+        $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment'),$last,$this->l->t('Offer valid for 1 month from : ')));
         return true;
     }
 

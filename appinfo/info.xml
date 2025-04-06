@@ -44,7 +44,7 @@ If you need to adapt this application to your country laws, please open issue.
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/selectFolder.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/statistique.png</screenshot>
     <dependencies>
-        <nextcloud min-version="29" max-version="31"/>
+        <nextcloud min-version="30" max-version="31"/>
         <php min-version="8"/>
     </dependencies>
     <settings>

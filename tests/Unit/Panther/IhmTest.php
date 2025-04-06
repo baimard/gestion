@@ -31,10 +31,11 @@ $client->request('GET', 'http://127.0.0.1/index.php/apps/gestion/statistique');
 $client->takeScreenshot('tests/Unit/Panther/screens/statistique.png');
 
 $client->executeScript("document.getElementById('theFolder').click()");
-$client->waitForVisibility('.oc-dialog');
+$client->waitForVisibility('.modal-container__close');
 $client->takeScreenshot('tests/Unit/Panther/screens/selectFolder.png');
 
-$client->executeScript("document.getElementsByClassName('oc-dialog-close').item(0).click()");
+$client->executeScript("document.getElementsByClassName('modal-container__close').item(0).click()");
+
 $client->executeScript("document.getElementById('about').click()");
 $client->waitForVisibility('#modalConfig');
 $client->takeScreenshot('tests/Unit/Panther/screens/about.png');

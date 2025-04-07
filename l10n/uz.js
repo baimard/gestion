@@ -23,6 +23,7 @@ OC.L10N.register(
     "Version" : "Versiya",
     "Status" : "Status",
     "Actions" : "Actions",
+    "Date:" : "Sana:",
     "Year" : "Yil",
     "January" : "January",
     "Total" : "Total",

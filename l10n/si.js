@@ -21,6 +21,8 @@ OC.L10N.register(
     "Add" : "එකතු කරන්න",
     "Version" : "අනුවාදය",
     "Actions" : "ක්‍රියාමාර්ග",
+    "Date:" : "දිනය:",
+    "Signature" : "අත්සන",
     "Year" : "වර්ෂය",
     "January" : "ජනවාරි",
     "February" : "පෙබරවාරි",

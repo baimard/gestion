@@ -34,6 +34,8 @@ OC.L10N.register(
     "Version" : "Phiên bản",
     "Status" : "Trạng thái",
     "Actions" : "Hành động",
+    "Date:" : "Ngày:",
+    "Signature" : "Chữ ký",
     "Invoice" : "Hoá đơn",
     "Legal notice" : "Thông cáo pháp lý",
     "Year" : "Năm",

@@ -30,6 +30,8 @@ OC.L10N.register(
     "Version" : "Versión",
     "Status" : "Estatus",
     "Actions" : "Acciones",
+    "Signature" : "Firma",
+    "Header" : "Encabezado",
     "January" : "Enero",
     "February" : "Febrero",
     "March" : "Marzo",

@@ -32,6 +32,8 @@ OC.L10N.register(
     "Status" : "Statusi",
     "Actions" : "Veprimet",
     "Send by email" : "Dërgojeni me email",
+    "Signature" : "Nënshkrimi",
+    "Header" : "Header",
     "January" : "Janar",
     "February" : "Shkurt",
     "March" : "Mars",

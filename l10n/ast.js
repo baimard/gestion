@@ -50,6 +50,7 @@ OC.L10N.register(
     "Total without VAT" : "Total ensin IVA",
     "Save in Nextcloud" : "Guardar en Nextclou",
     "Date:" : "Data:",
+    "Signature" : "Firma",
     "Invoice" : "Factura",
     "Add invoice" : "Amestar una factura",
     "Date of service" : "Data del serviciu",

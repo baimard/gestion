@@ -5,7 +5,6 @@
 # 
 # Translators:
 # Alexander Diefenbacher <alexander-diefenbacher@gmx.de>, 2021
-# Joachim Sokolowski, 2022
 # René Gieling <github@dartcafe.de>, 2022
 # Lollo, 2022
 # Jasper vom Felde, 2022
@@ -18,15 +17,16 @@
 # Martin Wilichowski, 2025
 # Mark Ziegler <mark.ziegler@rakekniven.de>, 2025
 # Markus Eckstein, 2025
+# Joachim Sokolowski, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2025-04-07 02:13+0000\n"
+"POT-Creation-Date: 2025-04-08 02:13+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Markus Eckstein, 2025\n"
+"Last-Translator: Joachim Sokolowski, 2025\n"
 "Language-Team: German (https://app.transifex.com/nextcloud/teams/64236/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,7 +80,7 @@ msgstr "Kommentar"
 
 #: /app/lib/Db/Bdd.php:143 /app/templates/content/devisshow.php:59
 msgid "Offer valid for 1 month from : "
-msgstr ""
+msgstr "Das Angebot ist 1 Monat lang gültig ab:"
 
 #: /app/lib/Db/Bdd.php:158
 msgid "Text free"
@@ -1445,6 +1445,9 @@ msgid ""
 "To add a logo, drop the logo_header.png file in \".gestion\" folder at the "
 "root of your Nextcloud Files app. Remember to set \"Show hidden files\"."
 msgstr ""
+"Um ein Logo hinzuzufügen, die Datei logo.png im Ordner \".gestion\" im "
+"Stammverzeichnis der Nextcloud Files-App ablegen. Nicht vergessen, "
+"\"Versteckte Dateien anzeigen\" einzustellen."
 
 #: /app/templates/content/devisshow.php:10
 #: /app/templates/content/devisshow.php:41
@@ -1528,7 +1531,7 @@ msgstr "Bitte in der globalen Konfiguration einstellen"
 
 #: /app/templates/content/devisshow.php:111
 msgid "Approved for Agreement"
-msgstr ""
+msgstr "Für die Vereinbarung genehmigt"
 
 #: /app/templates/content/devisshow.php:114
 msgid "Date:"

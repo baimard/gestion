@@ -14,7 +14,7 @@ on:
 jobs:
   container:
     runs-on: ubuntu-latest
-    container: nextcloud
+    container: nextcloud:30
     steps:
       - name: Checkout
         uses: actions/checkout@v2

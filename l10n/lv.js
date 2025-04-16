@@ -30,7 +30,7 @@ OC.L10N.register(
     "Configuration" : "Konfigurācija",
     "Share with ..." : "Koplietot ar...",
     "Add" : "Pievienot",
-    "Delete" : "Dzēst",
+    "Delete" : "Izdzēst",
     "Quote" : "Citāts",
     "Version" : "Versija",
     "Status" : "Status",

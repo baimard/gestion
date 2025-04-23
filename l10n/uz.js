@@ -4,6 +4,7 @@ OC.L10N.register(
     "Email" : "Email",
     "Address" : "Address",
     "New" : "New",
+    "Comment" : "Izoh",
     "Choose" : "Choose",
     "Cancel" : "Cancel",
     "Disable" : "Oʻchirish",

@@ -125,6 +125,7 @@ appstore:
 	--exclude="../$(app_name)/Makefile" \
 	--exclude="../$(app_name)/*.log" \
 	--exclude="../$(app_name)/phpunit*xml" \
+	--exclude="../$(app_name)/phpunit*.dist" \
 	--exclude="../$(app_name)/composer.*" \
 	--exclude="../$(app_name)/js/node_modules" \
 	--exclude="../$(app_name)/node_modules" \

@@ -11,6 +11,7 @@ OC.L10N.register(
     "Enable" : "Enable",
     "Search" : "Search",
     "Showing 0 to 0 of 0 entries" : "0 ta yozuvdan 0 dan 0 gacha koʻrsatilmoqda",
+    "Next" : "Keyingisi",
     "Previous" : "Oldingi",
     "Email sent" : "Email sent",
     "Documentation" : "Hujjatlar",

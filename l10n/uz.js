@@ -17,6 +17,7 @@ OC.L10N.register(
     "Documentation" : "Hujjatlar",
     "Contact" : "Aloqa",
     "Releases" : "Relizlar",
+    "Send an email" : "Elektron pochta xabarini yuboring",
     "From" : "Dan",
     "To" : "Gacha",
     "Send" : "Send",

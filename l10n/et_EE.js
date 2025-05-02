@@ -66,6 +66,7 @@ OC.L10N.register(
     "Send an email" : "Saada e-kiri",
     "From" : "Saatja",
     "To" : "Saaja",
+    "Cc" : "Cc",
     "Subject" : "Teema",
     "Your invoice/quote" : "Sinu arve/pakkumine",
     "Dear," : "Lugupeetud,",

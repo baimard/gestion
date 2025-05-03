@@ -69,6 +69,7 @@ OC.L10N.register(
     "Cc" : "Cc",
     "Subject" : "Teema",
     "Your invoice/quote" : "Sinu arve/pakkumine",
+    "Body" : "Sisu",
     "Dear," : "Lugupeetud,",
     "Attached to this email you will find a new document." : "Selle e-kirja manusena leiad uue dokumendi.",
     "Best regards," : "Parimate soovidega,",

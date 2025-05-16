@@ -93,8 +93,7 @@ class PageController extends Controller {
 		// foreach($myaccount as $key => $value) {
 		// 	$prop[$key]= $value;
 		// }
-		$response = new TemplateResponse(	'gestion', 'index', array(	'test' => $prop, 
-											'path' => $this->myID, 
+		$response = new TemplateResponse(	'gestion', 'index', array(	'path' => $this->myID, 
 											'url' => $this->getNavigationLink(),
 											'CompaniesList' => $this->getCompaniesList(),
 											'CurrentCompany' => $this->session['CurrentCompany']

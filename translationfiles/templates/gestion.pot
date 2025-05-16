@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2025-04-06 02:19+0000\n"
+"POT-Creation-Date: 2025-05-16 02:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,82 +48,86 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:142 /app/templates/content/devis.php:14
+#: /app/lib/Db/Bdd.php:143 /app/templates/content/devis.php:14
 msgid "Quote number"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:142
+#: /app/lib/Db/Bdd.php:143
 msgid "New"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:142 /app/templates/content/devisshow.php:60
-#: /app/templates/content/factureshow.php:62
+#: /app/lib/Db/Bdd.php:143 /app/templates/content/devisshow.php:76
+#: /app/templates/content/factureshow.php:85
 msgid "Comment"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:157
+#: /app/lib/Db/Bdd.php:143 /app/templates/content/devisshow.php:59
+msgid "Offer valid for 1 month from : "
+msgstr ""
+
+#: /app/lib/Db/Bdd.php:158
 msgid "Text free"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:157 /app/templates/content/facture.php:16
-#: /app/templates/content/factureshow.php:44
+#: /app/lib/Db/Bdd.php:158 /app/templates/content/facture.php:16
+#: /app/templates/content/factureshow.php:67
 msgid "Means of payment"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:164 /app/templates/content/devisshow.php:58
-#: /app/templates/content/factureshow.php:60
+#: /app/lib/Db/Bdd.php:165 /app/templates/content/devisshow.php:74
+#: /app/templates/content/factureshow.php:83
 #: /app/templates/content/produit.php:12
 msgid "Reference"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:164 /app/templates/content/devisshow.php:59
-#: /app/templates/content/factureshow.php:61
+#: /app/lib/Db/Bdd.php:165 /app/templates/content/devisshow.php:75
+#: /app/templates/content/factureshow.php:84
 #: /app/templates/content/produit.php:13
 msgid "Designation"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:296
+#: /app/lib/Db/Bdd.php:327
 msgid "Your company name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:297 /app/templates/content/changelog.php:65
+#: /app/lib/Db/Bdd.php:328 /app/templates/content/changelog.php:65
 msgid "Your company contact last name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:298 /app/templates/content/changelog.php:63
+#: /app/lib/Db/Bdd.php:329 /app/templates/content/changelog.php:63
 msgid "Your company contact first name"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:299 /app/templates/content/changelog.php:67
+#: /app/lib/Db/Bdd.php:330 /app/templates/content/changelog.php:67
 msgid "Company legal information line one"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:300 /app/templates/content/changelog.php:69
+#: /app/lib/Db/Bdd.php:331 /app/templates/content/changelog.php:69
 msgid "Company legal information line two"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:301 /app/templates/content/changelog.php:75
+#: /app/lib/Db/Bdd.php:332 /app/templates/content/changelog.php:75
 msgid "Your company email"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:302 /app/templates/content/changelog.php:73
+#: /app/lib/Db/Bdd.php:333 /app/templates/content/changelog.php:73
 msgid "Your company phone"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:303 /app/templates/content/changelog.php:71
+#: /app/lib/Db/Bdd.php:334 /app/templates/content/changelog.php:71
 msgid "Your company address"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:305
+#: /app/lib/Db/Bdd.php:336
 msgid ""
 "All Legal mentions, disclaimer or everything you want to place in the footer."
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:306
+#: /app/lib/Db/Bdd.php:337
 msgid "EUR"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:307 /app/src/js/pdf.js:75
+#: /app/lib/Db/Bdd.php:338 /app/src/js/pdf.js:75
 msgid "INVOICE"
 msgstr ""
 
@@ -169,78 +173,78 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: /app/src/js/listener/main_listener.js:126
+#: /app/src/js/listener/main_listener.js:138
 msgid "Please create a new product"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:30 /app/src/js/modules/ajaxRequest.js:65
-#: /app/src/js/modules/ajaxRequest.js:148
-#: /app/src/js/modules/ajaxRequest.js:219
+#: /app/src/js/modules/ajaxRequest.js:31 /app/src/js/modules/ajaxRequest.js:67
+#: /app/src/js/modules/ajaxRequest.js:150
+#: /app/src/js/modules/ajaxRequest.js:221
 msgid "Modification saved"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:32 /app/src/js/modules/ajaxRequest.js:36
-#: /app/src/js/modules/ajaxRequest.js:67 /app/src/js/modules/ajaxRequest.js:71
-#: /app/src/js/modules/ajaxRequest.js:152
-#: /app/src/js/modules/ajaxRequest.js:157
+#: /app/src/js/modules/ajaxRequest.js:33 /app/src/js/modules/ajaxRequest.js:36
+#: /app/src/js/modules/ajaxRequest.js:69 /app/src/js/modules/ajaxRequest.js:73
+#: /app/src/js/modules/ajaxRequest.js:154
+#: /app/src/js/modules/ajaxRequest.js:159
 msgid "There is an error with the format, please check the documentation"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:88
+#: /app/src/js/modules/ajaxRequest.js:90
 msgid "New company created"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:91 /app/src/js/modules/ajaxRequest.js:95
-#: /app/src/js/modules/ajaxRequest.js:117
-#: /app/src/js/modules/ajaxRequest.js:121
+#: /app/src/js/modules/ajaxRequest.js:93 /app/src/js/modules/ajaxRequest.js:97
+#: /app/src/js/modules/ajaxRequest.js:119
+#: /app/src/js/modules/ajaxRequest.js:123
 msgid "There is an error."
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:103
+#: /app/src/js/modules/ajaxRequest.js:105
 msgid "Are you sure you want to delete? (All data will be lost)"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:114
+#: /app/src/js/modules/ajaxRequest.js:116
 msgid "Company deleted"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:172
+#: /app/src/js/modules/ajaxRequest.js:174
 msgid "Are you sure you want to duplicate?"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:183
+#: /app/src/js/modules/ajaxRequest.js:185
 msgid "Duplicated"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:193
-#: /app/src/js/modules/ajaxRequest.js:229
+#: /app/src/js/modules/ajaxRequest.js:195
+#: /app/src/js/modules/ajaxRequest.js:231
 msgid "Nothing changed"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:208
+#: /app/src/js/modules/ajaxRequest.js:210
 msgid "Are you sure you want to delete?"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:389 /app/src/js/objects/client.js:156
+#: /app/src/js/modules/ajaxRequest.js:424 /app/src/js/objects/client.js:156
 #: /app/src/js/objects/devis.js:126
 msgid "Cancel"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:469
-#: /app/src/js/modules/ajaxRequest.js:505
+#: /app/src/js/modules/ajaxRequest.js:545
+#: /app/src/js/modules/ajaxRequest.js:581
 msgid "Save in"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:475
+#: /app/src/js/modules/ajaxRequest.js:551
 msgid "There is an error"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:505
+#: /app/src/js/modules/ajaxRequest.js:581
 msgid "(do not forget to show hidden folders)"
 msgstr ""
 
-#: /app/src/js/modules/ajaxRequest.js:534
-#: /app/src/js/modules/ajaxRequest.js:561
+#: /app/src/js/modules/ajaxRequest.js:610
+#: /app/src/js/modules/ajaxRequest.js:637
 msgid "Information : "
 msgstr ""
 
@@ -984,67 +988,67 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:17
+#: /app/src/js/modules/mainFunction.js:16
 msgid "Search"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:18
+#: /app/src/js/modules/mainFunction.js:17
 msgid "No data available in table"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:19
+#: /app/src/js/modules/mainFunction.js:18
 msgid "Showing {start} to {end} of {total} entries"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:20
+#: /app/src/js/modules/mainFunction.js:19
 msgid "Showing 0 to 0 of 0 entries"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:21
+#: /app/src/js/modules/mainFunction.js:20
 msgid "Loading records …"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:22
+#: /app/src/js/modules/mainFunction.js:21
 msgid "Processing …"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:23
+#: /app/src/js/modules/mainFunction.js:22
 msgid "{max} entries filtered"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:24
+#: /app/src/js/modules/mainFunction.js:23
 msgid "Show {menu} entries"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:25
+#: /app/src/js/modules/mainFunction.js:24
 msgid "No corresponding entry"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:27
+#: /app/src/js/modules/mainFunction.js:26
 msgid "First"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:28
+#: /app/src/js/modules/mainFunction.js:27
 msgid "Last"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:29
+#: /app/src/js/modules/mainFunction.js:28
 msgid "Next"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:30
+#: /app/src/js/modules/mainFunction.js:29
 msgid "Previous"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:54
+#: /app/src/js/modules/mainFunction.js:53
 msgid "Editable (Click to change)"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:61
+#: /app/src/js/modules/mainFunction.js:60
 msgid "Your global Nextcloud mail server need to be configured"
 msgstr ""
 
-#: /app/src/js/modules/mainFunction.js:68
+#: /app/src/js/modules/mainFunction.js:67
 msgid "Added!"
 msgstr ""
 
@@ -1348,9 +1352,9 @@ msgstr ""
 msgid "Customer quote"
 msgstr ""
 
-#: /app/templates/content/devis.php:16 /app/templates/content/devisshow.php:4
+#: /app/templates/content/devis.php:16 /app/templates/content/devisshow.php:20
 #: /app/templates/content/facture.php:18
-#: /app/templates/content/factureshow.php:4
+#: /app/templates/content/factureshow.php:20
 msgid "Version"
 msgstr ""
 
@@ -1359,100 +1363,117 @@ msgid "Status"
 msgstr ""
 
 #: /app/templates/content/devis.php:18 /app/templates/content/facture.php:20
-#: /app/templates/content/index.php:19 /app/templates/content/produit.php:15
+#: /app/templates/content/index.php:19 /app/templates/content/produit.php:16
 msgid "Actions"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:2
-msgid "Quote #"
-msgstr ""
-
-#: /app/templates/content/devisshow.php:11
-#: /app/templates/content/factureshow.php:10
-msgid "FROM"
-msgstr ""
-
-#: /app/templates/content/devisshow.php:23
-#: /app/templates/content/factureshow.php:22
+#: /app/templates/content/devisshow.php:8
+#: /app/templates/content/devisshow.php:39
+#: /app/templates/content/factureshow.php:8
+#: /app/templates/content/factureshow.php:41
 msgid "Company logo"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:25
-#: /app/templates/content/factureshow.php:24
+#: /app/templates/content/devisshow.php:10
+#: /app/templates/content/devisshow.php:41
+#: /app/templates/content/factureshow.php:10
+#: /app/templates/content/factureshow.php:43
 msgid "You can add your company logo here."
 msgstr ""
 
-#: /app/templates/content/devisshow.php:25
-#: /app/templates/content/factureshow.php:24
+#: /app/templates/content/devisshow.php:10
+#: /app/templates/content/factureshow.php:10
+msgid ""
+"To add a logo, drop the logo_header.png file in \".gestion\" folder at the "
+"root of your Nextcloud Files app. Remember to set \"Show hidden files\"."
+msgstr ""
+
+#: /app/templates/content/devisshow.php:10
+#: /app/templates/content/devisshow.php:41
+#: /app/templates/content/factureshow.php:10
+#: /app/templates/content/factureshow.php:43
+msgid "This message will not appear on generated PDF."
+msgstr ""
+
+#: /app/templates/content/devisshow.php:27
+#: /app/templates/content/factureshow.php:28
+msgid "FROM"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:41
+#: /app/templates/content/factureshow.php:43
 msgid ""
 "To add a logo, drop the logo.png file in \".gestion\" folder at the root of "
 "your Nextcloud Files app. Remember to set \"Show hidden files\"."
 msgstr ""
 
-#: /app/templates/content/devisshow.php:25
-#: /app/templates/content/factureshow.php:24
-msgid "This message will not appear on generated PDF."
-msgstr ""
-
-#: /app/templates/content/devisshow.php:30
-#: /app/templates/content/factureshow.php:29
+#: /app/templates/content/devisshow.php:46
+#: /app/templates/content/factureshow.php:49
 msgid "TO"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:43
-msgid "Offer valid for 1 month from"
-msgstr ""
-
-#: /app/templates/content/devisshow.php:61
-#: /app/templates/content/factureshow.php:63
+#: /app/templates/content/devisshow.php:77
+#: /app/templates/content/factureshow.php:86
 msgid "Quantity"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:62
-#: /app/templates/content/factureshow.php:64
+#: /app/templates/content/devisshow.php:78
+#: /app/templates/content/factureshow.php:87
 #: /app/templates/content/produit.php:14
 msgid "Unit price without VAT"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:63
-#: /app/templates/content/devisshow.php:77
-#: /app/templates/content/factureshow.php:65
-#: /app/templates/content/factureshow.php:78
+#: /app/templates/content/devisshow.php:79
+#: /app/templates/content/devisshow.php:93
+#: /app/templates/content/factureshow.php:88
+#: /app/templates/content/factureshow.php:101
 msgid "Total without VAT"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:69 /app/templates/content/produit.php:7
+#: /app/templates/content/devisshow.php:85 /app/templates/content/produit.php:7
 msgid "Add product"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:70
-#: /app/templates/content/factureshow.php:71
+#: /app/templates/content/devisshow.php:86
+#: /app/templates/content/factureshow.php:94
 msgid "Save in Nextcloud"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:71
-#: /app/templates/content/factureshow.php:72
+#: /app/templates/content/devisshow.php:87
+#: /app/templates/content/factureshow.php:95
 msgid "Send by email"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:78
-#: /app/templates/content/factureshow.php:79
+#: /app/templates/content/devisshow.php:94
+#: /app/templates/content/factureshow.php:102
 msgid "VAT Rate"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:79
-#: /app/templates/content/factureshow.php:80
+#: /app/templates/content/devisshow.php:95
+#: /app/templates/content/factureshow.php:103
 msgid "Total VAT"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:80
-#: /app/templates/content/factureshow.php:81
+#: /app/templates/content/devisshow.php:96
+#: /app/templates/content/factureshow.php:104
 msgid "Total Price"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:88
-#: /app/templates/content/factureshow.php:89
+#: /app/templates/content/devisshow.php:104
+#: /app/templates/content/factureshow.php:112
 msgid "Please set in global configuration"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:111
+msgid "Approved for Agreement"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:114
+msgid "Date:"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:118
+msgid "Signature"
 msgstr ""
 
 #: /app/templates/content/facture.php:5
@@ -1468,7 +1489,7 @@ msgid "Invoice number"
 msgstr ""
 
 #: /app/templates/content/facture.php:14
-#: /app/templates/content/factureshow.php:43
+#: /app/templates/content/factureshow.php:66
 msgid "Date of service"
 msgstr ""
 
@@ -1477,15 +1498,11 @@ msgid "Payment date"
 msgstr ""
 
 #: /app/templates/content/facture.php:17
-#: /app/templates/content/factureshow.php:44
+#: /app/templates/content/factureshow.php:67
 msgid "Associated quote"
 msgstr ""
 
-#: /app/templates/content/factureshow.php:2
-msgid "Invoice #"
-msgstr ""
-
-#: /app/templates/content/factureshow.php:43
+#: /app/templates/content/factureshow.php:66
 msgid "Settlement date"
 msgstr ""
 
@@ -1519,6 +1536,10 @@ msgstr ""
 
 #: /app/templates/content/produit.php:5
 msgid "Product"
+msgstr ""
+
+#: /app/templates/content/produit.php:15
+msgid "Header"
 msgstr ""
 
 #: /app/templates/content/statistique.php:5
@@ -1603,7 +1624,7 @@ msgstr ""
 #: /app/templates/modal/configuration_modal.php:50
 #: /app/templates/modal/configuration_modal.php:56
 #: /app/templates/modal/configuration_modal.php:62
-#: /app/templates/modal/configuration_modal.php:80
+#: /app/templates/modal/configuration_modal.php:81
 msgid "Loading …"
 msgstr ""
 

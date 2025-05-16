@@ -26,6 +26,8 @@ OC.L10N.register(
     "Version" : "Fersiwn",
     "Status" : "Statws",
     "Actions" : "Gweithredoedd",
+    "Date:" : "Dyddiad:",
+    "Signature" : "Llofnod",
     "Invoice" : "Anfoneb",
     "Year" : "Blwyddyn",
     "January" : "Ionawr",

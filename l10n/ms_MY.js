@@ -13,6 +13,7 @@ OC.L10N.register(
     "Documentation" : "Dokumentasi",
     "Send" : "Hantar",
     "Delete" : "Padam",
+    "Date:" : "Tarikh:",
     "January" : "Januari",
     "February" : "Februari",
     "March" : "Mac",

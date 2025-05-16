@@ -31,6 +31,8 @@ OC.L10N.register(
     "Version" : "Versi",
     "Status" : "Status",
     "Actions" : "Tindakan",
+    "Date:" : "Tanggal:",
+    "Signature" : "Tanda",
     "Legal notice" : "Pemberitahuan hukum",
     "Year" : "Tahun",
     "January" : "Januari",

@@ -237,7 +237,7 @@ OC.L10N.register(
     "No data available in table" : "Sem dados disponíveis na tabela",
     "Showing {start} to {end} of {total} entries" : "Mostrando {start} a {end} de {total} entradas",
     "Showing 0 to 0 of 0 entries" : "Mostrando 0 a 0 de 0 entradas",
-    "Loading records …" : "Carregando registros…",
+    "Loading records …" : "Carregando registros …",
     "Processing …" : "Em processamento …",
     "{max} entries filtered" : "{max} entradas filtradas",
     "Show {menu} entries" : "Mostrar {menu} entradas",

@@ -54,7 +54,7 @@
         <span data-html2canvas-ignore class="inline"><?php p($l->t('Version'));?></span>
         <span data-html2canvas-ignore id="devisversion" class="inline editable" data-table="devis" data-column="version" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->version; ?></span>
         <span id="delay" class="inline editable" data-table="devis" data-column="delay" data-id="<?php echo $_['devis'][0]->devisid; ?>">
-            <?php echo ($_['devis'][0]->delay == "" ) ? p($l->t('Offer valid for 1 month from : ')) : $_['devis'][0]->delay ;?>
+            <?php echo ($_['devis'][0]->delay == "" ) ? p($l->t('Offer valid for 1 month from: ')) : $_['devis'][0]->delay ;?>
         </span>
         <span class="inline"><?php echo (new DateTime($_['devis'][0]->date))->format('d-m-Y'); ?></span>
     </div>

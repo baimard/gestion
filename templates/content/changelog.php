@@ -1,7 +1,7 @@
 <div syle="display: none;" id="modalConfig" class="modal">
 <div class="modal-content">
 	<span class="modalClose">&times;</span>
-	<h2><?php p($l->t('Welcome to GESTION')); ?> 2.8.1</h2>
+	<h2><?php p($l->t('Welcome to GESTION')); ?> 2.8.2</h2>
 
 	<p style="font-size:14px;margin-bottom:20px;">
 		<b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> 

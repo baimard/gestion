@@ -65,6 +65,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install Composer dependencies (no-dev)
+        run: |
+          cd ${{ env.APP_NAME }}
+          composer install --no-dev --prefer-dist --no-progress --no-suggest
+
       - name: Package ${{ env.APP_NAME }} ${{ env.APP_VERSION }} with makefile
         run: |
           cd ${{ env.APP_NAME }}

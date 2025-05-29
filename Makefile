@@ -168,11 +168,8 @@ translationtool.phar: install-composer-deps
 	chmod +x translationtool.phar
 
 install-composer-deps: composer.phar
-	php composer.phar install
-	php composer.phar install -d src
-
-composer.phar:
-	curl -sS https://getcomposer.org/installer | php
+	composer update
+	composer install --no-dev --optimize-autoloader --classmap-authoritative
 
 cleanComposer:
 	rm -f translationtool.phar composer.lock src/composer.lock

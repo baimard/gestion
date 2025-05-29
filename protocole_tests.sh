@@ -14,9 +14,8 @@ sudo docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:31-ap
 
 echo "Installation"
 sudo docker exec -it nextcloud bash -c "apt update ; apt install -y git make nodejs npm firefox-esr unzip wget vim"
-# docker exec -it nextcloud bash -c "cd /tmp; wget https://github.com/mozilla/geckodriver/releases/download/#v0.30.0/geckodriver-v0.30.0-linux64.tar.gz ; tar xvzf geckodriver-v0.30.0-linux64.tar.gz -C /tmp/ ;  chown -R root:root /tmp/geckodriver* ; mv /tmp/geckodriver* /opt/ ; ln -s /opt/geckodriver/geckodriver /usr/local/bin/geckodriver"
 sudo docker exec -it nextcloud bash -c "git clone https://github.com/baimard/gestion.git /var/www/html/apps/gestion ; cd /var/www/html/apps/gestion ; git checkout dev ; chown www-data:root -R /var/www/html/apps/gestion"
-sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make npm-init ; make composer;"
+sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make npm-init ; make composer; vendor/bin/bdi detect drivers"
 sleep 10
 
 

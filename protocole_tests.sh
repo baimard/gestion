@@ -15,9 +15,7 @@ sudo docker run -d --rm --network next --name nextcloud -p 80:80 nextcloud:31-ap
 echo "Installation"
 sudo docker exec -it nextcloud bash -c "apt update ; apt install -y git make nodejs npm firefox-esr unzip wget vim"
 # docker exec -it nextcloud bash -c "cd /tmp; wget https://github.com/mozilla/geckodriver/releases/download/#v0.30.0/geckodriver-v0.30.0-linux64.tar.gz ; tar xvzf geckodriver-v0.30.0-linux64.tar.gz -C /tmp/ ;  chown -R root:root /tmp/geckodriver* ; mv /tmp/geckodriver* /opt/ ; ln -s /opt/geckodriver/geckodriver /usr/local/bin/geckodriver"
-# docker exec -it nextcloud bash -c "git clone https://github.com/baimard/gestion.git /var/www/html/apps/gestion ; cd /var/www/html/apps/gestion ; git checkout dev-2.1.7 ; chown www-data:root -R /var/www/html/apps/gestion"
 sudo docker exec -it nextcloud bash -c "git clone https://github.com/baimard/gestion.git /var/www/html/apps/gestion ; cd /var/www/html/apps/gestion ; git checkout dev ; chown www-data:root -R /var/www/html/apps/gestion"
-# sudo docker exec -it nextcloud bash -c "cd /root ; wget https://github.com/baimard/gestion/releases/download/2.3.3/gestion.tar.gz ; tar -zxf /root/gestion.tar.gz --directory /var/www/html/apps ; chown www-data:root -R /var/www/html/apps/gestion"
 sudo docker exec -u www-data -it nextcloud bash -c "cd apps/gestion ; make npm-init ; make composer;"
 sleep 10
 

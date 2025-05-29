@@ -1,5 +1,3 @@
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
 import { showMessage } from "@nextcloud/dialogs";
 import { baseUrl } from "./modules/mainFunction.js";
 
@@ -27,57 +25,67 @@ export function sendMail(myData) {
 
 export function capture(afterCapturefunction) {
   showMessage(t("gestion", "Creation in progress …"));
-
-  document.querySelector(".bootstrap-iso").style.width = "1200px";
-  document.querySelector(".bootstrap-iso").style.paddingRight = "20px";
-  document.querySelector(".bootstrap-iso").style.paddingLeft = "20px";
   
-  html2canvas(document.querySelector(".bootstrap-iso"), {
-    scrollY: -window.scrollY,
-    dpi: 600,
-  }).then((canvas) => {
-    var data = genPDF(canvas.toDataURL("image/jpg"), canvas);
-    afterCapturefunction(data);
-  });
-
-  document.querySelector(".bootstrap-iso").style.width = "";
-  document.querySelector(".bootstrap-iso").style.paddingRight = "";
-  document.querySelector(".bootstrap-iso").style.paddingLeft = "";
-}
-
-function genPDF(imgData, canvas) {
-  const doc = new jsPDF("p", "mm", "a4");
-  const imgWidth = 210;
-  const pageHeight = 295;
-  const imgHeight = canvas.height * imgWidth / canvas.width;
-  let heightLeft = imgHeight;
-  let position = 0;
-
-  doc.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-  heightLeft -= pageHeight;
-
-  while (heightLeft >= 0) {
-    position += heightLeft - imgHeight;
-    doc.addPage();
-    doc.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-    heightLeft -= pageHeight;
-  }
-
-  var pdf = btoa(doc.output());
-
-  var n = "";
-  var to = $("#to").val().split(";");
-  var Cc = $("#Cc").val().split(";");
-  var subject = $("#subject").val();
-  var body = $("#body").val();
-
-  if ($("#factureid").length) {
-    n = t("gestion", "INVOICE") + "_" + $("#pdf").data("name");
+  const pdfElement = document.getElementById("pdf");
+  const pdfName = pdfElement.getAttribute("data-name");
+  
+  const folder = document.getElementById("theFolder").value;
+  const pdfFolder = pdfElement.getAttribute("data-folder");
+  
+  const element = document.querySelector("#PDFcontent");
+  const clonedElement = element.cloneNode(true);
+  clonedElement.querySelectorAll('[data-html2canvas-ignore]').forEach(el => el.remove());
+  const htmlContent = clonedElement.outerHTML;
+  
+  const styles = Array.from(document.styleSheets)
+  .map(sheet => {
+    try {
+      return Array.from(sheet.cssRules || [])
+      .map(rule => rule.cssText)
+      .join('\n');
+    } catch (e) {
+      return '';
+    }
+  })
+  .join('\n');
+  
+  let name = "";
+  if (document.getElementById("factureid")) {
+    name = t("gestion", "INVOICE") + "_" + pdfName + ".pdf";
   } else {
-    n = t("gestion", "QUOTE") + "_" + $("#pdf").data("name");
+    name = t("gestion", "QUOTE") + "_" + pdfName + ".pdf";
   }
-
-  var myData = { name: n, subject: subject, body: body, to: JSON.stringify(to), Cc : JSON.stringify(Cc), content: pdf, folder: $("#theFolder").val() + "/" + $("#pdf").data("folder") + "/" };
-
-  return myData;
+  
+  fetch(baseUrl + '/generatePDF', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'requesttoken': OC.requestToken
+    },
+    body: JSON.stringify({
+      html: htmlContent,
+      css: styles,
+      name: name,
+      folder: folder + "/" + pdfFolder + "/"
+    })
+  })
+  .then(response => {
+    if (!response.ok) throw new Error("Erreur serveur");
+    return response.blob();
+  })
+  .then(blob => {
+    
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = name;
+    a.click();
+    window.URL.revokeObjectURL(url);
+  
+    showMessage(t("gestion", "PDF créé avec succès."));
+  })
+  .catch(error => {
+    console.error("Erreur lors de la génération du PDF :", error);
+    showMessage(t("gestion", "Erreur lors de la création du PDF."));
+  });
 }

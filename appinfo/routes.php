@@ -54,5 +54,7 @@ return [
         ['name' => 'page#setCurrentCompany', 'url' => '/updateSession', 'verb' => 'POST'],
         ['name' => 'page#addShareUser', 'url' => '/addShareUser', 'verb' => 'POST'],
         ['name' => 'page#delShareUser', 'url' => '/delShareUser', 'verb' => 'DELETE'],
+
+        ['name' => 'page#generatePDF', 'url' => '/generatePDF', 'verb' => 'POST'],
     ]
 ];

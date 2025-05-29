@@ -1,6 +1,8 @@
 <?php
 namespace OCA\Gestion\Controller;
 
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 use OCP\IRequest;
 use OCP\Mail\IMailer;
 use OCP\Files\IRootFolder;
@@ -18,6 +20,11 @@ use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\IUserManager;
 use OCP\IUser;
 use OCP\Accounts\IAccountManager;
+
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+use Mpdf\Mpdf;
 
 class PageController extends Controller {
 	private $myDb;
@@ -679,15 +686,14 @@ class PageController extends Controller {
 
 		$clean_folder = html_entity_decode($folder);
 		$clean_name = html_entity_decode($name);
-		try {
-			$this->storage->newFolder($clean_folder);
-        } catch(\OCP\Files\NotPermittedException $e) {
-            
+			try {
+				$this->storage->newFolder($clean_folder);
+			} catch(\OCP\Files\NotPermittedException $e) {
         }
 
 		try {
 			try {
-				$ff = $clean_folder . $clean_name . ".pdf";
+				$ff = $clean_folder . $clean_name;
 				$this->storage->newFile($ff);
 				$file = $this->storage->get($ff);
 				$data = base64_decode($content);
@@ -764,4 +770,43 @@ class PageController extends Controller {
 		return $this->myDb->getAnnualTurnoverPerMonthNoVat($this->session['CurrentCompany']);
 	}
 
+	/**
+	 * @NoAdminRequired
+	 * @UseSession
+	 * @param string $html
+	 * @param string $css
+	 * @param string $name
+	 * @param string $folder
+	 * @return void	
+	*/
+	#[UseSession]
+	public function generatePDF($html, $css, $name, $folder) {
+
+		try {
+			$mpdf = new Mpdf([
+				'mode' => 'utf-8',
+				'format' => 'A4',
+				'margin_top' => 10,
+				'margin_bottom' => 10,
+				'margin_left' => 10,
+				'margin_right' => 10,
+			]);
+
+    		$mpdf->WriteHTML($css, \Mpdf\HTMLParserMode::HEADER_CSS);
+			$mpdf->WriteHTML($html, \Mpdf\HTMLParserMode::HTML_BODY);
+
+			$pdfContent = $mpdf->Output('', \Mpdf\Output\Destination::STRING_RETURN);
+			$encoded = base64_encode($pdfContent);
+			$this->savePDF($encoded, $folder, $name);
+
+			// Envoi du PDF dans la réponse HTTP
+			header('Content-Type: application/pdf');
+			header('Content-Disposition: attachment; filename="' . $name . '.pdf"');
+			$mpdf->Output('', \Mpdf\Output\Destination::INLINE);
+		} catch (\Mpdf\MpdfException $e) {
+			http_response_code(500);
+			echo "Erreur lors de la génération du PDF : " . $e->getMessage();
+		}
+
+	}
 }

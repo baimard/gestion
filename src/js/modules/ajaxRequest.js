@@ -16,7 +16,6 @@ export async function updateDB(table, column, data, id) {
         data: data,
         id: id,
     };
-    console.log("debut update");
     try {
         const response = await fetch(baseUrl + '/update', {
             method: 'POST',
@@ -35,7 +34,6 @@ export async function updateDB(table, column, data, id) {
     } catch (error) {
         showError(t('gestion', 'There is an error with the format, please check the documentation'));
     }
-    console.log("fin update");
 }
 
 
@@ -121,7 +119,6 @@ export function deleteCompany() {
         })
         .catch(error => {
             showError(t('gestion', 'There is an error.'));
-            console.log(error);
         });
     }
 }
@@ -284,7 +281,6 @@ export function getStats() {
         }
     })
     .then(data => {
-        console.log(data);
         document.getElementById("statsclient").textContent = data.client;
         document.getElementById("statsdevis").textContent = data.devis;
         document.getElementById("statsfacture").textContent = data.facture;
@@ -317,7 +313,6 @@ export function configuration(f1) {
  * 
  */
 export function isconfig() {
-    console.log("isconfig");
     $.ajax({
         url: baseUrl + '/isconfig',
         type: 'GET',
@@ -484,7 +479,7 @@ export function getProduitsById() {
                 produitsBody.innerHTML += `<tr style="background-color:rgb(198, 198, 198);">
                     <td COLSPAN="6">
                         <div>
-                            <div style="display:inline;" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="selectable"><b>${myresp.reference}</b></div>
+                            <div data-val="${myresp.pid}" data-id="${myresp.pdid}" class="inline selectable">${myresp.reference}</div>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" class="drop_up material-symbols ${deleteDisable}">arrow_drop_up</div>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="drop_down material-symbols ${deleteDisable}">arrow_drop_down</div>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
@@ -496,7 +491,7 @@ export function getProduitsById() {
                 produitsBody.innerHTML += `<tr>
                 <td>
                     <div>
-                        <div style="display:inline;" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="selectable">${myresp.reference}</div>
+                        <div data-val="${myresp.pid}" data-id="${myresp.pdid}" class="inline selectable">${myresp.reference}</div>
                         <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" class="drop_up material-symbols ${deleteDisable}">arrow_drop_up</div>
                         <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="drop_down material-symbols ${deleteDisable}">arrow_drop_down</div>
                         <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
@@ -608,7 +603,6 @@ export function addShareUser(email){
     })
     .then(data => {
         showMessage(t('gestion', 'Information : ') + data.data);
-        console.log(data);
     })
     
 };

@@ -4,25 +4,29 @@
     <id>gestion</id>
     <name>Gestion</name>
     <summary lang="en">Simplified invoice management application</summary>
-    <description lang="en"><![CDATA[# Company management by Gestion
+    <description lang="en"><![CDATA[# Company Management with Gestion
+Gestion is a Nextcloud application designed to simplify invoicing for freelancers and micro-enterprises.
 
-This application allows the management of invoicing in a very simple way for Micro-Entreprise.
+Key Features:
+* Add and manage customer profiles
+* Create and customize product entries
+* Generate quotes and invoices in PDF format
+* Send PDFs directly via email from the application
+* Store generated documents securely within your Nextcloud instance
+* Track your business activities efficiently
 
-Functionality:
+✨ The PDF generation system has been recently redesigned to improve layout, styling, and compatibility.
 
-* Add customer
-* Generate a quote
-* Generate an invoice
-* Generate product lines to include in quotes
-* You can generate PDFs directly from the app and save them to your Nextcloud
+This application is tailored to meet the invoicing needs of small businesses, particularly within the French market. It offers a user-friendly interface and integrates seamlessly with Nextcloud's ecosystem.
 
-Presentation video in user documentation
+A presentation video is available in the user documentation to guide you through the application's features.
 
-If you need to adapt this application to your country laws, please open issue.
+If you require adaptations of this application to comply with your country's regulations, please open an issue on the GitHub repository.
 
-[Love my work ? Buy me a coffee !](https://www.buymeacoffee.com/benjaminaimard)
-    ]]></description>
-    <version>2.7.6</version>
+[![Donate](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-yellow.svg)](https://www.buymeacoffee.com/benjaminaimard)
+
+]]></description>
+    <version>2.8.0</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>

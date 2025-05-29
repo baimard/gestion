@@ -13,5 +13,9 @@
         "symfony/panther": "^1.1",
         "dbrekelmans/bdi": "^1.0",
         "symfony/framework-bundle": "^5.4"
+    },
+    "require": {
+        "dompdf/dompdf": "^3.1",
+        "mpdf/mpdf": "^8.2"
     }
 }

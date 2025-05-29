@@ -28,11 +28,11 @@ export class Devis {
   getDTRow() {
     let myrow = [
       `<div>${this.user_id}</div>`,
-      `<input style="margin:0;padding:0;" class="inputDate" type="date" value=${this.date} data-table="devis" data-column="date" data-id="${this.id}"/>`,
-      `<div class="editable" data-table="devis" data-column="num" data-id="${this.id}" style="display:inline">${this.num}</div>`,
+      `<input class="inputDate" type="date" value=${this.date} data-table="devis" data-column="date" data-id="${this.id}"/>`,
+      `<div class="inline editable" data-table="devis" data-column="num" data-id="${this.id}">${this.num}</div>`,
       `<div class="loadSelect_listclient" data-table="devis" data-column="id_client" data-id="${this.id}" data-current="${this.cid}">${this.entreprise} - ${this.prenom} ${this.nom}</div>`,
-      `<div class="editable" data-table="devis" data-column="version" data-id="${this.id}" style="display:inline">${this.version}</div>`,
-      `<div class="editable" data-table="devis" data-column="mentions" data-id="${this.id}" style="display:inline">${this.mentions}</div>`,
+      `<div class="inline editable" data-table="devis" data-column="version" data-id="${this.id}">${this.version}</div>`,
+      `<div class="inline editable" data-table="devis" data-column="mentions" data-id="${this.id}" >${this.mentions}</div>`,
       `<div class="material-symbols">
         <span title="${t('gestion', 'Open')}"><a href="${this.baseUrl}">open_in_new</a></span>
         <span title="${t('gestion', 'Duplicate')}" data-modifier="devis" data-id=${this.id} data-table="devis" class="link duplicateItem">content_copy</span>

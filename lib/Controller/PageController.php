@@ -1,6 +1,8 @@
 <?php
 namespace OCA\Gestion\Controller;
 
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 use OCP\IRequest;
 use OCP\Mail\IMailer;
 use OCP\Files\IRootFolder;
@@ -18,6 +20,11 @@ use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\IUserManager;
 use OCP\IUser;
 use OCP\Accounts\IAccountManager;
+
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+use Mpdf\Mpdf;
 
 class PageController extends Controller {
 	private $myDb;
@@ -87,16 +94,10 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function index() {
-		// $res = $this->userManager->get('nextcloud');
-		// $myaccount = $this->accountManager->getAccount($res);
-		// $prop = [];
-		// foreach($myaccount as $key => $value) {
-		// 	$prop[$key]= $value;
-		// }
 		$response = new TemplateResponse(	'gestion', 'index', array(	'path' => $this->myID, 
 											'url' => $this->getNavigationLink(),
 											'CompaniesList' => $this->getCompaniesList(),
-											'CurrentCompany' => $this->session['CurrentCompany']
+											'CurrentCompany' => $this->session->get('CurrentCompany')
 												)
 											);  // templates/index.php
 		return $response;
@@ -113,7 +114,7 @@ class PageController extends Controller {
 		return new TemplateResponse('gestion', 'devis', array(	'path' => $this->myID, 
 																'url' => $this->getNavigationLink(),
 																'CompaniesList' => $this->getCompaniesList(),
-																'CurrentCompany' => $this->session['CurrentCompany']
+																'CurrentCompany' => $this->session->get('CurrentCompany')
 															)
 														);  // templates/devis.php
 	}
@@ -129,7 +130,7 @@ class PageController extends Controller {
 		return new TemplateResponse('gestion', 'facture', array(	'path' => $this->myID, 
 																	'url' => $this->getNavigationLink(),
 																	'CompaniesList' => $this->getCompaniesList(),
-																	'CurrentCompany' => $this->session['CurrentCompany']
+																	'CurrentCompany' => $this->session->get('CurrentCompany')
 																)
 															);  // templates/facture.php
 	}
@@ -145,7 +146,7 @@ class PageController extends Controller {
 		return new TemplateResponse('gestion', 'produit', array(	'path' => $this->myID, 
 																	'url' => $this->getNavigationLink(),
 																	'CompaniesList' => $this->getCompaniesList(),
-																	'CurrentCompany' => $this->session['CurrentCompany']
+																	'CurrentCompany' => $this->session->get('CurrentCompany')
 																)
 															);  // templates/produit.php
 	}
@@ -161,7 +162,7 @@ class PageController extends Controller {
 		return new TemplateResponse('gestion', 'statistique', array(	'path' => $this->myID, 
 																		'url' => $this->getNavigationLink(),
 																		'CompaniesList' => $this->getCompaniesList(),
-																		'CurrentCompany' => $this->session['CurrentCompany']
+																		'CurrentCompany' => $this->session->get('CurrentCompany')
 																	)
 																);  // templates/statistique.php
 	}
@@ -178,7 +179,7 @@ class PageController extends Controller {
 																		'path' => $this->myID, 
 																		'url' => $this->getNavigationLink(),
 																		'CompaniesList' => $this->getCompaniesList(),
-																		'CurrentCompany' => $this->session['CurrentCompany']
+																		'CurrentCompany' => $this->session->get('CurrentCompany')
 																	)
 																);  // templates/legalnotice.php
 	}
@@ -195,7 +196,7 @@ class PageController extends Controller {
 																	'path' => $this->myID, 
 																	'url' => $this->getNavigationLink(),
 																	'CompaniesList' => $this->getCompaniesList(),
-																	'CurrentCompany' => $this->session['CurrentCompany']
+																	'CurrentCompany' => $this->session->get('CurrentCompany')
 																)
 															);  // templates/legalnotice.php
 	}
@@ -208,13 +209,13 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function config() {
-		$res = $this->myDb->checkConfig($this->session['CurrentCompany'], $this->myID);
+		$res = $this->myDb->checkConfig($this->session->get('CurrentCompany'), $this->myID);
 		if($res < 1 ){
-			$this->session['CurrentCompany'] = '';
+			$this->session->set('CurrentCompany','');
 		}
 		
-		if($this->session['CurrentCompany'] != ''){
-			foreach($this->myDb->getUsersShared($this->session['CurrentCompany']) as $user) {
+		if($this->session->get('CurrentCompany') != ''){
+			foreach($this->myDb->getUsersShared($this->session->get('CurrentCompany')) as $user) {
 				$shareUsers[] = $this->userManager->get($user['id_nextcloud']);
 			}
 		}
@@ -222,7 +223,7 @@ class PageController extends Controller {
 		$response = new TemplateResponse(	'gestion', 'configuration', array(	'path' => $this->myID, 
 											'url' => $this->getNavigationLink(),
 											'CompaniesList' => $this->getCompaniesList(),
-											'CurrentCompany' => $this->session['CurrentCompany'],
+											'CurrentCompany' => $this->session->get('CurrentCompany'),
 											'shareUsers' => $shareUsers,
 										)
 									);  // templates/configuration.php
@@ -239,8 +240,8 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function devisshow($numdevis) {
-		$devis = $this->myDb->getOneDevis($numdevis,$this->session['CurrentCompany']);
-		$produits = $this->myDb->getListProduit($numdevis, $this->session['CurrentCompany']);
+		$devis = $this->myDb->getOneDevis($numdevis,$this->session->get('CurrentCompany'));
+		$produits = $this->myDb->getListProduit($numdevis, $this->session->get('CurrentCompany'));
 		return new TemplateResponse('gestion', 'devisshow', array(	'configuration'=> $this->getConfiguration(), 
 																	'devis'=>json_decode($devis), 
 																	'produit'=>json_decode($produits), 
@@ -249,7 +250,7 @@ class PageController extends Controller {
 																	'logo' => $this->getLogo('logo.png'),
 																	'logo_header' => $this->getLogo('logo_header.png'),
 																	'CompaniesList' => $this->getCompaniesList(),
-																	'CurrentCompany' => $this->session['CurrentCompany']
+																	'CurrentCompany' => $this->session->get('CurrentCompany')
 																)
 															);
 	}
@@ -262,7 +263,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function factureshow($numfacture) {
-		$facture = $this->myDb->getOneFacture($numfacture,$this->session['CurrentCompany']);
+		$facture = $this->myDb->getOneFacture($numfacture,$this->session->get('CurrentCompany'));
 		// $produits = $this->myDb->getListProduit($numdevis);
 		return new TemplateResponse('gestion', 'factureshow', array(	'path' => $this->myID, 
 																		'configuration'=> $this->getConfiguration(), 
@@ -271,7 +272,7 @@ class PageController extends Controller {
 																		'logo' => $this->getLogo('logo.png'),
 																		'logo_header' => $this->getLogo('logo_header.png'),
 																		'CompaniesList' => $this->getCompaniesList(),
-																		'CurrentCompany' => $this->session['CurrentCompany']
+																		'CurrentCompany' => $this->session->get('CurrentCompany')
 																)
 															);
 	}															
@@ -285,7 +286,7 @@ class PageController extends Controller {
 	public function isConfig() {
 		
 
-		return $this->myDb->isConfig($this->session['CurrentCompany'],$this->myID);
+		return $this->myDb->isConfig($this->session->get('CurrentCompany'),$this->myID);
 	}
 
 	/**
@@ -316,7 +317,7 @@ class PageController extends Controller {
 	private function getCompaniesList(){
 		$CompaniesList = $this->myDb->getCompaniesList($this->myID);
 
-		if(empty($this->session['CurrentCompany']) || $this->session['CurrentCompany'] == ''){
+		if(empty($this->session->get('CurrentCompany')) || $this->session->get('CurrentCompany') == ''){
 			$this->setCurrentCompany($CompaniesList[0]['id']);
 		}
 		
@@ -332,7 +333,7 @@ class PageController extends Controller {
 	 */
 	#[UseSession]
 	public function setCurrentCompany($companyID){
-		$this->session['CurrentCompany'] = $companyID;
+		$this->session->set('CurrentCompany', $companyID);
 	}
 
 
@@ -353,11 +354,11 @@ class PageController extends Controller {
 	 */
 	#[UseSession]
 	public function deleteCompany(){
-		if($this->myDb->deleteCompany($this->session['CurrentCompany'], $this->myID)){
-			$this->session['CurrentCompany'] = '';
+		if($this->myDb->deleteCompany($this->session->get('CurrentCompany'), $this->myID)){
+			$this->session->set('CurrentCompany', '');
 			return new DataResponse("", 200, ['Content-Type' => 'application/json']);
 		}else{
-			return new DataResponse([$this->session['CurrentCompany'],$this->myID], 401, ['Content-Type' => 'application/json']);
+			return new DataResponse([$this->session->get('CurrentCompany'),$this->myID], 401, ['Content-Type' => 'application/json']);
 		}
 	}
 
@@ -371,7 +372,7 @@ class PageController extends Controller {
 		$found = false;
 		$ownedCompanies = $this->myDb->getCompaniesOwner($this->myID);
 		foreach ($ownedCompanies as $company) {
-			if ($company['id'] == $this->session['CurrentCompany']) {
+			if ($company['id'] == $this->session->get('CurrentCompany')) {
 				$found = true;
 			}
 		}	
@@ -380,7 +381,7 @@ class PageController extends Controller {
 			$users = $this->userManager->search('');
 			foreach ($users as $user) {
 				if ($user->getEMailAddress() === $email) {
-					$this->myDb->addShareUser($this->session['CurrentCompany'],$user->getUID());
+					$this->myDb->addShareUser($this->session->get('CurrentCompany'),$user->getUID());
 					return new DataResponse(['status' => 'success', 'data' => $user->getDisplayName()]);
 				}
 			}
@@ -400,13 +401,13 @@ class PageController extends Controller {
 		$found = false;
 		$ownedCompanies = $this->myDb->getCompaniesOwner($this->myID);
 		foreach ($ownedCompanies as $company) {
-			if ($company['id'] == $this->session['CurrentCompany']) {
+			if ($company['id'] == $this->session->get('CurrentCompany')) {
 				$found = true;
 			}
 		}	
 
 		if($found){
-			$this->myDb->delShareUser($this->session['CurrentCompany'],$uid);
+			$this->myDb->delShareUser($this->session->get('CurrentCompany'),$uid);
 			return new DataResponse(['status' => 'success', 'data' => 'User deleted']);
 		}
 
@@ -420,7 +421,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function getClients() {
-		return $this->myDb->getClients($this->session['CurrentCompany']);
+		return $this->myDb->getClients($this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -430,7 +431,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function getConfiguration() {
-		return $this->myDb->getConfiguration($this->session['CurrentCompany']);
+		return $this->myDb->getConfiguration($this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -440,7 +441,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function getDevis() {
-		return $this->myDb->getDevis($this->session['CurrentCompany']);
+		return $this->myDb->getDevis($this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -451,7 +452,7 @@ class PageController extends Controller {
 	#[UseSession]
 	public function getFactures() {
 		
-		return $this->myDb->getFactures($this->session['CurrentCompany']);
+		return $this->myDb->getFactures($this->session->get('CurrentCompany'));
 	}
 	
 	/**
@@ -462,7 +463,7 @@ class PageController extends Controller {
 	#[UseSession]
 	public function getProduits() {
 		
-		return $this->myDb->getProduits($this->session['CurrentCompany']);
+		return $this->myDb->getProduits($this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -473,7 +474,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function getProduitsById($numdevis) {
-		return $this->myDb->getListProduit($numdevis, $this->session['CurrentCompany']);
+		return $this->myDb->getListProduit($numdevis, $this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -484,7 +485,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function getClient($id) {
-		return $this->myDb->getClient($id, $this->session['CurrentCompany']);
+		return $this->myDb->getClient($id, $this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -495,7 +496,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function getClientbyiddevis($id) {
-		return $this->myDb->getClientbyiddevis($id, $this->session['CurrentCompany']);
+		return $this->myDb->getClientbyiddevis($id, $this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -515,12 +516,12 @@ class PageController extends Controller {
 	#[UseSession]
 	public function insertClient() {
 		// try {
-		// 	return new DataResponse($this->myDb->insertClient($this->session['CurrentCompany']), Http::STATUS_OK, ['Content-Type' => 'application/json']);
+		// 	return new DataResponse($this->myDb->insertClient($this->session->get('CurrentCompany')), Http::STATUS_OK, ['Content-Type' => 'application/json']);
 		// }
 		// catch( PDOException $Exception ) {
 		// 	return new DataResponse($Exception, 500, ['Content-Type' => 'application/json']);
 		// }
-		return $this->myDb->insertClient($this->session['CurrentCompany']);
+		return $this->myDb->insertClient($this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -530,7 +531,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function insertDevis(){
-		return $this->myDb->insertDevis($this->session['CurrentCompany']);
+		return $this->myDb->insertDevis($this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -540,7 +541,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function insertFacture(){
-		return $this->myDb->insertFacture($this->session['CurrentCompany']);
+		return $this->myDb->insertFacture($this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -550,7 +551,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function insertProduit(){
-		return $this->myDb->insertProduit($this->session['CurrentCompany']);
+		return $this->myDb->insertProduit($this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -561,7 +562,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function insertProduitDevis($id){
-		return $this->myDb->insertProduitDevis($id, $this->session['CurrentCompany']);
+		return $this->myDb->insertProduitDevis($id, $this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -575,7 +576,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function update($table, $column, $data, $id) {
-		return $this->myDb->gestion_update($table, $column, $data, $id, $this->session['CurrentCompany']);
+		return $this->myDb->gestion_update($table, $column, $data, $id, $this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -600,7 +601,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function duplicate($table, $id) {
-		if($this->myDb->gestion_duplicate($table, $id, $this->session['CurrentCompany'])){
+		if($this->myDb->gestion_duplicate($table, $id, $this->session->get('CurrentCompany'))){
 			return new DataResponse("", 200, ['Content-Type' => 'application/json']);
 		}else{
 			return new DataResponse("", 500, ['Content-Type' => 'application/json']);
@@ -615,7 +616,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function drop($id, $value) {
-		return $this->myDb->gestion_drop($id, $value, $this->session['CurrentCompany']);
+		return $this->myDb->gestion_drop($id, $value, $this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -626,7 +627,7 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function delete($table, $id) {
-		return $this->myDb->gestion_delete($table, $id, $this->session['CurrentCompany']);
+		return $this->myDb->gestion_delete($table, $id, $this->session->get('CurrentCompany'));
 	}
 
 	/**
@@ -679,15 +680,14 @@ class PageController extends Controller {
 
 		$clean_folder = html_entity_decode($folder);
 		$clean_name = html_entity_decode($name);
-		try {
-			$this->storage->newFolder($clean_folder);
-        } catch(\OCP\Files\NotPermittedException $e) {
-            
+			try {
+				$this->storage->newFolder($clean_folder);
+			} catch(\OCP\Files\NotPermittedException $e) {
         }
 
 		try {
 			try {
-				$ff = $clean_folder . $clean_name . ".pdf";
+				$ff = $clean_folder . $clean_name;
 				$this->storage->newFile($ff);
 				$file = $this->storage->get($ff);
 				$data = base64_decode($content);
@@ -747,10 +747,10 @@ class PageController extends Controller {
 	#[UseSession]
 	public function getStats(){
 		$res = array();
-		$res['client'] = json_decode($this->myDb->numberClient($this->session['CurrentCompany']))[0]->c;
-		$res['devis'] = json_decode($this->myDb->numberDevis($this->session['CurrentCompany']))[0]->c;
-		$res['facture'] = json_decode($this->myDb->numberFacture($this->session['CurrentCompany']))[0]->c;
-		$res['produit'] = json_decode($this->myDb->numberProduit($this->session['CurrentCompany']))[0]->c;
+		$res['client'] = json_decode($this->myDb->numberClient($this->session->get('CurrentCompany')))[0]->c;
+		$res['devis'] = json_decode($this->myDb->numberDevis($this->session->get('CurrentCompany')))[0]->c;
+		$res['facture'] = json_decode($this->myDb->numberFacture($this->session->get('CurrentCompany')))[0]->c;
+		$res['produit'] = json_decode($this->myDb->numberProduit($this->session->get('CurrentCompany')))[0]->c;
 		return json_encode($res);
 	}
 
@@ -761,7 +761,46 @@ class PageController extends Controller {
 	*/
 	#[UseSession]
 	public function getAnnualTurnoverPerMonthNoVat(){
-		return $this->myDb->getAnnualTurnoverPerMonthNoVat($this->session['CurrentCompany']);
+		return $this->myDb->getAnnualTurnoverPerMonthNoVat($this->session->get('CurrentCompany'));
 	}
 
+	/**
+	 * @NoAdminRequired
+	 * @UseSession
+	 * @param string $html
+	 * @param string $css
+	 * @param string $name
+	 * @param string $folder
+	 * @return void	
+	*/
+	#[UseSession]
+	public function generatePDF($html, $css, $name, $folder) {
+
+		try {
+			$mpdf = new Mpdf([
+				'mode' => 'utf-8',
+				'format' => 'A4',
+				'margin_top' => 10,
+				'margin_bottom' => 10,
+				'margin_left' => 10,
+				'margin_right' => 10,
+			]);
+
+    		$mpdf->WriteHTML($css, \Mpdf\HTMLParserMode::HEADER_CSS);
+			$mpdf->WriteHTML($html, \Mpdf\HTMLParserMode::HTML_BODY);
+
+			$pdfContent = $mpdf->Output('', \Mpdf\Output\Destination::STRING_RETURN);
+			$encoded = base64_encode($pdfContent);
+			$this->savePDF($encoded, $folder, $name);
+
+			// Envoi du PDF dans la réponse HTTP
+			header('Content-Type: application/pdf');
+			header('Content-Disposition: attachment; filename="' . $name . '.pdf"');
+			$mpdf->Output('', \Mpdf\Output\Destination::INLINE);
+		} catch (\Mpdf\MpdfException $e) {
+			http_response_code(500);
+			echo "Erreur lors de la génération du PDF : " . $e->getMessage();
+		}
+
+	}
 }

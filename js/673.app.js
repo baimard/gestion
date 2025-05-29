@@ -5060,9 +5060,9 @@ class Element {
     this.document = document;
     this.node = node;
     this.captureTextNodes = captureTextNodes;
-    this.attributes = {};
-    this.styles = {};
-    this.stylesSpecificity = {};
+    this.attributes = Object.create(null);
+    this.styles = Object.create(null);
+    this.stylesSpecificity = Object.create(null);
     this.animationFrozen = false;
     this.animationFrozenValue = '';
     this.parent = null;
@@ -7941,7 +7941,7 @@ class FontElement extends Element {
   constructor(document, node, captureTextNodes) {
     super(document, node, captureTextNodes);
     this.type = 'font';
-    this.glyphs = {};
+    this.glyphs = Object.create(null);
     this.horizAdvX = this.getAttribute('horiz-adv-x').getNumber();
     var {
       definitions
@@ -7977,7 +7977,7 @@ class FontElement extends Element {
               this.isArabic = true;
 
               if (typeof this.glyphs[glyph.unicode] === 'undefined') {
-                this.glyphs[glyph.unicode] = {};
+                this.glyphs[glyph.unicode] = Object.create(null);
               }
 
               this.glyphs[glyph.unicode][glyph.arabicForm] = glyph;
@@ -9689,9 +9689,9 @@ class Document {
       anonymousCrossOrigin
     } = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     this.canvg = canvg;
-    this.definitions = {};
-    this.styles = {};
-    this.stylesSpecificity = {};
+    this.definitions = Object.create(null);
+    this.styles = Object.create(null);
+    this.stylesSpecificity = Object.create(null);
     this.images = [];
     this.fonts = [];
     this.emSizeStack = [];

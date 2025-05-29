@@ -1,5 +1,6 @@
 import { updateDB } from "../modules/ajaxRequest.js";
-import { baseUrl, checkSelectPurJs, LoadDT, removeOptions, showDone } from "../modules/mainFunction.js";
+import { baseUrl, checkSelectPurJs, LoadDT} from "../modules/mainFunction.js";
+import { showSuccess, showError } from "@nextcloud/dialogs";
 
 export class Client {
 
@@ -44,7 +45,7 @@ export class Client {
     oReq.open('POST', baseUrl + '/client/insert', true);
     oReq.onload = function(e){
       if (this.status == 200) {
-        showDone()
+        showSuccess()
         Client.loadClientDT(dt);
       }else{
         showError(this.response);
@@ -89,38 +90,49 @@ export class Client {
     oReq.send();
     }
 
-  /**
-   * 
-   * @param {*} id 
-   */
   static getClientByIdDevis(id) {
-    var myData = { id: id, };
-    $.ajax({
-        url: baseUrl + '/clientbyiddevis',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(myData)
-    }).done(function (response, code) {
-        $.each(JSON.parse(response), function (arrayID, myresp) {
-            $("#nomprenom").html(myresp.prenom + ' ' + myresp.nom);
-            $("#nomprenom").attr('data-id', id);
-            $("#entreprise").html(myresp.entreprise);
-            $("#adresse").html(myresp.adresse);
-            $("#mail").html(myresp.mail);
-            $("#telephone").html(myresp.telephone);
-            $("#legal_one").html(myresp.legal_one);
-            $("#pdf").attr("data-folder", myresp.num);
-            if ($("#factureid").length) {
-                $("#pdf").data('name', myresp.entreprise + "_" + $("#factureid").text() + "_v" + $('#factureversion').text());
-            } else {
-                $("#pdf").data('name', myresp.entreprise + "_" + myresp.num + "_v" + $('#devisversion').text());
-            }
+    const myData = { id: id };
 
+    fetch(baseUrl + '/clientbyiddevis', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(myData)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw response;
+      }
+      return response.json(); // On suppose que le backend renvoie du JSON
+    })
+    .then(data => {
+      var dataArray = JSON.parse(data);
+      dataArray.forEach(myresp => {
+        document.getElementById("nomprenom").innerHTML = `${myresp.prenom} ${myresp.nom}`;
+        document.getElementById("nomprenom").setAttribute("data-id", id);
+        document.getElementById("entreprise").innerHTML = myresp.entreprise;
+        document.getElementById("adresse").innerHTML = myresp.adresse;
+        document.getElementById("mail").innerHTML = myresp.mail;
+        document.getElementById("telephone").innerHTML = myresp.telephone;
+        document.getElementById("legal_one").innerHTML = myresp.legal_one;
+        document.getElementById("pdf").setAttribute("data-folder", myresp.num);
+
+        const factureEl = document.getElementById("factureid");
+        const devisVersion = document.getElementById("devisversion");
+        const factureVersion = document.getElementById("factureversion");
+
+        const name = factureEl
+          ? `${myresp.entreprise}_${factureEl.textContent}_v${factureVersion.textContent}`
+          : `${myresp.entreprise}_${myresp.num}_v${devisVersion.textContent}`;
+
+        document.getElementById("pdf").setAttribute("data-name", name);
+      });
+    }).catch(error => {
+            showError(error);
         });
-    }).fail(function (response, code) {
-        showError(response);
-    });
   }
+
 
   /**
    * 

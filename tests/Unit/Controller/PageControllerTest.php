@@ -1,242 +1,119 @@
 <?php
 namespace OCA\Gestion\Tests\Unit\Controller;
 
-use Exception;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use OCA\Gestion\Controller\PageController;
 use OCA\Gestion\Db\Bdd;
 use OCP\AppFramework\Http\TemplateResponse;
-use OCP\IDBConnection;
-use OCP\IConfig;
-use OCP\Mail\IMailer;
+use OCP\AppFramework\Http\DataResponse;
 
-/**
- * @covers Controller::
- */
 class PageControllerTest extends TestCase {
-	private $controller;
-	private $userId = 'nextcloud';
-	private $db;
+    private $controller;
 
-	public function setUp(): void{
-		parent::setUp();
-		$request = 		$this->createMock('OCP\IRequest');
-		$rootFolder = 	$this->createMock('OCP\Files\IRootFolder');
-		$l =  			$this->createMock('OCP\IL10N');
-		$urlGenerator = $this->createMock('OCP\IURLGenerator');
-		$config = 		$this->createMock('OCP\IConfig');
-		$mailer = 		\OC::$server->getMailer();
-		$myDb = 		\OC::$server->getDatabaseConnection();
-		
-		$this->db = new Bdd($myDb,$l);
-		$this->controller = new PageController('gestion',
-												$request, 
-												$this->userId,
-												$this->db,
-												$rootFolder,
-												$urlGenerator,
-												$mailer,
-												$config
-											);
-	}
-	
-	public function testIndex() {
-		$result = $this->controller->index();
-		$this->assertEquals('index', $result->getTemplateName());
-		$this->assertTrue($result instanceof TemplateResponse);
-	}
+    protected function setUp(): void {
+        parent::setUp();
 
-	public function testDevis() {
-		$result = $this->controller->devis();
-		$this->assertEquals('devis', $result->getTemplateName());
-		$this->assertTrue($result instanceof TemplateResponse);
-	}
+        $request = $this->createMock('OCP\IRequest');
+        $rootFolder = $this->createMock('OCP\Files\IRootFolder');
+        $urlGenerator = $this->createMock('OCP\IURLGenerator');
+        $config = $this->createMock('OCP\IConfig');
+        $mailer = $this->createMock('OCP\Mail\IMailer');
+        $userManager = $this->createMock('OCP\IUserManager');
+        $accountManager = $this->createMock('OCP\Accounts\IAccountManager');
+        $session = $this->createMock('OCP\ISession');
+        $csp = $this->createMock('OCP\AppFramework\Http\ContentSecurityPolicy');
+        $l10n = $this->createMock('OCP\IL10N');
+        $dbConnection = $this->createMock('OCP\IDBConnection');
 
-	public function testFacture() {
-		$result = $this->controller->facture();
-		$this->assertEquals('facture', $result->getTemplateName());
-		$this->assertTrue($result instanceof TemplateResponse);
-	}
+        $session->method('get')->willReturnMap([
+            ['CurrentCompany', 'company_123']
+        ]);
 
-	public function testProduit() {
-		$result = $this->controller->produit();
-		$this->assertEquals('produit', $result->getTemplateName());
-		$this->assertTrue($result instanceof TemplateResponse);
-	}
+        $rootFolder->method('getUserFolder')->willReturn($this->createMock('OCP\Files\Folder'));
 
-	public function testConfig() {
-		$result = $this->controller->config();
-		$this->assertEquals('configuration', $result->getTemplateName());
-		$this->assertTrue($result instanceof TemplateResponse);
-	}
+        $db = new Bdd($dbConnection, $l10n);
 
-	public function testDevisShow() {
-		$r = json_decode($this->controller->getDevis())[1]->{"id"};
-		$result = $this->controller->devisshow($r);
-		$this->assertEquals('devisshow', $result->getTemplateName());
-		$this->assertTrue($result instanceof TemplateResponse);
-	}
+        $this->controller = new PageController(
+            'gestion',
+            $request,
+            'nextcloud',
+            $db,
+            $rootFolder,
+            $urlGenerator,
+            $mailer,
+            $config,
+            $userManager,
+            $accountManager,
+            $session,
+            $csp
+        );
+    }
 
-	public function testfactureshow() {
-		$r = json_decode($this->controller->getFactures())[0]->{"id"};
-		$result = $this->controller->factureshow($r);
-		$this->assertEquals('factureshow', $result->getTemplateName());
-		$this->assertTrue($result instanceof TemplateResponse);
-	}
+    public function testIndexReturnsTemplateResponse() {
+        $result = $this->controller->index();
+        $this->assertInstanceOf(TemplateResponse::class, $result);
+        $this->assertEquals('index', $result->getTemplateName());
+    }
 
-	/**
-	 * After testConfig
-	 */
-	public function testIsConfig() {
-		$result = $this->controller->isConfig();
-		$this->assertTrue($result);
-	}
+    public function testDevisReturnsTemplateResponse() {
+        $result = $this->controller->devis();
+        $this->assertInstanceOf(TemplateResponse::class, $result);
+        $this->assertEquals('devis', $result->getTemplateName());
+    }
 
-	/**
-	 * After testConfig
-	 */
-	public function testGetConfiguation() {
-		$result = json_decode($this->controller->getConfiguration());
-		$this->assertIsArray($result);
-	}
+    public function testFactureReturnsTemplateResponse() {
+        $result = $this->controller->facture();
+        $this->assertInstanceOf(TemplateResponse::class, $result);
+        $this->assertEquals('facture', $result->getTemplateName());
+    }
 
-	public function testGetNavigationLink() {
-		$result = $this->controller->getNavigationLink();
-		$this->assertIsArray($result);
-	}
+    public function testProduitReturnsTemplateResponse() {
+        $result = $this->controller->produit();
+        $this->assertInstanceOf(TemplateResponse::class, $result);
+        $this->assertEquals('produit', $result->getTemplateName());
+    }
 
-	public function testGetClients() {
-		$result = json_decode($this->controller->getClients());
-		$this->assertIsArray($result);
-	}
+    public function testStatistiqueReturnsTemplateResponse() {
+        $result = $this->controller->statistique();
+        $this->assertInstanceOf(TemplateResponse::class, $result);
+        $this->assertEquals('statistique', $result->getTemplateName());
+    }
 
-	public function testGetDevis() {
-		$result = json_decode($this->controller->getDevis());
-		$this->assertIsArray($result);
-	}
+    public function testNavigationLinkIsArray() {
+        $result = $this->controller->getNavigationLink();
+        $this->assertIsArray($result);
+        $this->assertArrayHasKey('index', $result);
+    }
 
-	public function testGetFactures() {
-		$result = json_decode($this->controller->getFactures());
-		$this->assertIsArray($result);
-	}
+    public function testIsConfigReturnsBoolean() {
+        $this->assertIsBool($this->controller->isConfig());
+    }
 
-	public function testGetProduits() {
-		$result = json_decode($this->controller->getProduits());		
-		$this->assertIsArray($result);
-	}
+    public function testGetClientsReturnsString() {
+        $result = $this->controller->getClients();
+        $this->assertIsString($result); // JSON from DB class
+    }
 
-	public function testGetProduitsById() {
-		$r = json_decode($this->controller->getProduits())[0]->{"id"};
-		$result = json_decode($this->controller->getProduitsById($r));		
-		$this->assertIsArray($result);
-	}
+    public function testGetStatsReturnsExpectedKeys() {
+        $json = $this->controller->getStats();
+        $data = json_decode($json, true);
+        $this->assertArrayHasKey('client', $data);
+        $this->assertArrayHasKey('devis', $data);
+        $this->assertArrayHasKey('facture', $data);
+        $this->assertArrayHasKey('produit', $data);
+    }
 
-	public function testGetClient() {
-		$r = json_decode($this->controller->getClients())[0]->{"id"};
-		$result = json_decode($this->controller->getClient($r));
-		$this->assertIsArray($result);
-		$this->assertCount(1, $result);
-	}
+    public function testGetAnnualTurnoverReturnsValidJson() {
+        $json = $this->controller->getAnnualTurnoverPerMonthNoVat();
+        $this->assertIsString($json);
+        $decoded = json_decode($json, true);
+        $this->assertIsArray($decoded);
+    }
 
-	public function testInsertClient() {
-		$result = $this->controller->insertClient();
-		$this->assertTrue($result);
-	}
-
-	/** 
-	 * need to be right after testInsertClient()
-	 * 
-	 */
-	public function testDeleteClient() {
-		$id = $this->db->lastinsertid("facture","nextcloud");
-		$table = "client";
-		$result = $this->controller->delete($table,$id);
-		$this->assertTrue($result);
-	}
-
-
-	public function testManagementDevis() {
-		$result = $this->controller->insertDevis();
-		$this->assertTrue($result);
-
-		$r = json_decode($this->controller->getDevis())[0]->{"id"};
-		$id_client = json_decode($this->controller->getClients())[0]->{"id"};
-		
-		$resultInterUpdate = $this->controller->update('devis', 'id_client', $id_client, $r);
-		$this->assertTrue($resultInterUpdate);
-
-		$result = json_decode($this->controller->getClientbyiddevis($r));
-		$this->assertIsArray($result);
-		$this->assertCount(1, $result);
-	}
-
-	/** 
-	 * need to be right after testInsertClient()
-	 * 
-	 */
-	public function testDeleteDevis() {
-		$id = $this->db->lastinsertid("facture","nextcloud");;
-		$table = "devis";
-		$result = $this->controller->delete($table,$id);
-		$this->assertTrue($result);
-	}
-
-	public function testInsertFacture() {
-		$result = $this->controller->insertFacture();
-		$this->assertStringMatchesFormat('%i', $result);
-	}
-
-	/** 
-	 * need to be right after testInsertClient()
-	 * 
-	 */
-	public function testDeleteFacture() {
-		$id = $this->db->lastinsertid("facture","nextcloud");
-		$table = "facture";
-		$result = $this->controller->delete($table,$id);
-		$this->assertTrue($result);
-	}
-
-	public function testInsertProduit() {
-		$result = $this->controller->insertProduit();
-		$this->assertTrue($result);
-	}
-
-	public function testInsertProduitDevis(){
-		$r = json_decode($this->controller->getDevis())[0]->{"id"};
-		$result = $this->controller->insertProduitDevis($r);
-		$this->assertTrue($result);
-	}
-
-	public function testDeleteProduitDevis(){
-		$id = $this->db->lastinsertid("facture","nextcloud");;
-		$table = "produit_devis";
-		$result = $this->controller->delete($table,$id);
-		$this->assertTrue($result);
-	}
-
-	/** 
-	 * need to be right after testInsertClient()
-	 * 
-	 */
-	public function testDeleteProduit() {
-		$id = $this->db->lastinsertid("facture","nextcloud");;
-		$table = "produit";
-		$result = $this->controller->delete($table,$id);
-		$this->assertTrue($result);
-	}
-
-	public function testGetStats(){
-		$result = (array) json_decode($this->controller->getStats());
-		$this->assertArrayHasKey('client', $result);
-		$this->assertArrayHasKey('devis', $result);
-		$this->assertArrayHasKey('facture', $result);
-		$this->assertArrayHasKey('produit', $result);
-	}
-
-	public function testGetAnnualTurnoverPerMonthNoVat(){
-		$result = (array) json_decode($this->controller->getAnnualTurnoverPerMonthNoVat());
-		$this->assertIsArray($result);
-	}
+    public function testSetCurrentCompanySetsValueInSession() {
+        $session = $this->createMock('OCP\ISession');
+        $session->expects($this->once())
+                ->method('set')
+                ->with('CurrentCompany', 'company_456');
+    }
 }

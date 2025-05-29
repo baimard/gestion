@@ -154,7 +154,7 @@ appstore:
 
 .PHONY: test
 test:
-	$(CURDIR)/vendor/phpunit/phpunit/phpunit -c phpunit.xml --debug --colors
+	vendor/bin/phpunit --colors=always --testdox
 
 .PHONY: testPanther
 testPanther:

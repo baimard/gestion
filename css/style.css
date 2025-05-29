@@ -234,3 +234,203 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+#headertable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    font-size: 14px;
+    text-align: left;
+}
+#headertable thead th {
+    padding: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+#headertable tbody td {
+    width: 30%;
+    padding: 10px;
+}
+#headertable tbody td button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#headertable tbody td button:hover {
+    background-color: #d32f2f;
+}
+#headertable tbody td a {
+    color: #2196F3;
+    text-decoration: none;
+}
+#headertable tbody td a:hover {
+    text-decoration: underline;
+}
+#headertable tbody td a:visited {
+    color: #673AB7;
+}
+#headertable tbody td a:visited:hover {
+    color: #5e35b1;
+}
+#headertable tbody td a:active {
+    color: #f44336;
+}
+
+.titre-centre {
+    width: 100%;
+    text-align: center;
+}
+
+.inline {
+    display: inline;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.comment {
+  width: 100%;
+  margin: 20px 20px;
+}
+
+.table-produit {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.table-produit th {
+    background-color: #007BFF;
+    color: white;
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+}
+
+.table-produit td:nth-child(4),
+.table-produit td:nth-child(5),
+.table-produit td:nth-child(6) {
+    text-align: right;
+}
+
+.table-produit td {
+    padding: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.div-prix{
+      margin-top: 20px;
+}
+
+.table-prix {
+    width: 75%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 0 auto;
+}
+
+.table-prix th {
+    background-color: #007BFF;
+    color: white;
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+}
+
+.table-prix td {
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    text-align: right;
+}
+
+.alert-info-custom {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+    border-radius: 0.25rem;
+    padding: 10px 15px;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 14px;
+    width: 75%;
+}
+
+
+.table-mentions-signature {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.table-mentions-signature-facture {
+    margin: 20px auto;
+    width: 75%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.cell-mentions,
+.cell-signature {
+    width: 50%;
+    vertical-align: top;
+    padding: 15px;
+    border: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.cell-mentions {
+    background-color: #f8f9fa;
+    line-height: 1.6;
+    color: #333;
+    border: 15px solid white;
+}
+
+.cell-signature {
+    background-color: #f9f9f9;
+    border: 15px solid white;
+}
+
+.mentions-titre {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #0c5460;
+}
+
+.mentions-ligne {
+    margin: 4px 0;
+}
+
+.signature-title {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.signature-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.signature-table th,
+.signature-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    background-color: #fff;
+}
+
+.signature-table .row-signature th,
+.signature-table .row-signature td {
+    height: 80px;
+    vertical-align: top;
+    background-color: #fefefe;
+}

@@ -6,48 +6,62 @@ use Symfony\Component\Panther\Client;
 
 class JsTest extends PantherTestCase {
 
-    private $url;
+    private string $url;
 
-	public function setUp(): void{
-		parent::setUp();
-        $this->url = "http://127.0.0.1";
+    public function setUp(): void {
+        parent::setUp();
+        $this->url = 'http://127.0.0.1';
     }
 
     public function testClient(): void {
         $client = Client::createFirefoxClient();
-        $crawler = $client->request('GET', $this->url.'/index.php/apps/gestion');
+        $crawler = $client->request('GET', $this->url . '/index.php/apps/gestion');
 
+        // Authentification
         $form = $crawler->selectButton('Log in')->form();
         $form['user'] = 'nextcloud';
         $form['password'] = 'nextcloud';
         $client->submit($form);
 
-        $client->request('GET', $this->url.'/index.php/apps/gestion');
-
+        // Page principale
+        $client->request('GET', $this->url . '/index.php/apps/gestion');
         $client->takeScreenshot('tests/Unit/Panther/screens/index_test_first.png');
 
-        //Check page showing
+        // Vérification bouton client visible
         $crawler = $client->waitForVisibility('#newClient');
-        $this->assertEquals('Add customer',$crawler->filter('#newClient')->text());
+        $this->assertEquals('Add customer', $crawler->getText());
 
-        //Sorting (this is for the screenshot)
-        $client->executeScript("document.getElementById('client').childNodes[1].childNodes[1].childNodes[0].click()");
+        // Essai de tri (plus sécurisé)
+        $client->executeScript("
+            const table = document.getElementById('client');
+            if (table && table.tHead && table.tHead.rows[0].cells[0]) {
+                table.tHead.rows[0].cells[0].click();
+            }
+        ");
 
-        //Init lenght for datatable
-        $initLenght = $client->executeScript("return document.getElementById('client').rows.length");
+        // Nombre initial de lignes
+        $initLength = $client->executeScript("return document.getElementById('client')?.rows.length || 0");
 
-        //Add client
-        $client->executeScript("document.getElementById('newClient').click()");
-        sleep(1); //Waiting XHR
-        $this->assertTrue($initLenght < $client->executeScript("return document.getElementById('client').rows.length"));
+        // Ajout d’un client
+        $client->executeScript("document.getElementById('newClient')?.click()");
+        $client->waitFor(function () use ($client, $initLength) {
+            return $client->executeScript("return document.getElementById('client')?.rows.length || 0") > $initLength;
+        }, 5);
+        $this->assertGreaterThan($initLength, $client->executeScript("return document.getElementById('client')?.rows.length || 0"));
 
-        //Delete client
-        $client->executeScript("document.getElementById('client').rows[1].childNodes[8].childNodes[0].childNodes[0].click()");
+        // Suppression du client
+        $client->executeScript("
+            const table = document.getElementById('client');
+            if (table?.rows[1]?.cells[8]?.querySelector('button')) {
+                table.rows[1].cells[8].querySelector('button').click();
+            }
+        ");
         $client->getWebDriver()->switchTo()->alert()->accept();
-        sleep(1);
-        $this->assertTrue($initLenght == $client->executeScript("return document.getElementById('client').rows.length"));
 
-        // $client->takeScreenshot('tests/Unit/Panther/screens/index_test_first.png');
+        // Attente de la suppression
+        $client->waitFor(function () use ($client, $initLength) {
+            return $client->executeScript("return document.getElementById('client')?.rows.length || 0") === $initLength;
+        }, 5);
+        $this->assertEquals($initLength, $client->executeScript("return document.getElementById('client')?.rows.length || 0"));
     }
-
 }

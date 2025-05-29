@@ -89,7 +89,7 @@ class PageControllerTest extends TestCase {
         $this->assertIsBool($this->controller->isConfig());
     }
 
-    public function testGetClientsReturnsList() {
+    public function testGetClientsReturnsString() {
         $result = $this->controller->getClients();
         $this->assertIsString($result); // JSON from DB class
     }
@@ -103,8 +103,17 @@ class PageControllerTest extends TestCase {
         $this->assertArrayHasKey('produit', $data);
     }
 
-    public function testGetAnnualTurnoverReturnsValidData() {
+    public function testGetAnnualTurnoverReturnsValidJson() {
         $json = $this->controller->getAnnualTurnoverPerMonthNoVat();
-        $this->assertIsString($json); // JSON returned
+        $this->assertIsString($json);
+        $decoded = json_decode($json, true);
+        $this->assertIsArray($decoded);
+    }
+
+    public function testSetCurrentCompanySetsValueInSession() {
+        $session = $this->createMock('OCP\ISession');
+        $session->expects($this->once())
+                ->method('set')
+                ->with('CurrentCompany', 'company_456');
     }
 }

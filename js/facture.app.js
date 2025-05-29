@@ -58246,7 +58246,16 @@ class Produit {
 
 var choose_folder = t('gestion', 'Choose work folder');
 document.addEventListener('DOMContentLoaded', function () {
+
     document.body.addEventListener('click', function (event) {
+
+        if (event.target && event.target.id === 'about') {
+            var modal = document.getElementById("modalConfig");
+            if (modal) {
+                modal.style.display = "block";
+            }
+        }
+
         if (event.target && event.target.id === 'theFolder') {
             (0,dist/* getFilePickerBuilder */.a1)(choose_folder)
                 .allowDirectories(true)
@@ -58424,19 +58433,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if(event.target.id === "CurrentCompany-select"){
             var value = event.target.value;
             updateCurrentCompany(value);
-        }
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-
-        var aboutButton = document.getElementById('about');
-        if (aboutButton) {
-            aboutButton.addEventListener('click', function() {
-                var modal = document.getElementById("modalConfig");
-                if (modal) {
-                    modal.style.display = "block";
-                }
-            });
         }
     });
 

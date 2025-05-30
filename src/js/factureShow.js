@@ -17,16 +17,4 @@ window.addEventListener("DOMContentLoaded", function () {
     var pdf = document.getElementById("pdf");
     pdf.addEventListener("click",function(){capture(saveNextcloud);});
     
-    var mail = document.getElementById("mailGestion");
-    mail.addEventListener("click", function(){
-        document.getElementById("to").value = document.getElementById("mail").innerText;
-        getMailServerFrom(document.getElementById("from"));
-        (document.getElementById("modalMail")).style.display = "block";
-    });
-
-    var sendmail = document.getElementById("sendmail");
-    sendmail.addEventListener("click", function () {
-        capture(sendMail);
-        (document.getElementById("modalMail")).style.display = "none";
-    });
 });

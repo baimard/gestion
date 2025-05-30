@@ -1922,7 +1922,6 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
 /* harmony export */   HF: () => (/* binding */ configuration),
 /* harmony export */   MR: () => (/* binding */ deleteDB),
 /* harmony export */   TD: () => (/* binding */ getProduitsById),
-/* harmony export */   bg: () => (/* binding */ getMailServerFrom),
 /* harmony export */   ct: () => (/* binding */ updateDBConfiguration),
 /* harmony export */   gs: () => (/* binding */ updateDB),
 /* harmony export */   gv: () => (/* binding */ drop),
@@ -1930,7 +1929,7 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
 /* harmony export */   kv: () => (/* binding */ updateEditable),
 /* harmony export */   v4: () => (/* binding */ isconfig)
 /* harmony export */ });
-/* unused harmony exports createCompany, deleteCompany, getAnnualTurnoverPerMonthNoVat, updateEditableConfiguration, backup, addShareUser, delShareUser */
+/* unused harmony exports createCompany, deleteCompany, getAnnualTurnoverPerMonthNoVat, updateEditableConfiguration, getMailServerFrom, backup, addShareUser, delShareUser */
 /* harmony import */ var _nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5168);
 /* harmony import */ var _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3334);
 /* harmony import */ var _mainFunction_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4315);
@@ -2487,14 +2486,14 @@ function saveNextcloud(myData) {
 
 function getMailServerFrom(input) {
     var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', _mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .baseUrl */ .pc + '/getServerFromMail', true);
+    oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
     oReq.setRequestHeader("Content-Type", "application/json");
     oReq.setRequestHeader("requesttoken", oc_requesttoken);
     oReq.onload = function(e){
         if (this.status == 200) {
             input.value = JSON.parse(this.response)['mail'];
         }else{
-            (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__/* .showError */ .Qg)(this.response);
+            showError(this.response);
         }
     };
     oReq.send();
@@ -3328,16 +3327,16 @@ module.exports = function (i) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   F: () => (/* binding */ capture),
-/* harmony export */   s: () => (/* binding */ sendMail)
+/* harmony export */   F: () => (/* binding */ capture)
 /* harmony export */ });
+/* unused harmony export sendMail */
 /* harmony import */ var _nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5168);
 /* harmony import */ var _modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4315);
 
 
 
 function sendMail(myData) {
-  fetch(_modules_mainFunction_js__WEBPACK_IMPORTED_MODULE_1__/* .baseUrl */ .pc + "/sendPDF", {
+  fetch(baseUrl + "/sendPDF", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -3351,10 +3350,10 @@ function sendMail(myData) {
     return response.json();
   })
   .then(() => {
-    (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__/* .showMessage */ .rG)(t("gestion", "Email sent"));
+    showMessage(t("gestion", "Email sent"));
   })
   .catch(() => {
-    (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__/* .showMessage */ .rG)(t("gestion", "Is your global mail server configured in Nextcloud?"));
+    showMessage(t("gestion", "Is your global mail server configured in Nextcloud?"));
   });
 }
 
@@ -3372,18 +3371,6 @@ function capture(afterCapturefunction) {
   clonedElement.querySelectorAll('[data-html2canvas-ignore]').forEach(el => el.remove());
   const htmlContent = clonedElement.outerHTML;
   
-  const styles = Array.from(document.styleSheets)
-  .map(sheet => {
-    try {
-      return Array.from(sheet.cssRules || [])
-      .map(rule => rule.cssText)
-      .join('\n');
-    } catch (e) {
-      return '';
-    }
-  })
-  .join('\n');
-  
   let name = "";
   if (document.getElementById("factureid")) {
     name = t("gestion", "INVOICE") + "_" + pdfName + ".pdf";
@@ -3399,7 +3386,6 @@ function capture(afterCapturefunction) {
     },
     body: JSON.stringify({
       html: htmlContent,
-      css: styles,
       name: name,
       folder: folder + "/" + pdfFolder + "/"
     })
@@ -58694,18 +58680,6 @@ window.addEventListener("DOMContentLoaded", function () {
     var pdf = document.getElementById("pdf");
     pdf.addEventListener("click",function(){(0,js_pdf/* capture */.F)(ajaxRequest/* saveNextcloud */.Eq);});
     
-    var mail = document.getElementById("mailGestion");
-    mail.addEventListener("click", function(){
-        document.getElementById("to").value = document.getElementById("mail").innerText;
-        (0,ajaxRequest/* getMailServerFrom */.bg)(document.getElementById("from"));
-        (document.getElementById("modalMail")).style.display = "block";
-    });
-
-    var sendmail = document.getElementById("sendmail");
-    sendmail.addEventListener("click", function () {
-        (0,js_pdf/* capture */.F)(js_pdf/* sendMail */.s);
-        (document.getElementById("modalMail")).style.display = "none";
-    });
 });
 })();
 

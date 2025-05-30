@@ -768,14 +768,12 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @UseSession
 	 * @param string $html
-	 * @param string $css
 	 * @param string $name
 	 * @param string $folder
 	 * @return void	
 	*/
 	#[UseSession]
-	public function generatePDF($html, $css, $name, $folder) {
-
+	public function generatePDF($html, $name, $folder) {
 		try {
 			$mpdf = new Mpdf([
 				'mode' => 'utf-8',
@@ -785,6 +783,9 @@ class PageController extends Controller {
 				'margin_left' => 10,
 				'margin_right' => 10,
 			]);
+
+
+			$css = file_get_contents(__DIR__ . '/../../css/style.css');
 
     		$mpdf->WriteHTML($css, \Mpdf\HTMLParserMode::HEADER_CSS);
 			$mpdf->WriteHTML($html, \Mpdf\HTMLParserMode::HTML_BODY);
@@ -796,7 +797,7 @@ class PageController extends Controller {
 			// Envoi du PDF dans la réponse HTTP
 			header('Content-Type: application/pdf');
 			header('Content-Disposition: attachment; filename="' . $name . '.pdf"');
-			$mpdf->Output('', \Mpdf\Output\Destination::INLINE);
+			echo $pdfContent;
 		} catch (\Mpdf\MpdfException $e) {
 			http_response_code(500);
 			echo "Erreur lors de la génération du PDF : " . $e->getMessage();

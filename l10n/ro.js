@@ -37,7 +37,7 @@ OC.L10N.register(
     "Status" : "Stare",
     "Actions" : "Acțiuni",
     "Date:" : "Data:",
-    "Signature" : "Semnătură",
+    "Signature:" : "Semnatura:",
     "Invoice" : "Factură",
     "Legal notice" : "Aviz juridic",
     "Header" : "Antet",

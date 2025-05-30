@@ -40,7 +40,7 @@ OC.L10N.register(
     "Status" : "Статус",
     "Actions" : "Дії",
     "Date:" : "Дата:",
-    "Signature" : "Підпис",
+    "Signature:" : "Підпис:",
     "Invoice" : "Рахунок",
     "Legal notice" : "Правові застереження",
     "Header" : "Заголовок",

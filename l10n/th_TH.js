@@ -25,7 +25,7 @@ OC.L10N.register(
     "Version" : "รุ่น",
     "Status" : "สถานะ",
     "Actions" : "การกระทำ",
-    "Signature" : "ลายเซ็น",
+    "Signature:" : "ลายเซ็นต์:",
     "Header" : "ส่วนหัว",
     "Year" : "ปี",
     "January" : "มกราคม",

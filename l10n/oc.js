@@ -38,7 +38,7 @@ OC.L10N.register(
     "Status" : "Estat",
     "Actions" : "Accions",
     "Date:" : "Data :",
-    "Signature" : "Signatura",
+    "Signature:" : "Signatura :",
     "Invoice" : "Factura",
     "Year" : "Annada",
     "January" : "Genièr",

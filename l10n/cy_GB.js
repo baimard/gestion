@@ -27,7 +27,7 @@ OC.L10N.register(
     "Status" : "Statws",
     "Actions" : "Gweithredoedd",
     "Date:" : "Dyddiad:",
-    "Signature" : "Llofnod",
+    "Signature:" : "Llofnod:",
     "Invoice" : "Anfoneb",
     "Year" : "Blwyddyn",
     "January" : "Ionawr",

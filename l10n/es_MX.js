@@ -40,7 +40,7 @@ OC.L10N.register(
     "Actions" : "Acciones",
     "Send by email" : "Enviar por correo electrónico",
     "Date:" : "Fecha:",
-    "Signature" : "Firma",
+    "Signature:" : "Firma:",
     "Legal notice" : "Aviso legal",
     "Header" : "Encabezado",
     "Year" : "Año",

@@ -33,7 +33,7 @@ OC.L10N.register(
     "Version" : "Versión",
     "Status" : "Estatus",
     "Actions" : "Acciones",
-    "Signature" : "Firma",
+    "Signature:" : "Firma:",
     "Legal notice" : "Aviso legal",
     "Header" : "Encabezado",
     "January" : "Enero",

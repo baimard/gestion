@@ -41,7 +41,7 @@ OC.L10N.register(
     "Status" : "상태",
     "Actions" : "동작",
     "Date:" : "날짜:",
-    "Signature" : "서명",
+    "Signature:" : "서명:",
     "Invoice" : "청구서",
     "Customer" : "고객",
     "Legal information" : "법률 정보",

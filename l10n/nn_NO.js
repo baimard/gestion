@@ -24,7 +24,7 @@ OC.L10N.register(
     "Version" : "Utgåve",
     "Status" : "Status",
     "Actions" : "Handlingar",
-    "Signature" : "Signatur",
+    "Signature:" : "Signatur:",
     "Year" : "År",
     "January" : "Januar",
     "February" : "Februar",

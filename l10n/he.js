@@ -37,7 +37,7 @@ OC.L10N.register(
     "Status" : "מצב",
     "Actions" : "פעולות",
     "Date:" : "בתאריך:",
-    "Signature" : "חתימה",
+    "Signature:" : "חתימה:",
     "Legal notice" : "הצהרה משפטית",
     "Header" : "כותרת",
     "Year" : "שנה",

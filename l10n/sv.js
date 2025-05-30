@@ -44,7 +44,7 @@ OC.L10N.register(
     "Actions" : "Åtgärder",
     "Send by email" : "Skicka via e-post",
     "Date:" : "Datum:",
-    "Signature" : "Signatur",
+    "Signature:" : "Signatur:",
     "Invoice" : "Faktura",
     "Legal information" : "Juridisk information",
     "Legal notice" : "Rättsligt meddelande",

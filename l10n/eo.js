@@ -33,7 +33,7 @@ OC.L10N.register(
     "Status" : "Stato",
     "Actions" : "Agoj",
     "Date:" : "Dato:",
-    "Signature" : "Subskribo",
+    "Signature:" : "Subskribo:",
     "Legal notice" : "Leĝa regularo",
     "Header" : "Kapo",
     "January" : "Januaro",

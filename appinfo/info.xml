@@ -47,6 +47,7 @@ If you require adaptations of this application to comply with your country's reg
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/produit.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/selectFolder.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/statistique.png</screenshot>
+    <donation>https://www.buymeacoffee.com/benjaminaimard</donation>
     <dependencies>
         <nextcloud min-version="30" max-version="31"/>
         <php min-version="8"/>

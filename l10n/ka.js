@@ -36,7 +36,7 @@ OC.L10N.register(
     "Status" : "Status",
     "Actions" : "Actions",
     "Date:" : "Date:",
-    "Signature" : "Signature",
+    "Signature:" : "Signature:",
     "Invoice" : "Invoice",
     "Legal notice" : "Legal notice",
     "Header" : "Header",

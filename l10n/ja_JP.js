@@ -51,7 +51,7 @@ OC.L10N.register(
     "Save in Nextcloud" : "Nextcloudで保存",
     "Send by email" : "メールで送信",
     "Date:" : "日時:",
-    "Signature" : "署名",
+    "Signature:" : "署名:",
     "Invoice" : "請求書",
     "Legal notice" : "法的通知",
     "Header" : "ヘッダー",

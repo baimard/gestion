@@ -20,6 +20,7 @@ OC.L10N.register(
     "Add" : "Dobäisetzen",
     "Delete" : "Läschen",
     "Actions" : "Aktiounen",
+    "Signature:" : "Signatur:",
     "January" : "Januar",
     "February" : "Februar",
     "March" : "Mäerz",

@@ -22,7 +22,6 @@ OC.L10N.register(
     "Version" : "Versiya",
     "Status" : "Status",
     "Actions" : "İşlər",
-    "Signature" : "İmza",
     "January" : "Yanvar",
     "February" : "Fevral",
     "March" : "Mart",

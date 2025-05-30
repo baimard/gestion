@@ -37,7 +37,7 @@ OC.L10N.register(
     "Actions" : "Darbības",
     "FROM" : "NO",
     "Date:" : "Datums:",
-    "Signature" : "Paraksts",
+    "Signature:" : "Paraksts:",
     "Invoice" : "Rēķins",
     "Year" : "Gads",
     "January" : "Janvāris",

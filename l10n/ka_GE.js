@@ -29,7 +29,7 @@ OC.L10N.register(
     "Version" : "ვერსია",
     "Status" : "სტატუსი",
     "Actions" : "მოქმედებები",
-    "Signature" : "ხელმოწერა",
+    "Signature:" : "ხელმოწერა:",
     "Header" : "დასათაურება",
     "January" : "იანვარი",
     "February" : "თებერვალი",

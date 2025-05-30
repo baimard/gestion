@@ -32,7 +32,7 @@ OC.L10N.register(
     "Status" : "Status",
     "Actions" : "Tindakan",
     "Date:" : "Tanggal:",
-    "Signature" : "Tanda",
+    "Signature:" : "Tanda tangan:",
     "Legal notice" : "Pemberitahuan hukum",
     "Year" : "Tahun",
     "January" : "Januari",

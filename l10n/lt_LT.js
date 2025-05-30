@@ -41,7 +41,7 @@ OC.L10N.register(
     "Actions" : "Veiksmai",
     "Send by email" : "Siųsti el. paštu",
     "Date:" : "Data:",
-    "Signature" : "Parašas",
+    "Signature:" : "Parašas:",
     "Legal information" : "Teisinė informacija",
     "Legal notice" : "Teisinis pranešimas",
     "Header" : "Antraštė",

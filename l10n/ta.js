@@ -18,6 +18,7 @@ OC.L10N.register(
     "Add" : "சேர்க்க",
     "Delete" : "நீக்குக",
     "Actions" : "செயல்கள்",
+    "Signature:" : "கையொப்பம்:",
     "January" : "தை",
     "February" : "மாசி",
     "March" : "பங்குனி",

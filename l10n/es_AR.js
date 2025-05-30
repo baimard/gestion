@@ -32,7 +32,7 @@ OC.L10N.register(
     "Status" : "Estatus",
     "Actions" : "Acciones",
     "Send by email" : "Enviar por correo electrónico",
-    "Signature" : "Firma",
+    "Signature:" : "Firma:",
     "Legal notice" : "Aviso legal",
     "Header" : "Encabezado",
     "Year" : "Año",

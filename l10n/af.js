@@ -32,7 +32,6 @@ OC.L10N.register(
     "Version" : "Weergawe",
     "Status" : "Status",
     "Actions" : "Aksies",
-    "Signature" : "Handtekening",
     "Legal notice" : "Regskennisgewing",
     "Total" : "Totaal",
     "Loading …" : "Laai …",

@@ -20,6 +20,7 @@ OC.L10N.register(
     "Add" : "បន្ថែម",
     "Delete" : "លុប",
     "Version" : "កំណែ",
+    "Signature:" : "ហត្ថលេខា:",
     "Year" : "ឆ្នាំ",
     "January" : "ខែមករា",
     "February" : "ខែកុម្ភៈ",

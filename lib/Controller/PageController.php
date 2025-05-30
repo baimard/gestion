@@ -249,6 +249,7 @@ class PageController extends Controller {
 																	'url' => $this->getNavigationLink(),
 																	'logo' => $this->getLogo('logo.png'),
 																	'logo_header' => $this->getLogo('logo_header.png'),
+																	'logo_footer' => $this->getLogo('logo_footer.png'),
 																	'CompaniesList' => $this->getCompaniesList(),
 																	'CurrentCompany' => $this->session->get('CurrentCompany')
 																)
@@ -271,6 +272,7 @@ class PageController extends Controller {
 																		'url' => $this->getNavigationLink(),
 																		'logo' => $this->getLogo('logo.png'),
 																		'logo_header' => $this->getLogo('logo_header.png'),
+																		'logo_footer' => $this->getLogo('logo_footer.png'),
 																		'CompaniesList' => $this->getCompaniesList(),
 																		'CurrentCompany' => $this->session->get('CurrentCompany')
 																)

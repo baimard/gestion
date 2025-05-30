@@ -99,6 +99,17 @@
         <p><span id="mentions_default"><?php p($l->t('Please set in global configuration'));?></span></p>
     </div>
 
+    <div class="titre-centre">
+        <span>
+            <?php
+                if(isset($_['logo_footer']) && $_['logo_footer'] !== "nothing"){
+                    echo "<a><img alt='".$l->t('footer image')."' class=\"img-fluid\" src=\"data:image/png;base64, ".$_['logo_footer']."\"/></a>";
+                }else{
+                    echo "<span style='font-size:12px;' id='footer-logo' data-html2canvas-ignore><b>".$l->t('You can add your footer logo here.')."</b><br/><i>".$l->t('To add a logo, drop the logo_footer.png file in ".gestion" folder at the root of your Nextcloud Files app. Remember to set "Show hidden files".')."</i><br/><br/>".$l->t('This message will not appear on generated PDF.')."</span>";
+                }
+            ?>
+        </span>
+    </div>
     <table class="table-mentions-signature">
         <tr>
             <td class="cell-mentions">

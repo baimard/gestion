@@ -37,18 +37,6 @@ export function capture(afterCapturefunction) {
   clonedElement.querySelectorAll('[data-html2canvas-ignore]').forEach(el => el.remove());
   const htmlContent = clonedElement.outerHTML;
   
-  const styles = Array.from(document.styleSheets)
-  .map(sheet => {
-    try {
-      return Array.from(sheet.cssRules || [])
-      .map(rule => rule.cssText)
-      .join('\n');
-    } catch (e) {
-      return '';
-    }
-  })
-  .join('\n');
-  
   let name = "";
   if (document.getElementById("factureid")) {
     name = t("gestion", "INVOICE") + "_" + pdfName + ".pdf";
@@ -64,7 +52,6 @@ export function capture(afterCapturefunction) {
     },
     body: JSON.stringify({
       html: htmlContent,
-      css: styles,
       name: name,
       folder: folder + "/" + pdfFolder + "/"
     })

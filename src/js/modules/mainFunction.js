@@ -83,7 +83,6 @@ export function checkSelect(el) {
 
 
 export function checkSelectPurJs(el) {
-    console.log(el.options)
     Array.from(el.options).forEach(element => {
         if (element.value == el.getAttribute("data-current")) {
             element.setAttribute('selected', true);
@@ -169,7 +168,6 @@ export function getCurrency(response) {
         cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
     } catch (error) {
         cur = new Intl.NumberFormat("en-EN", { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
-        console.log(error);
     }
 }
 
@@ -205,7 +203,6 @@ fetch(url, options)
 
         let mentionsDefault = myresp.mentions_default;
         mentionsDefault = mentionsDefault.replace(/\n/g, '<br/>');
-        console.log(mentionsDefault);
         document.getElementById('mentions_default').innerHTML = unescapeHtml(mentionsDefault);
     })
     .catch(error => {

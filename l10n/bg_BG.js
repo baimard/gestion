@@ -323,6 +323,7 @@ OC.L10N.register(
     "Total Price" : "Обща цена",
     "Please set in global configuration" : "Моля, задайте в глобална конфигурация",
     "Date:" : "Дата:",
+    "Signature:" : "Подпис:",
     "Invoice" : "Фактура",
     "Add invoice" : "Добавяне на фактура",
     "Invoice number" : "Номер на фактура",

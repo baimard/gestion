@@ -335,6 +335,7 @@ OC.L10N.register(
     "Total Price" : "السعر الكلي",
     "Please set in global configuration" : "يرجى إعادة الإعداد في التكوين العام",
     "Date:" : "التاريخ:",
+    "Signature:" : "التوقيع :",
     "Invoice" : "فاتورة",
     "Add invoice" : "إضافة فاتورة",
     "Invoice number" : "رقم الفاتورة",

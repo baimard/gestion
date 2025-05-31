@@ -337,6 +337,7 @@ OC.L10N.register(
     "Please set in global configuration" : "Nastavte v globálním nastavení",
     "Approved for Agreement" : "Schváleno pro dohodu",
     "Date:" : "Datum:",
+    "Signature:" : "Podpis:",
     "Invoice" : "Faktura",
     "Add invoice" : "Přidat fakturu",
     "Invoice number" : "Číslo faktury",

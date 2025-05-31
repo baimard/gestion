@@ -324,6 +324,7 @@ OC.L10N.register(
     "Total Price" : "Preu total",
     "Please set in global configuration" : "Si us plau, configureu-lo a la configuració global",
     "Date:" : "Data:",
+    "Signature:" : "Signatura:",
     "Invoice" : "Factura",
     "Add invoice" : "Afegeix factura",
     "Invoice number" : "Nombre de factura",

@@ -50,6 +50,7 @@ OC.L10N.register(
     "Unit price without VAT" : "Preciu unitariu ensin IVA",
     "Total without VAT" : "Total ensin IVA",
     "Date:" : "Data:",
+    "Signature:" : "Robla:",
     "Invoice" : "Factura",
     "Add invoice" : "Amestar una factura",
     "Date of service" : "Data del serviciu",

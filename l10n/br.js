@@ -23,6 +23,7 @@ OC.L10N.register(
     "Status" : "Statud",
     "Actions" : "Oberoù",
     "Date:" : "Deiziad:",
+    "Signature:" : "Sinadenn :",
     "Legal notice" : "Meneg lezenn",
     "January" : "Genver",
     "February" : "C'hwevrer",

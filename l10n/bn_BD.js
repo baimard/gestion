@@ -22,6 +22,7 @@ OC.L10N.register(
     "Delete" : "মুছে",
     "Version" : "ভার্সন",
     "Actions" : "পদক্ষেপসমূহ",
+    "Signature:" : "স্বাক্ষর:",
     "January" : "জানুয়ারি",
     "February" : "ফেব্রুয়ারি",
     "March" : "মার্চ",

@@ -16,17 +16,17 @@
 # Andy Scherzinger <info@andy-scherzinger.de>, 2025
 # Martin Wilichowski, 2025
 # Mark Ziegler <mark.ziegler@rakekniven.de>, 2025
-# Joachim Sokolowski, 2025
 # Markus Eckstein, 2025
+# Joachim Sokolowski, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2025-05-30 02:06+0000\n"
+"POT-Creation-Date: 2025-05-31 02:07+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Markus Eckstein, 2025\n"
+"Last-Translator: Joachim Sokolowski, 2025\n"
 "Language-Team: German (https://app.transifex.com/nextcloud/teams/64236/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,7 +80,7 @@ msgstr "Kommentar"
 
 #: /app/lib/Db/Bdd.php:143 /app/templates/content/devisshow.php:57
 msgid "Offer valid for 1 month from: "
-msgstr ""
+msgstr "Das Angebot ist 1 Monat lang gültig ab:"
 
 #: /app/lib/Db/Bdd.php:158
 msgid "Text free"
@@ -147,7 +147,7 @@ msgstr ""
 msgid "EUR"
 msgstr "EUR"
 
-#: /app/lib/Db/Bdd.php:338 /app/src/js/pdf.js:54
+#: /app/lib/Db/Bdd.php:338 /app/src/js/pdf.js:42
 msgid "INVOICE"
 msgstr "RECHNUNG"
 
@@ -183,6 +183,26 @@ msgid ""
 "\n"
 "[![Donate](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-yellow.svg)](https://www.buymeacoffee.com/benjaminaimard)"
 msgstr ""
+"# Unternehmensverwaltung mit Gestion\n"
+"Gestion ist eine Nextcloud-Anwendung, die die Rechnungsstellung für Freiberufler und Kleinunternehmer vereinfacht.\n"
+"\n"
+"Hauptfunktionen:\n"
+"* Kundenprofile hinzufügen und verwalten\n"
+"* Produkteinträge erstellen und anpassen\n"
+"* Angebote und Rechnungen im PDF-Format erstellen\n"
+"* PDFs direkt aus der Anwendung per E-Mail versenden\n"
+"* Generierte Dokumente sicher in Ihrer Nextcloud-Instanz speichern\n"
+"* Geschäftsaktivitäten effizient verfolgen\n"
+"\n"
+"✨ Das PDF-Generierungssystem wurde überarbeitet, um Layout, Stil und Kompatibilität zu verbessern.\n"
+"\n"
+"Diese Anwendung ist auf die Rechnungsstellungsanforderungen kleiner Unternehmen, insbesondere auf dem französischen Markt, zugeschnitten. Sie bietet eine benutzerfreundliche Oberfläche und integriert sich nahtlos in das Nextcloud-Ökosystem.\n"
+"\n"
+"In der Benutzerdokumentation finden sich ein Präsentationsvideo, das Dich durch die Funktionen der Anwendung führt.\n"
+"\n"
+"Solltest Du Anpassungen dieser Anwendung an die Vorschriften Deines Landes benötigen, erstelle bitte ein Issue im GitHub-Repository.\n"
+"\n"
+"[![Spenden](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-yellow.svg)](https://www.buymeacoffee.com/benjaminaimard)"
 
 #: /app/src/js/listener/main_listener.js:10
 msgid "Choose work folder"
@@ -1084,17 +1104,17 @@ msgstr "Ist dein globaler Mailserver in Nextcloud konfiguriert?"
 msgid "Creation in progress …"
 msgstr "Erstellung läuft …"
 
-#: /app/src/js/pdf.js:56
+#: /app/src/js/pdf.js:44
 msgid "QUOTE"
 msgstr "ANGEBOT"
 
-#: /app/src/js/pdf.js:85
+#: /app/src/js/pdf.js:72
 msgid "PDF créé avec succès."
-msgstr ""
+msgstr "PDF wurde erstellt."
 
-#: /app/src/js/pdf.js:89
+#: /app/src/js/pdf.js:76
 msgid "Erreur lors de la création du PDF."
-msgstr ""
+msgstr "Fehler bei der Erstellung der PDF-Datei"
 
 #: /app/templates/content/changelog.php:4
 msgid "Welcome to GESTION"
@@ -1167,6 +1187,7 @@ msgstr "Newsletter"
 #: /app/templates/content/changelog.php:30
 msgid "Version 2.7.0 You can now share a company with others users!"
 msgstr ""
+"Version 2.7.0 Sie können jetzt ein Unternehmen mit anderen Benutzern teilen!"
 
 #: /app/templates/content/changelog.php:31
 msgid ""
@@ -1174,6 +1195,9 @@ msgid ""
 "bringing improved design, layout consistency and compatibility with more "
 "readers."
 msgstr ""
+"Version 2.8.0 führt eine vollständige Überarbeitung des PDF-"
+"Generierungssystems ein und bietet verbessertes Design, Layoutkonsistenz und"
+" Kompatibilität mit weiteren Readern."
 
 #: /app/templates/content/changelog.php:34
 msgid "Changelog"
@@ -1452,6 +1476,7 @@ msgstr ""
 
 #: /app/templates/content/devisshow.php:8
 #: /app/templates/content/devisshow.php:33
+#: /app/templates/content/devisshow.php:108
 #: /app/templates/content/factureshow.php:8
 #: /app/templates/content/factureshow.php:33
 msgid "This message will not appear on generated PDF."
@@ -1531,15 +1556,29 @@ msgstr "Gesamtpreis"
 msgid "Please set in global configuration"
 msgstr "Bitte in der globalen Konfiguration einstellen"
 
-#: /app/templates/content/devisshow.php:112
+#: /app/templates/content/devisshow.php:106
+msgid "footer image"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:108
+msgid "You can add your footer logo here."
+msgstr ""
+
+#: /app/templates/content/devisshow.php:108
+msgid ""
+"To add a logo, drop the logo_footer.png file in \".gestion\" folder at the "
+"root of your Nextcloud Files app. Remember to set \"Show hidden files\"."
+msgstr ""
+
+#: /app/templates/content/devisshow.php:123
 msgid "Approved for Agreement"
 msgstr "Für die Vereinbarung genehmigt"
 
-#: /app/templates/content/devisshow.php:115
+#: /app/templates/content/devisshow.php:126
 msgid "Date:"
 msgstr "Datum:"
 
-#: /app/templates/content/devisshow.php:118
+#: /app/templates/content/devisshow.php:129
 msgid "Signature:"
 msgstr ""
 "Benötigt keine Übersetzung. Hier wird nur die formelle Übersetzung verwendet"

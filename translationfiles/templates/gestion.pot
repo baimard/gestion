@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2025-05-30 02:06+0000\n"
+"POT-Creation-Date: 2025-05-31 02:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,7 +127,7 @@ msgstr ""
 msgid "EUR"
 msgstr ""
 
-#: /app/lib/Db/Bdd.php:338 /app/src/js/pdf.js:54
+#: /app/lib/Db/Bdd.php:338 /app/src/js/pdf.js:42
 msgid "INVOICE"
 msgstr ""
 
@@ -1070,15 +1070,15 @@ msgstr ""
 msgid "Creation in progress …"
 msgstr ""
 
-#: /app/src/js/pdf.js:56
+#: /app/src/js/pdf.js:44
 msgid "QUOTE"
 msgstr ""
 
-#: /app/src/js/pdf.js:85
+#: /app/src/js/pdf.js:72
 msgid "PDF créé avec succès."
 msgstr ""
 
-#: /app/src/js/pdf.js:89
+#: /app/src/js/pdf.js:76
 msgid "Erreur lors de la création du PDF."
 msgstr ""
 
@@ -1411,6 +1411,7 @@ msgstr ""
 
 #: /app/templates/content/devisshow.php:8
 #: /app/templates/content/devisshow.php:33
+#: /app/templates/content/devisshow.php:108
 #: /app/templates/content/factureshow.php:8
 #: /app/templates/content/factureshow.php:33
 msgid "This message will not appear on generated PDF."
@@ -1487,15 +1488,29 @@ msgstr ""
 msgid "Please set in global configuration"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:112
+#: /app/templates/content/devisshow.php:106
+msgid "footer image"
+msgstr ""
+
+#: /app/templates/content/devisshow.php:108
+msgid "You can add your footer logo here."
+msgstr ""
+
+#: /app/templates/content/devisshow.php:108
+msgid ""
+"To add a logo, drop the logo_footer.png file in \".gestion\" folder at the "
+"root of your Nextcloud Files app. Remember to set \"Show hidden files\"."
+msgstr ""
+
+#: /app/templates/content/devisshow.php:123
 msgid "Approved for Agreement"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:115
+#: /app/templates/content/devisshow.php:126
 msgid "Date:"
 msgstr ""
 
-#: /app/templates/content/devisshow.php:118
+#: /app/templates/content/devisshow.php:129
 msgid "Signature:"
 msgstr ""
 

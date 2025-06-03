@@ -69,10 +69,10 @@ export function capture(afterCapturefunction) {
     a.click();
     window.URL.revokeObjectURL(url);
   
-    showMessage(t("gestion", "PDF créé avec succès."));
+    showMessage(t("gestion", "PDF has been created."));
   })
   .catch(error => {
-    console.error("Erreur lors de la génération du PDF :", error);
-    showMessage(t("gestion", "Erreur lors de la création du PDF."));
+    console.error("Errors during PDF generation :", error);
+    showMessage(t("gestion", "Error when creating PDF."));
   });
 }

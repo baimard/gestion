@@ -253,8 +253,6 @@ OC.L10N.register(
     "Is your global mail server configured in Nextcloud?" : "An bhfuil do fhreastalaí ríomhphoist domhanda cumraithe in Nextcloud?",
     "Creation in progress …" : "Cruthú ar siúl…",
     "QUOTE" : "CEANGAL",
-    "PDF créé avec succès." : "Chruthaigh PDF le rath.",
-    "Erreur lors de la création du PDF." : "Earráid de la création i bhfoirm PDF.",
     "Welcome to GESTION" : "Fáilte go dtí GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Chun tús a chur leis an bhfeidhmchlár seo ní mór duit faisnéis do chuideachta a chumrú, lean an nasc seo",
     "My company" : "Mo chuideachta",

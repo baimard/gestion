@@ -251,8 +251,6 @@
     "Is your global mail server configured in Nextcloud?" : "Да ли је ваш глобални мејл сервер подешен у Nextcloud?",
     "Creation in progress …" : "Креирање у току ...",
     "QUOTE" : "ФАКТУРА",
-    "PDF créé avec succès." : "PDF је успешно креиран.",
-    "Erreur lors de la création du PDF." : "Дошло је до грешака приликом креирања PDF фајла.",
     "Welcome to GESTION" : "Добродошли у GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Да бисте почели рад у овој апликацији, морате да подесите информације о својој компанији, следите овај линк",
     "My company" : "Моја компанија",

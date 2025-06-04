@@ -15,18 +15,18 @@
 # Oliver Gramberg <oliver.gramberg@gmx.de>, 2024
 # Andy Scherzinger <info@andy-scherzinger.de>, 2025
 # Martin Wilichowski, 2025
-# Markus Eckstein, 2025
 # Joachim Sokolowski, 2025
 # Mark Ziegler <mark.ziegler@rakekniven.de>, 2025
+# Markus Eckstein, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2025-06-03 02:08+0000\n"
+"POT-Creation-Date: 2025-06-04 02:09+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Mark Ziegler <mark.ziegler@rakekniven.de>, 2025\n"
+"Last-Translator: Markus Eckstein, 2025\n"
 "Language-Team: German (https://app.transifex.com/nextcloud/teams/64236/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1109,12 +1109,12 @@ msgid "QUOTE"
 msgstr "ANGEBOT"
 
 #: /app/src/js/pdf.js:72
-msgid "PDF créé avec succès."
-msgstr "PDF wurde erstellt."
+msgid "PDF has been created."
+msgstr ""
 
 #: /app/src/js/pdf.js:76
-msgid "Erreur lors de la création du PDF."
-msgstr "Fehler bei der Erstellung der PDF-Datei"
+msgid "Error when creating PDF."
+msgstr ""
 
 #: /app/templates/content/changelog.php:4
 msgid "Welcome to GESTION"
@@ -1583,9 +1583,7 @@ msgstr "Datum:"
 
 #: /app/templates/content/devisshow.php:129
 msgid "Signature:"
-msgstr ""
-"Benötigt keine Übersetzung. Hier wird nur die formelle Übersetzung verwendet"
-" (de_DE)."
+msgstr "Signatur:"
 
 #: /app/templates/content/facture.php:5
 msgid "Invoice"

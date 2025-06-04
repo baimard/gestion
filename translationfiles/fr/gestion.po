@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2025-05-31 02:07+0000\n"
+"POT-Creation-Date: 2025-06-04 02:09+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
 "Last-Translator: daf9a3bef94549192358462a8bb20263_a023b71 <69530ed134884b79b067e9214de553f8_465041>, 2025\n"
 "Language-Team: French (https://app.transifex.com/nextcloud/teams/64236/fr/)\n"
@@ -1092,11 +1092,11 @@ msgid "QUOTE"
 msgstr "DEVIS"
 
 #: /app/src/js/pdf.js:72
-msgid "PDF créé avec succès."
+msgid "PDF has been created."
 msgstr ""
 
 #: /app/src/js/pdf.js:76
-msgid "Erreur lors de la création du PDF."
+msgid "Error when creating PDF."
 msgstr ""
 
 #: /app/templates/content/changelog.php:4

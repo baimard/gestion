@@ -237,8 +237,6 @@
     "Is your global mail server configured in Nextcloud?" : "Kas sinu üldine e-postiserver on Nextcloudis seadistatud?",
     "Creation in progress …" : "Loomisel…",
     "QUOTE" : "Hinnapakkumine",
-    "PDF créé avec succès." : "PDF-faili loomine õnnestus.",
-    "Erreur lors de la création du PDF." : "Viga PDF-faili loomisel.",
     "Welcome to GESTION" : "Tere tulemast ärirakendusse GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Selle rakenduse kasutuselevõtmiseks pead lisama äriühingu teabe ja selleks klõpsi järgnevat linki",
     "My company" : "Minu äriühing",

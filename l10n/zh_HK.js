@@ -253,8 +253,6 @@ OC.L10N.register(
     "Is your global mail server configured in Nextcloud?" : "您的電郵伺服器是否已在 Nextcloud 中配置？",
     "Creation in progress …" : "正在創建中",
     "QUOTE" : "報價",
-    "PDF créé avec succès." : "PDF 已成功創建。",
-    "Erreur lors de la création du PDF." : "PDF 創建時出現錯誤。",
     "Welcome to GESTION" : "歡迎來到 GESTION",
     "To start with this application you need to configure your company information, follow this link" : "要開始使用此應用程式，您必須先設定您的公司資訊，請點擊此連結",
     "My company" : "我的公司",

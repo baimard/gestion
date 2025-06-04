@@ -253,8 +253,6 @@ OC.L10N.register(
     "Is your global mail server configured in Nextcloud?" : "Is your global mail server configured in Nextcloud?",
     "Creation in progress …" : "Creation in progress …",
     "QUOTE" : "QUOTE",
-    "PDF créé avec succès." : "PDF créé avec succès.",
-    "Erreur lors de la création du PDF." : "Erreur lors de la création du PDF.",
     "Welcome to GESTION" : "Welcome to GESTION",
     "To start with this application you need to configure your company information, follow this link" : "To start with this application you need to configure your company information, follow this link",
     "My company" : "My company",

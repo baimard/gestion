@@ -251,6 +251,8 @@
     "Is your global mail server configured in Nextcloud?" : "Is your global mail server configured in Nextcloud?",
     "Creation in progress …" : "Creation in progress …",
     "QUOTE" : "QUOTE",
+    "PDF has been created." : "PDF has been created.",
+    "Error when creating PDF." : "Error when creating PDF.",
     "Welcome to GESTION" : "Welcome to GESTION",
     "To start with this application you need to configure your company information, follow this link" : "To start with this application you need to configure your company information, follow this link",
     "My company" : "My company",

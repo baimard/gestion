@@ -251,6 +251,8 @@
     "Is your global mail server configured in Nextcloud?" : "An bhfuil do fhreastalaí ríomhphoist domhanda cumraithe in Nextcloud?",
     "Creation in progress …" : "Cruthú ar siúl…",
     "QUOTE" : "CEANGAL",
+    "PDF has been created." : "Tá PDF cruthaithe.",
+    "Error when creating PDF." : "Earráid agus PDF á chruthú.",
     "Welcome to GESTION" : "Fáilte go dtí GESTION",
     "To start with this application you need to configure your company information, follow this link" : "Chun tús a chur leis an bhfeidhmchlár seo ní mór duit faisnéis do chuideachta a chumrú, lean an nasc seo",
     "My company" : "Mo chuideachta",

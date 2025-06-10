@@ -12,22 +12,22 @@
 # Lyanis Souidi <lyanis.souidi@hotmail.com>, 2024
 # Stéphane Parunakian, 2024
 # Gwendal Raballand <gwendal.raballand@gmail.com>, 2024
-# Jérôme HERBINET, 2024
 # Alain Rihs <alainrihs@sunrise.ch>, 2024
 # DEV314R, 2024
 # Mordecai, 2025
 # TVDavidsan, 2025
 # Benjamin <benjamin@cybercorp.fr>, 2025
 # daf9a3bef94549192358462a8bb20263_a023b71 <69530ed134884b79b067e9214de553f8_465041>, 2025
+# Jérôme HERBINET, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2025-06-04 02:09+0000\n"
+"POT-Creation-Date: 2025-06-10 02:07+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: daf9a3bef94549192358462a8bb20263_a023b71 <69530ed134884b79b067e9214de553f8_465041>, 2025\n"
+"Last-Translator: Jérôme HERBINET, 2025\n"
 "Language-Team: French (https://app.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1370,7 +1370,7 @@ msgstr "Créer une nouvelle société"
 
 #: /app/templates/content/configuration.php:15
 msgid "Modify current company information"
-msgstr "Modifier les informations de l’entreprise actuelles"
+msgstr "Modifier les informations de la société actuelle"
 
 #: /app/templates/content/configuration.php:20
 msgid "Share with ..."

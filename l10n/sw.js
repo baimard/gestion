@@ -1,0 +1,26 @@
+OC.L10N.register(
+    "gestion",
+    {
+    "Phone number" : "Namba ya simu",
+    "Email" : "Barua pepe",
+    "New" : "Mpya",
+    "Comment" : "Maoni",
+    "Choose" : "Chagua",
+    "Cancel" : "Cancel",
+    "Search" : "Tafuta",
+    "Showing 0 to 0 of 0 entries" : "Inaonesha 0 kwa 0 ya 0 maingizo",
+    "Previous" : "Iliyopita",
+    "From" : "Tangu/ kutoka",
+    "To" : "Mpaka/ hadi",
+    "Add" : "Ongeza",
+    "Delete" : "Futa",
+    "ID" : "Kitambulisho",
+    "Version" : "Toleo",
+    "Status" : "Wadhifa",
+    "Actions" : "Utendekaji",
+    "Date:" : "Tarehe:",
+    "Year" : "Mwaka",
+    "Loading …" : "Inapakia",
+    "About" : "Kuhusu"
+},
+"nplurals=2; plural=(n != 1);");

@@ -7,7 +7,6 @@
 # antemyste, 2021
 # Arnaud Wallon <arnaud@netbeat.be>, 2022
 # Hugo Robert <hugo.robert@protonmail.ch>, 2022
-# Ldm Public <ldmpub@gmail.com>, 2022
 # Jérémie Tarot <silopolis@gmail.com>, 2023
 # Lyanis Souidi <lyanis.souidi@hotmail.com>, 2024
 # Stéphane Parunakian, 2024
@@ -19,15 +18,17 @@
 # Benjamin <benjamin@cybercorp.fr>, 2025
 # daf9a3bef94549192358462a8bb20263_a023b71 <69530ed134884b79b067e9214de553f8_465041>, 2025
 # Jérôme HERBINET, 2025
+# Florian DANIEL aka Facyla <i.daniel.florian@gmail.com>, 2025
+# Ldm Public <ldmpub@gmail.com>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2025-06-10 02:07+0000\n"
+"POT-Creation-Date: 2025-06-23 02:09+0000\n"
 "PO-Revision-Date: 2021-08-03 03:27+0000\n"
-"Last-Translator: Jérôme HERBINET, 2025\n"
+"Last-Translator: Ldm Public <ldmpub@gmail.com>, 2025\n"
 "Language-Team: French (https://app.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,7 +82,7 @@ msgstr "Commentaire"
 
 #: /app/lib/Db/Bdd.php:143 /app/templates/content/devisshow.php:57
 msgid "Offer valid for 1 month from: "
-msgstr ""
+msgstr "Offre valable 1 mois à compter du :"
 
 #: /app/lib/Db/Bdd.php:158
 msgid "Text free"
@@ -1093,11 +1094,11 @@ msgstr "DEVIS"
 
 #: /app/src/js/pdf.js:72
 msgid "PDF has been created."
-msgstr ""
+msgstr "Le fichier PDF a été créé"
 
 #: /app/src/js/pdf.js:76
 msgid "Error when creating PDF."
-msgstr ""
+msgstr "Erreur lors de la création du fichier PDF"
 
 #: /app/templates/content/changelog.php:4
 msgid "Welcome to GESTION"
@@ -1535,7 +1536,7 @@ msgstr "Merci de le renseigner dans la zone de configuration globale"
 
 #: /app/templates/content/devisshow.php:106
 msgid "footer image"
-msgstr ""
+msgstr "image du pied de page"
 
 #: /app/templates/content/devisshow.php:108
 msgid "You can add your footer logo here."

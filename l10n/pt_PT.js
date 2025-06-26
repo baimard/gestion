@@ -14,6 +14,8 @@ OC.L10N.register(
     "Disable" : "Desativar",
     "Enable" : "Ativar",
     "Search" : "Pesquisa sobre",
+    "First" : "First",
+    "Last" : "Last",
     "Next" : "Seguinte",
     "Previous" : "Anterior",
     "Email sent" : "Email enviado",

@@ -16,6 +16,7 @@ OC.L10N.register(
     "Search" : "Soek",
     "Next" : "Volgende",
     "Previous" : "Vorige",
+    "Open" : "Open",
     "Delete" : "Skrap",
     "Email sent" : "E-pos gestuur",
     "Documentation" : "Dokumentasie",

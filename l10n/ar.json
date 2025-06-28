@@ -245,6 +245,8 @@
     "Editable (Click to change)" : "قابل للتعديل (أنقُر للتغيير)",
     "Your global Nextcloud mail server need to be configured" : "يلزم تهيئة خادم بريد نكست كلاود الشامل",
     "Added!" : "تمّت الإضافة!",
+    "Open" : "فتح",
+    "Duplicate" : "تكرار",
     "Delete" : "حذف",
     "Email sent" : "تمّ إرسال الإيميل",
     "Is your global mail server configured in Nextcloud?" : "هل تمّ تكوين خادم البريد الشامل لنكست كلاود؟",

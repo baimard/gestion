@@ -240,6 +240,8 @@ OC.L10N.register(
     "Editable (Click to change)" : "Възможно е редактиране (Щракнете, за да промените)",
     "Your global Nextcloud mail server need to be configured" : "Глобалният ви пощенски сървър Nextcloud, трябва да бъде конфигуриран",
     "Added!" : "Добавено",
+    "Open" : "Отвори",
+    "Duplicate" : "Дубликат",
     "Delete" : "Изтриване",
     "Email sent" : "Имейла е изпратен",
     "Is your global mail server configured in Nextcloud?" : "Вашият глобален пощенски сървър конфигуриран ли е в Nextcloud?",

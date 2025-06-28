@@ -18,6 +18,7 @@ OC.L10N.register(
     "Search" : "Buscar",
     "Next" : "Siguiente",
     "Previous" : "Anterior",
+    "Open" : "Abrir",
     "Delete" : "Desaniciar",
     "Email sent" : "Unvióse'l corréu electrónicu",
     "Documentation" : "Documentación",

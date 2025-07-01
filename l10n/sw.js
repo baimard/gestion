@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Phone number" : "Namba ya simu",
     "Email" : "Barua pepe",
+    "Address" : "Anwani",
     "New" : "Mpya",
     "Comment" : "Maoni",
     "Choose" : "Chagua",
@@ -15,6 +16,7 @@ OC.L10N.register(
     "Delete" : "Futa",
     "From" : "Tangu/ kutoka",
     "To" : "Mpaka/ hadi",
+    "Send" : "Tuma",
     "Add" : "Ongeza",
     "ID" : "Kitambulisho",
     "Version" : "Toleo",

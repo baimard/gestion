@@ -1,6 +1,7 @@
 { "translations": {
     "Phone number" : "Namba ya simu",
     "Email" : "Barua pepe",
+    "Address" : "Anwani",
     "New" : "Mpya",
     "Comment" : "Maoni",
     "Choose" : "Chagua",
@@ -13,6 +14,7 @@
     "Delete" : "Futa",
     "From" : "Tangu/ kutoka",
     "To" : "Mpaka/ hadi",
+    "Send" : "Tuma",
     "Add" : "Ongeza",
     "ID" : "Kitambulisho",
     "Version" : "Toleo",

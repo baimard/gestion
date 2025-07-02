@@ -249,7 +249,7 @@ OC.L10N.register(
     "Editable (Click to change)" : "Editável (Clique para alterar)",
     "Your global Nextcloud mail server need to be configured" : "Seu servidor de e-mail global do Nextcloud precisa ser configurado",
     "Added!" : "Adicionado!",
-    "Open" : "Aberto",
+    "Open" : "Abrir",
     "Duplicate" : "Duplicar",
     "Delete" : "Excluir",
     "Email sent" : "E-mail enviado",

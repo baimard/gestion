@@ -2,11 +2,12 @@
 	<li class="app-navigation-item"><center><b><?php p($l->t('COMPANY'));?></b></center></li>
 	<li class="app-navigation-entry">
 		<select style="width:95%; margin-left:7px;" name="CurrentCompany" id="CurrentCompany-select">
-			<?php foreach ($_['CompaniesList'] as $key => $value) {
-				$select = ((int)$value['id']===(int)$_['CurrentCompany']) ? 'selected' : '';
-				echo "<option value=".$value['id']." $select>".$value['id']." ". $value['entreprise'] ."</option>"; 
-				}
-			?>
+			<?php foreach ($_['CompaniesList'] as $value): ?>
+				<option value="<?= htmlspecialchars($value['id']) ?>" 
+						<?= ((int)$value['id'] === (int)$_['CurrentCompany']) ? 'selected' : '' ?>>
+					<?= 'id : ' .htmlspecialchars($value['id']) . ' - ' . htmlspecialchars($value['entreprise']) ?>
+				</option>
+			<?php endforeach; ?>
 		</select>
 	</li>
 	<li class="app-navigation-item"><center><b>GESTION</b></center></li>

@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (
                 event.target.classList.contains("editableNumber") ||
                 event.target.classList.contains("editableNumeric") ||
+                event.target.classList.contains("editableComment") ||
                 event.target.classList.contains("editable")
             ) {
                 event.target.setAttribute('contenteditable', 'true');
@@ -207,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var targetClass = e.target.className;
             if (targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")) {
                 updateNumerical(e.target);
-            } else if (targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration") || targetClass.includes("editableConfigurationSelect")) {
+            } else if (targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration") || targetClass.includes("editableConfigurationSelect") || targetClass.includes("editableComment")) {
                 // Empêcher le comportement par défaut
             } else if (targetClass.includes("editable")) {
                 updateEditable(e.target);

@@ -247,9 +247,9 @@ class PageController extends Controller {
 																	'produit'=>json_decode($produits), 
 																	'path' => $this->myID, 
 																	'url' => $this->getNavigationLink(),
-																	'logo' => $this->getLogo('logo.png'),
-																	'logo_header' => $this->getLogo('logo_header.png'),
-																	'logo_footer' => $this->getLogo('logo_footer.png'),
+																	'logo' => $this->getLogo($this->session->get('CurrentCompany').'logo.png'),
+																	'logo_header' => $this->getLogo($this->session->get('CurrentCompany').'logo_header.png'),
+																	'logo_footer' => $this->getLogo($this->session->get('CurrentCompany').'logo_footer.png'),
 																	'CompaniesList' => $this->getCompaniesList(),
 																	'CurrentCompany' => $this->session->get('CurrentCompany')
 																)
@@ -270,9 +270,9 @@ class PageController extends Controller {
 																		'configuration'=> $this->getConfiguration(), 
 																		'facture'=>json_decode($facture), 
 																		'url' => $this->getNavigationLink(),
-																		'logo' => $this->getLogo('logo.png'),
-																		'logo_header' => $this->getLogo('logo_header.png'),
-																		'logo_footer' => $this->getLogo('logo_footer.png'),
+																		'logo' => $this->getLogo($this->session->get('CurrentCompany').'logo.png'),
+																		'logo_header' => $this->getLogo($this->session->get('CurrentCompany').'logo_header.png'),
+																		'logo_footer' => $this->getLogo($this->session->get('CurrentCompany').'logo_footer.png'),
 																		'CompaniesList' => $this->getCompaniesList(),
 																		'CurrentCompany' => $this->session->get('CurrentCompany')
 																)
@@ -321,6 +321,7 @@ class PageController extends Controller {
 
 		if(empty($this->session->get('CurrentCompany')) || $this->session->get('CurrentCompany') == ''){
 			$this->setCurrentCompany($CompaniesList[0]['id']);
+
 		}
 		
 		return $CompaniesList;

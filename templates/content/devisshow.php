@@ -5,7 +5,7 @@
                 if(isset($_['logo_header']) && $_['logo_header'] !== "nothing"){
                     echo "<a><img alt='".$l->t('Company logo')."' class=\"img-fluid\" src=\"data:image/png;base64, ".$_['logo_header']."\"/></a>";
                 }else{
-                    echo "<span style='font-size:12px' id='Company-logo' data-html2canvas-ignore><b>".$l->t('You can add your company logo here.')."</b><br/><i>".$l->t('To add a logo, drop the logo_header.png file in ".gestion" folder at the root of your Nextcloud Files app. Remember to set "Show hidden files".')."</i><br/><br/>".$l->t('This message will not appear on generated PDF.')."</span>";
+                    echo "<span style='font-size:12px' id='Company-logo' data-html2canvas-ignore><b>".$l->t('You can add your company logo here.')."</b><br/><i>".$l->t('To add a logo, drop the <compagnyid>logo_header.png file in ".gestion" folder at the root of your Nextcloud Files app. Remember to set "Show hidden files".')."</i><br/><br/>".$l->t('This message will not appear on generated PDF.')."</span>";
                 }
             ?>
         </span>
@@ -15,7 +15,7 @@
     <table id="headertable">
         <tr>
             <td style="text-align: center;">
-                <span><?php p($l->t('FROM'));?> <?php echo $res->entreprise; ?><span>
+                <span><?php p($l->t('From'));?> <?php echo $res->entreprise; ?><span>
                 <p>
                     <span><?php echo $res->prenom . " " . $res->nom; ?></span><br />
                     <span><?php echo $res->adresse; ?></span><br />
@@ -30,13 +30,13 @@
                         if(isset($_['logo']) && $_['logo'] !== "nothing"){
                             echo "<center><a><img alt='".$l->t('Company logo')."' class=\"img-fluid\" src=\"data:image/png;base64, ".$_['logo']."\"/></a></center>";
                         }else{
-                            echo "<span style='font-size:12px' id='Company-logo' data-html2canvas-ignore><b><center>".$l->t('You can add your company logo here.')."</center></b><br/><i>".$l->t('To add a logo, drop the logo.png file in ".gestion" folder at the root of your Nextcloud Files app. Remember to set "Show hidden files".')."</i><br/><br/><center>".$l->t('This message will not appear on generated PDF.')."</center></span>";
+                            echo "<span style='font-size:12px' id='Company-logo' data-html2canvas-ignore><b><center>".$l->t('You can add your company logo here.')."</center></b><br/><i>".$l->t('To add a logo, drop the <compagnyid>logo.png file in ".gestion" folder at the root of your Nextcloud Files app. Remember to set "Show hidden files".')."</i><br/><br/><center>".$l->t('This message will not appear on generated PDF.')."</center></span>";
                         }
                     ?>
                 </span>
             </td>
             <td style="text-align: center;">
-                <span><?php p($l->t('TO'));?> <span id="entreprise"></span></span>
+                <span><?php p($l->t('To'));?> <span id="entreprise"></span></span>
                 <p>
                     <span id="nomprenom" data-id="0" data-table="devis" data-column="id_client"></span><br />
                     <span id="adresse"></span><br />
@@ -59,7 +59,7 @@
         <span class="inline"><?php echo (new DateTime($_['devis'][0]->date))->format('d-m-Y'); ?></span>
     </div>
 
-    <div id="deviscomment" class="comment editable" data-table="devis" data-column="comment" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo ($_['devis'][0]->comment == "" ) ? "-" : $_['devis'][0]->comment ; ?></div>
+    <div id="deviscomment" class="comment editableComment" data-table="devis" data-column="comment" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo ($_['devis'][0]->comment == "" ) ? "-" : nl2br(htmlspecialchars($_['devis'][0]->comment)); ?></div>
 
     <div>
         <button id="devisAdd"       type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
@@ -105,7 +105,7 @@
                 if(isset($_['logo_footer']) && $_['logo_footer'] !== "nothing"){
                     echo "<a><img alt='".$l->t('footer image')."' class=\"img-fluid\" src=\"data:image/png;base64, ".$_['logo_footer']."\"/></a>";
                 }else{
-                    echo "<span style='font-size:12px;' id='footer-logo' data-html2canvas-ignore><b>".$l->t('You can add your footer logo here.')."</b><br/><i>".$l->t('To add a logo, drop the logo_footer.png file in ".gestion" folder at the root of your Nextcloud Files app. Remember to set "Show hidden files".')."</i><br/><br/>".$l->t('This message will not appear on generated PDF.')."</span>";
+                    echo "<span style='font-size:12px;' id='footer-logo' data-html2canvas-ignore><b>".$l->t('You can add your footer logo here.')."</b><br/><i>".$l->t('To add a logo, drop the <compagnyid>logo_footer.png file in ".gestion" folder at the root of your Nextcloud Files app. Remember to set "Show hidden files".')."</i><br/><br/>".$l->t('This message will not appear on generated PDF.')."</span>";
                 }
             ?>
         </span>

@@ -1715,7 +1715,7 @@ module.exports = function isBuffer(arg) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   $: () => (/* binding */ getGettextBuilder)
 /* harmony export */ });
-/* harmony import */ var _chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9620);
+/* harmony import */ var _chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8767);
 
 /*!
  * SPDX-FileCopyrightText: 2019 Nextcloud GmbH and Nextcloud contributors
@@ -1743,7 +1743,7 @@ class GettextBuilder {
    * This only works within a Nextcloud page context.
    */
   detectLanguage() {
-    return this.setLanguage((0,_chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.b)().replace("-", "_"));
+    return this.setLanguage((0,_chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.a)().replace("-", "_"));
   }
   addTranslation(language, data) {
     this.translations[language] = data;
@@ -1764,7 +1764,7 @@ class GettextBuilder {
       return [msgid, msgstr[0]];
     });
     const bundle = {
-      pluralFunction: (n) => (0,_chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.d)(n, this.language),
+      pluralFunction: (n) => (0,_chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.d)(n, this.language),
       translations: Object.fromEntries(translations)
     };
     return new GettextWrapper(bundle);
@@ -1781,7 +1781,7 @@ class GettextWrapper {
    * @param placeholders map of placeholder key to value
    */
   gettext(original, placeholders = {}) {
-    return (0,_chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.t)("", original, placeholders, void 0, { bundle: this.bundle });
+    return (0,_chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.t)("", original, placeholders, void 0, { bundle: this.bundle });
   }
   /**
    * Get translated string with plural forms
@@ -1792,13 +1792,14 @@ class GettextWrapper {
    * @param placeholders optional map of placeholder key to value
    */
   ngettext(singular, plural, count, placeholders = {}) {
-    return (0,_chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.c)("", singular, plural, count, placeholders, { bundle: this.bundle });
+    return (0,_chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.c)("", singular, plural, count, placeholders, { bundle: this.bundle });
   }
 }
 function getGettextBuilder() {
   return new GettextBuilder();
 }
 
+//# sourceMappingURL=gettext.mjs.map
 
 
 /***/ }),
@@ -12235,14 +12236,15 @@ function normalizeComponent(scriptExports, render, staticRenderFns, functionalTe
 /* harmony export */   $X: () => (/* binding */ getDayNamesShort),
 /* harmony export */   JN: () => (/* binding */ getFirstDay),
 /* harmony export */   Pe: () => (/* binding */ getDayNamesMin),
-/* harmony export */   Tl: () => (/* reexport safe */ _chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.t),
-/* harmony export */   Z0: () => (/* reexport safe */ _chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.b),
+/* harmony export */   Tl: () => (/* reexport safe */ _chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.t),
+/* harmony export */   Z0: () => (/* reexport safe */ _chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.a),
 /* harmony export */   fL: () => (/* binding */ getMonthNames),
 /* harmony export */   hY: () => (/* binding */ getDayNames),
 /* harmony export */   lG: () => (/* binding */ getMonthNamesShort),
-/* harmony export */   lO: () => (/* reexport safe */ _chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.g)
+/* harmony export */   lO: () => (/* reexport safe */ _chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.g)
 /* harmony export */ });
-/* harmony import */ var _chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9620);
+/* unused harmony export formatRelativeTime */
+/* harmony import */ var _chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8767);
 
 
 /*!
@@ -12253,7 +12255,7 @@ function getFirstDay() {
   if (typeof window.firstDay !== "undefined") {
     return window.firstDay;
   }
-  const intl = new Intl.Locale((0,_chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.g)());
+  const intl = new Intl.Locale((0,_chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.g)());
   const weekInfo = intl.getWeekInfo?.() ?? intl.weekInfo;
   if (weekInfo) {
     return weekInfo.firstDay % 7;
@@ -12264,7 +12266,7 @@ function getDayNames() {
   if (typeof window.dayNames !== "undefined") {
     return window.dayNames;
   }
-  const locale = (0,_chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.g)();
+  const locale = (0,_chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.g)();
   return [
     (/* @__PURE__ */ new Date("1970-01-04T00:00:00.000Z")).toLocaleDateString(locale, { weekday: "long" }),
     (/* @__PURE__ */ new Date("1970-01-05T00:00:00.000Z")).toLocaleDateString(locale, { weekday: "long" }),
@@ -12279,7 +12281,7 @@ function getDayNamesShort() {
   if (typeof window.dayNamesShort !== "undefined") {
     return window.dayNamesShort;
   }
-  const locale = (0,_chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.g)();
+  const locale = (0,_chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.g)();
   return [
     (/* @__PURE__ */ new Date("1970-01-04T00:00:00.000Z")).toLocaleDateString(locale, { weekday: "short" }),
     (/* @__PURE__ */ new Date("1970-01-05T00:00:00.000Z")).toLocaleDateString(locale, { weekday: "short" }),
@@ -12294,7 +12296,7 @@ function getDayNamesMin() {
   if (typeof window.dayNamesMin !== "undefined") {
     return window.dayNamesMin;
   }
-  const locale = (0,_chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.g)();
+  const locale = (0,_chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.g)();
   return [
     (/* @__PURE__ */ new Date("1970-01-04T00:00:00.000Z")).toLocaleDateString(locale, { weekday: "narrow" }),
     (/* @__PURE__ */ new Date("1970-01-05T00:00:00.000Z")).toLocaleDateString(locale, { weekday: "narrow" }),
@@ -12309,7 +12311,7 @@ function getMonthNames() {
   if (typeof window.monthNames !== "undefined") {
     return window.monthNames;
   }
-  const locale = (0,_chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.g)();
+  const locale = (0,_chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.g)();
   return [
     (/* @__PURE__ */ new Date("1970-01-01T00:00:00.000Z")).toLocaleDateString(locale, { month: "long" }),
     (/* @__PURE__ */ new Date("1970-02-01T00:00:00.000Z")).toLocaleDateString(locale, { month: "long" }),
@@ -12329,7 +12331,7 @@ function getMonthNamesShort() {
   if (typeof window.monthNamesShort !== "undefined") {
     return window.monthNamesShort;
   }
-  const locale = (0,_chunks_translation_CD_FiYBO_mjs__WEBPACK_IMPORTED_MODULE_0__.g)();
+  const locale = (0,_chunks_translation_DUYoTdjY_mjs__WEBPACK_IMPORTED_MODULE_0__.g)();
   return [
     (/* @__PURE__ */ new Date("1970-01-01T00:00:00.000Z")).toLocaleDateString(locale, { month: "short" }),
     (/* @__PURE__ */ new Date("1970-02-01T00:00:00.000Z")).toLocaleDateString(locale, { month: "short" }),
@@ -12345,7 +12347,47 @@ function getMonthNamesShort() {
     (/* @__PURE__ */ new Date("1970-12-01T00:00:00.000Z")).toLocaleDateString(locale, { month: "short" })
   ];
 }
+/*!
+ * SPDX-FileCopyrightText: 2025 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+function formatRelativeTime(timestamp = Date.now(), opts = {}) {
+  const options = {
+    ignoreSeconds: false,
+    language: getLanguage(),
+    relativeTime: "long",
+    ...opts
+  };
+  const date = new Date(timestamp);
+  const formatter = new Intl.RelativeTimeFormat([options.language, getLanguage()], { numeric: "auto", style: options.relativeTime });
+  const diff = date.getTime() - Date.now();
+  const seconds = diff / 1e3;
+  if (Math.abs(seconds) < 59.5) {
+    return options.ignoreSeconds || formatter.format(Math.round(seconds), "second");
+  }
+  const minutes = seconds / 60;
+  if (Math.abs(minutes) <= 59) {
+    return formatter.format(Math.round(minutes), "minute");
+  }
+  const hours = minutes / 60;
+  if (Math.abs(hours) < 23.5) {
+    return formatter.format(Math.round(hours), "hour");
+  }
+  const days = hours / 24;
+  if (Math.abs(days) < 6.5) {
+    return formatter.format(Math.round(days), "day");
+  }
+  if (Math.abs(days) < 27.5) {
+    const weeks = days / 7;
+    return formatter.format(Math.round(weeks), "week");
+  }
+  const months = days / 30;
+  const format = Math.abs(months) < 11 ? { month: options.relativeTime, day: "numeric" } : { year: options.relativeTime === "narrow" ? "2-digit" : "numeric", month: options.relativeTime };
+  const dateTimeFormatter = new Intl.DateTimeFormat([options.language, getLanguage()], format);
+  return dateTimeFormatter.format(date);
+}
 
+//# sourceMappingURL=index.mjs.map
 
 
 /***/ }),
@@ -24516,7 +24558,7 @@ function getDialogBuilder(name) {
 function showGuestUserPrompt(props) {
   return new Promise((resolve) => {
     spawnDialog$1(
-      defineAsyncComponent(() => Promise.all(/* import() */[__webpack_require__.e(454), __webpack_require__.e(279)]).then(__webpack_require__.bind(__webpack_require__, 9279))),
+      defineAsyncComponent(() => Promise.all(/* import() */[__webpack_require__.e(399), __webpack_require__.e(771)]).then(__webpack_require__.bind(__webpack_require__, 5771))),
       props,
       resolve
     );
@@ -34035,6 +34077,358 @@ function spawnDialog(dialog, props, onClose = () => {
 
 /***/ }),
 
+/***/ 8767:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   a: () => (/* binding */ getLanguage),
+/* harmony export */   c: () => (/* binding */ translatePlural),
+/* harmony export */   d: () => (/* binding */ getPlural),
+/* harmony export */   g: () => (/* binding */ getCanonicalLocale),
+/* harmony export */   t: () => (/* binding */ translate)
+/* harmony export */ });
+/* unused harmony exports b, i, l, r, u */
+/* harmony import */ var dompurify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9418);
+/* harmony import */ var escape_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(580);
+
+
+
+/*!
+ * SPDX-FileCopyrightText: 2019 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+const environmentLocale = Intl.DateTimeFormat().resolvedOptions().locale;
+function getLocale() {
+  return document.documentElement.dataset.locale || environmentLocale.replaceAll(/-/g, "_");
+}
+function getCanonicalLocale() {
+  return getLocale().replaceAll(/_/g, "-");
+}
+function getLanguage() {
+  return document.documentElement.lang || navigator.language;
+}
+function isRTL(language) {
+  const languageCode = language || getLanguage();
+  const rtlLanguages = [
+    /* eslint-disable no-multi-spaces */
+    "ae",
+    // Avestan
+    "ar",
+    // 'العربية', Arabic
+    "arc",
+    // Aramaic
+    "arz",
+    // 'مصرى', Egyptian
+    "bcc",
+    // 'بلوچی مکرانی', Southern Balochi
+    "bqi",
+    // 'بختياري', Bakthiari
+    "ckb",
+    // 'Soranî / کوردی', Sorani
+    "dv",
+    // Dhivehi
+    "fa",
+    // 'فارسی', Persian
+    "glk",
+    // 'گیلکی', Gilaki
+    "ha",
+    // 'هَوُسَ', Hausa
+    "he",
+    // 'עברית', Hebrew
+    "khw",
+    // 'کھوار', Khowar
+    "ks",
+    // 'कॉशुर / کٲشُر', Kashmiri
+    "ku",
+    // 'Kurdî / كوردی', Kurdish
+    "mzn",
+    // 'مازِرونی', Mazanderani
+    "nqo",
+    // 'ߒߞߏ', N’Ko
+    "pnb",
+    // 'پنجابی', Western Punjabi
+    "ps",
+    // 'پښتو', Pashto,
+    "sd",
+    // 'سنڌي', Sindhi
+    "ug",
+    // 'Uyghurche / ئۇيغۇرچە', Uyghur
+    "ur",
+    // 'اردو', Urdu
+    "ur-PK",
+    // 'اردو', Urdu (nextcloud BCP47 variant)
+    "uz-AF",
+    // 'اوزبیکی', Uzbek Afghan
+    "yi"
+    // 'ייִדיש', Yiddish
+    /* eslint-enable no-multi-spaces */
+  ];
+  return rtlLanguages.includes(languageCode);
+}
+/*!
+ * SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+function hasAppTranslations(appId) {
+  return window._oc_l10n_registry_translations?.[appId] !== void 0 && window._oc_l10n_registry_plural_functions?.[appId] !== void 0;
+}
+function registerAppTranslations(appId, translations, pluralFunction) {
+  if (appId === "__proto__" || appId === "constructor" || appId === "prototype") {
+    throw new Error("Invalid appId");
+  }
+  window._oc_l10n_registry_translations = Object.assign(
+    window._oc_l10n_registry_translations || {},
+    {
+      [appId]: Object.assign(window._oc_l10n_registry_translations?.[appId] || {}, translations)
+    }
+  );
+  window._oc_l10n_registry_plural_functions = Object.assign(
+    window._oc_l10n_registry_plural_functions || {},
+    {
+      [appId]: pluralFunction
+    }
+  );
+}
+function unregisterAppTranslations(appId) {
+  delete window._oc_l10n_registry_translations?.[appId];
+  delete window._oc_l10n_registry_plural_functions?.[appId];
+}
+function getAppTranslations(appId) {
+  return {
+    translations: window._oc_l10n_registry_translations?.[appId] ?? {},
+    pluralFunction: window._oc_l10n_registry_plural_functions?.[appId] ?? ((number) => number)
+  };
+}
+/*!
+ * SPDX-FileCopyrightText: 2019 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+function translate(app, text, placeholdersOrNumber, optionsOrNumber, options) {
+  const vars = typeof placeholdersOrNumber === "object" ? placeholdersOrNumber : void 0;
+  const number = typeof optionsOrNumber === "number" ? optionsOrNumber : typeof placeholdersOrNumber === "number" ? placeholdersOrNumber : void 0;
+  const allOptions = {
+    // defaults
+    escape: true,
+    sanitize: true,
+    // overwrite with user config
+    ...typeof options === "object" ? options : typeof optionsOrNumber === "object" ? optionsOrNumber : {}
+  };
+  const identity = (value) => value;
+  const optSanitize = allOptions.sanitize ? dompurify__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A.sanitize : identity;
+  const optEscape = allOptions.escape ? escape_html__WEBPACK_IMPORTED_MODULE_1__ : identity;
+  const isValidReplacement = (value) => typeof value === "string" || typeof value === "number";
+  const _build = (text2, vars2, number2) => {
+    return text2.replace(/%n/g, "" + number2).replace(/{([^{}]*)}/g, (match, key) => {
+      if (vars2 === void 0 || !(key in vars2)) {
+        return optEscape(match);
+      }
+      const replacement = vars2[key];
+      if (isValidReplacement(replacement)) {
+        return optEscape(`${replacement}`);
+      } else if (typeof replacement === "object" && isValidReplacement(replacement.value)) {
+        const escape = replacement.escape !== false ? escape_html__WEBPACK_IMPORTED_MODULE_1__ : identity;
+        return escape(`${replacement.value}`);
+      } else {
+        return optEscape(match);
+      }
+    });
+  };
+  const bundle = options?.bundle ?? getAppTranslations(app);
+  let translation = bundle.translations[text] || text;
+  translation = Array.isArray(translation) ? translation[0] : translation;
+  if (typeof vars === "object" || number !== void 0) {
+    return optSanitize(_build(
+      translation,
+      vars,
+      number
+    ));
+  } else {
+    return optSanitize(translation);
+  }
+}
+function translatePlural(app, textSingular, textPlural, number, vars, options) {
+  const identifier = "_" + textSingular + "_::_" + textPlural + "_";
+  const bundle = options?.bundle ?? getAppTranslations(app);
+  const value = bundle.translations[identifier];
+  if (typeof value !== "undefined") {
+    const translation = value;
+    if (Array.isArray(translation)) {
+      const plural = bundle.pluralFunction(number);
+      return translate(app, translation[plural], vars, number, options);
+    }
+  }
+  if (number === 1) {
+    return translate(app, textSingular, vars, number, options);
+  } else {
+    return translate(app, textPlural, vars, number, options);
+  }
+}
+async function loadTranslations(appName, callback) {
+  if (hasAppTranslations(appName) || getLanguage() === "en") {
+    const bundle = getAppTranslations(appName);
+    callback?.(bundle);
+    return bundle;
+  }
+  let response;
+  try {
+    const url = generateFilePath(appName, "l10n", getLanguage() + ".json");
+    response = await fetch(url);
+  } catch (error) {
+    throw new Error("Network error");
+  }
+  if (response.ok) {
+    try {
+      const bundle = await response.json();
+      if (typeof bundle.translations === "object") {
+        register(appName, bundle.translations);
+        callback?.(bundle);
+        return bundle;
+      }
+    } catch (error) {
+    }
+    throw new Error("Invalid content of translation bundle");
+  } else {
+    throw new Error(response.statusText);
+  }
+}
+function register(appName, bundle) {
+  registerAppTranslations(appName, bundle, getPlural);
+}
+function unregister(appName) {
+  return unregisterAppTranslations(appName);
+}
+function getPlural(number, language = getLanguage()) {
+  if (language === "pt-BR") {
+    language = "xbr";
+  }
+  if (language.length > 3) {
+    language = language.substring(0, language.lastIndexOf("-"));
+  }
+  switch (language) {
+    case "az":
+    case "bo":
+    case "dz":
+    case "id":
+    case "ja":
+    case "jv":
+    case "ka":
+    case "km":
+    case "kn":
+    case "ko":
+    case "ms":
+    case "th":
+    case "tr":
+    case "vi":
+    case "zh":
+      return 0;
+    case "af":
+    case "bn":
+    case "bg":
+    case "ca":
+    case "da":
+    case "de":
+    case "el":
+    case "en":
+    case "eo":
+    case "es":
+    case "et":
+    case "eu":
+    case "fa":
+    case "fi":
+    case "fo":
+    case "fur":
+    case "fy":
+    case "gl":
+    case "gu":
+    case "ha":
+    case "he":
+    case "hu":
+    case "is":
+    case "it":
+    case "ku":
+    case "lb":
+    case "ml":
+    case "mn":
+    case "mr":
+    case "nah":
+    case "nb":
+    case "ne":
+    case "nl":
+    case "nn":
+    case "no":
+    case "oc":
+    case "om":
+    case "or":
+    case "pa":
+    case "pap":
+    case "ps":
+    case "pt":
+    case "so":
+    case "sq":
+    case "sv":
+    case "sw":
+    case "ta":
+    case "te":
+    case "tk":
+    case "ur":
+    case "zu":
+      return number === 1 ? 0 : 1;
+    case "am":
+    case "bh":
+    case "fil":
+    case "fr":
+    case "gun":
+    case "hi":
+    case "hy":
+    case "ln":
+    case "mg":
+    case "nso":
+    case "xbr":
+    case "ti":
+    case "wa":
+      return number === 0 || number === 1 ? 0 : 1;
+    case "be":
+    case "bs":
+    case "hr":
+    case "ru":
+    case "sh":
+    case "sr":
+    case "uk":
+      return number % 10 === 1 && number % 100 !== 11 ? 0 : number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 10 || number % 100 >= 20) ? 1 : 2;
+    case "cs":
+    case "sk":
+      return number === 1 ? 0 : number >= 2 && number <= 4 ? 1 : 2;
+    case "ga":
+      return number === 1 ? 0 : number === 2 ? 1 : 2;
+    case "lt":
+      return number % 10 === 1 && number % 100 !== 11 ? 0 : number % 10 >= 2 && (number % 100 < 10 || number % 100 >= 20) ? 1 : 2;
+    case "sl":
+      return number % 100 === 1 ? 0 : number % 100 === 2 ? 1 : number % 100 === 3 || number % 100 === 4 ? 2 : 3;
+    case "mk":
+      return number % 10 === 1 ? 0 : 1;
+    case "mt":
+      return number === 1 ? 0 : number === 0 || number % 100 > 1 && number % 100 < 11 ? 1 : number % 100 > 10 && number % 100 < 20 ? 2 : 3;
+    case "lv":
+      return number === 0 ? 0 : number % 10 === 1 && number % 100 !== 11 ? 1 : 2;
+    case "pl":
+      return number === 1 ? 0 : number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 12 || number % 100 > 14) ? 1 : 2;
+    case "cy":
+      return number === 1 ? 0 : number === 2 ? 1 : number === 8 || number === 11 ? 2 : 3;
+    case "ro":
+      return number === 1 ? 0 : number === 0 || number % 100 > 0 && number % 100 < 20 ? 1 : 2;
+    case "ar":
+      return number === 0 ? 0 : number === 1 ? 1 : number === 2 ? 2 : number % 100 >= 3 && number % 100 <= 10 ? 3 : number % 100 >= 11 && number % 100 <= 99 ? 4 : 5;
+    default:
+      return 0;
+  }
+}
+
+//# sourceMappingURL=translation-DUYoTdjY.mjs.map
+
+
+/***/ }),
+
 /***/ 9170:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -42025,358 +42419,6 @@ const NcPopover = NcPopover_kYsewfff_component_.exports;
 
 /***/ }),
 
-/***/ 9620:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   b: () => (/* binding */ getLanguage),
-/* harmony export */   c: () => (/* binding */ translatePlural),
-/* harmony export */   d: () => (/* binding */ getPlural),
-/* harmony export */   g: () => (/* binding */ getCanonicalLocale),
-/* harmony export */   t: () => (/* binding */ translate)
-/* harmony export */ });
-/* unused harmony exports a, i, l, r, u */
-/* harmony import */ var dompurify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9418);
-/* harmony import */ var escape_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(580);
-
-
-
-/*!
- * SPDX-FileCopyrightText: 2019 Nextcloud GmbH and Nextcloud contributors
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
-function getLocale() {
-  return document.documentElement.dataset.locale || "en";
-}
-function getCanonicalLocale() {
-  return getLocale().replace(/_/g, "-");
-}
-function getLanguage() {
-  return document.documentElement.lang || "en";
-}
-function isRTL(language) {
-  const languageCode = language || getLanguage();
-  const rtlLanguages = [
-    /* eslint-disable no-multi-spaces */
-    "ae",
-    // Avestan
-    "ar",
-    // 'العربية', Arabic
-    "arc",
-    // Aramaic
-    "arz",
-    // 'مصرى', Egyptian
-    "bcc",
-    // 'بلوچی مکرانی', Southern Balochi
-    "bqi",
-    // 'بختياري', Bakthiari
-    "ckb",
-    // 'Soranî / کوردی', Sorani
-    "dv",
-    // Dhivehi
-    "fa",
-    // 'فارسی', Persian
-    "glk",
-    // 'گیلکی', Gilaki
-    "ha",
-    // 'هَوُسَ', Hausa
-    "he",
-    // 'עברית', Hebrew
-    "khw",
-    // 'کھوار', Khowar
-    "ks",
-    // 'कॉशुर / کٲشُر', Kashmiri
-    "ku",
-    // 'Kurdî / كوردی', Kurdish
-    "mzn",
-    // 'مازِرونی', Mazanderani
-    "nqo",
-    // 'ߒߞߏ', N’Ko
-    "pnb",
-    // 'پنجابی', Western Punjabi
-    "ps",
-    // 'پښتو', Pashto,
-    "sd",
-    // 'سنڌي', Sindhi
-    "ug",
-    // 'Uyghurche / ئۇيغۇرچە', Uyghur
-    "ur",
-    // 'اردو', Urdu
-    "ur-PK",
-    // 'اردو', Urdu (nextcloud BCP47 variant)
-    "uz-AF",
-    // 'اوزبیکی', Uzbek Afghan
-    "yi"
-    // 'ייִדיש', Yiddish
-    /* eslint-enable no-multi-spaces */
-  ];
-  return rtlLanguages.includes(languageCode);
-}
-/*!
- * SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
-function hasAppTranslations(appId) {
-  return window._oc_l10n_registry_translations?.[appId] !== void 0 && window._oc_l10n_registry_plural_functions?.[appId] !== void 0;
-}
-function registerAppTranslations(appId, translations, pluralFunction) {
-  if (appId === "__proto__" || appId === "constructor" || appId === "prototype") {
-    throw new Error("Invalid appId");
-  }
-  window._oc_l10n_registry_translations = Object.assign(
-    window._oc_l10n_registry_translations || {},
-    {
-      [appId]: Object.assign(window._oc_l10n_registry_translations?.[appId] || {}, translations)
-    }
-  );
-  window._oc_l10n_registry_plural_functions = Object.assign(
-    window._oc_l10n_registry_plural_functions || {},
-    {
-      [appId]: pluralFunction
-    }
-  );
-}
-function unregisterAppTranslations(appId) {
-  delete window._oc_l10n_registry_translations?.[appId];
-  delete window._oc_l10n_registry_plural_functions?.[appId];
-}
-function getAppTranslations(appId) {
-  return {
-    translations: window._oc_l10n_registry_translations?.[appId] ?? {},
-    pluralFunction: window._oc_l10n_registry_plural_functions?.[appId] ?? ((number) => number)
-  };
-}
-/*!
- * SPDX-FileCopyrightText: 2019 Nextcloud GmbH and Nextcloud contributors
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
-function translate(app, text, placeholdersOrNumber, optionsOrNumber, options) {
-  const vars = typeof placeholdersOrNumber === "object" ? placeholdersOrNumber : void 0;
-  const number = typeof optionsOrNumber === "number" ? optionsOrNumber : typeof placeholdersOrNumber === "number" ? placeholdersOrNumber : void 0;
-  const allOptions = {
-    // defaults
-    escape: true,
-    sanitize: true,
-    // overwrite with user config
-    ...typeof options === "object" ? options : typeof optionsOrNumber === "object" ? optionsOrNumber : {}
-  };
-  const identity = (value) => value;
-  const optSanitize = allOptions.sanitize ? dompurify__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A.sanitize : identity;
-  const optEscape = allOptions.escape ? escape_html__WEBPACK_IMPORTED_MODULE_1__ : identity;
-  const isValidReplacement = (value) => typeof value === "string" || typeof value === "number";
-  const _build = (text2, vars2, number2) => {
-    return text2.replace(/%n/g, "" + number2).replace(/{([^{}]*)}/g, (match, key) => {
-      if (vars2 === void 0 || !(key in vars2)) {
-        return optEscape(match);
-      }
-      const replacement = vars2[key];
-      if (isValidReplacement(replacement)) {
-        return optEscape(`${replacement}`);
-      } else if (typeof replacement === "object" && isValidReplacement(replacement.value)) {
-        const escape = replacement.escape !== false ? escape_html__WEBPACK_IMPORTED_MODULE_1__ : identity;
-        return escape(`${replacement.value}`);
-      } else {
-        return optEscape(match);
-      }
-    });
-  };
-  const bundle = options?.bundle ?? getAppTranslations(app);
-  let translation = bundle.translations[text] || text;
-  translation = Array.isArray(translation) ? translation[0] : translation;
-  if (typeof vars === "object" || number !== void 0) {
-    return optSanitize(_build(
-      translation,
-      vars,
-      number
-    ));
-  } else {
-    return optSanitize(translation);
-  }
-}
-function translatePlural(app, textSingular, textPlural, number, vars, options) {
-  const identifier = "_" + textSingular + "_::_" + textPlural + "_";
-  const bundle = options?.bundle ?? getAppTranslations(app);
-  const value = bundle.translations[identifier];
-  if (typeof value !== "undefined") {
-    const translation = value;
-    if (Array.isArray(translation)) {
-      const plural = bundle.pluralFunction(number);
-      return translate(app, translation[plural], vars, number, options);
-    }
-  }
-  if (number === 1) {
-    return translate(app, textSingular, vars, number, options);
-  } else {
-    return translate(app, textPlural, vars, number, options);
-  }
-}
-function loadTranslations(appName, callback) {
-  if (hasAppTranslations(appName) || getLocale() === "en") {
-    return Promise.resolve().then(callback);
-  }
-  const url = generateFilePath(appName, "l10n", getLocale() + ".json");
-  const promise = new Promise((resolve, reject) => {
-    const request = new XMLHttpRequest();
-    request.open("GET", url, true);
-    request.onerror = () => {
-      reject(new Error(request.statusText || "Network error"));
-    };
-    request.onload = () => {
-      if (request.status >= 200 && request.status < 300) {
-        try {
-          const bundle = JSON.parse(request.responseText);
-          if (typeof bundle.translations === "object") resolve(bundle);
-        } catch (error) {
-        }
-        reject(new Error("Invalid content of translation bundle"));
-      } else {
-        reject(new Error(request.statusText));
-      }
-    };
-    request.send();
-  });
-  return promise.then((result) => {
-    register(appName, result.translations);
-    return result;
-  }).then(callback);
-}
-function register(appName, bundle) {
-  registerAppTranslations(appName, bundle, getPlural);
-}
-function unregister(appName) {
-  return unregisterAppTranslations(appName);
-}
-function getPlural(number, language = getLanguage()) {
-  if (language === "pt-BR") {
-    language = "xbr";
-  }
-  if (language.length > 3) {
-    language = language.substring(0, language.lastIndexOf("-"));
-  }
-  switch (language) {
-    case "az":
-    case "bo":
-    case "dz":
-    case "id":
-    case "ja":
-    case "jv":
-    case "ka":
-    case "km":
-    case "kn":
-    case "ko":
-    case "ms":
-    case "th":
-    case "tr":
-    case "vi":
-    case "zh":
-      return 0;
-    case "af":
-    case "bn":
-    case "bg":
-    case "ca":
-    case "da":
-    case "de":
-    case "el":
-    case "en":
-    case "eo":
-    case "es":
-    case "et":
-    case "eu":
-    case "fa":
-    case "fi":
-    case "fo":
-    case "fur":
-    case "fy":
-    case "gl":
-    case "gu":
-    case "ha":
-    case "he":
-    case "hu":
-    case "is":
-    case "it":
-    case "ku":
-    case "lb":
-    case "ml":
-    case "mn":
-    case "mr":
-    case "nah":
-    case "nb":
-    case "ne":
-    case "nl":
-    case "nn":
-    case "no":
-    case "oc":
-    case "om":
-    case "or":
-    case "pa":
-    case "pap":
-    case "ps":
-    case "pt":
-    case "so":
-    case "sq":
-    case "sv":
-    case "sw":
-    case "ta":
-    case "te":
-    case "tk":
-    case "ur":
-    case "zu":
-      return number === 1 ? 0 : 1;
-    case "am":
-    case "bh":
-    case "fil":
-    case "fr":
-    case "gun":
-    case "hi":
-    case "hy":
-    case "ln":
-    case "mg":
-    case "nso":
-    case "xbr":
-    case "ti":
-    case "wa":
-      return number === 0 || number === 1 ? 0 : 1;
-    case "be":
-    case "bs":
-    case "hr":
-    case "ru":
-    case "sh":
-    case "sr":
-    case "uk":
-      return number % 10 === 1 && number % 100 !== 11 ? 0 : number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 10 || number % 100 >= 20) ? 1 : 2;
-    case "cs":
-    case "sk":
-      return number === 1 ? 0 : number >= 2 && number <= 4 ? 1 : 2;
-    case "ga":
-      return number === 1 ? 0 : number === 2 ? 1 : 2;
-    case "lt":
-      return number % 10 === 1 && number % 100 !== 11 ? 0 : number % 10 >= 2 && (number % 100 < 10 || number % 100 >= 20) ? 1 : 2;
-    case "sl":
-      return number % 100 === 1 ? 0 : number % 100 === 2 ? 1 : number % 100 === 3 || number % 100 === 4 ? 2 : 3;
-    case "mk":
-      return number % 10 === 1 ? 0 : 1;
-    case "mt":
-      return number === 1 ? 0 : number === 0 || number % 100 > 1 && number % 100 < 11 ? 1 : number % 100 > 10 && number % 100 < 20 ? 2 : 3;
-    case "lv":
-      return number === 0 ? 0 : number % 10 === 1 && number % 100 !== 11 ? 1 : 2;
-    case "pl":
-      return number === 1 ? 0 : number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 12 || number % 100 > 14) ? 1 : 2;
-    case "cy":
-      return number === 1 ? 0 : number === 2 ? 1 : number === 8 || number === 11 ? 2 : 3;
-    case "ro":
-      return number === 1 ? 0 : number === 0 || number % 100 > 0 && number % 100 < 20 ? 1 : 2;
-    case "ar":
-      return number === 0 ? 0 : number === 1 ? 1 : number === 2 ? 2 : number % 100 >= 3 && number % 100 <= 10 ? 3 : number % 100 >= 11 && number % 100 <= 99 ? 4 : 5;
-    default:
-      return 0;
-  }
-}
-
-
-
-/***/ }),
-
 /***/ 9703:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -42864,7 +42906,6 @@ function checkSelect(el) {
 
 
 function checkSelectPurJs(el) {
-    console.log(el.options)
     Array.from(el.options).forEach(element => {
         if (element.value == el.getAttribute("data-current")) {
             element.setAttribute('selected', true);
@@ -42950,7 +42991,6 @@ function getCurrency(response) {
         cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
     } catch (error) {
         cur = new Intl.NumberFormat("en-EN", { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
-        console.log(error);
     }
 }
 
@@ -42986,7 +43026,6 @@ fetch(url, options)
 
         let mentionsDefault = myresp.mentions_default;
         mentionsDefault = mentionsDefault.replace(/\n/g, '<br/>');
-        console.log(mentionsDefault);
         document.getElementById('mentions_default').innerHTML = unescapeHtml(mentionsDefault);
     })
     .catch(error => {
@@ -43679,7 +43718,7 @@ function delShareUser(uid){
 // EXTERNAL MODULE: ./node_modules/jquery/dist/jquery.js
 var jquery = __webpack_require__(4692);
 ;// ./node_modules/datatables.net/js/dataTables.mjs
-/*! DataTables 2.3.1
+/*! DataTables 2.3.2
  * © SpryMedia Ltd - datatables.net/license
  */
 
@@ -43758,7 +43797,7 @@ var DataTable = function ( selector, options )
 		_fnCamelToHungarian( defaults.column, defaults.column, true );
 		
 		/* Setting up the initialisation object */
-		_fnCamelToHungarian( defaults, dataTables_$.extend( oInit, $this.data() ), true );
+		_fnCamelToHungarian( defaults, dataTables_$.extend( oInit, _fnEscapeObject($this.data()) ), true );
 		
 		
 		
@@ -44188,6 +44227,11 @@ DataTable.ext = _ext = {
 	 */
 	errMode: "alert",
 
+	/** HTML entity escaping */
+	escape: {
+		/** When reading data-* attributes for initialisation options */
+		attributes: false
+	},
 
 	/**
 	 * Legacy so v1 plug-ins don't throw js errors on load
@@ -47659,7 +47703,7 @@ function _fnDetectHeader ( settings, thead, write )
 				if ( write ) {
 					if (unique) {
 						// Allow column options to be set from HTML attributes
-						_fnColumnOptions( settings, shifted, jqCell.data() );
+						_fnColumnOptions( settings, shifted, _fnEscapeObject(jqCell.data()) );
 						
 						// Get the width for the column. This can be defined from the
 						// width attribute, style attribute or `columns.width` option
@@ -47905,7 +47949,7 @@ function _fnBuildAjax( oSettings, data, fn )
 		// to the object for the callback.
 		var empty = {};
 
-		DataTable.util.set(ajax.dataSrc)(empty, []);
+		_fnAjaxDataSrc(oSettings, empty, []);
 		callback(empty);
 	}
 	else {
@@ -49433,9 +49477,11 @@ function _fnSortAttachListener(settings, node, selector, column, callback) {
 		var run = false;
 		var columns = column === undefined
 			? _fnColumnsFromHeader( e.target )
-			: Array.isArray(column)
-				? column
-				: [column];
+			: typeof column === 'function'
+				? column()
+				: Array.isArray(column)
+					? column
+					: [column];
 
 		if ( columns.length ) {
 			for ( var i=0, ien=columns.length ; i<ien ; i++ ) {
@@ -50498,6 +50544,19 @@ function _fnListener(that, name, src) {
 	for (i=0 ; i<src.length ; i++) {
 		that.on(name + '.dt', src[i]);
 	}
+}
+
+/**
+ * Escape HTML entities in strings, in an object
+ */
+function _fnEscapeObject(obj) {
+	if (DataTable.ext.escape.attributes) {
+		dataTables_$.each(obj, function (key, val) {
+			obj[key] = _escapeHtml(val);
+		})
+	}
+
+	return obj;
 }
 
 
@@ -53845,7 +53904,7 @@ function cleanHeader(node, className) {
  *  @type string
  *  @default Version number
  */
-DataTable.version = "2.3.1";
+DataTable.version = "2.3.2";
 
 /**
  * Private data store, containing all of the settings objects that are
@@ -58060,7 +58119,7 @@ class Facture {
   getDTRow() {
     let myrow = [
       `<div>${this.user_id}</div>`,
-      `<div class="factureNum" data-table="facture" data-column="num" data-id="${this.id}">${this.num}</div>`,
+      `<div class="editable factureNum" data-table="facture" data-column="num" data-id="${this.id}">${this.num}</div>`,
       `<div class="editable" data-table="facture" data-column="date" data-id="${this.id}">${this.date}</div>`,
       `<input style="margin:0;padding:0;" class="inputDate" type="date" value=${this.date_paiement} data-table="facture" data-column="date_paiement" data-id="${this.id}"/>`,
       `<div class="editable" data-table="facture" data-column="type_paiement" data-id="${this.id}">${this.type_paiement}</div>`,
@@ -58240,6 +58299,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (
                 event.target.classList.contains("editableNumber") ||
                 event.target.classList.contains("editableNumeric") ||
+                event.target.classList.contains("editableComment") ||
                 event.target.classList.contains("editable")
             ) {
                 event.target.setAttribute('contenteditable', 'true');
@@ -58392,7 +58452,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var targetClass = e.target.className;
             if (targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")) {
                 updateNumerical(e.target);
-            } else if (targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration") || targetClass.includes("editableConfigurationSelect")) {
+            } else if (targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration") || targetClass.includes("editableConfigurationSelect") || targetClass.includes("editableComment")) {
                 // Empêcher le comportement par défaut
             } else if (targetClass.includes("editable")) {
                 updateEditable(e.target);

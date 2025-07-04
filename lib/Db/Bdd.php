@@ -184,14 +184,21 @@ class Bdd {
     /**
      * UPDATE
      */
-    public function gestion_update($table, $column, $data, $id, $id_configuration){
-        if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
-            $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ? AND `id_configuration` = ?";
-            $this->execSQLNoData($sql, array(htmlentities(rtrim($data)), $id, $id_configuration));
+    public function gestion_update($table, $column, $data, $id, $id_configuration) {
+        if (in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)) {
+
+            $safeData = strip_tags($data, '<br>');
+            $safeData = html_entity_decode($safeData, ENT_QUOTES, 'UTF-8');
+            $safeData = rtrim($safeData);
+
+            $sql = "UPDATE " . $this->tableprefix . $table . " SET $column = ? WHERE `id` = ? AND `id_configuration` = ?";
+            $this->execSQLNoData($sql, array($safeData, $id, $id_configuration));
+
             return true;
         }
         return false;
-    }
+}
+
 
     /**
      * UPDATE

@@ -3404,13 +3404,14 @@ function capture(afterCapturefunction) {
     a.click();
     window.URL.revokeObjectURL(url);
   
-    (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__/* .showMessage */ .rG)(t("gestion", "PDF créé avec succès."));
+    (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__/* .showMessage */ .rG)(t("gestion", "PDF has been created."));
   })
   .catch(error => {
-    console.error("Erreur lors de la génération du PDF :", error);
-    (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__/* .showMessage */ .rG)(t("gestion", "Erreur lors de la création du PDF."));
+    console.error("Errors during PDF generation :", error);
+    (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__/* .showMessage */ .rG)(t("gestion", "Error when creating PDF."));
   });
 }
+
 
 /***/ }),
 

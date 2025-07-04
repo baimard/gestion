@@ -58,8 +58,6 @@ OC.L10N.register(
     "Version" : "Versione",
     "Status" : "Status",
     "Actions" : "Atziones",
-    "FROM" : "DAE",
-    "TO" : "A",
     "Add product" : "Agiunghe prodotu",
     "Save in Nextcloud" : "Sarva in Nextcloud",
     "Quantity" : "Cantidade",

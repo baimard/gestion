@@ -61,8 +61,6 @@ OC.L10N.register(
     "Version" : "Inačica",
     "Status" : "Status",
     "Actions" : "Radnje",
-    "FROM" : "OD",
-    "TO" : "DO",
     "Add product" : "Dodaj proizvod",
     "Save in Nextcloud" : "Spremi u Nextcloud",
     "Quantity" : "Količina",

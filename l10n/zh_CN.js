@@ -97,8 +97,6 @@ OC.L10N.register(
     "Version" : "版本",
     "Status" : "状态",
     "Actions" : "操作",
-    "FROM" : "从",
-    "TO" : "到",
     "Add product" : "添加产品",
     "Save in Nextcloud" : "保存于 Nextcloud",
     "Send by email" : "通过电子邮件发送",

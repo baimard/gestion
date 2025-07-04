@@ -239,8 +239,6 @@ OC.L10N.register(
     "Status" : "Status",
     "Actions" : "Acties",
     "Company logo" : "Bedrijfslogo",
-    "FROM" : "VAN",
-    "TO" : "AAN",
     "Add product" : "Product toevoegen",
     "Save in Nextcloud" : "Sla op in Nextcloud",
     "Send by email" : "Verzenden via e-mail",

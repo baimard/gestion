@@ -50,8 +50,6 @@ OC.L10N.register(
     "Version" : "Верзија",
     "Status" : "Статус",
     "Actions" : "Акции",
-    "FROM" : "ОД",
-    "TO" : "ДО",
     "Add product" : "Додади производ",
     "Save in Nextcloud" : "Зачувај во Cloud",
     "Quantity" : "Количина",

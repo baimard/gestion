@@ -52,8 +52,6 @@ OC.L10N.register(
     "Version" : "Έκδοση",
     "Status" : "Κατάσταση",
     "Actions" : "Ενέργειες",
-    "FROM" : "ΑΠΟ",
-    "TO" : "ΠΡΟΣ",
     "Add product" : "Προσθήκη προϊόντος",
     "Save in Nextcloud" : "Αποθήκευση στο Nextcloud",
     "Send by email" : "Αποστολή με ηλεκτρονικό ταχυδρομείο",

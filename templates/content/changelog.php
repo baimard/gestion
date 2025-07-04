@@ -1,12 +1,19 @@
 <div syle="display: none;" id="modalConfig" class="modal">
 <div class="modal-content">
 	<span class="modalClose">&times;</span>
-	<h2><?php p($l->t('Welcome to GESTION')); ?> 2.8.5</h2>
+	<h2><?php p($l->t('Welcome to GESTION')); ?> 2.8.6</h2>
 
 	<p style="font-size:14px;margin-bottom:20px;">
-		<strong>⚠️ <?php p($l->t('Important Update:')); ?></strong><br>
-		<?php p($l->t("Logos are now associated with the company you are currently using, based on its identifier number."));?><br><?php p($l->t("In the application, at the top left of the navigation menu, you’ll see the name of your company followed by its ID (e.g., "));?><code>id: 1</code>).<br><?php p($l->t("To apply a logo to your company, you must prefix the logo file name with this ID number."));?><br><?php p($l->t("For example, if your company ID is "));?><code>1</code>, <?php p($l->t("rename your logo file from "));?><code>logo.png</code> to <code>1logo.png</code>.
-	</p>	
+		<?php p($l->t(
+			"⚠️ Important Update:\n\n" .
+			"Logos are now associated with the company you are currently using, based on its identifier number.\n\n" .
+			"In the application, at the top left of the navigation menu, you’ll see the name of your company followed by its ID (e.g., id: %s).\n\n" .
+			"To apply a logo to your company, you must prefix the logo file name with this ID number.\n\n" .
+			"For example, if your company ID is %s, rename your logo file from %s to %s.",
+			['1', '1', 'logo.png', '1logo.png']
+		)); ?>
+	</p>
+	
 
 	<p style="font-size:14px;margin-bottom:20px;">
 		<b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> 

@@ -247,8 +247,6 @@ OC.L10N.register(
     "Status" : "Stanje",
     "Actions" : "Dejanja",
     "Company logo" : "Logo podjetja",
-    "FROM" : "OD",
-    "TO" : "ZA",
     "Add product" : "Dodaj izdelek",
     "Save in Nextcloud" : "Shrani v okolje Nextcloud",
     "Send by email" : "Pošlji po elektronski pošti",

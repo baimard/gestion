@@ -14,6 +14,8 @@ OC.L10N.register(
     "Open" : "Fungua",
     "Duplicate" : "Zalisha",
     "Delete" : "Futa",
+    "Documentation" : "Uhifadhi wa nyaraka",
+    "Contact" : "Mawasiliano",
     "From" : "Tangu/ kutoka",
     "To" : "Mpaka/ hadi",
     "Send" : "Tuma",

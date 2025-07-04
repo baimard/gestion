@@ -112,8 +112,6 @@ OC.L10N.register(
     "Actions" : "動作",
     "Company logo" : "公司圖示",
     "You can add your company logo here." : "您可以在此處新增您公司的圖示。",
-    "FROM" : "從",
-    "TO" : "到",
     "Add product" : "新增產品",
     "Save in Nextcloud" : "儲存於 Nextcloud",
     "Send by email" : "透過電子郵件傳送",

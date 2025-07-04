@@ -37,7 +37,6 @@ OC.L10N.register(
     "Version" : "Versija",
     "Status" : "Status",
     "Actions" : "Darbības",
-    "FROM" : "NO",
     "Date:" : "Datums:",
     "Signature:" : "Paraksts:",
     "Invoice" : "Rēķins",

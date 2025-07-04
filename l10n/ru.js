@@ -123,8 +123,6 @@ OC.L10N.register(
     "Status" : "Состояние",
     "Actions" : "Действия",
     "This message will not appear on generated PDF." : "Это сообщение не будет отображаться в созданном PDF-файле.",
-    "FROM" : "ОТ",
-    "TO" : "КОМУ",
     "Add product" : "Добавить товар",
     "Save in Nextcloud" : "Сохранить в Nextcloud",
     "Send by email" : "Отправить по email",

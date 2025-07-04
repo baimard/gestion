@@ -13,6 +13,7 @@ OC.L10N.register(
     "Enable" : "Enaouiñ",
     "Search" : "Klask",
     "Next" : "Da heul",
+    "Open" : "Digeriñ",
     "Delete" : "Dilemel",
     "Email sent" : "Postel kaset",
     "Documentation" : "Diellvadur",

@@ -25,6 +25,7 @@ OC.L10N.register(
     "Status" : "Wadhifa",
     "Actions" : "Utendekaji",
     "Date:" : "Tarehe:",
+    "Header" : "Header",
     "Year" : "Mwaka",
     "Loading …" : "Inapakia",
     "About" : "Kuhusu"

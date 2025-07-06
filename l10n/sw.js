@@ -28,6 +28,7 @@ OC.L10N.register(
     "Header" : "Header",
     "Year" : "Mwaka",
     "Loading …" : "Inapakia",
+    "Mail" : "Msururu wa maduka",
     "About" : "Kuhusu"
 },
 "nplurals=2; plural=(n != 1);");

@@ -257,6 +257,7 @@
     "PDF has been created." : "PDF-fail on loodud.",
     "Error when creating PDF." : "Viga PDF-faili loomisel.",
     "Welcome to GESTION" : "Tere tulemast ärirakendusse GESTION",
+    "⚠️ Important Update:\n\nLogos are now associated with the company you are currently using, based on its identifier number.\n\nIn the application, at the top left of the navigation menu, you’ll see the name of your company followed by its ID (e.g., id: %s).\n\nTo apply a logo to your company, you must prefix the logo file name with this ID number.\n\nFor example, if your company ID is %s, rename your logo file from %s to %s." : "⚠️ Oluline uuendus:\n\nLogod on nüüd seotud hetkel kasutatava äriühingu ID-numbriga.\n\nRakenduse ülamenüüs vasakul näed äriühingu nime, millele järgneb tunnusnumber  (nt.: id: %s).\n\nLogo kasutamiseks, pead selle ID-numbri lisama prefiksina logofailile.\n\nKui näiteks äriühingu ID-number on %s, muuda logofaili %s → %s.",
     "To start with this application you need to configure your company information, follow this link" : "Selle rakenduse kasutuselevõtmiseks pead lisama äriühingu teabe ja selleks klõpsi järgnevat linki",
     "My company" : "Minu äriühing",
     "If you like my work you can:" : "Kui sulle minu töö meeldib, siis:",

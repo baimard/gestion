@@ -257,6 +257,7 @@
     "PDF has been created." : "PDF erstellt.",
     "Error when creating PDF." : "Fehler beim Erstellen der PDF-Datei.",
     "Welcome to GESTION" : "Willkommen bei GESTION",
+    "⚠️ Important Update:\n\nLogos are now associated with the company you are currently using, based on its identifier number.\n\nIn the application, at the top left of the navigation menu, you’ll see the name of your company followed by its ID (e.g., id: %s).\n\nTo apply a logo to your company, you must prefix the logo file name with this ID number.\n\nFor example, if your company ID is %s, rename your logo file from %s to %s." : "⚠️ Wichtiges Update:\n\nLogos werden nun anhand der Firmen-ID dem aktuell verwendeten Unternehmen zugeordnet.\n\nOben links im Navigationsmenü der Anwendung sehen Sie den Namen Ihres Unternehmens gefolgt von seiner ID (z. B. ID: %s ).\n\nUm Ihrem Unternehmen ein Logo zuzuweisen, müssen Sie dem Namen der Logodatei diese ID-Nummer voranstellen.\n\nWenn Ihre Firmen-ID beispielsweise %s lautet, benennen Sie Ihre Logodatei von %s in %s um.",
     "To start with this application you need to configure your company information, follow this link" : "Um mit dieser Anwendung zu beginnen, müssen Sie Ihre Unternehmensdaten konfigurieren, folgen Sie diesem Link",
     "My company" : "Meine Firma",
     "If you like my work you can:" : "Wenn Ihnen meine Arbeit gefällt, können Sie:",

@@ -259,6 +259,7 @@ OC.L10N.register(
     "PDF has been created." : "PDF has been created.",
     "Error when creating PDF." : "Error when creating PDF.",
     "Welcome to GESTION" : "Welcome to GESTION",
+    "⚠️ Important Update:\n\nLogos are now associated with the company you are currently using, based on its identifier number.\n\nIn the application, at the top left of the navigation menu, you’ll see the name of your company followed by its ID (e.g., id: %s).\n\nTo apply a logo to your company, you must prefix the logo file name with this ID number.\n\nFor example, if your company ID is %s, rename your logo file from %s to %s." : "⚠️ Important Update:\n\nLogos are now associated with the company you are currently using, based on its identifier number.\n\nIn the application, at the top left of the navigation menu, you’ll see the name of your company followed by its ID (e.g., id: %s).\n\nTo apply a logo to your company, you must prefix the logo file name with this ID number.\n\nFor example, if your company ID is %s, rename your logo file from %s to %s.",
     "To start with this application you need to configure your company information, follow this link" : "To start with this application you need to configure your company information, follow this link",
     "My company" : "My company",
     "If you like my work you can:" : "If you like my work you can:",

@@ -19,6 +19,7 @@ OC.L10N.register(
     "From" : "Tangu/ kutoka",
     "To" : "Mpaka/ hadi",
     "Send" : "Tuma",
+    "Configuration" : "Usanidi",
     "Add" : "Ongeza",
     "ID" : "Kitambulisho",
     "Version" : "Toleo",

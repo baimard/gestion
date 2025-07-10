@@ -257,6 +257,7 @@
     "PDF has been created." : "PDF 已被創建。",
     "Error when creating PDF." : "建立 PDF 時發生錯誤。",
     "Welcome to GESTION" : "歡迎來到 GESTION",
+    "⚠️ Important Update:\n\nLogos are now associated with the company you are currently using, based on its identifier number.\n\nIn the application, at the top left of the navigation menu, you’ll see the name of your company followed by its ID (e.g., id: %s).\n\nTo apply a logo to your company, you must prefix the logo file name with this ID number.\n\nFor example, if your company ID is %s, rename your logo file from %s to %s." : "⚠️ 重要更新：\n\n標誌現在與您當前使用的公司相關聯，根據其標識號碼。\n\n在應用程序中，導航菜單的左上角會顯示您的公司名稱，後面跟著其 ID（例如，id: %s）。\n\n要將標誌應用於您的公司，您必須將標誌文件名稱前綴為此 ID 號碼。\n\n例如，如果您的公司 ID 是 %s，請將您的標誌檔案從 %s 重命名為 %s。",
     "To start with this application you need to configure your company information, follow this link" : "要開始使用此應用程式，您必須先設定您的公司資訊，請點擊此連結",
     "My company" : "我的公司",
     "If you like my work you can:" : "若您喜歡我的作品，您可以：",

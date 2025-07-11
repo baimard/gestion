@@ -41,7 +41,7 @@ OC.L10N.register(
     "Company deleted" : "Unternehmen gelöscht",
     "Are you sure you want to duplicate?" : "Möchtest du dies wirklich duplizieren?",
     "Duplicated" : "Dupliziert",
-    "Nothing changed" : "Nicht geändert",
+    "Nothing changed" : "Nichts geändert",
     "Are you sure you want to delete?" : "Bist du sicher, dass du löschen möchtest?",
     "Cancel" : "Abbrechen",
     "Save in" : "Speichern unter",

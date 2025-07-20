@@ -30,6 +30,7 @@ OC.L10N.register(
     "Date:" : "Tarehe:",
     "Header" : "Header",
     "Year" : "Mwaka",
+    "Total" : "Jumla",
     "Loading …" : "Inapakia",
     "Mail" : "Msururu wa maduka",
     "About" : "Kuhusu"

@@ -12,6 +12,7 @@ OC.L10N.register(
     "Enable" : "Wezesha",
     "Search" : "Tafuta",
     "Showing 0 to 0 of 0 entries" : "Inaonesha 0 kwa 0 ya 0 maingizo",
+    "Next" : "Next",
     "Previous" : "Iliyopita",
     "Open" : "Fungua",
     "Duplicate" : "Zalisha",

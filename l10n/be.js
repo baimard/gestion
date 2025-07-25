@@ -1,6 +1,8 @@
 OC.L10N.register(
     "gestion",
     {
+    "Last name" : "Прозвішча",
+    "First name" : "Імя",
     "Email" : "Электронная пошта",
     "New" : "Новы",
     "Cancel" : "Скасаваць",
@@ -12,6 +14,7 @@ OC.L10N.register(
     "Add" : "Дадаць",
     "Version" : "Версія",
     "Actions" : "Дзеянні",
+    "Date:" : "Дата:",
     "January" : "Студзень",
     "February" : "Люты",
     "March" : "Сакавік",

@@ -31,6 +31,7 @@ OC.L10N.register(
     "Status" : "Wadhifa",
     "Actions" : "Utendekaji",
     "Date:" : "Tarehe:",
+    "Signature:" : "Signature:",
     "Header" : "Header",
     "Year" : "Mwaka",
     "Total" : "Jumla",

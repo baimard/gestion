@@ -20,6 +20,7 @@ OC.L10N.register(
     "Documentation" : "Uhifadhi wa nyaraka",
     "Contact" : "Mawasiliano",
     "Releases" : "Releases",
+    "Send an email" : "Send an email",
     "From" : "Tangu/ kutoka",
     "To" : "Mpaka/ hadi",
     "Body" : "Body",

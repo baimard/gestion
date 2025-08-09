@@ -13,6 +13,7 @@ OC.L10N.register(
     "Configuration" : "Канфігурацыя",
     "Add" : "Дадаць",
     "Version" : "Версія",
+    "Status" : "Стан",
     "Actions" : "Дзеянні",
     "Date:" : "Дата:",
     "January" : "Студзень",

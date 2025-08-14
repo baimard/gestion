@@ -6,6 +6,7 @@ OC.L10N.register(
     "Email" : "Электронная пошта",
     "New" : "Новы",
     "Cancel" : "Скасаваць",
+    "Australian Dollar" : "Аўстралійскі долар",
     "Belarusian Ruble" : "Беларускі рубель",
     "Search" : "Пошук",
     "Open" : "Адкрыць",

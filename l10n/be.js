@@ -4,6 +4,7 @@ OC.L10N.register(
     "Last name" : "Прозвішча",
     "First name" : "Імя",
     "Email" : "Электронная пошта",
+    "Address" : "Адрас",
     "New" : "Новы",
     "Cancel" : "Скасаваць",
     "Australian Dollar" : "Аўстралійскі долар",

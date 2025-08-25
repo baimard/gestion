@@ -8,6 +8,7 @@ OC.L10N.register(
     "Address" : "Адрас",
     "New" : "Новы",
     "Comment" : "Каментарый",
+    "Choose" : "Выбраць",
     "Cancel" : "Скасаваць",
     "Australian Dollar" : "Аўстралійскі долар",
     "Belarusian Ruble" : "Беларускі рубель",

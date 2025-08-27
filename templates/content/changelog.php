@@ -109,7 +109,7 @@
 		<h2><?php p($l->t('Your company VAT rate')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign.')); ?></div>	
 		<h2><?php p($l->t('Automatically generated invoice number')); ?></h2>
-		<div class="ConfigurationHelp"><?php p($l->t('Activate this option for an automatically generated invoice number. The option can be activated and deactivated at any time.')); ?></div>	
+		<div class="ConfigurationHelp"><?php p($l->t('Activate this option for an automatically generated invoice number. To enter your own invoice number, deactivate this option. The option can be activated and deactivated at any time.')); ?></div>	
 		<h2><?php p($l->t('Global default Currency')); ?></h2>
 		<div class="ConfigurationHelp"><?php p($l->t('Global currency for the application.')); ?></div>
 		<h2><?php p($l->t('Legal disclaimer/mentions')); ?></h2>

@@ -12,7 +12,7 @@ OC.L10N.register(
     "New" : "Yeni",
     "Comment" : "Yorum",
     "Offer valid for 1 month from: " : "Teklif şu tarihten başlayarak 1 ay süreyle geçerlidir:",
-    "Text free" : "Uygun metni",
+    "Text free" : "Uygun yazısı",
     "Means of payment" : "Ödeme araçları",
     "Reference" : "Referans",
     "Designation" : "Atama",

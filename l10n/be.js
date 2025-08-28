@@ -40,6 +40,7 @@ OC.L10N.register(
     "October" : "Кастрычнік",
     "November" : "Лістапад",
     "December" : "Снежань",
+    "Total" : "Усяго",
     "Loading …" : "Загрузка …",
     "Mail" : "Пошта"
 },

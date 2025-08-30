@@ -307,7 +307,6 @@ OC.L10N.register(
     "Your company VAT rate" : "ПДВ стопа ваше компаније",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "На вашу Понуду/Фактуру се примењује глобална подразумевана стопа ПДВ, ако желите да је промените, просто унесите износ ПДВ стопе без знака за проценат.",
     "Automatically generated invoice number" : "Аутоматски генерисани број фактуре",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Ако желите аутоматски генерисани број фактуре, укључите. Ако желите да слободно уностите, искључите. Можете по жељи да укључујете и искључујете.",
     "Global default Currency" : "Глобална подразумевана валута",
     "Global currency for the application." : "Глобална валута апликације.",
     "Legal disclaimer/mentions" : "Правно одрицање од одговорности/помињање",

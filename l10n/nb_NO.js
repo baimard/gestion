@@ -297,7 +297,6 @@ OC.L10N.register(
     "Your company VAT rate" : "MVA-sats for firmaet ditt",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Global standard mva.-sats gjelder for tilbudet/fakturaen din (globalt), for å endre det, bare sett inn MVA-satsbeløp uten prosenttegnet.",
     "Automatically generated invoice number" : "Automatisk generert fakturanummer",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Hvis du vil generere et fakturanummer automatisk, setter du til aktivere. Hvis du vil være fri, sett deaktiver. Du kan aktivere og deaktivere når du vil.",
     "Global default Currency" : "Global standardvaluta",
     "Global currency for the application." : "Global valuta for applikasjonen.",
     "Legal disclaimer/mentions" : "Ansvarsfraskrivelse/omtale",

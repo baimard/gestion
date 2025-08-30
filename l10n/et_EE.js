@@ -307,7 +307,6 @@ OC.L10N.register(
     "Your company VAT rate" : "Sinu äriühingu käibemaksumäär",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Üldine käibemaksumäär, mida kasutatakse pakkumistes ja arvetel. Muutmiseks sisesta number ilma protsendimärgita.",
     "Automatically generated invoice number" : "Automaatselt loodud arvenumber",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Vali see eelistus, kui tahad, et arve number lisatakse automaatselt, vastasel juhul jäta märkimata. Mõlemat saad teha parasjagu nii, nagu vaja.",
     "Global default Currency" : "Üldine vaikimisi vääring",
     "Global currency for the application." : "Rakenduse üldine valuuta.",
     "Legal disclaimer/mentions" : "Juriidiline lahtiütlus või teave",

@@ -298,7 +298,6 @@
     "Your company VAT rate" : "معدل ضريبة القيمة المضافة لشركتك",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "يتم تطبيق معدل ضريبة القيمة المضافة الافتراضي العام على عرض الأسعار/ الفاتورة (الشامل)، لتغييره، ما عليك سوى إدخال مبلغ معدل ضريبة القيمة المضافة بدون علامة النسبة المئوية.",
     "Automatically generated invoice number" : "رقم الفاتورة الذي تم إنشاؤه تلقائيًا",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "إذا كنت تريد إنشاء رقم فاتورة تلقائيًا، فقم بضبط الإعدادات على تمكين. إذا كنت تريد أن تكون حراً، فقم بتعيين الإعداد تعطيل. حيث يمكنك ضبط التمكين والتعطيل متي شئت.",
     "Global default Currency" : "العملة الافتراضية العالمية",
     "Global currency for the application." : "العملة العالمية للتطبيق",
     "Legal disclaimer/mentions" : "إخلاء المسؤولية القانونية / الإشارات",

@@ -307,7 +307,6 @@ OC.L10N.register(
     "Your company VAT rate" : "Ihr Firmen-USt-Satz",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Der globale Standard-USt-Satz gilt für Ihre Angebote und Rechnungen (global). Um ihn zu ändern, geben Sie einfach den USt-Satz ohne das Prozentzeichen ein.",
     "Automatically generated invoice number" : "Automatisch erzeugte Rechnungsnummer",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Aktivieren Sie diese Option, um eine automatisch generierte Rechnungsnummer zu erhalten. Um Ihre eigene Rechnungsnummer einzugeben, deaktivieren Sie diese Option. Die Option kann jederzeit aktiviert und deaktiviert werden.",
     "Global default Currency" : "Globale Standardwährung",
     "Global currency for the application." : "Globale Währung für die Anwendung.",
     "Legal disclaimer/mentions" : "Rechtliche Hinweise und Haftungsausschlüsse",

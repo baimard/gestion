@@ -305,7 +305,6 @@ OC.L10N.register(
     "Your company VAT rate" : "Sazba DPH pro vaši společnost",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Globální výchozí sazba DPH, které uplatňovat na vaše nabídky/faktury (globálně). Pokud ho chcete změnit, stačí jen zadat výši sazby daně (bez znaku procent).",
     "Automatically generated invoice number" : "Automaticky vytvořené číslo faktury",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Pokud chcete, aby čísla faktur byla vytvářena automaticky, toto zapněte. Pokud si chcete určovat sami, vypněte. Zapínat a vypínat je možné kdykoli.",
     "Global default Currency" : "Globální výchozí měna",
     "Global currency for the application." : "Globální měna pro aplikaci.",
     "Legal disclaimer/mentions" : "Zřeknutí se odpovědnosti/zmínění",

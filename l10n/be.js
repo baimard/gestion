@@ -9,6 +9,7 @@ OC.L10N.register(
     "New" : "Новы",
     "Comment" : "Каментарый",
     "Choose" : "Выбраць",
+    "Are you sure you want to delete?" : "Вы ўпэўнены, што хочаце выдаліць?",
     "Cancel" : "Скасаваць",
     "Australian Dollar" : "Аўстралійскі долар",
     "Belarusian Ruble" : "Беларускі рубель",

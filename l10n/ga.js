@@ -307,7 +307,6 @@ OC.L10N.register(
     "Your company VAT rate" : "Ráta CBL do chuideachta",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Baineann an ráta CBL Réamhshocraithe Domhanda le do Chuóta/Sonrasc (go domhanda), chun é a athrú, níl le déanamh ach méid an ráta CBL a chur isteach gan an comhartha faoin gcéad.",
     "Automatically generated invoice number" : "Uimhir sonraisc ginte go huathoibríoch",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Más mian leat uimhir sonraisc a ghiniúint go huathoibríoch, socraigh chun é a chumasú. Más mian leat a bheith saor, socraigh díchumasaigh. Is féidir leat a chumasú agus a dhíchumasú nuair is mian leat.",
     "Global default Currency" : "Airgeadra Réamhshocraithe Domhanda",
     "Global currency for the application." : "Airgeadra domhanda don fheidhmchlár.",
     "Legal disclaimer/mentions" : "Séanadh/luaite dlí",

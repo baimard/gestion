@@ -291,7 +291,6 @@
     "Your company VAT rate" : "Tasa de IVA de su empresa",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Tasa de IVA global predeterminada que se aplica a su cotización/factura (globalmente). Para cambiarla, simplemente inserte el monto de la tasa de IVA sin el signo de porcentaje.",
     "Automatically generated invoice number" : "Número de factura generado automáticamente",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Si desea que se genere automáticamente un número de factura, habilite esta opción. Si desea que sea libre, deshabilítela. Puede habilitarla y deshabilitarla cuando lo desee.",
     "Global default Currency" : "Moneda global predeterminada",
     "Global currency for the application." : "Moneda global para la aplicación.",
     "Legal disclaimer/mentions" : "Aviso legal/menciones legales",

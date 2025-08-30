@@ -297,7 +297,6 @@ OC.L10N.register(
     "Your company VAT rate" : "شىركىتىڭىزنىڭ قوشۇلما قىممەت بېجى",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "يەرشارى سۈكۈتتىكى قوشۇلما قىممەت بېجى سىزنىڭ باھا / تالونغا (دۇنيا مىقياسىدا) قوللىنىلىدۇ ، ئۇنى ئۆزگەرتىش ئۈچۈن ، پەقەت% بەلگىسى يوق قوشۇلما قىممەت بېجى سوممىسىنى قىستۇرۇڭ.",
     "Automatically generated invoice number" : "تالون نومۇرى ئاپتوماتىك ھاسىل قىلىنغان",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "تالون نومۇرىنى ئاپتوماتىك ھاسىل قىلماقچى بولسىڭىز ، قوزغىتىڭ. ئەركىن بولماقچى بولسىڭىز ، چەكلەڭ. خالىغان ۋاقىتتا قوزغىتالايسىز ۋە چەكلىيەلەيسىز.",
     "Global default Currency" : "يەرشارىدىكى سۈكۈتتىكى پۇل",
     "Global currency for the application." : "قوللىنىشچان يەر شارى پۇلى.",
     "Legal disclaimer/mentions" : "قانۇنىي جاۋابكارلىقنى بىكار قىلىش",

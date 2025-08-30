@@ -307,7 +307,6 @@ OC.L10N.register(
     "Your company VAT rate" : "El tipo de IVA de su empresa",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "El tipo de IVA global predeterminado se aplica a su presupuesto/factura (globalmente), para cambiarlo, sólo tiene que insertar el importe del tipo de IVA sin el signo de porcentaje.",
     "Automatically generated invoice number" : "Número de factura generado automáticamente",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Si desea que se genere automáticamente un número de factura, habilite esta opción. Si desea que se establezca libremente, deshabilite la misma. Puede habilitar ó deshabilitar cuando lo desee.",
     "Global default Currency" : "Divisa global predeterminada",
     "Global currency for the application." : "Divisa global para la aplicación",
     "Legal disclaimer/mentions" : "Descargo de responsabilidad legal/menciones",

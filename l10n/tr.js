@@ -307,7 +307,6 @@ OC.L10N.register(
     "Your company VAT rate" : "Kuruluşunuzun KDV oranı",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Teklif ya da fatura (genel) için kullanılacak genel KDV oranı. Değiştirmek için yüzde simgesi olmadan KDV oranını yazın.",
     "Automatically generated invoice number" : "Otomatik olarak oluşturulmuş fatura numarası",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Bu seçenek açıksa, fatura numarası otomatik olarak oluşturulur. Kapatarak numarayı kendiniz yazabilirsiniz. Bu seçeneği istediğiniz zaman açabilir ya da kapatabilirsiniz.",
     "Global default Currency" : "Genel varsayılan para birimi",
     "Global currency for the application." : "Uygulama genelinde kullanılacak para birimi.",
     "Legal disclaimer/mentions" : "Yasal sorumluluk reddi ve hükümler",

@@ -295,7 +295,6 @@
     "Your company VAT rate" : "A vállalata áfájának mértéke",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "A globális áfa mértéke vonatkozik az árajánlatára/számlájára (globálisan), a módosításhoz csak írja be az áfa mértékét százalékjel nélkül.",
     "Automatically generated invoice number" : "Automatikusan előállított számlaszám",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Ha automatikusan előállított számlaszámot akar használni, kapcsolja be. Ha azt szeretné, hogy szabad legyen, kapcsolja ki. Bármikor be- és kikapcsolhatja.",
     "Global default Currency" : "Globális alapértelmezett pénznem",
     "Global currency for the application." : "Az alkalmazás által használt globális pénznem.",
     "Legal disclaimer/mentions" : "Jogi nyilatkozat",

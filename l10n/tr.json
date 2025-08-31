@@ -305,6 +305,7 @@
     "Your company VAT rate" : "Kuruluşunuzun KDV oranı",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Teklif ya da fatura (genel) için kullanılacak genel KDV oranı. Değiştirmek için yüzde simgesi olmadan KDV oranını yazın.",
     "Automatically generated invoice number" : "Otomatik olarak oluşturulmuş fatura numarası",
+    "Activate this option for an automatically generated invoice number. To enter your own invoice number, deactivate this option. The option can be activated and deactivated at any time." : "Fatura numarasının otomatik olarak oluşturulması için bu seçeneği açın. Kendi fatura numaranızı yazmak için bu seçeneği kapatın. Bu seçeneği istediğiniz zaman açabilir ya da kapatabilirsiniz.",
     "Global default Currency" : "Genel varsayılan para birimi",
     "Global currency for the application." : "Uygulama genelinde kullanılacak para birimi.",
     "Legal disclaimer/mentions" : "Yasal sorumluluk reddi ve hükümler",

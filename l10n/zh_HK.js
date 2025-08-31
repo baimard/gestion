@@ -307,6 +307,7 @@ OC.L10N.register(
     "Your company VAT rate" : "貴公司增值稅稅率",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "適用於您的報價單/發票的默認增值稅率。如需更改，請輸入不帶百分號的增值稅率。",
     "Automatically generated invoice number" : "自動生成發票編號？",
+    "Activate this option for an automatically generated invoice number. To enter your own invoice number, deactivate this option. The option can be activated and deactivated at any time." : "啟用此選項以自動産生發票號碼。若要輸入您自己的發票號碼，請停用此選項。該選項可以隨時啟用或停用。\n ",
     "Global default Currency" : "默認貨幣",
     "Global currency for the application." : "應用程式的預設貨幣。",
     "Legal disclaimer/mentions" : "法律免責聲明",

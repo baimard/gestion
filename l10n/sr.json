@@ -305,6 +305,7 @@
     "Your company VAT rate" : "ПДВ стопа ваше компаније",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "На вашу Понуду/Фактуру се примењује глобална подразумевана стопа ПДВ, ако желите да је промените, просто унесите износ ПДВ стопе без знака за проценат.",
     "Automatically generated invoice number" : "Аутоматски генерисани број фактуре",
+    "Activate this option for an automatically generated invoice number. To enter your own invoice number, deactivate this option. The option can be activated and deactivated at any time." : "Активирајте ову опцију да се број рачуна аутоматски генерише. Ако желите да сами унесете број рачуна, искључите ову опцију. Стање опције можете да мењате било када.",
     "Global default Currency" : "Глобална подразумевана валута",
     "Global currency for the application." : "Глобална валута апликације.",
     "Legal disclaimer/mentions" : "Правно одрицање од одговорности/помињање",

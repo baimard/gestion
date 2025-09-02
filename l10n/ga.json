@@ -305,6 +305,7 @@
     "Your company VAT rate" : "Ráta CBL do chuideachta",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Baineann an ráta CBL Réamhshocraithe Domhanda le do Chuóta/Sonrasc (go domhanda), chun é a athrú, níl le déanamh ach méid an ráta CBL a chur isteach gan an comhartha faoin gcéad.",
     "Automatically generated invoice number" : "Uimhir sonraisc ginte go huathoibríoch",
+    "Activate this option for an automatically generated invoice number. To enter your own invoice number, deactivate this option. The option can be activated and deactivated at any time." : "Gníomhachtaigh an rogha seo le haghaidh uimhir shonraisc a ghintear go huathoibríoch. Chun d’uimhir shonraisc féin a iontráil, díghníomhachtaigh an rogha seo. Is féidir an rogha a ghníomhachtú agus a dhíghníomhachtú ag am ar bith.",
     "Global default Currency" : "Airgeadra Réamhshocraithe Domhanda",
     "Global currency for the application." : "Airgeadra domhanda don fheidhmchlár.",
     "Legal disclaimer/mentions" : "Séanadh/luaite dlí",

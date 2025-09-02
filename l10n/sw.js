@@ -40,6 +40,7 @@ OC.L10N.register(
     "Total" : "Jumla",
     "Loading …" : "Inapakia",
     "Mail" : "Msururu wa maduka",
+    "Customers" : "Customers",
     "About" : "Kuhusu"
 },
 "nplurals=2; plural=(n != 1);");

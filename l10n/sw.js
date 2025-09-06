@@ -35,6 +35,7 @@ OC.L10N.register(
     "Date:" : "Tarehe:",
     "Signature:" : "Signature:",
     "Customer" : "Mteja",
+    "Legal notice" : "Legal notice",
     "Header" : "Header",
     "Year" : "Mwaka",
     "Total" : "Jumla",

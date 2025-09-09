@@ -24,7 +24,7 @@ OC.L10N.register(
     "Next" : "Næste",
     "Previous" : "Tidligere",
     "Open" : "Åbn",
-    "Duplicate" : "Dupliker",
+    "Duplicate" : "Duplikér",
     "Delete" : "Slet",
     "Email sent" : "E-mail sendt",
     "Documentation" : "Dokumentation",

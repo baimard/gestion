@@ -24,6 +24,7 @@ OC.L10N.register(
     "Send an email" : "Send an email",
     "From" : "Tangu/ kutoka",
     "To" : "Mpaka/ hadi",
+    "Subject" : "Subject",
     "Body" : "Body",
     "Send" : "Tuma",
     "Configuration" : "Usanidi",

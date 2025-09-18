@@ -7,6 +7,7 @@ OC.L10N.register(
     "New" : "Mpya",
     "Comment" : "Maoni",
     "Choose" : "Chagua",
+    "Are you sure you want to delete?" : "Are you sure you want to delete?",
     "Cancel" : "Cancel",
     "Disable" : "Zima",
     "Enable" : "Wezesha",

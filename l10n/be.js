@@ -28,6 +28,7 @@ OC.L10N.register(
     "Company name" : "Назва кампаніі",
     "Configuration" : "Канфігурацыя",
     "Add" : "Дадаць",
+    "User Display Name" : "Імя карыстальніка для паказу",
     "Version" : "Версія",
     "Status" : "Статус",
     "Actions" : "Дзеянні",

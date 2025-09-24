@@ -13,6 +13,7 @@ OC.L10N.register(
     "Reference" : "Αναφορά",
     "Designation" : "Προσδιορισμός",
     "Choose" : "Επιλογή",
+    "Are you sure you want to delete?" : "Είστε σίγουροι ότι θέλετε να διαγράψετε;",
     "Cancel" : "Ακύρωση",
     "Save in" : "Αποθήκευση σε",
     "There is an error" : "Παρουσιάστηκε σφάλμα",

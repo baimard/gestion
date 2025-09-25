@@ -1,0 +1,26 @@
+OC.L10N.register(
+    "gestion",
+    {
+    "Phone number" : "Uṭṭun n tiliɣri",
+    "Email" : "Imayl",
+    "Address" : "Adresse",
+    "New" : "Amaynut",
+    "Comment" : "Commentaire",
+    "Choose" : "Fren",
+    "Cancel" : "Sefsex",
+    "Disable" : "Désactiver",
+    "Search" : "Nadi",
+    "Next" : "Uḍfir",
+    "Previous" : "Ɣer deffir",
+    "Open" : "Ldi",
+    "Delete" : "Kkes",
+    "Send an email" : "Azen imayl",
+    "Send" : "Tuzna",
+    "Status" : "État",
+    "Actions" : "Tigawin",
+    "Year" : "Aseggas",
+    "Loading …" : "Asali ...",
+    "Mail" : "Tirawt",
+    "About" : "Γef"
+},
+"nplurals=2; plural=(n != 1);");

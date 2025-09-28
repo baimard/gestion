@@ -1,14 +1,16 @@
 OC.L10N.register(
     "gestion",
     {
+    "Company" : "Tarmist",
     "Phone number" : "Uṭṭun n tiliɣri",
     "Email" : "Imayl",
-    "Address" : "Adresse",
+    "Address" : "Tansa",
     "New" : "Amaynut",
-    "Comment" : "Commentaire",
+    "Comment" : "Awennit",
     "Choose" : "Fren",
-    "Cancel" : "Sefsex",
-    "Disable" : "Désactiver",
+    "Cancel" : "Semmet",
+    "Save in" : "Sekles deg",
+    "Disable" : "Sens",
     "Search" : "Nadi",
     "Next" : "Uḍfir",
     "Previous" : "Ɣer deffir",
@@ -16,11 +18,12 @@ OC.L10N.register(
     "Delete" : "Kkes",
     "Send an email" : "Azen imayl",
     "Send" : "Tuzna",
-    "Status" : "État",
+    "Status" : "Addad",
     "Actions" : "Tigawin",
     "Year" : "Aseggas",
+    "January" : "Yennayer",
     "Loading …" : "Asali ...",
     "Mail" : "Tirawt",
-    "About" : "Γef"
+    "About" : "Ɣef"
 },
 "nplurals=2; plural=(n != 1);");

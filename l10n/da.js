@@ -18,6 +18,7 @@ OC.L10N.register(
     "Enable" : "Aktiver",
     "Search" : "Søg",
     "Showing 0 to 0 of 0 entries" : "Viser 0 til 0 af 0 poster",
+    "Loading records …" : "Indlæser poster …",
     "Show {menu} entries" : "Vis {menu} poster",
     "First" : "Første",
     "Last" : "Sidste",

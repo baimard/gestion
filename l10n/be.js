@@ -16,6 +16,7 @@ OC.L10N.register(
     "Disable" : "Адключыць",
     "Enable" : "Уключыць",
     "Search" : "Пошук",
+    "Previous" : "Папярэдняя",
     "Open" : "Адкрыць",
     "Delete" : "Выдаліць",
     "Documentation" : "Дакументацыя",

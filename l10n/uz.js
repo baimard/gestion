@@ -32,6 +32,7 @@ OC.L10N.register(
     "Year" : "Yil",
     "January" : "January",
     "Total" : "Total",
+    "Loading …" : "Yuklanmoqda…",
     "Mail" : "Mail",
     "About" : "About"
 },

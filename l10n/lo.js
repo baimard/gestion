@@ -1,0 +1,27 @@
+OC.L10N.register(
+    "gestion",
+    {
+    "Company" : "ບໍລິສັດ",
+    "Phone number" : "ເບີໂທລະສັບ",
+    "Email" : "ອິເມວ",
+    "Address" : "ທີ່ຢູ່",
+    "Choose" : "ເລືອກ",
+    "Cancel" : "ຍົກເລີກ",
+    "Disable" : "ປິດ",
+    "Search" : "ຄົ້ນຫາ",
+    "Next" : "ທັດໄປ",
+    "Previous" : "ກ່ອນໜ້າ",
+    "Delete" : "ລຶບ",
+    "Email sent" : "ສົ່ງອີເມວແລ້ວ",
+    "Contact" : "ລາຍຊື່ຜູ້ຕິດຕໍ່",
+    "From" : "ຈາກ",
+    "To" : "ເຖິງ",
+    "Send" : "ສົ່ງ",
+    "Configuration" : "ການຕັ້ງຄ່າ",
+    "Signature:" : "ລາຍເຊັນ:",
+    "Year" : "ປີ",
+    "Loading …" : "ກຳລັງໂຫຼດ",
+    "Mail" : "ຈົດໝາຍ",
+    "About" : "ກ່ຽວກັບ"
+},
+"nplurals=1; plural=0;");

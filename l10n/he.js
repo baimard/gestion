@@ -33,6 +33,7 @@ OC.L10N.register(
     "Configuration" : "הגדרות",
     "Share with ..." : "שיתוף עם…",
     "Add" : "הוספה",
+    "Quote" : "ציטוט",
     "ID" : "מזהה",
     "Version" : "גרסה",
     "Status" : "מצב",

@@ -237,7 +237,7 @@ OC.L10N.register(
     "Showing {start} to {end} of {total} entries" : "Affichage de {start} à {end} sur {total} entrées",
     "Showing 0 to 0 of 0 entries" : "Affichage de 0 à 0 sur 0 entrées",
     "Loading records …" : "Chargement des entrées",
-    "Processing …" : "Traitement en cours ...",
+    "Processing …" : "Traitement en cours...",
     "{max} entries filtered" : "filtrées depuis un total de {max} entrées",
     "Show {menu} entries" : "Afficher {menu} entrées",
     "No corresponding entry" : "Aucune entrée correspondante trouvée",

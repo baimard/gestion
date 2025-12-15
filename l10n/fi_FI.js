@@ -61,6 +61,7 @@ OC.L10N.register(
     "Payment date" : "Maksupäivä",
     "Customer" : "Asiakas",
     "Add customer" : "Lisää asiakas",
+    "Legal information" : "Lainopilliset tiedot",
     "Legal notice" : "Lainopillinen huomautus",
     "Product" : "Tuote",
     "Header" : "Otsikko",

@@ -314,7 +314,7 @@ OC.L10N.register(
     "Configuration" : "Налаштування",
     "Create new company" : "Створіть нову компанію",
     "Modify current company information" : "Змінити поточну інформацію про компанію",
-    "Share with ..." : "Поділіться з ...",
+    "Share with ..." : "Поділітися з ...",
     "Add" : "Додати",
     "User Display Name" : "Ім'я користувача",
     "Delete Company" : "Видалити компанію",

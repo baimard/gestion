@@ -41,6 +41,7 @@ OC.L10N.register(
     "Configuration" : "Asetukset",
     "Share with ..." : "Jaa...",
     "Add" : "Lisää",
+    "Quote" : "Lainaus",
     "ID" : "ID",
     "Version" : "Versio",
     "Status" : "Tila",

@@ -44,6 +44,7 @@ OC.L10N.register(
     "Actions" : "Tindakan",
     "Date:" : "Tanggal:",
     "Signature:" : "Tanda tangan:",
+    "Legal information" : "Informasi hukum",
     "Legal notice" : "Pemberitahuan hukum",
     "Header" : "Header",
     "Year" : "Tahun",

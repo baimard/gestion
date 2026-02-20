@@ -43,7 +43,7 @@
 		"file-loader": ">=6.2.0",
 		"html2canvas": ">=1.0.0-rc.1",
 		"jquery": ">=3.6.0",
-		"jspdf": ">=4.0.0",
+		"jspdf": ">=4.2.0",
 		"less": ">=4.1.1",
 		"less-loader": ">=8.0.0",
 		"path": ">=0.12.7",

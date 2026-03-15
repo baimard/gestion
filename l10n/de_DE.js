@@ -254,7 +254,7 @@ OC.L10N.register(
     "Delete" : "Löschen",
     "Email sent" : "E-Mail gesendet",
     "Is your global mail server configured in Nextcloud?" : "Ist Ihr globaler Mailserver in Nextcloud konfiguriert?",
-    "Creation in progress …" : "Erstellung läuft…",
+    "Creation in progress …" : "Erstellung läuft …",
     "QUOTE" : "ANGEBOT",
     "PDF has been created." : "PDF erstellt.",
     "Error when creating PDF." : "Fehler beim Erstellen der PDF-Datei.",

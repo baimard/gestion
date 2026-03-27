@@ -18,6 +18,8 @@ OC.L10N.register(
     "Enable" : "Įjungti",
     "Search" : "Ieškoti",
     "Processing …" : "Apdorojama…",
+    "First" : "Pirmas",
+    "Last" : "Paskutinis",
     "Next" : "Kitas",
     "Previous" : "Ankstesnis",
     "Open" : "Atverti",

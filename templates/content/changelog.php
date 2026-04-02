@@ -1,11 +1,7 @@
 <div syle="display: none;" id="modalConfig" class="modal">
 <div class="modal-content">
 	<span class="modalClose">&times;</span>
-<<<<<<< HEAD
-	<h2><?php p($l->t('Welcome to GESTION')); ?> 2.8.6</h2>
-=======
-	<h2><?php p($l->t('Welcome to GESTION')); ?> 2.8.7</h2>
->>>>>>> 9dce8721ddae627aadb8395eeae9deaf706c1abc
+	<h2><?php p($l->t('Welcome to GESTION')); ?> 2.8.11</h2>
 
 	<p style="font-size:14px;margin-bottom:20px;">
 		<?php p($l->t(

@@ -1,6 +1,28 @@
-node_modules
-.*
-.vscode
-build
-vendor
+# Node
+node_modules/
+package-lock.json
+
+# Build
+build/
+dist/
+*.log
+
+# IDE / local
+.vscode/
+.idea/
+.DS_Store
+
+# Environnement
+.env
+.env.local
+
+# Composer
+vendor/
 composer.lock
+
+# OS / divers
+Thumbs.db
+
+# Nextcloud spécifiques (si besoin)
+js/
+css/

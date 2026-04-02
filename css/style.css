@@ -174,6 +174,11 @@
   width: 80%;
 }
 
+.editableComment[contenteditable="true"] {
+  width: 99%;
+  margin: 20px 20px;
+}
+
 .editablebutton button{
   float: right;
   padding-top:0px;
@@ -298,6 +303,7 @@
   width: 100%;
   margin: 20px 20px;
 }
+
 
 .table-produit {
     width: 100%;

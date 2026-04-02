@@ -22,7 +22,7 @@ OC.L10N.register(
     "Delete" : "Izdzēst",
     "Email sent" : "E-pasta ziņojums nosūtīts",
     "Documentation" : "Dokumentācija",
-    "Contact" : "Kontakts",
+    "Contact" : "Kontaktpersona",
     "Changelog" : "Izmaiņu žurnāls",
     "Releases" : "Laidieni",
     "Send an email" : "Sūtīt e-pasta ziņojumu",

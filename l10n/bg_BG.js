@@ -293,7 +293,6 @@ OC.L10N.register(
     "Your company VAT rate" : "Фирмената ви ставка на ДДС",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Глобалната ставка на ДДС по подразбиране се прилага към вашата оферта/фактура (глобално), за да я промените, просто въведете сумата на ДДС ставката без знак за процента.",
     "Automatically generated invoice number" : "Автоматично генериране на номер на фактура",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Ако искате автоматично да генерирате номер на фактура, задайте активиране. Ако не искате, задайте деактивиране. Можете да активирате и деактивирате, когато пожелаете.",
     "Global default Currency" : "Глобална валута по подразбиране",
     "Global currency for the application." : "Глобална валута за приложението.",
     "Legal disclaimer/mentions" : "Законов отказ от отговорност/споменавания",

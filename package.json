@@ -43,7 +43,7 @@
 		"file-loader": ">=6.2.0",
 		"html2canvas": ">=1.0.0-rc.1",
 		"jquery": ">=3.6.0",
-		"jspdf": ">=2.3.1",
+		"jspdf": ">=4.0.0",
 		"less": ">=4.1.1",
 		"less-loader": ">=8.0.0",
 		"path": ">=0.12.7",
@@ -54,7 +54,7 @@
 		"style": ">=0.0.3",
 		"style-loader": ">=2.0.0",
 		"vue-loader": ">=17.4.2",
-		"webpack": ">=5.94.0",
+		"webpack": ">=5.105.1",
 		"webpack-cli": ">=4.5.0"
 	},
 	"dependencies": {

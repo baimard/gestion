@@ -93,7 +93,6 @@
     "Your company VAT rate" : "您的公司增值稅率",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "適用於您報價單／發票的全域預設增值稅率，要變更它，只要插入沒有百分比符號的增值稅率。",
     "Automatically generated invoice number" : "自動產生發票編號",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "若要應用程式自動產生發票編號，請將其設定為啟用，若您想要手動輸入，請設定為停用。您可以隨時啟用或停用。",
     "Global default Currency" : "預設貨幣",
     "Global currency for the application." : "應用程式的預設貨幣。",
     "Legal disclaimer/mentions" : "法律免責聲明",

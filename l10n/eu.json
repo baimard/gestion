@@ -298,7 +298,6 @@
     "Your company VAT rate" : "Zure enpresaren BEZ tasa",
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "BEZaren tasa global lehenetsia aplikatzen zaio aurrekontuari/fakturari (globalean); hura aldatzeko, sartu besterik ez dago BEZaren tasaren zenbatekoa ehuneko zeinurik gabe.",
     "Automatically generated invoice number" : "Automatikoki sortutako faktura-zenbakia",
-    "If you want to automatically generated an invoice number, set to enable. If you want to be free, set disable. You can enable and disable when you want." : "Faktura-zenbaki bat automatikoki sortu nahi baduzu, ezarri \"gaitu\". Aske izan nahi baduzu, ezarri \"desgaitu\". Nahi duzunean gaitu eta desgaitu ditzakezu.",
     "Global default Currency" : "Moneta global lehenetsia",
     "Global currency for the application." : "Aplikaziorako moneta globala.",
     "Legal disclaimer/mentions" : "Ezespen/Aipamen legala",

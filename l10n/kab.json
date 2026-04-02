@@ -1,0 +1,27 @@
+{ "translations": {
+    "Company" : "Tarmist",
+    "Phone number" : "Uṭṭun n tiliɣri",
+    "Email" : "Imayl",
+    "Address" : "Tansa",
+    "New" : "Amaynut",
+    "Comment" : "Awennit",
+    "Choose" : "Fren",
+    "Cancel" : "Semmet",
+    "Save in" : "Sekles deg",
+    "Disable" : "Sens",
+    "Search" : "Nadi",
+    "Next" : "Uḍfir",
+    "Previous" : "Ɣer deffir",
+    "Open" : "Ldi",
+    "Delete" : "Kkes",
+    "Send an email" : "Azen imayl",
+    "Send" : "Tuzna",
+    "Status" : "Addad",
+    "Actions" : "Tigawin",
+    "Year" : "Aseggas",
+    "January" : "Yennayer",
+    "Loading …" : "Asali ...",
+    "Mail" : "Tirawt",
+    "About" : "Ɣef"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

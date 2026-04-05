@@ -23,6 +23,7 @@ OC.L10N.register(
     "Next" : "Kitas",
     "Previous" : "Ankstesnis",
     "Open" : "Atverti",
+    "Duplicate" : "Dublikatai",
     "Delete" : "Ištrinti",
     "Email sent" : "El. paštas išsiųstas",
     "Documentation" : "Dokumentacija",

@@ -36,6 +36,7 @@ OC.L10N.register(
     "To" : "Kam",
     "Cc" : "Cc",
     "Subject" : "Tema",
+    "Body" : "Teksto dalis",
     "Send" : "Siųsti",
     "Configuration" : "Konfigūracija",
     "Add" : "Pridėti",

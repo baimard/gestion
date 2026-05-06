@@ -45,7 +45,7 @@
     "file-loader": "^6.2.0",
     "html2canvas": "^1.4.1",
     "jquery": "^3.7.1",
-    "jspdf": "^3.0.3",
+    "jspdf": "^4.2.1",
     "less": "^4.4.2",
     "less-loader": "^12.3.0",
     "path": "^0.12.7",

@@ -67,6 +67,7 @@ OC.L10N.register(
     "Total" : "Iš viso",
     "Loading …" : "Įkeliama…",
     "Mail" : "Paštas",
+    "Customers" : "Klientai",
     "INFORMATION" : "INFORMACIJA",
     "About" : "Apie"
 },

@@ -1,60 +1,60 @@
 <?php
 return [
     'routes' => [
-        ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-        ['name' => 'page#devis', 'url' => '/devis', 'verb' => 'GET'],
-        ['name' => 'page#facture', 'url' => '/facture', 'verb' => 'GET'],
-        ['name' => 'page#produit', 'url' => '/produit', 'verb' => 'GET'],
-        ['name' => 'page#config', 'url' => '/config', 'verb' => 'GET'],
-        ['name' => 'page#isConfig', 'url' => '/isconfig', 'verb' => 'GET'],
-        ['name' => 'page#statistique', 'url' => '/statistique', 'verb' => 'GET'],
-        ['name' => 'page#legalnotice', 'url' => '/legalnotice', 'verb' => 'GET'],
-        ['name' => 'page#france', 'url' => '/legalnotice/france', 'verb' => 'GET'],
+        ['name' => 'view#index', 'url' => '/', 'verb' => 'GET'],
+        ['name' => 'view#devis', 'url' => '/devis', 'verb' => 'GET'],
+        ['name' => 'view#facture', 'url' => '/facture', 'verb' => 'GET'],
+        ['name' => 'view#produit', 'url' => '/produit', 'verb' => 'GET'],
+        ['name' => 'configuration#config', 'url' => '/config', 'verb' => 'GET'],
+        ['name' => 'configuration#isConfig', 'url' => '/isconfig', 'verb' => 'GET'],
+        ['name' => 'view#statistique', 'url' => '/statistique', 'verb' => 'GET'],
+        ['name' => 'view#legalnotice', 'url' => '/legalnotice', 'verb' => 'GET'],
+        ['name' => 'view#france', 'url' => '/legalnotice/france', 'verb' => 'GET'],
 
-        ['name' => 'page#getClients', 'url' => '/getClients', 'verb' => 'PROPFIND'],
-        ['name' => 'page#getClient', 'url' => '/client', 'verb' => 'POST'],
-        ['name' => 'page#getClientbyiddevis', 'url' => '/clientbyiddevis', 'verb' => 'POST'],
-        ['name' => 'page#getConfiguration', 'url' => '/getConfiguration', 'verb' => 'PROPFIND'],
-        ['name' => 'page#update', 'url' => '/update', 'verb' => 'POST'],
-        ['name' => 'page#updateConfiguration', 'url' => '/updateConfiguration', 'verb' => 'POST'],
-        ['name' => 'page#insertClient', 'url' => '/client/insert', 'verb' => 'POST'],
+        ['name' => 'client#getClients', 'url' => '/getClients', 'verb' => 'PROPFIND'],
+        ['name' => 'client#getClient', 'url' => '/client', 'verb' => 'POST'],
+        ['name' => 'client#getClientbyiddevis', 'url' => '/clientbyiddevis', 'verb' => 'POST'],
+        ['name' => 'configuration#getConfiguration', 'url' => '/getConfiguration', 'verb' => 'PROPFIND'],
+        ['name' => 'crud#update', 'url' => '/update', 'verb' => 'POST'],
+        ['name' => 'configuration#updateConfiguration', 'url' => '/updateConfiguration', 'verb' => 'POST'],
+        ['name' => 'client#insertClient', 'url' => '/client/insert', 'verb' => 'POST'],
 
-        ['name' => 'page#getDevis', 'url' => '/getDevis', 'verb' => 'PROPFIND'],
-        ['name' => 'page#devisshow', 'url' => '/devis/{numdevis}/show', 'verb' => 'GET'],
-        ['name' => 'page#insertDevis', 'url' => '/devis/insert', 'verb' => 'POST'],
-        ['name' => 'page#insertProduitDevis', 'url' => '/insertProduitDevis', 'verb' => 'POST'],
+        ['name' => 'devis#getDevis', 'url' => '/getDevis', 'verb' => 'PROPFIND'],
+        ['name' => 'devis#devisshow', 'url' => '/devis/{numdevis}/show', 'verb' => 'GET'],
+        ['name' => 'devis#insertDevis', 'url' => '/devis/insert', 'verb' => 'POST'],
+        ['name' => 'devis#insertProduitDevis', 'url' => '/insertProduitDevis', 'verb' => 'POST'],
 
-        ['name' => 'page#getFactures', 'url' => '/getFactures', 'verb' => 'PROPFIND'],
-        ['name' => 'page#factureshow', 'url' => '/facture/{numfacture}/show', 'verb' => 'GET'],
-        ['name' => 'page#insertFacture', 'url' => '/facture/insert', 'verb' => 'POST'],
+        ['name' => 'facture#getFactures', 'url' => '/getFactures', 'verb' => 'PROPFIND'],
+        ['name' => 'facture#factureshow', 'url' => '/facture/{numfacture}/show', 'verb' => 'GET'],
+        ['name' => 'facture#insertFacture', 'url' => '/facture/insert', 'verb' => 'POST'],
         
         // PRODUCT
-        ['name' => 'page#getProduits', 'url' => '/getProduits', 'verb' => 'PROPFIND'],
-        ['name' => 'page#getProduitsById', 'url' => '/getProduitsById', 'verb' => 'POST'],
-        ['name' => 'page#insertProduit', 'url' => '/produit/insert', 'verb' => 'POST'],
+        ['name' => 'produit#getProduits', 'url' => '/getProduits', 'verb' => 'PROPFIND'],
+        ['name' => 'produit#getProduitsById', 'url' => '/getProduitsById', 'verb' => 'POST'],
+        ['name' => 'produit#insertProduit', 'url' => '/produit/insert', 'verb' => 'POST'],
 
         // GLOBAL
-        ['name' => 'page#duplicate', 'url' => '/duplicate', 'verb' => 'PUT'],
-        ['name' => 'page#delete', 'url' => '/delete', 'verb' => 'DELETE'],
-        ['name' => 'page#drop', 'url' => '/drop', 'verb' => 'POST'],
+        ['name' => 'crud#duplicate', 'url' => '/duplicate', 'verb' => 'PUT'],
+        ['name' => 'crud#delete', 'url' => '/delete', 'verb' => 'DELETE'],
+        ['name' => 'crud#drop', 'url' => '/drop', 'verb' => 'POST'],
         
         // STATS
-        ['name' => 'page#getStats', 'url' => '/getStats', 'verb' => 'PROPFIND'],
-        ['name' => 'page#getAnnualTurnoverPerMonthNoVat', 'url' => '/getAnnualTurnoverPerMonthNoVat', 'verb' => 'PROPFIND'],
-        ['name' => 'page#getServerFromMail', 'url' => '/getServerFromMail', 'verb' => 'PROPFIND'],
+        ['name' => 'stats#getStats', 'url' => '/getStats', 'verb' => 'PROPFIND'],
+        ['name' => 'stats#getAnnualTurnoverPerMonthNoVat', 'url' => '/getAnnualTurnoverPerMonthNoVat', 'verb' => 'PROPFIND'],
+        ['name' => 'stats#getServerFromMail', 'url' => '/getServerFromMail', 'verb' => 'PROPFIND'],
         
         // PDF
-        ['name' => 'page#sendPDF', 'url' => '/sendPDF', 'verb' => 'POST'],
-        ['name' => 'page#savePDF', 'url' => '/savePDF', 'verb' => 'POST'],
+        ['name' => 'pdf#sendPDF', 'url' => '/sendPDF', 'verb' => 'POST'],
+        ['name' => 'pdf#savePDF', 'url' => '/savePDF', 'verb' => 'POST'],
         
         ['name' => 'admin#backup', 'url' => '/backup', 'verb' => 'GET'],
         
-        ['name' => 'page#createCompany', 'url' => '/createCompany', 'verb' => 'PUT'],
-        ['name' => 'page#deleteCompany', 'url' => '/deleteCompany', 'verb' => 'DELETE'],
-        ['name' => 'page#setCurrentCompany', 'url' => '/updateSession', 'verb' => 'POST'],
-        ['name' => 'page#addShareUser', 'url' => '/addShareUser', 'verb' => 'POST'],
-        ['name' => 'page#delShareUser', 'url' => '/delShareUser', 'verb' => 'DELETE'],
+        ['name' => 'company#createCompany', 'url' => '/createCompany', 'verb' => 'PUT'],
+        ['name' => 'company#deleteCompany', 'url' => '/deleteCompany', 'verb' => 'DELETE'],
+        ['name' => 'company#setCurrentCompany', 'url' => '/updateSession', 'verb' => 'POST'],
+        ['name' => 'company#addShareUser', 'url' => '/addShareUser', 'verb' => 'POST'],
+        ['name' => 'company#delShareUser', 'url' => '/delShareUser', 'verb' => 'DELETE'],
 
-        ['name' => 'page#generatePDF', 'url' => '/generatePDF', 'verb' => 'POST'],
+        ['name' => 'pdf#generatePDF', 'url' => '/generatePDF', 'verb' => 'POST'],
     ]
 ];

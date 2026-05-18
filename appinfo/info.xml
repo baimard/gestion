@@ -59,7 +59,7 @@ If you require adaptations of this application to comply with your country's reg
     <navigations>
         <navigation>
             <name>Gestion</name>
-            <route>gestion.page.index</route>
+            <route>gestion.view.index</route>
             <icon>app.svg</icon>
         </navigation>
     </navigations>

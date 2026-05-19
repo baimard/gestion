@@ -63,7 +63,9 @@
 
  <div>
         <button id="devisAdd"       type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
-        <button id="pdf"            type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore data-name=""><?php p($l->t('Save in Nextcloud'));?></button>
+        <button id="pdf"            type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore data-name=""><?php p($l->t('Sauvegarder dans Nextcloud (pdf)'));?></button>
+        <button id="facturx"        type="button"       class="mb-2 btn btn-outline-primary"            data-html2canvas-ignore data-name="" data-factureid="<?php echo $_['facture'][0]->id; ?>"><?php p($l->t('Générer une facture électronique (pdf+xml)'));?></button>
+        <button id="facturx-xml"    type="button"       class="mb-2 btn btn-outline-info"               data-html2canvas-ignore data-name="" data-factureid="<?php echo $_['facture'][0]->id; ?>"><?php p($l->t('Générer la partie électronique (xml)'));?></button>
         <!-- <button id="mailGestion"       type="button"   class="mb-2 btn btn-outline-success sendmail"    data-html2canvas-ignore data-name=""><?php p($l->t('Send by email'));?></button> -->
         
         <table id="produits" class="table-produit">

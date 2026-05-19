@@ -1,18 +1,82 @@
 {
     "packages": [
         {
-            "name": "mpdf/mpdf",
-            "version": "v8.2.5",
-            "version_normalized": "8.2.5.0",
+            "name": "atgp/factur-x",
+            "version": "v3.3.0",
+            "version_normalized": "3.3.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mpdf/mpdf.git",
-                "reference": "e175b05e3e00977b85feb96a8cccb174ac63621f"
+                "url": "https://github.com/atgp/factur-x.git",
+                "reference": "547b59073ff2497885232d1c0c6e93b5ec9d0c8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/e175b05e3e00977b85feb96a8cccb174ac63621f",
-                "reference": "e175b05e3e00977b85feb96a8cccb174ac63621f",
+                "url": "https://api.github.com/repos/atgp/factur-x/zipball/547b59073ff2497885232d1c0c6e93b5ec9d0c8d",
+                "reference": "547b59073ff2497885232d1c0c6e93b5ec9d0c8d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-fileinfo": "*",
+                "ext-libxml": "*",
+                "ext-simplexml": "*",
+                "ext-zlib": "*",
+                "php": ">=7.4",
+                "setasign/fpdf": "^1.8",
+                "setasign/fpdi": "^2.0",
+                "smalot/pdfparser": "^0.19.0|~1.0|~2.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~3.1",
+                "phpstan/phpstan": "^2.0",
+                "phpunit/phpunit": "^9.6"
+            },
+            "time": "2026-04-17T08:36:50+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Atgp\\FacturX\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "@GP",
+                    "homepage": "https://www.atgp.net/"
+                }
+            ],
+            "description": "PHP library to manage your Factur-X / ZUGFeRD 2.0 PDF invoices files",
+            "keywords": [
+                "ZUGFeRD",
+                "factur-x",
+                "invoice",
+                "pdf",
+                "php",
+                "xml"
+            ],
+            "support": {
+                "issues": "https://github.com/atgp/factur-x/issues",
+                "source": "https://github.com/atgp/factur-x/tree/v3.3.0"
+            },
+            "install-path": "../atgp/factur-x"
+        },
+        {
+            "name": "mpdf/mpdf",
+            "version": "v8.3.1",
+            "version_normalized": "8.3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mpdf/mpdf.git",
+                "reference": "2a454ec334109911fdb323a284c19dbf3f049810"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/2a454ec334109911fdb323a284c19dbf3f049810",
+                "reference": "2a454ec334109911fdb323a284c19dbf3f049810",
                 "shasum": ""
             },
             "require": {
@@ -22,7 +86,7 @@
                 "mpdf/psr-log-aware-trait": "^2.0 || ^3.0",
                 "myclabs/deep-copy": "^1.7",
                 "paragonie/random_compat": "^1.4|^2.0|^9.99.99",
-                "php": "^5.6 || ^7.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+                "php": "^5.6 || ^7.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
                 "psr/http-message": "^1.0 || ^2.0",
                 "psr/log": "^1.0 || ^2.0 || ^3.0",
                 "setasign/fpdi": "^2.1"
@@ -36,10 +100,11 @@
             },
             "suggest": {
                 "ext-bcmath": "Needed for generation of some types of barcodes",
+                "ext-imagick": "Needed if developing the Mpdf library",
                 "ext-xml": "Needed mainly for SVG manipulation",
                 "ext-zlib": "Needed for compression of embedded resources, such as fonts"
             },
-            "time": "2024-11-18T15:30:42+00:00",
+            "time": "2026-03-11T10:58:44+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -355,35 +420,31 @@
             "install-path": "../psr/http-message"
         },
         {
-            "name": "psr/log",
-            "version": "3.0.2",
-            "version_normalized": "3.0.2.0",
+            "name": "setasign/fpdf",
+            "version": "1.8.6",
+            "version_normalized": "1.8.6.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/php-fig/log.git",
-                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
+                "url": "https://github.com/Setasign/FPDF.git",
+                "reference": "0838e0ee4925716fcbbc50ad9e1799b5edfae0a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
-                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+                "url": "https://api.github.com/repos/Setasign/FPDF/zipball/0838e0ee4925716fcbbc50ad9e1799b5edfae0a0",
+                "reference": "0838e0ee4925716fcbbc50ad9e1799b5edfae0a0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0.0"
+                "ext-gd": "*",
+                "ext-zlib": "*"
             },
-            "time": "2024-09-11T13:17:53+00:00",
+            "time": "2023-06-26T14:44:25+00:00",
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
             "installation-source": "dist",
             "autoload": {
-                "psr-4": {
-                    "Psr\\Log\\": "src"
-                }
+                "classmap": [
+                    "fpdf.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -391,46 +452,46 @@
             ],
             "authors": [
                 {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
+                    "name": "Olivier Plathey",
+                    "email": "oliver@fpdf.org",
+                    "homepage": "http://fpdf.org/"
                 }
             ],
-            "description": "Common interface for logging libraries",
-            "homepage": "https://github.com/php-fig/log",
+            "description": "FPDF is a PHP class which allows to generate PDF files with pure PHP. F from FPDF stands for Free: you may use it for any kind of usage and modify it to suit your needs.",
+            "homepage": "http://www.fpdf.org",
             "keywords": [
-                "log",
-                "psr",
-                "psr-3"
+                "fpdf",
+                "pdf"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/3.0.2"
+                "source": "https://github.com/Setasign/FPDF/tree/1.8.6"
             },
-            "install-path": "../psr/log"
+            "install-path": "../setasign/fpdf"
         },
         {
             "name": "setasign/fpdi",
-            "version": "v2.6.4",
-            "version_normalized": "2.6.4.0",
+            "version": "v2.6.6",
+            "version_normalized": "2.6.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Setasign/FPDI.git",
-                "reference": "4b53852fde2734ec6a07e458a085db627c60eada"
+                "reference": "de0cf35911be3e9ea63b48e0f307883b1c7c48ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/4b53852fde2734ec6a07e458a085db627c60eada",
-                "reference": "4b53852fde2734ec6a07e458a085db627c60eada",
+                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/de0cf35911be3e9ea63b48e0f307883b1c7c48ac",
+                "reference": "de0cf35911be3e9ea63b48e0f307883b1c7c48ac",
                 "shasum": ""
             },
             "require": {
                 "ext-zlib": "*",
-                "php": "^7.1 || ^8.0"
+                "php": ">=7.2 <=8.5.99999"
             },
             "conflict": {
                 "setasign/tfpdf": "<1.31"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7",
+                "phpunit/phpunit": "^8.5.52",
                 "setasign/fpdf": "~1.8.6",
                 "setasign/tfpdf": "~1.33",
                 "squizlabs/php_codesniffer": "^3.5",
@@ -439,7 +500,7 @@
             "suggest": {
                 "setasign/fpdf": "FPDI will extend this class but as it is also possible to use TCPDF or tFPDF as an alternative. There's no fixed dependency configured."
             },
-            "time": "2025-08-05T09:57:14+00:00",
+            "time": "2026-03-13T08:38:20+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -472,7 +533,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Setasign/FPDI/issues",
-                "source": "https://github.com/Setasign/FPDI/tree/v2.6.4"
+                "source": "https://github.com/Setasign/FPDI/tree/v2.6.6"
             },
             "funding": [
                 {
@@ -481,6 +542,148 @@
                 }
             ],
             "install-path": "../setasign/fpdi"
+        },
+        {
+            "name": "smalot/pdfparser",
+            "version": "v2.12.5",
+            "version_normalized": "2.12.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smalot/pdfparser.git",
+                "reference": "2cfa0d92bd557875c9f52a75fde0e8392302a354"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smalot/pdfparser/zipball/2cfa0d92bd557875c9f52a75fde0e8392302a354",
+                "reference": "2cfa0d92bd557875c9f52a75fde0e8392302a354",
+                "shasum": ""
+            },
+            "require": {
+                "ext-iconv": "*",
+                "ext-zlib": "*",
+                "php": ">=7.1",
+                "symfony/polyfill-mbstring": "^1.18"
+            },
+            "time": "2026-04-17T11:37:58+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Smalot\\PdfParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastien MALOT",
+                    "email": "sebastien@malot.fr"
+                }
+            ],
+            "description": "Pdf parser library. Can read and extract information from pdf file.",
+            "homepage": "https://www.pdfparser.org",
+            "keywords": [
+                "extract",
+                "parse",
+                "parser",
+                "pdf",
+                "text"
+            ],
+            "support": {
+                "issues": "https://github.com/smalot/pdfparser/issues",
+                "source": "https://github.com/smalot/pdfparser/tree/v2.12.5"
+            },
+            "install-path": "../smalot/pdfparser"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.37.0",
+            "version_normalized": "1.37.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "6a21eb99c6973357967f6ce3708cd55a6bec6315"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/6a21eb99c6973357967f6ce3708cd55a6bec6315",
+                "reference": "6a21eb99c6973357967f6ce3708cd55a6bec6315",
+                "shasum": ""
+            },
+            "require": {
+                "ext-iconv": "*",
+                "php": ">=7.2"
+            },
+            "provide": {
+                "ext-mbstring": "*"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "time": "2026-04-10T17:25:58+00:00",
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.37.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "install-path": "../symfony/polyfill-mbstring"
         }
     ],
     "dev": false,

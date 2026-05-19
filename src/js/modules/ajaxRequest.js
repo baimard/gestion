@@ -548,6 +548,36 @@ export function saveNextcloud(myData) {
     });
   };
 
+export function generateFacturXmlRequest(factureId, name, folder) {
+    fetch(baseUrl + '/generateFacturXml', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'requesttoken': OC.requestToken
+        },
+        body: JSON.stringify({ factureId, name, folder })
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.message || 'Erreur serveur'); });
+        }
+        return response.blob();
+    })
+    .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a   = document.createElement('a');
+        a.href     = url;
+        a.download = name;
+        a.click();
+        window.URL.revokeObjectURL(url);
+        showMessage(t('gestion', 'Fichier XML Factur-X généré et sauvegardé.'));
+    })
+    .catch(error => {
+        showMessage(t('gestion', 'Erreur lors de la génération du XML : ') + error.message);
+        console.error(error);
+    });
+};
+
 export function getMailServerFrom(input) {
     var oReq = new XMLHttpRequest();
     oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);

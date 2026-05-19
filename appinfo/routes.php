@@ -56,5 +56,9 @@ return [
         ['name' => 'company#delShareUser', 'url' => '/delShareUser', 'verb' => 'DELETE'],
 
         ['name' => 'pdf#generatePDF', 'url' => '/generatePDF', 'verb' => 'POST'],
+
+        // FACTUR-X
+        ['name' => 'pdf#generateFacturX', 'url' => '/generateFacturX', 'verb' => 'POST'],
+        ['name' => 'pdf#generateFacturXml', 'url' => '/generateFacturXml', 'verb' => 'POST'],
     ]
 ];

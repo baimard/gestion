@@ -30,6 +30,12 @@ class FileService {
 	public function savePDF($content, $folder, $name): void {
 		$clean_folder = html_entity_decode($folder);
 		$clean_name = html_entity_decode($name);
+		$this->saveContent(base64_decode($content), $clean_folder, $clean_name);
+	}
+
+	public function saveContent($content, $folder, $name): void {
+		$clean_folder = html_entity_decode($folder);
+		$clean_name = html_entity_decode($name);
 		try {
 			$this->storage->newFolder($clean_folder);
 		} catch (\OCP\Files\NotPermittedException $e) {
@@ -40,8 +46,7 @@ class FileService {
 				$ff = $clean_folder . $clean_name;
 				$this->storage->newFile($ff);
 				$file = $this->storage->get($ff);
-				$data = base64_decode($content);
-				$file->putContent($data);
+				$file->putContent($content);
 			} catch (\OCP\Files\NotFoundException $e) {
 			}
 		} catch (\OCP\Files\NotPermittedException $e) {

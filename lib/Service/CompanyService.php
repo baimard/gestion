@@ -26,7 +26,10 @@ class CompanyService {
 	public function getCompaniesList() {
 		$companiesList = $this->myDb->getCompaniesList($this->userId);
 
-		if (empty($this->session->get('CurrentCompany')) || $this->session->get('CurrentCompany') == '') {
+		if (
+			(empty($this->session->get('CurrentCompany')) || $this->session->get('CurrentCompany') == '')
+			&& !empty($companiesList)
+		) {
 			$this->setCurrentCompany($companiesList[0]['id']);
 		}
 

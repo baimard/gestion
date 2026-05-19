@@ -53,6 +53,35 @@ class PdfController extends Controller {
 	 */
 	#[UseSession]
 	public function generatePDF($html, $name, $folder) {
-		$this->pdfService->generatePDF($html, $name, $folder);
+		return $this->pdfService->generatePDF($html, $name, $folder);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @UseSession
+	 *
+	 * @param string $html
+	 * @param string $name
+	 * @param string $folder
+	 * @param int $factureId
+	 */
+	#[UseSession]
+	public function generateFacturX(string $html, string $name, string $folder, int $factureId) {
+		return $this->pdfService->generateFacturX($html, $name, $folder, $factureId);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @UseSession
+	 *
+	 * @param int $factureId
+	 * @param string $name
+	 * @param string $folder
+	 */
+	#[UseSession]
+	public function generateFacturXml(int $factureId, string $name, string $folder) {
+		return $this->pdfService->generateFacturXml($factureId, $name, $folder);
 	}
 }

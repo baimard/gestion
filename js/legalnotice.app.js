@@ -48787,8 +48787,20 @@ function getAnnualTurnoverPerMonthNoVat(cur) {
  * @param {*} myCase 
  */
 function updateEditable(myCase) {
-    updateDB(myCase.dataset.table, myCase.dataset.column, myCase.innerText, myCase.dataset.id);
-    if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
+
+    let value = myCase.innerText;
+
+    if (myCase.dataset.column === "vat") {
+        value = value.replace('%', '');
+    }
+
+    updateDB(
+        myCase.dataset.table,
+        myCase.dataset.column,
+        value,
+        myCase.dataset.id
+    );
+
     myCase.removeAttribute('contenteditable');
 }
 
@@ -63919,6 +63931,7 @@ class Produit {
     this.reference = ((myresp.reference.length === 0) ? '-' : myresp.reference);
     this.description = ((myresp.description.length === 0) ? '-' : myresp.description);
     this.prix_unitaire = ((myresp.prix_unitaire.length === 0) ? '-' : myresp.prix_unitaire);
+    this.vat = myresp.vat ?? '-';
     this.header = myresp.header;
   }
 
@@ -63930,6 +63943,7 @@ class Produit {
       '<div class="editable" data-table="produit" data-column="reference" data-id="' + this.id + '">' + this.reference + '</div>',
       '<div class="editable" data-table="produit" data-column="description" data-id="' + this.id + '">' + this.description + '</div>',
       '<div class="editableNumeric" data-table="produit" data-column="prix_unitaire" data-id="' + this.id + '">' + cur.format(this.prix_unitaire) + '</div>',
+      '<div class="editable" data-table="produit" data-column="vat" data-id="' + this.id + '">' + this.vat + '%</div>',
       '<div class="editable" data-table="produit" data-column="header" data-id="' + this.id + '">' + this.header + '</div>',
       '<div data-modifier="produit" data-id=' + this.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
     ];

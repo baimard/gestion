@@ -377,8 +377,20 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
  * @param {*} myCase 
  */
 export function updateEditable(myCase) {
-    updateDB(myCase.dataset.table, myCase.dataset.column, myCase.innerText, myCase.dataset.id);
-    if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
+
+    let value = myCase.innerText;
+
+    if (myCase.dataset.column === "vat") {
+        value = value.replace('%', '');
+    }
+
+    updateDB(
+        myCase.dataset.table,
+        myCase.dataset.column,
+        value,
+        myCase.dataset.id
+    );
+
     myCase.removeAttribute('contenteditable');
 }
 

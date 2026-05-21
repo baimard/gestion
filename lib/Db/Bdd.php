@@ -161,8 +161,21 @@ class Bdd {
     }
 
     public function insertProduit($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."produit` (`id_configuration`,`reference`,`description`,`prix_unitaire`) VALUES (?,?,?,0);";
-        $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Reference'),$this->l->t('Designation')));
+
+        $vat = $this->execSQLNoJsonReturn(
+            "SELECT tva_default FROM ".$this->tableprefix."configuration WHERE id = ?",
+            array($idNextcloud)
+        )[0]['tva_default'];
+
+        $sql = "INSERT INTO `".$this->tableprefix."produit` (`id_configuration`,`reference`,`description`,`prix_unitaire`,`vat`) VALUES (?,?,?,0,?);";
+        
+        $this->execSQLNoData($sql, array(
+            $idNextcloud,
+            $this->l->t('Reference'),
+            $this->l->t('Designation'),
+            $vat
+        ));
+
         return true;
     }
 

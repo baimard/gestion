@@ -27929,7 +27929,11 @@ function getProduitsById() {
     .then(data => {
         const produitsBody = document.querySelector('#produits tbody');
         produitsBody.innerHTML = '';
-        let total = 0;
+        let totalHTGlobal = 0;
+        let totalTVAGlobal = 0;
+        let totalTTCGlobal = 0;
+
+        const vatGroups = {};
         let deleteDisable = '';
 
         if (document.getElementById('produits').dataset.type === "facture") {
@@ -27938,9 +27942,14 @@ function getProduitsById() {
         var res = JSON.parse(data);
 
         res.forEach(myresp => {
+            
+            console.log(myresp);
+            
+            const vat = parseFloat(myresp.vat || 0);
+
             if(myresp.header > 0){
                 produitsBody.innerHTML += `<tr style="background-color:rgb(198, 198, 198);">
-                    <td COLSPAN="6">
+                    <td COLSPAN="8">
                         <div>
                             <div data-val="${myresp.pid}" data-id="${myresp.pdid}" class="inline selectable">${myresp.reference}</div>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" class="drop_up material-symbols ${deleteDisable}">arrow_drop_up</div>
@@ -27952,32 +27961,83 @@ function getProduitsById() {
                 `
             }else{
                 produitsBody.innerHTML += `<tr>
-                <td>
-                    <div>
-                        <div data-val="${myresp.pid}" data-id="${myresp.pdid}" class="inline selectable">${myresp.reference}</div>
-                        <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" class="drop_up material-symbols ${deleteDisable}">arrow_drop_up</div>
-                        <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="drop_down material-symbols ${deleteDisable}">arrow_drop_down</div>
-                        <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
-                    </div>
-                </td>
-                <td>${myresp.description}</td>
-                <td>
-                    <div class="editable" data-table="produit_devis" data-column="comment" data-id="${myresp.pdid}">${myresp.comment.length === 0 ? '-' : myresp.comment}</div>
-                </td>
-                <td>
-                    <div class="editableNumber getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id="${myresp.pdid}">${myresp.quantite}</div>
-                </td>
-                <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format(myresp.prix_unitaire)}</td>
-                <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format(myresp.quantite * myresp.prix_unitaire)}</td>
-            </tr>`;
-           
-            }
+                    <td>
+                        <div>
+                            <div data-val="${myresp.pid}" data-id="${myresp.pdid}" class="inline selectable">${myresp.reference}</div>
+                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" class="drop_up material-symbols ${deleteDisable}">arrow_drop_up</div>
+                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="drop_down material-symbols ${deleteDisable}">arrow_drop_down</div>
+                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
+                        </div>
+                    </td>
+                    <td>${myresp.description}</td>
+                    <td>
+                        <div class="editable" data-table="produit_devis" data-column="comment" data-id="${myresp.pdid}">
+                            ${myresp.comment.length === 0 ? '-' : myresp.comment}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editableNumber getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id="${myresp.pdid}">
+                            ${myresp.quantite}
+                        </div>
+                    </td>
+                    <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format(myresp.prix_unitaire)}</td>
+                    <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format(myresp.quantite * myresp.prix_unitaire)}</td>
+                    <td>${vat} %</td>
+                    <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format((myresp.quantite * myresp.prix_unitaire) * (1 + vat / 100))}</td>
+                </tr>`;
 
-            total += (myresp.quantite * myresp.prix_unitaire);
+                const totalHT = myresp.quantite * myresp.prix_unitaire;
+                const totalTVA = totalHT * (vat / 100);
+                const totalTTC = totalHT + totalTVA;
+
+                if (!vatGroups[vat]) {
+                    vatGroups[vat] = {
+                        quantity: 0,
+                        totalHT: 0,
+                        totalTVA: 0,
+                        totalTTC: 0
+                    };
+                }
+
+                vatGroups[vat].quantity += 1;
+                vatGroups[vat].totalHT += totalHT;
+                vatGroups[vat].totalTVA += totalTVA;
+                vatGroups[vat].totalTTC += totalTTC;
+
+                totalHTGlobal += totalHT;
+                totalTVAGlobal += totalTVA;
+                totalTTCGlobal += totalTTC;
+            }
         }); 
 
-        document.getElementById('totaldevis').querySelector('tbody').innerHTML = '';
-        (0,_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .getGlobal */ .mS)(total);
+        const totalBody = document.getElementById('totaldevis').querySelector('tbody');
+        totalBody.innerHTML = '';
+
+        Object.keys(vatGroups).forEach(vat => {
+            const row = `
+                <tr>
+                    <td>${vatGroups[vat].quantity}</td>
+                    <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format(vatGroups[vat].totalHT)}</td>
+                    <td>${vat} %</td>
+                    <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format(vatGroups[vat].totalTVA)}</td>
+                    <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format(vatGroups[vat].totalTTC)}</td>
+                </tr>
+            `;
+
+            totalBody.insertAdjacentHTML('beforeend', row);
+        });
+
+        const totalGlobalBody = document.getElementById('totalglobal').querySelector('tbody');
+
+        totalGlobalBody.innerHTML = `
+            <tr>
+                <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format(totalHTGlobal)}</td>
+                <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format(totalTVAGlobal)}</td>
+                <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format(totalTTCGlobal)}</td>
+            </tr>
+        `;
+
+        (0,_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .getGlobal */ .mS)();
     })
     .catch(error => {
         (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_0__/* .showError */ .Qg)(error);
@@ -28326,7 +28386,7 @@ function getCurrency(response) {
  * 
  * @param {*} total 
  */
-function getGlobal(total) {
+function getGlobal() {
 const url = baseUrl + '/getConfiguration';
 const options = {
     method: 'PROPFIND',
@@ -28340,17 +28400,6 @@ fetch(url, options)
     .then(response => response.json())
     .then(data => {
         const myresp = JSON.parse(data)[0];
-        const tva = parseFloat(myresp.tva_default);
-        const totalRow = `
-            <tr>
-                <td>${cur.format(total)}</td>
-                <td id="tva">${tva} %</td>
-                <td id="totaltva">${cur.format(Math.round((total * tva)) / 100)}</td>
-                <td>${cur.format(Math.round((total * (tva + 100))) / 100)}</td>
-            </tr>
-        `;
-
-        document.querySelector('#totaldevis tbody').insertAdjacentHTML('beforeend', totalRow);
 
         let mentionsDefault = myresp.mentions_default;
         mentionsDefault = mentionsDefault.replace(/\n/g, '<br/>');

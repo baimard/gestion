@@ -175,7 +175,7 @@ export function getCurrency(response) {
  * 
  * @param {*} total 
  */
-export function getGlobal(total) {
+export function getGlobal() {
 const url = baseUrl + '/getConfiguration';
 const options = {
     method: 'PROPFIND',
@@ -189,17 +189,6 @@ fetch(url, options)
     .then(response => response.json())
     .then(data => {
         const myresp = JSON.parse(data)[0];
-        const tva = parseFloat(myresp.tva_default);
-        const totalRow = `
-            <tr>
-                <td>${cur.format(total)}</td>
-                <td id="tva">${tva} %</td>
-                <td id="totaltva">${cur.format(Math.round((total * tva)) / 100)}</td>
-                <td>${cur.format(Math.round((total * (tva + 100))) / 100)}</td>
-            </tr>
-        `;
-
-        document.querySelector('#totaldevis tbody').insertAdjacentHTML('beforeend', totalRow);
 
         let mentionsDefault = myresp.mentions_default;
         mentionsDefault = mentionsDefault.replace(/\n/g, '<br/>');

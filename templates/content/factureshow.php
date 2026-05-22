@@ -85,6 +85,9 @@
             </tbody>
         </table>
     </div>
+
+    <div class="comment" >VAT price per percentage</div>
+                  
     <div class="div-prix">
         <table id="totaldevis" class="table-prix">
             <thead>
@@ -100,6 +103,8 @@
             </tbody>
         </table>
     </div>
+
+    <div class="comment" >Total price</div>
 
     <div class="div-prix">
         <table id="totalglobal" class="table-prix">

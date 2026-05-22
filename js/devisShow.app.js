@@ -27929,6 +27929,7 @@ function getProduitsById() {
     .then(data => {
         const produitsBody = document.querySelector('#produits tbody');
         produitsBody.innerHTML = '';
+        let quantity = 0;
         let totalHTGlobal = 0;
         let totalTVAGlobal = 0;
         let totalTTCGlobal = 0;
@@ -27986,6 +27987,7 @@ function getProduitsById() {
                     <td>${_mainFunction_js__WEBPACK_IMPORTED_MODULE_2__/* .cur */ .v$.format((myresp.quantite * myresp.prix_unitaire) * (1 + vat / 100))}</td>
                 </tr>`;
 
+                const quantity = myresp.quantite;
                 const totalHT = myresp.quantite * myresp.prix_unitaire;
                 const totalTVA = totalHT * (vat / 100);
                 const totalTTC = totalHT + totalTVA;
@@ -27999,7 +28001,7 @@ function getProduitsById() {
                     };
                 }
 
-                vatGroups[vat].quantity += 1;
+                vatGroups[vat].quantity += quantity;
                 vatGroups[vat].totalHT += totalHT;
                 vatGroups[vat].totalTVA += totalTVA;
                 vatGroups[vat].totalTTC += totalTTC;

@@ -42,6 +42,7 @@ OC.L10N.register(
     "Global Default VAT rate apply to your Quote/Invoice (globally), to change it, just insert VAT rate amount without the percent sign." : "Jūsų kainos pasiūlymui / sąskaitai faktūrai (visuotinai) taikomas numatytasis visuotinis PVM tarifas. Norėdami jį pakeisti, tiesiog įveskite PVM tarifo sumą be procento ženklo.",
     "Configuration" : "Konfigūracija",
     "Add" : "Pridėti",
+    "Quote" : "Citata",
     "ID" : "ID",
     "Version" : "Versija",
     "Status" : "Būsena",

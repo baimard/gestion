@@ -18,6 +18,7 @@ OC.L10N.register(
     "Disable" : "Išjungti",
     "Enable" : "Įjungti",
     "Search" : "Ieškoti",
+    "Showing 0 to 0 of 0 entries" : "Rodoma nuo 0 iki 0 iš 0 įrašų",
     "Processing …" : "Apdorojama…",
     "First" : "Pirmas",
     "Last" : "Paskutinis",

@@ -220,6 +220,10 @@ export function checkAutoIncrement(response){
 export function updateNumerical(el, format_number=true){
     el.innerText=el.innerText.replace(',', '.').replace(/[^0-9.-]+/g,"")
     updateEditable(el);
+    if (
+        el.dataset.column === "quantite") {
+        return;
+    }
     if(format_number){
         el.innerText=cur.format(el.innerText)
     }else{

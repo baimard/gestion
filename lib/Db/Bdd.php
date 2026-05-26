@@ -152,10 +152,25 @@ class Bdd {
         $last = $this->lastinsertid("facture", $idNextcloud) + 1;
 
         //PREFIX
-        $pref = $this->execSQLNoJsonReturn("SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?",array($idNextcloud));
+        $pref = $this->execSQLNoJsonReturn(
+            "SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?",
+            array($idNextcloud)
+        );
 
-        $sql = "INSERT INTO `".$this->tableprefix."facture` (`date`,`id_configuration`,`num`,`date_paiement`,`type_paiement`,`id_devis`,`user_id`) VALUES (?,?,?,NOW(),?,0,?);";
-        $this->execSQLNoData($sql, array($this->l->t('Text free'),$idNextcloud,$pref[0]['facture_prefixe']."-".$last,$this->l->t('Means of payment'),$last));
+        $sql = "INSERT INTO `".$this->tableprefix."facture`
+        (`date`,`id_configuration`,`num`,`date_paiement`,`type_paiement`,`id_devis`,`user_id`)
+        VALUES
+        (date('now'), ?, ?, date('now', '+1 month'), ?, 0, ?);";
+
+        $this->execSQLNoData(
+            $sql,
+            array(
+                $idNextcloud,
+                $pref[0]['facture_prefixe']."-".$last,
+                $this->l->t('Means of payment'),
+                $last
+            )
+        );
 
         return $last;
     }

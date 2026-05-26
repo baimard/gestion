@@ -48613,6 +48613,10 @@ function checkAutoIncrement(response){
 function updateNumerical(el, format_number=true){
     el.innerText=el.innerText.replace(',', '.').replace(/[^0-9.-]+/g,"")
     updateEditable(el);
+    if (
+        el.dataset.column === "quantite") {
+        return;
+    }
     if(format_number){
         el.innerText=cur.format(el.innerText)
     }else{
@@ -64230,34 +64234,59 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.body.addEventListener('keydown', function(e) {
         if (e.key === "Enter") {
-            lastKeyEventTime = Date.now(); // Mettre à jour le temps du dernier événement keydown
+
+            lastKeyEventTime = Date.now();
+
             var targetClass = e.target.className;
+
             if (targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")) {
-                updateNumerical(e.target);
-            } else if (targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration") || targetClass.includes("editableConfigurationSelect") || targetClass.includes("editableComment")) {
+
+                const formatAsCurrency =
+                    e.target.dataset.column !== "quantite";
+
+                updateNumerical(e.target, formatAsCurrency);
+
+            } else if (
+                targetClass.includes("editableSelect") ||
+                targetClass.includes("editableConfiguration") ||
+                targetClass.includes("editableConfigurationSelect") ||
+                targetClass.includes("editableComment")
+            ) {
+
                 // Empêcher le comportement par défaut
+
             } else if (targetClass.includes("editable")) {
+
                 updateEditable(e.target);
             }
         }
     });
 
     document.body.addEventListener('focusout', function(e) {
-        // Vérifier si keydown a été utilisé récemment (dans les 100 ms)
-        if (Date.now() - lastKeyEventTime < 100) {
-            e.preventDefault(); // Empêcher l'exécution de focusout
-            return;
-        }
+    if (Date.now() - lastKeyEventTime < 100) {
+        e.preventDefault();
+        return;
+    }
 
-        var targetClass = e.target.className;
-        if (targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")) {
-            updateNumerical(e.target);
-        } else if (targetClass.includes("editableSelect") || targetClass.includes("editableConfiguration") || targetClass.includes("editableConfigurationSelect")) {
-            // Empêcher le comportement par défaut
-        } else if (targetClass.includes("editable")) {
-            updateEditable(e.target);
-        }
-    });
+    var targetClass = e.target.className;
+
+    if (targetClass.includes("editableNumber") || targetClass.includes("editableNumeric")) {
+
+        const formatAsCurrency =
+            e.target.dataset.column !== "quantite";
+
+        updateNumerical(e.target, formatAsCurrency);
+
+    } else if (
+        targetClass.includes("editableSelect") ||
+        targetClass.includes("editableConfiguration") ||
+        targetClass.includes("editableConfigurationSelect")
+    ) {
+    } else if (targetClass.includes("editable")) {
+
+        updateEditable(e.target);
+    }
+});
 
 
     document.body.addEventListener('mouseover', function(event) {

@@ -169,7 +169,7 @@ class PdfService {
 		foreach ($produitsRows as $p) {
 			$lineTotal = (float)$p->prix_unitaire * (float)$p->quantite;
 			$totalHT += $lineTotal;
-			$vatRate = isset($p->tva) ? (float)$p->tva : 20.0;
+			$vatRate = isset($p->vat) ? (float)$p->vat : 20.0;
 			$key = number_format($vatRate, 2);
 			if (!isset($vatLines[$key])) {
 				$vatLines[$key] = ['rate' => $vatRate, 'base' => 0.0, 'amount' => 0.0];
@@ -197,7 +197,7 @@ class PdfService {
 		$lineNum = 1;
 		foreach ($produitsRows as $p) {
 			$lineTotal = round((float)$p->prix_unitaire * (float)$p->quantite, 4);
-			$vatRate = isset($p->tva) ? (float)$p->tva : 20.0;
+			$vatRate = isset($p->vat) ? (float)$p->vat : 20.0;
 			$designation = htmlspecialchars($p->description ?? $p->reference ?? '', ENT_XML1);
 			$lineItemsXml .= <<<XML
 

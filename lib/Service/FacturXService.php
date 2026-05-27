@@ -190,9 +190,9 @@ class FacturXService
             <ram:RateApplicablePercent>{$vatRate}</ram:RateApplicablePercent>
         </ram:ApplicableTradeTax>
 
-        <ram:SpecifiedTradeMonetarySummation>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
             <ram:LineTotalAmount>{$lineTotal}</ram:LineTotalAmount>
-        </ram:SpecifiedTradeMonetarySummation>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
     </ram:SpecifiedLineTradeSettlement>
 </ram:IncludedSupplyChainTradeLineItem>
 
@@ -350,9 +350,7 @@ XML;
 
     <rsm:ExchangedDocumentContext>
         <ram:GuidelineSpecifiedDocumentContextParameter>
-            <ram:ID>
-                urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:en16931
-            </ram:ID>
+            <ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:ExchangedDocumentContext>
 
@@ -416,59 +414,69 @@ XML;
 
         <ram:ApplicableHeaderTradeSettlement>
 
-            <ram:PaymentReference>
-                {$invoiceNumber}
-            </ram:PaymentReference>
+        <ram:PaymentReference>
+            {$invoiceNumber}
+        </ram:PaymentReference>
 
-            <ram:TaxCurrencyCode>
-                EUR
-            </ram:TaxCurrencyCode>
+        <ram:TaxCurrencyCode>
+            EUR
+        </ram:TaxCurrencyCode>
 
-            <ram:InvoiceCurrencyCode>
-                EUR
-            </ram:InvoiceCurrencyCode>
+        <ram:InvoiceCurrencyCode>
+            EUR
+        </ram:InvoiceCurrencyCode>
 
-            <ram:SpecifiedTradePaymentTerms>
+        <ram:SpecifiedTradeSettlementPaymentMeans>
 
-                <ram:Description>
-                    {$paymentMethod}
-                </ram:Description>
+            <ram:TypeCode>58</ram:TypeCode>
 
-                <ram:DueDateDateTime>
-                    <udt:DateTimeString format="102">
-                        {$dueDateFormatted}
-                    </udt:DateTimeString>
-                </ram:DueDateDateTime>
+            <ram:Information>
+                {$paymentMethod}
+            </ram:Information>
 
-            </ram:SpecifiedTradePaymentTerms>
+        </ram:SpecifiedTradeSettlementPaymentMeans>
 
-            {$taxXml}
+        {$taxXml}
 
-            <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+        <ram:SpecifiedTradePaymentTerms>
 
-                <ram:LineTotalAmount>
-                    {$totalHT}
-                </ram:LineTotalAmount>
+            <ram:Description>
+                {$paymentMethod}
+            </ram:Description>
 
-                <ram:TaxBasisTotalAmount>
-                    {$totalHT}
-                </ram:TaxBasisTotalAmount>
+            <ram:DueDateDateTime>
+                <udt:DateTimeString format="102">
+                    {$dueDateFormatted}
+                </udt:DateTimeString>
+            </ram:DueDateDateTime>
 
-                <ram:TaxTotalAmount currencyID="EUR">
-                    {$totalVAT}
-                </ram:TaxTotalAmount>
+        </ram:SpecifiedTradePaymentTerms>
 
-                <ram:GrandTotalAmount>
-                    {$totalTTC}
-                </ram:GrandTotalAmount>
+        <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
 
-                <ram:DuePayableAmount>
-                    {$totalTTC}
-                </ram:DuePayableAmount>
+            <ram:LineTotalAmount>
+                {$totalHT}
+            </ram:LineTotalAmount>
 
-            </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+            <ram:TaxBasisTotalAmount>
+                {$totalHT}
+            </ram:TaxBasisTotalAmount>
 
-        </ram:ApplicableHeaderTradeSettlement>
+            <ram:TaxTotalAmount currencyID="EUR">
+                {$totalVAT}
+            </ram:TaxTotalAmount>
+
+            <ram:GrandTotalAmount>
+                {$totalTTC}
+            </ram:GrandTotalAmount>
+
+            <ram:DuePayableAmount>
+                {$totalTTC}
+            </ram:DuePayableAmount>
+
+        </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+
+    </ram:ApplicableHeaderTradeSettlement>
 
     </rsm:SupplyChainTradeTransaction>
 

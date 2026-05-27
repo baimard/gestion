@@ -222,9 +222,9 @@ class PdfService {
 				<ram:CategoryCode>S</ram:CategoryCode>
 				<ram:RateApplicablePercent>{$vatRate}</ram:RateApplicablePercent>
 			</ram:ApplicableTradeTax>
-			<ram:SpecifiedTradeMonetarySummation>
+			<ram:SpecifiedTradeSettlementLineMonetarySummation>
 				<ram:LineTotalAmount>{$lineTotal}</ram:LineTotalAmount>
-			</ram:SpecifiedTradeMonetarySummation>
+			</ram:SpecifiedTradeSettlementLineMonetarySummation>
 		</ram:SpecifiedLineTradeSettlement>
 	</ram:IncludedSupplyChainTradeLineItem>
 XML;
@@ -268,7 +268,7 @@ XML;
 	xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
 	<rsm:ExchangedDocumentContext>
 		<ram:GuidelineSpecifiedDocumentContextParameter>
-			<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:en16931</ram:ID>
+			<ram:ID>urn:cen.eu:en16931:2017</ram:ID>
 		</ram:GuidelineSpecifiedDocumentContextParameter>
 	</rsm:ExchangedDocumentContext>
 	<rsm:ExchangedDocument>
@@ -299,24 +299,49 @@ XML;
 		</ram:ApplicableHeaderTradeAgreement>
 		<ram:ApplicableHeaderTradeDelivery/>
 		<ram:ApplicableHeaderTradeSettlement>
-			<ram:PaymentReference>{$invoiceNum}</ram:PaymentReference>
-			<ram:TaxCurrencyCode>EUR</ram:TaxCurrencyCode>
-			<ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
-			<ram:SpecifiedTradePaymentTerms>
-				<ram:Description>{$paymentMeans}</ram:Description>
-				<ram:DueDateDateTime>
-					<udt:DateTimeString format="102">{$dueDateFormatted}</udt:DateTimeString>
-				</ram:DueDateDateTime>
-			</ram:SpecifiedTradePaymentTerms>
-			{$taxXml}
-			<ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-				<ram:LineTotalAmount>{$totalHTFmt}</ram:LineTotalAmount>
-				<ram:TaxBasisTotalAmount>{$totalHTFmt}</ram:TaxBasisTotalAmount>
-				<ram:TaxTotalAmount currencyID="EUR">{$totalVATFmt}</ram:TaxTotalAmount>
-				<ram:GrandTotalAmount>{$totalTTCFmt}</ram:GrandTotalAmount>
-				<ram:DuePayableAmount>{$totalTTCFmt}</ram:DuePayableAmount>
-			</ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-		</ram:ApplicableHeaderTradeSettlement>
+    <ram:PaymentReference>{$invoiceNum}</ram:PaymentReference>
+    <ram:TaxCurrencyCode>
+        EUR
+    </ram:TaxCurrencyCode>
+    <ram:InvoiceCurrencyCode>
+        EUR
+    </ram:InvoiceCurrencyCode>
+    <ram:SpecifiedTradeSettlementPaymentMeans>
+        <ram:TypeCode>58</ram:TypeCode>
+        <ram:Information>
+            {$paymentMeans}
+        </ram:Information>
+    </ram:SpecifiedTradeSettlementPaymentMeans>{$taxXml}<ram:SpecifiedTradePaymentTerms>
+        <ram:Description>{$paymentMeans}</ram:Description>
+        <ram:DueDateDateTime>
+            <udt:DateTimeString format="102">{$dueDateFormatted}</udt:DateTimeString>
+        </ram:DueDateDateTime>
+    </ram:SpecifiedTradePaymentTerms>
+    <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+
+        <ram:LineTotalAmount>
+            {$totalHTFmt}
+        </ram:LineTotalAmount>
+
+        <ram:TaxBasisTotalAmount>
+            {$totalHTFmt}
+        </ram:TaxBasisTotalAmount>
+
+        <ram:TaxTotalAmount currencyID="EUR">
+            {$totalVATFmt}
+        </ram:TaxTotalAmount>
+
+        <ram:GrandTotalAmount>
+            {$totalTTCFmt}
+        </ram:GrandTotalAmount>
+
+        <ram:DuePayableAmount>
+            {$totalTTCFmt}
+        </ram:DuePayableAmount>
+
+    </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+
+</ram:ApplicableHeaderTradeSettlement>
 	</rsm:SupplyChainTradeTransaction>
 </rsm:CrossIndustryInvoice>
 XML;

@@ -307,14 +307,10 @@ class PdfService {
 		$invoiceDateFormatted = $invoiceDate->format('Ymd');
 		$dueDateFormatted = $dueDate->format('Ymd');
 
-		$sellerVatId = '';
-
-		if (!empty($config->siret)) {
-
-			$sellerVatId = (strpos($config->siret, 'FR') === 0)
-				? $config->siret
-				: 'FR00' . preg_replace('/[^0-9]/', '', $config->siret);
-		}
+        $sellerVatId = htmlspecialchars(
+          trim($config->vat_number ?? ''),
+          ENT_XML1
+        );
 
 		$lineItemsXml = '';
 		$lineNum = 1;
@@ -417,12 +413,12 @@ XML;
 		);
 
 		$sellerCity = htmlspecialchars(
-			$config->ville ?? '',
+			$config->city_name ?? '',
 			ENT_XML1
 		);
 
 		$sellerZip = htmlspecialchars(
-			$config->codepostal ?? '',
+			$config->zip_code ?? '',
 			ENT_XML1
 		);
 
@@ -438,6 +434,11 @@ XML;
 			),
 			ENT_XML1
 		);
+
+        $buyerAddress = htmlspecialchars($facture->adresse ?? '', ENT_XML1);
+        $buyerZip = htmlspecialchars($facture->zip_code ?? '', ENT_XML1);
+        $buyerCity = htmlspecialchars($facture->city_name ?? '', ENT_XML1);
+        $buyerCountry = htmlspecialchars($facture->country_code ?? 'FR', ENT_XML1);
 
 		$invoiceNum = htmlspecialchars(
 			$facture->num,
@@ -512,8 +513,22 @@ XML;
 			</ram:SellerTradeParty>
 
 			<ram:BuyerTradeParty>
-				<ram:Name>{$buyerName}</ram:Name>
-			</ram:BuyerTradeParty>
+
+    <ram:Name>{$buyerName}</ram:Name>
+
+    <ram:PostalTradeAddress>
+
+        <ram:PostcodeCode>{$buyerZip}</ram:PostcodeCode>
+
+        <ram:LineOne>{$buyerAddress}</ram:LineOne>
+
+        <ram:CityName>{$buyerCity}</ram:CityName>
+
+        <ram:CountryID>{$buyerCountry}</ram:CountryID>
+
+    </ram:PostalTradeAddress>
+
+</ram:BuyerTradeParty>
 
 		</ram:ApplicableHeaderTradeAgreement>
 

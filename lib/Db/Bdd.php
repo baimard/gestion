@@ -14,7 +14,7 @@ class Bdd {
 
     public function __construct(IDbConnection $db,
                                 IL10N $l) {
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment", "user_id", "facture_prefixe", "id_configuration", "delay", "header","vat", "vat_number", "zip_code", "city_name" );
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment", "user_id", "facture_prefixe", "id_configuration", "delay", "header","vat", "vat_number", "zip_code", "city_name", "country_code" );
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->pdo = $db;
@@ -108,7 +108,7 @@ class Bdd {
      * @$idnextcloud
      */
     public function insertClient($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."client` (`id_configuration`,`nom`,`prenom`,`legal_one`,`entreprise`,`telephone`,`mail`,`adresse`) VALUES (?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO `".$this->tableprefix."client` (`id_configuration`,`nom`,`prenom`,`legal_one`,`entreprise`,`telephone`,`mail`,`adresse`,`zip_code`,`city_name`,`country_code`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         $this->execSQLNoData($sql,array($idNextcloud,
                                             $this->l->t('Last name'),
                                             $this->l->t('First name'),
@@ -116,7 +116,10 @@ class Bdd {
                                             $this->l->t('Company'),
                                             $this->l->t('Phone number'),
                                             $this->l->t('Email'),
-                                            $this->l->t('Address')
+                                            $this->l->t('Address'),
+                                            $this->l->t('zip_code'),
+                                            $this->l->t('city_name'),
+                                            $this->l->t('country_code')
                                         )
                                     );
         return true;

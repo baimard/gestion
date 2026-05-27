@@ -63848,6 +63848,9 @@ class Client {
     this.telephone = ((myresp.telephone.length === 0) ? '-' : myresp.telephone);
     this.mail = ((myresp.mail.length === 0) ? '-' : myresp.mail);
     this.adresse = ((myresp.adresse.length === 0) ? '-' : myresp.adresse);
+    this.zip_code = ((myresp.zip_code.length === 0) ? '-' : myresp.zip_code);
+    this.city_name = ((myresp.city_name.length === 0) ? '-' : myresp.city_name);
+    this.country_code = ((myresp.country_code.length === 0) ? '-' : myresp.country_code);
   }
 
   /**
@@ -63862,6 +63865,9 @@ class Client {
       '<div class="editable" data-table="client" data-column="telephone" data-id="' + this.id + '">' + this.telephone + '</div>',
       '<div class="editable" data-table="client" data-column="mail" data-id="' + this.id + '">' + this.mail + '</div>',
       '<div class="editable" data-table="client" data-column="adresse" data-id="' + this.id + '">' + this.adresse + '</div>',
+      '<div class="editable" data-table="client" data-column="zip_code" data-id="' + this.id + '">' + this.zip_code + '</div>',
+      '<div class="editable" data-table="client" data-column="city_name" data-id="' + this.id + '">' + this.city_name + '</div>',
+      '<div class="editable" data-table="client" data-column="country_code" data-id="' + this.id + '">' + this.country_code + '</div>',
       '<center><div data-modifier="client" data-id=' + this.id + ' data-table="client" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div></center>'
     ];
     return myrow;

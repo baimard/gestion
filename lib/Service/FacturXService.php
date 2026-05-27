@@ -30,6 +30,7 @@ class FacturXService
     public function buildXml(
         object $invoice,
         object $company,
+        object $customer,
         array $products
     ): string {
 
@@ -41,13 +42,15 @@ class FacturXService
         $lineItemsXml = $this->buildLineItems($products);
         $taxXml       = $this->buildTaxes($totals['vatLines']);
 
-        $sellerVatId = $this->buildVatNumber(
-            $company->vat_number ?? ''
+        $sellerVatId = htmlspecialchars(
+          trim($config->vat_number ?? ''),
+          ENT_XML1
         );
 
         return $this->buildDocument(
             invoice: $invoice,
             company: $company,
+            customer: $customer,
             invoiceDate: $invoiceDate,
             dueDate: $dueDate,
             lineItemsXml: $lineItemsXml,
@@ -213,6 +216,8 @@ XML;
         return 'FR00' . preg_replace('/[^0-9]/', '', $vatNumber);
     }
 
+    
+
     /**
      * Build complete XML document
      */
@@ -241,6 +246,11 @@ XML;
             trim(($invoice->prenom ?? '') . ' ' . ($invoice->nom ?? '')),
             ENT_XML1
         );
+
+        $buyerAddress = htmlspecialchars($customer->adresse ?? '', ENT_XML1);
+        $buyerZip = htmlspecialchars($customer->zip_code ?? '', ENT_XML1);
+        $buyerCity = htmlspecialchars($customer->city_name ?? '', ENT_XML1);
+        $buyerCountry = htmlspecialchars($customer->country_code ?? 'FR', ENT_XML1);
 
         $invoiceNumber = htmlspecialchars($invoice->num, ENT_XML1);
 
@@ -306,8 +316,22 @@ XML;
             </ram:SellerTradeParty>
 
             <ram:BuyerTradeParty>
-                <ram:Name>{$buyerName}</ram:Name>
-            </ram:BuyerTradeParty>
+
+    <ram:Name>{$buyerName}</ram:Name>
+
+    <ram:PostalTradeAddress>
+
+        <ram:PostcodeCode>{$buyerZip}</ram:PostcodeCode>
+
+        <ram:LineOne>{$buyerAddress}</ram:LineOne>
+
+        <ram:CityName>{$buyerCity}</ram:CityName>
+
+        <ram:CountryID>{$buyerCountry}</ram:CountryID>
+
+    </ram:PostalTradeAddress>
+
+</ram:BuyerTradeParty>
 
         </ram:ApplicableHeaderTradeAgreement>
 

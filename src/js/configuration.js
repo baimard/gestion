@@ -104,6 +104,7 @@ function loadConfigurationDT(response) {
 
     // Iterate over each item in the parsed JSON array
     data.forEach(function (myresp) {
+        console.log("CONFIG OBJ:", myresp);
         // Set the value of each form field, using "-" if the value is an empty string
         document.getElementById("entreprise").value = myresp.entreprise.length === 0 ? "-" : myresp.entreprise;
         document.getElementById("nom").value = myresp.nom.length === 0 ? "-" : myresp.nom;
@@ -116,6 +117,11 @@ function loadConfigurationDT(response) {
         document.getElementById("tva_default").value = myresp.tva_default.length === 0 ? "-" : myresp.tva_default;
         document.getElementById("facture_prefixe").value = myresp.facture_prefixe.length === 0 ? "-" : myresp.facture_prefixe;
 
+        // NOUVEAUX CHAMPS
+        document.getElementById("city_name").value = myresp.city_name.length === 0 ? "-" : myresp.city_name;
+        document.getElementById("zip_code").value = myresp.zip_code.length === 0 ? "-" : myresp.zip_code;
+        document.getElementById("vat_number").value = myresp.vat_number.length === 0 ? "-" : myresp.vat_number;
+
         // Call external functions with the appropriate parameters
         setCurrencyList(myresp.devise, document.getElementById("currency"));
         setFormatList(myresp.format, document.getElementById("format"));
@@ -126,7 +132,7 @@ function loadConfigurationDT(response) {
         const fields = [
             "entreprise", "nom", "prenom", "adresse", "legal_one", "legal_two",
             "telephone", "mail", "tva_default", "facture_prefixe", "currency",
-            "format", "mentions_default"
+            "format", "mentions_default", "zip_code", "vat_number", "city_name"
         ];
 
         fields.forEach(function (field) {

@@ -14,7 +14,7 @@ class Bdd {
 
     public function __construct(IDbConnection $db,
                                 IL10N $l) {
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment", "user_id", "facture_prefixe", "id_configuration", "delay", "header","vat");
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment", "user_id", "facture_prefixe", "id_configuration", "delay", "header","vat", "vat_number", "zip_code", "city_name" );
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->pdo = $db;
@@ -353,27 +353,24 @@ class Bdd {
         return $res;
     }
 
-    /**
-     * Create a new company
-     */
-    public function createCompany($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."configuration` (`entreprise`, `nom`, `prenom`, `legal_one`, `legal_two`, `mail`, `telephone`, `adresse`, `path`, `id_nextcloud`,`mentions_default`,`tva_default`,`devise`,`facture_prefixe`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?,?);";
-        $this->execSQLNoData($sql, array(
-            $this->l->t('Your company name'),
-            $this->l->t('Your company contact last name'),
-            $this->l->t('Your company contact first name'),
-            $this->l->t('Company legal information line one'),
-            $this->l->t('Company legal information line two'),
-            $this->l->t('Your company email'),
-            $this->l->t('Your company phone'),
-            $this->l->t('Your company address'),
-            $idNextcloud,
-            $this->l->t('All Legal mentions, disclaimer or everything you want to place in the footer.'),
-            $this->l->t('EUR'),
-            $this->l->t('INVOICE')
-        ));
-        return true;
-    }
+    /** * Create a new company */ 
+  public function createCompany($idNextcloud){ 
+    $sql = "INSERT INTO ".$this->tableprefix."configuration (entreprise, nom, prenom, legal_one, legal_two, mail, telephone, adresse, path, id_nextcloud,mentions_default,tva_default,devise,facture_prefixe, vat_number, city_name, zip_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?,?,?,?,?);"; 
+    $this->execSQLNoData($sql, array( $this->l->t('Your company name'), 
+                                     $this->l->t('Your company contact last name'), 
+                                     $this->l->t('Your company contact first name'), 
+                                     $this->l->t('Company legal information line one'), 
+                                     $this->l->t('Company legal information line two'), 
+                                     $this->l->t('Your company email'), 
+                                     $this->l->t('Your company phone'), 
+                                     $this->l->t('Your company address'), 
+                                     $idNextcloud, $this->l->t('All Legal mentions, disclaimer or everything you want to place in the footer.'), 
+                                     $this->l->t('EUR'), 
+                                     $this->l->t('INVOICE'),
+                                     $this->l->t('Your company vat number'),
+                                     $this->l->t('Your company city name'),
+                                     $this->l->t('Your company zip code'))); 
+    return true; }
 
     public function deleteCompany($idCompany, $idNextcloud){
         $sql = "SELECT * FROM `".$this->tableprefix."configuration` WHERE `id` = ?";

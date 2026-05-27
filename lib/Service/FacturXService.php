@@ -33,28 +33,16 @@ class FacturXService
         array $products
     ): string {
 
-        $totals = $this->calculateTotals(
-            $products
-        );
+        $totals = $this->calculateTotals($products);
 
-        $invoiceDate = new DateTime(
-            $invoice->date
-        );
+        $invoiceDate = new DateTime($invoice->date);
+        $dueDate     = new DateTime($invoice->date_paiement);
 
-        $dueDate = new DateTime(
-            $invoice->date_paiement
-        );
-
-        $lineItemsXml = $this->buildLineItems(
-            $products
-        );
-
-        $taxXml = $this->buildTaxes(
-            $totals['vatLines']
-        );
+        $lineItemsXml = $this->buildLineItems($products);
+        $taxXml       = $this->buildTaxes($totals['vatLines']);
 
         $sellerVatId = $this->buildVatNumber(
-            $company->siret ?? ''
+            $company->vat_number ?? ''
         );
 
         return $this->buildDocument(
@@ -72,12 +60,9 @@ class FacturXService
     /**
      * Calculate totals and VAT
      */
-    private function calculateTotals(
-        array $products
-    ): array {
-
+    private function calculateTotals(array $products): array
+    {
         $vatLines = [];
-
         $totalHT = 0.0;
 
         foreach ($products as $product) {
@@ -88,18 +73,13 @@ class FacturXService
 
             $totalHT += $lineTotal;
 
-            $vatRate =
-                isset($product->tva)
-                    ? (float)$product->tva
-                    : 20.0;
+            $vatRate = isset($product->tva)
+                ? (float)$product->tva
+                : 20.0;
 
-            $key = number_format(
-                $vatRate,
-                2
-            );
+            $key = number_format($vatRate, 2);
 
             if (!isset($vatLines[$key])) {
-
                 $vatLines[$key] = [
                     'rate' => $vatRate,
                     'base' => 0.0,
@@ -107,19 +87,11 @@ class FacturXService
                 ];
             }
 
-            $vatLines[$key]['base'] +=
-                $lineTotal;
-
-            $vatLines[$key]['amount'] +=
-                $lineTotal * $vatRate / 100;
+            $vatLines[$key]['base'] += $lineTotal;
+            $vatLines[$key]['amount'] += $lineTotal * $vatRate / 100;
         }
 
-        $totalVAT = array_sum(
-            array_column(
-                $vatLines,
-                'amount'
-            )
-        );
+        $totalVAT = array_sum(array_column($vatLines, 'amount'));
 
         return [
             'vatLines' => $vatLines,
@@ -132,12 +104,9 @@ class FacturXService
     /**
      * Build XML invoice lines
      */
-    private function buildLineItems(
-        array $products
-    ): string {
-
+    private function buildLineItems(array $products): string
+    {
         $xml = '';
-
         $lineNumber = 1;
 
         foreach ($products as $product) {
@@ -148,10 +117,9 @@ class FacturXService
                 4
             );
 
-            $vatRate =
-                isset($product->tva)
-                    ? (float)$product->tva
-                    : 20.0;
+            $vatRate = isset($product->tva)
+                ? (float)$product->tva
+                : 20.0;
 
             $designation = htmlspecialchars(
                 $product->description
@@ -207,10 +175,8 @@ XML;
     /**
      * Build XML VAT section
      */
-    private function buildTaxes(
-        array $vatLines
-    ): string {
-
+    private function buildTaxes(array $vatLines): string
+    {
         $xml = '';
 
         foreach ($vatLines as $vat) {
@@ -234,23 +200,17 @@ XML;
     /**
      * Build VAT number
      */
-    private function buildVatNumber(
-        string $siret
-    ): string {
-
-        if (empty($siret)) {
+    private function buildVatNumber(string $vatNumber): string
+    {
+        if (empty($vatNumber)) {
             return '';
         }
 
-        if (strpos($siret, 'FR') === 0) {
-            return $siret;
+        if (strpos($vatNumber, 'FR') === 0) {
+            return $vatNumber;
         }
 
-        return 'FR00' . preg_replace(
-            '/[^0-9]/',
-            '',
-            $siret
-        );
+        return 'FR00' . preg_replace('/[^0-9]/', '', $vatNumber);
     }
 
     /**
@@ -267,76 +227,31 @@ XML;
         string $sellerVatId
     ): string {
 
-        $sellerName = htmlspecialchars(
-            $company->entreprise ?? '',
-            ENT_XML1
-        );
+        $sellerName = htmlspecialchars($company->entreprise ?? '', ENT_XML1);
 
-        $sellerAddress = htmlspecialchars(
-            $company->adresse ?? '',
-            ENT_XML1
-        );
+        $sellerAddress = htmlspecialchars($company->adresse ?? '', ENT_XML1);
 
-        $sellerCity = htmlspecialchars(
-            $company->ville ?? '',
-            ENT_XML1
-        );
+        $sellerCity = htmlspecialchars($company->city_name ?? '', ENT_XML1);
 
-        $sellerZip = htmlspecialchars(
-            $company->codepostal ?? '',
-            ENT_XML1
-        );
+        $sellerZip = htmlspecialchars($company->zip_code ?? '', ENT_XML1);
 
-        $sellerCountry = htmlspecialchars(
-            $company->pays ?? 'FR',
-            ENT_XML1
-        );
+        $sellerCountry = htmlspecialchars($company->pays ?? 'FR', ENT_XML1);
 
         $buyerName = htmlspecialchars(
-            trim(
-                ($invoice->prenom ?? '') .
-                ' ' .
-                ($invoice->nom ?? '')
-            ),
+            trim(($invoice->prenom ?? '') . ' ' . ($invoice->nom ?? '')),
             ENT_XML1
         );
 
-        $invoiceNumber = htmlspecialchars(
-            $invoice->num,
-            ENT_XML1
-        );
+        $invoiceNumber = htmlspecialchars($invoice->num, ENT_XML1);
 
-        $paymentMethod = htmlspecialchars(
-            $invoice->type_paiement ?? '',
-            ENT_XML1
-        );
+        $paymentMethod = htmlspecialchars($invoice->type_paiement ?? '', ENT_XML1);
 
-        $totalHT = number_format(
-            $totals['totalHT'],
-            2,
-            '.',
-            ''
-        );
+        $totalHT = number_format($totals['totalHT'], 2, '.', '');
+        $totalVAT = number_format($totals['totalVAT'], 2, '.', '');
+        $totalTTC = number_format($totals['totalTTC'], 2, '.', '');
 
-        $totalVAT = number_format(
-            $totals['totalVAT'],
-            2,
-            '.',
-            ''
-        );
-
-        $totalTTC = number_format(
-            $totals['totalTTC'],
-            2,
-            '.',
-            ''
-        );
-
-        $invoiceDateFormatted =
-            $invoiceDate->format('Ymd');
-
-        $dueDateFormatted =
-            $dueDate->format('Ymd');
+        $invoiceDateFormatted = $invoiceDate->format('Ymd');
+        $dueDateFormatted = $dueDate->format('Ymd');
 
         return <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -356,7 +271,6 @@ XML;
 
     <rsm:ExchangedDocument>
         <ram:ID>{$invoiceNumber}</ram:ID>
-
         <ram:TypeCode>380</ram:TypeCode>
 
         <ram:IssueDateTime>
@@ -377,23 +291,10 @@ XML;
                 <ram:Name>{$sellerName}</ram:Name>
 
                 <ram:PostalTradeAddress>
-
-                    <ram:PostcodeCode>
-                        {$sellerZip}
-                    </ram:PostcodeCode>
-
-                    <ram:LineOne>
-                        {$sellerAddress}
-                    </ram:LineOne>
-
-                    <ram:CityName>
-                        {$sellerCity}
-                    </ram:CityName>
-
-                    <ram:CountryID>
-                        {$sellerCountry}
-                    </ram:CountryID>
-
+                    <ram:PostcodeCode>{$sellerZip}</ram:PostcodeCode>
+                    <ram:LineOne>{$sellerAddress}</ram:LineOne>
+                    <ram:CityName>{$sellerCity}</ram:CityName>
+                    <ram:CountryID>{$sellerCountry}</ram:CountryID>
                 </ram:PostalTradeAddress>
 
                 <ram:SpecifiedTaxRegistration>
@@ -414,69 +315,40 @@ XML;
 
         <ram:ApplicableHeaderTradeSettlement>
 
-        <ram:PaymentReference>
-            {$invoiceNumber}
-        </ram:PaymentReference>
+            <ram:PaymentReference>{$invoiceNumber}</ram:PaymentReference>
 
-        <ram:TaxCurrencyCode>
-            EUR
-        </ram:TaxCurrencyCode>
+            <ram:TaxCurrencyCode>EUR</ram:TaxCurrencyCode>
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
 
-        <ram:InvoiceCurrencyCode>
-            EUR
-        </ram:InvoiceCurrencyCode>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:TypeCode>58</ram:TypeCode>
+                <ram:Information>{$paymentMethod}</ram:Information>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
 
-        <ram:SpecifiedTradeSettlementPaymentMeans>
+            {$taxXml}
 
-            <ram:TypeCode>58</ram:TypeCode>
+            <ram:SpecifiedTradePaymentTerms>
+                <ram:Description>{$paymentMethod}</ram:Description>
 
-            <ram:Information>
-                {$paymentMethod}
-            </ram:Information>
+                <ram:DueDateDateTime>
+                    <udt:DateTimeString format="102">
+                        {$dueDateFormatted}
+                    </udt:DateTimeString>
+                </ram:DueDateDateTime>
 
-        </ram:SpecifiedTradeSettlementPaymentMeans>
+            </ram:SpecifiedTradePaymentTerms>
 
-        {$taxXml}
+            <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
 
-        <ram:SpecifiedTradePaymentTerms>
+                <ram:LineTotalAmount>{$totalHT}</ram:LineTotalAmount>
+                <ram:TaxBasisTotalAmount>{$totalHT}</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="EUR">{$totalVAT}</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount>{$totalTTC}</ram:GrandTotalAmount>
+                <ram:DuePayableAmount>{$totalTTC}</ram:DuePayableAmount>
 
-            <ram:Description>
-                {$paymentMethod}
-            </ram:Description>
+            </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
 
-            <ram:DueDateDateTime>
-                <udt:DateTimeString format="102">
-                    {$dueDateFormatted}
-                </udt:DateTimeString>
-            </ram:DueDateDateTime>
-
-        </ram:SpecifiedTradePaymentTerms>
-
-        <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-
-            <ram:LineTotalAmount>
-                {$totalHT}
-            </ram:LineTotalAmount>
-
-            <ram:TaxBasisTotalAmount>
-                {$totalHT}
-            </ram:TaxBasisTotalAmount>
-
-            <ram:TaxTotalAmount currencyID="EUR">
-                {$totalVAT}
-            </ram:TaxTotalAmount>
-
-            <ram:GrandTotalAmount>
-                {$totalTTC}
-            </ram:GrandTotalAmount>
-
-            <ram:DuePayableAmount>
-                {$totalTTC}
-            </ram:DuePayableAmount>
-
-        </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-
-    </ram:ApplicableHeaderTradeSettlement>
+        </ram:ApplicableHeaderTradeSettlement>
 
     </rsm:SupplyChainTradeTransaction>
 

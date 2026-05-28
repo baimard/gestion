@@ -14298,7 +14298,7 @@ const toNumber = (val) => {
 };
 let _globalThis;
 const getGlobalThis = () => {
-  return _globalThis || (_globalThis = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof __webpack_require__.g !== "undefined" ? __webpack_require__.g : {});
+  return _globalThis || (_globalThis = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : {});
 };
 const identRE = /^[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*$/;
 function genPropsAccessExp(name) {
@@ -38544,7 +38544,7 @@ function useCloned(source, options = {}) {
 }
 //#endregion
 //#region ssr-handlers.ts
-const _global = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof __webpack_require__.g !== "undefined" ? __webpack_require__.g : typeof self !== "undefined" ? self : {};
+const _global = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : {};
 const globalKey = "__vueuse_ssr_handlers__";
 const handlers = /* @__PURE__ */ (/* unused pure expression or super */ null && (getHandlers()));
 function getHandlers() {
@@ -48930,18 +48930,6 @@ var purify = createDOMPurify();
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -49006,8 +48994,8 @@ var purify = createDOMPurify();
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
 /******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (globalThis.importScripts) scriptUrl = globalThis.location + "";
+/******/ 		var document = globalThis.document;
 /******/ 		if (!scriptUrl && document) {
 /******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
 /******/ 				scriptUrl = document.currentScript.src;
@@ -49111,7 +49099,7 @@ var purify = createDOMPurify();
 /******/ 		
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkgestion"] = self["webpackChunkgestion"] || [];
+/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkgestion"] = globalThis["webpackChunkgestion"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
@@ -49289,10 +49277,10 @@ function captureFacturXml() {
 }
 
 /**
- * GÃ©nÃ¨re le PDF Factur-X courant et l'envoie Ã  Iopole.
+ * Génère le PDF Factur-X courant et l'envoie Ã  Iopole.
  */
 function sendFacturXToIopole() {
-  showMessage(t("gestion", "Envoi de la facture Ã©lectronique Ã  Iopoleâ€¦"));
+  showMessage(t("gestion", "Envoi de la facture électronique à Iopole"));
 
   const pdfElement = document.getElementById("pdf");
   const facturxBtn = document.getElementById("facturx-iopole");
@@ -49325,11 +49313,11 @@ function sendFacturXToIopole() {
     return response.json();
   })
   .then(data => {
-    showMessage(t("gestion", "Facture envoyÃ©e Ã  Iopole. Identifiant : ") + data.iopoleInvoiceId);
+    showMessage(t("gestion", "Facture envoyée à Iopole ! Identifiant : ") + data.iopoleInvoiceId);
   })
   .catch(error => {
     console.error("Erreur Iopole :", error);
-    showMessage(t("gestion", "Erreur lors de l'envoi Ã  Iopole : ") + error.message);
+    showMessage(t("gestion", "Erreur lors de l'envoi à Iopole : ") + error.message);
   });
 }
 

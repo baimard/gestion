@@ -154,10 +154,10 @@ export function captureFacturXml() {
 }
 
 /**
- * GÃ©nÃ¨re le PDF Factur-X courant et l'envoie Ã  Iopole.
+ * Génère le PDF Factur-X courant et l'envoie Ã  Iopole.
  */
 export function sendFacturXToIopole() {
-  showMessage(t("gestion", "Envoi de la facture Ã©lectronique Ã  Iopoleâ€¦"));
+  showMessage(t("gestion", "Envoi de la facture électronique à Iopole"));
 
   const pdfElement = document.getElementById("pdf");
   const facturxBtn = document.getElementById("facturx-iopole");
@@ -190,10 +190,10 @@ export function sendFacturXToIopole() {
     return response.json();
   })
   .then(data => {
-    showMessage(t("gestion", "Facture envoyÃ©e Ã  Iopole. Identifiant : ") + data.iopoleInvoiceId);
+    showMessage(t("gestion", "Facture envoyée à Iopole ! Identifiant : ") + data.iopoleInvoiceId);
   })
   .catch(error => {
     console.error("Erreur Iopole :", error);
-    showMessage(t("gestion", "Erreur lors de l'envoi Ã  Iopole : ") + error.message);
+    showMessage(t("gestion", "Erreur lors de l'envoi à Iopole : ") + error.message);
   });
 }

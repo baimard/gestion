@@ -152,3 +152,48 @@ export function captureFacturXml() {
 
   generateFacturXmlRequest(factureId, xmlFileName, folder + "/" + pdfFolder + "/");
 }
+
+/**
+ * GÃ©nÃ¨re le PDF Factur-X courant et l'envoie Ã  Iopole.
+ */
+export function sendFacturXToIopole() {
+  showMessage(t("gestion", "Envoi de la facture Ã©lectronique Ã  Iopoleâ€¦"));
+
+  const pdfElement = document.getElementById("pdf");
+  const facturxBtn = document.getElementById("facturx-iopole");
+  const pdfName = pdfElement.getAttribute("data-name");
+  const factureId = parseInt(facturxBtn.getAttribute("data-factureid"), 10);
+
+  const element = document.querySelector("#PDFcontent");
+  const clonedElement = element.cloneNode(true);
+  clonedElement.querySelectorAll('[data-html2canvas-ignore]').forEach(el => el.remove());
+  const htmlContent = clonedElement.outerHTML;
+
+  const name = t("gestion", "INVOICE") + "_" + pdfName + "_facturx.pdf";
+
+  fetch(baseUrl + '/sendFacturXToIopole', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'requesttoken': OC.requestToken
+    },
+    body: JSON.stringify({
+      html: htmlContent,
+      name: name,
+      factureId: factureId
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      return response.json().then(err => { throw new Error(err.message || "Erreur serveur"); });
+    }
+    return response.json();
+  })
+  .then(data => {
+    showMessage(t("gestion", "Facture envoyÃ©e Ã  Iopole. Identifiant : ") + data.iopoleInvoiceId);
+  })
+  .catch(error => {
+    console.error("Erreur Iopole :", error);
+    showMessage(t("gestion", "Erreur lors de l'envoi Ã  Iopole : ") + error.message);
+  });
+}

@@ -14298,7 +14298,7 @@ const toNumber = (val) => {
 };
 let _globalThis;
 const getGlobalThis = () => {
-  return _globalThis || (_globalThis = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : {});
+  return _globalThis || (_globalThis = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof __webpack_require__.g !== "undefined" ? __webpack_require__.g : {});
 };
 const identRE = /^[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*$/;
 function genPropsAccessExp(name) {
@@ -38544,7 +38544,7 @@ function useCloned(source, options = {}) {
 }
 //#endregion
 //#region ssr-handlers.ts
-const _global = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : {};
+const _global = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof __webpack_require__.g !== "undefined" ? __webpack_require__.g : typeof self !== "undefined" ? self : {};
 const globalKey = "__vueuse_ssr_handlers__";
 const handlers = /* @__PURE__ */ (/* unused pure expression or super */ null && (getHandlers()));
 function getHandlers() {
@@ -48930,6 +48930,18 @@ var purify = createDOMPurify();
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -48994,8 +49006,8 @@ var purify = createDOMPurify();
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
 /******/ 		var scriptUrl;
-/******/ 		if (globalThis.importScripts) scriptUrl = globalThis.location + "";
-/******/ 		var document = globalThis.document;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
 /******/ 		if (!scriptUrl && document) {
 /******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
 /******/ 				scriptUrl = document.currentScript.src;
@@ -49099,7 +49111,7 @@ var purify = createDOMPurify();
 /******/ 		
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkgestion"] = globalThis["webpackChunkgestion"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkgestion"] = self["webpackChunkgestion"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
@@ -49114,7 +49126,7 @@ var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 (() => {
 "use strict";
-/* unused harmony exports sendMail, capture, captureFacturX, captureFacturXml */
+/* unused harmony exports sendMail, capture, captureFacturX, captureFacturXml, sendFacturXToIopole */
 /* unused harmony import specifier */ var showMessage;
 /* unused harmony import specifier */ var baseUrl;
 /* unused harmony import specifier */ var generateFacturXmlRequest;
@@ -49274,6 +49286,51 @@ function captureFacturXml() {
   const xmlFileName = t("gestion", "INVOICE") + "_" + pdfName + "_facturx.xml";
 
   generateFacturXmlRequest(factureId, xmlFileName, folder + "/" + pdfFolder + "/");
+}
+
+/**
+ * GÃ©nÃ¨re le PDF Factur-X courant et l'envoie Ã  Iopole.
+ */
+function sendFacturXToIopole() {
+  showMessage(t("gestion", "Envoi de la facture Ã©lectronique Ã  Iopoleâ€¦"));
+
+  const pdfElement = document.getElementById("pdf");
+  const facturxBtn = document.getElementById("facturx-iopole");
+  const pdfName = pdfElement.getAttribute("data-name");
+  const factureId = parseInt(facturxBtn.getAttribute("data-factureid"), 10);
+
+  const element = document.querySelector("#PDFcontent");
+  const clonedElement = element.cloneNode(true);
+  clonedElement.querySelectorAll('[data-html2canvas-ignore]').forEach(el => el.remove());
+  const htmlContent = clonedElement.outerHTML;
+
+  const name = t("gestion", "INVOICE") + "_" + pdfName + "_facturx.pdf";
+
+  fetch(baseUrl + '/sendFacturXToIopole', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'requesttoken': OC.requestToken
+    },
+    body: JSON.stringify({
+      html: htmlContent,
+      name: name,
+      factureId: factureId
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      return response.json().then(err => { throw new Error(err.message || "Erreur serveur"); });
+    }
+    return response.json();
+  })
+  .then(data => {
+    showMessage(t("gestion", "Facture envoyÃ©e Ã  Iopole. Identifiant : ") + data.iopoleInvoiceId);
+  })
+  .catch(error => {
+    console.error("Erreur Iopole :", error);
+    showMessage(t("gestion", "Erreur lors de l'envoi Ã  Iopole : ") + error.message);
+  });
 }
 
 })();

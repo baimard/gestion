@@ -60,5 +60,6 @@ return [
         // FACTUR-X
         ['name' => 'pdf#generateFacturX', 'url' => '/generateFacturX', 'verb' => 'POST'],
         ['name' => 'pdf#generateFacturXml', 'url' => '/generateFacturXml', 'verb' => 'POST'],
+        ['name' => 'pdf#sendFacturXToIopole', 'url' => '/sendFacturXToIopole', 'verb' => 'POST'],
     ]
 ];

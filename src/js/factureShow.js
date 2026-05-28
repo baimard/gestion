@@ -6,7 +6,7 @@ import { getMailServerFrom, getProduitsById, saveNextcloud, generateFacturXmlReq
 import { globalConfiguration } from "./modules/mainFunction.js";
 import "./listener/main_listener";
 import { Client } from "./objects/client.js";
-import { capture, captureFacturX, captureFacturXml, sendMail } from "./pdf";
+import { capture, captureFacturX, captureFacturXml, sendFacturXToIopole, sendMail } from "./pdf";
 
 window.addEventListener("DOMContentLoaded", function () {
     globalConfiguration();
@@ -28,6 +28,12 @@ window.addEventListener("DOMContentLoaded", function () {
     var facturxXml = document.getElementById("facturx-xml");
     if (facturxXml) {
         facturxXml.addEventListener("click", function(){ captureFacturXml(); });
+    }
+
+    // Bouton 4 â€” Envoyer la facture Ã©lectronique Ã  Iopole
+    var facturxIopole = document.getElementById("facturx-iopole");
+    if (facturxIopole) {
+        facturxIopole.addEventListener("click", function(){ sendFacturXToIopole(); });
     }
     
 });

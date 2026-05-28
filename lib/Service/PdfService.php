@@ -16,15 +16,18 @@ class PdfService {
 	private IMailer $mailer;
 	private FileService $fileService;
 	private DataService $dataService;
+	private IopoleService $iopoleService;
 
 	public function __construct(
 		IMailer $mailer,
 		FileService $fileService,
-		DataService $dataService
+		DataService $dataService,
+		IopoleService $iopoleService
 	) {
 		$this->mailer = $mailer;
 		$this->fileService = $fileService;
 		$this->dataService = $dataService;
+		$this->iopoleService = $iopoleService;
 	}
 
 	public function sendPDF($content, $name, $subject, $body, $to, $Cc): DataResponse {
@@ -162,6 +165,39 @@ class PdfService {
 		}
 	}
 
+	public function sendFacturXToIopole(
+		string $html,
+		string $name,
+		int $factureId
+	): DataResponse {
+
+		try {
+
+			$facturxPdfContent = $this->buildFacturXPdfContent(
+				$html,
+				$factureId
+			);
+
+			$payload = $this->iopoleService->sendInvoice(
+				$facturxPdfContent,
+				html_entity_decode($name)
+			);
+
+			return new DataResponse([
+				'status' => 'success',
+				'iopoleInvoiceId' => $payload['id'],
+				'iopoleResponse' => $payload,
+			]);
+
+		} catch (Exception $e) {
+
+			return new DataResponse([
+				'status' => 'error',
+				'message' => $e->getMessage(),
+			], 500);
+		}
+	}
+
 	public function generateFacturXml(
 		int $factureId,
 		string $name,
@@ -217,6 +253,28 @@ class PdfService {
 		$mpdf->WriteHTML($html, \Mpdf\HTMLParserMode::HTML_BODY);
 
 		return $mpdf->Output('', \Mpdf\Output\Destination::STRING_RETURN);
+	}
+
+	private function buildFacturXPdfContent(
+		string $html,
+		int $factureId
+	): string {
+		$facturxXml = $this->buildFacturXml($factureId);
+
+		if ($facturxXml instanceof DataResponse) {
+			throw new Exception($facturxXml->getData()['message'] ?? 'Unable to build Factur-X XML.');
+		}
+
+		$pdfContent = $this->renderPdf($html);
+
+		$writer = new GestionFacturXWriter();
+
+		return $writer->generate(
+			$pdfContent,
+			$facturxXml,
+			null,
+			false
+		);
 	}
 
 	private function formatAmount(float $amount): string {

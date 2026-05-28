@@ -84,4 +84,17 @@ class PdfController extends Controller {
 	public function generateFacturXml(int $factureId, string $name, string $folder) {
 		return $this->pdfService->generateFacturXml($factureId, $name, $folder);
 	}
+
+	/**
+	 * @NoAdminRequired
+	 * @UseSession
+	 *
+	 * @param string $html
+	 * @param string $name
+	 * @param int $factureId
+	 */
+	#[UseSession]
+	public function sendFacturXToIopole(string $html, string $name, int $factureId) {
+		return $this->pdfService->sendFacturXToIopole($html, $name, $factureId);
+	}
 }

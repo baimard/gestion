@@ -450,6 +450,11 @@ XML;
 			ENT_XML1
 		);
 
+		$sellerIban = htmlspecialchars(
+			trim($config->iban ?? ''),
+			ENT_XML1
+		);
+
 		$totalHTFmt = $this->formatAmount($totalHT);
 		$totalVATFmt = $this->formatAmount($totalVAT);
 		$totalTTCFmt = $this->formatAmount($totalTTC);
@@ -545,6 +550,10 @@ XML;
 				<ram:TypeCode>58</ram:TypeCode>
 
 				<ram:Information>{$paymentMeans}</ram:Information>
+
+				<ram:PayeePartyCreditorFinancialAccount>
+						<ram:IBANID>{$sellerIban}</ram:IBANID>
+				</ram:PayeePartyCreditorFinancialAccount>
 
 			</ram:SpecifiedTradeSettlementPaymentMeans>
 

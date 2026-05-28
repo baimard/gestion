@@ -74,6 +74,12 @@
             <input type="text" style="float:none;width:80%;" id="vat_number" class="configuration-content editableConfiguration" data-table="configuration" data-column="vat_number" data-id="" value="<?php p($l->t('Loading …')); ?>" />
         </div>
 
+        <!-- IBAN -->
+        <div title="IBAN" class="configuration-global">
+            <label class="configuration" for="iban"><span class="material-symbols-outlined">account_balance</span>IBAN</label>
+            <input type="text" style="float:none;width:80%;" id="iban" class="configuration-content editableConfiguration" data-table="configuration" data-column="iban" data-id=""value="<?php p($l->t('Loading …')); ?>" />
+        </div>
+        
         <!-- Facture Prefixe -->
         <div title="<?php p($l->t('Set prefix for generated invoice')); ?>" class="configuration-global">
             <label class="configuration" for="facture_prefixe"><span class="material-symbols-outlined">store</span><?php p($l->t('Facture Prefixe'));?></label>

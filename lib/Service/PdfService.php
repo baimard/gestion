@@ -295,7 +295,7 @@ class PdfService {
 
 			return new DataResponse([
 				'status' => 'error',
-				'message' => 'Facture ou configuration introuvable.'
+				'message' => 'Unable to find the invoice or configuration.'
 			], 404);
 		}
 

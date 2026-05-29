@@ -1,1 +1,0 @@
-{"version":3,"file":"offscreen.d.ts","sourceRoot":"","sources":["../../src/presets/offscreen.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,SAAS,CAAA;AAEnC,UAAU,OAAO;IACf;;OAEG;IACH,SAAS,CAAC,EAAE,SAAS,CAAA;CACtB;AAED;;;;;GAKG;AACH,wBAAgB,SAAS,CAAC,EAAE,SAAS,EAAE,iBAAiB,EAAE,GAAE,OAAY;;;;;wBAMhD,MAAM,UAAU,MAAM;qBAGnB,MAAM;EAgBhC"}

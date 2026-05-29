@@ -1,3 +1,0 @@
-import { Readable } from "stream";
-import { BufferLike, WebDAVMethodOptions, WebDAVClientContext } from "../types.js";
-export declare function partialUpdateFileContents(context: WebDAVClientContext, filePath: string, start: number | null, end: number | null, data: string | BufferLike | Readable, options?: WebDAVMethodOptions): Promise<void>;

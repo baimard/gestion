@@ -1,2 +1,0 @@
-/*! © SpryMedia Ltd - datatables.net/license */
-import jQuery from"jquery";import DataTable from"datatables.net";let $=jQuery;DataTable.ext.type.order["signed-num-pre"]=function(e){return"-"==e||""===e?0:+e.replace("+","")};export default DataTable;

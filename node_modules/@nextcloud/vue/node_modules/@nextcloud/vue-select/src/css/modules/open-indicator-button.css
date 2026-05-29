@@ -1,0 +1,8 @@
+/* Open Indicator Button */
+
+.vs__open-indicator-button {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}

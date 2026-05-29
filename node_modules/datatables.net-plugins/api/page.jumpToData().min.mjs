@@ -1,0 +1,2 @@
+/*! © SpryMedia Ltd - datatables.net/license */
+import jQuery from"jquery";import DataTable from"datatables.net";let $=jQuery;DataTable.Api.register("page.jumpToData()",function(t,a){a=this.column(a,{order:"current"}).data().indexOf(t);return 0<=a&&(t=Math.floor(a/this.page.info().length),this.page(t).draw(!1)),this});export default DataTable;

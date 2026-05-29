@@ -1,0 +1,27 @@
+export default {
+    "autoFill": {
+        "cancel": "sazzamu",
+        "fill": "juza",
+        "fillHorizontal": "juzaObukiika",
+        "fillVertical": "juzaObusiimba",
+        "info": ""
+    },
+    "buttons": {
+        "colvis": "endabikaYolunyilili",
+        "copy": "Koppa"
+    },
+    "decimal": "",
+    "infoPostFix": "",
+    "searchPlaceholder": "",
+    "select": {
+        "cells": {
+            "0": ""
+        },
+        "columns": {
+            "0": ""
+        },
+        "rows": {
+            "0": ""
+        }
+    }
+};

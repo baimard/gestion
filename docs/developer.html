@@ -1,211 +1,532 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Documentation developpeur &mdash; Documentation Gestion Facturation Nextcloud app 1.0.1</title>
-  
 
-  
+  <title>Documentation developpeur — Gestion Facturation Nextcloud app</title>
+
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/documentation.css" type="text/css" />
 
-  
-  
+  <!-- styles ajoutés pour ton layout custom -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto+Slab:wght@400;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet"/>
 
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/translations.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Recherche" href="search.html" />
-    <link rel="prev" title="Documentation utilisateur" href="quickstart.html" /> 
+  <script src="_static/documentation_options.js"></script>
+  <script src="_static/jquery.js"></script>
+  <script src="_static/underscore.js"></script>
+  <script src="_static/doctools.js"></script>
+  <script src="_static/translations.js"></script>
+  <script src="_static/js/theme.js"></script>
 </head>
 
 <body class="wy-body-for-nav">
 
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+<div class="wy-grid-for-nav">
 
-          
-            <a href="index.html" class="icon icon-home"> Gestion Facturation Nextcloud app
-          
+  <!-- ================= SIDEBAR SPHINX (inchangé) ================= -->
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> Gestion Facturation Nextcloud app</a>
 
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Rechercher docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
+        <div role="search">
+          <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+            <input type="text" name="q" placeholder="Rechercher docs" />
+          </form>
         </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Sommaire</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Documentation utilisateur</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation developpeur</a></li>
-</ul>
-
-            
-          
-        </div>
-        
       </div>
+
+      <div class="wy-menu wy-menu-vertical">
+        <p class="caption"><span class="caption-text">Sommaire</span></p>
+        <ul class="current">
+          <li><a href="quickstart.html">Documentation utilisateur</a></li>
+          <li class="current"><a href="#">Documentation developpeur</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= CONTENT ================= -->
+  <section class="wy-nav-content-wrap">
+
+    <nav class="wy-nav-top">
+      <i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+      <a href="index.html">Gestion Facturation Nextcloud app</a>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <div class="wy-nav-content">
 
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Gestion Facturation Nextcloud app</a>
-        
-      </nav>
+      <div class="rst-content">
 
+        <!-- ========================================================= -->
+        <!-- 🔥 ICI ON INSÈRE TON TEMPLATE CUSTOM COMPLET -->
+        <!-- ========================================================= -->
 
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
+        <div class="content-wrap" id="top">
 
+          <div class="breadcrumb">
+            <a href="#">Home</a>
+            <span>»</span>
+            <strong>Technical Documentation</strong>
+          </div>
 
+          <h1>Technical Documentation</h1>
+          <p>This document describes the backend architecture of <strong>Gestion</strong>...</p>
 
+          <!-- ================= SIDEBAR CUSTOM ================= -->
+          <nav id="sidebar">
+            <a class="sidebar-brand" href="#top">
+              Gestion Billing<br>Nextcloud App
+            </a>
 
+            <div class="sidebar-search">
+              <input type="search" placeholder="Search docs…" id="search-input"/>
+            </div>
 
+            <div class="nav-section-title">Table of Contents</div>
 
+            <a class="nav-item active" href="#top">Technical Documentation</a>
+            <a class="nav-item sub" href="#s1">1. Architecture Overview</a>
+            <a class="nav-item sub" href="#s2">2. Routing</a>
+            <a class="nav-item sub" href="#s3">3. Services</a>
+            <a class="nav-item sub" href="#s4">4. Database Layer</a>
+            <a class="nav-item sub" href="#s5">5. Migrations</a>
+            <a class="nav-item sub" href="#s6">6. Controllers</a>
+            <a class="nav-item sub" href="#s7">7. External Dependencies</a>
+          </nav>
 
+          <!-- ================= MAIN CONTENT (TON GROS BLOC) ================= -->
+          <main id="main">
+<div class="content-wrap" id="top">
 
+  <div class="breadcrumb">
+    <a href="#">Home</a>
+    <span>»</span>
+    <strong>Technical Documentation</strong>
+  </div>
 
+  <h1>Technical Documentation <a class="headerlink" href="#top" title="Permalink">¶</a></h1>
+  <p>This document describes the backend architecture of <strong>Gestion</strong>, a Nextcloud application for billing and invoice management. It covers the directory layout, the database schema, all service classes and their methods, routing, controllers, and external dependencies.</p>
 
+  <!-- ══ SECTION 1 ══════════════════════════════════════════ -->
+  <h2 id="s1">1. Architecture Overview <a class="headerlink" href="#s1">¶</a></h2>
+  <p>Gestion follows the standard Nextcloud MVC architecture. PHP controllers handle HTTP routing, services encapsulate all business logic, and a single database class (<code>Bdd</code>) centralises all SQL access. The frontend is a Vue/JS SPA compiled into the <code>js/</code> directory.</p>
 
+  <h3 id="s1-dirs">Directory structure</h3>
+  <table>
+    <thead><tr><th>Path</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td><code>lib/Controller/</code></td><td>HTTP layer — maps routes to service calls. No business logic lives here.</td></tr>
+      <tr><td><code>lib/Service/</code></td><td>Business logic layer — each service handles one functional domain (PDF generation, company management, data access, etc.).</td></tr>
+      <tr><td><code>lib/Db/Bdd.php</code></td><td>Sole database abstraction. All SQL queries are written here using whitelist-protected prepared statements.</td></tr>
+      <tr><td><code>lib/Migration/</code></td><td>Database schema migrations — one file per version bump, run by Nextcloud automatically on update.</td></tr>
+      <tr><td><code>lib/AppInfo/Application.php</code></td><td>App bootstrap — registers services in the dependency injection container.</td></tr>
+      <tr><td><code>lib/Settings/ &amp; lib/Sections/</code></td><td>Nextcloud admin panel integration — registers the Gestion settings page.</td></tr>
+      <tr><td><code>templates/</code></td><td>PHP/HTML templates rendered server-side for page views.</td></tr>
+      <tr><td><code>src/</code></td><td>Frontend source (Vue / Less). Compiled output goes into <code>js/</code> and <code>dist/</code>.</td></tr>
+      <tr><td><code>appinfo/routes.php</code></td><td>Declares all HTTP routes and maps them to controller actions.</td></tr>
+    </tbody>
+  </table>
 
+  <h3 id="s1-tables">Database tables</h3>
+  <p>All tables are prefixed with <code>oc_gestion_</code>. They are scoped per company via an <code>id_configuration</code> foreign key, allowing one Nextcloud instance to host multiple independent companies.</p>
+  <table>
+    <thead><tr><th>Table</th><th>Content</th></tr></thead>
+    <tbody>
+      <tr><td><code>configuration</code></td><td>Company settings: name, address, VAT number, IBAN, invoice prefix, logo paths, shared access list.</td></tr>
+      <tr><td><code>conf_share</code></td><td>Many-to-many: which Nextcloud users share access to a given configuration.</td></tr>
+      <tr><td><code>client</code></td><td>Customer records linked to a configuration.</td></tr>
+      <tr><td><code>devis</code></td><td>Quotes, linked to a client and a configuration.</td></tr>
+      <tr><td><code>produit</code></td><td>Product / service catalogue, scoped per configuration.</td></tr>
+      <tr><td><code>produit_devis</code></td><td>Join table between quotes and products (quantity, unit price override, display order).</td></tr>
+      <tr><td><code>facture</code></td><td>Invoices, each linked to exactly one quote.</td></tr>
+    </tbody>
+  </table>
 
+  <h3 id="s1-flow">Request flow</h3>
+  <pre><code><span class="cm"># Full request path</span>
+Browser / JS frontend
+  → appinfo/routes.php  <span class="cm">(URL matching)</span>
+  → Controller          <span class="cm">(thin wrapper — extracts params, returns response)</span>
+  → Service             <span class="cm">(business logic — validation, data assembly)</span>
+  → Bdd                 <span class="cm">(SQL — prepared statements)</span>
+  → Nextcloud IDBConnection</code></pre>
 
+  <div class="admonition note">
+    <p class="admonition-title">Note</p>
+    <p>Controllers return either a <code>DataResponse</code> (JSON) or a <code>TemplateResponse</code> (HTML). The <code>Bdd</code> class always returns JSON-encoded strings from SELECT queries; services decode them as needed.</p>
+  </div>
 
+  <!-- ══ SECTION 2 ══════════════════════════════════════════ -->
+  <h2 id="s2">2. Routing (<code>appinfo/routes.php</code>) <a class="headerlink" href="#s2">¶</a></h2>
+  <p>Routes are declared as an associative array consumed by the Nextcloud framework. Each entry maps a verb + URL to a <code>Controller#action</code> pair.</p>
 
+  <table>
+    <thead><tr><th>Verb</th><th>URL</th><th>Controller</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge badge-get">GET</span></td><td><span class="path">/</span></td><td>ViewController</td><td>Renders the main index page</td></tr>
+      <tr><td><span class="badge badge-get">GET</span></td><td><span class="path">/devis</span></td><td>ViewController</td><td>Renders the quotes list page</td></tr>
+      <tr><td><span class="badge badge-get">GET</span></td><td><span class="path">/facture</span></td><td>ViewController</td><td>Renders the invoices list page</td></tr>
+      <tr><td><span class="badge badge-get">GET</span></td><td><span class="path">/produit</span></td><td>ViewController</td><td>Renders the products page</td></tr>
+      <tr><td><span class="badge badge-get">GET</span></td><td><span class="path">/config</span></td><td>ConfigurationController</td><td>Renders the company config page</td></tr>
+      <tr><td><span class="badge badge-get">GET</span></td><td><span class="path">/isconfig</span></td><td>ConfigurationController</td><td>Returns whether the config is set up</td></tr>
+      <tr><td><span class="badge badge-get">GET</span></td><td><span class="path">/statistique</span></td><td>ViewController</td><td>Renders the statistics page</td></tr>
+      <tr><td><span class="badge badge-get">GET</span></td><td><span class="path">/backup</span></td><td>AdminController</td><td>Exports a full CSV backup to cloud storage</td></tr>
+      <tr><td><span class="badge badge-propfind">PROPFIND</span></td><td><span class="path">/getClients</span></td><td>ClientController</td><td>Returns all clients as JSON</td></tr>
+      <tr><td><span class="badge badge-propfind">PROPFIND</span></td><td><span class="path">/getDevis</span></td><td>DevisController</td><td>Returns all quotes as JSON</td></tr>
+      <tr><td><span class="badge badge-propfind">PROPFIND</span></td><td><span class="path">/getFactures</span></td><td>FactureController</td><td>Returns all invoices as JSON</td></tr>
+      <tr><td><span class="badge badge-propfind">PROPFIND</span></td><td><span class="path">/getProduits</span></td><td>ProduitController</td><td>Returns all products as JSON</td></tr>
+      <tr><td><span class="badge badge-propfind">PROPFIND</span></td><td><span class="path">/getConfiguration</span></td><td>ConfigurationController</td><td>Returns the company configuration</td></tr>
+      <tr><td><span class="badge badge-propfind">PROPFIND</span></td><td><span class="path">/getStats</span></td><td>StatsController</td><td>Returns entity counts</td></tr>
+      <tr><td><span class="badge badge-propfind">PROPFIND</span></td><td><span class="path">/getAnnualTurnoverPerMonthNoVat</span></td><td>StatsController</td><td>Monthly turnover data (excl. VAT)</td></tr>
+      <tr><td><span class="badge badge-post">POST</span></td><td><span class="path">/client/insert</span></td><td>ClientController</td><td>Creates a new client with placeholder values</td></tr>
+      <tr><td><span class="badge badge-post">POST</span></td><td><span class="path">/devis/insert</span></td><td>DevisController</td><td>Creates a new quote</td></tr>
+      <tr><td><span class="badge badge-post">POST</span></td><td><span class="path">/facture/insert</span></td><td>FactureController</td><td>Creates a new invoice</td></tr>
+      <tr><td><span class="badge badge-post">POST</span></td><td><span class="path">/produit/insert</span></td><td>ProduitController</td><td>Creates a new product</td></tr>
+      <tr><td><span class="badge badge-post">POST</span></td><td><span class="path">/update</span></td><td>CrudController</td><td>Generic single-field update</td></tr>
+      <tr><td><span class="badge badge-post">POST</span></td><td><span class="path">/drop</span></td><td>CrudController</td><td>Reorders a product line in a quote (up/down)</td></tr>
+      <tr><td><span class="badge badge-post">POST</span></td><td><span class="path">/sendPDF</span></td><td>PdfController</td><td>Emails a PDF to recipients</td></tr>
+      <tr><td><span class="badge badge-post">POST</span></td><td><span class="path">/generatePDF</span></td><td>PdfController</td><td>Generates and saves a PDF to cloud storage</td></tr>
+      <tr><td><span class="badge badge-post">POST</span></td><td><span class="path">/generateFacturX</span></td><td>PdfController</td><td>Generates a Factur-X PDF+XML (EN16931)</td></tr>
+      <tr><td><span class="badge badge-post">POST</span></td><td><span class="path">/generateFacturXml</span></td><td>PdfController</td><td>Generates only the Factur-X XML file</td></tr>
+      <tr><td><span class="badge badge-post">POST</span></td><td><span class="path">/sendFacturXToIopole</span></td><td>PdfController</td><td>Submits a Factur-X PDF to the Iopole platform</td></tr>
+      <tr><td><span class="badge badge-put">PUT</span></td><td><span class="path">/duplicate</span></td><td>CrudController</td><td>Deep-duplicates a record</td></tr>
+      <tr><td><span class="badge badge-put">PUT</span></td><td><span class="path">/createCompany</span></td><td>CompanyController</td><td>Creates a new company</td></tr>
+      <tr><td><span class="badge badge-delete">DELETE</span></td><td><span class="path">/delete</span></td><td>CrudController</td><td>Deletes a record</td></tr>
+      <tr><td><span class="badge badge-delete">DELETE</span></td><td><span class="path">/deleteCompany</span></td><td>CompanyController</td><td>Deletes current company and all its data</td></tr>
+    </tbody>
+  </table>
 
-<div role="navigation" aria-label="breadcrumbs navigation">
+  <!-- ══ SECTION 3 ══════════════════════════════════════════ -->
+  <h2 id="s3">3. Services (<code>lib/Service/</code>) <a class="headerlink" href="#s3">¶</a></h2>
+  <p>Services are the core of the application. Controllers are intentionally thin: they receive the HTTP request, call a single service method, and return its result. All validation, data assembly, and computation happen in services.</p>
 
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Documentation developpeur</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/developer.rst.txt" rel="nofollow"> Afficher la source de la page</a>
-          
-        
-      </li>
-    
+  <!-- 3.1 DataService -->
+  <h3 id="s3-data">3.1 DataService</h3>
+  <p>Central data-access facade. Wraps every <code>Bdd</code> read/write call and injects the current company ID (from the session) automatically. Controllers and other services that need data should call <code>DataService</code>, never <code>Bdd</code> directly.</p>
+
+  <table>
+    <thead><tr><th>Method</th><th>Purpose</th><th>Parameters</th><th>Returns</th></tr></thead>
+    <tbody>
+      <tr><td><code>getClients()</code></td><td>Returns all clients belonging to the active company.</td><td>—</td><td>JSON string</td></tr>
+      <tr><td><code>getClient($id)</code></td><td>Returns a single client by primary key.</td><td><code>$id: int</code></td><td>JSON string</td></tr>
+      <tr><td><code>getClientbyiddevis($id)</code></td><td>Returns the client attached to a given quote.</td><td><code>$id: int</code> (quote id)</td><td>JSON string</td></tr>
+      <tr><td><code>getConfiguration()</code></td><td>Returns the company configuration row.</td><td>—</td><td>JSON string</td></tr>
+      <tr><td><code>getDevis()</code></td><td>Returns all quotes with joined client name and company.</td><td>—</td><td>JSON string</td></tr>
+      <tr><td><code>getFactures()</code></td><td>Returns all invoices with joined quote &amp; client info.</td><td>—</td><td>JSON string</td></tr>
+      <tr><td><code>getOneDevis($id)</code></td><td>Returns a single quote with full client join.</td><td><code>$id: int</code></td><td>JSON string</td></tr>
+      <tr><td><code>getOneFacture($id)</code></td><td>Returns a single invoice with full join chain.</td><td><code>$id: int</code></td><td>JSON string</td></tr>
+      <tr><td><code>getProduits()</code></td><td>Returns all catalogue products for the company.</td><td>—</td><td>JSON string</td></tr>
+      <tr><td><code>getProduitsById($devisId)</code></td><td>Returns product lines for a specific quote.</td><td><code>$devisId: int</code></td><td>JSON string</td></tr>
+      <tr><td><code>insertClient()</code></td><td>Inserts a new client with placeholder values.</td><td>—</td><td>bool</td></tr>
+      <tr><td><code>insertDevis()</code></td><td>Inserts a new quote with placeholder values.</td><td>—</td><td>bool</td></tr>
+      <tr><td><code>insertFacture()</code></td><td>Inserts a new invoice; auto-computes the number from the configured prefix.</td><td>—</td><td>int (new id)</td></tr>
+      <tr><td><code>insertProduit()</code></td><td>Inserts a new product; reads the default VAT rate from config.</td><td>—</td><td>bool</td></tr>
+      <tr><td><code>insertProduitDevis($id)</code></td><td>Attaches the first available product to a quote line.</td><td><code>$id: int</code> (quote id)</td><td>int</td></tr>
+      <tr><td><code>update($table,$col,$data,$id)</code></td><td>Updates a single field. Delegates to Bdd whitelist check.</td><td>table, column, value, id</td><td>bool</td></tr>
+      <tr><td><code>updateConfiguration(...)</code></td><td>Updates a configuration field (no company scope check).</td><td>table, column, value, id</td><td>bool</td></tr>
+      <tr><td><code>duplicate($table,$id)</code></td><td>Deep-duplicates a record; also clones product lines for quotes.</td><td>table, id</td><td>DataResponse</td></tr>
+      <tr><td><code>drop($id,$value)</code></td><td>Moves a product line up or down in a quote.</td><td>id, <code>'up'|'down'</code></td><td>void</td></tr>
+      <tr><td><code>delete($table,$id)</code></td><td>Deletes a record after whitelist validation.</td><td>table, id</td><td>bool</td></tr>
+      <tr><td><code>getStats()</code></td><td>Returns a JSON object with entity counts: clients, quotes, invoices, products.</td><td>—</td><td>JSON string</td></tr>
+      <tr><td><code>getAnnualTurnoverPerMonthNoVat()</code></td><td>Returns monthly turnover grouped by year/month (excl. VAT).</td><td>—</td><td>array</td></tr>
+      <tr><td><code>getServerFromMail()</code></td><td>Reads Nextcloud system config to return the configured sender email address.</td><td>—</td><td>DataResponse</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 3.2 CompanyService -->
+  <h3 id="s3-company">3.2 CompanyService</h3>
+  <p>Manages multi-company support and shared access. A Nextcloud user can own several companies and also be invited to access companies owned by others. The active company ID is stored in the PHP session.</p>
+
+  <table>
+    <thead><tr><th>Method</th><th>Purpose</th><th>Parameters</th><th>Returns</th></tr></thead>
+    <tbody>
+      <tr><td><code>getCurrentCompany()</code></td><td>Returns the company ID stored in the current session.</td><td>—</td><td>int|null</td></tr>
+      <tr><td><code>setCurrentCompany($id)</code></td><td>Writes the chosen company ID to the session.</td><td><code>$id: int</code></td><td>void</td></tr>
+      <tr><td><code>getCompaniesList()</code></td><td>Returns all companies the current user owns or has shared access to. Auto-selects the first one if the session is empty.</td><td>—</td><td>array</td></tr>
+      <tr><td><code>createCompany()</code></td><td>Creates a new company record for the current user with default placeholder values.</td><td>—</td><td>void</td></tr>
+      <tr><td><code>deleteCompany()</code></td><td>Deletes the active company and all its associated data (cascade). Only the owner can delete.</td><td>—</td><td>DataResponse</td></tr>
+      <tr><td><code>isConfig()</code></td><td>Checks whether the company configuration is considered complete (uses an internal changelog counter to show the setup prompt once).</td><td>—</td><td>bool</td></tr>
+      <tr><td><code>ensureConfigExists()</code></td><td>Verifies that a config record exists; clears the session company if not.</td><td>—</td><td>void</td></tr>
+      <tr><td><code>getShareUsers()</code></td><td>Returns Nextcloud user objects for all users who have shared access to the active company.</td><td>—</td><td>array</td></tr>
+      <tr><td><code>addShareUser($email)</code></td><td>Grants shared access by Nextcloud email. Only the owner can call this. Searches all users for the matching email.</td><td><code>$email: string</code></td><td>DataResponse</td></tr>
+      <tr><td><code>delShareUser($uid)</code></td><td>Revokes shared access for a given Nextcloud UID. Owner-only.</td><td><code>$uid: string</code></td><td>DataResponse</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 3.3 PdfService -->
+  <h3 id="s3-pdf">3.3 PdfService</h3>
+  <p>Handles all PDF generation and delivery. Uses the <strong>mPDF</strong> library for HTML-to-PDF rendering and <code>GestionFacturXWriter</code> for Factur-X metadata embedding. Also manages email delivery (legacy path) and delegates electronic invoice submission to <code>IopoleService</code>.</p>
+
+  <table>
+    <thead><tr><th>Method</th><th>Purpose</th><th>Parameters</th><th>Returns</th></tr></thead>
+    <tbody>
+      <tr><td><code>generatePDF($html,$name,$folder)</code></td><td>Renders HTML as an A4 PDF via mPDF, saves it to the user's Nextcloud folder, and returns the binary as a download response.</td><td>html, name, folder</td><td>DataDownloadResponse</td></tr>
+      <tr><td><code>generateFacturX($html,$name,$folder,$id)</code></td><td>Renders the PDF, builds the EN16931 XML via <code>buildFacturXml()</code>, embeds the XML into the PDF as XMP metadata using <code>GestionFacturXWriter</code>, then saves and returns the result.</td><td>html, name, folder, factureId</td><td>DataDownloadResponse</td></tr>
+      <tr><td><code>generateFacturXml($id,$name,$folder)</code></td><td>Builds only the EN16931 XML (no PDF rendering) and saves it as a <code>.xml</code> file.</td><td>factureId, name, folder</td><td>DataDownloadResponse</td></tr>
+      <tr><td><code>sendFacturXToIopole($html,$name,$id)</code></td><td>Builds the Factur-X PDF and sends it to the Iopole platform via <code>IopoleService</code>. Returns the Iopole invoice ID on success.</td><td>html, name, factureId</td><td>DataResponse</td></tr>
+      <tr><td><code>sendPDF($content,$name,$subject,$body,$to,$cc)</code></td><td>Decodes a base64 PDF and sends it by email using Nextcloud IMailer. Returns 200 or 500 with a hint about SMTP config.</td><td>content (base64), name, subject, body, to (JSON), cc (JSON)</td><td>DataResponse</td></tr>
+      <tr><td><code>savePDF($content,$folder,$name)</code></td><td>Delegates base64-encoded PDF saving to FileService.</td><td>content (base64), folder, name</td><td>void</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Private helpers</h4>
+  <ul style="font-size:.88rem;margin-bottom:1rem;padding-left:1.4rem;line-height:1.9">
+    <li><code>renderPdf($html)</code> — instantiates mPDF with A4 margins, injects <code>style.css</code>, returns raw PDF bytes.</li>
+    <li><code>buildFacturXml($factureId)</code> — fetches invoice + config + product lines, computes VAT totals per rate, assembles a complete EN16931-compliant XML document.</li>
+    <li><code>buildFacturXPdfContent($html,$id)</code> — combines <code>renderPdf</code> + <code>buildFacturXml</code> + <code>GestionFacturXWriter</code> into a single binary string.</li>
+    <li><code>formatAmount($amount)</code> — rounds to 2 decimal places with a dot separator for XML output.</li>
   </ul>
 
-  
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="documentation-developpeur">
-<span id="developer"></span><h1>Documentation developpeur<a class="headerlink" href="#documentation-developpeur" title="Lien permanent vers ce titre">¶</a></h1>
-<p>En cours de rédaction …</p>
-</div>
+  <!-- 3.4 FacturXService -->
+  <h3 id="s3-facturx">3.4 FacturXService</h3>
+  <p>Provides a more abstract, object-oriented path to Factur-X generation. Exposes higher-level methods intended for reuse or external callers. The production path for invoices is currently handled by <code>PdfService</code>.</p>
 
+  <table>
+    <thead><tr><th>Method</th><th>Purpose</th><th>Parameters</th><th>Returns</th></tr></thead>
+    <tbody>
+      <tr><td><code>buildXml($invoice,$company,$customer,$products)</code></td><td>Builds a complete EN16931 <code>CrossIndustryInvoice</code> XML from structured objects. Calls <code>calculateTotals()</code>, <code>buildLineItems()</code>, <code>buildTaxes()</code>, then assembles the full document.</td><td>invoice, company, customer, products (objects)</td><td>string (XML)</td></tr>
+      <tr><td><code>generateFacturXPdf($pdfContent,$xmlContent)</code></td><td>Embeds an existing XML string into an existing PDF binary using <code>GestionFacturXWriter</code>. Returns the merged PDF bytes.</td><td>pdfContent, xmlContent: string</td><td>string (PDF bytes)</td></tr>
+    </tbody>
+  </table>
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="quickstart.html" class="btn btn-neutral float-left" title="Documentation utilisateur" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-    </div>
+  <h4>Private helpers</h4>
+  <ul style="font-size:.88rem;margin-bottom:1rem;padding-left:1.4rem;line-height:1.9">
+    <li><code>calculateTotals($products)</code> — iterates product lines, groups VAT amounts by rate, returns <code>totalHT / totalVAT / totalTTC</code> and a <code>vatLines</code> breakdown.</li>
+    <li><code>buildLineItems($products)</code> — generates one <code>&lt;ram:IncludedSupplyChainTradeLineItem&gt;</code> XML block per product.</li>
+    <li><code>buildTaxes($vatLines)</code> — generates one <code>&lt;ram:ApplicableTradeTax&gt;</code> block per distinct VAT rate.</li>
+    <li><code>buildVatNumber($vatNumber)</code> — ensures a French VAT number starts with <code>FR</code>; prepends <code>FR00</code> + SIREN digits otherwise.</li>
+    <li><code>buildDocument(...)</code> — assembles all sections into the final <code>rsm:CrossIndustryInvoice</code> XML envelope.</li>
+  </ul>
 
-  <hr/>
+  <!-- 3.5 IopoleService -->
+  <h3 id="s3-iopole">3.5 IopoleService</h3>
+  <p>Handles authentication and PDF upload to the <strong>Iopole</strong> electronic invoicing platform (French e-invoicing intermediary). All connection settings are read from Nextcloud app config — nothing is hard-coded.</p>
 
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, Benjamin AIMARD.
-
-    </p>
+  <div class="admonition important">
+    <p class="admonition-title">Required app config keys</p>
+    <p><code>iopole_client_id</code>, <code>iopole_client_secret</code>, <code>iopole_customer_id</code>, <code>iopole_base_url</code>, <code>iopole_auth_url</code> — all must be set in the Nextcloud admin panel before use.</p>
   </div>
-    
-    
-    
-    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
-    
-    fourni par <a href="https://readthedocs.org">Read the Docs</a>. 
 
-</footer>
+  <table>
+    <thead><tr><th>Method</th><th>Purpose</th><th>Parameters</th><th>Returns</th></tr></thead>
+    <tbody>
+      <tr><td><code>sendInvoice($pdfContent,$filename)</code></td><td>Authenticates via OAuth2 client_credentials, writes the PDF to a temp file, POSTs it as <code>multipart/form-data</code> to <code>/v1/invoice</code>, validates the response, and returns the parsed payload including the Iopole invoice ID.</td><td>pdfContent: string, filename: string</td><td>array (payload)</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Private helpers</h4>
+  <ul style="font-size:.88rem;margin-bottom:1rem;padding-left:1.4rem;line-height:1.9">
+    <li><code>requestAccessToken($authUrl,$clientId,$clientSecret)</code> — performs the OAuth2 token exchange and returns the bearer token string.</li>
+    <li><code>request($url,$headers,$body)</code> — thin cURL wrapper; returns <code>['status' =&gt; int, 'body' =&gt; string]</code>.</li>
+    <li><code>getRequiredAppValue($key)</code> — reads a key from Nextcloud app config and throws <code>RuntimeException</code> if blank.</li>
+    <li><code>assertValidUrl($url,$key)</code> — validates URL format with <code>filter_var</code> and throws if invalid.</li>
+  </ul>
+
+  <!-- 3.6 MailService -->
+  <h3 id="s3-mail">3.6 MailService</h3>
+  <p>Dedicated service for sending a PDF as an email attachment. Uses the Nextcloud <code>IMailer</code> abstraction so the underlying SMTP transport is configured at the Nextcloud system level.</p>
+
+  <table>
+    <thead><tr><th>Method</th><th>Purpose</th><th>Parameters</th><th>Returns</th></tr></thead>
+    <tbody>
+      <tr><td><code>sendPdf($content,$name,$subject,$body,$to,$cc)</code></td><td>Decodes a base64 PDF, constructs a Nextcloud mail message with HTML body and PDF attachment, handles optional CC recipients from a JSON-encoded array, and sends. Returns a status array.</td><td>content (base64), name, subject, body (HTML), to (JSON array), cc (JSON array)</td><td>array <code>['status' =&gt; ...]</code></td></tr>
+    </tbody>
+  </table>
+
+  <!-- 3.7 FileService -->
+  <h3 id="s3-file">3.7 FileService</h3>
+  <p>Low-level file access service for the current user's Nextcloud storage. Used by <code>PdfService</code> and <code>TemplateService</code> to read logos and save generated documents.</p>
+
+  <table>
+    <thead><tr><th>Method</th><th>Purpose</th><th>Parameters</th><th>Returns</th></tr></thead>
+    <tbody>
+      <tr><td><code>getLogo($name)</code></td><td>Reads a file from the hidden <code>.gestion/</code> folder and returns it as base64. Returns the string <code>'nothing'</code> if the file does not exist.</td><td><code>$name: string</code></td><td>string (base64 or <code>'nothing'</code>)</td></tr>
+      <tr><td><code>savePDF($content,$folder,$name)</code></td><td>Decodes a base64 string and saves the binary to the given Nextcloud path via <code>saveContent()</code>.</td><td>content (base64), folder, name</td><td>void</td></tr>
+      <tr><td><code>saveContent($content,$folder,$name)</code></td><td>Creates the target folder (silently ignores "already exists"), creates the file node, and writes the raw content.</td><td>content (raw), folder, name</td><td>void</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 3.8 StorageService -->
+  <h3 id="s3-storage">3.8 StorageService</h3>
+  <p>A more complete alternative to <code>FileService</code> with explicit error handling, existence checks, and deletion support. Provides a clean interface over the Nextcloud <code>IRootFolder</code> API.</p>
+
+  <table>
+    <thead><tr><th>Method</th><th>Purpose</th><th>Parameters</th><th>Returns</th></tr></thead>
+    <tbody>
+      <tr><td><code>getStorage()</code></td><td>Returns the Nextcloud Folder node for the current user, or null if unavailable.</td><td>—</td><td>?Folder</td></tr>
+      <tr><td><code>ensureFolder($folder)</code></td><td>Creates a folder at the given path; silently ignores if it already exists.</td><td><code>$folder: string</code></td><td>void</td></tr>
+      <tr><td><code>saveFile($folder,$filename,$content)</code></td><td>Creates the folder, creates or updates the file node, writes raw content. Returns true on success.</td><td>folder, filename, content (raw)</td><td>bool</td></tr>
+      <tr><td><code>savePdf($base64,$folder,$filename)</code></td><td>Decodes base64 then delegates to <code>saveFile()</code>.</td><td>base64 content, folder, filename</td><td>bool</td></tr>
+      <tr><td><code>getFile($path)</code></td><td>Returns raw file content for the given path, or null on error.</td><td><code>$path: string</code></td><td>?string</td></tr>
+      <tr><td><code>getLogo($filename)</code></td><td>Reads from <code>.gestion/</code> and returns base64-encoded content, or <code>'nothing'</code>.</td><td><code>$filename: string</code></td><td>string</td></tr>
+      <tr><td><code>exists($path)</code></td><td>Checks whether a node exists at the given path.</td><td><code>$path: string</code></td><td>bool</td></tr>
+      <tr><td><code>delete($path)</code></td><td>Retrieves and deletes a file node. Returns true on success.</td><td><code>$path: string</code></td><td>bool</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 3.9 TemplateService -->
+  <h3 id="s3-template">3.9 TemplateService</h3>
+  <p>Assembles the data required for each server-rendered page and returns a Nextcloud <code>TemplateResponse</code>. Centralises shared base parameters (user, navigation URLs, company list) so controllers don't duplicate that logic.</p>
+
+  <table>
+    <thead><tr><th>Method</th><th>Purpose</th><th>Parameters</th><th>Returns</th></tr></thead>
+    <tbody>
+      <tr><td><code>page($template)</code></td><td>Returns a <code>TemplateResponse</code> for any simple page (index, produit, statistique, etc.) with base parameters.</td><td><code>$template: string</code></td><td>TemplateResponse</td></tr>
+      <tr><td><code>legalnotice($page)</code></td><td>Returns the legal notice template with the specific sub-page identifier.</td><td><code>$page: string</code></td><td>TemplateResponse</td></tr>
+      <tr><td><code>config()</code></td><td>Returns the configuration template after calling <code>ensureConfigExists()</code>. Injects the list of shared users and attaches a permissive ContentSecurityPolicy.</td><td>—</td><td>TemplateResponse</td></tr>
+      <tr><td><code>devisshow($id)</code></td><td>Fetches the quote, its product lines, and all three logo variants (main, header, footer) as base64, then renders the <code>devisshow</code> template.</td><td><code>$id: int</code> (quote id)</td><td>TemplateResponse</td></tr>
+      <tr><td><code>factureshow($id)</code></td><td>Fetches the invoice data and all three logo variants, then renders the <code>factureshow</code> template.</td><td><code>$id: int</code> (invoice id)</td><td>TemplateResponse</td></tr>
+    </tbody>
+  </table>
+  <div class="admonition note">
+    <p class="admonition-title">Note</p>
+    <p>The private <code>baseParams()</code> method builds the common data payload: user path, navigation URLs, companies list, and current company ID. It is injected into every TemplateResponse.</p>
+  </div>
+
+  <!-- 3.10 NavigationService -->
+  <h3 id="s3-nav">3.10 NavigationService</h3>
+  <p>Single-purpose service that generates absolute URLs for all navigation links using the Nextcloud <code>IURLGenerator</code>. Used by <code>TemplateService</code> to inject URLs into every page.</p>
+
+  <table>
+    <thead><tr><th>Method</th><th>Purpose</th><th>Returns</th></tr></thead>
+    <tbody>
+      <tr><td><code>getNavigationLink()</code></td><td>Returns an associative array of named absolute URLs for: <code>index</code>, <code>devis</code>, <code>facture</code>, <code>produit</code>, <code>config</code>, <code>isConfig</code>, <code>statistique</code>, <code>legalnotice</code>, <code>france</code>.</td><td>array</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ══ SECTION 4 ══════════════════════════════════════════ -->
+  <h2 id="s4">4. Database Layer (<code>lib/Db/Bdd.php</code>) <a class="headerlink" href="#s4">¶</a></h2>
+  <p><code>Bdd</code> is the sole class that issues SQL. It uses Nextcloud's <code>IDBConnection</code> (PDO-based) and protects against SQL injection through two mechanisms: <strong>prepared statements</strong> with positional placeholders for all values, and <strong>whitelist arrays</strong> for table and column names.</p>
+
+  <h3>Security model</h3>
+  <ul style="font-size:.88rem;margin-bottom:1rem;padding-left:1.4rem;line-height:1.9">
+    <li><code>$whiteTable</code>: <code>[client, devis, produit_devis, facture, produit, configuration]</code> — only these table names are accepted in dynamic queries.</li>
+    <li><code>$whiteColumn</code>: a fixed list of ~40 column names — only these are accepted as <code>SET</code> targets in UPDATE calls.</li>
+    <li>All user-supplied values are passed as prepared statement parameters, never interpolated into SQL strings.</li>
+    <li>Data is sanitised with <code>strip_tags()</code> (retaining <code>&lt;br&gt;</code>) and <code>html_entity_decode()</code> before writes.</li>
+  </ul>
+
+  <h3>Key query methods</h3>
+  <ul style="font-size:.88rem;margin-bottom:1rem;padding-left:1.4rem;line-height:1.9">
+    <li><code>getDevis() / getFactures()</code> — JOINs devis/facture with client to return a denormalized list in one query.</li>
+    <li><code>getListProduit($devisId)</code> — JOINs produit, produit_devis, and devis; orders by the <code>produit_devis.order</code> column.</li>
+    <li><code>gestion_update($table,$column,$data,$id,$config)</code> — generic single-field updater after whitelist validation.</li>
+    <li><code>gestion_duplicate($table,$id)</code> — dynamic column-list INSERT by SELECTing the source row; handles invoice number recomputation and product line cloning for quotes.</li>
+    <li><code>gestion_drop($id,$value)</code> — swaps the <code>order</code> values of two adjacent product lines to move one up or down.</li>
+    <li><code>deleteCompany($id)</code> — cascades deletion across all 7 tables.</li>
+    <li><code>backup()</code> — dumps all six tables as a flat array for CSV export.</li>
+    <li><code>getAnnualTurnoverPerMonthNoVat()</code> — aggregates (price × quantity) grouped by <code>YEAR + MONTH</code> of <code>date_paiement</code>.</li>
+  </ul>
+
+  <h3>Internal execution helpers</h3>
+  <ul style="font-size:.88rem;margin-bottom:1rem;padding-left:1.4rem;line-height:1.9">
+    <li><code>execSQL($sql,$conditions)</code> — prepares, executes, fetches all rows, returns JSON-encoded string.</li>
+    <li><code>execSQLNoData($sql,$conditions)</code> — prepares and executes; no return value (INSERT/UPDATE/DELETE).</li>
+    <li><code>execSQLNoJsonReturn($sql,$conditions)</code> — prepares, executes, returns raw PHP array (used internally to avoid redundant JSON re-encoding).</li>
+  </ul>
+
+  <!-- ══ SECTION 5 ══════════════════════════════════════════ -->
+  <h2 id="s5">5. Database Migrations (<code>lib/Migration/</code>) <a class="headerlink" href="#s5">¶</a></h2>
+  <p>Each migration file implements the Nextcloud <code>SimpleMigrationStep</code> interface and runs automatically on app update. Files are version-stamped by filename.</p>
+
+  <table>
+    <thead><tr><th>Migration</th><th>Change</th></tr></thead>
+    <tbody>
+      <tr><td><code>Version7</code> (2022-01-25)</td><td>Initial schema: creates <code>configuration</code>, <code>client</code>, <code>devis</code>, <code>produit</code>, <code>produit_devis</code>, <code>facture</code> tables.</td></tr>
+      <tr><td><code>Version20002</code> (2022-02-01)</td><td>Adds <code>order</code> column to <code>produit_devis</code>; adds <code>path</code>, <code>tva_default</code>, <code>mentions_default</code> to <code>configuration</code>.</td></tr>
+      <tr><td><code>Version20006</code> (2022-02-23)</td><td>Adds <code>devise</code>, <code>auto_invoice_number</code> to <code>configuration</code>.</td></tr>
+      <tr><td><code>Version20007</code> (2022-03-11)</td><td>Adds <code>facture_prefixe</code> column to <code>configuration</code>.</td></tr>
+      <tr><td><code>Version20104</code> (2022-07-28)</td><td>Adds <code>user_id</code> column to <code>devis</code> and <code>facture</code> (for sequential numbering per company).</td></tr>
+      <tr><td><code>Version20203</code> (2023-01-15)</td><td>Adds <code>status_paiement</code> to <code>facture</code>; adds <code>comment</code> to <code>devis</code> and <code>facture</code>.</td></tr>
+      <tr><td><code>Version20204</code> (2023-02-02)</td><td>Adds <code>conf_share</code> table (shared company access); adds <code>changelog</code> to <code>configuration</code>.</td></tr>
+      <tr><td><code>Version20300</code> (2023-07-14)</td><td>Adds <code>vat</code> column to <code>produit</code>; adds <code>header</code> bool to <code>produit_devis</code> (section headers in quotes).</td></tr>
+      <tr><td><code>Version20600</code> (2025-03-26)</td><td>Adds <code>vat_number</code>, <code>zip_code</code>, <code>city_name</code>, <code>country_code</code>, <code>iban</code> to <code>configuration</code>.</td></tr>
+      <tr><td><code>Version20003/04/05</code> (2026)</td><td>Adds <code>zip_code</code>, <code>city_name</code>, <code>country_code</code> to <code>client</code>; aligns schema for Factur-X buyer address fields.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ══ SECTION 6 ══════════════════════════════════════════ -->
+  <h2 id="s6">6. Controllers (<code>lib/Controller/</code>) <a class="headerlink" href="#s6">¶</a></h2>
+  <p>Controllers are thin by design. Each one receives injected services via the DI container and delegates immediately. The only logic present is extracting parameters from the HTTP request.</p>
+
+  <table>
+    <thead><tr><th>Controller</th><th>Primary Service(s)</th><th>Responsibility</th></tr></thead>
+    <tbody>
+      <tr><td><code>ViewController</code></td><td>TemplateService</td><td>Renders all HTML page views (index, devis, facture, produit, statistique, legalnotice).</td></tr>
+      <tr><td><code>ClientController</code></td><td>DataService</td><td>CRUD for clients: getClients, getClient, getClientbyiddevis, insertClient.</td></tr>
+      <tr><td><code>DevisController</code></td><td>DataService + TemplateService</td><td>Reads quotes list, renders devisshow, inserts quote or product line.</td></tr>
+      <tr><td><code>FactureController</code></td><td>DataService + TemplateService</td><td>Reads invoices list, renders factureshow, inserts invoice.</td></tr>
+      <tr><td><code>ProduitController</code></td><td>DataService</td><td>Reads products list, reads by quote ID, inserts product.</td></tr>
+      <tr><td><code>ConfigurationController</code></td><td>TemplateService + DataService + CompanyService</td><td>Renders config page, checks config state, reads and updates configuration fields.</td></tr>
+      <tr><td><code>CrudController</code></td><td>DataService</td><td>Generic operations: update, duplicate, drop (reorder), delete — works across multiple entity types.</td></tr>
+      <tr><td><code>CompanyController</code></td><td>CompanyService</td><td>Multi-company lifecycle: create, delete, switch active company, manage shared users.</td></tr>
+      <tr><td><code>PdfController</code></td><td>PdfService</td><td>PDF generation and delivery: generate, save, send by email, generate Factur-X, submit to Iopole.</td></tr>
+      <tr><td><code>StatsController</code></td><td>DataService</td><td>Returns entity counts and monthly turnover data for the statistics dashboard.</td></tr>
+      <tr><td><code>AdminController</code></td><td>Bdd (direct)</td><td>Single backup endpoint — dumps all data as a dated text file in the user's cloud storage.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ══ SECTION 7 ══════════════════════════════════════════ -->
+  <h2 id="s7">7. External Dependencies <a class="headerlink" href="#s7">¶</a></h2>
+
+  <table>
+    <thead><tr><th>Package</th><th>Type</th><th>Used for</th></tr></thead>
+    <tbody>
+      <tr><td><code>mpdf/mpdf</code></td><td>Composer (PHP)</td><td>HTML-to-PDF rendering for quotes and invoices (A4, UTF-8, custom CSS).</td></tr>
+      <tr><td><code>GestionFacturXWriter</code></td><td>Bundled (<code>Controller/</code>)</td><td>Embeds Factur-X XML metadata into a PDF file (XMP / PDF/A-3 conformance).</td></tr>
+      <tr><td>Nextcloud <code>IMailer</code></td><td>Framework</td><td>SMTP abstraction for sending PDFs by email.</td></tr>
+      <tr><td>Nextcloud <code>IDBConnection</code></td><td>Framework</td><td>PDO-based database access; supports SQLite, MySQL, PostgreSQL.</td></tr>
+      <tr><td>Nextcloud <code>IRootFolder</code></td><td>Framework</td><td>User file storage access (read logos, save PDFs).</td></tr>
+      <tr><td>Nextcloud <code>IConfig</code></td><td>Framework</td><td>Read system and app configuration values (SMTP, Iopole credentials).</td></tr>
+      <tr><td>Nextcloud <code>ISession</code></td><td>Framework</td><td>Stores the active company ID between requests.</td></tr>
+      <tr><td>Nextcloud <code>IUserManager</code></td><td>Framework</td><td>Resolves Nextcloud user objects by email for share management.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="admonition tip">
+    <p class="admonition-title">Tip</p>
+    <p>Composer dependencies are locked in <code>composer.lock</code>. Run <code>make appstore</code> to build a production-ready release archive.</p>
+  </div>
+
+  <!-- footer navigation -->
+  <div style="display:flex;justify-content:space-between;margin-top:3rem;padding-top:1.2rem;border-top:1px solid #e1e4e5;font-size:.85rem">
+    <span style="color:#bbb">← Previous</span>
+    <a href="#top" style="color:#2980b9">↑ Back to top</a>
+    <span style="color:#bbb">Next →</span>
+  </div>
+</div>
+</main>
+
+
         </div>
+
+        <!-- ================= FOOTER CUSTOM ================= -->
+        <footer>
+          <p>© 2024 Benjamin Aimard — AGPL-3.0 — Built with custom ReadTheDocs layout</p>
+        </footer>
+
       </div>
+    </div>
+  </section>
+</div>
 
-    </section>
+<!-- ================= SCRIPTS CUSTOM ================= -->
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('btt')?.classList.toggle('visible', window.scrollY > 400);
+});
 
-  </div>
-  
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
+document.getElementById('search-input')?.addEventListener('input',function(){
+  const q=this.value.toLowerCase();
+  document.querySelectorAll('#sidebar a').forEach(a=>{
+    a.style.display = (!q || a.textContent.toLowerCase().includes(q)) ? '' : 'none';
+  });
+});
+</script>
 
 </body>
 </html>

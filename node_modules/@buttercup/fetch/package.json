@@ -1,0 +1,65 @@
+{
+  "name": "@buttercup/fetch",
+  "version": "0.2.1",
+  "description": "Fetch adapter for cross-platform use.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "browser": "./dist/index.browser.js",
+      "default": "./dist/index.node.js"
+    }
+  },
+  "react-native": "./dist/index.browser.js",
+  "types": "./dist/index.node.d.ts",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rimraf dist",
+    "format": "prettier --write \"{source,test}/**/*.{js,ts}\"",
+    "prepublishOnly": "npm run build",
+    "test": "npm run test:node && npm run test:format",
+    "test:format": "prettier --check \"{source,test}/**/*.{js,ts}\"",
+    "test:node": "npm run build && mocha 'test/node/**.spec.js'"
+  },
+  "files": [
+    "./dist/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buttercup/fetch.git"
+  },
+  "lint-staged": {
+    "{source,test}/**/*.{js,ts}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "keywords": [
+    "fetch",
+    "request"
+  ],
+  "author": "Perry Mitchell <perry@perrymitchell.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/buttercup/fetch/issues"
+  },
+  "homepage": "https://github.com/buttercup/fetch#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "chai": "^4.3.7",
+    "husky": "^4.3.8",
+    "json-server": "^0.17.1",
+    "lint-staged": "^13.1.0",
+    "mocha": "^10.2.0",
+    "prettier": "^2.8.3",
+    "rimraf": "^4.1.2",
+    "typescript": "^4.9.5",
+    "url-join": "^5.0.0"
+  },
+  "optionalDependencies": {
+    "node-fetch": "^3.3.0"
+  }
+}

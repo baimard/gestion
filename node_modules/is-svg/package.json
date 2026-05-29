@@ -1,0 +1,51 @@
+{
+	"name": "is-svg",
+	"version": "6.1.0",
+	"description": "Check if a string is SVG",
+	"license": "MIT",
+	"repository": "sindresorhus/is-svg",
+	"funding": "https://github.com/sponsors/sindresorhus",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "https://sindresorhus.com"
+	},
+	"type": "module",
+	"exports": {
+		"types": "./index.d.ts",
+		"default": "./index.js"
+	},
+	"sideEffects": false,
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"test": "xo && ava && tsd"
+	},
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
+	"keywords": [
+		"svg",
+		"vector",
+		"graphics",
+		"image",
+		"picture",
+		"type",
+		"detect",
+		"check",
+		"is",
+		"string"
+	],
+	"dependencies": {
+		"@file-type/xml": "^0.4.3"
+	},
+	"devDependencies": {
+		"@types/node": "^22.15.3",
+		"ava": "^6.2.0",
+		"time-span": "^5.1.0",
+		"tsd": "^0.32.0",
+		"xo": "^0.60.0"
+	}
+}

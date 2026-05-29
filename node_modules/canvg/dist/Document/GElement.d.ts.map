@@ -1,0 +1,1 @@
+{"version":3,"file":"GElement.d.ts","sourceRoot":"","sources":["../../src/Document/GElement.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAAE,MAAM,UAAU,CAAA;AAC7C,OAAO,EAAE,WAAW,EAAE,MAAM,gBAAgB,CAAA;AAE5C,OAAO,EAAE,eAAe,EAAE,MAAM,mBAAmB,CAAA;AAEnD,qBAAa,QAAS,SAAQ,eAAe;IAClC,IAAI,SAAM;IAEnB,cAAc,CAAC,GAAG,EAAE,kBAAkB;CASvC"}

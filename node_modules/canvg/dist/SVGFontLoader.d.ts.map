@@ -1,0 +1,1 @@
+{"version":3,"file":"SVGFontLoader.d.ts","sourceRoot":"","sources":["../src/SVGFontLoader.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,YAAY,CAAA;AAErC,qBAAa,aAAa;IAItB,OAAO,CAAC,QAAQ,CAAC,QAAQ;IAH3B,MAAM,UAAQ;gBAGK,QAAQ,EAAE,QAAQ;IAK/B,IAAI,CAAC,UAAU,EAAE,MAAM,EAAE,GAAG,EAAE,MAAM;CAiB3C"}

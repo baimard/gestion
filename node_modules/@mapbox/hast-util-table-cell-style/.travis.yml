@@ -1,0 +1,12 @@
+dist: jammy
+sudo: false
+notifications:
+  email: false
+cache:
+  directories:
+    - node_modules
+git:
+  depth: 3
+language: node_js
+node_js:
+  - 18

@@ -1,0 +1,2 @@
+/*! © SpryMedia Ltd - datatables.net/license */
+import jQuery from"jquery";import DataTable from"datatables.net";let $=jQuery;DataTable.ext.type.order["anti-the-pre"]=function(e){return e.replace(/^the /i,"")};export default DataTable;

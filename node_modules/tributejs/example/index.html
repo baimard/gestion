@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZURB Tribute | Demo</title>
+    <link rel="stylesheet" href="css/foundation.min.css" />
+    <link rel="stylesheet" href="tribute.css" />
+    <style>
+      body {
+        position: relative;
+      }
+      .tribute-demo-input {
+        outline: none;
+        border: 1px solid #eee;
+        padding: 3px 5px;
+        border-radius: 2px;
+        font-size: 15px;
+        min-height: 32px;
+        cursor: text;
+      }
+      .tribute-demo-input:focus {
+        border-color: #d1d1d1;
+        background-color: #fbfbfb;
+      }
+      [contenteditable="true"]:empty:before {
+        content: attr(placeholder);
+        display: block;
+        color: #ccc;
+      }
+      #test-autocomplete-container {
+        position: relative;
+      }
+      #test-autocomplete-textarea-container {
+        position: relative;
+      }
+      .float-right {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row text-center">
+      <div class="large-12 columns">
+        <h1>Tribute Demo</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-8 small-centered columns">
+        <div class="callout large">
+          <h5>Tribute on <code>contenteditable</code> element:</h5>
+          <a id="activateInput">@mention</a>
+          <p
+            id="test"
+            class="tribute-demo-input"
+            placeholder="Enter some text here"
+          ></p>
+
+          <h5>
+            Tribute with a local collection (on <code>@</code>) and a remote one
+            (on <code>#</code>):
+          </h5>
+          <p
+            id="testMultiple"
+            class="tribute-demo-input"
+            placeholder="Enter some text here"
+          ></p>
+        </div>
+      </div>
+    </div>
+
+    <br /><br />
+
+    <div class="row">
+      <div class="large-8 small-centered columns">
+        <div class="callout large">
+          <h5>
+            Tribute with <code>autocompleteMode:true</code> on
+            <code>contenteditable</code> element:
+          </h5>
+          <!-- <a id="activateInput">@mention</a> -->
+          <div id="test-autocomplete-container">
+            <p
+              id="test-autocomplete"
+              class="tribute-demo-input"
+              placeholder="States of USA"
+            ></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-8 small-centered columns">
+        <div class="callout large">
+          <h5>
+            Tribute with <code>autocompleteMode:true</code> on
+            <code>textarea</code> element:
+          </h5>
+
+          <div id="test-autocomplete-textarea-container">
+            <textarea
+              id="test-autocomplete-textarea"
+              cols="40"
+              rows="10"
+              placeholder="States of USA"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="content">
+      <div class="large-8 medium-8 small-centered columns">
+        <h5>Tribute on traditional form elements!</h5>
+        <form>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Input Label</label>
+              <input
+                id="testInput"
+                type="text"
+                placeholder="Enter some text here"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Textarea Label</label>
+              <textarea
+                id="testarea"
+                placeholder="Enter some text here"
+              ></textarea>
+            </div>
+          </div>
+        </form>
+
+        <hr />
+
+        <p>
+          Brought to you by <a href="https://zurb.com/">ZURB</a>, the creators
+          of <a href="https://helio.app/">Helio</a>
+        </p>
+
+        <p>
+          Design successful products by rapidly revealing key user behaviors.
+          <a href="https://helio.app/">Helio</a> makes it easy to get reactions
+          on your designs quickly so your team can focus on solving the right
+          problems, right now.
+        </p>
+
+        <p>
+          The code is available under the
+          <a href="https://github.com/zurb/tribute/blob/master/LICENSE"
+            >MIT License</a
+          >.
+        </p>
+      </div>
+    </div>
+
+    <script src="tribute.js"></script>
+    <script>
+      // example of alternative callback
+      var tribute = new Tribute({
+        // menuContainer: document.getElementById('content'),
+        values: [
+          {
+            key: "Jordan Humphreys",
+            value: "Jordan Humphreys",
+            email: "getstarted@zurb.com"
+          },
+          {
+            key: "Sir Walter Riley",
+            value: "Sir Walter Riley",
+            email: "getstarted+riley@zurb.com"
+          }
+        ],
+        selectTemplate: function(item) {
+          if (typeof item === "undefined") return null;
+          if (this.range.isContentEditable(this.current.element)) {
+            return (
+              '<span contenteditable="false"><a href="http://zurb.com" target="_blank" title="' +
+              item.original.email +
+              '">' +
+              item.original.value +
+              "</a></span>"
+            );
+          }
+
+          return "@" + item.original.value;
+        },
+        requireLeadingSpace: false
+      });
+
+      tribute.attach(document.getElementById("test"));
+      tribute.attach(document.getElementById("testInput"));
+      tribute.attach(document.getElementById("testarea"));
+
+      var tributeMultipleTriggers = new Tribute({
+        collection: [
+          {
+            // The function that gets call on select that retuns the content to insert
+            selectTemplate: function(item) {
+              if (this.range.isContentEditable(this.current.element)) {
+                return (
+                  '<a href="http://zurb.com" title="' +
+                  item.original.email +
+                  '">@' +
+                  item.original.value +
+                  "</a>"
+                );
+              }
+
+              return "@" + item.original.value;
+            },
+
+            // the array of objects
+            values: [
+              {
+                key: "Jordan Humphreys",
+                value: "Jordan Humphreys",
+                email: "jordan@zurb.com"
+              },
+              {
+                key: "Sir Walter Riley",
+                value: "Sir Walter Riley",
+                email: "jordan+riley@zurb.com"
+              }
+            ]
+          },
+          {
+            // The symbol that starts the lookup
+            trigger: "#",
+
+            // The function that gets call on select that retuns the content to insert
+            selectTemplate: function(item) {
+              if (this.range.isContentEditable(this.current.element)) {
+                return (
+                  '<a href="mailto:' +
+                  item.original.email +
+                  '">#' +
+                  item.original.name.replace() +
+                  "</a>"
+                );
+              }
+
+              return "#" + item.original.name;
+            },
+
+            // function retrieving an array of objects
+            values: [
+              { name: "Bob Bill", email: "bobbill@example.com" },
+              { name: "Steve Stevenston", email: "steve@example.com" }
+            ],
+
+            lookup: "name",
+
+            fillAttr: "name"
+          }
+        ]
+      });
+
+      tributeMultipleTriggers.attach(document.getElementById("testMultiple"));
+
+      document
+        .getElementById("test")
+        .addEventListener("tribute-replaced", function(e) {
+          console.log("Original Event:", e.detail.event);
+          console.log("Matched item:", e.detail.item);
+        });
+
+      var noMatchRunOnce = false;
+      document
+        .getElementById("test")
+        .addEventListener("tribute-no-match", function(e) {
+          if (noMatchRunOnce) return;
+          var values = [
+            {
+              key: "Cheese Tacos",
+              value: "Cheese Tacos",
+              email: "cheesetacos@zurb.com"
+            }
+          ];
+          tribute.appendCurrent(values);
+          noMatchRunOnce = true;
+        });
+
+      var activateLink = document.getElementById("activateInput");
+
+      if (activateLink) {
+        activateLink.addEventListener("mousedown", function(e) {
+          e.preventDefault();
+          var input = document.getElementById("test");
+
+          tribute.showMenuForCollection(input);
+        });
+      }
+
+      // example of Tribute in autocomplete mode
+
+      var tributeAttributes = {
+        autocompleteMode: true,
+        noMatchTemplate: "",
+        values: [
+          { key: "Alabama", value: "Alabama" },
+          { key: "Alaska", value: "Alaska" },
+          { key: "Arizona", value: "Arizona" },
+          { key: "Arkansas", value: "Arkansas" },
+          { key: "California", value: "California" },
+          { key: "Colorado", value: "Colorado" },
+          { key: "Connecticut", value: "Connecticut" },
+          { key: "Delaware", value: "Delaware" },
+          { key: "Florida", value: "Florida" },
+          { key: "Georgia", value: "Georgia" },
+          { key: "Hawaii", value: "Hawaii" },
+          { key: "Idaho", value: "Idaho" },
+          { key: "Illinois", value: "Illinois" },
+          { key: "Indiana", value: "Indiana" },
+          { key: "Iowa", value: "Iowa" },
+          { key: "Kansas", value: "Kansas" },
+          { key: "Kentucky", value: "Kentucky" },
+          { key: "Louisiana", value: "Louisiana" },
+          { key: "Maine", value: "Maine" },
+          { key: "Maryland", value: "Maryland" },
+          { key: "Massachusetts", value: "Massachusetts" },
+          { key: "Michigan", value: "Michigan" },
+          { key: "Minnesota", value: "Minnesota" },
+          { key: "Mississippi", value: "Mississippi" },
+          { key: "Missouri", value: "Missouri" },
+          { key: "Montana", value: "Montana" },
+          { key: "Nebraska", value: "Nebraska" },
+          { key: "Nevada", value: "Nevada" },
+          { key: "New Hampshire", value: "New Hampshire" },
+          { key: "New Jersey", value: "New Jersey" },
+          { key: "New Mexico", value: "New Mexico" },
+          { key: "New York", value: "New York" },
+          { key: "North Carolina", value: "North Carolina" },
+          { key: "North Dakota", value: "North Dakota" },
+          { key: "Ohio", value: "Ohio" },
+          { key: "Oklahoma", value: "Oklahoma" },
+          { key: "Oregon", value: "Oregon" },
+          { key: "Pennsylvania", value: "Pennsylvania" },
+          { key: "Rhode Island", value: "Rhode Island" },
+          { key: "South Carolina", value: "South Carolina" },
+          { key: "South Dakota", value: "South Dakota" },
+          { key: "Tennessee", value: "Tennessee" },
+          { key: "Texas", value: "Texas" },
+          { key: "Utah", value: "Utah" },
+          { key: "Vermont", value: "Vermont" },
+          { key: "Virginia", value: "Virginia" },
+          { key: "Washington", value: "Washington" },
+          { key: "West Virginia", value: "West Virginia" },
+          { key: "Wisconsin", value: "Wisconsin" },
+          { key: "Wyoming", value: "Wyoming" }
+        ],
+        selectTemplate: function(item) {
+          if (typeof item === "undefined") return null;
+          if (this.range.isContentEditable(this.current.element)) {
+            return (
+              '<span contenteditable="false"><a>' +
+              item.original.key +
+              "</a></span>"
+            );
+          }
+
+          return item.original.value;
+        },
+        menuItemTemplate: function(item) {
+          return item.string;
+        }
+      };
+      var tributeAutocompleteTest = new Tribute(
+        Object.assign(
+          {
+            menuContainer: document.getElementById(
+              "test-autocomplete-container"
+            )
+          },
+          tributeAttributes
+        )
+      );
+      tributeAutocompleteTest.attach(
+        document.getElementById("test-autocomplete")
+      );
+
+      var tributeAutocompleteTestArea = new Tribute(
+        Object.assign(
+          {
+            menuContainer: document.getElementById(
+              "test-autocomplete-textarea-container"
+            )
+          },
+          tributeAttributes
+        )
+      );
+      tributeAutocompleteTestArea.attach(
+        document.getElementById("test-autocomplete-textarea")
+      );
+    </script>
+  </body>
+</html>

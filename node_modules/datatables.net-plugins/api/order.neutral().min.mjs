@@ -1,0 +1,2 @@
+/*! © SpryMedia Ltd - datatables.net/license */
+import jQuery from"jquery";import DataTable from"datatables.net";let $=jQuery;DataTable.Api.register("order.neutral()",function(){return this.iterator("table",function(t){t.aaSorting.length=0,t.aiDisplay.sort(function(t,r){return t-r}),t.aiDisplayMaster.sort(function(t,r){return t-r})})});export default DataTable;

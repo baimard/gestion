@@ -1,0 +1,1 @@
+{"version":3,"file":"UnknownElement.d.ts","sourceRoot":"","sources":["../../src/Document/UnknownElement.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,YAAY,CAAA;AACrC,OAAO,EAAE,OAAO,EAAE,MAAM,WAAW,CAAA;AAEnC,qBAAa,cAAe,SAAQ,OAAO;gBAEvC,QAAQ,EAAE,QAAQ,EAClB,IAAI,EAAE,WAAW,EACjB,gBAAgB,CAAC,EAAE,OAAO;CAQ7B"}

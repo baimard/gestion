@@ -1,0 +1,1 @@
+{"version":3,"file":"MaskElement.d.ts","sourceRoot":"","sources":["../../src/Document/MaskElement.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAAE,MAAM,UAAU,CAAA;AAE7C,OAAO,EAAE,OAAO,EAAE,MAAM,WAAW,CAAA;AAInC,qBAAa,WAAY,SAAQ,OAAO;IACtC,MAAM,CAAC,YAAY,WAIlB;IAEQ,IAAI,SAAS;IAEtB,KAAK,CAAC,GAAG,EAAE,kBAAkB,EAAE,OAAO,EAAE,OAAO;IAiEtC,MAAM,CAAC,CAAC,EAAE,kBAAkB;CAGtC"}

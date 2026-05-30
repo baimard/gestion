@@ -11,7 +11,7 @@ OC.L10N.register(
     "Quote number" : "Numéro de devis",
     "New" : "Nouveau",
     "Comment" : "Commentaire",
-    "Offer valid for 1 month from: " : "Offre valable 1 mois à compter du :",
+    "Offer valid for 1 month from: " : "Offre valable pour 1 mois à compter du :",
     "Text free" : "Texte libre",
     "Means of payment" : "Moyen de paiement",
     "Reference" : "Référence",

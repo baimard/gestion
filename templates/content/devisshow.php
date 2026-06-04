@@ -75,26 +75,45 @@
                     <th><?php p($l->t('Quantity'));?></th>
                     <th><?php p($l->t('Unit price without VAT'));?></th>
                     <th><?php p($l->t('Total without VAT'));?></th>
+                    <th><?php p($l->t('VAT percentage'));?></th>
+                    <th><?php p($l->t('Total including VAT'));?></th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
-    </div>
-    <div class="div-prix">
-        <table id="totaldevis" class="table-prix">
-            <thead>
-                <tr>
-                    <th class="text-center"><?php p($l->t('Total without VAT'));?></th>
-                    <th class="text-center"><?php p($l->t('VAT Rate'));?></th>
-                    <th class="text-center"><?php p($l->t('Total VAT'));?></th>
-                    <th class="text-center"><?php p($l->t('Total Price'));?></th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
+        </div>
+
+        <div class="div-prix">
+            <table id="totaldevis" class="table-prix">
+                <thead>
+                    <tr>
+                        <th class="text-center"><?php p($l->t('Number of products'));?></th>
+                        <th class="text-center"><?php p($l->t('Total without VAT'));?></th>
+                        <th class="text-center"><?php p($l->t('VAT Rate'));?></th>
+                        <th class="text-center"><?php p($l->t('Total VAT'));?></th>
+                        <th class="text-center"><?php p($l->t('Total including VAT'));?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="div-prix">
+            <table id="totalglobal" class="table-prix">
+                <thead>
+                    <tr>
+                        <th class="text-center"><?php p($l->t('Total without VAT'));?></th>
+                        <th class="text-center"><?php p($l->t('Total VAT'));?></th>
+                        <th class="text-center"><?php p($l->t('Total including VAT'));?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
     <div class="alert-info-custom">
         <p><span id="mentions_default"><?php p($l->t('Please set in global configuration'));?></span></p>
     </div>

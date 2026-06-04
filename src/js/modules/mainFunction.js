@@ -175,7 +175,7 @@ export function getCurrency(response) {
  * 
  * @param {*} total 
  */
-export function getGlobal(total) {
+export function getGlobal() {
 const url = baseUrl + '/getConfiguration';
 const options = {
     method: 'PROPFIND',
@@ -189,17 +189,6 @@ fetch(url, options)
     .then(response => response.json())
     .then(data => {
         const myresp = JSON.parse(data)[0];
-        const tva = parseFloat(myresp.tva_default);
-        const totalRow = `
-            <tr>
-                <td>${cur.format(total)}</td>
-                <td id="tva">${tva} %</td>
-                <td id="totaltva">${cur.format(Math.round((total * tva)) / 100)}</td>
-                <td>${cur.format(Math.round((total * (tva + 100))) / 100)}</td>
-            </tr>
-        `;
-
-        document.querySelector('#totaldevis tbody').insertAdjacentHTML('beforeend', totalRow);
 
         let mentionsDefault = myresp.mentions_default;
         mentionsDefault = mentionsDefault.replace(/\n/g, '<br/>');
@@ -231,6 +220,10 @@ export function checkAutoIncrement(response){
 export function updateNumerical(el, format_number=true){
     el.innerText=el.innerText.replace(',', '.').replace(/[^0-9.-]+/g,"")
     updateEditable(el);
+    if (
+        el.dataset.column === "quantite") {
+        return;
+    }
     if(format_number){
         el.innerText=cur.format(el.innerText)
     }else{

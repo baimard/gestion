@@ -80,13 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
         callUpdateDBConfiguration(e);
     });
 
-
-
-
     function callUpdateDBConfiguration(e){
-        if (e.target.classList.contains('editableConfiguration')
+        if (
+            e.target.classList.contains('editableConfiguration')
             || e.target.classList.contains('editableConfigurationSelect')
-            ) {
+        ) {
             var table = e.target.getAttribute('data-table');
             var column = e.target.getAttribute('data-column');
             var value = e.target.value;
@@ -95,42 +93,75 @@ document.addEventListener('DOMContentLoaded', function() {
             updateDBConfiguration(table, column, value, id);
         }
     };
-
 });
 
+
+/**
+ * Retourne "-" si la valeur est null, undefined ou vide
+ */
+function safeValue(value) {
+    return value === null || value === undefined || value === ""
+        ? "-"
+        : value;
+}
+
+
 function loadConfigurationDT(response) {
+
     // Parse the JSON response
     const data = JSON.parse(response);
 
     // Iterate over each item in the parsed JSON array
     data.forEach(function (myresp) {
-        // Set the value of each form field, using "-" if the value is an empty string
-        document.getElementById("entreprise").value = myresp.entreprise.length === 0 ? "-" : myresp.entreprise;
-        document.getElementById("nom").value = myresp.nom.length === 0 ? "-" : myresp.nom;
-        document.getElementById("prenom").value = myresp.prenom.length === 0 ? "-" : myresp.prenom;
-        document.getElementById("adresse").value = myresp.adresse.length === 0 ? "-" : myresp.adresse;
-        document.getElementById("legal_one").value = myresp.legal_one.length === 0 ? "-" : myresp.legal_one;
-        document.getElementById("legal_two").value = myresp.legal_two.length === 0 ? "-" : myresp.legal_two;
-        document.getElementById("telephone").value = myresp.telephone.length === 0 ? "-" : myresp.telephone;
-        document.getElementById("mail").value = myresp.mail.length === 0 ? "-" : myresp.mail;
-        document.getElementById("tva_default").value = myresp.tva_default.length === 0 ? "-" : myresp.tva_default;
-        document.getElementById("facture_prefixe").value = myresp.facture_prefixe.length === 0 ? "-" : myresp.facture_prefixe;
 
-        // Call external functions with the appropriate parameters
+        console.log("CONFIG OBJ:", myresp);
+
+        // Champs texte sécurisés
+        document.getElementById("entreprise").value = safeValue(myresp.entreprise);
+        document.getElementById("nom").value = safeValue(myresp.nom);
+        document.getElementById("prenom").value = safeValue(myresp.prenom);
+        document.getElementById("adresse").value = safeValue(myresp.adresse);
+        document.getElementById("legal_one").value = safeValue(myresp.legal_one);
+        document.getElementById("legal_two").value = safeValue(myresp.legal_two);
+        document.getElementById("telephone").value = safeValue(myresp.telephone);
+        document.getElementById("mail").value = safeValue(myresp.mail);
+        document.getElementById("tva_default").value = safeValue(myresp.tva_default);
+        document.getElementById("facture_prefixe").value = safeValue(myresp.facture_prefixe);
+        document.getElementById("city_name").value = safeValue(myresp.city_name);
+        document.getElementById("zip_code").value = safeValue(myresp.zip_code);
+        document.getElementById("vat_number").value = safeValue(myresp.vat_number);
+        document.getElementById("iban").value = safeValue(myresp.iban);
+
         setCurrencyList(myresp.devise, document.getElementById("currency"));
         setFormatList(myresp.format, document.getElementById("format"));
 
-        document.getElementById("mentions_default").innerHTML = myresp.mentions_default.length === 0 ? "-" : myresp.mentions_default.replace(/\&amp;/g, "&");
-        
-        // Set the data-id attribute for each form field
+        document.getElementById("mentions_default").innerHTML =
+            safeValue(myresp.mentions_default).replace(/\&amp;/g, "&");
+
         const fields = [
-            "entreprise", "nom", "prenom", "adresse", "legal_one", "legal_two",
-            "telephone", "mail", "tva_default", "facture_prefixe", "currency",
-            "format", "mentions_default"
+            "entreprise",
+            "nom",
+            "prenom",
+            "adresse",
+            "legal_one",
+            "legal_two",
+            "telephone",
+            "mail",
+            "tva_default",
+            "facture_prefixe",
+            "currency",
+            "format",
+            "mentions_default",
+            "zip_code",
+            "vat_number",
+            "city_name",
+            "iban"
         ];
 
         fields.forEach(function (field) {
-            document.getElementById(field).setAttribute("data-id", myresp.id);
+            document
+                .getElementById(field)
+                .setAttribute("data-id", myresp.id);
         });
     });
 }

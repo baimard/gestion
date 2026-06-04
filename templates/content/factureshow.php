@@ -63,7 +63,10 @@
 
  <div>
         <button id="devisAdd"       type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
-        <button id="pdf"            type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore data-name=""><?php p($l->t('Save in Nextcloud'));?></button>
+        <button id="pdf"            type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore data-name=""><?php p($l->t('Save to Nextcloud (pdf)'));?></button>
+        <button id="facturx"        type="button"       class="mb-2 btn btn-outline-primary"            data-html2canvas-ignore data-name="" data-factureid="<?php echo $_['facture'][0]->id; ?>"><?php p($l->t('Generate electronic invoice (pdf+xml)'));?></button>
+        <button id="facturx-xml"    type="button"       class="mb-2 btn btn-outline-info"               data-html2canvas-ignore data-name="" data-factureid="<?php echo $_['facture'][0]->id; ?>"><?php p($l->t('Generate electronic part (xml)'));?></button>
+        <button id="facturx-iopole" type="button"       class="mb-2 btn btn-outline-warning"            data-html2canvas-ignore data-name="" data-factureid="<?php echo $_['facture'][0]->id; ?>"><?php p($l->t('Send to Iopole'));?></button>
         <!-- <button id="mailGestion"       type="button"   class="mb-2 btn btn-outline-success sendmail"    data-html2canvas-ignore data-name=""><?php p($l->t('Send by email'));?></button> -->
         
         <table id="produits" class="table-produit">
@@ -75,26 +78,49 @@
                     <th><?php p($l->t('Quantity'));?></th>
                     <th><?php p($l->t('Unit price without VAT'));?></th>
                     <th><?php p($l->t('Total without VAT'));?></th>
+                    <th><?php p($l->t('VAT percentage'));?></th>
+                    <th><?php p($l->t('Total including VAT'));?></th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
     </div>
+
+    <<div class="comment"><?php p($l->t('VAT price per percentage'));?></div>
+                  
     <div class="div-prix">
         <table id="totaldevis" class="table-prix">
             <thead>
                 <tr>
+                    <th class="text-center"><?php p($l->t('Number of products'));?></th>
                     <th class="text-center"><?php p($l->t('Total without VAT'));?></th>
                     <th class="text-center"><?php p($l->t('VAT Rate'));?></th>
                     <th class="text-center"><?php p($l->t('Total VAT'));?></th>
-                    <th class="text-center"><?php p($l->t('Total Price'));?></th>
+                    <th class="text-center"><?php p($l->t('Total including VAT'));?></th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
     </div>
+
+    <div class="comment"><?php p($l->t('Total price'));?></div>
+
+    <div class="div-prix">
+        <table id="totalglobal" class="table-prix">
+            <thead>
+                <tr>
+                    <th class="text-center"><?php p($l->t('Total without VAT'));?></th>
+                    <th class="text-center"><?php p($l->t('Total VAT'));?></th>
+                    <th class="text-center"><?php p($l->t('Total including VAT'));?></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
     <div class="alert-info-custom">
         <p><span id="mentions_default"><?php p($l->t('Please set in global configuration'));?></span></p>
     </div>

@@ -3,14 +3,22 @@
   "description": "Company administration",
   "type": "project",
   "license": "AGPL-3.0-or-later",
+
   "authors": [
     {
       "name": "Benjamin AIMARD"
     }
   ],
+
   "require": {
-    "mpdf/mpdf": "^8.2"
+    "mpdf/mpdf": "^8.2.5",
+    "atgp/factur-x": "^3.3"
   },
+
+  "replace": {
+    "psr/log": "*"
+  },
+
   "require-dev": {
     "dbrekelmans/bdi": "^1.0",
     "phpunit/phpunit": "^9.5",

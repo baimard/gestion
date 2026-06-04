@@ -26,6 +26,18 @@
             <input type="text" style="float:none;width:80%;" id="adresse" class="configuration-content editableConfiguration" data-table="configuration" data-column="adresse" data-id="" value="<?php p($l->t('Loading …')); ?>" />
         </div>
 
+        <!-- Zip Code -->
+        <div title="<?php p($l->t('Zip code')); ?>" class="configuration-global">
+            <label class="configuration" for="zip_code"><span class="material-symbols-outlined">store</span><?php p($l->t('Zip code'));?></label>
+            <input type="text" style="float:none;width:80%;" id="zip_code" class="configuration-content editableConfiguration" data-table="configuration" data-column="zip_code" data-id="" value="<?php p($l->t('Loading …')); ?>" />
+        </div>
+
+        <!-- City Name -->
+        <div title="<?php p($l->t('City name')); ?>" class="configuration-global">
+            <label class="configuration" for="city_name"><span class="material-symbols-outlined">store</span><?php p($l->t('City name'));?></label>
+            <input type="text" style="float:none;width:80%;" id="city_name" class="configuration-content editableConfiguration" data-table="configuration" data-column="city_name" data-id="" value="<?php p($l->t('Loading …')); ?>" />
+        </div>
+
         <!-- Legal One -->
         <div title="<?php p($l->t('First line in the footer of your Quote/Invoice with all legal information you need')); ?>" class="configuration-global">
             <label class="configuration" for="legal_one"><span class="material-symbols-outlined">store</span><?php p($l->t('Legal One'));?></label>
@@ -56,9 +68,21 @@
             <input type="number" style="float:none;width:80%;" id="tva_default" class="configuration-content editableConfiguration" data-table="configuration" data-column="tva_default" data-id="" value="<?php p($l->t('Loading …')); ?>" /> %
         </div>
 
+        <!-- VAT Number -->
+        <div title="<?php p($l->t('VAT number')); ?>" class="configuration-global">
+            <label class="configuration" for="vat_number"><span class="material-symbols-outlined">store</span><?php p($l->t('VAT number'));?></label>
+            <input type="text" style="float:none;width:80%;" id="vat_number" class="configuration-content editableConfiguration" data-table="configuration" data-column="vat_number" data-id="" value="<?php p($l->t('Loading …')); ?>" />
+        </div>
+
+        <!-- IBAN -->
+        <div title="IBAN" class="configuration-global">
+            <label class="configuration" for="iban"><span class="material-symbols-outlined">account_balance</span>IBAN</label>
+            <input type="text" style="float:none;width:80%;" id="iban" class="configuration-content editableConfiguration" data-table="configuration" data-column="iban" data-id=""value="<?php p($l->t('Loading …')); ?>" />
+        </div>
+        
         <!-- Facture Prefixe -->
         <div title="<?php p($l->t('Set prefix for generated invoice')); ?>" class="configuration-global">
-            <label class="configuration" for="facture_prefixe"><span class="material-symbols-outlined">store</span><?php p($l->t('Facture Prefixe'));?></label>
+            <label class="configuration" for="facture_prefixe"><span class="material-symbols-outlined">store</span><?php p($l->t('Invoice prefixe'));?></label>
             <input type="text" style="float:none;width:80%;" id="facture_prefixe" class="configuration-content editableConfiguration" data-table="configuration" data-column="facture_prefixe" data-id="" value="<?php p($l->t('Loading …')); ?>" />
         </div>
 
@@ -81,5 +105,6 @@
                 <?php p($l->t('Loading …')); ?>
             </textarea>
         </div>
+
     </div>
 </div>

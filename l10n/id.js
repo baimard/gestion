@@ -62,6 +62,7 @@ OC.L10N.register(
     "December" : "Desember",
     "Total" : "Total",
     "Loading …" : "Memuat …",
+    "City name" : "Nama kota",
     "Mail" : "Surat",
     "About" : "Tentang."
 },

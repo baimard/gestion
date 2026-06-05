@@ -54,6 +54,7 @@ OC.L10N.register(
     "December" : "Tháng 12",
     "Total" : "Tổng cộng",
     "Loading …" : "Đang tải...",
+    "City name" : "Tên thành phố",
     "Mail" : "Thư",
     "Customers" : "Khách hàng",
     "About" : "Giới thiệu"

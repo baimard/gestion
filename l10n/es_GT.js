@@ -49,6 +49,7 @@ OC.L10N.register(
     "November" : "Noviembre",
     "December" : "Diciembre",
     "Total" : "Total",
+    "City name" : "Ciudad",
     "Mail" : "Correo",
     "About" : "Acerca de"
 },

@@ -54,6 +54,7 @@
     "December" : "Dezembro",
     "Total" : "Total",
     "Loading …" : "A carregar...",
+    "City name" : "Nome da cidade",
     "Mail" : "Correio",
     "About" : "Sobre"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"

@@ -37,6 +37,7 @@ OC.L10N.register(
     "November" : "නොවැම්බර්",
     "December" : "දෙසැම්බර්",
     "Loading …" : "පූරණය වෙමින් …",
+    "City name" : "නගරයේ නම",
     "Mail" : "තැපෑල",
     "About" : "පිළිබඳව"
 },

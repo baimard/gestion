@@ -53,6 +53,7 @@
     "December" : "Decembris",
     "Total" : "Kopā",
     "Loading …" : "Ielādē…",
+    "City name" : "Pilsētas nosaukums",
     "Mail" : "E-pasts",
     "About" : "Par"
 },"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);"

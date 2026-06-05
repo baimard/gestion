@@ -66,6 +66,7 @@ OC.L10N.register(
     "December" : "December",
     "Total" : "Totalt",
     "Loading …" : "Läser in …",
+    "City name" : "Stad",
     "Mail" : "E-post",
     "Customers" : "Kunder",
     "INFORMATION" : "INFORMATION",

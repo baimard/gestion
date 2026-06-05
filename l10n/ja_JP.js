@@ -73,6 +73,7 @@ OC.L10N.register(
     "December" : "12月",
     "Total" : "合計",
     "Loading …" : "読み込み中…",
+    "City name" : "都市名",
     "Mail" : "メール",
     "Customers" : "顧客",
     "INFORMATION" : "情報",

@@ -56,6 +56,7 @@ OC.L10N.register(
     "December" : "Dezembro",
     "Total" : "Total",
     "Loading …" : "A carregar...",
+    "City name" : "Nome da cidade",
     "Mail" : "Correio",
     "About" : "Sobre"
 },

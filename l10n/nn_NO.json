@@ -37,6 +37,7 @@
     "November" : "November",
     "December" : "Desember",
     "Total" : "Totalt",
+    "City name" : "Bynamn",
     "Mail" : "Post",
     "About" : "Om"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

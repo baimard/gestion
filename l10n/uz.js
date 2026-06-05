@@ -33,6 +33,7 @@ OC.L10N.register(
     "January" : "January",
     "Total" : "Total",
     "Loading …" : "Yuklanmoqda…",
+    "City name" : "Shahar nomi",
     "Mail" : "Mail",
     "About" : "About"
 },

@@ -69,6 +69,7 @@ OC.L10N.register(
     "December" : "Gruodis",
     "Total" : "Iš viso",
     "Loading …" : "Įkeliama…",
+    "City name" : "Miesto pavadinimas",
     "Mail" : "Paštas",
     "Customers" : "Klientai",
     "INFORMATION" : "INFORMACIJA",

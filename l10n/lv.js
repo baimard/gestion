@@ -55,6 +55,7 @@ OC.L10N.register(
     "December" : "Decembris",
     "Total" : "Kopā",
     "Loading …" : "Ielādē…",
+    "City name" : "Pilsētas nosaukums",
     "Mail" : "E-pasts",
     "About" : "Par"
 },

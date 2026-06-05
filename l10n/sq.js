@@ -47,6 +47,7 @@ OC.L10N.register(
     "November" : "Nëntor",
     "December" : "Dhjetor",
     "Total" : "Total",
+    "City name" : "Emri i qytetit",
     "Mail" : "Posta",
     "About" : "Rreth "
 },

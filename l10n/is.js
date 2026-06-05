@@ -63,6 +63,7 @@ OC.L10N.register(
     "December" : "Desember",
     "Total" : "Alls",
     "Loading …" : "Hleð inn …",
+    "City name" : "Heiti borgar",
     "Mail" : "Póstur",
     "INFORMATION" : "UPPLÝSINGAR",
     "Save folder" : "Vista möppu",

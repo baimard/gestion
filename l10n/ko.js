@@ -65,6 +65,7 @@ OC.L10N.register(
     "December" : "12월",
     "Total" : "합계",
     "Loading …" : "불러오는 중 ...",
+    "City name" : "도시 이름",
     "Mail" : "메일",
     "Customers" : "고객",
     "About" : "정보"

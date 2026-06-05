@@ -57,6 +57,7 @@ OC.L10N.register(
     "December" : "דצמבר",
     "Total" : "סך הכול",
     "Loading …" : "בטעינה…",
+    "City name" : "שם העיר",
     "Mail" : "דואר",
     "Customers" : "לקוחות",
     "INFORMATION" : "מידע",

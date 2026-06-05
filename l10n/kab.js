@@ -23,6 +23,7 @@ OC.L10N.register(
     "Year" : "Aseggas",
     "January" : "Yennayer",
     "Loading …" : "Asali ...",
+    "City name" : "Isem n temdint",
     "Mail" : "Tirawt",
     "About" : "Ɣef"
 },

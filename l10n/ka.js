@@ -56,6 +56,7 @@ OC.L10N.register(
     "November" : "November",
     "December" : "December",
     "Loading …" : "Loading …",
+    "City name" : "City name",
     "Mail" : "წერილი",
     "About" : "About"
 },

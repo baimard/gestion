@@ -57,6 +57,7 @@ OC.L10N.register(
     "November" : "Noiembrie",
     "December" : "Decembrie",
     "Loading …" : "Se încarcă…",
+    "City name" : "Numele orașului",
     "Mail" : "Mail",
     "About" : "Despre"
 },

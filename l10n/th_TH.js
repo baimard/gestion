@@ -41,6 +41,7 @@ OC.L10N.register(
     "October" : "ตุลาคม",
     "November" : "พฤศจิกายน",
     "December" : "ธันวาคม",
+    "City name" : "ชื่อเมือง",
     "Mail" : "จดหมาย",
     "About" : "เกี่ยวกับ"
 },

@@ -45,6 +45,7 @@
     "November" : "Nëntor",
     "December" : "Dhjetor",
     "Total" : "Total",
+    "City name" : "Emri i qytetit",
     "Mail" : "Posta",
     "About" : "Rreth "
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

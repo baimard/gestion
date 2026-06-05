@@ -44,6 +44,7 @@ OC.L10N.register(
     "November" : "ნოემბერი",
     "December" : "დეკემბერი",
     "Total" : "სულ",
+    "City name" : "ქალაქის სახელი",
     "Mail" : "ფოსტა",
     "About" : "შესახებ"
 },

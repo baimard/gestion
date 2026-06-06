@@ -382,6 +382,7 @@ OC.L10N.register(
     "First name appears in the Quote/Invoice header as a contact" : "Το όνομα εμφανίζεται στην επικεφαλίδα της Προσφοράς/Τιμολογίου ως επαφή",
     "Last name appears in the Quote/Invoice header as a contact" : "Το επώνυμο εμφανίζεται στην επικεφαλίδα της Προσφοράς/Τιμολογίου ως επαφή",
     "Show company address in the Quote/Invoice header" : "Εμφάνιση διεύθυνσης εταιρίας στην επικεφαλίδα της Προσφοράς/Τιμολογίου",
+    "City name" : "Πόλη",
     "First line in the footer of your Quote/Invoice with all legal information you need" : "Πρώτη γραμμή στο υποσέλιδο της Προσφοράς/Τιμολογίου σας με όλες τις νομικές πληροφορίες που χρειάζεστε",
     "Legal One" : "Νομική Ένα",
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Δεύτερη γραμμή στο υποσέλιδο της Προσφοράς/Τιμολογίου σας με όλες τις νομικές πληροφορίες που χρειάζεστε",

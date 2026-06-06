@@ -368,6 +368,7 @@ OC.L10N.register(
     "First name appears in the Quote/Invoice header as a contact" : "يظهر الاسم الأول في ترويسة عرض الأسعار / الفاتورة كجهة اتصال",
     "Last name appears in the Quote/Invoice header as a contact" : "يظهر الاسم الأخير في ترويسة عرض الأسعار/ الفاتورة كجهة اتصال",
     "Show company address in the Quote/Invoice header" : "إظهار عنوان الشركة في ترويسة عرض الأسعار/الفاتورة",
+    "City name" : "اسم المدينة",
     "First line in the footer of your Quote/Invoice with all legal information you need" : "السطر الأول في تذييل عرض الأسعار/الفاتورة والذي يحتوي على جميع المعلومات القانونية التي تحتاجها.",
     "Legal One" : "بيان قانوني رقم واحد",
     "Second line in the footer of your Quote/Invoice with all legal information you need" : " السطر الثاني في تذييل عرض الأسعار/ الفاتورة والذي يحتوي علي جميع المعلومات القانونية التي تحتاجها.",

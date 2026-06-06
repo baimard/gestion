@@ -381,6 +381,7 @@ OC.L10N.register(
     "First name appears in the Quote/Invoice header as a contact" : "Jméno se objeví v záhlaví nabídky/faktury jako kontakt",
     "Last name appears in the Quote/Invoice header as a contact" : "Příjmení se objeví v záhlaví nabídky/faktury jako kontakt",
     "Show company address in the Quote/Invoice header" : "Zobrazit adresu společnosti v záhlaví nabídky/faktury",
+    "City name" : "Název obce",
     "First line in the footer of your Quote/Invoice with all legal information you need" : "První řádek v zápatí vaší nabídky/faktury se všemi právními informacemi, které je třeba uvést",
     "Legal One" : "Právní jedna",
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Druhý řádek v zápatí vaší nabídky/faktury se všemi právními informacemi, které je třeba uvést",

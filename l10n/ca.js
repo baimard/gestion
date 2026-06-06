@@ -357,6 +357,7 @@ OC.L10N.register(
     "First name appears in the Quote/Invoice header as a contact" : "El nom apareix a la capçalera del Pressupost/Factura com a contacte",
     "Last name appears in the Quote/Invoice header as a contact" : "El cognom apareix a la capçalera del Pressupost/Factura com a contacte",
     "Show company address in the Quote/Invoice header" : "Mostra l'adreça de l'empresa a la capçalera del Pressupost/Factura",
+    "City name" : "Nom de la ciutat",
     "First line in the footer of your Quote/Invoice with all legal information you need" : "Primera línia al peu de pàgina del vostre Pressupost/Factura amb tota la informació legal que necessiteu",
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Segona línia al peu de pàgina del vostre Pressupost/Factura amb tota la informació legal que necessiteu",
     "Show phone number in the Quote/Invoice header" : "Mostra el número de telèfon a la capçalera del Pressupost/Factura",

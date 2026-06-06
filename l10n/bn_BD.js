@@ -35,6 +35,7 @@ OC.L10N.register(
     "October" : "অক্টোবর",
     "November" : "নভেম্বর",
     "December" : "ডিসেম্বর",
+    "City name" : "শহর",
     "Mail" : "মেইল",
     "About" : "সমপরকে"
 },

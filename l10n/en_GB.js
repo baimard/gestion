@@ -382,6 +382,7 @@ OC.L10N.register(
     "First name appears in the Quote/Invoice header as a contact" : "First name appears in the Quote/Invoice header as a contact",
     "Last name appears in the Quote/Invoice header as a contact" : "Last name appears in the Quote/Invoice header as a contact",
     "Show company address in the Quote/Invoice header" : "Show company address in the Quote/Invoice header",
+    "City name" : "City name",
     "First line in the footer of your Quote/Invoice with all legal information you need" : "First line in the footer of your Quote/Invoice with all legal information you need",
     "Legal One" : "Legal One",
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Second line in the footer of your Quote/Invoice with all legal information you need",

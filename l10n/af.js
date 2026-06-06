@@ -36,6 +36,7 @@ OC.L10N.register(
     "Legal notice" : "Regskennisgewing",
     "Total" : "Totaal",
     "Loading …" : "Laai …",
+    "City name" : "Stadnaam",
     "Mail" : "Pos",
     "About" : "Oor"
 },

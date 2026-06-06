@@ -51,6 +51,7 @@ OC.L10N.register(
     "December" : "Decembro",
     "Total" : "Sumo",
     "Loading …" : "Ŝargas …",
+    "City name" : "Urbonomo",
     "Mail" : "Retpoŝtilo",
     "About" : "Pri"
 },

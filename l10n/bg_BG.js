@@ -356,6 +356,7 @@ OC.L10N.register(
     "First name appears in the Quote/Invoice header as a contact" : "Собственото име се появява в заглавката на оферта/фактура като контакт",
     "Last name appears in the Quote/Invoice header as a contact" : "Фамилното име се появява в заглавката на оферта/фактура като контакт",
     "Show company address in the Quote/Invoice header" : "Показване на адреса на фирмата в заглавката на оферта/фактура",
+    "City name" : "Име на града",
     "First line in the footer of your Quote/Invoice with all legal information you need" : "Първи ред в долния колонтитул на вашата оферта/фактура с цялата необходима правна информация",
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Втори ред в долния колонтитул на вашата оферта/фактура с цялата необходима ви правна информация",
     "Show phone number in the Quote/Invoice header" : "Показване на телефонния номер в заглавката на оферта/фактура",

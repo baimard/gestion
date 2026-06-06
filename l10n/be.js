@@ -50,6 +50,7 @@ OC.L10N.register(
     "December" : "Снежань",
     "Total" : "Усяго",
     "Loading …" : "Загрузка …",
+    "City name" : "Назва горада",
     "Mail" : "Пошта",
     "Customers" : "Кліенты",
     "About" : "Аб праграме"

@@ -382,6 +382,7 @@ OC.L10N.register(
     "First name appears in the Quote/Invoice header as a contact" : "Vorname der in der Kopfzeile von Angebot oder Rechnung als Kontakt erscheint",
     "Last name appears in the Quote/Invoice header as a contact" : "Nachname der in der Kopfzeile von Angebot oder Rechnung als Kontakt erscheint",
     "Show company address in the Quote/Invoice header" : "Firmenanschrift in der Kopfzeile von Angebot oder Rechnung anzeigen",
+    "City name" : "Stadtname",
     "First line in the footer of your Quote/Invoice with all legal information you need" : "1. Zeile der Fußzeile von Angebot oder Rechnung mit allen rechtlichen Informationen die Sie benötigen",
     "Legal One" : "Rechtliches Eins",
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "2. Zeile der Fußzeile von Angebot oder Rechnung mit allen rechtlichen Informationen die Sie benötigen",

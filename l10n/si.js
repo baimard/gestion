@@ -16,6 +16,7 @@ OC.L10N.register(
     "Next" : "ඊළඟ",
     "Previous" : "පෙර",
     "Open" : "විවෘත",
+    "Delete" : "Delete",
     "Email sent" : "විද්‍යුත් තැපෑල යවන ලදි",
     "Body" : "අන්තර්ගතය",
     "Send" : "යවන්න",

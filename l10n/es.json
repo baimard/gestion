@@ -380,6 +380,7 @@
     "First name appears in the Quote/Invoice header as a contact" : "El nombre aparece en la cabecera del presupuesto/factura como contacto",
     "Last name appears in the Quote/Invoice header as a contact" : "El apellido aparece en la cabecera del presupuesto/factura como contacto",
     "Show company address in the Quote/Invoice header" : "Mostrar la dirección de la empresa en la cabecera del presupuesto/factura",
+    "City name" : "Nombre de ciudad",
     "First line in the footer of your Quote/Invoice with all legal information you need" : "Primera línea en el pie de página de su presupuesto/factura con toda la información legal que necesite",
     "Legal One" : "Legal Uno",
     "Second line in the footer of your Quote/Invoice with all legal information you need" : "Segunda línea en el pie de página de su presupuesto/factura con toda la información legal que necesite",

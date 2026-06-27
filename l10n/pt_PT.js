@@ -41,6 +41,7 @@ OC.L10N.register(
     "Date:" : "Data:",
     "Signature:" : "Assinatura:",
     "Legal notice" : "Informação legal",
+    "Header" : "Cabeçalho",
     "Year" : "Year",
     "January" : "Janeiro",
     "February" : "Fevereiro",

@@ -31,12 +31,6 @@ module.exports =
       new webpack.DefinePlugin({
         'process.platform': JSON.stringify('browser') // or 'win32' if you need to simulate Windows
       }),
-      new webpack.ProvidePlugin({
-           $: 'jquery',
-           jQuery: 'jquery',
-           "window.jQuery": "jquery",
-           jquery: 'jquery'
-       }),
      ],
     resolve: {
       fallback: {

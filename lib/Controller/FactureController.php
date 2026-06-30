@@ -40,7 +40,6 @@ class FactureController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @UseSession
 	 */
 	#[UseSession]

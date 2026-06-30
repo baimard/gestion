@@ -34,9 +34,11 @@
                 <tbody>
                     <?php 
                         foreach ($_['shareUsers'] as $user){
+                            $displayName = htmlspecialchars($user->getDisplayName(), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+                            $uid = htmlspecialchars($user->getUID(), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
                             echo '<tr>';
-                            echo '<td>'.$user->getDisplayName().'</td>';
-                            echo '<td><button class="deleteShareUser" data-uid="'.$user->getUID().'">X</button></td>';
+                            echo '<td>'.$displayName.'</td>';
+                            echo '<td><button class="deleteShareUser" data-uid="'.$uid.'">X</button></td>';
                             echo '</tr>';
                         } 
                     ?>

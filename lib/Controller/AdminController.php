@@ -40,9 +40,6 @@ class AdminController extends Controller {
 		}
 	}
 
-	/**
-	 * @NoCSRFRequired
-	 */
 	public function backup(){
 
 		try {

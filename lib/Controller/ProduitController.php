@@ -37,7 +37,6 @@ class ProduitController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @UseSession
 	 */
 	#[UseSession]

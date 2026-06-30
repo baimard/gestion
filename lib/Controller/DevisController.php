@@ -40,7 +40,6 @@ class DevisController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @UseSession
 	 */
 	#[UseSession]
@@ -50,7 +49,6 @@ class DevisController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @param string $id
 	 * @UseSession
 	 */

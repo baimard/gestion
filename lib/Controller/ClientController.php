@@ -48,7 +48,6 @@ class ClientController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @UseSession
 	 */
 	#[UseSession]

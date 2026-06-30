@@ -83,7 +83,7 @@ export function capture(afterCapturefunction) {
  * Le fichier est aussi sauvegardé dans Nextcloud.
  */
 export function captureFacturX() {
-  showMessage(t("gestion", "Génération de la facture électronique…"));
+  showMessage(t("gestion", "Generating the electronic invoice…"));
 
   const pdfElement  = document.getElementById("pdf");
   const facturxBtn  = document.getElementById("facturx");
@@ -115,7 +115,7 @@ export function captureFacturX() {
   })
   .then(response => {
     if (!response.ok) {
-      return response.json().then(err => { throw new Error(err.message || "Erreur serveur"); });
+      return response.json().then(err => { throw new Error(err.message || "Server error"); });
     }
     return response.blob();
   })
@@ -126,11 +126,11 @@ export function captureFacturX() {
     a.download = name;
     a.click();
     window.URL.revokeObjectURL(url);
-    showMessage(t("gestion", "Facture électronique générée et sauvegardée."));
+    showMessage(t("gestion", "Electronic invoice generated and saved."));
   })
   .catch(error => {
-    console.error("Erreur Factur-X :", error);
-    showMessage(t("gestion", "Erreur lors de la génération de la facture électronique : ") + error.message);
+    console.error("Factur-X error:", error);
+    showMessage(t("gestion", "Error generating the electronic invoice: ") + error.message);
   });
 }
 
@@ -139,7 +139,7 @@ export function captureFacturX() {
  * Le fichier est aussi sauvegardé dans Nextcloud.
  */
 export function captureFacturXml() {
-  showMessage(t("gestion", "Génération du XML Factur-X…"));
+  showMessage(t("gestion", "Generating Factur-X XML…"));
 
   const pdfElement = document.getElementById("pdf");
   const facturxBtn = document.getElementById("facturx-xml");
@@ -157,7 +157,7 @@ export function captureFacturXml() {
  * Génère le PDF Factur-X courant et l'envoie Ã  Iopole.
  */
 export function sendFacturXToIopole() {
-  showMessage(t("gestion", "Envoi de la facture électronique à Iopole"));
+  showMessage(t("gestion", "Sending the electronic invoice to Iopole"));
 
   const pdfElement = document.getElementById("pdf");
   const facturxBtn = document.getElementById("facturx-iopole");
@@ -185,15 +185,15 @@ export function sendFacturXToIopole() {
   })
   .then(response => {
     if (!response.ok) {
-      return response.json().then(err => { throw new Error(err.message || "Erreur serveur"); });
+      return response.json().then(err => { throw new Error(err.message || "Server error"); });
     }
     return response.json();
   })
   .then(data => {
-    showMessage(t("gestion", "Facture envoyée à Iopole ! Identifiant : ") + data.iopoleInvoiceId);
+    showMessage(t("gestion", "Invoice sent to Iopole! Identifier: ") + data.iopoleInvoiceId);
   })
   .catch(error => {
-    console.error("Erreur Iopole :", error);
-    showMessage(t("gestion", "Erreur lors de l'envoi à Iopole : ") + error.message);
+    console.error("Iopole error:", error);
+    showMessage(t("gestion", "Error sending to Iopole: ") + error.message);
   });
 }

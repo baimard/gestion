@@ -633,7 +633,7 @@ export function generateFacturXmlRequest(factureId, name, folder) {
     })
     .then(response => {
         if (!response.ok) {
-            return response.json().then(err => { throw new Error(err.message || 'Erreur serveur'); });
+            return response.json().then(err => { throw new Error(err.message || 'Server error'); });
         }
         return response.blob();
     })
@@ -644,10 +644,10 @@ export function generateFacturXmlRequest(factureId, name, folder) {
         a.download = name;
         a.click();
         window.URL.revokeObjectURL(url);
-        showMessage(t('gestion', 'Fichier XML Factur-X généré et sauvegardé.'));
+        showMessage(t('gestion', 'Factur-X XML file generated and saved.'));
     })
     .catch(error => {
-        showMessage(t('gestion', 'Erreur lors de la génération du XML : ') + error.message);
+        showMessage(t('gestion', 'Error generating the XML: ') + error.message);
         console.error(error);
     });
 };

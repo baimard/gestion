@@ -58,7 +58,7 @@ export function capture(afterCapturefunction) {
     })
   })
   .then(response => {
-    if (!response.ok) throw new Error("Erreur serveur");
+    if (!response.ok) throw new Error("Server error");
     return response.blob();
   })
   .then(blob => {

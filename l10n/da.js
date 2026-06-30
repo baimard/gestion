@@ -56,6 +56,8 @@ OC.L10N.register(
     "Date:" : "Dato:",
     "Signature:" : "Signatur:",
     "Invoice" : "Faktura",
+    "Customer" : "Kunde",
+    "Legal information" : "Juridiske oplysninger",
     "Legal notice" : "Juridisk notits",
     "Header" : "Overskrift",
     "Year" : "År",

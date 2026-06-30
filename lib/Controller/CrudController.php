@@ -16,7 +16,6 @@ class CrudController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @param string $table
 	 * @param string $column
 	 * @param string $data

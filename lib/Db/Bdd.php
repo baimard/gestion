@@ -216,7 +216,7 @@ class Bdd {
      * UPDATE
      */
     public function gestion_update($table, $column, $data, $id, $id_configuration) {
-        if (in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)) {
+        if (in_array($table, $this->whiteTable, true) && in_array($column, $this->whiteColumn, true)) {
 
             $safeData = strip_tags($data, '<br>');
             $safeData = html_entity_decode($safeData, ENT_QUOTES, 'UTF-8');
@@ -235,7 +235,7 @@ class Bdd {
      * UPDATE
      */
     public function gestion_update_configuration($table, $column, $data, $id, $idNextcloud){
-        if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
+        if(in_array($table, $this->whiteTable, true) && in_array($column, $this->whiteColumn, true)){
             $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ? AND `id_nextcloud` = ?";
             $this->execSQLNoData($sql, array(htmlentities(rtrim($data)), $id, $idNextcloud));
             return true;
@@ -248,7 +248,7 @@ class Bdd {
      * TODO Autorisation à faire cette action par l'utilisateur
      */
     public function gestion_updateConfiguration($table, $column, $data, $id){
-        if(in_array($table, $this->whiteTable) && in_array($column, $this->whiteColumn)){
+        if(in_array($table, $this->whiteTable, true) && in_array($column, $this->whiteColumn, true)){
             $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ?";
             $this->execSQLNoData($sql, array(htmlentities(rtrim($data)), $id));
             return true;
@@ -260,7 +260,7 @@ class Bdd {
      * DUPLICATE
      */
     public function gestion_duplicate($table, $id, $CurrentCompany){
-        if(in_array($table, $this->whiteTable)){
+        if(in_array($table, $this->whiteTable, true)){
             $sql = "SELECT * FROM ".$this->tableprefix.$table." WHERE `id` = ? AND `id_configuration` = ?";
             $res = $this->execSQLNoJsonReturn($sql, array($id, $CurrentCompany));
             
@@ -334,7 +334,7 @@ class Bdd {
      * DELETE
      */
     public function gestion_delete($table, $id, $CurrentCompany){
-        if(in_array($table, $this->whiteTable)){
+        if(in_array($table, $this->whiteTable, true)){
             $sql = "DELETE FROM ".$this->tableprefix.$table." WHERE `id` = ? AND `id_configuration` = ?";
             $this->execSQLNoData($sql, array($id, $CurrentCompany));
             return true;

@@ -16,7 +16,6 @@ class CompanyController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @UseSession
 	 */
 	#[UseSession]
@@ -26,7 +25,6 @@ class CompanyController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @UseSession
 	 */
 	#[UseSession]
@@ -36,7 +34,6 @@ class CompanyController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @UseSession
 	 * @param string $companyID
 	 */

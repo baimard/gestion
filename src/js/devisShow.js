@@ -10,7 +10,7 @@ import { capture, sendMail } from "./pdf";
 window.addEventListener("DOMContentLoaded", function () {
     globalConfiguration();
 
-    Client.getClientByIdDevis($("#devisid").data("id"));
+    Client.getClientByIdDevis(document.getElementById("devisid").dataset.id);
     getProduitsById();
 
     var pdf = document.getElementById("pdf");

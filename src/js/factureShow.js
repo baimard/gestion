@@ -11,7 +11,7 @@ import { capture, captureFacturX, captureFacturXml, sendFacturXToIopole, sendMai
 window.addEventListener("DOMContentLoaded", function () {
     globalConfiguration();
 
-    Client.getClientByIdDevis($("#devisid").data("id"));
+    Client.getClientByIdDevis(document.getElementById("devisid").dataset.id);
     getProduitsById();
 
     // Bouton 1 — Sauvegarder dans Nextcloud (pdf)

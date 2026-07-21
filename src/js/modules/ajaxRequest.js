@@ -349,11 +349,17 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
     .then(data => {
         var res = JSON.parse(data);
         var curY = "";
-        var curRow;
+        var curRow = null;
         var total = 0;
+        var tableBody = document.querySelector("#Statistical tbody");
+
+        if (tableBody) {
+            tableBody.innerHTML = "";
+        }
+
         res.forEach(function(item) {
             if (curY !== item.y) {
-                if (curY !== "") {
+                if (curRow !== null) {
                     insertCell(curRow, -1, cur.format(total));
                     total = 0;
                 }
@@ -361,13 +367,15 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
                 curRow = insertRow("Statistical", -1, 0, item.y);
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
                 total += Math.round(item.total);
-            } else {
+            } else if (curRow !== null) {
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
                 total += Math.round(item.total);
             }
         });
-        // At the end
-        insertCell(curRow, -1, cur.format(total));
+
+        if (curRow !== null) {
+            insertCell(curRow, -1, cur.format(total));
+        }
     })
     .catch(error => {
         showError(error);

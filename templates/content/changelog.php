@@ -1,7 +1,7 @@
 <div syle="display: none;" id="modalConfig" class="modal">
 <div class="modal-content">
 	<span class="modalClose">&times;</span>
-	<h2><?php p($l->t('Welcome to GESTION')); ?> 2.8.11</h2>
+	<h2><?php p($l->t('Welcome to GESTION')); ?> 3.1.0</h2>
 
 	<p style="font-size:14px;margin-bottom:20px;">
 		<?php p($l->t(
@@ -40,7 +40,16 @@
 	<hr />
 	<h2><?php p($l->t('Newsletter')); ?></h2>
 	<p style="font-size:14px;"><?php p($l->t('Version 2.7.0 You can now share a company with others users!')); ?></p>
-	<p style="font-size:14px;margin-bottom:20px;"><?php p($l->t('Version 2.8.0 introduces a complete overhaul of the PDF generation system, bringing improved design, layout consistency and compatibility with more readers.')); ?></p>
+	<p style="font-size:14px;"><?php p($l->t('Version 2.8.0 introduces a complete overhaul of the PDF generation system, bringing improved design, layout consistency and compatibility with more readers.')); ?></p>
+	<p style="font-size:14px;"><?php p($l->t('Version 3.1.0 focuses on electronic invoicing and prepares Gestion for the French e-invoicing transition.')); ?></p>
+	<ul style="font-size:14px;margin-bottom:20px;">
+		<li><?php p($l->t('Generate a complete Factur-X invoice that combines a readable PDF with embedded structured XML data.')); ?></li>
+		<li><?php p($l->t('Export the electronic XML part separately when you need to check, archive or send only the machine-readable invoice data.')); ?></li>
+		<li><?php p($l->t('Create EN16931-compatible invoice data with invoice lines, VAT breakdowns, totals, seller and buyer addresses, VAT number and payment information.')); ?></li>
+		<li><?php p($l->t('Send electronic invoices to Iopole directly from the invoice screen when the connector is configured by your administrator.')); ?></li>
+		<li><?php p($l->t('New company and customer fields help produce better electronic invoices, including VAT number, postal code, city, country code and IBAN.')); ?></li>
+		<li><?php p($l->t('Invoices now provide dedicated actions for saving the standard PDF, generating the Factur-X PDF+XML file, generating the XML file and sending the invoice to Iopole.')); ?></li>
+	</ul>
 
 	<hr/>
 	<h2><?php p($l->t('Changelog')); ?></h2>
@@ -50,6 +59,7 @@
 	<h2><?php p($l->t('Special thanks to:')); ?></h2>
 	<ul>
 		<li>Timo RAINO - <?php p($l->t('for the big work on legal notice for France')); ?></li>
+		<li><?php p($l->t('The MIAGE class at the University of Bordeaux')); ?> - <?php p($l->t('for the extraordinary work on the application this year')); ?></li>
 		<li>Aaron Stevens - <?php p($l->t('for the coffee ;)')); ?></li>
 		<li>@CarlKDE - <?php p($l->t('for the coffee ;)')); ?></li>
 		<li>little5bull - <?php p($l->t('for the coffee ;)')); ?></li>

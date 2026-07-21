@@ -1,6 +1,4 @@
-const path = require('path');
 const webpack = require('webpack');
-const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports =
 [
@@ -27,74 +25,66 @@ module.exports =
       minimize: false
     },
     plugins: [
-      new VueLoaderPlugin(),
       new webpack.DefinePlugin({
-        'process.platform': JSON.stringify('browser') // or 'win32' if you need to simulate Windows
+        'process.platform': JSON.stringify('browser')
       }),
-     ],
+    ],
     resolve: {
       fallback: {
-          "http": false,
-          "https": false,
-          "stream": false,
-          process: require.resolve('process/browser')
+        "http": false,
+        "https": false,
+        "stream": false,
+        process: require.resolve('process/browser')
       },
-      alias: {
-        "icons": path.resolve(__dirname, "node_modules/vue-material-design-icons")
-      },
-      extensions: ['.vue', '.js', '.json'] // Assurez-vous d'inclure les extensions existantes
+      extensions: ['.js', '.json']
     },
     module: {
-        rules: [
+      rules: [
+        {
+          test: /\.less$/,
+          use: [
             {
-              test: /\.vue$/,
-              loader: 'vue-loader'
+              loader: 'style-loader',
             },
             {
-              test: /\.less$/,
-              use: [
-                {
-                  loader: 'style-loader',
-                },
-                {
-                  loader: 'css-loader',
-                },
-                {
-                  loader: 'less-loader',
-                },
-              ],
+              loader: 'css-loader',
             },
             {
-                test: /\.(css|scss)$/i,
-                use: [
-                    {
-                      loader: 'style-loader',
-                    },
-                    {
-                      loader: 'css-loader',
-                    },
-                    {
-                      loader: 'postcss-loader',
-                      options: {
-                        postcssOptions: {
-                          plugins: () => [
-                            require('autoprefixer')
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      loader: 'sass-loader',
-                    },
-                ],
-              },
-              {
-                test: /\.(ttf|eot|svg|gif|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                use: [{
-                    loader: 'file-loader'
-                }]
-              },
+              loader: 'less-loader',
+            },
           ],
-      },
+        },
+        {
+          test: /\.(css|scss)$/i,
+          use: [
+            {
+              loader: 'style-loader',
+            },
+            {
+              loader: 'css-loader',
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: () => [
+                    require('autoprefixer')
+                  ]
+                }
+              }
+            },
+            {
+              loader: 'sass-loader',
+            },
+          ],
+        },
+        {
+          test: /\.(ttf|eot|svg|gif|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          use: [{
+            loader: 'file-loader'
+          }]
+        },
+      ],
+    },
   },
 ];

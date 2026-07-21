@@ -50,14 +50,18 @@ export function globalConfiguration(checkConfig=true){
  * 
  */
 export function configureDT() {
-    $('.editable').attr('title', t('gestion', 'Editable (Click to change)'));
+    document.querySelectorAll('.editable').forEach(element => {
+        element.setAttribute('title', t('gestion', 'Editable (Click to change)'));
+    });
 }
 
 /**
  * 
  */
 export function configureShow() {
-    $('.sendmail').attr('title', t('gestion', 'Your global Nextcloud mail server need to be configured'));
+    document.querySelectorAll('.sendmail').forEach(element => {
+        element.setAttribute('title', t('gestion', 'Your global Nextcloud mail server need to be configured'));
+    });
 }
 
 /**
@@ -72,13 +76,14 @@ export function showDone() {
  * @param {*} el 
  */
 export function checkSelect(el) {
-    $(el).each(function (arrayID, elem) {
-        $(elem).find('option').each(function () {
-            if (this.value == elem.getAttribute("data-current")) {
-                $(this).prop('selected', true)
+    const elements = el instanceof Element ? [el] : Array.from(el);
+    elements.forEach(elem => {
+        elem.querySelectorAll('option').forEach(option => {
+            if (option.value == elem.getAttribute("data-current")) {
+                option.selected = true;
             }
-        })
-    })
+        });
+    });
 }
 
 
@@ -98,7 +103,7 @@ export function checkSelectPurJs(el) {
  */
 export function LoadDT(DT, response, cls) {
     DT.clear();
-    $.each(JSON.parse(response), function (arrayID, myresp) {
+    JSON.parse(response).forEach(myresp => {
         let c = new cls(myresp);
         DT.row.add(c.getDTRow());
     });
@@ -153,8 +158,9 @@ export function modifyCell(r, positionColumn = -1, data){
  */
  export function path(res) {
     var myres = JSON.parse(res)[0];
-    $("#theFolder").val(myres.path);
-    $("#theFolder").attr('data-id', myres.id);
+    const folder = document.getElementById("theFolder");
+    folder.value = myres.path;
+    folder.setAttribute('data-id', myres.id);
 };
 
 
@@ -207,8 +213,10 @@ fetch(url, options)
 export function checkAutoIncrement(response){
     var myresp = JSON.parse(response)[0];
     if(myresp.auto_invoice_number==1){
-        $('.deleteItem').remove();
-        $(".factureNum").removeClass("editable");
+        document.querySelectorAll('.deleteItem').forEach(element => element.remove());
+        document.querySelectorAll(".factureNum").forEach(element => {
+            element.classList.remove("editable");
+        });
     }
 }
 

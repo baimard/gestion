@@ -297,32 +297,42 @@ export function getStats() {
  * @param {*} f1 
  */
 export function configuration(f1) {
-    $.ajax({
-        url: baseUrl + '/getConfiguration',
-        type: 'PROPFIND',
-        contentType: 'application/json',
-        async: false,
-    }).done(function (response) {
-        f1(response);
-    }).fail(function (response, code) {
-        showError(response);
-    });
+    const request = new XMLHttpRequest();
+    request.open('PROPFIND', baseUrl + '/getConfiguration', false);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.onload = function () {
+        if (request.status >= 200 && request.status < 300) {
+            f1(request.responseText);
+        } else {
+            showError(request.responseText);
+        }
+    };
+    request.onerror = function () {
+        showError(request.responseText);
+    };
+    request.send();
 }
 
 /**
  * 
  */
 export function isconfig() {
-    $.ajax({
-        url: baseUrl + '/isconfig',
-        type: 'GET',
-        contentType: 'application/json'
-    }).done(function (response) {
+    fetch(baseUrl + '/isconfig', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(response => {
         if (!response) {
             var modal = document.getElementById("modalConfig");
             modal.style.display = "block";
         }
     })
+    .catch(error => {
+        showError(error);
+    });
 }
 
 /**
@@ -611,7 +621,9 @@ export function saveNextcloud(myData) {
     })
     .then(response => {
         if (response.ok) {
-            showMessage(t('gestion', 'Save in') + " " + $("#theFolder").val() + "/" + $("#pdf").data("folder"));
+            const folder = document.getElementById("theFolder").value;
+            const pdfFolder = document.getElementById("pdf").dataset.folder;
+            showMessage(t('gestion', 'Save in') + " " + folder + "/" + pdfFolder);
         } else {
             throw new Error('There is an error');
         }

@@ -3,30 +3,33 @@
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>gestion</id>
     <name>Gestion</name>
-    <summary lang="en">Simplified invoice management application</summary>
-    <description lang="en"><![CDATA[# Company Management with Gestion
-Gestion is a Nextcloud application designed to simplify invoicing for freelancers and micro-enterprises.
+    <summary lang="en">Simplified invoicing and electronic billing for small businesses</summary>
+    <description lang="en"><![CDATA[# Run your business with Gestion
+Gestion is a Nextcloud application designed to make invoicing simple, secure, and efficient for freelancers, micro-enterprises, and small businesses.
 
 Key Features:
 * Add and manage customer profiles
 * Create and customize product entries
-* Generate quotes and invoices in PDF format
-* Send PDFs directly via email from the application
+* Generate professional quotes and invoices in PDF format
+* Generate electronic invoices in the Factur-X format
+* Send PDFs directly by email from the application
 * Store generated documents securely within your Nextcloud instance
-* Track your business activities efficiently
+* Track your business activities more efficiently
 
-✨ The PDF generation system has been recently redesigned to improve layout, styling, and compatibility.
+✨ Electronic invoicing is now supported in France. Gestion can generate Factur-X invoices that combine a human-readable PDF with structured electronic invoice data.
 
-This application is tailored to meet the invoicing needs of small businesses, particularly within the French market. It offers a user-friendly interface and integrates seamlessly with Nextcloud's ecosystem.
+You remain free to choose the approved platform or service where you want to submit your electronic invoices. Direct API connections with electronic invoicing platforms are planned for a future release.
 
-A presentation video is available in the user documentation to guide you through the application's features.
+The PDF generation system has also been redesigned to improve document layout, styling, and compatibility.
 
-If you require adaptations of this application to comply with your country's regulations, please open an issue on the GitHub repository.
+Gestion integrates seamlessly with the Nextcloud ecosystem and keeps your business data under your control. A presentation video is available in the user documentation to help you discover the application's main features.
+
+If you require adaptations to comply with your country's regulations, please open an issue on the GitHub repository.
 
 [![Donate](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-yellow.svg)](https://www.buymeacoffee.com/benjaminaimard)
 
 ]]></description>
-    <version>3.0.3</version>
+    <version>3.0.5</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>

@@ -221,6 +221,7 @@ class Bdd {
             $safeData = strip_tags($data, '<br>');
             $safeData = html_entity_decode($safeData, ENT_QUOTES, 'UTF-8');
             $safeData = rtrim($safeData);
+            $safeData = $this->normalizeColumnData($column, $safeData);
 
             $sql = "UPDATE " . $this->tableprefix . $table . " SET $column = ? WHERE `id` = ? AND `id_configuration` = ?";
             $this->execSQLNoData($sql, array($safeData, $id, $id_configuration));
@@ -228,7 +229,7 @@ class Bdd {
             return true;
         }
         return false;
-}
+    }
 
 
     /**
@@ -236,8 +237,9 @@ class Bdd {
      */
     public function gestion_update_configuration($table, $column, $data, $id, $idNextcloud){
         if(in_array($table, $this->whiteTable, true) && in_array($column, $this->whiteColumn, true)){
+            $safeData = $this->normalizeColumnData($column, htmlentities(rtrim($data)));
             $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ? AND `id_nextcloud` = ?";
-            $this->execSQLNoData($sql, array(htmlentities(rtrim($data)), $id, $idNextcloud));
+            $this->execSQLNoData($sql, array($safeData, $id, $idNextcloud));
             return true;
         }
         return false;
@@ -249,11 +251,25 @@ class Bdd {
      */
     public function gestion_updateConfiguration($table, $column, $data, $id){
         if(in_array($table, $this->whiteTable, true) && in_array($column, $this->whiteColumn, true)){
+            $safeData = $this->normalizeColumnData($column, htmlentities(rtrim($data)));
             $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ?";
-            $this->execSQLNoData($sql, array(htmlentities(rtrim($data)), $id));
+            $this->execSQLNoData($sql, array($safeData, $id));
             return true;
         }
         return false;
+    }
+
+
+    private function normalizeColumnData($column, $data){
+        if ($column === 'zip_code') {
+            return substr($data, 0, 20);
+        }
+
+        if ($column === 'country_code') {
+            return substr($data, 0, 5);
+        }
+
+        return $data;
     }
 
     /**
@@ -372,7 +388,7 @@ class Bdd {
                                      $this->l->t('INVOICE'),
                                      $this->l->t('Your company vat number'),
                                      $this->l->t('Your company city name'),
-                                     $this->l->t('Your company zip code'))); 
+                                     ''));
     return true; }
 
     public function deleteCompany($idCompany, $idNextcloud){

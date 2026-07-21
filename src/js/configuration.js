@@ -2,7 +2,7 @@
 import "../css/mycss.less";
 
 import { addShareUser, configuration, createCompany, deleteCompany, delShareUser, updateDBConfiguration} from "./modules/ajaxRequest.js";
-import { globalConfiguration } from "./modules/mainFunction.js";
+import { globalConfiguration, parseConfigurationResponse } from "./modules/mainFunction.js";
 import "./listener/main_listener";
 import { getAutoIncrement, setCurrencyList, setFormatList } from "./modules/list.js";
 
@@ -108,8 +108,8 @@ function safeValue(value) {
 
 function loadConfigurationDT(response) {
 
-    // Parse the JSON response
-    const data = JSON.parse(response);
+    // Parse the JSON response and ensure the table only receives an array.
+    const data = parseConfigurationResponse(response);
 
     // Iterate over each item in the parsed JSON array
     data.forEach(function (myresp) {

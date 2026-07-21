@@ -1,6 +1,7 @@
 
-
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+// Keep the Google Fonts import as a CSS import so Less does not fetch it
+// during the build. This prevents transient network errors from breaking webpack.
+@import (css) url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 
 .tabledt {
@@ -76,4 +77,3 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
   margin-bottom: 10px;
   margin-left: 25px;
 }
-

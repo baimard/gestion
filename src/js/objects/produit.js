@@ -1,5 +1,6 @@
 import { showError } from "@nextcloud/dialogs";
 import { baseUrl, cur, LoadDT, showDone } from "../modules/mainFunction.js";
+import { setCsrfRequestHeader } from "../modules/csrf.js";
 
 export class Produit {
 
@@ -39,6 +40,7 @@ export class Produit {
     var oReq = new XMLHttpRequest();
     oReq.open('PROPFIND', baseUrl + '/getProduits', true);
     oReq.setRequestHeader("Content-Type", "application/json");
+    setCsrfRequestHeader(oReq);
     oReq.onload = function(e){
       if (this.status == 200) {
         LoadDT(productDT, JSON.parse(this.response), Produit);
@@ -56,6 +58,7 @@ export class Produit {
    static newProduct(dt) {
     var oReq = new XMLHttpRequest();
     oReq.open('POST', baseUrl + '/produit/insert', true);
+    setCsrfRequestHeader(oReq);
     oReq.onload = function(e){
       if (this.status == 200) {
         showDone()

@@ -1,5 +1,6 @@
 import { updateDB } from "../modules/ajaxRequest.js";
 import { baseUrl, checkSelectPurJs, LoadDT} from "../modules/mainFunction.js";
+import { csrfHeaders, setCsrfRequestHeader } from "../modules/csrf.js";
 import { showSuccess, showError } from "@nextcloud/dialogs";
 
 export class Client {
@@ -49,6 +50,7 @@ export class Client {
   static newClient(dt) {
     var oReq = new XMLHttpRequest();
     oReq.open('POST', baseUrl + '/client/insert', true);
+    setCsrfRequestHeader(oReq);
     oReq.onload = function(e){
       if (this.status == 200) {
         showSuccess()
@@ -68,6 +70,7 @@ export class Client {
     var oReq = new XMLHttpRequest();
     oReq.open('PROPFIND', baseUrl + '/getClients', true);
     oReq.setRequestHeader("Content-Type", "application/json");
+    setCsrfRequestHeader(oReq);
     oReq.onload = function(e){
       if (this.status == 200) {
         LoadDT(clientDT, JSON.parse(this.response), Client);
@@ -86,6 +89,7 @@ export class Client {
     var oReq = new XMLHttpRequest();
     oReq.open('PROPFIND', baseUrl + '/getClients', true);
     oReq.setRequestHeader("Content-Type", "application/json");
+    setCsrfRequestHeader(oReq);
     oReq.onload = function(e){
       if (this.status == 200) {
         callback(JSON.parse(this.response));
@@ -101,9 +105,9 @@ export class Client {
 
     fetch(baseUrl + '/clientbyiddevis', {
       method: 'POST',
-      headers: {
+      headers: csrfHeaders({
         'Content-Type': 'application/json'
-      },
+      }),
       body: JSON.stringify(myData)
     })
     .then(response => {

@@ -119,7 +119,7 @@ class Bdd {
                                             $this->l->t('Address'),
                                             $this->l->t('zip_code'),
                                             $this->l->t('city_name'),
-                                            $this->l->t('country_code')
+                                            'FR'
                                         )
                                     );
         return true;

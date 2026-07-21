@@ -4,6 +4,47 @@ import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest
 import { generateUrl } from "@nextcloud/router";
 export var baseUrl = generateUrl('/apps/gestion');
 export var cur = null;
+export const defaultCurrencyCode = 'EUR';
+export const defaultCurrencyLocale = 'en-EN';
+
+/**
+ * Parse configuration responses that can be returned either as an array,
+ * a JSON-encoded array, or a JSON-encoded string containing the array.
+ *
+ * @param {*} response
+ * @return {Array}
+ */
+export function parseConfigurationResponse(response) {
+    try {
+        let data = response;
+
+        if (typeof data === 'string') {
+            data = JSON.parse(data);
+        }
+
+        if (typeof data === 'string') {
+            data = JSON.parse(data);
+        }
+
+        return Array.isArray(data) ? data : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+/**
+ * Return a valid ISO 4217 currency code for Intl.NumberFormat.
+ *
+ * @param {*} currencyCode
+ * @return {string}
+ */
+function normalizeCurrencyCode(currencyCode) {
+    if (typeof currencyCode !== 'string' || currencyCode.trim() === '') {
+        return defaultCurrencyCode;
+    }
+
+    return currencyCode.trim().toUpperCase();
+}
 
 /**
  * 
@@ -169,11 +210,14 @@ export function modifyCell(r, positionColumn = -1, data){
  * @param {*} response 
  */
 export function getCurrency(response) {
+    const myresp = parseConfigurationResponse(response)[0] || {};
+    const locale = myresp.format || defaultCurrencyLocale;
+    const currency = normalizeCurrencyCode(myresp.devise);
+
     try {
-        var myresp = JSON.parse(response)[0];
-        cur = new Intl.NumberFormat(myresp.format, { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+        cur = new Intl.NumberFormat(locale, { style: 'currency', currency: currency, minimumFractionDigits: 2 });
     } catch (error) {
-        cur = new Intl.NumberFormat("en-EN", { style: 'currency', currency: myresp.devise, minimumFractionDigits: 2 });
+        cur = new Intl.NumberFormat(defaultCurrencyLocale, { style: 'currency', currency: defaultCurrencyCode, minimumFractionDigits: 2 });
     }
 }
 

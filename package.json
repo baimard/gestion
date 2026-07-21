@@ -1,6 +1,6 @@
 {
   "name": "gestion",
-  "version": "1.0.0",
+  "version": "3.0.5",
   "description": "Application pour gérer votre micro entreprise, client, facture, devis",
   "author": "Benjamin AIMARD",
   "contributors": [
@@ -23,7 +23,7 @@
     "watch": "NODE_ENV=development webpack --watch --config webpack.js"
   },
   "engines": {
-    "node": ">=24.11.0 <25",
+    "node": ">=24 <25",
     "npm": ">=11 <12"
   },
   "devDependencies": {

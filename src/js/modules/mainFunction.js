@@ -2,6 +2,7 @@ import { showSuccess } from "@nextcloud/dialogs";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest.js";
 import { generateUrl } from "@nextcloud/router";
+import { csrfHeaders } from "./csrf.js";
 export var baseUrl = generateUrl('/apps/gestion');
 export var cur = null;
 export const defaultCurrencyCode = 'EUR';
@@ -229,9 +230,9 @@ export function getGlobal() {
 const url = baseUrl + '/getConfiguration';
 const options = {
     method: 'PROPFIND',
-    headers: {
+    headers: csrfHeaders({
         'Content-Type': 'application/json'
-    }
+    })
 };
 
 

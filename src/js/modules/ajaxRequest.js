@@ -1,6 +1,7 @@
 import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 import { baseUrl, cur, getGlobal, insertCell, insertRow, modifyCell } from "./mainFunction.js";
+import { csrfHeaders, setCsrfRequestHeader } from "./csrf.js";
 
 /**
  * Update data
@@ -19,10 +20,9 @@ export async function updateDB(table, column, data, id) {
     try {
         const response = await fetch(baseUrl + '/update', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'requesttoken': OC.requestToken
-            },
+            headers: csrfHeaders({
+                'Content-Type': 'application/json'
+            }),
             body: JSON.stringify(myData)
         });
 
@@ -54,10 +54,9 @@ export function updateDBConfiguration(table, column, data, id) {
 
     fetch(baseUrl + '/updateConfiguration', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        },
+        headers: csrfHeaders({
+            'Content-Type': 'application/json'
+        }),
         body: JSON.stringify(myData)
     })
     .then(response => {
@@ -78,10 +77,9 @@ export function updateDBConfiguration(table, column, data, id) {
 export function createCompany() {
     fetch(baseUrl + '/createCompany', {
         method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        }
+        headers: csrfHeaders({
+            'Content-Type': 'application/json'
+        })
     })
     .then(response => {
         if (response.ok) {
@@ -103,10 +101,9 @@ export function deleteCompany() {
     if (window.confirm(t('gestion', 'Are you sure you want to delete? (All data will be lost)'))) {
         fetch(baseUrl + '/deleteCompany', {
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'requesttoken': OC.requestToken
-            }
+            headers: csrfHeaders({
+                'Content-Type': 'application/json'
+            })
         })
         .then(response => {
             if (response.ok) {
@@ -135,10 +132,9 @@ export function updateCurrentCompany(companyID) {
     
     fetch(baseUrl + '/updateSession', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        },
+        headers: csrfHeaders({
+            'Content-Type': 'application/json'
+        }),
         body: JSON.stringify(myData)
     })
     .then(response => {
@@ -171,10 +167,9 @@ export function duplicateDB(table, id, callback=null, modifier=null) {
     if (window.confirm(t('gestion', 'Are you sure you want to duplicate?'))) {
         fetch(baseUrl + '/duplicate', {
             method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'requesttoken': OC.requestToken
-            },
+            headers: csrfHeaders({
+                'Content-Type': 'application/json'
+            }),
             body: JSON.stringify(myData)
         })
         .then(response => {
@@ -207,10 +202,9 @@ export function deleteDB(table, id, callback=null, modifier=null) {
     if (window.confirm(t('gestion', 'Are you sure you want to delete?'))) {
         fetch(baseUrl + '/delete', {
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'requesttoken': OC.requestToken
-            },
+            headers: csrfHeaders({
+                'Content-Type': 'application/json'
+            }),
             body: JSON.stringify(myData)
         })
         .then(response => {
@@ -243,10 +237,9 @@ export function drop(id, callback=null, modifier=null, value='up') {
     
     fetch(baseUrl + '/drop', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        },
+        headers: csrfHeaders({
+            'Content-Type': 'application/json'
+        }),
         body: JSON.stringify(myData)
     })
     .then(response => {
@@ -268,10 +261,9 @@ export function drop(id, callback=null, modifier=null, value='up') {
 export function getStats() {
     fetch(baseUrl + '/getStats', {
         method: 'PROPFIND',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        },
+        headers: csrfHeaders({
+            'Content-Type': 'application/json'
+        }),
     })
     .then(response => {
         if (response.ok) {
@@ -300,6 +292,7 @@ export function configuration(f1) {
     const request = new XMLHttpRequest();
     request.open('PROPFIND', baseUrl + '/getConfiguration', false);
     request.setRequestHeader('Content-Type', 'application/json');
+    setCsrfRequestHeader(request);
     request.onload = function () {
         if (request.status >= 200 && request.status < 300) {
             f1(request.responseText);
@@ -319,9 +312,9 @@ export function configuration(f1) {
 export function isconfig() {
     fetch(baseUrl + '/isconfig', {
         method: 'GET',
-        headers: {
+        headers: csrfHeaders({
             'Content-Type': 'application/json'
-        }
+        })
     })
     .then(response => response.json())
     .then(response => {
@@ -342,10 +335,9 @@ export function isconfig() {
 export function getAnnualTurnoverPerMonthNoVat(cur) {
     fetch(baseUrl + '/getAnnualTurnoverPerMonthNoVat', {
         method: 'PROPFIND',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        }
+        headers: csrfHeaders({
+            'Content-Type': 'application/json'
+        })
     })
     .then(response => {
         if (response.ok) {
@@ -424,10 +416,9 @@ export function updateEditableConfiguration(myCase) {
 export function listProduit(lp, id, produitid) {
     fetch(baseUrl + '/getProduits', {
         method: 'PROPFIND',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        }
+        headers: csrfHeaders({
+            'Content-Type': 'application/json'
+        })
     })
     .then(response => {
         if (response.ok) {
@@ -474,9 +465,9 @@ export function getProduitsById() {
 
     fetch(baseUrl + '/getProduitsById', {
         method: 'POST',
-        headers: {
+        headers: csrfHeaders({
             'Content-Type': 'application/json'
-        },
+        }),
         body: JSON.stringify(myData)
     })
     .then(response => {
@@ -613,10 +604,9 @@ export function getProduitsById() {
 export function saveNextcloud(myData) {
     fetch(baseUrl + '/savePDF', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        },
+        headers: csrfHeaders({
+            'Content-Type': 'application/json'
+        }),
         body: JSON.stringify(myData)
     })
     .then(response => {
@@ -637,10 +627,9 @@ export function saveNextcloud(myData) {
 export function generateFacturXmlRequest(factureId, name, folder) {
     fetch(baseUrl + '/generateFacturXml', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        },
+        headers: csrfHeaders({
+            'Content-Type': 'application/json'
+        }),
         body: JSON.stringify({ factureId, name, folder })
     })
     .then(response => {
@@ -668,7 +657,7 @@ export function getMailServerFrom(input) {
     var oReq = new XMLHttpRequest();
     oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
     oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.setRequestHeader("requesttoken", oc_requesttoken);
+    setCsrfRequestHeader(oReq);
     oReq.onload = function(e){
         if (this.status == 200) {
             input.value = JSON.parse(this.response)['mail'];
@@ -686,7 +675,7 @@ export function backup(){
     var oReq = new XMLHttpRequest();
     oReq.open('GET', baseUrl + '/backup', true);
     oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.setRequestHeader("requesttoken", oc_requesttoken);
+    setCsrfRequestHeader(oReq);
     oReq.onload = function(){
         if (this.status == 200) {
             showSuccess(t('gestion', 'Save in')+' '+JSON.parse(this.response)['name']+'\n'+t('gestion','(do not forget to show hidden folders)'));
@@ -704,10 +693,9 @@ export function addShareUser(email){
 
     fetch(baseUrl + '/addShareUser', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        },
+        headers: csrfHeaders({
+            'Content-Type': 'application/json'
+        }),
         body: JSON.stringify(myData)
     })
     .then(response => {
@@ -730,10 +718,9 @@ export function delShareUser(uid){
 
     fetch(baseUrl + '/delShareUser', {
         method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'requesttoken': OC.requestToken
-        },
+        headers: csrfHeaders({
+            'Content-Type': 'application/json'
+        }),
         body: JSON.stringify(myData)
     })
     .then(response => {

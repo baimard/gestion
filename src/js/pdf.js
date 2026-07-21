@@ -1,13 +1,14 @@
 import { showMessage } from "@nextcloud/dialogs";
 import { baseUrl } from "./modules/mainFunction.js";
 import { generateFacturXmlRequest } from "./modules/ajaxRequest.js";
+import { csrfHeaders } from "./modules/csrf.js";
 
 export function sendMail(myData) {
   fetch(baseUrl + "/sendPDF", {
     method: "POST",
-    headers: {
+    headers: csrfHeaders({
       "Content-Type": "application/json"
-    },
+    }),
     body: JSON.stringify(myData)
   })
   .then(response => {
@@ -47,10 +48,9 @@ export function capture(afterCapturefunction) {
   
   fetch(baseUrl + '/generatePDF', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'requesttoken': OC.requestToken
-    },
+    headers: csrfHeaders({
+      'Content-Type': 'application/json'
+    }),
     body: JSON.stringify({
       html: htmlContent,
       name: name,
@@ -102,10 +102,9 @@ export function captureFacturX() {
 
   fetch(baseUrl + '/generateFacturX', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'requesttoken': OC.requestToken
-    },
+    headers: csrfHeaders({
+      'Content-Type': 'application/json'
+    }),
     body: JSON.stringify({
       html:      htmlContent,
       name:      name,
@@ -173,10 +172,9 @@ export function sendFacturXToIopole() {
 
   fetch(baseUrl + '/sendFacturXToIopole', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'requesttoken': OC.requestToken
-    },
+    headers: csrfHeaders({
+      'Content-Type': 'application/json'
+    }),
     body: JSON.stringify({
       html: htmlContent,
       name: name,

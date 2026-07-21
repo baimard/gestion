@@ -1,6 +1,7 @@
 import { showError } from "@nextcloud/dialogs";
 import { generateUrl } from "@nextcloud/router";
 import { baseUrl, LoadDT, showDone } from "../modules/mainFunction.js";
+import { setCsrfRequestHeader } from "../modules/csrf.js";
 
 export class Facture {
 
@@ -50,6 +51,7 @@ export class Facture {
     var oReq = new XMLHttpRequest();
     oReq.open('PROPFIND', baseUrl + '/getFactures', true);
     oReq.setRequestHeader("Content-Type", "application/json");
+    setCsrfRequestHeader(oReq);
     oReq.onload = function(e){
       if (this.status == 200) {
         LoadDT(factureDT, JSON.parse(this.response), Facture);
@@ -70,6 +72,7 @@ export class Facture {
    static newFacture(dt) {
     var oReq = new XMLHttpRequest();
     oReq.open('POST', baseUrl + '/facture/insert', true);
+    setCsrfRequestHeader(oReq);
     oReq.onload = function(e){
       if (this.status == 200) {
         showDone()

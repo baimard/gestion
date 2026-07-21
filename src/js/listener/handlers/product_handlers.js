@@ -1,6 +1,7 @@
 import { showError } from "@nextcloud/dialogs";
 import { baseUrl } from "../../modules/mainFunction.js";
 import { getProduitsById, listProduit, updateDB } from "../../modules/ajaxRequest.js";
+import { csrfHeaders } from "../../modules/csrf.js";
 
 export function addProductToDevis() {
     const devisId = document.getElementById('devisid').dataset.id;
@@ -8,9 +9,9 @@ export function addProductToDevis() {
 
     fetch(baseUrl + '/insertProduitDevis', {
         method: 'POST',
-        headers: {
+        headers: csrfHeaders({
             'Content-Type': 'application/json'
-        },
+        }),
         body: JSON.stringify(produitDevis)
     })
         .then(function(response) {

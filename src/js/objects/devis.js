@@ -1,6 +1,7 @@
 import { generateUrl } from "@nextcloud/router";
 import { updateDB } from "../modules/ajaxRequest.js";
 import { baseUrl, checkSelectPurJs, LoadDT, showDone } from "../modules/mainFunction.js";
+import { csrfHeaders, setCsrfRequestHeader } from "../modules/csrf.js";
 
 export class Devis {
 
@@ -48,7 +49,8 @@ export class Devis {
    */
   static newDevis(dt) {
     fetch(baseUrl + '/devis/insert', {
-      method: 'POST'
+      method: 'POST',
+      headers: csrfHeaders()
     })
     .then(response => {
       if (response.ok) {
@@ -69,6 +71,7 @@ export class Devis {
     var oReq = new XMLHttpRequest();
     oReq.open('PROPFIND', baseUrl + '/getDevis', true);
     oReq.setRequestHeader("Content-Type", "application/json");
+    setCsrfRequestHeader(oReq);
     oReq.onload = function(e){
       if (this.status == 200) {
         LoadDT(devisDT, JSON.parse(this.response), Devis);
@@ -82,9 +85,9 @@ export class Devis {
   static getDevis(callback){
     fetch(baseUrl + '/getDevis', {
       method: 'PROPFIND',
-      headers: {
+      headers: csrfHeaders({
       'Content-Type': 'application/json'
-      }
+      })
     })
     .then(response => {
       if (response.ok) {

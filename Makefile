@@ -4,6 +4,10 @@ source_build_directory=$(CURDIR)/build/artifacts/source
 source_package_name=$(source_build_directory)/$(app_name)
 appstore_build_directory=$(CURDIR)/build/artifacts/appstore
 appstore_package_name=$(appstore_build_directory)/$(app_name)
+appstore_package_dir=$(appstore_build_directory)/$(app_name)
+occ=occ
+sign_app_private_key=
+sign_app_certificate=
 npm=$(shell which npm 2> /dev/null)
 composer=$(shell which composer 2> /dev/null)
 
@@ -113,43 +117,57 @@ source:
 	--exclude="../$(app_name)/js/*.log" \
  	../$(app_name)
 
-# Builds the source package for the app store, ignores php and js tests
+# Builds the source package for the app store, ignores php and js tests.
+# The appstore package is signed before archiving, as required by Nextcloud.
 .PHONY: appstore
-appstore:
+appstore: prepare-appstore sign-appstore
+	tar cvzf $(appstore_package_name).tar.gz -C $(appstore_build_directory) $(app_name)
+
+.PHONY: prepare-appstore
+prepare-appstore:
 	rm -rf $(appstore_build_directory)
 	mkdir -p $(appstore_build_directory)
-	tar cvzf $(appstore_package_name).tar.gz \
+	rsync -a \
 	--exclude-vcs \
-	--exclude="../$(app_name)/build" \
-	--exclude="../$(app_name)/tests" \
-	--exclude="../$(app_name)/Makefile" \
-	--exclude="../$(app_name)/*.log" \
-	--exclude="../$(app_name)/phpunit*xml" \
-	--exclude="../$(app_name)/phpunit*.dist" \
-	--exclude="../$(app_name)/composer.*" \
-	--exclude="../$(app_name)/js/node_modules" \
-	--exclude="../$(app_name)/node_modules" \
-	--exclude="../$(app_name)/webpack.js" \
-	--exclude="../$(app_name)/package-lock.json" \
-	--exclude="../$(app_name)/README.*" \
-	--exclude="../$(app_name)/js/tests" \
-	--exclude="../$(app_name)/js/test" \
-	--exclude="../$(app_name)/js/*.log" \
-	--exclude="../$(app_name)/js/package.json" \
-	--exclude="../$(app_name)/js/bower.json" \
-	--exclude="../$(app_name)/js/karma.*" \
-	--exclude="../$(app_name)/js/protractor.*" \
-	--exclude="../$(app_name)/package.json" \
-	--exclude="../$(app_name)/bower.json" \
-	--exclude="../$(app_name)/translationtool.phar" \
-	--exclude="../$(app_name)/karma.*" \
-	--exclude="../$(app_name)/protractor\.*" \
-	--exclude="../$(app_name)/.*" \
-	--exclude="../$(app_name)/src" \
-	--exclude="../$(app_name)/js/.*" \
-	--exclude="../$(app_name)/drivers" \
-	--exclude="../$(app_name)/*.sh" \
-	../$(app_name)
+	--exclude="/build" \
+	--exclude="/tests" \
+	--exclude="/Makefile" \
+	--exclude="/*.log" \
+	--exclude="/phpunit*xml" \
+	--exclude="/phpunit*.dist" \
+	--exclude="/composer.*" \
+	--exclude="/js/node_modules" \
+	--exclude="/node_modules" \
+	--exclude="/webpack.js" \
+	--exclude="/package-lock.json" \
+	--exclude="/README.*" \
+	--exclude="/js/tests" \
+	--exclude="/js/test" \
+	--exclude="/js/*.log" \
+	--exclude="/js/package.json" \
+	--exclude="/js/bower.json" \
+	--exclude="/js/karma.*" \
+	--exclude="/js/protractor.*" \
+	--exclude="/package.json" \
+	--exclude="/bower.json" \
+	--exclude="/translationtool.phar" \
+	--exclude="/karma.*" \
+	--exclude="/protractor.*" \
+	--exclude="/.*" \
+	--exclude="/src" \
+	--exclude="/js/.*" \
+	--exclude="/drivers" \
+	--exclude="/*.sh" \
+	./ $(appstore_package_dir)/
+
+.PHONY: sign-appstore
+sign-appstore:
+	@test -n "$(sign_app_private_key)" || (echo "Missing sign_app_private_key=/path/to/private.key" && exit 1)
+	@test -n "$(sign_app_certificate)" || (echo "Missing sign_app_certificate=/path/to/certificate.crt" && exit 1)
+	@test -f "$(sign_app_private_key)" || (echo "Private key not found: $(sign_app_private_key)" && exit 1)
+	@test -f "$(sign_app_certificate)" || (echo "Certificate not found: $(sign_app_certificate)" && exit 1)
+	$(occ) integrity:sign-app --privateKey="$(sign_app_private_key)" --certificate="$(sign_app_certificate)" --path="$(appstore_package_dir)"
+	@test -f "$(appstore_package_dir)/appinfo/signature.json" || (echo "App signing failed: appinfo/signature.json was not generated" && exit 1)
 
 .PHONY: test
 test:

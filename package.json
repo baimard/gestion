@@ -23,8 +23,8 @@
     "watch": "NODE_ENV=development webpack --watch --config webpack.js"
   },
   "engines": {
-    "node": "^20.10.0",
-    "npm": "^10.0.0"
+    "node": "^24.0.0",
+    "npm": "^11.0.0"
   },
   "devDependencies": {
     "@nextcloud/browserslist-config": "^3.1.2",

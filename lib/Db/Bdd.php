@@ -150,7 +150,7 @@ class Bdd {
     /**
      * Insert invoice
      */
-    public function insertFacture($idNextcloud){
+    public function insertFacture($idNextcloud, $datePaiement = null){
         $last=0;
         $last = $this->lastinsertid("facture", $idNextcloud) + 1;
 
@@ -160,16 +160,21 @@ class Bdd {
             array($idNextcloud)
         );
 
+        $date = new \DateTimeImmutable();
+        $paymentDate = $datePaiement ?: $date->modify('+1 month')->format('Y-m-d');
+
         $sql = "INSERT INTO `".$this->tableprefix."facture`
         (`date`,`id_configuration`,`num`,`date_paiement`,`type_paiement`,`id_devis`,`user_id`)
         VALUES
-        (date('now'), ?, ?, date('now', '+1 month'), ?, 0, ?);";
+        (?, ?, ?, ?, ?, 0, ?);";
 
         $this->execSQLNoData(
             $sql,
             array(
+                $date->format('Y-m-d'),
                 $idNextcloud,
                 $pref[0]['facture_prefixe']."-".$last,
+                $paymentDate,
                 $this->l->t('Means of payment'),
                 $last
             )

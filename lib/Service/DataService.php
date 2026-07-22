@@ -69,8 +69,8 @@ class DataService {
 		return $this->myDb->insertDevis($this->currentCompany());
 	}
 
-	public function insertFacture() {
-		return $this->myDb->insertFacture($this->currentCompany());
+	public function insertFacture($datePaiement = null) {
+		return $this->myDb->insertFacture($this->currentCompany(), $datePaiement);
 	}
 
 	public function insertProduit() {

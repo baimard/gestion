@@ -44,6 +44,7 @@ class FactureController extends Controller {
 	 */
 	#[UseSession]
 	public function insertFacture() {
-		return $this->dataService->insertFacture();
+		$datePaiement = $this->request->getParam('date_paiement');
+		return $this->dataService->insertFacture($datePaiement);
 	}
 }

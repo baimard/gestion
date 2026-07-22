@@ -26,7 +26,6 @@ OC.L10N.register(
     "EUR" : "Евро",
     "INVOICE" : "ФАКТУРА",
     "Gestion" : "Gestion",
-    "Simplified invoice management application" : "Опростено приложение за управление на фактури",
     "Choose work folder" : "Избор на работна папка",
     "Choose" : "Изберете",
     "Please create a new product" : "Моля, създайте нов продукт",

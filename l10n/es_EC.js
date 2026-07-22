@@ -26,7 +26,6 @@ OC.L10N.register(
     "EUR" : "EUR",
     "INVOICE" : "FACTURA",
     "Gestion" : "Gestión",
-    "Simplified invoice management application" : "Aplicación simplificada de gestión de facturación",
     "Choose work folder" : "Elegir carpeta de trabajo",
     "Choose" : "Seleccionar",
     "Please create a new product" : "Por favor, crea un nuevo producto",

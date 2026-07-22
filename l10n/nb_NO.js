@@ -26,7 +26,6 @@ OC.L10N.register(
     "EUR" : "Euro",
     "INVOICE" : "FAKTURA",
     "Gestion" : "Gestion",
-    "Simplified invoice management application" : "Forenklet applikasjon for fakturahåndtering",
     "Choose work folder" : "Velg arbeidsmappe",
     "Choose" : "Velg",
     "Please create a new product" : "Vennligst opprett et nytt produkt",

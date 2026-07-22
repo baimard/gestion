@@ -24,7 +24,6 @@ OC.L10N.register(
     "EUR" : "EUR",
     "INVOICE" : "RAČUN",
     "Gestion" : "Gestion",
-    "Simplified invoice management application" : "Enostaven program za upravljanje računov",
     "Choose work folder" : "Izbor delovne mape",
     "Choose" : "Izbor",
     "Please create a new product" : "Ustvariti je treba izdelek",

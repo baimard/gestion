@@ -26,7 +26,6 @@ OC.L10N.register(
     "EUR" : "EUR",
     "INVOICE" : "发票",
     "Gestion" : "Gestion",
-    "Simplified invoice management application" : "简易发票管理应用程序",
     "Choose work folder" : "选择工作文件夹",
     "Choose" : "选择",
     "Please create a new product" : "请新建一个产品",

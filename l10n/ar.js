@@ -26,7 +26,6 @@ OC.L10N.register(
     "EUR" : "يورو",
     "INVOICE" : "فاتورة",
     "Gestion" : "تطبيق Gestion",
-    "Simplified invoice management application" : "تطبيق مبسط لإدارة الفاتورة",
     "Choose work folder" : "اختر مجلد العمل",
     "Choose" : "إختر",
     "Please create a new product" : "الرجاء إنشاء منتج جديد",

@@ -26,7 +26,6 @@ OC.L10N.register(
     "EUR" : "EUR",
     "INVOICE" : "FAKTURA",
     "Gestion" : "Kudeaketa",
-    "Simplified invoice management application" : "Fakturak kudeatzeko aplikazio sinplifikatua",
     "Choose work folder" : "Aukeratu lanerako karpeta",
     "Choose" : "Aukeratu",
     "Please create a new product" : "Mesedez, sortu produktu berri bat",

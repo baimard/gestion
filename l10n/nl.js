@@ -23,7 +23,6 @@ OC.L10N.register(
     "EUR" : "EUR",
     "INVOICE" : "FACTUUR",
     "Gestion" : "Gestion",
-    "Simplified invoice management application" : "Eenvoudige factuurbeheertoepassing",
     "Choose work folder" : "Kies werkmap",
     "Choose" : "Kies",
     "Please create a new product" : "Creëer alsjeblieft een nieuw procuct",

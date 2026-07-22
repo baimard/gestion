@@ -70,8 +70,13 @@ export class Facture {
    * @param {*} dt 
    */
    static newFacture(dt) {
+    const paymentDate = new Date();
+    paymentDate.setMonth(paymentDate.getMonth() + 1);
+    const defaultPaymentDate = paymentDate.toLocaleDateString('en-CA');
+
     var oReq = new XMLHttpRequest();
     oReq.open('POST', baseUrl + '/facture/insert', true);
+    oReq.setRequestHeader("Content-Type", "application/json");
     setCsrfRequestHeader(oReq);
     oReq.onload = function(e){
       if (this.status == 200) {
@@ -81,7 +86,9 @@ export class Facture {
         showError(this.response);
       }
     };
-    oReq.send();
+    oReq.send(JSON.stringify({
+      date_paiement: defaultPaymentDate,
+    }));
   }
 
 }

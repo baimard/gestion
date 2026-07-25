@@ -56,7 +56,7 @@
 	</li>
 	<li class="app-navigation-item"><center><b><?= p($l->t('Save folder'));?></b></center></li>
 	<li class="app-navigation-entry">
-		<input style="margin-left:10px;width:270px;" id="theFolder" data-table="configuration" data-column="path" data-id="" type="text" placeholder="<?= p($l->t('Please choose a folder'));?>">
+		<input style="margin-left:10px;width:270px;" id="theFolder" type="text" placeholder="<?= p($l->t('Please choose a folder'));?>">
 	</li>
 	
 	<li><center><a href="#"><button id="about" style="margin-left:10px;width:270px;"><?php p($l->t('About'));?></button></a></center></li>

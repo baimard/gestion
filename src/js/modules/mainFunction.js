@@ -195,15 +195,22 @@ export function modifyCell(r, positionColumn = -1, data){
 }
 
 /**
- * 
- * @param {*} res 
+ * Load the PDF save folder for the current company.
+ *
+ * @param {*} response
  */
- export function path(res) {
-    var myres = JSON.parse(res)[0];
+export function path(response) {
+    const configurationRows = parseConfigurationResponse(response);
+    const currentConfiguration = configurationRows[0] || {};
     const folder = document.getElementById("theFolder");
-    folder.value = myres.path;
-    folder.setAttribute('data-id', myres.id);
-};
+
+    if (!folder) {
+        return;
+    }
+
+    folder.value = currentConfiguration.path || "";
+    folder.setAttribute('data-id', currentConfiguration.id || "");
+}
 
 
 /**

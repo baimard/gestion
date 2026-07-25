@@ -1,0 +1,201 @@
+/*
+ * Styles dedicated to mPDF.
+ *
+ * Keep this file free of CSS custom properties, flexbox, CSS grid and
+ * browser-only selectors. mPDF receives literal values so PDF rendering does
+ * not depend on the active Nextcloud theme.
+ */
+
+body,
+#PDFcontent {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #222222;
+    background-color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.titre-centre {
+    width: 100%;
+    text-align: center;
+}
+
+.inline {
+    display: inline;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.comment {
+    width: 100%;
+    margin: 20px 0;
+    line-height: 1.5;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#headertable {
+    width: 100%;
+    margin: 0;
+    font-size: 12px;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+#headertable tbody,
+#headertable tr,
+#headertable td {
+    color: #222222;
+    background-color: #ffffff;
+}
+
+#headertable td {
+    width: 33.333%;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.table-produit,
+.table-prix {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 12px;
+    border-collapse: collapse;
+    border: 1px solid #d8dce0;
+}
+
+.table-produit th,
+.table-prix th {
+    padding: 9px 8px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #00679e;
+    border: 1px solid #d8dce0;
+}
+
+.table-produit th {
+    text-align: left;
+}
+
+.table-produit td,
+.table-prix td {
+    padding: 8px;
+    color: #222222;
+    background-color: #ffffff;
+    border: 1px solid #d8dce0;
+}
+
+.table-produit tbody tr:nth-child(even) td,
+.table-prix tbody tr:nth-child(even) td {
+    background-color: #f3f5f7;
+}
+
+.table-produit th:nth-child(4),
+.table-produit th:nth-child(5),
+.table-produit th:nth-child(6),
+.table-produit th:nth-child(7),
+.table-produit th:nth-child(8),
+.table-produit td:nth-child(4),
+.table-produit td:nth-child(5),
+.table-produit td:nth-child(6),
+.table-produit td:nth-child(7),
+.table-produit td:nth-child(8),
+.table-prix td {
+    text-align: right;
+}
+
+.div-prix {
+    margin-top: 20px;
+}
+
+.table-section-title {
+    margin-top: 20px;
+    padding: 9px 12px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    background-color: #00679e;
+    border: 1px solid #005782;
+}
+
+.alert-info-custom {
+    width: 75%;
+    margin: 20px auto;
+    padding: 10px 15px;
+    color: #15566b;
+    text-align: center;
+    background-color: #e8f4f8;
+    border: 1px solid #b8dce8;
+}
+
+.table-mentions-signature,
+.table-mentions-signature-facture {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.table-mentions-signature-facture {
+    width: 75%;
+}
+
+.cell-mentions,
+.cell-signature {
+    width: 50%;
+    padding: 15px;
+    color: #333333;
+    vertical-align: top;
+    background-color: #f8f9fa;
+    border: 1px solid #d8dce0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.mentions-titre {
+    margin-bottom: 10px;
+    color: #15566b;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mentions-ligne {
+    margin: 4px 0;
+}
+
+.signature-title {
+    margin: 10px 0;
+    color: #333333;
+    font-size: 16px;
+    text-align: center;
+}
+
+.signature-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.signature-table th,
+.signature-table td {
+    padding: 10px;
+    color: #222222;
+    text-align: left;
+    background-color: #ffffff;
+    border: 1px solid #d8dce0;
+}
+
+.signature-table .row-signature th,
+.signature-table .row-signature td {
+    height: 80px;
+    vertical-align: top;
+    background-color: #fefefe;
+}

@@ -16,9 +16,9 @@ Key Features:
 * Store generated documents securely within your Nextcloud instance
 * Track your business activities more efficiently
 
-✨ Electronic invoicing is now supported in France. Gestion can generate Factur-X invoices that combine a human-readable PDF with structured electronic invoice data.
+✨ Electronic invoicing is supported in France. Gestion can generate Factur-X invoices that combine a human-readable PDF with structured electronic invoice data.
 
-You remain free to choose the approved platform or service where you want to submit your electronic invoices. Direct API connections with electronic invoicing platforms are planned for a future release.
+Factur-X files can always be generated and downloaded without using an external platform. Each company can also select and configure a compatible approved electronic invoicing platform. Iopole is the first integrated provider and the provider architecture is designed to support additional platforms.
 
 The PDF generation system has also been redesigned to improve document layout, styling, and compatibility.
 
@@ -29,20 +29,18 @@ If you require adaptations to comply with your country's regulations, please ope
 [![Donate](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-yellow.svg)](https://www.buymeacoffee.com/benjaminaimard)
 
 ]]></description>
-    <version>3.1.1</version>
+    <version>3.1.2</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>
 	<category>office</category>
 	<category>organization</category>
     <website>https://github.com/baimard/gestion</website>
-    <documentation>
-        <user>https://baimard.github.io/gestion/</user>
-    </documentation>
+    <documentation><user>https://baimard.github.io/gestion/</user></documentation>
     <discussion>https://github.com/baimard/gestion/discussions</discussion>
     <bugs>https://github.com/baimard/gestion/issues</bugs>
     <repository>https://github.com/baimard/gestion</repository>
-    <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/index.png">https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/index.png</screenshot>
+    <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/index.png">https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/about.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/about.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/config.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/devis.png</screenshot>
@@ -60,10 +58,6 @@ If you require adaptations to comply with your country's regulations, please ope
         <admin-section>OCA\Gestion\Sections\GestionAdmin</admin-section>
     </settings>
     <navigations>
-        <navigation>
-            <name>Gestion</name>
-            <route>gestion.view.index</route>
-            <icon>app.svg</icon>
-        </navigation>
+        <navigation><name>Gestion</name><route>gestion.view.index</route><icon>app.svg</icon></navigation>
     </navigations>
 </info>

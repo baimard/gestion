@@ -1,289 +1,248 @@
-/* Prevent modal show */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-  }
-  
-  .modal-content {
-    background-color: var(--color-main-background);
-    color: var(--color-main-text);
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-  }
-  
-  .modal-content a {
-    text-decoration: underline;
-  }
-  
-  .modalClose {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .modalClose:hover,
-  .modalClose:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
+/* ==========================================================================
+   Variables générales
+   ========================================================================== */
 
+:root {
+    --gestion-primary: var(--color-primary-element, #00679e);
+    --gestion-primary-hover: var(--color-primary-element-hover, #005782);
+    --gestion-primary-light: var(--color-primary-element-light, #e8f3f8);
 
-#hello {
-	color: red;
+    --gestion-background: var(--color-main-background, #ffffff);
+    --gestion-text: var(--color-main-text, #222222);
+    --gestion-text-muted: #5f6368;
+
+    --gestion-border: #d8dce0;
+    --gestion-border-light: #e8eaed;
+    --gestion-surface: #f7f8f9;
+    --gestion-surface-alt: #f1f3f5;
+
+    --gestion-danger: #d32f2f;
+    --gestion-danger-hover: #b71c1c;
+
+    --gestion-info-background: #e8f4f8;
+    --gestion-info-border: #b8dce8;
+    --gestion-info-text: #15566b;
+
+    --gestion-radius: 6px;
+    --gestion-spacing-xs: 4px;
+    --gestion-spacing-sm: 8px;
+    --gestion-spacing-md: 12px;
+    --gestion-spacing-lg: 20px;
+
+    --gestion-font-size-small: 12px;
+    --gestion-font-size-normal: 14px;
+    --gestion-font-size-large: 16px;
 }
 
-#formulaire {
-	margin-left:20px;
-	margin-top:20px;
-}
+
+/* ==========================================================================
+   Structure générale
+   ========================================================================== */
 
 #content {
-	width:100%;
-  border-radius: none;
-  /*min-width: 1600px; /*bug #67*/
+    width: 100%;
+    border-radius: 0;
 }
 
 #contentTable {
-  background-color: var(--color-main-background);
-  padding-left: 10px;
-  padding-right: 10px;
-  width: 100%;
+    width: 100%;
+    padding: 0 10px;
+    background-color: var(--gestion-background);
 }
 
 #app {
-	width:100%;
-  display: flex;
-  margin-right: 20px;
+    display: flex;
+    width: 100%;
+    margin-right: 20px;
 }
 
-#Statistical {
-  table-layout: auto;
-  white-space: pre-wrap;
+#formulaire {
+    margin: 20px 0 0 20px;
 }
 
-#Statistical th{
-  border: 1px solid;
-  background-color: var(--color-primary-element-light);
-  color:var(--color-primary-text);
-  text-align:center;
-  width:100px;
+#hello {
+    color: var(--gestion-danger);
 }
 
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+#PDFcontent {
+    width: 100%;
+    background-color: #ffffff;
+    color: #222222;
 }
 
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-	font-size: 3.5rem;
-  }
+
+/* ==========================================================================
+   Fenêtres modales
+   ========================================================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
 }
+
+.modal-content {
+    width: 50%;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    color: var(--gestion-text);
+    background-color: var(--gestion-background);
+    border: 1px solid var(--gestion-border);
+    border-radius: var(--gestion-radius);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.modal-content a {
+    text-decoration: underline;
+}
+
+.modalClose {
+    float: right;
+    color: var(--gestion-text-muted);
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.modalClose:hover,
+.modalClose:focus {
+    color: var(--gestion-text);
+    text-decoration: none;
+}
+
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
 
 .app-navigation-entry {
-  display: flex;
-  align-items: center; /* Vertically centers the flex items */
-  justify-content: space-between; /* Spaces out the <a> and <span> */
-  margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
 }
 
-.app-navigation-item{
-  margin-top: 15px;
+.app-navigation-item {
+    margin-top: 15px;
 }
 
-.nav-link, .nav-stats {
-  display: flex;
-  align-items: left; /* This ensures that if the text or loader has different heights, they will be aligned in the center */
+.nav-link,
+.nav-stats {
+    display: flex;
+    align-items: center;
 }
+
+#app-navigation:not(.vue) > ul > li > a,
+#app-navigation:not(.vue) > ul > li > ul > li > a {
+    padding: 0 20px;
+    font-size: 20px;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    display: inline-block;
+    width: 30px;
+    margin-right: 20px;
+    margin-left: 10px;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* ==========================================================================
+   Chargement
+   ========================================================================== */
 
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  animation: spin 2s linear infinite;
+    width: 10px;
+    height: 10px;
+    border: 6px solid var(--gestion-border-light);
+    border-top-color: var(--gestion-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-[class^=icon-], [class*=" icon-"]  {
-  display:inline-block;
-  margin-right: 20px ;
-  margin-left:10px;
-  width: 30px;
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
- }
 
-#app-navigation:not(.vue) > ul > li > a, #app-navigation:not(.vue) > ul > li > ul > li > a {
-  padding:0 20px 0 20px;
-  font-size: 20px;
+/* ==========================================================================
+   Formulaires et configuration
+   ========================================================================== */
+
+.inputDate {
+    min-width: 200px;
+    max-width: 300px;
 }
 
-.inputDate{
-  min-width: 200px;
-  max-width: 300px;
+.configuration-global {
+    margin-top: 15px;
 }
 
-.configuration-global{
-  margin-top:15px;
+.configuration {
+    display: block;
+    width: 80%;
+    margin: 20px 0 10px;
 }
 
-.configuration-icon{
-  float: left;
-  width:40px;
-  height: 40px;
-  margin-right: 10px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+.configuration-icon {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px 0 0;
 }
 
-.configuration-content{
-  height: 40px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  vertical-align: middle;
-  display: table-cell;
+.configuration-content {
+    display: table-cell;
+    height: 40px;
+    margin: 0;
+    vertical-align: middle;
 }
 
-.editable[contenteditable="true"]{
-  width: 80%;
+.ConfigurationHelp {
+    margin-bottom: 20px;
+}
+
+#emailInput {
+    width: 30%;
+}
+
+.editable[contenteditable="true"] {
+    width: 80%;
 }
 
 .editableComment[contenteditable="true"] {
-  width: 99%;
-  margin: 20px 20px;
+    width: calc(100% - 40px);
+    margin: 20px;
 }
 
-.editablebutton button{
-  float: right;
-  padding-top:0px;
-  margin-top: 0px;
+.editablebutton button {
+    float: right;
+    margin-top: 0;
+    padding-top: 0;
 }
 
-.ConfigurationHelp{
-  margin-bottom: 20px;
-}
 
-.statHead{
-  text-align: center;
-}
-
-.statData{
-  text-align: right;
-}
-
-.configuration{
-  display:block;
-  width: 80%;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-#emailInput{
-  width: 30%;
-}
-
-#shareUsersTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 18px;
-    text-align: left;
-}
-
-#shareUsersTable thead th {
-    padding: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-}
-
-#shareUsersTable tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-#shareUsersTable tbody td {
-    padding: 10px;
-}
-
-#shareUsersTable tbody td button {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#headertable {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0;
-    font-size: 14px;
-    text-align: left;
-}
-#headertable thead th {
-    padding: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-}
-#headertable tbody td {
-    width: 30%;
-    padding: 10px;
-}
-#headertable tbody td button {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-#headertable tbody td button:hover {
-    background-color: #d32f2f;
-}
-#headertable tbody td a {
-    color: #2196F3;
-    text-decoration: none;
-}
-#headertable tbody td a:hover {
-    text-decoration: underline;
-}
-#headertable tbody td a:visited {
-    color: #673AB7;
-}
-#headertable tbody td a:visited:hover {
-    color: #5e35b1;
-}
-#headertable tbody td a:active {
-    color: #f44336;
-}
+/* ==========================================================================
+   Éléments génériques
+   ========================================================================== */
 
 .titre-centre {
     width: 100%;
@@ -300,114 +259,310 @@
 }
 
 .comment {
-  width: 100%;
-  margin: 20px 20px;
+    width: calc(100% - 40px);
+    margin: 20px;
+    line-height: 1.5;
+}
+
+.text-center {
+    text-align: center;
 }
 
 
-.table-produit {
-    width: 100%;
+/* ==========================================================================
+   Statistiques
+   ========================================================================== */
+
+#Statistical {
+    table-layout: auto;
+    white-space: pre-wrap;
     border-collapse: collapse;
-    font-size: 12px;
 }
 
-.table-produit th {
-    background-color: #007BFF;
-    color: white;
-    padding: 8px;
-    border: 1px solid #dee2e6;
-    text-align: left;
+#Statistical th {
+    width: 100px;
+    padding: var(--gestion-spacing-sm);
+    color: var(--color-primary-text, #ffffff);
+    text-align: center;
+    background-color: var(--gestion-primary-light);
+    border: 1px solid var(--gestion-border);
 }
 
-.table-produit td:nth-child(4),
-.table-produit td:nth-child(5),
-.table-produit td:nth-child(6) {
+.statHead {
+    text-align: center;
+}
+
+.statData {
     text-align: right;
 }
 
-.table-produit td {
-    padding: 8px;
-    border: 1px solid #dee2e6;
+
+/* ==========================================================================
+   Tableau de partage
+   ========================================================================== */
+
+#shareUsersTable {
+    width: 100%;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    border-collapse: collapse;
 }
 
-.div-prix{
-      margin-top: 20px;
+#shareUsersTable th,
+#shareUsersTable td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--gestion-border-light);
 }
 
+#shareUsersTable thead th {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: var(--gestion-surface-alt);
+}
+
+#shareUsersTable tbody tr:hover {
+    background-color: var(--gestion-surface);
+}
+
+#shareUsersTable tbody td button {
+    padding: 8px 12px;
+    color: #ffffff;
+    background-color: var(--gestion-danger);
+    border: 0;
+    border-radius: var(--gestion-radius);
+    cursor: pointer;
+}
+
+#shareUsersTable tbody td button:hover {
+    background-color: var(--gestion-danger-hover);
+}
+
+
+/* ==========================================================================
+   En-tête du devis ou de la facture
+   ========================================================================== */
+
+#headertable {
+    width: 100%;
+    margin: 0;
+    font-size: var(--gestion-font-size-normal);
+    text-align: left;
+    border-collapse: collapse;
+}
+
+#headertable tbody,
+#headertable tr,
+#headertable td {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+#headertable td {
+    width: 33.333%;
+    padding: 10px;
+    vertical-align: top;
+}
+
+#headertable thead th {
+    padding: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#headertable td button {
+    padding: 8px 12px;
+    color: #ffffff;
+    background-color: var(--gestion-danger);
+    border: 0;
+    border-radius: var(--gestion-radius);
+    cursor: pointer;
+}
+
+#headertable td button:hover {
+    background-color: var(--gestion-danger-hover);
+}
+
+#headertable td a {
+    color: var(--gestion-primary);
+    text-decoration: none;
+}
+
+#headertable td a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   Styles communs des tableaux de devis
+   ========================================================================== */
+
+.table-produit,
 .table-prix {
     width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
     margin: 0 auto;
+    font-size: var(--gestion-font-size-small);
+    border-collapse: collapse;
+    border: 1px solid var(--gestion-border);
+}
+
+.table-produit th,
+.table-prix th {
+    padding: 9px 8px;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    background-color: var(--gestion-primary);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.table-produit td,
+.table-prix td {
+    padding: 8px;
+    color: #222222;
+    background-color: #ffffff;
+    border: 1px solid var(--gestion-border);
+}
+
+.table-produit tbody tr:nth-child(even) td,
+.table-prix tbody tr:nth-child(even) td {
+    background-color: #fafafa;
+}
+
+.table-produit tbody tr:hover td,
+.table-prix tbody tr:hover td {
+    background-color: #f3f7f9;
+}
+
+
+/* ==========================================================================
+   Tableau des produits
+   ========================================================================== */
+
+.table-produit th {
+    text-align: left;
+}
+
+.table-produit th:nth-child(4),
+.table-produit th:nth-child(5),
+.table-produit th:nth-child(6),
+.table-produit th:nth-child(7),
+.table-produit th:nth-child(8),
+.table-produit td:nth-child(4),
+.table-produit td:nth-child(5),
+.table-produit td:nth-child(6),
+.table-produit td:nth-child(7),
+.table-produit td:nth-child(8) {
+    text-align: right;
+}
+
+
+/* ==========================================================================
+   Tableaux des prix
+   ========================================================================== */
+
+.div-prix {
+    margin-top: 20px;
 }
 
 .table-prix th {
-    background-color: #007BFF;
-    color: white;
-    padding: 8px;
-    border: 1px solid #dee2e6;
-    text-align: left;
+    text-align: center;
 }
 
 .table-prix td {
-    padding: 8px;
-    border: 1px solid #dee2e6;
     text-align: right;
 }
 
-.alert-info-custom {
-    background-color: #d1ecf1;
-    color: #0c5460;
-    border: 1px solid #bee5eb;
-    border-radius: 0.25rem;
-    padding: 10px 15px;
-    text-align: center;
-    margin: 20px auto;
+
+/* Titre placé au-dessus des tableaux de synthèse */
+
+.table-section-title {
+    margin-top: 20px;
+    padding: 9px 12px;
+    color: #333333;
     font-size: 14px;
-    width: 75%;
+    font-weight: 600;
+    text-align: center;
+    background-color: var(--gestion-surface-alt);
+    border: 1px solid var(--gestion-border);
+    border-bottom: 0;
+    border-radius: var(--gestion-radius) var(--gestion-radius) 0 0;
 }
 
+/* Supprime l'espace entre un titre de section et son tableau */
+
+.table-section-title + .div-prix {
+    margin-top: 0;
+}
+
+.table-section-title + .div-prix .table-prix {
+    border-top: 0;
+}
+
+
+/* ==========================================================================
+   Bloc d'information
+   ========================================================================== */
+
+.alert-info-custom {
+    width: 75%;
+    margin: 20px auto;
+    padding: 12px 15px;
+    color: var(--gestion-info-text);
+    font-size: var(--gestion-font-size-normal);
+    line-height: 1.5;
+    text-align: center;
+    background-color: var(--gestion-info-background);
+    border: 1px solid var(--gestion-info-border);
+    border-radius: var(--gestion-radius);
+}
+
+.alert-info-custom p {
+    margin: 0;
+}
+
+
+/* ==========================================================================
+   Mentions légales et signature
+   ========================================================================== */
 
 .table-mentions-signature {
     width: 100%;
-    border-collapse: collapse;
     table-layout: fixed;
+    border-collapse: collapse;
 }
 
 .table-mentions-signature-facture {
-    margin: 20px auto;
     width: 75%;
-    border-collapse: collapse;
+    margin: 20px auto;
     table-layout: fixed;
+    border-collapse: collapse;
 }
 
 .cell-mentions,
 .cell-signature {
     width: 50%;
-    vertical-align: top;
     padding: 15px;
-    border: 1px solid #ccc;
+    color: #333333;
     font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: var(--gestion-font-size-normal);
+    vertical-align: top;
+    background-color: var(--gestion-surface);
+    border: 15px solid #ffffff;
 }
 
 .cell-mentions {
-    background-color: #f8f9fa;
     line-height: 1.6;
-    color: #333;
-    border: 15px solid white;
-}
-
-.cell-signature {
-    background-color: #f9f9f9;
-    border: 15px solid white;
 }
 
 .mentions-titre {
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #0c5460;
+    margin: 0 0 10px;
+    color: var(--gestion-info-text);
+    font-size: var(--gestion-font-size-large);
+    font-weight: 600;
 }
 
 .mentions-ligne {
@@ -415,10 +570,12 @@
 }
 
 .signature-title {
+    display: block;
+    margin: 0 0 10px;
+    color: #333333;
+    font-size: var(--gestion-font-size-large);
+    font-weight: 600;
     text-align: center;
-    margin: 10px 0;
-    font-size: 18px;
-    color: #333;
 }
 
 .signature-table {
@@ -428,15 +585,86 @@
 
 .signature-table th,
 .signature-table td {
-    border: 1px solid #ccc;
     padding: 10px;
     text-align: left;
-    background-color: #fff;
+    background-color: #ffffff;
+    border: 1px solid var(--gestion-border);
 }
 
 .signature-table .row-signature th,
 .signature-table .row-signature td {
     height: 80px;
     vertical-align: top;
-    background-color: #fefefe;
+    background-color: #ffffff;
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .modal-content {
+        width: calc(100% - 40px);
+    }
+
+    .configuration,
+    #emailInput {
+        width: 100%;
+    }
+
+    .table-mentions-signature-facture,
+    .alert-info-custom {
+        width: 100%;
+    }
+
+    .table-produit,
+    .table-prix {
+        font-size: 11px;
+    }
+}
+
+
+/* ==========================================================================
+   Impression et génération PDF
+   ========================================================================== */
+
+@media print {
+    #PDFcontent {
+        color: #000000;
+        background-color: #ffffff;
+    }
+
+    .table-produit tbody tr:hover td,
+    .table-prix tbody tr:hover td {
+        background-color: inherit;
+    }
+
+    .table-section-title,
+    .table-produit,
+    .table-prix,
+    .alert-info-custom,
+    .cell-mentions,
+    .cell-signature {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .table-produit th,
+    .table-prix th {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
 }

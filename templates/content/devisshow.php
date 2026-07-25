@@ -84,6 +84,9 @@
         </table>
         </div>
 
+        <div class="table-section-title">
+            <?php p($l->t('VAT price per percentage')); ?>
+        </div>
         <div class="div-prix">
             <table id="totaldevis" class="table-prix">
                 <thead>
@@ -99,7 +102,10 @@
                 </tbody>
             </table>
         </div>
-
+        
+        <div class="table-section-title">
+            <?php p($l->t('Total price')); ?>
+        </div>
         <div class="div-prix">
             <table id="totalglobal" class="table-prix">
                 <thead>

@@ -87,7 +87,6 @@ class DataService {
 
 	public function updateConfiguration($column, $data) {
 		return $this->myDb->gestion_updateConfiguration(
-			'configuration',
 			$column,
 			$data,
 			$this->currentCompany()

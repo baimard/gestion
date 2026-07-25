@@ -1,6 +1,5 @@
 import { getFilePickerBuilder } from "@nextcloud/dialogs";
-import { configuration, updateCurrentCompany, updateDBConfiguration } from "../../modules/ajaxRequest.js";
-import { path } from "../../modules/mainFunction.js";
+import { updateCurrentCompany, updateDBConfiguration } from "../../modules/ajaxRequest.js";
 
 const chooseFolderLabel = t('gestion', 'Choose work folder');
 
@@ -35,14 +34,24 @@ export function updateCurrentCompanySelection(target) {
     updateCurrentCompany(target.value);
 }
 
-function updateSelectedFolder(nodes) {
-    const values = nodes.map(node => node.path);
+async function updateSelectedFolder(nodes) {
+    const selectedFolder = nodes[0]?.path;
     const theFolder = document.getElementById('theFolder');
-    const table = theFolder.getAttribute('data-table');
-    const column = theFolder.getAttribute('data-column');
-    const id = theFolder.getAttribute('data-id');
 
-    updateDBConfiguration(table, column, values[0], id);
-    configuration(path);
-    document.getElementById('theFolder').value = values[0];
+    if (!selectedFolder || !theFolder) {
+        return;
+    }
+
+    try {
+        await updateDBConfiguration(
+            'configuration',
+            'path',
+            selectedFolder,
+            theFolder.getAttribute('data-id') || ''
+        );
+
+        theFolder.value = selectedFolder;
+    } catch (error) {
+        console.error('Unable to save the selected folder:', error);
+    }
 }

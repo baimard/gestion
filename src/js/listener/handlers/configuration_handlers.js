@@ -51,10 +51,8 @@ async function updateSelectedFolder(nodes) {
                 'Content-Type': 'application/json'
             }),
             body: JSON.stringify({
-                table: 'configuration',
                 column: 'path',
-                data: selectedFolder,
-                id: theFolder.getAttribute('data-id') || ''
+                data: selectedFolder
             })
         });
 

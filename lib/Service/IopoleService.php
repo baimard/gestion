@@ -2,13 +2,9 @@
 
 namespace OCA\Gestion\Service;
 
-use OCP\IConfig;
-
 class IopoleService {
-	private const APP_ID = 'gestion';
-
 	public function __construct(
-		private IConfig $config
+		private ElectronicInvoiceProviderService $providerService
 	) {
 	}
 
@@ -16,36 +12,16 @@ class IopoleService {
 		string $pdfContent,
 		string $filename
 	): array {
-		$clientId = $this->getRequiredAppValue(
-			'iopole_client_id'
-		);
+		$config = $this->providerService->requireProvider('iopole');
 
-		$clientSecret = $this->getRequiredAppValue(
-			'iopole_client_secret'
-		);
+		$clientId = $config['client_id'];
+		$clientSecret = $config['client_secret'];
+		$customerId = $config['customer_id'];
+		$baseUrl = rtrim($config['base_url'], '/');
+		$authUrl = $config['auth_url'];
 
-		$customerId = $this->getRequiredAppValue(
-			'iopole_customer_id'
-		);
-
-		$baseUrl = rtrim(
-			$this->getRequiredAppValue('iopole_base_url'),
-			'/'
-		);
-
-		$authUrl = $this->getRequiredAppValue(
-			'iopole_auth_url'
-		);
-
-		$this->assertValidUrl(
-			$baseUrl,
-			'iopole_base_url'
-		);
-
-		$this->assertValidUrl(
-			$authUrl,
-			'iopole_auth_url'
-		);
+		$this->assertValidUrl($baseUrl, 'base_url');
+		$this->assertValidUrl($authUrl, 'auth_url');
 
 		$token = $this->requestAccessToken(
 			$authUrl,
@@ -169,8 +145,6 @@ class IopoleService {
 			);
 		}
 
-		error_log('Iopole request URL: ' . $url);
-
 		$curl = curl_init($url);
 
 		curl_setopt_array($curl, [
@@ -184,22 +158,9 @@ class IopoleService {
 		]);
 
 		$responseBody = curl_exec($curl);
-
-		$status = curl_getinfo(
-			$curl,
-			CURLINFO_HTTP_CODE
-		);
-
+		$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		$error = curl_error($curl);
-
 		curl_close($curl);
-
-		error_log(
-			'Iopole response | HTTP ' .
-			$status .
-			' | BODY: ' .
-			(string)$responseBody
-		);
 
 		if ($responseBody === false) {
 			throw new \RuntimeException(
@@ -213,34 +174,13 @@ class IopoleService {
 		];
 	}
 
-	private function getRequiredAppValue(
-		string $key
-	): string {
-		$value = trim((string)$this->config->getAppValue(
-			self::APP_ID,
-			$key,
-			''
-		));
-
-		if ($value === '') {
-			throw new \RuntimeException(
-				'Missing Gestion app config value: ' . $key
-			);
-		}
-
-		return $value;
-	}
-
 	private function assertValidUrl(
 		string $url,
 		string $key
 	): void {
 		if (!filter_var($url, FILTER_VALIDATE_URL)) {
 			throw new \RuntimeException(
-				'Invalid URL configured for ' .
-				$key .
-				': ' .
-				$url
+				'Invalid URL configured for Iopole ' . $key . ': ' . $url
 			);
 		}
 	}

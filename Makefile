@@ -11,7 +11,7 @@ sign_app_certificate=
 npm=$(shell which npm 2> /dev/null)
 composer=$(shell which composer 2> /dev/null)
 
-all: build 
+all: build
 allnew: dev-setup lint build-js-production test
 dev-setup: clean clean-dev composer npm-init
 
@@ -67,37 +67,37 @@ clean-dev:
 # is present, the npm step is skipped
 .PHONY: build
 build:
-	ifneq (,$(wildcard $(CURDIR)/composer.json))
-		make composer
-	endif
-	ifneq (,$(wildcard $(CURDIR)/package.json))
-		make npm
-	endif
-	ifneq (,$(wildcard $(CURDIR)/js/package.json))
-		make npm
-	endif
+ifneq (,$(wildcard $(CURDIR)/composer.json))
+	$(MAKE) composer
+endif
+ifneq (,$(wildcard $(CURDIR)/package.json))
+	$(MAKE) npm
+endif
+ifneq (,$(wildcard $(CURDIR)/js/package.json))
+	$(MAKE) npm-js
+endif
 
-# # Installs and updates the composer dependencies. If composer is not installed
-# # a copy is fetched from the web
+# Installs PHP dependencies required at runtime.
+# Development dependencies are intentionally skipped for deployments.
 .PHONY: composer
 composer:
-	php composer.phar install --prefer-dist
-	php composer.phar update --prefer-dist
+	php composer.phar install --prefer-dist --no-dev --optimize-autoloader
 
-# Installs npm dependencies
+# Builds npm dependencies from the root package.json
 .PHONY: npm
 npm:
-	ifeq (,$(wildcard $(CURDIR)/package.json))
-		cd js && $(npm) run build
-	else
-		npm run build
-	endif
+	$(npm) run build
+
+# Builds npm dependencies from js/package.json
+.PHONY: npm-js
+npm-js:
+	cd js && $(npm) run build
 
 # Builds the source and appstore package
 .PHONY: dist
 dist:
-	make source
-	make appstore
+	$(MAKE) source
+	$(MAKE) appstore
 
 # Builds the source package
 .PHONY: source
@@ -115,7 +115,7 @@ source:
 	--exclude="../$(app_name)/node_modules" \
 	--exclude="../$(app_name)/*.log" \
 	--exclude="../$(app_name)/js/*.log" \
- 	../$(app_name)
+	../$(app_name)
 
 # Builds the source package for the app store, ignores php and js tests.
 # The appstore package is signed before archiving, as required by Nextcloud.

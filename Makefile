@@ -13,7 +13,7 @@ composer=$(shell which composer 2> /dev/null)
 
 all: build
 allnew: dev-setup lint build-js-production test
-dev-setup: clean clean-dev composer npm-init
+dev-setup: clean clean-dev composer npm-init build-js
 
 npm-init:
 	npm i

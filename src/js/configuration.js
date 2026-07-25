@@ -4,13 +4,24 @@ import "../css/mycss.less";
 import { addShareUser, configuration, createCompany, deleteCompany, delShareUser, updateDBConfiguration} from "./modules/ajaxRequest.js";
 import { globalConfiguration, parseConfigurationResponse } from "./modules/mainFunction.js";
 import "./listener/main_listener";
-import { getAutoIncrement, setCurrencyList, setFormatList } from "./modules/list.js";
+import { setCurrencyList, setFormatList } from "./modules/list.js";
 
+const providerUrl = () => OC.generateUrl('/apps/gestion/einvoice/provider');
 
 document.addEventListener('DOMContentLoaded', function() {
     globalConfiguration(false);
+
+    const providerSelect = document.getElementById('einvoice_provider');
+    const providerSave = document.getElementById('save_einvoice_provider');
+
+    if (providerSelect) {
+        providerSelect.addEventListener('change', updateProviderVisibility);
+    }
+
+    if (providerSave) {
+        providerSave.addEventListener('click', saveElectronicInvoiceProvider);
+    }
     
-    /* LISTENER */
     var HelpSection = document.getElementById("HelpSection");
     HelpSection.addEventListener("click", function(){
         var modal = document.getElementById("ConfigurationHelp");
@@ -26,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             configuration(loadConfigurationDT);
+            loadElectronicInvoiceProvider();
         });
     }
 
@@ -36,132 +48,134 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    var deleteShareUsers = document.querySelectorAll(".deleteShareUser");
-
-    if (deleteShareUsers.length > 0) {
-        deleteShareUsers.forEach(function(deleteShareUser) {
-            deleteShareUser.addEventListener('click', function() {
-                delShareUser(this.getAttribute('data-uid'));
-            });
+    document.querySelectorAll(".deleteShareUser").forEach(function(deleteShareUser) {
+        deleteShareUser.addEventListener('click', function() {
+            delShareUser(this.getAttribute('data-uid'));
         });
-    }
+    });
 
     var newCompany = document.getElementById("newCompany");
     if (newCompany) {
-        newCompany.addEventListener("click", function() {
-            createCompany();
-        });
+        newCompany.addEventListener("click", function() { createCompany(); });
     }
 
-    var newCompany = document.getElementById("deleteCompany");
-    if (newCompany) {
-        newCompany.addEventListener("click", function() {
-            deleteCompany();
-        });
+    var deleteCompanyButton = document.getElementById("deleteCompany");
+    if (deleteCompanyButton) {
+        deleteCompanyButton.addEventListener("click", function() { deleteCompany(); });
     }
 
-    var datalist = document.getElementById("search");
-    if (datalist) {
-        datalist.addEventListener("click", function(){
-        });
-    }
-
-    document.body.addEventListener('focusout', function(e) {
-        callUpdateDBConfiguration(e);
-    });
-
+    document.body.addEventListener('focusout', callUpdateDBConfiguration);
     document.body.addEventListener('keydown', function(e) {
-        if(e.key === "Enter"){
-            callUpdateDBConfiguration(e);
-        }
+        if(e.key === "Enter") callUpdateDBConfiguration(e);
     });
-
-    document.body.addEventListener('change', function(e) {
-        callUpdateDBConfiguration(e);
-    });
+    document.body.addEventListener('change', callUpdateDBConfiguration);
 
     function callUpdateDBConfiguration(e){
-        if (
-            e.target.classList.contains('editableConfiguration')
-            || e.target.classList.contains('editableConfigurationSelect')
-        ) {
-            var table = e.target.getAttribute('data-table');
-            var column = e.target.getAttribute('data-column');
-            var value = e.target.value;
-            var id = e.target.getAttribute('data-id');
-    
-            updateDBConfiguration(table, column, value, id);
+        if (e.target.classList.contains('editableConfiguration') || e.target.classList.contains('editableConfigurationSelect')) {
+            updateDBConfiguration(
+                e.target.getAttribute('data-table'),
+                e.target.getAttribute('data-column'),
+                e.target.value,
+                e.target.getAttribute('data-id')
+            );
         }
-    };
+    }
 });
 
-
-/**
- * Retourne "-" si la valeur est null, undefined ou vide
- */
-function safeValue(value) {
-    return value === null || value === undefined || value === ""
-        ? "-"
-        : value;
+function updateProviderVisibility() {
+    const provider = document.getElementById('einvoice_provider')?.value || '';
+    const iopole = document.getElementById('einvoice-provider-iopole');
+    if (iopole) iopole.style.display = provider === 'iopole' ? 'block' : 'none';
 }
 
+async function loadElectronicInvoiceProvider() {
+    const status = document.getElementById('einvoice_provider_status');
+    try {
+        const response = await fetch(providerUrl(), {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) throw new Error(await response.text());
+
+        const payload = await response.json();
+        const config = payload.configuration || {};
+        const credentials = config.credentials || {};
+
+        document.getElementById('einvoice_provider').value = config.provider || '';
+        document.getElementById('iopole_client_id').value = credentials.client_id || '';
+        document.getElementById('iopole_client_secret').value = credentials.client_secret || '';
+        document.getElementById('iopole_customer_id').value = credentials.customer_id || '';
+        document.getElementById('iopole_base_url').value = credentials.base_url || '';
+        document.getElementById('iopole_auth_url').value = credentials.auth_url || '';
+        updateProviderVisibility();
+        if (status) status.textContent = config.configured ? t('gestion', 'Platform configured') : '';
+    } catch (error) {
+        if (status) status.textContent = t('gestion', 'Unable to load platform configuration');
+        console.error(error);
+    }
+}
+
+async function saveElectronicInvoiceProvider() {
+    const status = document.getElementById('einvoice_provider_status');
+    const provider = document.getElementById('einvoice_provider').value;
+    const credentials = provider === 'iopole' ? {
+        client_id: document.getElementById('iopole_client_id').value,
+        client_secret: document.getElementById('iopole_client_secret').value,
+        customer_id: document.getElementById('iopole_customer_id').value,
+        base_url: document.getElementById('iopole_base_url').value,
+        auth_url: document.getElementById('iopole_auth_url').value,
+    } : {};
+
+    if (status) status.textContent = t('gestion', 'Saving…');
+
+    try {
+        const response = await fetch(providerUrl(), {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'requesttoken': OC.requestToken,
+            },
+            body: JSON.stringify({ provider, credentials }),
+        });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.message || 'Unable to save provider configuration');
+        if (status) status.textContent = payload.configured || provider === ''
+            ? t('gestion', 'Saved')
+            : t('gestion', 'Some required fields are missing');
+    } catch (error) {
+        if (status) status.textContent = error.message;
+        console.error(error);
+    }
+}
+
+function safeValue(value) {
+    return value === null || value === undefined || value === "" ? "-" : value;
+}
 
 function loadConfigurationDT(response) {
-
-    // Parse the JSON response and ensure the table only receives an array.
     const data = parseConfigurationResponse(response);
 
-    // Iterate over each item in the parsed JSON array
     data.forEach(function (myresp) {
+        const textFields = [
+            'entreprise', 'nom', 'prenom', 'adresse', 'legal_one', 'legal_two',
+            'telephone', 'mail', 'tva_default', 'facture_prefixe', 'city_name',
+            'zip_code', 'vat_number', 'iban'
+        ];
 
-        console.log("CONFIG OBJ:", myresp);
-
-        // Champs texte sécurisés
-        document.getElementById("entreprise").value = safeValue(myresp.entreprise);
-        document.getElementById("nom").value = safeValue(myresp.nom);
-        document.getElementById("prenom").value = safeValue(myresp.prenom);
-        document.getElementById("adresse").value = safeValue(myresp.adresse);
-        document.getElementById("legal_one").value = safeValue(myresp.legal_one);
-        document.getElementById("legal_two").value = safeValue(myresp.legal_two);
-        document.getElementById("telephone").value = safeValue(myresp.telephone);
-        document.getElementById("mail").value = safeValue(myresp.mail);
-        document.getElementById("tva_default").value = safeValue(myresp.tva_default);
-        document.getElementById("facture_prefixe").value = safeValue(myresp.facture_prefixe);
-        document.getElementById("city_name").value = safeValue(myresp.city_name);
-        document.getElementById("zip_code").value = safeValue(myresp.zip_code);
-        document.getElementById("vat_number").value = safeValue(myresp.vat_number);
-        document.getElementById("iban").value = safeValue(myresp.iban);
+        textFields.forEach((field) => {
+            const element = document.getElementById(field);
+            if (element) element.value = safeValue(myresp[field]);
+        });
 
         setCurrencyList(myresp.devise, document.getElementById("currency"));
         setFormatList(myresp.format, document.getElementById("format"));
 
-        document.getElementById("mentions_default").innerHTML =
-            safeValue(myresp.mentions_default).replace(/\&amp;/g, "&");
+        document.getElementById("mentions_default").value = safeValue(myresp.mentions_default).replace(/\&amp;/g, "&");
 
-        const fields = [
-            "entreprise",
-            "nom",
-            "prenom",
-            "adresse",
-            "legal_one",
-            "legal_two",
-            "telephone",
-            "mail",
-            "tva_default",
-            "facture_prefixe",
-            "currency",
-            "format",
-            "mentions_default",
-            "zip_code",
-            "vat_number",
-            "city_name",
-            "iban"
-        ];
-
-        fields.forEach(function (field) {
-            document
-                .getElementById(field)
-                .setAttribute("data-id", myresp.id);
+        [...textFields, 'currency', 'format', 'mentions_default'].forEach(function (field) {
+            const element = document.getElementById(field);
+            if (element) element.setAttribute("data-id", myresp.id);
         });
     });
 }

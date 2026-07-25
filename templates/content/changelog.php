@@ -1,7 +1,7 @@
 <div syle="display: none;" id="modalConfig" class="modal">
 <div class="modal-content">
 	<span class="modalClose">&times;</span>
-	<h2><?php p($l->t('Welcome to GESTION')); ?> 3.1.0</h2>
+	<h2><?php p($l->t('Welcome to GESTION')); ?> 3.2.0</h2>
 
 	<p style="font-size:14px;margin-bottom:20px;">
 		<?php p($l->t(
@@ -41,7 +41,7 @@
 	<h2><?php p($l->t('Newsletter')); ?></h2>
 	<p style="font-size:14px;"><?php p($l->t('Version 2.7.0 You can now share a company with others users!')); ?></p>
 	<p style="font-size:14px;"><?php p($l->t('Version 2.8.0 introduces a complete overhaul of the PDF generation system, bringing improved design, layout consistency and compatibility with more readers.')); ?></p>
-	<p style="font-size:14px;"><?php p($l->t('Version 3.1.0 focuses on electronic invoicing and prepares Gestion for the French e-invoicing transition.')); ?></p>
+	<p style="font-size:14px;"><?php p($l->t('Version 3.2.0 focuses on electronic invoicing and prepares Gestion for the French e-invoicing transition.')); ?></p>
 	<ul style="font-size:14px;margin-bottom:20px;">
 		<li><?php p($l->t('Generate a complete Factur-X invoice that combines a readable PDF with embedded structured XML data.')); ?></li>
 		<li><?php p($l->t('Export the electronic XML part separately when you need to check, archive or send only the machine-readable invoice data.')); ?></li>

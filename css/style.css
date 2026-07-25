@@ -448,3 +448,14 @@
     vertical-align: top;
     background-color: #fefefe;
 }
+
+.table-section-title {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    text-align: center;
+    font-weight: bold;
+    padding: 8px;
+    color: #444;
+    border-radius: 4px 4px 0 0;
+}

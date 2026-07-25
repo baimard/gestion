@@ -247,6 +247,14 @@
     font-size: 14px;
     text-align: left;
 }
+
+#headertable tbody,
+#headertable tr,
+#headertable td {
+    background-color: #ffffff;
+    color: #000000;
+}
+
 #headertable thead th {
     padding: 12px;
     text-transform: uppercase;

@@ -71,7 +71,7 @@ function normalizeCurrencyCode(currencyCode) {
             "previous": t('gestion', 'Previous'),
         }
     }
-}
+ }
 
 /**
  * 
@@ -209,7 +209,6 @@ export function path(response) {
     }
 
     folder.value = currentConfiguration.path || "";
-    folder.setAttribute('data-id', currentConfiguration.id || "");
 }
 
 

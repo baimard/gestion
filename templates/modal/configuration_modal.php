@@ -24,10 +24,10 @@
         <div class="configuration-global"><label class="configuration" for="currency"><?php p($l->t('Currency Select'));?></label><select style="float:none;width:80%;" id="currency" class="configuration-content editableConfigurationSelect" data-table="configuration" data-column="devise" data-id=""></select></div>
         <div class="configuration-global"><label class="configuration" for="format"><?php p($l->t('Format Select'));?></label><select style="float:none;width:80%;" id="format" class="configuration-content editableConfigurationSelect" data-table="configuration" data-column="format" data-id=""></select></div>
         <div class="configuration-global"><label class="configuration" for="mentions_default"><?php p($l->t('Mentions Default'));?></label><textarea style="float:none;width:80%;" id="mentions_default" class="configuration-content editableConfiguration" data-table="configuration" data-column="mentions_default" data-id="" rows="5"></textarea></div>
-
         <hr/>
         <h2><?php p($l->t('Electronic invoicing platform'));?></h2>
-        <p><?php p($l->t('Factur-X generation and download remain available even when no platform is selected.'));?></p>
+        <p><?php p($l->t('Electronic invoicing is only for businesses in France. If your business is not based in France, you can still generate and download simple PDF invoices.'));?></p>
+        <p><?php p($l->t('Factur-X generation and download remain available even when no platform is selected. You can chose your preferred platform.'));?></p>
 
         <div class="configuration-global">
             <label class="configuration" for="einvoice_provider"><?php p($l->t('Approved platform'));?></label>

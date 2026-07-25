@@ -114,11 +114,12 @@ body,
 }
 
 .div-prix {
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 .table-section-title {
     margin-top: 20px;
+    margin-bottom: 0;
     padding: 9px 12px;
     color: #ffffff;
     font-weight: bold;

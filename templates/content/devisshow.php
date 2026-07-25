@@ -135,6 +135,7 @@
             ?>
         </span>
     </div>
+    
     <table class="table-mentions-signature">
         <tr>
             <td class="cell-mentions">

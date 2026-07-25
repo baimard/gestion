@@ -54,14 +54,14 @@
 	<hr/>
 	<h2><?php p($l->t('Special thanks to:')); ?></h2>
 	<ul>
-		<li><?php p($l->t('Timo RAINO - for the big work on legal notice for France')); ?></li>
+		<li>Timo RAINO - <?php p($l->t('for the big work on legal notice for France')); ?></li>
 		<li><?php p($l->t('The MIAGE class at the University of Bordeaux - for the extraordinary work on the application this year')); ?></li>
-		<li><?php p($l->t('Aaron Stevens - for the coffee ;)')); ?></li>
-		<li><?php p($l->t('@CarlKDE - for the coffee ;)')); ?></li>
-		<li><?php p($l->t('little5bull - for the coffee ;)')); ?></li>
-		<li><?php p($l->t('Someone - for the coffee ;)')); ?></li>
-		<li><?php p($l->t('somerandomNCuser - for the coffee ;)')); ?></li>
-		<li><?php p($l->t('OursSansPlus - for the coffee ;)')); ?></li>
+		<li>Aaron Stevens - <?php p($l->t('for the coffee ;)')); ?></li>
+		<li>@CarlKDE - <?php p($l->t('for the coffee ;)')); ?></li>
+		<li>little5bull - <?php p($l->t('for the coffee ;)')); ?></li>
+		<li>Someone - <?php p($l->t('for the coffee ;)')); ?></li>
+		<li>somerandomNCuser - <?php p($l->t('for the coffee ;)')); ?></li>
+		<li>OursSansPlus - <?php p($l->t('for the coffee ;)')); ?></li>
 	</ul>
 </div>
 

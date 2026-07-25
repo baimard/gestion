@@ -45,7 +45,7 @@ class Bdd {
         $sql = "SELECT * FROM ".$this->tableprefix."client WHERE id_configuration = ?";
         return $this->execSQL($sql, array($idNextcloud));
     }
-    
+
     public function getClient($id,$idNextcloud){
         $sql = "SELECT * FROM ".$this->tableprefix."client WHERE id = ? AND id_configuration = ?";
         return $this->execSQL($sql, array($id,$idNextcloud));
@@ -90,7 +90,7 @@ class Bdd {
         $sql = "INSERT INTO `".$this->tableprefix."conf_share` (`id_configuration`, `id_nextcloud`) VALUES (?,?)";
         $this->execSQLNoData($sql, array($idConfiguration, $idNextcloud));
         return true;
-    } 
+    }
 
     public function delShareUser($idConfiguration, $idNextcloud){
         $sql = "DELETE FROM `".$this->tableprefix."conf_share` WHERE `id_configuration` = ? AND `id_nextcloud` = ?";
@@ -103,10 +103,6 @@ class Bdd {
         return $trace[2]['function'];
     }
 
-    /**
-     * INSERT client
-     * @$idnextcloud
-     */
     public function insertClient($idNextcloud){
         $sql = "INSERT INTO `".$this->tableprefix."client` (`id_configuration`,`nom`,`prenom`,`legal_one`,`entreprise`,`telephone`,`mail`,`adresse`,`zip_code`,`city_name`,`country_code`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         $this->execSQLNoData($sql,array($idNextcloud,
@@ -125,9 +121,6 @@ class Bdd {
         return true;
     }
 
-    /**
-     * Insert quote
-     */
     public function insertDevis($idNextcloud){
         $last=0;
         $last = $this->lastinsertid("devis", $idNextcloud) + 1;
@@ -141,20 +134,16 @@ class Bdd {
                                                             `comment`,
                                                             `user_id`,
                                                             `delay`
-                                                        ) 
+                                                        )
                                                 VALUES (NOW(),?,?,0,'0.1',?,?,?,?);";
         $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment'),$last,$this->l->t('Offer valid for 1 month from: ')));
         return true;
     }
 
-    /**
-     * Insert invoice
-     */
     public function insertFacture($idNextcloud, $datePaiement = null){
         $last=0;
         $last = $this->lastinsertid("facture", $idNextcloud) + 1;
 
-        //PREFIX
         $pref = $this->execSQLNoJsonReturn(
             "SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?",
             array($idNextcloud)
@@ -184,14 +173,13 @@ class Bdd {
     }
 
     public function insertProduit($idNextcloud){
-
         $vat = $this->execSQLNoJsonReturn(
             "SELECT tva_default FROM ".$this->tableprefix."configuration WHERE id = ?",
             array($idNextcloud)
         )[0]['tva_default'];
 
         $sql = "INSERT INTO `".$this->tableprefix."produit` (`id_configuration`,`reference`,`description`,`prix_unitaire`,`vat`) VALUES (?,?,?,0,?);";
-        
+
         $this->execSQLNoData($sql, array(
             $idNextcloud,
             $this->l->t('Reference'),
@@ -216,13 +204,9 @@ class Bdd {
         $sqlSearchMax = "SELECT MIN(id) as id FROM `".$this->tableprefix."produit` WHERE id_configuration = ?";
         return $this->execSQLNoJsonReturn($sqlSearchMax, array($idNextcloud));
     }
-    
-    /**
-     * UPDATE
-     */
+
     public function gestion_update($table, $column, $data, $id, $id_configuration) {
         if (in_array($table, $this->whiteTable, true) && in_array($column, $this->whiteColumn, true)) {
-
             $safeData = strip_tags($data, '<br>');
             $safeData = html_entity_decode($safeData, ENT_QUOTES, 'UTF-8');
             $safeData = rtrim($safeData);
@@ -236,34 +220,19 @@ class Bdd {
         return false;
     }
 
-
     /**
-     * UPDATE
+     * Update a field of the configuration identified by its company ID.
      */
-    public function gestion_update_configuration($table, $column, $data, $id, $idNextcloud){
-        if(in_array($table, $this->whiteTable, true) && in_array($column, $this->whiteColumn, true)){
-            $safeData = $this->normalizeColumnData($column, htmlentities(rtrim($data)));
-            $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ? AND `id_nextcloud` = ?";
-            $this->execSQLNoData($sql, array($safeData, $id, $idNextcloud));
-            return true;
+    public function gestion_updateConfiguration($column, $data, $idConfiguration){
+        if(!in_array($column, $this->whiteColumn, true)){
+            return false;
         }
-        return false;
-    }
 
-    /**
-     * UPDATE CONFIGURATION TABLE
-     * TODO Autorisation à faire cette action par l'utilisateur
-     */
-    public function gestion_updateConfiguration($table, $column, $data, $id){
-        if(in_array($table, $this->whiteTable, true) && in_array($column, $this->whiteColumn, true)){
-            $safeData = $this->normalizeColumnData($column, htmlentities(rtrim($data)));
-            $sql = "UPDATE ".$this->tableprefix.$table." SET $column = ? WHERE `id` = ?";
-            $this->execSQLNoData($sql, array($safeData, $id));
-            return true;
-        }
-        return false;
+        $safeData = $this->normalizeColumnData($column, htmlentities(rtrim($data)));
+        $sql = "UPDATE ".$this->tableprefix."configuration SET $column = ? WHERE `id` = ?";
+        $this->execSQLNoData($sql, array($safeData, $idConfiguration));
+        return true;
     }
-
 
     private function normalizeColumnData($column, $data){
         if ($column === 'zip_code') {
@@ -277,14 +246,11 @@ class Bdd {
         return $data;
     }
 
-    /**
-     * DUPLICATE
-     */
     public function gestion_duplicate($table, $id, $CurrentCompany){
         if(in_array($table, $this->whiteTable, true)){
             $sql = "SELECT * FROM ".$this->tableprefix.$table." WHERE `id` = ? AND `id_configuration` = ?";
             $res = $this->execSQLNoJsonReturn($sql, array($id, $CurrentCompany));
-            
+
             $sql = "INSERT INTO ".$this->tableprefix.$table." (";
             $sql2 = " VALUES (";
             foreach($res[0] as $key => $value){
@@ -293,11 +259,11 @@ class Bdd {
                     $sql2 .= "?,";
                 }
             }
-            
+
             $sql = rtrim($sql, ",");
             $sql2 = rtrim($sql2, ",");
             $sql .= ")".$sql2.")";
-            
+
             unset($res[0]['id']);
             $res[0]['user_id'] = $this->lastinsertid($table, $CurrentCompany) + 1;
 
@@ -305,7 +271,7 @@ class Bdd {
                 $res[0]['num'] = $this->execSQLNoJsonReturn("SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?", array($CurrentCompany))[0]['facture_prefixe']."-".$res[0]['user_id'];
             }
             $this->execSQLNoData($sql, array_values($res[0]));
-            
+
             if($table == "devis"){
                 $sql = "SELECT * FROM ".$this->tableprefix."produit_devis WHERE `devis_id` = ? AND `id_configuration` = ?";
                 $res_produit_devis = $this->execSQLNoJsonReturn($sql, array($id, $CurrentCompany));
@@ -318,15 +284,12 @@ class Bdd {
                     $this->execSQLNoData($sql, array($id_devis, $CurrentCompany, $value['produit_id'], $value['quantite'], $value['discount']));
                 }
             }
-            
+
             return true;
         }
         return false;
     }
 
-    /**
-     * DROP
-     */
     public function gestion_drop($id, $value, $CurrentCompany){
         $sql_produits_devis_current = "SELECT * FROM ".$this->tableprefix."produit_devis WHERE `id` = ? AND `id_configuration` = ?";
         $produits_devis_current = $this->execSQLNoJsonReturn($sql_produits_devis_current, array($id, $CurrentCompany));
@@ -351,9 +314,6 @@ class Bdd {
         }
     }
 
-    /**
-     * DELETE
-     */
     public function gestion_delete($table, $id, $CurrentCompany){
         if(in_array($table, $this->whiteTable, true)){
             $sql = "DELETE FROM ".$this->tableprefix.$table." WHERE `id` = ? AND `id_configuration` = ?";
@@ -362,11 +322,6 @@ class Bdd {
         }
         return false;
     }
-
-    /**
-     * Check
-     * TODO id_possesseur à remplacer pour id_nextcloud à changer partout
-     */
 
     public function checkConfig($idConfiguration, $idNextcloud){
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
@@ -377,31 +332,30 @@ class Bdd {
         return $res;
     }
 
-    /** * Create a new company */ 
-  public function createCompany($idNextcloud){ 
-    $sql = "INSERT INTO ".$this->tableprefix."configuration (entreprise, nom, prenom, legal_one, legal_two, mail, telephone, adresse, path, id_nextcloud,mentions_default,tva_default,devise,facture_prefixe, vat_number, city_name, zip_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?,?,?,?,?);"; 
-    $this->execSQLNoData($sql, array( $this->l->t('Your company name'), 
-                                     $this->l->t('Your company contact last name'), 
-                                     $this->l->t('Your company contact first name'), 
-                                     $this->l->t('Company legal information line one'), 
-                                     $this->l->t('Company legal information line two'), 
-                                     $this->l->t('Your company email'), 
-                                     $this->l->t('Your company phone'), 
-                                     $this->l->t('Your company address'), 
-                                     $idNextcloud, $this->l->t('All Legal mentions, disclaimer or everything you want to place in the footer.'), 
-                                     $this->l->t('EUR'), 
-                                     $this->l->t('INVOICE'),
-                                     $this->l->t('Your company vat number'),
-                                     $this->l->t('Your company city name'),
-                                     ''));
-    return true; }
+    public function createCompany($idNextcloud){
+        $sql = "INSERT INTO ".$this->tableprefix."configuration (entreprise, nom, prenom, legal_one, legal_two, mail, telephone, adresse, path, id_nextcloud,mentions_default,tva_default,devise,facture_prefixe, vat_number, city_name, zip_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '', ?, ?, '0',?,?,?,?,?);";
+        $this->execSQLNoData($sql, array( $this->l->t('Your company name'),
+                                         $this->l->t('Your company contact last name'),
+                                         $this->l->t('Your company contact first name'),
+                                         $this->l->t('Company legal information line one'),
+                                         $this->l->t('Company legal information line two'),
+                                         $this->l->t('Your company email'),
+                                         $this->l->t('Your company phone'),
+                                         $this->l->t('Your company address'),
+                                         $idNextcloud, $this->l->t('All Legal mentions, disclaimer or everything you want to place in the footer.'),
+                                         $this->l->t('EUR'),
+                                         $this->l->t('INVOICE'),
+                                         $this->l->t('Your company vat number'),
+                                         $this->l->t('Your company city name'),
+                                         ''));
+        return true;
+    }
 
     public function deleteCompany($idCompany, $idNextcloud){
         $sql = "SELECT * FROM `".$this->tableprefix."configuration` WHERE `id` = ?";
         $res = $this->execSQLNoJsonReturn($sql, array($idCompany));
-        
-        if ($res[0]['id_nextcloud'] == $idNextcloud){
 
+        if ($res[0]['id_nextcloud'] == $idNextcloud){
             $sql = "DELETE FROM `".$this->tableprefix."configuration` WHERE `id` = ? AND `id_nextcloud` = ?";
             $this->execSQLNoData($sql, array($idCompany, $idNextcloud));
 
@@ -422,28 +376,26 @@ class Bdd {
 
             $sql = "DELETE FROM `".$this->tableprefix."conf_share` WHERE `id_configuration` = ?";
             $this->execSQLNoData($sql, array($idCompany));
-            
+
             return true;
         }else{
-
             return false;
         }
     }
 
     public function isConfig($idConfiguration,$idNextcloud){
-        $changelog = 10; //+1 if you want changelog appear for everybody one time !
+        $changelog = 10;
 
         $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
 
-        // Utilisateur jamais utilisé l'application
         if ( $res < 1 ){
             return false;
         }else{
             $sql = "SELECT id as id, changelog as res FROM `".$this->tableprefix."configuration` WHERE `id` = ?";
             $res = json_decode($this->execSQL($sql, array($idConfiguration)))[0]->res;
             if($res < $changelog){
-                $this->gestion_update_configuration("configuration","changelog",$changelog,$idConfiguration,$idNextcloud);
+                $this->gestion_updateConfiguration("changelog", $changelog, $idConfiguration);
                 return false;
             }else{
                 return true;
@@ -451,44 +403,29 @@ class Bdd {
         }
     }
 
-    /**
-     * Number client
-     */
     public function numberClient($idNextcloud){
         $sql = "SELECT count(*) as c from ".$this->tableprefix."client WHERE `id_configuration` = ?;";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
-    /**
-     * Number devis
-     */
     public function numberDevis($idNextcloud){
         $sql = "SELECT count(*) as c from ".$this->tableprefix."devis WHERE `id_configuration` = ?;";
         return $this->execSQL($sql, array($idNextcloud));
     }
-    
-    /**
-     * Number facture
-     */
+
     public function numberFacture($idNextcloud){
         $sql = "SELECT count(*) as c from ".$this->tableprefix."facture WHERE `id_configuration` = ?;";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
-    /**
-     * Number produit
-     */
     public function numberProduit($id_configuration){
         $sql = "SELECT count(*) as c from ".$this->tableprefix."produit WHERE `id_configuration` = ?;";
         return $this->execSQL($sql, array($id_configuration));
     }
 
-    /**
-     * Annual turnover per month without VAT
-     */
     public function getAnnualTurnoverPerMonthNoVat($id_configuration){
-        $sql = "SELECT  EXTRACT(YEAR FROM ".$this->tableprefix."facture.date_paiement) as y, 
-                        EXTRACT(MONTH FROM ".$this->tableprefix."facture.date_paiement) as m, 
+        $sql = "SELECT  EXTRACT(YEAR FROM ".$this->tableprefix."facture.date_paiement) as y,
+                        EXTRACT(MONTH FROM ".$this->tableprefix."facture.date_paiement) as m,
                         sum(".$this->tableprefix."produit.prix_unitaire * ".$this->tableprefix."produit_devis.quantite) as total
                 FROM `".$this->tableprefix."facture`, `".$this->tableprefix."produit_devis`, `".$this->tableprefix."produit`
                 WHERE ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."produit_devis.devis_id
@@ -499,9 +436,6 @@ class Bdd {
         return $this->execSQL($sql, array($id_configuration));
     }
 
-    /**
-     * Get last insert id
-     */
     public function lastinsertid($table,$idNextcloud){
         $sql = "SELECT max(user_id) as last_insert_id FROM `" . $this->tableprefix . $table . "` WHERE " . $this->tableprefix . $table .".id_configuration = ?;";
         $res = $this->execSQLNoJsonReturn($sql,array($idNextcloud));
@@ -520,7 +454,7 @@ class Bdd {
         $res[] = array("===client===");
         $sql = "SELECT * FROM ".$this->tableprefix."client";
         $res = array_merge($res, $this->execSQLNoJsonReturn($sql, array()));
-        
+
         $res[] = array("===devis===");
         $sql = "SELECT * FROM ".$this->tableprefix."devis";
         $res = array_merge($res,$this->execSQLNoJsonReturn($sql, array()));
@@ -544,10 +478,6 @@ class Bdd {
         return $res;
     }
 
-    /**
-     * @sql
-     * @array() //prepare statement
-     */
     private function execSQL($sql, $conditions){
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($conditions);
@@ -569,5 +499,4 @@ class Bdd {
         $stmt->closeCursor();
         return $data;
     }
-
 }

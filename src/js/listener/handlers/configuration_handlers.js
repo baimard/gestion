@@ -1,6 +1,7 @@
-import { getFilePickerBuilder } from "@nextcloud/dialogs";
-import { configuration, updateCurrentCompany, updateDBConfiguration } from "../../modules/ajaxRequest.js";
-import { path } from "../../modules/mainFunction.js";
+import { getFilePickerBuilder, showError, showSuccess } from "@nextcloud/dialogs";
+import { updateCurrentCompany } from "../../modules/ajaxRequest.js";
+import { baseUrl } from "../../modules/mainFunction.js";
+import { csrfHeaders } from "../../modules/csrf.js";
 
 const chooseFolderLabel = t('gestion', 'Choose work folder');
 
@@ -35,14 +36,34 @@ export function updateCurrentCompanySelection(target) {
     updateCurrentCompany(target.value);
 }
 
-function updateSelectedFolder(nodes) {
-    const values = nodes.map(node => node.path);
+async function updateSelectedFolder(nodes) {
+    const selectedFolder = nodes[0]?.path;
     const theFolder = document.getElementById('theFolder');
-    const table = theFolder.getAttribute('data-table');
-    const column = theFolder.getAttribute('data-column');
-    const id = theFolder.getAttribute('data-id');
 
-    updateDBConfiguration(table, column, values[0], id);
-    configuration(path);
-    document.getElementById('theFolder').value = values[0];
+    if (!selectedFolder || !theFolder) {
+        return;
+    }
+
+    try {
+        const response = await fetch(baseUrl + '/updateConfiguration', {
+            method: 'POST',
+            headers: csrfHeaders({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({
+                column: 'path',
+                data: selectedFolder
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Configuration update failed');
+        }
+
+        theFolder.value = selectedFolder;
+        showSuccess(t('gestion', 'Modification saved'));
+    } catch (error) {
+        console.error('Unable to save the selected folder:', error);
+        showError(t('gestion', 'There is an error with the format, please check the documentation'));
+    }
 }

@@ -52,14 +52,12 @@ class ConfigurationController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @param string $table
 	 * @param string $column
 	 * @param string $data
-	 * @param string $id
 	 * @UseSession
 	 */
 	#[UseSession]
-	public function updateConfiguration($table, $column, $data, $id) {
-		return $this->dataService->updateConfiguration($table, $column, $data, $id);
+	public function updateConfiguration($column, $data) {
+		return $this->dataService->updateConfiguration($column, $data);
 	}
 }

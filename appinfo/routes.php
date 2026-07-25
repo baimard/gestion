@@ -27,28 +27,24 @@ return [
         ['name' => 'facture#getFactures', 'url' => '/getFactures', 'verb' => 'PROPFIND'],
         ['name' => 'facture#factureshow', 'url' => '/facture/{numfacture}/show', 'verb' => 'GET'],
         ['name' => 'facture#insertFacture', 'url' => '/facture/insert', 'verb' => 'POST'],
-        
-        // PRODUCT
+
         ['name' => 'produit#getProduits', 'url' => '/getProduits', 'verb' => 'PROPFIND'],
         ['name' => 'produit#getProduitsById', 'url' => '/getProduitsById', 'verb' => 'POST'],
         ['name' => 'produit#insertProduit', 'url' => '/produit/insert', 'verb' => 'POST'],
 
-        // GLOBAL
         ['name' => 'crud#duplicate', 'url' => '/duplicate', 'verb' => 'PUT'],
         ['name' => 'crud#delete', 'url' => '/delete', 'verb' => 'DELETE'],
         ['name' => 'crud#drop', 'url' => '/drop', 'verb' => 'POST'],
-        
-        // STATS
+
         ['name' => 'stats#getStats', 'url' => '/getStats', 'verb' => 'PROPFIND'],
         ['name' => 'stats#getAnnualTurnoverPerMonthNoVat', 'url' => '/getAnnualTurnoverPerMonthNoVat', 'verb' => 'PROPFIND'],
         ['name' => 'stats#getServerFromMail', 'url' => '/getServerFromMail', 'verb' => 'PROPFIND'],
-        
-        // PDF
+
         ['name' => 'pdf#sendPDF', 'url' => '/sendPDF', 'verb' => 'POST'],
         ['name' => 'pdf#savePDF', 'url' => '/savePDF', 'verb' => 'POST'],
-        
+
         ['name' => 'admin#backup', 'url' => '/backup', 'verb' => 'GET'],
-        
+
         ['name' => 'company#createCompany', 'url' => '/createCompany', 'verb' => 'PUT'],
         ['name' => 'company#deleteCompany', 'url' => '/deleteCompany', 'verb' => 'DELETE'],
         ['name' => 'company#setCurrentCompany', 'url' => '/updateSession', 'verb' => 'POST'],
@@ -57,7 +53,11 @@ return [
 
         ['name' => 'pdf#generatePDF', 'url' => '/generatePDF', 'verb' => 'POST'],
 
-        // FACTUR-X
+        // Extensible electronic invoice provider configuration
+        ['name' => 'electronicInvoiceProvider#getConfiguration', 'url' => '/einvoice/provider', 'verb' => 'GET'],
+        ['name' => 'electronicInvoiceProvider#saveConfiguration', 'url' => '/einvoice/provider', 'verb' => 'POST'],
+
+        // FACTUR-X generation remains available without a provider
         ['name' => 'pdf#generateFacturX', 'url' => '/generateFacturX', 'verb' => 'POST'],
         ['name' => 'pdf#generateFacturXml', 'url' => '/generateFacturXml', 'verb' => 'POST'],
         ['name' => 'pdf#sendFacturXToIopole', 'url' => '/sendFacturXToIopole', 'verb' => 'POST'],

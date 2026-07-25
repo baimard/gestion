@@ -5,11 +5,7 @@
 
 	<p style="font-size:14px;margin-bottom:20px;">
 		<?php p($l->t(
-			"⚠️ Important Update:\n\n" .
-			"Logos are now associated with the company you are currently using, based on its identifier number.\n\n" .
-			"In the application, at the top left of the navigation menu, you’ll see the name of your company followed by its ID (e.g., id: %s).\n\n" .
-			"To apply a logo to your company, you must prefix the logo file name with this ID number.\n\n" .
-			"For example, if your company ID is %s, rename your logo file from %s to %s.",
+			"⚠️ Important Update:\n\nLogos are now associated with the company you are currently using, based on its identifier number.\n\nIn the application, at the top left of the navigation menu, you’ll see the name of your company followed by its ID (e.g., id: %s).\n\nTo apply a logo to your company, you must prefix the logo file name with this ID number.\n\nFor example, if your company ID is %s, rename your logo file from %s to %s.",
 			['1', '1', 'logo.png', '1logo.png']
 		)); ?>
 	</p>
@@ -59,7 +55,7 @@
 	<h2><?php p($l->t('Special thanks to:')); ?></h2>
 	<ul>
 		<li>Timo RAINO - <?php p($l->t('for the big work on legal notice for France')); ?></li>
-		<li><?php p($l->t('The MIAGE class at the University of Bordeaux')); ?> - <?php p($l->t('for the extraordinary work on the application this year')); ?></li>
+		<li><?php p($l->t('The MIAGE class at the University of Bordeaux - for the extraordinary work on the application this year')); ?></li>
 		<li>Aaron Stevens - <?php p($l->t('for the coffee ;)')); ?></li>
 		<li>@CarlKDE - <?php p($l->t('for the coffee ;)')); ?></li>
 		<li>little5bull - <?php p($l->t('for the coffee ;)')); ?></li>

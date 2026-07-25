@@ -85,8 +85,12 @@ class DataService {
 		return $this->myDb->gestion_update($table, $column, $data, $id, $this->currentCompany());
 	}
 
-	public function updateConfiguration($table, $column, $data, $id) {
-		return $this->myDb->gestion_updateConfiguration($table, $column, $data, $id);
+	public function updateConfiguration($column, $data) {
+		return $this->myDb->gestion_updateConfiguration(
+			$column,
+			$data,
+			$this->currentCompany()
+		);
 	}
 
 	public function duplicate($table, $id): DataResponse {

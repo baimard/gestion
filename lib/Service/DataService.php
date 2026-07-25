@@ -85,11 +85,7 @@ class DataService {
 		return $this->myDb->gestion_update($table, $column, $data, $id, $this->currentCompany());
 	}
 
-	public function updateConfiguration($table, $column, $data, $id = null) {
-		if ($table !== 'configuration') {
-			return false;
-		}
-
+	public function updateConfiguration($column, $data) {
 		return $this->myDb->gestion_updateConfiguration(
 			'configuration',
 			$column,

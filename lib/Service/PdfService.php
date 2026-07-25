@@ -90,7 +90,7 @@ class PdfService {
 				'tempDir' => '/tmp',
 			]);
 
-			$css = file_get_contents(__DIR__ . '/../../css/style.css');
+			$css = file_get_contents(__DIR__ . '/../../css/pdf.css');
 
 			$mpdf->WriteHTML($css, \Mpdf\HTMLParserMode::HEADER_CSS);
 			$mpdf->WriteHTML($html, \Mpdf\HTMLParserMode::HTML_BODY);
@@ -247,7 +247,7 @@ class PdfService {
 			'tempDir' => '/tmp',
 		]);
 
-		$css = file_get_contents(__DIR__ . '/../../css/style.css');
+		$css = file_get_contents(__DIR__ . '/../../css/pdf.css');
 
 		$mpdf->WriteHTML($css, \Mpdf\HTMLParserMode::HEADER_CSS);
 		$mpdf->WriteHTML($html, \Mpdf\HTMLParserMode::HTML_BODY);

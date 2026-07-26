@@ -145,7 +145,6 @@ OC.L10N.register(
     "Cellphone" : "手机",
     "Mail" : "邮箱",
     "VAT Default" : "增值税默认值",
-    "Global currency for the application" : "应用的默认币种",
     "COMPANY" : "公司",
     "Customers" : "顾客",
     "Quotes" : "报价",

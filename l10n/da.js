@@ -78,7 +78,6 @@ OC.L10N.register(
     "City name" : "Bynavn",
     "Mail" : "Mail",
     "VAT Default" : "moms Standard",
-    "Legal disclaimer/mentions you need in your footer - before company information" : "Juridiske bemærkninger/ansvarsfraskrivelser som du har behov for i din sidefod - inden firmainformation.",
     "Mentions Default" : "Omtaler standard",
     "Customers" : "Kunder",
     "About" : "Om"

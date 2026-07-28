@@ -31,6 +31,7 @@ OC.L10N.register(
     "Your company vat number" : "Sinu äriühingu käibemaksukohuslase number",
     "Your company city name" : "Sinu äriühingu linnanimi",
     "Gestion" : "Gestion",
+    "Saving…" : "Salvestamisel …",
     "Choose work folder" : "Vali töökaust",
     "Choose" : "Vali",
     "Modification saved" : "Muudatus on salvestatud",

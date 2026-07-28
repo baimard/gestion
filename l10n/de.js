@@ -304,7 +304,7 @@ OC.L10N.register(
     "Releases" : "Versionen",
     "Special thanks to:" : "Ein besonderer Dank gilt:",
     "for the big work on legal notice for France" : "für die viele Arbeit am Impressum für Frankreich",
-    "The MIAGE class at the University of Bordeaux - for the extraordinary work on the application this year" : "Die MIAGE-Klasse der Universität Bordeaux – für die hervorragende Arbeit an der Bewerbung in diesem Jahr",
+    "The MIAGE class at the University of Bordeaux - for the extraordinary work on the application this year" : "Die MIAGE-Klasse der Universität Bordeaux – für die herausragende Arbeit an der App in diesem Jahr",
     "for the coffee ;)" : "für den Kaffee ;)",
     "Send an email" : "E-Mail senden",
     "From" : "Von",

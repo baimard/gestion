@@ -32,6 +32,7 @@ OC.L10N.register(
     "Your company city name" : "Sinu äriühingu linnanimi",
     "Gestion" : "Gestion",
     "Saving…" : "Salvestamisel …",
+    "Saved" : "Salvestatud",
     "Choose work folder" : "Vali töökaust",
     "Choose" : "Vali",
     "Modification saved" : "Muudatus on salvestatud",

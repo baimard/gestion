@@ -49,6 +49,8 @@
 
 	<hr/>
 	<h2><?php p($l->t('Changelog')); ?></h2>
+	<h3>Version 3.2.0</h3>
+	<p style="font-size:14px;"><?php p($l->t('Version 3.2.0 focuses on electronic invoicing and prepares Gestion for the French e-invoicing transition.')); ?></p>
 	<p><a href="https://github.com/baimard/gestion/releases"><?php p($l->t('Releases')); ?></a></p>
 
 	<hr/>

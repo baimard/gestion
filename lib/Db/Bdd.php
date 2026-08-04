@@ -384,23 +384,26 @@ class Bdd {
     }
 
     public function isConfig($idConfiguration,$idNextcloud){
-        $changelog = 10;
+        $changelog = 30200;
 
-        $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
-        $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
-
-        if ( $res < 1 ){
+        if (empty($idConfiguration)) {
             return false;
-        }else{
-            $sql = "SELECT id as id, changelog as res FROM `".$this->tableprefix."configuration` WHERE `id` = ?";
-            $res = json_decode($this->execSQL($sql, array($idConfiguration)))[0]->res;
-            if($res < $changelog){
-                $this->gestion_updateConfiguration("changelog", $changelog, $idConfiguration);
-                return false;
-            }else{
-                return true;
-            }
         }
+
+        $sql = "SELECT changelog as res FROM `".$this->tableprefix."configuration` WHERE `id` = ? AND (`id_nextcloud` = ? OR `id` in (SELECT `id_configuration` FROM `".$this->tableprefix."conf_share` WHERE `id_nextcloud` = ?))";
+        $configuration = json_decode($this->execSQL($sql, array($idConfiguration, $idNextcloud, $idNextcloud)));
+
+        if (empty($configuration)) {
+            return false;
+        }
+
+        $res = (int)$configuration[0]->res;
+        if($res < $changelog){
+            $this->gestion_updateConfiguration("changelog", $changelog, $idConfiguration);
+            return false;
+        }
+
+        return true;
     }
 
     public function numberClient($idNextcloud){

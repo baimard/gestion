@@ -6,8 +6,8 @@ appstore_build_directory=$(CURDIR)/build/artifacts/appstore
 appstore_package_name=$(appstore_build_directory)/$(app_name)
 appstore_package_dir=$(appstore_build_directory)/$(app_name)
 occ=occ
-sign_app_private_key=
-sign_app_certificate=
+APP_PRIVATE_KEY=
+APP_CERTIFICATE=
 npm=$(shell which npm 2> /dev/null)
 composer=$(shell which composer 2> /dev/null)
 
@@ -164,11 +164,11 @@ prepare-appstore:
 
 .PHONY: sign-appstore
 sign-appstore:
-	@test -n "$(sign_app_private_key)" || (echo "Missing sign_app_private_key=/path/to/private.key" && exit 1)
-	@test -n "$(sign_app_certificate)" || (echo "Missing sign_app_certificate=/path/to/certificate.crt" && exit 1)
-	@test -f "$(sign_app_private_key)" || (echo "Private key not found: $(sign_app_private_key)" && exit 1)
-	@test -f "$(sign_app_certificate)" || (echo "Certificate not found: $(sign_app_certificate)" && exit 1)
-	$(occ) integrity:sign-app --privateKey="$(sign_app_private_key)" --certificate="$(sign_app_certificate)" --path="$(appstore_package_dir)"
+	@test -n "$(APP_PRIVATE_KEY)" || (echo "Missing APP_PRIVATE_KEY=/path/to/private.key" && exit 1)
+	@test -n "$(APP_CERTIFICATE)" || (echo "Missing APP_CERTIFICATE=/path/to/certificate.crt" && exit 1)
+	@test -f "$(APP_PRIVATE_KEY)" || (echo "Private key not found: $(APP_PRIVATE_KEY)" && exit 1)
+	@test -f "$(APP_CERTIFICATE)" || (echo "Certificate not found: $(APP_CERTIFICATE)" && exit 1)
+	$(occ) integrity:sign-app --privateKey="$(APP_PRIVATE_KEY)" --certificate="$(APP_CERTIFICATE)" --path="$(appstore_package_dir)"
 	@test -f "$(appstore_package_dir)/appinfo/signature.json" || (echo "App signing failed: appinfo/signature.json was not generated" && exit 1)
 
 .PHONY: test

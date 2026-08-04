@@ -298,6 +298,7 @@
     "Send electronic invoices to Iopole directly from the invoice screen when the connector is configured by your administrator." : "Envoyez les factures électroniques à Iopole directement depuis l’écran de la facture lorsque le connecteur est configuré par votre administrateur.",
     "New company and customer fields help produce better electronic invoices, including VAT number, postal code, city, country code and IBAN." : "De nouveaux champs pour les entreprises et les clients permettent de produire de meilleures factures électroniques, notamment le numéro de TVA, le code postal, la ville, le code pays et l’IBAN.",
     "Invoices now provide dedicated actions for saving the standard PDF, generating the Factur-X PDF+XML file, generating the XML file and sending the invoice to Iopole." : "Les factures proposent désormais des actions dédiées pour enregistrer le PDF standard, générer le fichier Factur‑X PDF+XML, générer le fichier XML et envoyer la facture à Iopole.",
+    "Version 3.2.0" : "Version 3.2.0",
     "Changelog" : "Journal des modifications",
     "Releases" : "Versions",
     "Special thanks to:" : "Remerciements spéciaux à :",

@@ -128,7 +128,9 @@ prepare-appstore:
 	rm -rf $(appstore_build_directory)
 	mkdir -p $(appstore_build_directory)
 	rsync -a \
-	--exclude-vcs \
+	--exclude="/.git" \
+	--exclude="/.gitignore" \
+	--exclude="/.gitattributes" \
 	--exclude="/build" \
 	--exclude="/tests" \
 	--exclude="/Makefile" \

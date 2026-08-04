@@ -70,11 +70,6 @@ jobs:
           cd ${{ env.APP_NAME }}
           composer install --no-dev --prefer-dist --no-progress --no-suggest
 
-      - name: Package ${{ env.APP_NAME }} ${{ env.APP_VERSION }} with makefile
-        run: |
-          cd ${{ env.APP_NAME }}
-          make appstore
-
       - name: Checkout server ${{ fromJSON(steps.appinfo.outputs.result).nextcloud.min-version }}
         continue-on-error: true
         id: server-checkout
@@ -92,20 +87,16 @@ jobs:
           repository: nextcloud/server
           path: nextcloud
 
-      - name: Sign app
+      - name: Package and sign app
         run: |
-          # Extracting release
-          cd ${{ env.APP_NAME }}/build/artifacts/appstore
-          tar -xvf ${{ env.APP_NAME }}.tar.gz
-          cd ../../../../
           # Setting up keys
           echo '${{ secrets.APP_PRIVATE_KEY }}' > ${{ env.APP_NAME }}.key
           wget --quiet "https://github.com/nextcloud/app-certificate-requests/raw/master/${{ env.APP_NAME }}/${{ env.APP_NAME }}.crt"
-          # Signing
-          php nextcloud/occ integrity:sign-app --privateKey=../${{ env.APP_NAME }}.key --certificate=../${{ env.APP_NAME }}.crt --path=../${{ env.APP_NAME }}/build/artifacts/appstore/${{ env.APP_NAME }}
-          # Rebuilding archive
-          cd ${{ env.APP_NAME }}/build/artifacts/appstore
-          tar -zcvf ${{ env.APP_NAME }}.tar.gz ${{ env.APP_NAME }}
+          # Packaging and signing
+          cd ${{ env.APP_NAME }}
+          make appstore APP_PRIVATE_KEY="../${{ env.APP_NAME }}.key" APP_CERTIFICATE="../${{ env.APP_NAME }}.crt" occ="php ../nextcloud/occ"
+          # Signing archive checksum
+          cd build/artifacts/appstore
           openssl dgst -sha512 -sign ../../../../${{ env.APP_NAME }}.key ./${{ env.APP_NAME }}.tar.gz | openssl base64 > ./shasum.txt
           cat ./shasum.txt
 

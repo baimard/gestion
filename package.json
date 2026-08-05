@@ -20,7 +20,8 @@
     "webpack": "webpack",
     "build": "GENERATE_SOURCEMAP=false NODE_ENV=production webpack --progress --config webpack.js",
     "dev": "NODE_ENV=development webpack --config webpack.js",
-    "watch": "NODE_ENV=development webpack --watch --config webpack.js"
+    "watch": "NODE_ENV=development webpack --watch --config webpack.js",
+    "verify:template-scripts": "node scripts/verify-template-scripts.js"
   },
   "engines": {
     "node": ">=24 <25",

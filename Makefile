@@ -120,7 +120,7 @@ source:
 # Builds the source package for the app store, ignores php and js tests.
 # The appstore package is signed before archiving, as required by Nextcloud.
 .PHONY: appstore
-appstore: prepare-appstore sign-appstore
+appstore: prepare-appstore verify-appstore-template-scripts sign-appstore
 	tar cvzf $(appstore_package_name).tar.gz -C $(appstore_build_directory) $(app_name)
 
 .PHONY: prepare-appstore
@@ -161,6 +161,14 @@ prepare-appstore:
 	--exclude="/drivers" \
 	--exclude="/*.sh" \
 	./ $(appstore_package_dir)/
+
+.PHONY: verify-template-scripts
+verify-template-scripts:
+	npm run verify:template-scripts
+
+.PHONY: verify-appstore-template-scripts
+verify-appstore-template-scripts:
+	npm run verify:template-scripts -- $(appstore_package_dir)
 
 .PHONY: sign-appstore
 sign-appstore:

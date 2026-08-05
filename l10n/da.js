@@ -32,7 +32,6 @@ OC.L10N.register(
     "Contact" : "Kontakt",
     "Have an issue?" : "Har du et problem?",
     "Newsletter" : "Nyhedsbrev",
-    "Version 2.7.0 You can now share a company with others users!" : "Version 2.7.0 Du kan nu delet et firma med andre brugere!",
     "Changelog" : "Ændringslog",
     "Releases" : "Udgivelser",
     "Send an email" : "Send en e-mail",

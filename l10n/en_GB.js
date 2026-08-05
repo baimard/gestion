@@ -284,8 +284,6 @@ OC.L10N.register(
     "Git discussion" : "Git discussion",
     "Have an issue?" : "Have an issue?",
     "Newsletter" : "Newsletter",
-    "Version 2.7.0 You can now share a company with others users!" : "Version 2.7.0 You can now share a company with others users!",
-    "Version 2.8.0 introduces a complete overhaul of the PDF generation system, bringing improved design, layout consistency and compatibility with more readers." : "Version 2.8.0 introduces a complete overhaul of the PDF generation system, bringing improved design, layout consistency and compatibility with more readers.",
     "Changelog" : "Changelog",
     "Releases" : "Releases",
     "Special thanks to:" : "Special thanks to:",

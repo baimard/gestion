@@ -285,8 +285,6 @@ OC.L10N.register(
     "Git discussion" : "Git 討論",
     "Have an issue?" : "有問題嗎？",
     "Newsletter" : "通訊",
-    "Version 2.7.0 You can now share a company with others users!" : "Version 2.7.0 現在您可以與其他用戶分享公司！",
-    "Version 2.8.0 introduces a complete overhaul of the PDF generation system, bringing improved design, layout consistency and compatibility with more readers." : "版本 2.8.0 將 PDF 生成系統進行了全面重構，帶來了改進的設計、佈局一致性以及對更多閱讀器的兼容性。",
     "Generate a complete Factur-X invoice that combines a readable PDF with embedded structured XML data." : "產生完整的 Factur-X 發票，將可閱讀的 PDF 與內嵌結構化 XML 資料結合。",
     "Export the electronic XML part separately when you need to check, archive or send only the machine-readable invoice data." : "當你需要檢查、封存或只傳送機器可讀的發票資料時，可獨立匯出電子 XML 部分。",
     "Create EN16931-compatible invoice data with invoice lines, VAT breakdowns, totals, seller and buyer addresses, VAT number and payment information." : "建立符合 EN16931 標準的發票資料，包括發票項目、增值稅明細、總額、賣方及買方地址、增值稅編號及付款資料。",

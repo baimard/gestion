@@ -286,8 +286,6 @@ OC.L10N.register(
     "Git discussion" : "Vestlus gitis",
     "Have an issue?" : "Kas sul tekkis mõni probleem?",
     "Newsletter" : "Uudiskiri",
-    "Version 2.7.0 You can now share a company with others users!" : "Version 2.7.0 - Sa saad nüüd oma äriühingut teiste kasutajatega jagada!",
-    "Version 2.8.0 introduces a complete overhaul of the PDF generation system, bringing improved design, layout consistency and compatibility with more readers." : "Version 2.8.0 - PDF-failide lahendus on täiesti uuenenud, sealhulgas parem kujundus, järjekindel küljendus ning parem ühilduvus enamate lugemisrakendustega.",
     "Changelog" : "Muudatuste logi",
     "Releases" : "Versioonid",
     "Special thanks to:" : "Eriline tänu:",

@@ -271,8 +271,6 @@ OC.L10N.register(
     "Git discussion" : "Обговорення на Git'і",
     "Have an issue?" : "Маєш проблему?",
     "Newsletter" : "Інформаційний бюлетень",
-    "Version 2.7.0 You can now share a company with others users!" : "Версія 2.7.0 Тепер ви можете поділитися компанією з іншими користувачами!",
-    "Version 2.8.0 introduces a complete overhaul of the PDF generation system, bringing improved design, layout consistency and compatibility with more readers." : "У версії 2.8.0 повністю перероблено систему генерації PDF, завдяки чому покращено дизайн, узгодженість макетів і сумісність з більшою кількістю пристроїв для читання.",
     "Changelog" : "Зміни",
     "Releases" : "Збірки",
     "Special thanks to:" : "Особлива подяка",

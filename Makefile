@@ -31,7 +31,12 @@ build-js-production:
 	npm run build
 
 .PHONY: verify-js-production
-verify-js-production: build-js-production
+verify-js-production:
+  build-js-production
+	@test -d js || (echo "Missing generated js directory" && exit 1)
+	@test -s js/client.app.js || (echo "Missing js/client.app.js" && exit 1)
+	@test -s js/configuration.app.js || (echo "Missing js/configuration.app.js" && exit 1)
+	@test -s js/factureShow.app.js || (echo "Missing js/factureShow.app.js" && exit 1)
 
 watch-js:
 	npm run watch
@@ -135,6 +140,7 @@ prepare-appstore:
 	--exclude="/.gitignore" \
 	--exclude="/.gitattributes" \
 	--exclude="/build" \
+	--exclude="/dist" \
 	--exclude="/tests" \
 	--exclude="/Makefile" \
 	--exclude="/*.log" \

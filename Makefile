@@ -32,7 +32,7 @@ build-js-production:
 
 .PHONY: verify-js-production
 verify-js-production:
-  build-js-production
+	$(MAKE) build-js-production
 	@test -d js || (echo "Missing generated js directory" && exit 1)
 	@test -s js/client.app.js || (echo "Missing js/client.app.js" && exit 1)
 	@test -s js/configuration.app.js || (echo "Missing js/configuration.app.js" && exit 1)

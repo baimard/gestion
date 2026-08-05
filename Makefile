@@ -116,7 +116,10 @@ source:
 	--exclude-vcs \
 	--exclude="../$(app_name)/composer.json" \
 	--exclude="../$(app_name)/package*" \
+	--exclude="../$(app_name)/AGENTS.md" \
+	--exclude="../$(app_name)/scripts" \
 	--exclude="../$(app_name)/tests" \
+	--exclude="../$(app_name)/translationfiles" \
 	--exclude="../$(app_name)/src" \
 	--exclude="../$(app_name)/build" \
 	--exclude="../$(app_name)/js/node_modules" \
@@ -141,7 +144,10 @@ prepare-appstore:
 	--exclude="/.gitattributes" \
 	--exclude="/build" \
 	--exclude="/dist" \
+	--exclude="/AGENTS.md" \
+	--exclude="/scripts" \
 	--exclude="/tests" \
+	--exclude="/translationfiles" \
 	--exclude="/Makefile" \
 	--exclude="/*.log" \
 	--exclude="/phpunit*xml" \

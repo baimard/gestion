@@ -30,6 +30,9 @@ build-js:
 build-js-production:
 	npm run build
 
+.PHONY: verify-js-production
+verify-js-production: build-js-production
+
 watch-js:
 	npm run watch
 
@@ -120,7 +123,7 @@ source:
 # Builds the source package for the app store, ignores php and js tests.
 # The appstore package is signed before archiving, as required by Nextcloud.
 .PHONY: appstore
-appstore: prepare-appstore verify-appstore-template-scripts sign-appstore
+appstore: verify-js-production prepare-appstore verify-appstore-template-scripts sign-appstore
 	tar cvzf $(appstore_package_name).tar.gz -C $(appstore_build_directory) $(app_name)
 
 .PHONY: prepare-appstore

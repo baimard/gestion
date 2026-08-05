@@ -43,7 +43,7 @@ class FacturXService
         $taxXml       = $this->buildTaxes($totals['vatLines']);
 
         $sellerVatId = htmlspecialchars(
-          trim($config->vat_number ?? ''),
+          trim($company->vat_number ?? ''),
           ENT_XML1
         );
 
@@ -251,6 +251,10 @@ XML;
         $buyerZip = htmlspecialchars($customer->zip_code ?? '', ENT_XML1);
         $buyerCity = htmlspecialchars($customer->city_name ?? '', ENT_XML1);
         $buyerCountry = htmlspecialchars($customer->country_code ?? 'FR', ENT_XML1);
+        $buyerCompanyId = htmlspecialchars(trim($customer->company_identification ?? ''), ENT_XML1);
+        $buyerVatId = htmlspecialchars(trim($customer->vat_number ?? ''), ENT_XML1);
+        $buyerCompanyIdXml = $buyerCompanyId !== '' ? "<ram:ID>{$buyerCompanyId}</ram:ID>" : '';
+        $buyerVatIdXml = $buyerVatId !== '' ? "<ram:SpecifiedTaxRegistration><ram:ID schemeID=\"VA\">{$buyerVatId}</ram:ID></ram:SpecifiedTaxRegistration>" : '';
 
         $invoiceNumber = htmlspecialchars($invoice->num, ENT_XML1);
 
@@ -319,6 +323,8 @@ XML;
 
     <ram:Name>{$buyerName}</ram:Name>
 
+    {$buyerCompanyIdXml}
+
     <ram:PostalTradeAddress>
 
         <ram:PostcodeCode>{$buyerZip}</ram:PostcodeCode>
@@ -330,6 +336,8 @@ XML;
         <ram:CountryID>{$buyerCountry}</ram:CountryID>
 
     </ram:PostalTradeAddress>
+
+    {$buyerVatIdXml}
 
 </ram:BuyerTradeParty>
 

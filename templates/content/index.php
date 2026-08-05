@@ -13,6 +13,8 @@
                 <th><?php p($l->t('First name'));?></th>
                 <th><?php p($l->t('Last name'));?></th>
                 <th><?php p($l->t('Legal information'));?></th>
+                <th><?php p($l->t('Company identification/Siren'));?></th>
+                <th><?php p($l->t('Intra-community VAT'));?></th>
                 <th><?php p($l->t('Phone number'));?></th>
                 <th><?php p($l->t('Email'));?></th>
                 <th><?php p($l->t('Address'));?></th>

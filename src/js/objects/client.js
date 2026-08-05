@@ -15,6 +15,8 @@ export class Client {
     this.prenom = ((myresp.prenom.length === 0) ? '-' : myresp.prenom);
     this.nom = ((myresp.nom.length === 0) ? '-' : myresp.nom);
     this.legal_one = ((myresp.legal_one.length === 0) ? '-' : myresp.legal_one);
+    this.company_identification = (((myresp.company_identification ?? '').length === 0) ? '-' : myresp.company_identification);
+    this.vat_number = (((myresp.vat_number ?? '').length === 0) ? '-' : myresp.vat_number);
     this.telephone = ((myresp.telephone.length === 0) ? '-' : myresp.telephone);
     this.mail = ((myresp.mail.length === 0) ? '-' : myresp.mail);
     this.adresse = ((myresp.adresse.length === 0) ? '-' : myresp.adresse);
@@ -32,6 +34,8 @@ export class Client {
       '<div class="editable" data-table="client" data-column="prenom" data-id="' + this.id + '">' + this.prenom + '</div>',
       '<div class="editable" data-table="client" data-column="nom" data-id="' + this.id + '">' + this.nom + '</div>',
       '<div class="editable" data-table="client" data-column="legal_one" data-id="' + this.id + '">' + this.legal_one + '</div>',
+      '<div class="editable" data-table="client" data-column="company_identification" data-id="' + this.id + '">' + this.company_identification + '</div>',
+      '<div class="editable" data-table="client" data-column="vat_number" data-id="' + this.id + '">' + this.vat_number + '</div>',
       '<div class="editable" data-table="client" data-column="telephone" data-id="' + this.id + '">' + this.telephone + '</div>',
       '<div class="editable" data-table="client" data-column="mail" data-id="' + this.id + '">' + this.mail + '</div>',
       '<div class="editable" data-table="client" data-column="adresse" data-id="' + this.id + '">' + this.adresse + '</div>',
@@ -126,6 +130,14 @@ export class Client {
         document.getElementById("mail").innerHTML = myresp.mail;
         document.getElementById("telephone").innerHTML = myresp.telephone;
         document.getElementById("legal_one").innerHTML = myresp.legal_one;
+        const companyIdentification = document.getElementById("company_identification");
+        if (companyIdentification) {
+          companyIdentification.innerHTML = myresp.company_identification;
+        }
+        const vatNumber = document.getElementById("vat_number");
+        if (vatNumber) {
+          vatNumber.innerHTML = myresp.vat_number;
+        }
         document.getElementById("pdf").setAttribute("data-folder", myresp.num);
 
         const factureEl = document.getElementById("factureid");

@@ -14,7 +14,7 @@ class Bdd {
 
     public function __construct(IDbConnection $db,
                                 IL10N $l) {
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment", "user_id", "facture_prefixe", "id_configuration", "delay", "header","vat", "vat_number", "zip_code", "city_name", "country_code","iban" );
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment", "user_id", "facture_prefixe", "id_configuration", "delay", "header","vat", "vat_number", "zip_code", "city_name", "country_code","iban", "company_identification" );
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->pdo = $db;
@@ -67,7 +67,7 @@ class Bdd {
     }
 
     public function getOneFacture($numfacture, $idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."facture.id," . $this->tableprefix . "facture.version," . $this->tableprefix . "facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, comment, date_paiement, type_paiement, id_devis, nom, prenom, entreprise FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_configuration = ".$this->tableprefix."devis.id_configuration) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration WHERE ".$this->tableprefix."facture.id = ? AND ".$this->tableprefix."facture.id_configuration = ?";
+        $sql = "SELECT ".$this->tableprefix."facture.id," . $this->tableprefix . "facture.version," . $this->tableprefix . "facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, comment, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, legal_one, adresse, zip_code, city_name, country_code, company_identification, vat_number FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_configuration = ".$this->tableprefix."devis.id_configuration) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration WHERE ".$this->tableprefix."facture.id = ? AND ".$this->tableprefix."facture.id_configuration = ?";
         return $this->execSQL($sql, array($numfacture, $idNextcloud));
     }
 
@@ -77,7 +77,7 @@ class Bdd {
     }
 
     public function getOneDevis($numdevis,$idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."devis.id as devisid, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.comment, date, num, id_client, ".$this->tableprefix."client.id as clientid, nom, prenom, legal_one, entreprise, telephone, mail, adresse, delay FROM ".$this->tableprefix."devis left join ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id WHERE ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_configuration = ?";
+        $sql = "SELECT ".$this->tableprefix."devis.id as devisid, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.comment, date, num, id_client, ".$this->tableprefix."client.id as clientid, nom, prenom, legal_one, entreprise, telephone, mail, adresse, zip_code, city_name, country_code, company_identification, vat_number, delay FROM ".$this->tableprefix."devis left join ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id WHERE ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_configuration = ?";
         return $this->execSQL($sql, array($numdevis,$idNextcloud));
     }
 
@@ -104,7 +104,7 @@ class Bdd {
     }
 
     public function insertClient($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."client` (`id_configuration`,`nom`,`prenom`,`legal_one`,`entreprise`,`telephone`,`mail`,`adresse`,`zip_code`,`city_name`,`country_code`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO `".$this->tableprefix."client` (`id_configuration`,`nom`,`prenom`,`legal_one`,`entreprise`,`telephone`,`mail`,`adresse`,`zip_code`,`city_name`,`country_code`,`company_identification`,`vat_number`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $this->execSQLNoData($sql,array($idNextcloud,
                                             $this->l->t('Last name'),
                                             $this->l->t('First name'),
@@ -115,7 +115,9 @@ class Bdd {
                                             $this->l->t('Address'),
                                             $this->l->t('zip_code'),
                                             $this->l->t('city_name'),
-                                            'FR'
+                                            'FR',
+                                            '',
+                                            ''
                                         )
                                     );
         return true;

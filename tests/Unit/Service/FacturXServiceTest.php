@@ -118,6 +118,59 @@ class FacturXServiceTest extends TestCase {
 		$this->assertSame(2, substr_count($xml, '<ram:URIUniversalCommunication>'));
 	}
 
+	public function testUsesCompanyNameForBuyerWhenAvailable(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-06',
+			'date_paiement' => '2026-09-06',
+			'num' => 'F-BUYER-COMPANY',
+			'entreprise' => 'Customer & Partners',
+			'prenom' => 'Ludovic',
+			'nom' => 'Lastennet',
+		];
+		$products = [(object)[
+			'description' => 'Service',
+			'prix_unitaire' => 100,
+			'quantite' => 1,
+			'vat' => 20,
+		]];
+
+		$xml = $service->buildXml($invoice, (object)[], $products);
+		$buyerXml = $this->extractBuyerTradeParty($xml);
+
+		$this->assertStringContainsString(
+			'<ram:Name>Customer &amp; Partners</ram:Name>',
+			$buyerXml
+		);
+		$this->assertStringNotContainsString('Ludovic Lastennet', $buyerXml);
+	}
+
+	public function testUsesPersonNameForBuyerWithoutCompanyName(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-06',
+			'date_paiement' => '2026-09-06',
+			'num' => 'F-BUYER-PERSON',
+			'entreprise' => '  ',
+			'prenom' => 'Ludovic',
+			'nom' => 'Lastennet',
+		];
+		$products = [(object)[
+			'description' => 'Service',
+			'prix_unitaire' => 100,
+			'quantite' => 1,
+			'vat' => 20,
+		]];
+
+		$xml = $service->buildXml($invoice, (object)[], $products);
+		$buyerXml = $this->extractBuyerTradeParty($xml);
+
+		$this->assertStringContainsString(
+			'<ram:Name>Ludovic Lastennet</ram:Name>',
+			$buyerXml
+		);
+	}
+
 	public function testDoesNotDeclareAnAccountingCurrencyWithoutItsVatTotal(): void {
 		$service = new FacturXService();
 		$invoice = (object)[
@@ -317,5 +370,15 @@ class FacturXServiceTest extends TestCase {
 		$this->assertSame(2, substr_count($xml, '<ram:CategoryCode>S</ram:CategoryCode>'));
 		$this->assertStringNotContainsString('<ram:CategoryCode>E</ram:CategoryCode>', $xml);
 		$this->assertStringContainsString('<ram:RateApplicablePercent>5.5</ram:RateApplicablePercent>', $xml);
+	}
+
+	private function extractBuyerTradeParty(string $xml): string {
+		$start = strpos($xml, '<ram:BuyerTradeParty>');
+		$end = strpos($xml, '</ram:BuyerTradeParty>');
+
+		$this->assertNotFalse($start);
+		$this->assertNotFalse($end);
+
+		return substr($xml, $start, $end - $start);
 	}
 }

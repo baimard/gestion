@@ -94,4 +94,57 @@ class FacturXServiceTest extends TestCase {
 		$this->assertStringContainsString('<ram:GlobalID schemeID="0009">49384534100038</ram:GlobalID>', $xml);
 		$this->assertStringContainsString('<ram:ID schemeID="0002">493845341</ram:ID>', $xml);
 	}
+
+	public function testBuildsEveryProductVatBreakdownAndTotalsIncludingTax(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-07-25',
+			'date_paiement' => '2026-08-25',
+			'num' => 'FACTURE-10',
+		];
+		$products = [
+			(object)['description' => 'Produit sans TVA', 'prix_unitaire' => 10, 'quantite' => 1, 'vat' => 0, 'vat_category' => 'E'],
+			(object)['description' => 'Produit 1', 'prix_unitaire' => 10, 'quantite' => 1, 'vat' => 5.5, 'vat_category' => 'S'],
+			(object)['description' => 'Produit 2', 'prix_unitaire' => 20, 'quantite' => 1, 'vat' => 10, 'vat_category' => 'S'],
+			(object)['description' => 'Produit 3', 'prix_unitaire' => 30, 'quantite' => 1, 'vat' => 20, 'vat_category' => 'S'],
+		];
+
+		$xml = $service->buildXml($invoice, (object)[], $products);
+
+		$this->assertSame(4, substr_count($xml, '<ram:IncludedSupplyChainTradeLineItem>'));
+		foreach ($products as $index => $product) {
+			$this->assertStringContainsString('<ram:LineID>' . ($index + 1) . '</ram:LineID>', $xml);
+			$this->assertStringContainsString('<ram:Name>' . $product->description . '</ram:Name>', $xml);
+			$this->assertStringContainsString('<ram:RateApplicablePercent>' . $product->vat . '</ram:RateApplicablePercent>', $xml);
+		}
+		$this->assertStringContainsString('<ram:CategoryCode>E</ram:CategoryCode>', $xml);
+		$this->assertStringContainsString('<ram:ExemptionReason>TVA non applicable, art. 293 B du CGI</ram:ExemptionReason>', $xml);
+		$this->assertStringNotContainsString('<ram:CategoryCode>Z</ram:CategoryCode>', $xml);
+		$this->assertStringContainsString('<ram:LineTotalAmount>70.00</ram:LineTotalAmount>', $xml);
+		$this->assertStringContainsString('<ram:TaxBasisTotalAmount>70.00</ram:TaxBasisTotalAmount>', $xml);
+		$this->assertStringContainsString('<ram:TaxTotalAmount currencyID="EUR">8.55</ram:TaxTotalAmount>', $xml);
+		$this->assertStringContainsString('<ram:GrandTotalAmount>78.55</ram:GrandTotalAmount>', $xml);
+		$this->assertStringContainsString('<ram:DuePayableAmount>78.55</ram:DuePayableAmount>', $xml);
+	}
+
+	public function testUsesTheCategorySelectedForEachProduct(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-06',
+			'date_paiement' => '2026-09-06',
+			'num' => 'F-4',
+		];
+		$products = [
+			(object)['description' => 'Exonéré', 'prix_unitaire' => 10, 'quantite' => 1, 'vat' => 0, 'vat_category' => 'E'],
+			(object)['description' => 'Taux zéro', 'prix_unitaire' => 20, 'quantite' => 1, 'vat' => 0, 'vat_category' => 'Z'],
+		];
+
+		$xml = $service->buildXml($invoice, (object)[], $products);
+
+		$this->assertSame(2, substr_count($xml, '<ram:CategoryCode>E</ram:CategoryCode>'));
+		$this->assertSame(2, substr_count($xml, '<ram:CategoryCode>Z</ram:CategoryCode>'));
+		$this->assertSame(2, substr_count($xml, '<ram:BasisAmount>'));
+		$this->assertStringContainsString('<ram:BasisAmount>10.00</ram:BasisAmount>', $xml);
+		$this->assertStringContainsString('<ram:BasisAmount>20.00</ram:BasisAmount>', $xml);
+	}
 }

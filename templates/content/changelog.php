@@ -4,14 +4,6 @@
 	<h2><?php p($l->t('Welcome to GESTION')); ?> 3.2.6</h2>
 
 	<p style="font-size:14px;margin-bottom:20px;">
-		<?php p($l->t(
-			"⚠️ Important Update:\n\nLogos are now associated with the company you are currently using, based on its identifier number.\n\nIn the application, at the top left of the navigation menu, you’ll see the name of your company followed by its ID (e.g., id: %s).\n\nTo apply a logo to your company, you must prefix the logo file name with this ID number.\n\nFor example, if your company ID is %s, rename your logo file from %s to %s.",
-			['1', '1', 'logo.png', '1logo.png']
-		)); ?>
-	</p>
-	
-
-	<p style="font-size:14px;margin-bottom:20px;">
 		<b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> 
 		&#128073;<a style="font-size:20px;" href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a>
 	</p>

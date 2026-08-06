@@ -32,6 +32,11 @@ class FacturXServiceTest extends TestCase {
 		$this->assertStringContainsString(FacturXService::PROFILE_ID, $xml);
 		$this->assertStringNotContainsString('factur-x.eu:1p0:extended', $xml);
 		$this->assertSame(1, substr_count($xml, '<ram:GuidelineSpecifiedDocumentContextParameter>'));
+		$this->assertStringContainsString(
+			'<ram:BusinessProcessSpecifiedDocumentContextParameter>'
+			. "\n            <ram:ID>" . FacturXService::BUSINESS_PROCESS_ID . '</ram:ID>',
+			$xml
+		);
 	}
 
 	public function testBuildsHeaderTradeDeliveryBeforeSettlement(): void {
@@ -319,6 +324,7 @@ class FacturXServiceTest extends TestCase {
 		}
 		$this->assertStringContainsString('<ram:CategoryCode>E</ram:CategoryCode>', $xml);
 		$this->assertStringContainsString('<ram:ExemptionReason>TVA non applicable, art. 293 B du CGI</ram:ExemptionReason>', $xml);
+		$this->assertStringContainsString('<ram:ExemptionReasonCode>VATEX-FR-FRANCHISE</ram:ExemptionReasonCode>', $xml);
 		$this->assertStringNotContainsString('<ram:CategoryCode>Z</ram:CategoryCode>', $xml);
 		$this->assertStringContainsString('<ram:LineTotalAmount>70.00</ram:LineTotalAmount>', $xml);
 		$this->assertStringContainsString('<ram:TaxBasisTotalAmount>70.00</ram:TaxBasisTotalAmount>', $xml);

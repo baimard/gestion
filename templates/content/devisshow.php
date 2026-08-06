@@ -19,8 +19,12 @@
                 <p>
                     <span><?php echo $res->prenom . " " . $res->nom; ?></span><br />
                     <span><?php echo $res->adresse; ?></span><br />
+                    <span><?php echo trim(($res->zip_code ?? '') . ' ' . ($res->city_name ?? '')); ?></span><br />
                     <span><?php echo $res->mail; ?></span><br />
                     <span><?php echo $res->telephone; ?></span><br/>
+                    <span><?php echo $res->legal_one; ?></span><br />
+                    <span><?php echo $res->legal_two; ?></span><br />
+                    <span><?php echo $res->vat_number ?? ''; ?></span><br />
                     <br/>
                 </p>
             </td>
@@ -40,6 +44,8 @@
                 <p>
                     <span id="nomprenom" data-id="0" data-table="devis" data-column="id_client"></span><br />
                     <span id="adresse"></span><br />
+                    <span id="client_city"></span><br />
+                    <span id="country_code"></span><br />
                     <span id="mail"></span><br />
                     <span id="telephone"></span><br />
                     <span id="legal_one"></span><br /><span id="company_identification"></span><br /><span id="vat_number"></span><br />
@@ -141,6 +147,7 @@
             <td class="cell-mentions">
                 <p class="mentions-titre"><?php echo $res->entreprise; ?></p>
                 <p class="mentions-ligne"><?php echo $res->adresse; ?></p>
+                <p class="mentions-ligne"><?php echo trim(($res->zip_code ?? '') . ' ' . ($res->city_name ?? '')); ?></p>
                 <p class="mentions-ligne"><?php echo $res->legal_one; ?></p>
                 <p class="mentions-ligne"><?php echo $res->legal_two; ?></p>
             </td>

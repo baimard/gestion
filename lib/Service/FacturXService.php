@@ -248,6 +248,10 @@ XML;
 	private function getVatCategory(object $product, float $vatRate): string
 	{
 		$category = strtoupper(trim((string)($product->vat_category ?? '')));
+		if ($vatRate > 0.0) {
+			return 'S';
+		}
+
 		if (in_array($category, self::VAT_CATEGORIES, true)) {
 			return $category;
 		}

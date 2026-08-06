@@ -294,4 +294,28 @@ class FacturXServiceTest extends TestCase {
 		$this->assertStringContainsString('<ram:BasisAmount>10.00</ram:BasisAmount>', $xml);
 		$this->assertStringContainsString('<ram:BasisAmount>20.00</ram:BasisAmount>', $xml);
 	}
+
+	public function testUsesTheStandardCategoryForAPositiveVatRate(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-06',
+			'date_paiement' => '2026-09-06',
+			'num' => 'F-5',
+		];
+		$products = [
+			(object)[
+				'description' => 'Incorrect legacy category',
+				'prix_unitaire' => 10,
+				'quantite' => 1,
+				'vat' => 5.5,
+				'vat_category' => 'E',
+			],
+		];
+
+		$xml = $service->buildXml($invoice, (object)[], $products);
+
+		$this->assertSame(2, substr_count($xml, '<ram:CategoryCode>S</ram:CategoryCode>'));
+		$this->assertStringNotContainsString('<ram:CategoryCode>E</ram:CategoryCode>', $xml);
+		$this->assertStringContainsString('<ram:RateApplicablePercent>5.5</ram:RateApplicablePercent>', $xml);
+	}
 }

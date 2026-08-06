@@ -33,4 +33,18 @@ class ElectronicInvoiceIdentifiersTest extends TestCase {
 			ElectronicInvoiceIdentifiers::extractDigits('SIREN : 123 456 789', 'SIRET')
 		);
 	}
+
+	public function testBuildsSirenFromSirenOrSiret(): void {
+		$this->assertSame('493845341', ElectronicInvoiceIdentifiers::sirenFrom('493845341'));
+		$this->assertSame('493845341', ElectronicInvoiceIdentifiers::sirenFrom('493 845 341 00038'));
+	}
+
+	public function testRejectsAnAllZeroSiren(): void {
+		$this->assertSame('', ElectronicInvoiceIdentifiers::sirenFrom('000000000'));
+	}
+
+	public function testBuildsOnlyFourteenDigitSiret(): void {
+		$this->assertSame('49384534100038', ElectronicInvoiceIdentifiers::siretFrom('493 845 341 00038'));
+		$this->assertSame('', ElectronicInvoiceIdentifiers::siretFrom('493845341'));
+	}
 }

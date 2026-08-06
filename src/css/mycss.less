@@ -15,19 +15,47 @@
   background-color: var(--color-main-background);
 }
 
+.tabledt thead > tr > th {
+  vertical-align: middle !important;
+}
+
+.tabledt thead > tr > th .dt-column-header {
+  min-height: 32px;
+  align-items: center !important;
+}
+
+.tabledt thead > tr > th .dt-column-title,
+.tabledt thead > tr > th .dt-column-order {
+  align-self: center;
+}
+
+.tabledt thead > tr > th .dt-column-title {
+  line-height: 1.2;
+}
+
 .vat-category-select {
   min-width: 12rem;
 }
 
-.vat-category-help {
-  display: inline-block;
-  margin-left: 3px;
-  color: var(--color-main-text);
-  vertical-align: middle;
-  line-height: 1;
-  font-size: 14px;
+.help-heading {
+  cursor: help;
+}
+
+.help-heading .dt-column-title::after {
+  content: "?";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 11px;
   font-weight: 700;
-  cursor: pointer;
+  line-height: 1;
+  vertical-align: middle;
+  opacity: .75;
 }
 
 .toastify.dialogs {

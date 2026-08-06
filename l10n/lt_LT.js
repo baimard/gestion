@@ -291,6 +291,7 @@ OC.L10N.register(
     "Git discussion" : "Diskusija Git platformoje",
     "Have an issue?" : "Turite problemų?",
     "Newsletter" : "Naujienlaiškis",
+    "This version focuses on electronic invoicing and prepares Gestion for the French e-invoicing transition." : "Ši versija orientuota į elektroninį sąskaitų faktūrų teikimą ir paruošia „Gestion“ perėjimui prie elektroninių sąskaitų faktūrų naudojimo Prancūzijoje.",
     "Generate a complete Factur-X invoice that combines a readable PDF with embedded structured XML data." : "Sugeneruokite visą „Factur-X“ sąskaitą faktūrą, kurioje derinamas skaitomas PDF failas ir įterpti struktūrizuoti XML duomenys.",
     "Export the electronic XML part separately when you need to check, archive or send only the machine-readable invoice data." : "Eksportuokite elektroninę XML dalį atskirai, kai reikia patikrinti, archyvuoti arba išsiųsti tik kompiuterio skaitomus sąskaitos faktūros duomenis.",
     "Create EN16931-compatible invoice data with invoice lines, VAT breakdowns, totals, seller and buyer addresses, VAT number and payment information." : "Sukurkite EN16931 standartą atitinkančius sąskaitos faktūros duomenis, įskaitant sąskaitos eilutes, PVM išskaidymą, bendras sumas, pardavėjo ir pirkėjo adresus, PVM mokėtojo kodą bei mokėjimo informaciją.",

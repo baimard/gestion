@@ -8,7 +8,9 @@ use OCA\Gestion\Controller\GestionFacturXWriter;
 class FacturXService
 {
 	public const PROFILE_ID = 'urn:cen.eu:en16931:2017';
+	public const BUSINESS_PROCESS_ID = 'S1';
 	private const VAT_EXEMPTION_REASON = 'TVA non applicable, art. 293 B du CGI';
+	private const VAT_EXEMPTION_REASON_CODE = 'VATEX-FR-FRANCHISE';
 	private const VAT_CATEGORIES = ['S', 'E', 'Z', 'O', 'AE', 'G', 'K'];
 	private const FRENCH_INVOICE_NOTES = [
 		'PMT' => 'Indemnité forfaitaire de 40 euros pour frais de recouvrement due en cas de retard de paiement.',
@@ -222,6 +224,9 @@ XML;
 			$exemptionReason = $category === 'E'
 				? "\n    <ram:ExemptionReason>" . self::VAT_EXEMPTION_REASON . '</ram:ExemptionReason>'
 				: '';
+			$exemptionReasonCode = $category === 'E'
+				? "\n    <ram:ExemptionReasonCode>" . self::VAT_EXEMPTION_REASON_CODE . '</ram:ExemptionReasonCode>'
+				: '';
 
             $xml .= <<<XML
 
@@ -231,6 +236,7 @@ XML;
     {$exemptionReason}
     <ram:BasisAmount>{$basis}</ram:BasisAmount>
     <ram:CategoryCode>{$category}</ram:CategoryCode>
+    {$exemptionReasonCode}
     <ram:RateApplicablePercent>{$rate}</ram:RateApplicablePercent>
 </ram:ApplicableTradeTax>
 
@@ -349,6 +355,7 @@ XML;
         $invoiceDateFormatted = $invoiceDate->format('Ymd');
         $dueDateFormatted = $dueDate->format('Ymd');
 		$profileId = self::PROFILE_ID;
+		$businessProcessId = self::BUSINESS_PROCESS_ID;
 		$invoiceNotesXml = $this->buildFrenchInvoiceNotes();
 
         return <<<XML
@@ -362,6 +369,9 @@ XML;
     xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
 
     <rsm:ExchangedDocumentContext>
+        <ram:BusinessProcessSpecifiedDocumentContextParameter>
+            <ram:ID>{$businessProcessId}</ram:ID>
+        </ram:BusinessProcessSpecifiedDocumentContextParameter>
         <ram:GuidelineSpecifiedDocumentContextParameter>
             <ram:ID>{$profileId}</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>

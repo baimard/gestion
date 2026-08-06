@@ -8,6 +8,8 @@ use OCA\Gestion\Controller\GestionFacturXWriter;
 class FacturXService
 {
 	public const PROFILE_ID = 'urn:cen.eu:en16931:2017';
+	private const VAT_EXEMPTION_REASON = 'TVA non applicable, art. 293 B du CGI';
+	private const VAT_CATEGORIES = ['S', 'E', 'Z', 'O', 'AE', 'G', 'K'];
 
     /**
      * Generate complete Factur-X PDF
@@ -96,12 +98,14 @@ class FacturXService
             $totalHT += $lineTotal;
 
 			$vatRate = $this->getVatRate($product);
+			$vatCategory = $this->getVatCategory($product, $vatRate);
 
-            $key = number_format($vatRate, 2);
+            $key = $vatCategory . ':' . number_format($vatRate, 2);
 
             if (!isset($vatLines[$key])) {
                 $vatLines[$key] = [
                     'rate' => $vatRate,
+					'category' => $vatCategory,
                     'base' => 0.0,
                     'amount' => 0.0
                 ];
@@ -138,6 +142,7 @@ class FacturXService
             );
 
 			$vatRate = $this->getVatRate($product);
+			$vatCategory = $this->getVatCategory($product, $vatRate);
 
             $designation = htmlspecialchars(
                 $product->description
@@ -172,7 +177,7 @@ class FacturXService
     <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
             <ram:TypeCode>VAT</ram:TypeCode>
-            <ram:CategoryCode>S</ram:CategoryCode>
+            <ram:CategoryCode>{$vatCategory}</ram:CategoryCode>
             <ram:RateApplicablePercent>{$vatRate}</ram:RateApplicablePercent>
         </ram:ApplicableTradeTax>
 
@@ -198,15 +203,23 @@ XML;
         $xml = '';
 
         foreach ($vatLines as $vat) {
+			$amount = number_format($vat['amount'], 2, '.', '');
+			$basis = number_format($vat['base'], 2, '.', '');
+			$rate = $vat['rate'];
+			$category = $vat['category'];
+			$exemptionReason = $category === 'E'
+				? "\n    <ram:ExemptionReason>" . self::VAT_EXEMPTION_REASON . '</ram:ExemptionReason>'
+				: '';
 
             $xml .= <<<XML
 
 <ram:ApplicableTradeTax>
-    <ram:CalculatedAmount>{$vat['amount']}</ram:CalculatedAmount>
+    <ram:CalculatedAmount>{$amount}</ram:CalculatedAmount>
     <ram:TypeCode>VAT</ram:TypeCode>
-    <ram:BasisAmount>{$vat['base']}</ram:BasisAmount>
-    <ram:CategoryCode>S</ram:CategoryCode>
-    <ram:RateApplicablePercent>{$vat['rate']}</ram:RateApplicablePercent>
+    {$exemptionReason}
+    <ram:BasisAmount>{$basis}</ram:BasisAmount>
+    <ram:CategoryCode>{$category}</ram:CategoryCode>
+    <ram:RateApplicablePercent>{$rate}</ram:RateApplicablePercent>
 </ram:ApplicableTradeTax>
 
 XML;
@@ -218,6 +231,17 @@ XML;
 	private function getVatRate(object $product): float
 	{
 		return (float)($product->vat ?? $product->tva ?? 20.0);
+	}
+
+	private function getVatCategory(object $product, float $vatRate): string
+	{
+		$category = strtoupper(trim((string)($product->vat_category ?? '')));
+		if (in_array($category, self::VAT_CATEGORIES, true)) {
+			return $category;
+		}
+
+		// Backward compatibility for products created before categories were stored.
+		return $vatRate == 0.0 ? 'E' : 'S';
 	}
 
     /**

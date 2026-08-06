@@ -48,10 +48,29 @@ class ClientController extends Controller {
 
 	/**
 	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @UseSession
+	 */
+	#[UseSession]
+	public function getContacts($search = '') {
+		return $this->dataService->getContacts($search);
+	}
+
+	/**
+	 * @NoAdminRequired
 	 * @UseSession
 	 */
 	#[UseSession]
 	public function insertClient() {
 		return $this->dataService->insertClient();
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @UseSession
+	 */
+	#[UseSession]
+	public function insertClientFromContact() {
+		return $this->dataService->insertClientFromContact($this->request->getParams());
 	}
 }

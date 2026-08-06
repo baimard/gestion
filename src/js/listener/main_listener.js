@@ -29,6 +29,10 @@ import {
     updateEditableSelect,
     updateLinkedListSelection,
 } from './handlers/select_handlers.js';
+import {
+    importSelectedContact,
+    showContactSelect,
+} from './handlers/contact_handlers.js';
 
 let lastKeyEventTime = 0;
 
@@ -84,6 +88,10 @@ function handleBodyClick(event) {
     if (target.id === 'devisAdd') {
         addProductToDevis();
     }
+
+    if (target.id === 'importContactClient') {
+        showContactSelect();
+    }
 }
 
 function handleEditableOrCreationClick(event) {
@@ -119,6 +127,10 @@ function handleBodyDoubleClick(event) {
 
 function handleBodyChange(event) {
     const target = event.target;
+
+    if (target.id === 'contactClientSelect') {
+        importSelectedContact(target);
+    }
 
     if (target.classList.contains('listClient') || target.classList.contains('listDevis')) {
         updateLinkedListSelection(target);

@@ -18,6 +18,8 @@ return [
         ['name' => 'crud#update', 'url' => '/update', 'verb' => 'POST'],
         ['name' => 'configuration#updateConfiguration', 'url' => '/updateConfiguration', 'verb' => 'POST'],
         ['name' => 'client#insertClient', 'url' => '/client/insert', 'verb' => 'POST'],
+        ['name' => 'client#getContacts', 'url' => '/contacts', 'verb' => 'GET'],
+        ['name' => 'client#insertClientFromContact', 'url' => '/client/insert-from-contact', 'verb' => 'POST'],
 
         ['name' => 'devis#getDevis', 'url' => '/getDevis', 'verb' => 'PROPFIND'],
         ['name' => 'devis#devisshow', 'url' => '/devis/{numdevis}/show', 'verb' => 'GET'],

@@ -5,6 +5,8 @@ import { showSuccess, showError } from "@nextcloud/dialogs";
 
 export class Client {
 
+  static contacts = [];
+
   /**
    * 
    * @param myresp instantiate client object
@@ -79,6 +81,97 @@ export class Client {
       }
     };
     oReq.send();
+  }
+
+  static loadContactSelect() {
+    const selectElement = document.getElementById('contactClientSelect');
+    const importButton = document.getElementById('importContactClient');
+
+    selectElement.disabled = true;
+    importButton.disabled = true;
+
+    fetch(baseUrl + '/contacts', {
+      method: 'GET',
+      headers: csrfHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw response;
+      }
+      return response.json();
+    })
+    .then(contacts => {
+      Client.contacts = contacts;
+      selectElement.innerHTML = '';
+
+      const placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.text = t('gestion', 'Select a Nextcloud contact');
+      selectElement.appendChild(placeholder);
+
+      contacts.forEach((contact, index) => {
+        const option = document.createElement('option');
+        option.value = index.toString();
+        option.text = contact.label;
+        selectElement.appendChild(option);
+      });
+
+      selectElement.style.display = 'inline-block';
+      selectElement.disabled = false;
+
+      if (contacts.length === 0) {
+        showError(t('gestion', 'No contacts found'));
+      }
+    })
+    .catch(error => {
+      showError(Client.getRequestError(error));
+    })
+    .finally(() => {
+      importButton.disabled = false;
+    });
+  }
+
+  static importSelectedContact(dt, selectElement) {
+    const selectedContact = Client.contacts[Number.parseInt(selectElement.value, 10)];
+
+    if (!selectedContact) {
+      return;
+    }
+
+    selectElement.disabled = true;
+
+    fetch(baseUrl + '/client/insert-from-contact', {
+      method: 'POST',
+      headers: csrfHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(selectedContact)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw response;
+      }
+
+      showSuccess(t('gestion', 'Customer created from Nextcloud contact'));
+      selectElement.style.display = 'none';
+      selectElement.value = '';
+      Client.contacts = [];
+      Client.loadClientDT(dt);
+    })
+    .catch(error => {
+      selectElement.disabled = false;
+      showError(Client.getRequestError(error));
+    });
+  }
+
+  static getRequestError(error) {
+    if (error instanceof Response) {
+      return t('gestion', 'The request failed with status {status}', { status: error.status });
+    }
+
+    return error instanceof Error ? error.message : String(error);
   }
 
   /**

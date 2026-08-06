@@ -104,21 +104,42 @@ class Bdd {
     }
 
     public function insertClient($idNextcloud){
+        return $this->insertClientFromData($idNextcloud, array(
+            'Last name' => $this->l->t('Last name'),
+            'First name' => $this->l->t('First name'),
+            'Legal information' => $this->l->t('Limited company'),
+            'Company' => $this->l->t('Company'),
+            'Phone number' => $this->l->t('Phone number'),
+            'Email' => $this->l->t('Email'),
+            'Address' => $this->l->t('Address'),
+            'Zip code' => $this->l->t('Zip code'),
+            'City name' => $this->l->t('City name'),
+            'Country code' => 'FR',
+        ));
+    }
+
+    public function insertClientFromData($idNextcloud, array $client){
         $sql = "INSERT INTO `".$this->tableprefix."client` (`id_configuration`,`nom`,`prenom`,`legal_one`,`entreprise`,`telephone`,`mail`,`adresse`,`zip_code`,`city_name`,`country_code`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-        $this->execSQLNoData($sql,array($idNextcloud,
-                                            $this->l->t('Last name'),
-                                            $this->l->t('First name'),
-                                            $this->l->t('Limited company'),
-                                            $this->l->t('Company'),
-                                            $this->l->t('Phone number'),
-                                            $this->l->t('Email'),
-                                            $this->l->t('Address'),
-                                            $this->l->t('zip_code'),
-                                            $this->l->t('city_name'),
-                                            'FR'
-                                        )
-                                    );
+        $this->execSQLNoData($sql,array(
+            $idNextcloud,
+            $this->sanitizeClientValue($client['Last name'] ?? ''),
+            $this->sanitizeClientValue($client['First name'] ?? ''),
+            $this->sanitizeClientValue($client['Legal information'] ?? ''),
+            $this->sanitizeClientValue($client['Company'] ?? ''),
+            $this->sanitizeClientValue($client['Phone number'] ?? ''),
+            $this->sanitizeClientValue($client['Email'] ?? ''),
+            $this->sanitizeClientValue($client['Address'] ?? ''),
+            $this->normalizeColumnData('zip_code', $this->sanitizeClientValue($client['Zip code'] ?? '')),
+            $this->sanitizeClientValue($client['City name'] ?? ''),
+            $this->normalizeColumnData('country_code', $this->sanitizeClientValue($client['Country code'] ?? '')),
+        ));
         return true;
+    }
+
+    private function sanitizeClientValue($data){
+        $safeData = strip_tags((string)$data, '<br>');
+        $safeData = html_entity_decode($safeData, ENT_QUOTES, 'UTF-8');
+        return rtrim($safeData);
     }
 
     public function insertDevis($idNextcloud){

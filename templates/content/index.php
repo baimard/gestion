@@ -5,6 +5,9 @@
         <span><?php p($l->t('Customer'));?></span>
         <span class="material-symbols-outlined">chevron_right</span>
         <button style="margin-left:3px;" type="button"  id="newClient"><?php p($l->t('Add customer'));?></button>
+        <button style="margin-left:3px;" type="button" id="importContactClient"><?php p($l->t('Add from Nextcloud contacts'));?></button>
+        <label class="hidden-visually" for="contactClientSelect"><?php p($l->t('Nextcloud contact'));?></label>
+        <select style="margin-left:3px;display:none;" id="contactClientSelect" disabled><option value=""><?php p($l->t('Select a Nextcloud contact'));?></option></select>
     </div>
     <table id="client" class="display tabledt" style="font-size:11px;">
         <thead>

@@ -41,6 +41,20 @@ button.vat-category-help .material-symbols {
   font-size: 20px;
 }
 
+.toastify.dialogs {
+  width: 30%;
+  max-width: 30%;
+  box-sizing: border-box;
+  white-space: normal;
+}
+
+@media (max-width: 768px) {
+  .toastify.dialogs {
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+  }
+}
+
 table.dataTable.display tbody tr.odd > [class*="sorting_"] {
   background-color: var(--color-main-background);
 }

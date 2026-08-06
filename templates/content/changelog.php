@@ -1,7 +1,7 @@
 <div syle="display: none;" id="modalConfig" class="modal">
 <div class="modal-content">
 	<span class="modalClose">&times;</span>
-	<h2><?php p($l->t('Welcome to GESTION')); ?> 3.2.6</h2>
+	<h2><?php p($l->t('Welcome to GESTION')); ?> 3.5.7</h2>
 
 	<p style="font-size:14px;margin-bottom:20px;">
 		<b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> 
@@ -39,7 +39,7 @@
 
 	<hr/>
 	<h2><?php p($l->t('Changelog')); ?></h2>
-	<h3>Version 3.2.6</h3>
+	<h3>Version 3.5.7</h3>
 	<p style="font-size:14px;"><?php p($l->t('This version focuses on electronic invoicing and prepares Gestion for the French e-invoicing transition.')); ?></p>
 	<p><a href="https://github.com/baimard/gestion/releases"><?php p($l->t('Releases')); ?></a></p>
 

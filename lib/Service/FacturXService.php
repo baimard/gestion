@@ -58,6 +58,11 @@ class FacturXService
 			(string)($company->legal_two ?? ''),
 			'SIREN'
 		);
+		$sellerSiret = ElectronicInvoiceIdentifiers::siretFrom($sellerSiret);
+		$sellerSiren = ElectronicInvoiceIdentifiers::sirenFrom($sellerSiren);
+		if ($sellerSiren === '') {
+			$sellerSiren = ElectronicInvoiceIdentifiers::sirenFrom($sellerSiret);
+		}
 
         return $this->buildDocument(
             invoice: $invoice,
@@ -269,9 +274,12 @@ XML;
         $buyerZip = htmlspecialchars($customer->zip_code ?? '', ENT_XML1);
         $buyerCity = htmlspecialchars($customer->city_name ?? '', ENT_XML1);
         $buyerCountry = htmlspecialchars($customer->country_code ?? 'FR', ENT_XML1);
-        $buyerCompanyId = htmlspecialchars(trim($customer->company_identification ?? ''), ENT_XML1);
-        $buyerVatId = htmlspecialchars(trim($customer->vat_number ?? ''), ENT_XML1);
-        $buyerCompanyIdXml = $buyerCompanyId !== '' ? "<ram:ID>{$buyerCompanyId}</ram:ID>" : '';
+		$buyerCompanyId = trim($customer->company_identification ?? '');
+		$buyerVatId = htmlspecialchars(trim($customer->vat_number ?? ''), ENT_XML1);
+		$buyerSiret = ElectronicInvoiceIdentifiers::siretFrom($buyerCompanyId);
+		$buyerSiren = ElectronicInvoiceIdentifiers::sirenFrom($buyerCompanyId);
+		$buyerSiretXml = $buyerSiret !== '' ? "<ram:GlobalID schemeID=\"0009\">{$buyerSiret}</ram:GlobalID>" : '';
+		$buyerSirenXml = $buyerSiren !== '' ? "<ram:SpecifiedLegalOrganization><ram:ID schemeID=\"0002\">{$buyerSiren}</ram:ID></ram:SpecifiedLegalOrganization>" : '';
         $buyerVatIdXml = $buyerVatId !== '' ? "<ram:SpecifiedTaxRegistration><ram:ID schemeID=\"VA\">{$buyerVatId}</ram:ID></ram:SpecifiedTaxRegistration>" : '';
 		$sellerSiretXml = $sellerSiret !== '' ? "<ram:GlobalID schemeID=\"0009\">{$sellerSiret}</ram:GlobalID>" : '';
 		$sellerSirenXml = $sellerSiren !== '' ? "<ram:SpecifiedLegalOrganization><ram:ID schemeID=\"0002\">{$sellerSiren}</ram:ID></ram:SpecifiedLegalOrganization>" : '';
@@ -343,9 +351,11 @@ XML;
 
             <ram:BuyerTradeParty>
 
-    {$buyerCompanyIdXml}
+	    {$buyerSiretXml}
 
-    <ram:Name>{$buyerName}</ram:Name>
+	    <ram:Name>{$buyerName}</ram:Name>
+
+	    {$buyerSirenXml}
 
     <ram:PostalTradeAddress>
 

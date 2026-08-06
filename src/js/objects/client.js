@@ -127,6 +127,10 @@ export class Client {
         document.getElementById("nomprenom").setAttribute("data-id", id);
         document.getElementById("entreprise").innerHTML = myresp.entreprise;
         document.getElementById("adresse").innerHTML = myresp.adresse;
+        document.getElementById("client_city").textContent = [myresp.zip_code, myresp.city_name]
+          .filter(Boolean)
+          .join(" ");
+        document.getElementById("country_code").textContent = myresp.country_code ?? "";
         document.getElementById("mail").innerHTML = myresp.mail;
         document.getElementById("telephone").innerHTML = myresp.telephone;
         document.getElementById("legal_one").innerHTML = myresp.legal_one;

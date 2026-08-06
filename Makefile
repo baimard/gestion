@@ -18,9 +18,6 @@ dev-setup: clean clean-dev composer npm-init build-js
 npm-init:
 	npm i
 
-write:
-	sudo chown -R www-data:$$(whoami) ../gestion ; sudo chmod -R 775 ../gestion
-
 npm-update:
 	npm update
 
@@ -208,7 +205,6 @@ translate:
 .PHONY: translationtool.phar
 translationtool.phar: install-composer-deps
 	php -d phar.readonly=off vendor/bin/phar-composer build src
-	chmod +x translationtool.phar
 
 install-composer-deps: composer.phar
 	composer update

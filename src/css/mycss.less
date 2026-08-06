@@ -20,16 +20,22 @@
 }
 
 button.vat-category-help {
-  margin: 0 0 0 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin: 0 0 0 3px;
   padding: 0;
-  min-width: auto;
-  min-height: auto;
+  min-width: 16px;
+  min-height: 16px;
   border: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
   color: var(--color-main-text);
   vertical-align: middle;
+  line-height: 1;
 }
 
 button.vat-category-help:hover,
@@ -37,8 +43,10 @@ button.vat-category-help:focus-visible {
   background: transparent;
 }
 
-button.vat-category-help .material-symbols {
-  font-size: 20px;
+button.vat-category-help .vat-category-help-icon {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .toastify.dialogs {

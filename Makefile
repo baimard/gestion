@@ -195,6 +195,10 @@ sign-appstore:
 test:
 	vendor/bin/phpunit --colors=always --testdox
 
+.PHONY: validate-facturx
+validate-facturx:
+	./scripts/validate-facturx.sh "$(FACTURX_SOURCE)"
+
 .PHONY: testPanther
 testPanther:
 	killall geckodriver; php tests/Unit/Panther/IhmTest.php

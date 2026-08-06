@@ -5,6 +5,34 @@ import { setCsrfRequestHeader } from "../modules/csrf.js";
 
 export class Facture {
 
+  static PAYMENT_MEANS = [
+    ['10', 'Cash'],
+    ['20', 'Cheque'],
+    ['30', 'Credit transfer'],
+    ['48', 'Payment card'],
+    ['58', 'SEPA credit transfer'],
+  ];
+
+  static normalizePaymentMeans(value) {
+    const paymentMeans = String(value ?? '').trim();
+    if (Facture.PAYMENT_MEANS.some(([code]) => code === paymentMeans)) {
+      return paymentMeans;
+    }
+
+    const legacyPaymentMeans = {
+      cash: '10',
+      cheque: '20',
+      check: '20',
+      bank: '30',
+      'credit transfer': '30',
+      card: '48',
+      'payment card': '48',
+      'sepa credit transfer': '58',
+    };
+
+    return legacyPaymentMeans[paymentMeans.toLowerCase()] ?? '';
+  }
+
   /**
    * Facture object
    * @param myresp instantiate Facture object
@@ -16,7 +44,7 @@ export class Facture {
     this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
     this.version = ((myresp.version == null || myresp.version.length === 0) ? '-' : myresp.version);
     this.date_paiement = ((myresp.date_paiement == null || myresp.date_paiement.length === 0) ? '-' : myresp.date_paiement);
-    this.type_paiement = ((myresp.type_paiement == null || myresp.type_paiement.length === 0) ? '-' : myresp.type_paiement);
+    this.type_paiement = Facture.normalizePaymentMeans(myresp.type_paiement);
     this.dnum = ((myresp.dnum == null || myresp.dnum.length === 0) ? '-' : myresp.dnum);
     this.nom = ((myresp.nom == null || myresp.nom.length === 0) ? '-' : myresp.nom);
     this.prenom = ((myresp.prenom == null || myresp.prenom.length === 0) ? '-' : myresp.prenom);
@@ -29,12 +57,15 @@ export class Facture {
    * Get datatable row for a devis
    */
   getDTRow() {
+    const paymentMeansOptions = `<option value=""${this.type_paiement === '' ? ' selected' : ''} disabled>${t('gestion', 'Select a means of payment')}</option>` + Facture.PAYMENT_MEANS.map(([code, label]) =>
+      `<option value="${code}"${this.type_paiement === code ? ' selected' : ''}>${t('gestion', label)}</option>`
+    ).join('');
     let myrow = [
       `<div>${this.user_id}</div>`,
       `<div class="editable factureNum" data-table="facture" data-column="num" data-id="${this.id}">${this.num}</div>`,
       `<div class="editable" data-table="facture" data-column="date" data-id="${this.id}">${this.date}</div>`,
       `<input style="margin:0;padding:0;" class="inputDate" type="date" value=${this.date_paiement} data-table="facture" data-column="date_paiement" data-id="${this.id}"/>`,
-      `<div class="editable" data-table="facture" data-column="type_paiement" data-id="${this.id}">${this.type_paiement}</div>`,
+      `<select class="editableSelect" data-table="facture" data-column="type_paiement" data-id="${this.id}" aria-label="${t('gestion', 'Means of payment')}">${paymentMeansOptions}</select>`,
       `<div class="loadSelect_listdevis" data-table="facture" data-column="id_devis" data-id="${this.id}" data-current="${this.id_devis}">${this.dnum} ${this.prenom} ${this.nom}</div>`,
       `<div class="editable" data-table="facture" data-column="version" data-id="${this.id}" style="display:inline">${this.version}</div>`,
       `<div class="editable" data-table="facture" data-column="status_paiement" data-id="${this.id}" style="display:inline">${this.status_paiement}</div>`,
@@ -88,6 +119,7 @@ export class Facture {
     };
     oReq.send(JSON.stringify({
       date_paiement: defaultPaymentDate,
+      type_paiement: '30',
     }));
   }
 

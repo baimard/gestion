@@ -34,6 +34,88 @@ class FacturXServiceTest extends TestCase {
 		$this->assertSame(1, substr_count($xml, '<ram:GuidelineSpecifiedDocumentContextParameter>'));
 	}
 
+	public function testDoesNotBuildAnEmptyHeaderTradeDelivery(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-06',
+			'date_paiement' => '2026-09-06',
+			'num' => 'F-DELIVERY',
+		];
+		$products = [(object)[
+			'description' => 'Service',
+			'prix_unitaire' => 100,
+			'quantite' => 1,
+			'vat' => 20,
+		]];
+
+		$xml = $service->buildXml($invoice, (object)[], $products);
+
+		$this->assertStringNotContainsString('<ram:ApplicableHeaderTradeDelivery', $xml);
+	}
+
+	public function testDoesNotDeclareAnAccountingCurrencyWithoutItsVatTotal(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-06',
+			'date_paiement' => '2026-09-06',
+			'num' => 'F-CURRENCY',
+		];
+		$products = [(object)[
+			'description' => 'Service',
+			'prix_unitaire' => 100,
+			'quantite' => 1,
+			'vat' => 20,
+		]];
+
+		$xml = $service->buildXml($invoice, (object)[], $products);
+
+		$this->assertStringContainsString('<ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>', $xml);
+		$this->assertStringNotContainsString('<ram:TaxCurrencyCode>', $xml);
+	}
+
+	public function testBuildsCreditTransferWithConfiguredIban(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-06',
+			'date_paiement' => '2026-09-06',
+			'num' => 'F-TRANSFER',
+			'type_paiement' => '58',
+		];
+		$company = (object)['iban' => 'FR76 3000 6000 0112 3456 7890 189'];
+		$products = [(object)[
+			'description' => 'Service',
+			'prix_unitaire' => 100,
+			'quantite' => 1,
+			'vat' => 20,
+		]];
+
+		$xml = $service->buildXml($invoice, $company, $products);
+
+		$this->assertStringContainsString('<ram:TypeCode>58</ram:TypeCode>', $xml);
+		$this->assertStringContainsString('<ram:IBANID>FR7630006000011234567890189</ram:IBANID>', $xml);
+	}
+
+	public function testIgnoresUnsupportedFreeTextPaymentMeans(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-06',
+			'date_paiement' => '2026-09-06',
+			'num' => 'F-FREE-TEXT',
+			'type_paiement' => 'Anything entered by a user',
+		];
+		$products = [(object)[
+			'description' => 'Service',
+			'prix_unitaire' => 100,
+			'quantite' => 1,
+			'vat' => 20,
+		]];
+
+		$xml = $service->buildXml($invoice, (object)[], $products);
+
+		$this->assertStringNotContainsString('<ram:SpecifiedTradeSettlementPaymentMeans>', $xml);
+		$this->assertStringNotContainsString('Anything entered by a user', $xml);
+	}
+
 	public function testBuildsQualifiedFrenchSellerAndBuyerIdentifiers(): void {
 		$service = new FacturXService();
 		$invoice = (object)[

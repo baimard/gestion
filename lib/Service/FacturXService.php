@@ -10,6 +10,13 @@ class FacturXService
 	public const PROFILE_ID = 'urn:cen.eu:en16931:2017';
 	private const VAT_EXEMPTION_REASON = 'TVA non applicable, art. 293 B du CGI';
 	private const VAT_CATEGORIES = ['S', 'E', 'Z', 'O', 'AE', 'G', 'K'];
+	private const PAYMENT_MEANS = [
+		'10' => 'Cash',
+		'20' => 'Cheque',
+		'30' => 'Credit transfer',
+		'48' => 'Payment card',
+		'58' => 'SEPA credit transfer',
+	];
 
     /**
      * Generate complete Factur-X PDF
@@ -311,7 +318,12 @@ XML;
 
         $invoiceNumber = htmlspecialchars($invoice->num, ENT_XML1);
 
-        $paymentMethod = htmlspecialchars($invoice->type_paiement ?? '', ENT_XML1);
+		$paymentCode = $this->getPaymentMeansCode((string)($invoice->type_paiement ?? ''));
+		$paymentMethod = self::PAYMENT_MEANS[$paymentCode] ?? '';
+		$paymentMeansXml = $this->buildPaymentMeans($paymentCode, (string)($company->iban ?? ''));
+		$paymentDescriptionXml = $paymentMethod !== ''
+			? "<ram:Description>{$paymentMethod}</ram:Description>"
+			: '';
 
         $totalHT = number_format($totals['totalHT'], 2, '.', '');
         $totalVAT = number_format($totals['totalVAT'], 2, '.', '');
@@ -399,24 +411,18 @@ XML;
 
         </ram:ApplicableHeaderTradeAgreement>
 
-        <ram:ApplicableHeaderTradeDelivery/>
-
         <ram:ApplicableHeaderTradeSettlement>
 
             <ram:PaymentReference>{$invoiceNumber}</ram:PaymentReference>
 
-            <ram:TaxCurrencyCode>EUR</ram:TaxCurrencyCode>
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
 
-            <ram:SpecifiedTradeSettlementPaymentMeans>
-                <ram:TypeCode>58</ram:TypeCode>
-                <ram:Information>{$paymentMethod}</ram:Information>
-            </ram:SpecifiedTradeSettlementPaymentMeans>
+            {$paymentMeansXml}
 
             {$taxXml}
 
             <ram:SpecifiedTradePaymentTerms>
-                <ram:Description>{$paymentMethod}</ram:Description>
+                {$paymentDescriptionXml}
 
                 <ram:DueDateDateTime>
                     <udt:DateTimeString format="102">
@@ -443,4 +449,51 @@ XML;
 </rsm:CrossIndustryInvoice>
 XML;
     }
+
+	private function getPaymentMeansCode(string $paymentMethod): string
+	{
+		$paymentMethod = trim($paymentMethod);
+		if (isset(self::PAYMENT_MEANS[$paymentMethod])) {
+			return $paymentMethod;
+		}
+
+		$legacyMethods = [
+			'cash' => '10',
+			'cheque' => '20',
+			'check' => '20',
+			'bank' => '30',
+			'credit transfer' => '30',
+			'card' => '48',
+			'payment card' => '48',
+			'sepa credit transfer' => '58',
+		];
+
+		return $legacyMethods[strtolower($paymentMethod)] ?? '';
+	}
+
+	private function buildPaymentMeans(string $paymentCode, string $iban): string
+	{
+		if ($paymentCode === '') {
+			return '';
+		}
+
+		$accountXml = '';
+		if (in_array($paymentCode, ['30', '58'], true)) {
+			$iban = strtoupper(preg_replace('/\s+/', '', $iban));
+			if ($iban === '') {
+				return '';
+			}
+			$iban = htmlspecialchars($iban, ENT_XML1);
+			$accountXml = "\n                <ram:PayeePartyCreditorFinancialAccount>\n                    <ram:IBANID>{$iban}</ram:IBANID>\n                </ram:PayeePartyCreditorFinancialAccount>";
+		}
+
+		$information = self::PAYMENT_MEANS[$paymentCode];
+
+		return <<<XML
+<ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:TypeCode>{$paymentCode}</ram:TypeCode>
+                <ram:Information>{$information}</ram:Information>{$accountXml}
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+XML;
+	}
 }

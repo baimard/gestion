@@ -34,7 +34,7 @@ class FacturXServiceTest extends TestCase {
 		$this->assertSame(1, substr_count($xml, '<ram:GuidelineSpecifiedDocumentContextParameter>'));
 	}
 
-	public function testDoesNotBuildAnEmptyHeaderTradeDelivery(): void {
+	public function testBuildsHeaderTradeDeliveryBeforeSettlement(): void {
 		$service = new FacturXService();
 		$invoice = (object)[
 			'date' => '2026-08-06',
@@ -50,7 +50,72 @@ class FacturXServiceTest extends TestCase {
 
 		$xml = $service->buildXml($invoice, (object)[], $products);
 
-		$this->assertStringNotContainsString('<ram:ApplicableHeaderTradeDelivery', $xml);
+		$this->assertStringContainsString(
+			'<udt:DateTimeString format="102">20260806</udt:DateTimeString>',
+			$xml
+		);
+		$this->assertLessThan(
+			strpos($xml, '<ram:ApplicableHeaderTradeSettlement>'),
+			strpos($xml, '<ram:ApplicableHeaderTradeDelivery>')
+		);
+		$this->assertStringContainsString(
+			'<udt:DateTimeString format="102">20260906</udt:DateTimeString>',
+			$xml
+		);
+	}
+
+	public function testBuildsMandatoryFrenchInvoiceNotes(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-06',
+			'date_paiement' => '2026-09-06',
+			'num' => 'F-NOTES',
+		];
+		$products = [(object)[
+			'description' => 'Service',
+			'prix_unitaire' => 100,
+			'quantite' => 1,
+			'vat' => 20,
+		]];
+
+		$xml = $service->buildXml($invoice, (object)[], $products);
+
+		foreach (['PMT', 'PMD', 'AAB'] as $subjectCode) {
+			$this->assertStringContainsString(
+				'<ram:SubjectCode>' . $subjectCode . '</ram:SubjectCode>',
+				$xml
+			);
+		}
+		$this->assertSame(3, substr_count($xml, '<ram:IncludedNote>'));
+	}
+
+	public function testBuildsSellerAndBuyerElectronicAddresses(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-06',
+			'date_paiement' => '2026-09-06',
+			'num' => 'F-ENDPOINTS',
+		];
+		$company = (object)['mail' => 'seller&billing@example.com'];
+		$customer = (object)['mail' => 'buyer@example.com'];
+		$products = [(object)[
+			'description' => 'Service',
+			'prix_unitaire' => 100,
+			'quantite' => 1,
+			'vat' => 20,
+		]];
+
+		$xml = $service->buildXml($invoice, $company, $products, $customer);
+
+		$this->assertStringContainsString(
+			'<ram:URIID schemeID="EM">seller&amp;billing@example.com</ram:URIID>',
+			$xml
+		);
+		$this->assertStringContainsString(
+			'<ram:URIID schemeID="EM">buyer@example.com</ram:URIID>',
+			$xml
+		);
+		$this->assertSame(2, substr_count($xml, '<ram:URIUniversalCommunication>'));
 	}
 
 	public function testDoesNotDeclareAnAccountingCurrencyWithoutItsVatTotal(): void {

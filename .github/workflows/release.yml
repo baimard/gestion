@@ -1,15 +1,13 @@
 name: Publish in GitHub Package Registry
 
-# on:
-#   workflow_dispatch:
-
 #   push :
 #     tags:
 #       - '*'
 
 on:
+  workflow_dispatch:
   release:
-      types: [published]
+    types: [published]
 
 jobs:
   container:

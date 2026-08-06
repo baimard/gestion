@@ -42,7 +42,7 @@
                     <span id="adresse"></span><br />
                     <span id="mail"></span><br />
                     <span id="telephone"></span><br />
-                    <span id="legal_one"></span><br />
+                    <span id="legal_one"></span><br /><span id="company_identification"></span><br /><span id="vat_number"></span><br />
                 </p>
             </td>
         </tr>

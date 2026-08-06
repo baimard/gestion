@@ -497,6 +497,10 @@ XML;
         $buyerZip = htmlspecialchars($facture->zip_code ?? '', ENT_XML1);
         $buyerCity = htmlspecialchars($facture->city_name ?? '', ENT_XML1);
         $buyerCountry = htmlspecialchars($facture->country_code ?? 'FR', ENT_XML1);
+        $buyerCompanyId = htmlspecialchars(trim($facture->company_identification ?? ''), ENT_XML1);
+        $buyerVatId = htmlspecialchars(trim($facture->vat_number ?? ''), ENT_XML1);
+        $buyerCompanyIdXml = $buyerCompanyId !== '' ? "<ram:ID>{$buyerCompanyId}</ram:ID>" : '';
+        $buyerVatIdXml = $buyerVatId !== '' ? "<ram:SpecifiedTaxRegistration><ram:ID schemeID=\"VA\">{$buyerVatId}</ram:ID></ram:SpecifiedTaxRegistration>" : '';
 
 		$invoiceNum = htmlspecialchars(
 			$facture->num,
@@ -577,6 +581,8 @@ XML;
 
 			<ram:BuyerTradeParty>
 
+    {$buyerCompanyIdXml}
+
     <ram:Name>{$buyerName}</ram:Name>
 
     <ram:PostalTradeAddress>
@@ -590,6 +596,8 @@ XML;
         <ram:CountryID>{$buyerCountry}</ram:CountryID>
 
     </ram:PostalTradeAddress>
+
+    {$buyerVatIdXml}
 
 </ram:BuyerTradeParty>
 

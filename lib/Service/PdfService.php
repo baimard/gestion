@@ -581,9 +581,9 @@ XML;
 
 			<ram:BuyerTradeParty>
 
-    <ram:Name>{$buyerName}</ram:Name>
-
     {$buyerCompanyIdXml}
+
+    <ram:Name>{$buyerName}</ram:Name>
 
     <ram:PostalTradeAddress>
 

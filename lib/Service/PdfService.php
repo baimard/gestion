@@ -6,7 +6,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Exception;
 use Mpdf\Mpdf;
-use OCA\Gestion\Controller\GestionFacturXWriter;
 use OCP\AppFramework\Http\DataDownloadResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\Mail\IMailer;
@@ -17,17 +16,20 @@ class PdfService {
 	private FileService $fileService;
 	private DataService $dataService;
 	private IopoleService $iopoleService;
+	private FacturXService $facturXService;
 
 	public function __construct(
 		IMailer $mailer,
 		FileService $fileService,
 		DataService $dataService,
-		IopoleService $iopoleService
+		IopoleService $iopoleService,
+		FacturXService $facturXService
 	) {
 		$this->mailer = $mailer;
 		$this->fileService = $fileService;
 		$this->dataService = $dataService;
 		$this->iopoleService = $iopoleService;
+		$this->facturXService = $facturXService;
 	}
 
 	public function sendPDF($content, $name, $subject, $body, $to, $Cc): DataResponse {
@@ -133,13 +135,9 @@ class PdfService {
 
 			$pdfContent = $this->renderPdf($html);
 
-			$writer = new GestionFacturXWriter();
-
-			$facturxPdfContent = $writer->generate(
+			$facturxPdfContent = $this->facturXService->generateFacturXPdf(
 				$pdfContent,
-				$facturxXml,
-				null,
-				false
+				$facturxXml
 			);
 
 			$cleanName = html_entity_decode($name);
@@ -267,398 +265,37 @@ class PdfService {
 
 		$pdfContent = $this->renderPdf($html);
 
-		$writer = new GestionFacturXWriter();
-
-		return $writer->generate(
+		return $this->facturXService->generateFacturXPdf(
 			$pdfContent,
-			$facturxXml,
-			null,
-			false
+			$facturxXml
 		);
-	}
-
-	private function formatAmount(float $amount): string {
-		return number_format(round($amount, 2), 2, '.', '');
 	}
 
 	private function buildFacturXml(int $factureId) {
-
 		$factureRows = json_decode(
 			$this->dataService->getOneFacture($factureId)
 		);
-
 		$configRows = json_decode(
 			$this->dataService->getConfiguration()
 		);
 
 		if (empty($factureRows) || empty($configRows)) {
-
 			return new DataResponse([
 				'status' => 'error',
-				'message' => 'Unable to find the invoice or configuration.'
+				'message' => 'Unable to find the invoice or configuration.',
 			], 404);
 		}
 
-		$facture = $factureRows[0];
-		$config = $configRows[0];
-
-		$produitsRows = json_decode(
-			$this->dataService->getProduitsById($facture->id_devis)
+		$invoice = $factureRows[0];
+		$products = json_decode(
+			$this->dataService->getProduitsById($invoice->id_devis)
 		);
 
-		$vatLines = [];
-		$totalHT = 0.0;
-
-		foreach ($produitsRows as $p) {
-
-			$unitPrice = round((float)$p->prix_unitaire, 2);
-			$quantity = round((float)$p->quantite, 2);
-
-			$lineTotal = round($unitPrice * $quantity, 2);
-
-			$totalHT += $lineTotal;
-
-			$vatRate = isset($p->vat)
-				? (float)$p->vat
-				: 20.0;
-
-			$key = number_format($vatRate, 2, '.', '');
-
-			if (!isset($vatLines[$key])) {
-
-				$vatLines[$key] = [
-					'rate' => $vatRate,
-					'base' => 0.0,
-					'amount' => 0.0
-				];
-			}
-
-			$vatLines[$key]['base'] += round($lineTotal, 2);
-
-			$vatLines[$key]['amount'] += round(
-				$lineTotal * $vatRate / 100,
-				2
-			);
-		}
-
-		foreach ($vatLines as &$vl) {
-
-			$vl['base'] = round($vl['base'], 2);
-			$vl['amount'] = round($vl['amount'], 2);
-		}
-
-		unset($vl);
-
-		$totalHT = round($totalHT, 2);
-
-		$totalVAT = round(
-			array_sum(array_column($vatLines, 'amount')),
-			2
+		return $this->facturXService->buildXml(
+			$invoice,
+			$configRows[0],
+			$products ?? [],
+			$invoice
 		);
-
-		$totalTTC = round($totalHT + $totalVAT, 2);
-
-		$invoiceDate = new \DateTime($facture->date);
-
-		$dueDate = new \DateTime($facture->date_paiement);
-
-		$invoiceDateFormatted = $invoiceDate->format('Ymd');
-		$dueDateFormatted = $dueDate->format('Ymd');
-
-        $sellerVatId = htmlspecialchars(
-          trim($config->vat_number ?? ''),
-          ENT_XML1
-        );
-
-		$lineItemsXml = '';
-		$lineNum = 1;
-
-		foreach ($produitsRows as $p) {
-
-			$unitPrice = round((float)$p->prix_unitaire, 2);
-			$quantity = round((float)$p->quantite, 2);
-
-			$lineTotal = round($unitPrice * $quantity, 2);
-
-			$vatRate = isset($p->vat)
-				? (float)$p->vat
-				: 20.0;
-
-			$unitPriceFmt = $this->formatAmount($unitPrice);
-			$lineTotalFmt = $this->formatAmount($lineTotal);
-			$quantityFmt = number_format($quantity, 2, '.', '');
-			$vatRateFmt = number_format($vatRate, 2, '.', '');
-
-			$designation = htmlspecialchars(
-				$p->description ?? $p->reference ?? '',
-				ENT_XML1
-			);
-
-			$lineItemsXml .= <<<XML
-
-<ram:IncludedSupplyChainTradeLineItem>
-
-	<ram:AssociatedDocumentLineDocument>
-		<ram:LineID>{$lineNum}</ram:LineID>
-	</ram:AssociatedDocumentLineDocument>
-
-	<ram:SpecifiedTradeProduct>
-		<ram:Name>{$designation}</ram:Name>
-	</ram:SpecifiedTradeProduct>
-
-	<ram:SpecifiedLineTradeAgreement>
-		<ram:NetPriceProductTradePrice>
-			<ram:ChargeAmount>{$unitPriceFmt}</ram:ChargeAmount>
-		</ram:NetPriceProductTradePrice>
-	</ram:SpecifiedLineTradeAgreement>
-
-	<ram:SpecifiedLineTradeDelivery>
-		<ram:BilledQuantity unitCode="C62">{$quantityFmt}</ram:BilledQuantity>
-	</ram:SpecifiedLineTradeDelivery>
-
-	<ram:SpecifiedLineTradeSettlement>
-
-		<ram:ApplicableTradeTax>
-			<ram:TypeCode>VAT</ram:TypeCode>
-			<ram:CategoryCode>S</ram:CategoryCode>
-			<ram:RateApplicablePercent>{$vatRateFmt}</ram:RateApplicablePercent>
-		</ram:ApplicableTradeTax>
-
-		<ram:SpecifiedTradeSettlementLineMonetarySummation>
-			<ram:LineTotalAmount>{$lineTotalFmt}</ram:LineTotalAmount>
-		</ram:SpecifiedTradeSettlementLineMonetarySummation>
-
-	</ram:SpecifiedLineTradeSettlement>
-
-</ram:IncludedSupplyChainTradeLineItem>
-
-XML;
-
-			$lineNum++;
-		}
-
-		$taxXml = '';
-
-		foreach ($vatLines as $vl) {
-
-			$taxXml .= <<<XML
-
-<ram:ApplicableTradeTax>
-
-	<ram:CalculatedAmount>{$this->formatAmount($vl['amount'])}</ram:CalculatedAmount>
-
-	<ram:TypeCode>VAT</ram:TypeCode>
-
-	<ram:BasisAmount>{$this->formatAmount($vl['base'])}</ram:BasisAmount>
-
-	<ram:CategoryCode>S</ram:CategoryCode>
-
-	<ram:RateApplicablePercent>{$this->formatAmount($vl['rate'])}</ram:RateApplicablePercent>
-
-</ram:ApplicableTradeTax>
-
-XML;
-		}
-
-		$sellerName = htmlspecialchars(
-			$config->entreprise ?? '',
-			ENT_XML1
-		);
-
-		$sellerAddress = htmlspecialchars(
-			$config->adresse ?? '',
-			ENT_XML1
-		);
-
-		$sellerCity = htmlspecialchars(
-			$config->city_name ?? '',
-			ENT_XML1
-		);
-
-		$sellerZip = htmlspecialchars(
-			$config->zip_code ?? '',
-			ENT_XML1
-		);
-
-		$sellerCountry = htmlspecialchars(
-			$config->pays ?? 'FR',
-			ENT_XML1
-		);
-
-		$buyerName = htmlspecialchars(
-			trim(
-				($facture->prenom ?? '') . ' ' .
-				($facture->nom ?? '')
-			),
-			ENT_XML1
-		);
-
-        $buyerAddress = htmlspecialchars($facture->adresse ?? '', ENT_XML1);
-        $buyerZip = htmlspecialchars($facture->zip_code ?? '', ENT_XML1);
-        $buyerCity = htmlspecialchars($facture->city_name ?? '', ENT_XML1);
-        $buyerCountry = htmlspecialchars($facture->country_code ?? 'FR', ENT_XML1);
-        $buyerCompanyId = htmlspecialchars(trim($facture->company_identification ?? ''), ENT_XML1);
-        $buyerVatId = htmlspecialchars(trim($facture->vat_number ?? ''), ENT_XML1);
-        $buyerCompanyIdXml = $buyerCompanyId !== '' ? "<ram:ID>{$buyerCompanyId}</ram:ID>" : '';
-        $buyerVatIdXml = $buyerVatId !== '' ? "<ram:SpecifiedTaxRegistration><ram:ID schemeID=\"VA\">{$buyerVatId}</ram:ID></ram:SpecifiedTaxRegistration>" : '';
-
-		$invoiceNum = htmlspecialchars(
-			$facture->num,
-			ENT_XML1
-		);
-
-		$paymentMeans = htmlspecialchars(
-			$facture->type_paiement ?? '',
-			ENT_XML1
-		);
-
-		$sellerIban = htmlspecialchars(
-			trim($config->iban ?? ''),
-			ENT_XML1
-		);
-
-		$totalHTFmt = $this->formatAmount($totalHT);
-		$totalVATFmt = $this->formatAmount($totalVAT);
-		$totalTTCFmt = $this->formatAmount($totalTTC);
-
-		return <<<XML
-<?xml version="1.0" encoding="UTF-8"?>
-
-<rsm:CrossIndustryInvoice
-	xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
-	xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
-	xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
-
-	<rsm:ExchangedDocumentContext>
-		<ram:GuidelineSpecifiedDocumentContextParameter>
-			<ram:ID>urn:cen.eu:en16931:2017</ram:ID>
-		</ram:GuidelineSpecifiedDocumentContextParameter>
-	</rsm:ExchangedDocumentContext>
-
-	<rsm:ExchangedDocument>
-
-		<ram:ID>{$invoiceNum}</ram:ID>
-
-		<ram:TypeCode>380</ram:TypeCode>
-
-		<ram:IssueDateTime>
-			<udt:DateTimeString format="102">
-				{$invoiceDateFormatted}
-			</udt:DateTimeString>
-		</ram:IssueDateTime>
-
-	</rsm:ExchangedDocument>
-
-	<rsm:SupplyChainTradeTransaction>
-
-		{$lineItemsXml}
-
-		<ram:ApplicableHeaderTradeAgreement>
-
-			<ram:SellerTradeParty>
-
-				<ram:Name>{$sellerName}</ram:Name>
-
-				<ram:PostalTradeAddress>
-
-					<ram:PostcodeCode>{$sellerZip}</ram:PostcodeCode>
-
-					<ram:LineOne>{$sellerAddress}</ram:LineOne>
-
-					<ram:CityName>{$sellerCity}</ram:CityName>
-
-					<ram:CountryID>{$sellerCountry}</ram:CountryID>
-
-				</ram:PostalTradeAddress>
-
-				<ram:SpecifiedTaxRegistration>
-					<ram:ID schemeID="VA">{$sellerVatId}</ram:ID>
-				</ram:SpecifiedTaxRegistration>
-
-			</ram:SellerTradeParty>
-
-			<ram:BuyerTradeParty>
-
-    {$buyerCompanyIdXml}
-
-    <ram:Name>{$buyerName}</ram:Name>
-
-    <ram:PostalTradeAddress>
-
-        <ram:PostcodeCode>{$buyerZip}</ram:PostcodeCode>
-
-        <ram:LineOne>{$buyerAddress}</ram:LineOne>
-
-        <ram:CityName>{$buyerCity}</ram:CityName>
-
-        <ram:CountryID>{$buyerCountry}</ram:CountryID>
-
-    </ram:PostalTradeAddress>
-
-    {$buyerVatIdXml}
-
-</ram:BuyerTradeParty>
-
-		</ram:ApplicableHeaderTradeAgreement>
-
-		<ram:ApplicableHeaderTradeDelivery/>
-
-		<ram:ApplicableHeaderTradeSettlement>
-
-			<ram:PaymentReference>{$invoiceNum}</ram:PaymentReference>
-
-			<ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
-
-			<ram:SpecifiedTradeSettlementPaymentMeans>
-
-				<ram:TypeCode>58</ram:TypeCode>
-
-				<ram:Information>{$paymentMeans}</ram:Information>
-
-				<ram:PayeePartyCreditorFinancialAccount>
-						<ram:IBANID>{$sellerIban}</ram:IBANID>
-				</ram:PayeePartyCreditorFinancialAccount>
-
-			</ram:SpecifiedTradeSettlementPaymentMeans>
-
-			{$taxXml}
-
-			<ram:SpecifiedTradePaymentTerms>
-
-				<ram:Description>{$paymentMeans}</ram:Description>
-
-				<ram:DueDateDateTime>
-					<udt:DateTimeString format="102">
-						{$dueDateFormatted}
-					</udt:DateTimeString>
-				</ram:DueDateDateTime>
-
-			</ram:SpecifiedTradePaymentTerms>
-
-			<ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-
-				<ram:LineTotalAmount>{$totalHTFmt}</ram:LineTotalAmount>
-
-				<ram:TaxBasisTotalAmount>{$totalHTFmt}</ram:TaxBasisTotalAmount>
-
-				<ram:TaxTotalAmount currencyID="EUR">
-					{$totalVATFmt}
-				</ram:TaxTotalAmount>
-
-				<ram:GrandTotalAmount>{$totalTTCFmt}</ram:GrandTotalAmount>
-
-				<ram:DuePayableAmount>{$totalTTCFmt}</ram:DuePayableAmount>
-
-			</ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-
-		</ram:ApplicableHeaderTradeSettlement>
-
-	</rsm:SupplyChainTradeTransaction>
-
-</rsm:CrossIndustryInvoice>
-
-XML;
 	}
 }

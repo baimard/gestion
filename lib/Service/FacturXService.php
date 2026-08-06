@@ -3,9 +3,12 @@
 namespace OCA\Gestion\Service;
 
 use DateTime;
+use OCA\Gestion\Controller\GestionFacturXWriter;
 
 class FacturXService
 {
+	public const PROFILE_ID = 'urn:cen.eu:en16931:2017';
+
     /**
      * Generate complete Factur-X PDF
      */
@@ -30,9 +33,10 @@ class FacturXService
     public function buildXml(
         object $invoice,
         object $company,
-        object $customer,
-        array $products
+        array $products,
+		?object $customer = null
     ): string {
+		$customer ??= $invoice;
 
         $totals = $this->calculateTotals($products);
 
@@ -46,6 +50,14 @@ class FacturXService
           trim($company->vat_number ?? ''),
           ENT_XML1
         );
+		$sellerSiret = ElectronicInvoiceIdentifiers::extractDigits(
+			(string)($company->legal_one ?? ''),
+			'SIRET'
+		);
+		$sellerSiren = ElectronicInvoiceIdentifiers::extractDigits(
+			(string)($company->legal_two ?? ''),
+			'SIREN'
+		);
 
         return $this->buildDocument(
             invoice: $invoice,
@@ -56,7 +68,9 @@ class FacturXService
             lineItemsXml: $lineItemsXml,
             taxXml: $taxXml,
             totals: $totals,
-            sellerVatId: $sellerVatId
+            sellerVatId: $sellerVatId,
+			sellerSiret: $sellerSiret,
+			sellerSiren: $sellerSiren
         );
     }
 
@@ -76,9 +90,7 @@ class FacturXService
 
             $totalHT += $lineTotal;
 
-            $vatRate = isset($product->tva)
-                ? (float)$product->tva
-                : 20.0;
+			$vatRate = $this->getVatRate($product);
 
             $key = number_format($vatRate, 2);
 
@@ -120,9 +132,7 @@ class FacturXService
                 4
             );
 
-            $vatRate = isset($product->tva)
-                ? (float)$product->tva
-                : 20.0;
+			$vatRate = $this->getVatRate($product);
 
             $designation = htmlspecialchars(
                 $product->description
@@ -200,6 +210,11 @@ XML;
         return $xml;
     }
 
+	private function getVatRate(object $product): float
+	{
+		return (float)($product->vat ?? $product->tva ?? 20.0);
+	}
+
     /**
      * Build VAT number
      */
@@ -224,12 +239,15 @@ XML;
     private function buildDocument(
         object $invoice,
         object $company,
+		object $customer,
         DateTime $invoiceDate,
         DateTime $dueDate,
         string $lineItemsXml,
         string $taxXml,
         array $totals,
-        string $sellerVatId
+        string $sellerVatId,
+		string $sellerSiret,
+		string $sellerSiren
     ): string {
 
         $sellerName = htmlspecialchars($company->entreprise ?? '', ENT_XML1);
@@ -255,6 +273,9 @@ XML;
         $buyerVatId = htmlspecialchars(trim($customer->vat_number ?? ''), ENT_XML1);
         $buyerCompanyIdXml = $buyerCompanyId !== '' ? "<ram:ID>{$buyerCompanyId}</ram:ID>" : '';
         $buyerVatIdXml = $buyerVatId !== '' ? "<ram:SpecifiedTaxRegistration><ram:ID schemeID=\"VA\">{$buyerVatId}</ram:ID></ram:SpecifiedTaxRegistration>" : '';
+		$sellerSiretXml = $sellerSiret !== '' ? "<ram:GlobalID schemeID=\"0009\">{$sellerSiret}</ram:GlobalID>" : '';
+		$sellerSirenXml = $sellerSiren !== '' ? "<ram:SpecifiedLegalOrganization><ram:ID schemeID=\"0002\">{$sellerSiren}</ram:ID></ram:SpecifiedLegalOrganization>" : '';
+		$sellerVatIdXml = $sellerVatId !== '' ? "<ram:SpecifiedTaxRegistration><ram:ID schemeID=\"VA\">{$sellerVatId}</ram:ID></ram:SpecifiedTaxRegistration>" : '';
 
         $invoiceNumber = htmlspecialchars($invoice->num, ENT_XML1);
 
@@ -266,6 +287,7 @@ XML;
 
         $invoiceDateFormatted = $invoiceDate->format('Ymd');
         $dueDateFormatted = $dueDate->format('Ymd');
+		$profileId = self::PROFILE_ID;
 
         return <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -279,7 +301,7 @@ XML;
 
     <rsm:ExchangedDocumentContext>
         <ram:GuidelineSpecifiedDocumentContextParameter>
-            <ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>
+            <ram:ID>{$profileId}</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:ExchangedDocumentContext>
 
@@ -302,7 +324,11 @@ XML;
 
             <ram:SellerTradeParty>
 
+				{$sellerSiretXml}
+
                 <ram:Name>{$sellerName}</ram:Name>
+
+				{$sellerSirenXml}
 
                 <ram:PostalTradeAddress>
                     <ram:PostcodeCode>{$sellerZip}</ram:PostcodeCode>
@@ -311,11 +337,7 @@ XML;
                     <ram:CountryID>{$sellerCountry}</ram:CountryID>
                 </ram:PostalTradeAddress>
 
-                <ram:SpecifiedTaxRegistration>
-                    <ram:ID schemeID="VA">
-                        {$sellerVatId}
-                    </ram:ID>
-                </ram:SpecifiedTaxRegistration>
+				{$sellerVatIdXml}
 
             </ram:SellerTradeParty>
 

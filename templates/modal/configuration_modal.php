@@ -15,6 +15,11 @@
         <div class="configuration-global"><label class="configuration" for="city_name"><?php p($l->t('City name'));?></label><input type="text" style="float:none;width:80%;" id="city_name" class="configuration-content editableConfiguration" data-table="configuration" data-column="city_name" data-id="" /></div>
         <div class="configuration-global"><label class="configuration" for="legal_one"><?php p($l->t('Legal One'));?></label><input type="text" style="float:none;width:80%;" id="legal_one" class="configuration-content editableConfiguration" data-table="configuration" data-column="legal_one" data-id="" /></div>
         <div class="configuration-global"><label class="configuration" for="legal_two"><?php p($l->t('Legal Two'));?></label><input type="text" style="float:none;width:80%;" id="legal_two" class="configuration-content editableConfiguration" data-table="configuration" data-column="legal_two" data-id="" /></div>
+        <button
+            type="button"
+            class="electronic-invoice-help"
+            title="<?php p($l->t('Use “SIRET:” in Legal One and “SIREN:” in Legal Two for these identifiers to be included in the electronic invoice.')); ?>"
+        ><?php p($l->t('Electroning invoice')); ?></button>
         <div class="configuration-global"><label class="configuration" for="telephone"><?php p($l->t('Cellphone'));?></label><input type="text" style="float:none;width:80%;" id="telephone" class="configuration-content editableConfiguration" data-table="configuration" data-column="telephone" data-id="" /></div>
         <div class="configuration-global"><label class="configuration" for="mail"><?php p($l->t('Mail'));?></label><input type="text" style="float:none;width:80%;" id="mail" class="configuration-content editableConfiguration" data-table="configuration" data-column="mail" data-id="" /></div>
         <div class="configuration-global"><label class="configuration" for="tva_default"><?php p($l->t('VAT Default'));?></label><input type="number" style="float:none;width:80%;" id="tva_default" class="configuration-content editableConfiguration" data-table="configuration" data-column="tva_default" data-id="" /> %</div>

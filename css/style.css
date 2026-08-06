@@ -216,6 +216,22 @@
     vertical-align: middle;
 }
 
+button.electronic-invoice-help {
+    margin-top: 12px;
+    border: 1px solid #9a6700;
+    background-color: #ffc107;
+    color: #302000;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(154, 103, 0, 0.35);
+}
+
+button.electronic-invoice-help:hover,
+button.electronic-invoice-help:focus-visible {
+    border-color: #6f4a00;
+    background-color: #ffd54f;
+    color: #201500;
+}
+
 .ConfigurationHelp {
     margin-bottom: 20px;
 }

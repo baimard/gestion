@@ -26,3 +26,4 @@ Thumbs.db
 # Nextcloud spécifiques (si besoin)
 js/
 css/
+/l10n/

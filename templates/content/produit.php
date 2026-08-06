@@ -16,7 +16,7 @@
                 <th>
 					<?php p($l->t('VAT category (France only)'));?>
 					<button type="button" id="vatCategoryHelp" class="vat-category-help" aria-label="<?php p($l->t('Explain VAT categories'));?>" title="<?php p($l->t('Explain VAT categories'));?>">
-						<span class="material-symbols" aria-hidden="true">help</span>
+						<span class="material-symbols" aria-hidden="true">warning_amber</span>
 					</button>
 				</th>
                 <th><?php p($l->t('Header'));?></th>

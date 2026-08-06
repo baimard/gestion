@@ -34,7 +34,7 @@ class FacturXServiceTest extends TestCase {
 		$this->assertSame(1, substr_count($xml, '<ram:GuidelineSpecifiedDocumentContextParameter>'));
 	}
 
-	public function testDoesNotBuildAnEmptyHeaderTradeDelivery(): void {
+	public function testBuildsHeaderTradeDeliveryBeforeSettlement(): void {
 		$service = new FacturXService();
 		$invoice = (object)[
 			'date' => '2026-08-06',
@@ -50,7 +50,14 @@ class FacturXServiceTest extends TestCase {
 
 		$xml = $service->buildXml($invoice, (object)[], $products);
 
-		$this->assertStringNotContainsString('<ram:ApplicableHeaderTradeDelivery', $xml);
+		$this->assertStringContainsString(
+			'<udt:DateTimeString format="102">20260806</udt:DateTimeString>',
+			$xml
+		);
+		$this->assertLessThan(
+			strpos($xml, '<ram:ApplicableHeaderTradeSettlement>'),
+			strpos($xml, '<ram:ApplicableHeaderTradeDelivery>')
+		);
 	}
 
 	public function testDoesNotDeclareAnAccountingCurrencyWithoutItsVatTotal(): void {

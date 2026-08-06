@@ -411,6 +411,14 @@ XML;
 
         </ram:ApplicableHeaderTradeAgreement>
 
+        <ram:ApplicableHeaderTradeDelivery>
+            <ram:ActualDeliverySupplyChainEvent>
+                <ram:OccurrenceDateTime>
+                    <udt:DateTimeString format="102">{$invoiceDateFormatted}</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+        </ram:ApplicableHeaderTradeDelivery>
+
         <ram:ApplicableHeaderTradeSettlement>
 
             <ram:PaymentReference>{$invoiceNumber}</ram:PaymentReference>

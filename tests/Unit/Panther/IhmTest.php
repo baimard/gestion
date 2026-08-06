@@ -1,33 +1,51 @@
 <?php
 
 use Symfony\Component\Panther\Client;
+require __DIR__.'/../../../../../3rdparty/autoload.php';
 require __DIR__.'/../../../vendor/autoload.php';
 
-$client = Client::createFirefoxClient();
+$baseUrl = rtrim(
+	getenv('NEXTCLOUD_BASE_URL') ?: 'http://dev.cybercorp.fr',
+	'/'
+);
+$username = getenv('NEXTCLOUD_TEST_USER') ?: 'nextcloud';
+$password = getenv('NEXTCLOUD_TEST_PASSWORD') ?: 'Gestion-Panther-2026!';
 
-$crawler = $client->request('GET', 'http://127.0.0.1/index.php/apps/gestion');
+$client = Client::createFirefoxClient(
+	null,
+	['--headless', '--width=1440', '--height=900']
+);
 
-$form = $crawler->selectButton('Log in')->form();
-$form['user'] = 'nextcloud';
-$form['password'] = 'nextcloud';
+$client->request('GET', $baseUrl . '/login');
+$client->waitFor('#user');
+
+$form = $client->getCrawler()->filter('form')->form();
+$form['user'] = $username;
+$form['password'] = $password;
 $client->submit($form);
 
-$client->request('GET', 'http://127.0.0.1/index.php/apps/gestion/config');
+$client->request('GET', $baseUrl . '/index.php/apps/gestion/config');
+$client->waitFor('#modalConfig');
 $client->takeScreenshot('tests/Unit/Panther/screens/config.png');
 
-$client->request('GET', 'http://127.0.0.1/index.php/apps/gestion');
+$client->request('GET', $baseUrl . '/index.php/apps/gestion');
+$client->waitFor('#client');
 $client->takeScreenshot('tests/Unit/Panther/screens/index.png');
 
-$client->request('GET', 'http://127.0.0.1/index.php/apps/gestion/devis');
+$client->request('GET', $baseUrl . '/index.php/apps/gestion/devis');
+$client->waitFor('#devis');
 $client->takeScreenshot('tests/Unit/Panther/screens/devis.png');
 
-$client->request('GET', 'http://127.0.0.1/index.php/apps/gestion/facture');
+$client->request('GET', $baseUrl . '/index.php/apps/gestion/facture');
+$client->waitFor('#facture');
 $client->takeScreenshot('tests/Unit/Panther/screens/facture.png');
 
-$client->request('GET', 'http://127.0.0.1/index.php/apps/gestion/produit');
+$client->request('GET', $baseUrl . '/index.php/apps/gestion/produit');
+$client->waitFor('#produit');
 $client->takeScreenshot('tests/Unit/Panther/screens/produit.png');
 
-$client->request('GET', 'http://127.0.0.1/index.php/apps/gestion/statistique');
+$client->request('GET', $baseUrl . '/index.php/apps/gestion/statistique');
+$client->waitFor('#theFolder');
 $client->takeScreenshot('tests/Unit/Panther/screens/statistique.png');
 
 $client->executeScript("document.getElementById('theFolder').click()");
@@ -35,8 +53,8 @@ $client->waitForVisibility('.modal-container__close');
 $client->takeScreenshot('tests/Unit/Panther/screens/selectFolder.png');
 
 $client->executeScript("document.getElementsByClassName('modal-container__close').item(0).click()");
+$client->waitForInvisibility('.modal-container');
 
 $client->executeScript("document.getElementById('about').click()");
 $client->waitForVisibility('#modalConfig');
 $client->takeScreenshot('tests/Unit/Panther/screens/about.png');
-

@@ -10,6 +10,11 @@ class FacturXService
 	public const PROFILE_ID = 'urn:cen.eu:en16931:2017';
 	private const VAT_EXEMPTION_REASON = 'TVA non applicable, art. 293 B du CGI';
 	private const VAT_CATEGORIES = ['S', 'E', 'Z', 'O', 'AE', 'G', 'K'];
+	private const FRENCH_INVOICE_NOTES = [
+		'PMT' => 'Indemnité forfaitaire de 40 euros pour frais de recouvrement due en cas de retard de paiement.',
+		'PMD' => 'Pénalités de retard exigibles au taux annuel de trois fois le taux d’intérêt légal en vigueur.',
+		'AAB' => 'Aucun escompte accordé pour paiement anticipé.',
+	];
 	private const PAYMENT_MEANS = [
 		'10' => 'Cash',
 		'20' => 'Cheque',
@@ -295,6 +300,7 @@ XML;
         $sellerZip = htmlspecialchars($company->zip_code ?? '', ENT_XML1);
 
         $sellerCountry = htmlspecialchars($company->pays ?? 'FR', ENT_XML1);
+		$sellerEndpointXml = $this->buildElectronicAddress((string)($company->mail ?? ''));
 
         $buyerName = htmlspecialchars(
             trim(($invoice->prenom ?? '') . ' ' . ($invoice->nom ?? '')),
@@ -305,6 +311,7 @@ XML;
         $buyerZip = htmlspecialchars($customer->zip_code ?? '', ENT_XML1);
         $buyerCity = htmlspecialchars($customer->city_name ?? '', ENT_XML1);
         $buyerCountry = htmlspecialchars($customer->country_code ?? 'FR', ENT_XML1);
+		$buyerEndpointXml = $this->buildElectronicAddress((string)($customer->mail ?? ''));
 		$buyerCompanyId = trim($customer->company_identification ?? '');
 		$buyerVatId = htmlspecialchars(trim($customer->vat_number ?? ''), ENT_XML1);
 		$buyerSiret = ElectronicInvoiceIdentifiers::siretFrom($buyerCompanyId);
@@ -332,6 +339,7 @@ XML;
         $invoiceDateFormatted = $invoiceDate->format('Ymd');
         $dueDateFormatted = $dueDate->format('Ymd');
 		$profileId = self::PROFILE_ID;
+		$invoiceNotesXml = $this->buildFrenchInvoiceNotes();
 
         return <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -354,10 +362,10 @@ XML;
         <ram:TypeCode>380</ram:TypeCode>
 
         <ram:IssueDateTime>
-            <udt:DateTimeString format="102">
-                {$invoiceDateFormatted}
-            </udt:DateTimeString>
+            <udt:DateTimeString format="102">{$invoiceDateFormatted}</udt:DateTimeString>
         </ram:IssueDateTime>
+
+		{$invoiceNotesXml}
     </rsm:ExchangedDocument>
 
     <rsm:SupplyChainTradeTransaction>
@@ -380,6 +388,8 @@ XML;
                     <ram:CityName>{$sellerCity}</ram:CityName>
                     <ram:CountryID>{$sellerCountry}</ram:CountryID>
                 </ram:PostalTradeAddress>
+
+				{$sellerEndpointXml}
 
 				{$sellerVatIdXml}
 
@@ -404,6 +414,8 @@ XML;
         <ram:CountryID>{$buyerCountry}</ram:CountryID>
 
     </ram:PostalTradeAddress>
+
+    {$buyerEndpointXml}
 
     {$buyerVatIdXml}
 
@@ -433,9 +445,7 @@ XML;
                 {$paymentDescriptionXml}
 
                 <ram:DueDateDateTime>
-                    <udt:DateTimeString format="102">
-                        {$dueDateFormatted}
-                    </udt:DateTimeString>
+                    <udt:DateTimeString format="102">{$dueDateFormatted}</udt:DateTimeString>
                 </ram:DueDateDateTime>
 
             </ram:SpecifiedTradePaymentTerms>
@@ -457,6 +467,34 @@ XML;
 </rsm:CrossIndustryInvoice>
 XML;
     }
+
+	private function buildElectronicAddress(string $email): string
+	{
+		$email = trim($email);
+		if ($email === '') {
+			return '';
+		}
+
+		$email = htmlspecialchars($email, ENT_XML1);
+
+		return "<ram:URIUniversalCommunication><ram:URIID schemeID=\"EM\">{$email}</ram:URIID></ram:URIUniversalCommunication>";
+	}
+
+	private function buildFrenchInvoiceNotes(): string
+	{
+		$notes = [];
+		foreach (self::FRENCH_INVOICE_NOTES as $subjectCode => $content) {
+			$content = htmlspecialchars($content, ENT_XML1);
+			$notes[] = <<<XML
+<ram:IncludedNote>
+            <ram:Content>{$content}</ram:Content>
+            <ram:SubjectCode>{$subjectCode}</ram:SubjectCode>
+        </ram:IncludedNote>
+XML;
+		}
+
+		return implode("\n\n        ", $notes);
+	}
 
 	private function getPaymentMeansCode(string $paymentMethod): string
 	{

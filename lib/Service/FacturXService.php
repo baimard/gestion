@@ -306,10 +306,16 @@ XML;
         $sellerCountry = htmlspecialchars($company->pays ?? 'FR', ENT_XML1);
 		$sellerEndpointXml = $this->buildElectronicAddress((string)($company->mail ?? ''));
 
-        $buyerName = htmlspecialchars(
-            trim(($invoice->prenom ?? '') . ' ' . ($invoice->nom ?? '')),
-            ENT_XML1
-        );
+		$buyerCompanyName = trim((string)($customer->entreprise ?? $invoice->entreprise ?? ''));
+		$buyerPersonName = trim(
+			(string)($customer->prenom ?? $invoice->prenom ?? '')
+			. ' '
+			. (string)($customer->nom ?? $invoice->nom ?? '')
+		);
+		$buyerName = htmlspecialchars(
+			$buyerCompanyName !== '' ? $buyerCompanyName : $buyerPersonName,
+			ENT_XML1
+		);
 
         $buyerAddress = htmlspecialchars($customer->adresse ?? '', ENT_XML1);
         $buyerZip = htmlspecialchars($customer->zip_code ?? '', ENT_XML1);

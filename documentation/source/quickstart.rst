@@ -1,139 +1,79 @@
-.. _quickstart:
-
-Documentation utilisateur
-=========================
-
-Installer l'application dans le nextcloud
-*****************************************
-
-* Aller dans le menu application
-* Selectionner dans le menu "Organisation"
-* Rechercher l'application "Gestion"
-* Cliquer sur installer
-
-.. video:: _static/videos/installation.webm
-  :width: 800
-  :autoplay:
-
 Démarrage rapide
-****************
+================
 
-Lors du premier accès à l'applicatio un message s'affiche pour vous avertir de configurer votre entreprise.
+Ce parcours permet de produire un premier devis, puis une facture.
 
-* Cliquer sur le lien
-* Renseigner chaque champs en cliquant dessus une fois. (Doucement)
+1. Configurer l'entreprise
+--------------------------
 
-.. NOTE::
-  Vous pouvez appuyer sur la touche entrée du clavier pour valider.
+#. Ouvrez **Gestion** depuis le menu Nextcloud.
+#. Cliquez sur **Mon entreprise**, puis sur **Modifier les informations de
+   l'entreprise courante**.
+#. Renseignez au minimum le nom, l'adresse, le code postal, la ville, les
+   mentions légales, la devise et le taux de TVA par défaut.
+#. Pour Factur-X, renseignez également le numéro de TVA, l'IBAN et les
+   identifiants SIRET/SIREN comme expliqué dans :doc:`configuration`.
+#. Choisissez le **dossier de sauvegarde** dans la navigation latérale.
+
+Les champs éditables sont enregistrés avec la touche **Entrée** ou lors du
+changement de sélection, selon le type de champ.
 
 .. video:: _static/videos/demarrage.webm
-  :width: 800
-  :autoplay:
+   :width: 800
 
-Client
-******
+2. Créer un client
+------------------
 
-.. important::
-  Pour que les devis et factures fonctionnent, vous devez préalablement créer un client et un produit (au minimum).
-
-Pour créer un client : 
-
-* Sélectionner "client" dans le menu
-* À coté de l'icone maison, cliquer sur "ajouter un client"
-* Renseigner chaque champs en cliquant dessus une fois (Doucement)
-
-.. NOTE::
-  Vous pouvez appuyer sur la touche entrée du clavier pour valider.
+#. Ouvrez **Clients**.
+#. Cliquez sur **Ajouter client**.
+#. Complétez la société ou le nom de la personne, l'adresse et les informations
+   fiscales utiles.
 
 .. video:: _static/videos/client.webm
-  :width: 800
-  :autoplay:
+   :width: 800
 
-Produit
-*******
+3. Créer un produit ou un service
+---------------------------------
 
-.. important::
-  Pour que les devis et factures fonctionnent, vous devez préalablement créer un client et un produit (au minimum).
-
-Pour créer un produit :
-
-  * Sélectionner "produit" dans le menu
-  * À coté de l'icone maison, cliquer sur "ajouter un produit"
-  * Renseigner chaque champs en cliquant dessus une fois (Doucement)
-
-.. NOTE::
-  Vous pouvez appuyer sur la touche entrée du clavier pour valider.
+#. Ouvrez **Produits**.
+#. Cliquez sur **Ajouter produit**.
+#. Saisissez une référence, une désignation, le prix unitaire hors taxes et le
+   taux de TVA.
+#. Vérifiez la catégorie de TVA. Pour la catégorie ``E``, vérifiez également le
+   motif d'exonération proposé.
 
 .. video:: _static/videos/produit.webm
-  :width: 800
-  :autoplay:
+   :width: 800
 
-Devis
-*****
+4. Créer le devis
+-----------------
 
-.. important::
-  Pour que les devis et factures fonctionnent, vous devez préalablement créer un client et un produit (au minimum).
-
-Pour préparer un devis : 
-
-  * Sélectionner "devis" dans le menu
-  * À coté de l'icone maison, cliquer sur "ajouter un devis"
-  * Remplir les champs avec le format que vous désirez, par exemple, le champs numéro de devis peut être 2021.01 Année.Numéro de devis
-  * N'oublier pas de choisir un client associé au devis
-  * Enfin cliquer sur voir
-
-Pour ajouter des lignes de produit : 
-
-  * Vous avez un bouton "Ajouter", il permet d'ajouter un produit
-  * Le produit qui apparait est le premier produit de votre liste. Vous pouvez double cliquer sur la référence pour sélectionner un autre produit.
-  * Enfin ajuster la quantité
-
-.. important::
-  Tous les champs dates sont à remplir avec ce format ANNEE-MOIS-JOUR (AAAA-mm-jj).
+#. Ouvrez **Devis**, puis cliquez sur **Ajouter devis**.
+#. Choisissez la date, le numéro, le client, la version et le statut.
+#. Ouvrez le devis avec l'action correspondante.
+#. Ajoutez les produits, adaptez les quantités et les commentaires.
+#. Enregistrez ou téléchargez le PDF.
 
 .. video:: _static/videos/devis.webm
-  :width: 800
-  :autoplay:
+   :width: 800
 
-Facture
-*******
+5. Créer la facture
+-------------------
 
-.. important::
-  Une facture est forcément liée à un devis. Il peut y avoir plusieurs factures pour un devis (abonnement).
-
-Pour ajouter une facture : 
-
-  * Sélectionner "facture" dans le menu
-  * À coté de l'icone maison, cliquer sur "ajouter une facture"
-  * Remplir les champs avec le format que vous désirez, par exemple, le champs numéro de facture peut être 2021.01.01 Année.Numéro de devis. Numéro de facture
-  * N'oublier pas de choisir un devis associé au devis
-  * Enfin cliquer sur voir
-
-.. important::
-  Aucune modification n'est possible, car la facture doit légalement correspondre au devis qui vous a été signé. Par contre, si vous modifiez le devis ou le client, la facture sera modifiée. Exemple changement de numéro de téléphone.
-
-.. warning::
-  Lors d'une modification d'un client ou d'un devis toutes les factures et devis vont être modifiés. Vous devez normalementles enregistrer au format PDF.
-
-.. NOTE::
-  Date correspond à la date de la prestation, c'est du texte libre.
-  Date_paiement correspond à la date réelle du paiement.
+#. Ouvrez **Factures**, puis cliquez sur **Ajouter facture**.
+#. Choisissez le devis associé, la date d'échéance et le moyen de paiement.
+#. Ouvrez la facture et contrôlez son contenu.
+#. Générez le PDF classique ou, pour une facture électronique, le PDF
+   Factur-X et/ou son XML.
 
 .. video:: _static/videos/facture.webm
-  :width: 800
-  :autoplay:
+   :width: 800
 
-Générer un PDF (DEVIS/FACTURE)
-******************************
+.. important::
 
-Dans le menu devis ou facture :
-
-* Cliquer sur le bouton "Sauvegarde cloud".
-* Un pdf va se générer par défaut à la racine de votre cloud.
-
-.. NOTE::
-  Le dossier de sauvegarde par défaut est : Nom_Du_Devis/[DEVIS,FACTURE]_NOMENTREPRISE_NOMDEVIS_v1.pdf
+   Une facture dépend d'un devis et reprend ses lignes. Conservez les versions
+   émises dans Nextcloud Files : une modification ultérieure du client, du devis
+   ou du catalogue peut modifier l'affichage d'un document ouvert dans Gestion.
 
 .. video:: _static/videos/pdf.webm
-  :width: 800
-  :autoplay:
+   :width: 800

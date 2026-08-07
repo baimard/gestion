@@ -6,8 +6,7 @@ use OCP\IDBConnection;
 use OCP\IL10N;
 
 class Bdd {
-    private String $charset = 'utf8mb4';
-    private IDbConnection $pdo;
+    private IDBConnection $db;
     private array $whiteColumn;
     private array $whiteTable;
     private String $tableprefix;
@@ -18,27 +17,27 @@ class Bdd {
         $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment", "user_id", "facture_prefixe", "id_configuration", "delay", "header","vat", "vat_category", "vat_number", "zip_code", "city_name", "country_code","iban", "company_identification" );
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
-        $this->pdo = $db;
+        $this->db = $db;
         $this->l = $l;
     }
 
     public function getConfiguration($idNextcloud){
-        $sql = "SELECT * FROM `".$this->tableprefix."configuration` WHERE id = ?";
+        $sql = "SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
     public function getCompaniesList($User){
-        $sql = "SELECT id, entreprise FROM `".$this->tableprefix."configuration` WHERE id_nextcloud = ? OR id in (SELECT id_configuration FROM `".$this->tableprefix."conf_share` WHERE id_nextcloud = ?)";
+        $sql = "SELECT id, entreprise FROM ".$this->tableprefix."configuration WHERE id_nextcloud = ? OR id in (SELECT id_configuration FROM ".$this->tableprefix."conf_share WHERE id_nextcloud = ?)";
         return $this->execSQLNoJsonReturn($sql, array($User, $User));
     }
 
     public function getCompaniesOwner($User){
-        $sql = "SELECT id FROM `".$this->tableprefix."configuration` WHERE id_nextcloud = ?";
+        $sql = "SELECT id FROM ".$this->tableprefix."configuration WHERE id_nextcloud = ?";
         return $this->execSQLNoJsonReturn($sql, array($User));
     }
 
     public function getUsersShared($idConfiguration){
-        $sql = "SELECT id_nextcloud FROM `".$this->tableprefix."conf_share` WHERE id_configuration = ?";
+        $sql = "SELECT id_nextcloud FROM ".$this->tableprefix."conf_share WHERE id_configuration = ?";
         return $this->execSQLNoJsonReturn($sql, array($idConfiguration));
     }
 
@@ -83,18 +82,40 @@ class Bdd {
     }
 
     public function getListProduit($numdevis, $idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."produit.id as pid,".$this->tableprefix."produit_devis.id as pdid, header, reference, description,".$this->tableprefix."produit.vat as vat,".$this->tableprefix."produit.vat_category as vat_category,".$this->tableprefix."produit.vat_exemption_reason_code as vat_exemption_reason_code,".$this->tableprefix."produit.vat_exemption_reason as vat_exemption_reason,".$this->tableprefix."produit_devis.comment, quantite, prix_unitaire FROM ".$this->tableprefix."produit, ".$this->tableprefix."devis, ".$this->tableprefix."produit_devis WHERE ".$this->tableprefix."produit.id = produit_id AND ".$this->tableprefix."devis.id = devis_id AND ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_configuration = ? AND ".$this->tableprefix."produit.id_configuration = ? ORDER BY `oc_gestion_produit_devis`.`order` ASC";
-        return $this->execSQL($sql, array($numdevis, $idNextcloud, $idNextcloud));
+        $query = $this->db->getQueryBuilder();
+        $query->selectAlias('p.id', 'pid')
+            ->selectAlias('pd.id', 'pdid')
+            ->addSelect(
+                'p.header',
+                'p.reference',
+                'p.description',
+                'p.vat',
+                'p.vat_category',
+                'p.vat_exemption_reason_code',
+                'p.vat_exemption_reason',
+                'pd.comment',
+                'pd.quantite',
+                'p.prix_unitaire'
+            )
+            ->from('gestion_produit', 'p')
+            ->innerJoin('p', 'gestion_produit_devis', 'pd', $query->expr()->eq('p.id', 'pd.produit_id'))
+            ->innerJoin('pd', 'gestion_devis', 'd', $query->expr()->eq('d.id', 'pd.devis_id'))
+            ->where($query->expr()->eq('d.id', $query->createNamedParameter($numdevis)))
+            ->andWhere($query->expr()->eq('d.id_configuration', $query->createNamedParameter($idNextcloud)))
+            ->andWhere($query->expr()->eq('p.id_configuration', $query->createNamedParameter($idNextcloud)))
+            ->orderBy('pd.order', 'ASC');
+
+        return $this->rowsToJson($this->fetchAll($query));
     }
 
     public function addShareUser($idConfiguration, $idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."conf_share` (`id_configuration`, `id_nextcloud`) VALUES (?,?)";
+        $sql = "INSERT INTO ".$this->tableprefix."conf_share (id_configuration, id_nextcloud) VALUES (?,?)";
         $this->execSQLNoData($sql, array($idConfiguration, $idNextcloud));
         return true;
     }
 
     public function delShareUser($idConfiguration, $idNextcloud){
-        $sql = "DELETE FROM `".$this->tableprefix."conf_share` WHERE `id_configuration` = ? AND `id_nextcloud` = ?";
+        $sql = "DELETE FROM ".$this->tableprefix."conf_share WHERE id_configuration = ? AND id_nextcloud = ?";
         $this->execSQLNoData($sql, array($idConfiguration, $idNextcloud));
         return true;
     }
@@ -105,7 +126,7 @@ class Bdd {
     }
 
     public function insertClient($idNextcloud){
-        $sql = "INSERT INTO `".$this->tableprefix."client` (`id_configuration`,`nom`,`prenom`,`legal_one`,`entreprise`,`telephone`,`mail`,`adresse`,`zip_code`,`city_name`,`country_code`,`company_identification`,`vat_number`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO ".$this->tableprefix."client (id_configuration,nom,prenom,legal_one,entreprise,telephone,mail,adresse,zip_code,city_name,country_code,company_identification,vat_number) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $this->execSQLNoData($sql,array($idNextcloud,
                                             $this->l->t('Last name'),
                                             $this->l->t('First name'),
@@ -128,18 +149,18 @@ class Bdd {
         $last=0;
         $last = $this->lastinsertid("devis", $idNextcloud) + 1;
 
-        $sql = "INSERT INTO `".$this->tableprefix."devis` ( `date`,
-                                                            `id_configuration`,
-                                                            `num`,
-                                                            `id_client`,
-                                                            `version`,
-                                                            `mentions`,
-                                                            `comment`,
-                                                            `user_id`,
-                                                            `delay`
+        $sql = "INSERT INTO ".$this->tableprefix."devis ( date,
+                                                            id_configuration,
+                                                            num,
+                                                            id_client,
+                                                            version,
+                                                            mentions,
+                                                            comment,
+                                                            user_id,
+                                                            delay
                                                         )
-                                                VALUES (NOW(),?,?,0,'0.1',?,?,?,?);";
-        $this->execSQLNoData($sql, array($idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment'),$last,$this->l->t('Offer valid for 1 month from: ')));
+                                                VALUES (?,?,?,0,'0.1',?,?,?,?);";
+        $this->execSQLNoData($sql, array((new \DateTimeImmutable())->format('Y-m-d'),$idNextcloud,$this->l->t('Quote number'),$this->l->t('New'),$this->l->t('Comment'),$last,$this->l->t('Offer valid for 1 month from: ')));
         return true;
     }
 
@@ -155,8 +176,8 @@ class Bdd {
         $date = new \DateTimeImmutable();
         $paymentDate = $datePaiement ?: $date->modify('+1 month')->format('Y-m-d');
 
-        $sql = "INSERT INTO `".$this->tableprefix."facture`
-        (`date`,`id_configuration`,`num`,`date_paiement`,`type_paiement`,`id_devis`,`user_id`)
+        $sql = "INSERT INTO ".$this->tableprefix."facture
+        (date,id_configuration,num,date_paiement,type_paiement,id_devis,user_id)
         VALUES
         (?, ?, ?, ?, ?, 0, ?);";
 
@@ -188,7 +209,7 @@ class Bdd {
         $exemptionReason = $vatCategory === 'E'
             ? VatExemptionReasonCatalog::DEFAULT_REASON
             : null;
-        $sql = "INSERT INTO `".$this->tableprefix."produit` (`id_configuration`,`reference`,`description`,`prix_unitaire`,`vat`,`vat_category`,`vat_exemption_reason_code`,`vat_exemption_reason`) VALUES (?,?,?,0,?,?,?,?);";
+        $sql = "INSERT INTO ".$this->tableprefix."produit (id_configuration,reference,description,prix_unitaire,vat,vat_category,vat_exemption_reason_code,vat_exemption_reason) VALUES (?,?,?,0,?,?,?,?);";
 
         $this->execSQLNoData($sql, array(
             $idNextcloud,
@@ -208,13 +229,22 @@ class Bdd {
         $lastproduit = $lastproduit[0]['id'];
         $lastinsertProduitDevis = $this->lastinsertProduitDevis($id_devis, $idNextcloud) + 1;
 
-        $sql = "INSERT INTO `".$this->tableprefix."produit_devis` (`devis_id`, `id_configuration`,`produit_id`,`quantite`,`discount`,`order`) VALUES (?,?,?,1,0,?);";
-        $this->execSQLNoData($sql, array($id_devis,$idNextcloud,$lastproduit,$lastinsertProduitDevis));
+        $query = $this->db->getQueryBuilder();
+        $query->insert('gestion_produit_devis')
+            ->values([
+                'devis_id' => $query->createNamedParameter($id_devis),
+                'id_configuration' => $query->createNamedParameter($idNextcloud),
+                'produit_id' => $query->createNamedParameter($lastproduit),
+                'quantite' => $query->createNamedParameter(1),
+                'discount' => $query->createNamedParameter(0),
+                'order' => $query->createNamedParameter($lastinsertProduitDevis),
+            ])
+            ->executeStatement();
         return $this->lastinsertProduitDevis($id_devis, $idNextcloud);
     }
 
     public function searchMaxIdProduit($idNextcloud){
-        $sqlSearchMax = "SELECT MIN(id) as id FROM `".$this->tableprefix."produit` WHERE id_configuration = ?";
+        $sqlSearchMax = "SELECT MIN(id) as id FROM ".$this->tableprefix."produit WHERE id_configuration = ?";
         return $this->execSQLNoJsonReturn($sqlSearchMax, array($idNextcloud));
     }
 
@@ -225,7 +255,7 @@ class Bdd {
             $safeData = rtrim($safeData);
             $safeData = $this->normalizeColumnData($column, $safeData);
 
-            $sql = "UPDATE " . $this->tableprefix . $table . " SET $column = ? WHERE `id` = ? AND `id_configuration` = ?";
+            $sql = "UPDATE " . $this->tableprefix . $table . " SET $column = ? WHERE id = ? AND id_configuration = ?";
             $this->execSQLNoData($sql, array($safeData, $id, $id_configuration));
 
 			if ($table === 'produit' && $column === 'vat_category') {
@@ -306,7 +336,7 @@ class Bdd {
         }
 
         $safeData = $this->normalizeColumnData($column, htmlentities(rtrim($data)));
-        $sql = "UPDATE ".$this->tableprefix."configuration SET $column = ? WHERE `id` = ?";
+        $sql = "UPDATE ".$this->tableprefix."configuration SET $column = ? WHERE id = ?";
         $this->execSQLNoData($sql, array($safeData, $idConfiguration));
         return true;
     }
@@ -330,7 +360,7 @@ class Bdd {
 
     public function gestion_duplicate($table, $id, $CurrentCompany){
         if(in_array($table, $this->whiteTable, true)){
-            $sql = "SELECT * FROM ".$this->tableprefix.$table." WHERE `id` = ? AND `id_configuration` = ?";
+            $sql = "SELECT * FROM ".$this->tableprefix.$table." WHERE id = ? AND id_configuration = ?";
             $res = $this->execSQLNoJsonReturn($sql, array($id, $CurrentCompany));
 
             $sql = "INSERT INTO ".$this->tableprefix.$table." (";
@@ -355,11 +385,11 @@ class Bdd {
             $this->execSQLNoData($sql, array_values($res[0]));
 
             if($table == "devis"){
-                $sql = "SELECT * FROM ".$this->tableprefix."produit_devis WHERE `devis_id` = ? AND `id_configuration` = ?";
+                $sql = "SELECT * FROM ".$this->tableprefix."produit_devis WHERE devis_id = ? AND id_configuration = ?";
                 $res_produit_devis = $this->execSQLNoJsonReturn($sql, array($id, $CurrentCompany));
 
-                $sql = "SELECT max(id) FROM ".$this->tableprefix."devis";
-                $id_devis = $this->execSQLNoJsonReturn($sql, array())[0]['max(id)'];
+                $sql = "SELECT max(id) AS max_id FROM ".$this->tableprefix."devis";
+                $id_devis = $this->execSQLNoJsonReturn($sql, array())[0]['max_id'];
 
                 $sql = "INSERT INTO ".$this->tableprefix."produit_devis (devis_id, id_configuration, produit_id, quantite, discount) VALUES (?,?,?,?,?)";
                 foreach($res_produit_devis as $key => $value){
@@ -373,8 +403,14 @@ class Bdd {
     }
 
     public function gestion_drop($id, $value, $CurrentCompany){
-        $sql_produits_devis_current = "SELECT * FROM ".$this->tableprefix."produit_devis WHERE `id` = ? AND `id_configuration` = ?";
-        $produits_devis_current = $this->execSQLNoJsonReturn($sql_produits_devis_current, array($id, $CurrentCompany));
+        $produits_devis_current = $this->selectProductQuoteRows([
+            'id' => $id,
+            'id_configuration' => $CurrentCompany,
+        ]);
+
+        if (empty($produits_devis_current)) {
+            return;
+        }
 
         if($value == "down"){
             $devis_id = $produits_devis_current[0]['devis_id'];
@@ -384,21 +420,25 @@ class Bdd {
             $order = $produits_devis_current[0]['order'] - 1;
         }
 
-        $sql_produits_devis_next = "SELECT * FROM ".$this->tableprefix."produit_devis WHERE `devis_id` = ? AND `order` = ? AND `id_configuration` = ?";
-        $produits_devis_next = $this->execSQLNoJsonReturn($sql_produits_devis_next, array($devis_id, $order, $CurrentCompany));
+        $produits_devis_next = $this->selectProductQuoteRows([
+            'devis_id' => $devis_id,
+            'order' => $order,
+            'id_configuration' => $CurrentCompany,
+        ]);
 
         if(!empty($produits_devis_next)){
-            $sql = "UPDATE ".$this->tableprefix."produit_devis SET `order` = ? WHERE `id` = ? AND `id_configuration` = ?";
-            $this->execSQLNoData($sql, array($order, $id, $CurrentCompany));
-
-            $sql = "UPDATE ".$this->tableprefix."produit_devis SET `order` = ? WHERE `id` = ? AND `id_configuration` = ?";
-            $this->execSQLNoData($sql, array($produits_devis_current[0]['order'], $produits_devis_next[0]['id'], $CurrentCompany));
+            $this->updateProductQuoteOrder($id, $CurrentCompany, $order);
+            $this->updateProductQuoteOrder(
+                $produits_devis_next[0]['id'],
+                $CurrentCompany,
+                $produits_devis_current[0]['order']
+            );
         }
     }
 
     public function gestion_delete($table, $id, $CurrentCompany){
         if(in_array($table, $this->whiteTable, true)){
-            $sql = "DELETE FROM ".$this->tableprefix.$table." WHERE `id` = ? AND `id_configuration` = ?";
+            $sql = "DELETE FROM ".$this->tableprefix.$table." WHERE id = ? AND id_configuration = ?";
             $this->execSQLNoData($sql, array($id, $CurrentCompany));
             return true;
         }
@@ -406,7 +446,7 @@ class Bdd {
     }
 
     public function checkConfig($idConfiguration, $idNextcloud){
-        $sql = "SELECT count(*) as res FROM `".$this->tableprefix."configuration` WHERE `id_nextcloud` = ?";
+        $sql = "SELECT count(*) as res FROM ".$this->tableprefix."configuration WHERE id_nextcloud = ?";
         $res = json_decode($this->execSQL($sql, array($idNextcloud)))[0]->res;
         if ( $res < 1 ){
             $this->createCompany($idNextcloud);
@@ -434,29 +474,29 @@ class Bdd {
     }
 
     public function deleteCompany($idCompany, $idNextcloud){
-        $sql = "SELECT * FROM `".$this->tableprefix."configuration` WHERE `id` = ?";
+        $sql = "SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?";
         $res = $this->execSQLNoJsonReturn($sql, array($idCompany));
 
         if ($res[0]['id_nextcloud'] == $idNextcloud){
-            $sql = "DELETE FROM `".$this->tableprefix."configuration` WHERE `id` = ? AND `id_nextcloud` = ?";
+            $sql = "DELETE FROM ".$this->tableprefix."configuration WHERE id = ? AND id_nextcloud = ?";
             $this->execSQLNoData($sql, array($idCompany, $idNextcloud));
 
-            $sql = "DELETE FROM `".$this->tableprefix."client` WHERE `id_configuration` = ?";
+            $sql = "DELETE FROM ".$this->tableprefix."client WHERE id_configuration = ?";
             $this->execSQLNoData($sql, array($idCompany));
 
-            $sql = "DELETE FROM `".$this->tableprefix."devis` WHERE `id_configuration` = ?";
+            $sql = "DELETE FROM ".$this->tableprefix."devis WHERE id_configuration = ?";
             $this->execSQLNoData($sql, array($idCompany));
 
-            $sql = "DELETE FROM `".$this->tableprefix."facture` WHERE `id_configuration` = ?";
+            $sql = "DELETE FROM ".$this->tableprefix."facture WHERE id_configuration = ?";
             $this->execSQLNoData($sql, array($idCompany));
 
-            $sql = "DELETE FROM `".$this->tableprefix."produit` WHERE `id_configuration` = ?";
+            $sql = "DELETE FROM ".$this->tableprefix."produit WHERE id_configuration = ?";
             $this->execSQLNoData($sql, array($idCompany));
 
-            $sql = "DELETE FROM `".$this->tableprefix."produit_devis` WHERE `id_configuration` = ?";
+            $sql = "DELETE FROM ".$this->tableprefix."produit_devis WHERE id_configuration = ?";
             $this->execSQLNoData($sql, array($idCompany));
 
-            $sql = "DELETE FROM `".$this->tableprefix."conf_share` WHERE `id_configuration` = ?";
+            $sql = "DELETE FROM ".$this->tableprefix."conf_share WHERE id_configuration = ?";
             $this->execSQLNoData($sql, array($idCompany));
 
             return true;
@@ -472,7 +512,7 @@ class Bdd {
             return false;
         }
 
-        $sql = "SELECT changelog as res FROM `".$this->tableprefix."configuration` WHERE `id` = ? AND (`id_nextcloud` = ? OR `id` in (SELECT `id_configuration` FROM `".$this->tableprefix."conf_share` WHERE `id_nextcloud` = ?))";
+        $sql = "SELECT changelog as res FROM ".$this->tableprefix."configuration WHERE id = ? AND (id_nextcloud = ? OR id in (SELECT id_configuration FROM ".$this->tableprefix."conf_share WHERE id_nextcloud = ?))";
         $configuration = json_decode($this->execSQL($sql, array($idConfiguration, $idNextcloud, $idNextcloud)));
 
         if (empty($configuration)) {
@@ -489,48 +529,64 @@ class Bdd {
     }
 
     public function numberClient($idNextcloud){
-        $sql = "SELECT count(*) as c from ".$this->tableprefix."client WHERE `id_configuration` = ?;";
+        $sql = "SELECT count(*) as c from ".$this->tableprefix."client WHERE id_configuration = ?;";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
     public function numberDevis($idNextcloud){
-        $sql = "SELECT count(*) as c from ".$this->tableprefix."devis WHERE `id_configuration` = ?;";
+        $sql = "SELECT count(*) as c from ".$this->tableprefix."devis WHERE id_configuration = ?;";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
     public function numberFacture($idNextcloud){
-        $sql = "SELECT count(*) as c from ".$this->tableprefix."facture WHERE `id_configuration` = ?;";
+        $sql = "SELECT count(*) as c from ".$this->tableprefix."facture WHERE id_configuration = ?;";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
     public function numberProduit($id_configuration){
-        $sql = "SELECT count(*) as c from ".$this->tableprefix."produit WHERE `id_configuration` = ?;";
+        $sql = "SELECT count(*) as c from ".$this->tableprefix."produit WHERE id_configuration = ?;";
         return $this->execSQL($sql, array($id_configuration));
     }
 
     public function getAnnualTurnoverPerMonthNoVat($id_configuration){
-        $sql = "SELECT  EXTRACT(YEAR FROM ".$this->tableprefix."facture.date_paiement) as y,
-                        EXTRACT(MONTH FROM ".$this->tableprefix."facture.date_paiement) as m,
-                        sum(".$this->tableprefix."produit.prix_unitaire * ".$this->tableprefix."produit_devis.quantite) as total
-                FROM `".$this->tableprefix."facture`, `".$this->tableprefix."produit_devis`, `".$this->tableprefix."produit`
-                WHERE ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."produit_devis.devis_id
-                AND ".$this->tableprefix."produit_devis.produit_id = ".$this->tableprefix."produit.id
-                AND ".$this->tableprefix."facture.id_configuration = ?
-                GROUP BY EXTRACT(YEAR FROM ".$this->tableprefix."facture.date_paiement), EXTRACT(MONTH FROM ".$this->tableprefix."facture.date_paiement)
-                ORDER BY EXTRACT(YEAR FROM ".$this->tableprefix."facture.date_paiement) DESC, EXTRACT(MONTH FROM ".$this->tableprefix."facture.date_paiement);";
-        return $this->execSQL($sql, array($id_configuration));
+        $query = $this->db->getQueryBuilder();
+        $query->select('f.date_paiement', 'p.prix_unitaire', 'pd.quantite')
+            ->from('gestion_facture', 'f')
+            ->innerJoin('f', 'gestion_produit_devis', 'pd', $query->expr()->eq('f.id_devis', 'pd.devis_id'))
+            ->innerJoin('pd', 'gestion_produit', 'p', $query->expr()->eq('pd.produit_id', 'p.id'))
+            ->where($query->expr()->eq('f.id_configuration', $query->createNamedParameter($id_configuration)));
+
+        $totals = [];
+        foreach ($this->fetchAll($query) as $row) {
+            $date = new \DateTimeImmutable((string)$row['date_paiement']);
+            $key = $date->format('Y-m');
+            if (!isset($totals[$key])) {
+                $totals[$key] = [
+                    'y' => $date->format('Y'),
+                    'm' => $date->format('n'),
+                    'total' => 0.0,
+                ];
+            }
+            $totals[$key]['total'] += (float)$row['prix_unitaire'] * (float)$row['quantite'];
+        }
+
+        krsort($totals);
+        return $this->rowsToJson(array_values($totals));
     }
 
     public function lastinsertid($table,$idNextcloud){
-        $sql = "SELECT max(user_id) as last_insert_id FROM `" . $this->tableprefix . $table . "` WHERE " . $this->tableprefix . $table .".id_configuration = ?;";
+        $sql = "SELECT max(user_id) as last_insert_id FROM " . $this->tableprefix . $table . " WHERE " . $this->tableprefix . $table .".id_configuration = ?;";
         $res = $this->execSQLNoJsonReturn($sql,array($idNextcloud));
         return $res[0]['last_insert_id'];
     }
 
     public function lastinsertProduitDevis($id_devis,$idNextcloud){
-        $table = "produit_devis";
-        $sql = "SELECT max(`order`) as last_insert_id FROM `" . $this->tableprefix . $table . "` WHERE " . $this->tableprefix . $table . ".id_configuration = ? AND " . $this->tableprefix . $table . ".devis_id = ?;";
-        $res = $this->execSQLNoJsonReturn($sql,array($idNextcloud, $id_devis));
+        $query = $this->db->getQueryBuilder();
+        $query->selectAlias($query->func()->max('pd.order'), 'last_insert_id')
+            ->from('gestion_produit_devis', 'pd')
+            ->where($query->expr()->eq('pd.id_configuration', $query->createNamedParameter($idNextcloud)))
+            ->andWhere($query->expr()->eq('pd.devis_id', $query->createNamedParameter($id_devis)));
+        $res = $this->fetchAll($query);
         return $res[0]['last_insert_id'];
     }
 
@@ -564,24 +620,51 @@ class Bdd {
     }
 
     private function execSQL($sql, $conditions){
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute($conditions);
-        $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return json_encode($data);
+        return $this->rowsToJson($this->execSQLNoJsonReturn($sql, $conditions));
     }
 
     private function execSQLNoData($sql, $conditions){
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute($conditions);
-        $stmt->closeCursor();
+        $this->db->executeStatement($sql, $conditions);
     }
 
     private function execSQLNoJsonReturn($sql, $conditions){
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute($conditions);
-        $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $data;
+        $result = $this->db->executeQuery($sql, $conditions);
+        $rows = iterator_to_array($result->iterateAssociative(), false);
+        $result->closeCursor();
+        return $rows;
+    }
+
+    private function fetchAll($query): array {
+        $result = $query->executeQuery();
+        $rows = iterator_to_array($result->iterateAssociative(), false);
+        $result->closeCursor();
+        return $rows;
+    }
+
+    private function rowsToJson(array $rows): string {
+        return json_encode($rows);
+    }
+
+    private function selectProductQuoteRows(array $conditions): array {
+        $query = $this->db->getQueryBuilder();
+        $query->select('*')->from('gestion_produit_devis');
+        foreach ($conditions as $column => $value) {
+            $query->andWhere(
+                $query->expr()->eq($column, $query->createNamedParameter($value))
+            );
+        }
+        return $this->fetchAll($query);
+    }
+
+    private function updateProductQuoteOrder($id, $idConfiguration, $order): void {
+        $query = $this->db->getQueryBuilder();
+        $query->update('gestion_produit_devis')
+            ->set('order', $query->createNamedParameter($order))
+            ->where($query->expr()->eq('id', $query->createNamedParameter($id)))
+            ->andWhere($query->expr()->eq(
+                'id_configuration',
+                $query->createNamedParameter($idConfiguration)
+            ))
+            ->executeStatement();
     }
 }

@@ -18,9 +18,9 @@ class Version20601Date20260528120000 extends SimpleMigrationStep
 
         $schema = $schemaClosure();
 
-        if ($schema->hasTable('oc_gestion_configuration')) {
+        if ($schema->hasTable('gestion_configuration')) {
 
-            $table = $schema->getTable('oc_gestion_configuration');
+            $table = $schema->getTable('gestion_configuration');
 
             if (!$table->hasColumn('iban')) {
 

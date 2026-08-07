@@ -19,6 +19,7 @@ dist/
 # Composer
 vendor/
 composer.lock
+.phpunit.result.cache
 
 # OS / divers
 Thumbs.db

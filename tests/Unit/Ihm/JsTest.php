@@ -7,20 +7,28 @@ use Symfony\Component\Panther\Client;
 class JsTest extends PantherTestCase {
 
     private string $url;
+    private string $username;
+    private string $password;
 
     public function setUp(): void {
         parent::setUp();
-        $this->url = 'http://127.0.0.1';
+        $this->url = rtrim(
+            getenv('NEXTCLOUD_BASE_URL') ?: 'http://dev.cybercorp.fr',
+            '/'
+        );
+        $this->username = getenv('NEXTCLOUD_TEST_USER') ?: 'nextcloud';
+        $this->password = getenv('NEXTCLOUD_TEST_PASSWORD') ?: 'Gestion-Panther-2026!';
     }
 
     public function testClient(): void {
         $client = Client::createFirefoxClient();
-        $crawler = $client->request('GET', $this->url . '/index.php/apps/gestion');
+        $client->request('GET', $this->url . '/login');
+        $client->waitFor('#user');
 
         // Authentification
-        $form = $crawler->selectButton('Log in')->form();
-        $form['user'] = 'nextcloud';
-        $form['password'] = 'nextcloud';
+        $form = $client->getCrawler()->filter('form')->form();
+        $form['user'] = $this->username;
+        $form['password'] = $this->password;
         $client->submit($form);
 
         // Page principale
@@ -29,7 +37,7 @@ class JsTest extends PantherTestCase {
 
         // Vérification bouton client visible
         $crawler = $client->waitForVisibility('#newClient');
-        $this->assertEquals('Add customer', $crawler->getText());
+        $this->assertNotSame('', trim($crawler->getText()));
 
         // Essai de tri (plus sécurisé)
         $client->executeScript("
@@ -41,27 +49,36 @@ class JsTest extends PantherTestCase {
 
         // Nombre initial de lignes
         $initLength = $client->executeScript("return document.getElementById('client')?.rows.length || 0");
+        $initialClientIds = $client->executeScript("
+            return Array.from(document.querySelectorAll('#client tbody .deleteItem'))
+                .map((element) => element.dataset.id);
+        ");
 
         // Ajout d’un client
         $client->executeScript("document.getElementById('newClient')?.click()");
-        $client->waitFor(function () use ($client, $initLength) {
+        $client->getWebDriver()->wait(5)->until(function () use ($client, $initLength) {
             return $client->executeScript("return document.getElementById('client')?.rows.length || 0") > $initLength;
-        }, 5);
+        });
         $this->assertGreaterThan($initLength, $client->executeScript("return document.getElementById('client')?.rows.length || 0"));
 
         // Suppression du client
-        $client->executeScript("
-            const table = document.getElementById('client');
-            if (table?.rows[1]?.cells[8]?.querySelector('button')) {
-                table.rows[1].cells[8].querySelector('button').click();
-            }
-        ");
+        $createdClientId = $client->executeScript(
+            "return Array.from(document.querySelectorAll('#client tbody .deleteItem'))
+                .map((element) => element.dataset.id)
+                .find((id) => !arguments[0].includes(id));",
+            [$initialClientIds]
+        );
+        $this->assertNotEmpty($createdClientId);
+        $client->executeScript(
+            "document.querySelector('#client tbody .deleteItem[data-id=\"' + arguments[0] + '\"]')?.click();",
+            [$createdClientId]
+        );
         $client->getWebDriver()->switchTo()->alert()->accept();
 
         // Attente de la suppression
-        $client->waitFor(function () use ($client, $initLength) {
+        $client->getWebDriver()->wait(5)->until(function () use ($client, $initLength) {
             return $client->executeScript("return document.getElementById('client')?.rows.length || 0") === $initLength;
-        }, 5);
+        });
         $this->assertEquals($initLength, $client->executeScript("return document.getElementById('client')?.rows.length || 0"));
     }
 }

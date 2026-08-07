@@ -28,11 +28,14 @@ export async function updateDB(table, column, data, id) {
 
         if (response.ok) {
             showSuccess(t('gestion', 'Modification saved'));
+            return true;
         } else {
             showError(t('gestion', 'There is an error with the format, please check the documentation'));
+            return false;
         }
     } catch (error) {
         showError(t('gestion', 'There is an error with the format, please check the documentation'));
+        return false;
     }
 }
 

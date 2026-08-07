@@ -3,6 +3,7 @@ namespace OCA\Gestion\Tests\Unit\Controller;
 
 use OCA\Gestion\Controller\ClientController;
 use OCA\Gestion\Controller\ConfigurationController;
+use OCA\Gestion\Controller\ProduitController;
 use OCA\Gestion\Controller\StatsController;
 use OCA\Gestion\Controller\ViewController;
 use OCA\Gestion\Service\CompanyService;
@@ -71,5 +72,43 @@ class ControllerSplitTest extends TestCase {
 		$this->assertArrayHasKey('devis', $data);
 		$this->assertArrayHasKey('facture', $data);
 		$this->assertArrayHasKey('produit', $data);
+	}
+
+	public function testGetVatExemptionReasonsDelegatesToDataService(): void {
+		$catalog = [
+			'defaultCode' => 'VATEX-FR-FRANCHISE',
+			'reasons' => [
+				[
+					'code' => 'VATEX-FR-FRANCHISE',
+					'reason' => 'TVA non applicable, art. 293 B du CGI',
+				],
+			],
+		];
+		$dataService = $this->createMock(DataService::class);
+		$dataService->expects($this->once())
+			->method('getVatExemptionReasons')
+			->willReturn($catalog);
+
+		$controller = new ProduitController('gestion', $this->request, $dataService);
+		$response = $controller->getVatExemptionReasons();
+
+		$this->assertSame($catalog, $response->getData());
+	}
+
+	public function testUpdateVatExemptionReasonDelegatesToDataService(): void {
+		$updatedReason = [
+			'code' => 'VATEX-FR-CGI261-4',
+			'reason' => 'Exonération de TVA, art. 261, 4 du CGI',
+		];
+		$dataService = $this->createMock(DataService::class);
+		$dataService->expects($this->once())
+			->method('updateProductVatExemptionReason')
+			->with('42', 'VATEX-FR-CGI261-4')
+			->willReturn($updatedReason);
+
+		$controller = new ProduitController('gestion', $this->request, $dataService);
+		$response = $controller->updateVatExemptionReason('42', 'VATEX-FR-CGI261-4');
+
+		$this->assertSame($updatedReason, $response->getData());
 	}
 }

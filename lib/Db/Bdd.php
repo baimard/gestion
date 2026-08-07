@@ -1,6 +1,7 @@
 <?php
 namespace OCA\Gestion\Db;
 
+use OCA\Gestion\Service\VatExemptionReasonCatalog;
 use OCP\IDBConnection;
 use OCP\IL10N;
 
@@ -82,7 +83,7 @@ class Bdd {
     }
 
     public function getListProduit($numdevis, $idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."produit.id as pid,".$this->tableprefix."produit_devis.id as pdid, header, reference, description,".$this->tableprefix."produit.vat as vat,".$this->tableprefix."produit.vat_category as vat_category,".$this->tableprefix."produit_devis.comment, quantite, prix_unitaire FROM ".$this->tableprefix."produit, ".$this->tableprefix."devis, ".$this->tableprefix."produit_devis WHERE ".$this->tableprefix."produit.id = produit_id AND ".$this->tableprefix."devis.id = devis_id AND ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_configuration = ? AND ".$this->tableprefix."produit.id_configuration = ? ORDER BY `oc_gestion_produit_devis`.`order` ASC";
+        $sql = "SELECT ".$this->tableprefix."produit.id as pid,".$this->tableprefix."produit_devis.id as pdid, header, reference, description,".$this->tableprefix."produit.vat as vat,".$this->tableprefix."produit.vat_category as vat_category,".$this->tableprefix."produit.vat_exemption_reason_code as vat_exemption_reason_code,".$this->tableprefix."produit.vat_exemption_reason as vat_exemption_reason,".$this->tableprefix."produit_devis.comment, quantite, prix_unitaire FROM ".$this->tableprefix."produit, ".$this->tableprefix."devis, ".$this->tableprefix."produit_devis WHERE ".$this->tableprefix."produit.id = produit_id AND ".$this->tableprefix."devis.id = devis_id AND ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_configuration = ? AND ".$this->tableprefix."produit.id_configuration = ? ORDER BY `oc_gestion_produit_devis`.`order` ASC";
         return $this->execSQL($sql, array($numdevis, $idNextcloud, $idNextcloud));
     }
 
@@ -181,14 +182,22 @@ class Bdd {
         )[0]['tva_default'];
 
         $vatCategory = (float)$vat === 0.0 ? 'E' : 'S';
-        $sql = "INSERT INTO `".$this->tableprefix."produit` (`id_configuration`,`reference`,`description`,`prix_unitaire`,`vat`,`vat_category`) VALUES (?,?,?,0,?,?);";
+        $exemptionReasonCode = $vatCategory === 'E'
+            ? VatExemptionReasonCatalog::DEFAULT_CODE
+            : null;
+        $exemptionReason = $vatCategory === 'E'
+            ? VatExemptionReasonCatalog::DEFAULT_REASON
+            : null;
+        $sql = "INSERT INTO `".$this->tableprefix."produit` (`id_configuration`,`reference`,`description`,`prix_unitaire`,`vat`,`vat_category`,`vat_exemption_reason_code`,`vat_exemption_reason`) VALUES (?,?,?,0,?,?,?,?);";
 
         $this->execSQLNoData($sql, array(
             $idNextcloud,
             $this->l->t('Reference'),
             $this->l->t('Designation'),
             $vat,
-            $vatCategory
+            $vatCategory,
+            $exemptionReasonCode,
+            $exemptionReason
         ));
 
         return true;
@@ -219,10 +228,74 @@ class Bdd {
             $sql = "UPDATE " . $this->tableprefix . $table . " SET $column = ? WHERE `id` = ? AND `id_configuration` = ?";
             $this->execSQLNoData($sql, array($safeData, $id, $id_configuration));
 
+			if ($table === 'produit' && $column === 'vat_category') {
+				$this->synchronizeVatExemptionReason($safeData, $id, $id_configuration);
+			}
+
             return true;
         }
         return false;
     }
+
+	public function updateProductVatExemptionReason(
+		$id,
+		string $code,
+		$idConfiguration
+	): bool {
+		$reason = VatExemptionReasonCatalog::reasonFor($code);
+		if ($reason === null) {
+			return false;
+		}
+
+		$product = $this->execSQLNoJsonReturn(
+			"SELECT vat_category FROM " . $this->tableprefix . "produit
+				WHERE id = ? AND id_configuration = ?",
+			[$id, $idConfiguration]
+		);
+		if (($product[0]['vat_category'] ?? null) !== 'E') {
+			return false;
+		}
+
+		$sql = "UPDATE " . $this->tableprefix . "produit
+			SET vat_exemption_reason_code = ?, vat_exemption_reason = ?
+			WHERE id = ? AND id_configuration = ? AND vat_category = 'E'";
+
+		$this->execSQLNoData(
+			$sql,
+			[$code, $reason, $id, $idConfiguration]
+		);
+		return true;
+	}
+
+	private function synchronizeVatExemptionReason(
+		string $category,
+		$id,
+		$idConfiguration
+	): void {
+		if ($category === 'E') {
+			$sql = "UPDATE " . $this->tableprefix . "produit
+				SET vat_exemption_reason_code = ?, vat_exemption_reason = ?
+				WHERE id = ? AND id_configuration = ?
+					AND (
+						vat_exemption_reason_code IS NULL
+						OR vat_exemption_reason_code = ''
+						OR vat_exemption_reason IS NULL
+						OR vat_exemption_reason = ''
+					)";
+			$this->execSQLNoData($sql, [
+				VatExemptionReasonCatalog::DEFAULT_CODE,
+				VatExemptionReasonCatalog::DEFAULT_REASON,
+				$id,
+				$idConfiguration,
+			]);
+			return;
+		}
+
+		$sql = "UPDATE " . $this->tableprefix . "produit
+			SET vat_exemption_reason_code = NULL, vat_exemption_reason = NULL
+			WHERE id = ? AND id_configuration = ?";
+		$this->execSQLNoData($sql, [$id, $idConfiguration]);
+	}
 
     /**
      * Update a field of the configuration identified by its company ID.

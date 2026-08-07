@@ -12,6 +12,7 @@ const VAT_CATEGORIES = [
   ['G', 'G — ' + t('gestion', 'Export outside the EU')],
   ['K', 'K — ' + t('gestion', 'Intra-Community supply')],
 ];
+const DEFAULT_VAT_EXEMPTION_REASON_CODE = 'VATEX-FR-FRANCHISE';
 
 export class Produit {
 
@@ -26,6 +27,8 @@ export class Produit {
     this.prix_unitaire = ((myresp.prix_unitaire.length === 0) ? '-' : myresp.prix_unitaire);
     this.vat = myresp.vat ?? '-';
     this.vat_category = myresp.vat_category ?? (Number(this.vat) === 0 ? 'E' : 'S');
+    this.vat_exemption_reason_code = myresp.vat_exemption_reason_code
+      ?? (this.vat_category === 'E' ? DEFAULT_VAT_EXEMPTION_REASON_CODE : '');
     this.header = myresp.header;
   }
 
@@ -36,14 +39,16 @@ export class Produit {
     const vatCategoryOptions = VAT_CATEGORIES.map(([value, label]) =>
       '<option value="' + value + '"' + (value === this.vat_category ? ' selected' : '') + '>' + label + '</option>'
     ).join('');
+    const exemptionReasonButtonHidden = this.vat_category === 'E' ? '' : ' hidden';
     let myrow = [
       '<div class="editable" data-table="produit" data-column="reference" data-id="' + this.id + '">' + this.reference + '</div>',
       '<div class="editable" data-table="produit" data-column="description" data-id="' + this.id + '">' + this.description + '</div>',
       '<div class="editableNumeric" data-table="produit" data-column="prix_unitaire" data-id="' + this.id + '">' + cur.format(this.prix_unitaire) + '</div>',
       '<div class="editable" data-table="produit" data-column="vat" data-id="' + this.id + '">' + this.vat + '%</div>',
-      '<select class="editableSelect vat-category-select" data-table="produit" data-column="vat_category" data-id="' + this.id + '" aria-label="' + t('gestion', 'Electronic invoice VAT category') + '">' + vatCategoryOptions + '</select>',
+      '<select class="editableSelect vat-category-select" data-table="produit" data-column="vat_category" data-id="' + this.id + '" data-current="' + this.vat_category + '" aria-label="' + t('gestion', 'Electronic invoice VAT category') + '">' + vatCategoryOptions + '</select>',
       '<div class="editable" data-table="produit" data-column="header" data-id="' + this.id + '">' + this.header + '</div>',
-      '<div data-modifier="produit" data-id=' + this.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
+      '<button type="button" class="vat-exemption-reason-action" data-id="' + this.id + '" data-reason-code="' + this.vat_exemption_reason_code + '" title="' + t('gestion', 'VAT exemption reason') + '" aria-label="' + t('gestion', 'VAT exemption reason') + '"' + exemptionReasonButtonHidden + '><span class="material-symbols-outlined">gavel</span></button>'
+        + '<div data-modifier="produit" data-id=' + this.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
     ];
     return myrow;
   }

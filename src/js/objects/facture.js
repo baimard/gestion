@@ -1,4 +1,5 @@
 import { showError } from "@nextcloud/dialogs";
+import { translate as t } from '@nextcloud/l10n';
 import { generateUrl } from "@nextcloud/router";
 import { baseUrl, LoadDT, showDone } from "../modules/mainFunction.js";
 import { setCsrfRequestHeader } from "../modules/csrf.js";
@@ -6,11 +7,11 @@ import { setCsrfRequestHeader } from "../modules/csrf.js";
 export class Facture {
 
   static PAYMENT_MEANS = [
-    ['10', 'Cash'],
-    ['20', 'Cheque'],
-    ['30', 'Credit transfer'],
-    ['48', 'Payment card'],
-    ['58', 'SEPA credit transfer'],
+    ['10', t('gestion', 'Cash')],
+    ['20', t('gestion', 'Cheque')],
+    ['30', t('gestion', 'Credit transfer')],
+    ['48', t('gestion', 'Payment card')],
+    ['58', t('gestion', 'SEPA credit transfer')],
   ];
 
   static normalizePaymentMeans(value) {
@@ -58,7 +59,7 @@ export class Facture {
    */
   getDTRow() {
     const paymentMeansOptions = `<option value=""${this.type_paiement === '' ? ' selected' : ''} disabled>${t('gestion', 'Select a means of payment')}</option>` + Facture.PAYMENT_MEANS.map(([code, label]) =>
-      `<option value="${code}"${this.type_paiement === code ? ' selected' : ''}>${t('gestion', label)}</option>`
+      `<option value="${code}"${this.type_paiement === code ? ' selected' : ''}>${label}</option>`
     ).join('');
     let myrow = [
       `<div>${this.user_id}</div>`,

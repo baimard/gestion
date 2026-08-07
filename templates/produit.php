@@ -11,8 +11,8 @@
 	<div id="app-content">
 		<div id="app-content-wrapper">
 			<?php print_unescaped($this->inc('content/changelog')); ?>
+			<?php print_unescaped($this->inc('modal/vat_exemption_reason_modal')); ?>
 			<?php print_unescaped($this->inc('content/produit')); ?>
 		</div>
 	</div>
 </div>
-

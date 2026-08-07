@@ -378,6 +378,96 @@ class FacturXServiceTest extends TestCase {
 		$this->assertStringContainsString('<ram:RateApplicablePercent>5.5</ram:RateApplicablePercent>', $xml);
 	}
 
+	public function testUsesTheVatExemptionReasonSelectedForTheProduct(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-07',
+			'date_paiement' => '2026-09-07',
+			'num' => 'F-EXEMPTION',
+		];
+		$products = [
+			(object)[
+				'description' => 'Medical service',
+				'prix_unitaire' => 100,
+				'quantite' => 1,
+				'vat' => 0,
+				'vat_category' => 'E',
+				'vat_exemption_reason_code' => 'VATEX-FR-CGI261-4',
+				'vat_exemption_reason' => 'Exonération de TVA, art. 261, 4 du CGI',
+			],
+		];
+
+		$xml = $service->buildXml($invoice, (object)[], $products);
+
+		$this->assertStringContainsString(
+			'<ram:ExemptionReason>Exonération de TVA, art. 261, 4 du CGI</ram:ExemptionReason>',
+			$xml
+		);
+		$this->assertStringContainsString(
+			'<ram:ExemptionReasonCode>VATEX-FR-CGI261-4</ram:ExemptionReasonCode>',
+			$xml
+		);
+		$this->assertStringNotContainsString('VATEX-FR-FRANCHISE', $xml);
+	}
+
+	public function testRejectsDifferentVatExemptionReasonsOnTheSameInvoice(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-07',
+			'date_paiement' => '2026-09-07',
+			'num' => 'F-MIXED-EXEMPTIONS',
+		];
+		$products = [
+			(object)[
+				'description' => 'Franchise',
+				'prix_unitaire' => 100,
+				'quantite' => 1,
+				'vat' => 0,
+				'vat_category' => 'E',
+				'vat_exemption_reason_code' => 'VATEX-FR-FRANCHISE',
+			],
+			(object)[
+				'description' => 'Medical service',
+				'prix_unitaire' => 100,
+				'quantite' => 1,
+				'vat' => 0,
+				'vat_category' => 'E',
+				'vat_exemption_reason_code' => 'VATEX-FR-CGI261-4',
+			],
+		];
+
+		$this->expectException(\InvalidArgumentException::class);
+		$this->expectExceptionMessage(
+			'All VAT-exempt invoice lines must use the same exemption reason.'
+		);
+
+		$service->buildXml($invoice, (object)[], $products);
+	}
+
+	public function testRejectsAnUnknownVatExemptionReasonCode(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-07',
+			'date_paiement' => '2026-09-07',
+			'num' => 'F-UNKNOWN-EXEMPTION',
+		];
+		$products = [
+			(object)[
+				'description' => 'Unknown exemption',
+				'prix_unitaire' => 100,
+				'quantite' => 1,
+				'vat' => 0,
+				'vat_category' => 'E',
+				'vat_exemption_reason_code' => 'VATEX-FR-UNKNOWN',
+			],
+		];
+
+		$this->expectException(\InvalidArgumentException::class);
+		$this->expectExceptionMessage('Unknown VAT exemption reason code');
+
+		$service->buildXml($invoice, (object)[], $products);
+	}
+
 	private function extractBuyerTradeParty(string $xml): string {
 		$start = strpos($xml, '<ram:BuyerTradeParty>');
 		$end = strpos($xml, '</ram:BuyerTradeParty>');

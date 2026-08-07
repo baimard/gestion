@@ -14,11 +14,11 @@ export function updateDateInput(target) {
     updateDB(target.dataset.table, target.dataset.column, target.value, target.dataset.id);
 }
 
-export function updateEditableSelect(target) {
+export async function updateEditableSelect(target) {
     const table = target.getAttribute('data-table');
     const column = target.getAttribute('data-column');
     const value = target.value;
     const id = target.getAttribute('data-id');
 
-    updateDB(table, column, value, id);
+    return updateDB(table, column, value, id);
 }

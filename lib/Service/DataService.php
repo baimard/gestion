@@ -81,6 +81,39 @@ class DataService {
 		return $this->myDb->insertProduitDevis($id, $this->currentCompany());
 	}
 
+	/**
+	 * @return array{defaultCode: string, reasons: array<int, array{code: string, reason: string}>}
+	 */
+	public function getVatExemptionReasons(): array {
+		return [
+			'defaultCode' => VatExemptionReasonCatalog::DEFAULT_CODE,
+			'reasons' => VatExemptionReasonCatalog::all(),
+		];
+	}
+
+	/**
+	 * @return array{code: string, reason: string}
+	 */
+	public function updateProductVatExemptionReason($id, string $code): array {
+		$reason = VatExemptionReasonCatalog::reasonFor($code);
+		if ($reason === null) {
+			throw new \InvalidArgumentException('Unknown VAT exemption reason code.');
+		}
+
+		if (!$this->myDb->updateProductVatExemptionReason(
+			$id,
+			$code,
+			$this->currentCompany()
+		)) {
+			throw new \RuntimeException('The product must use VAT category E.');
+		}
+
+		return [
+			'code' => $code,
+			'reason' => $reason,
+		];
+	}
+
 	public function update($table, $column, $data, $id) {
 		return $this->myDb->gestion_update($table, $column, $data, $id, $this->currentCompany());
 	}

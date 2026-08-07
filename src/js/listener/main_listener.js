@@ -29,6 +29,11 @@ import {
     updateEditableSelect,
     updateLinkedListSelection,
 } from './handlers/select_handlers.js';
+import {
+    handleVatCategoryChange,
+    openVatExemptionReasonModal,
+    saveVatExemptionReason,
+} from './handlers/vat_exemption_handlers.js';
 
 let lastKeyEventTime = 0;
 
@@ -45,6 +50,17 @@ function registerMainListeners() {
 
 function handleBodyClick(event) {
     const target = event.target;
+    const vatExemptionAction = target.closest?.('.vat-exemption-reason-action');
+
+    if (vatExemptionAction) {
+        openVatExemptionReasonModal(vatExemptionAction);
+        return;
+    }
+
+    if (target && target.id === 'save_vat_exemption_reason') {
+        saveVatExemptionReason();
+        return;
+    }
 
     if (target && target.id === 'about') {
         openAboutModal();
@@ -117,7 +133,7 @@ function handleBodyDoubleClick(event) {
     }
 }
 
-function handleBodyChange(event) {
+async function handleBodyChange(event) {
     const target = event.target;
 
     if (target.classList.contains('listClient') || target.classList.contains('listDevis')) {
@@ -132,8 +148,10 @@ function handleBodyChange(event) {
         updateSelectedProduct(event);
     }
 
-    if (target.classList.contains('editableSelect')) {
-        updateEditableSelect(target);
+    if (target.classList.contains('vat-category-select')) {
+        await handleVatCategoryChange(target);
+    } else if (target.classList.contains('editableSelect')) {
+        await updateEditableSelect(target);
     }
 
     if (target.id === "CurrentCompany-select") {

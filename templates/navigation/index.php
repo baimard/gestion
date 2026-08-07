@@ -61,4 +61,7 @@
 	
 	<li><center><a href="#"><button id="about" style="margin-left:10px;width:270px;"><?php p($l->t('About'));?></button></a></center></li>
 	<li><center><a href="<?= ($_['url']['config']); ?>"><button style="margin-left:10px;width:270px;"><?php p($l->t('My company'));?></button></a></center></li>
+	<li class="gestion-version">
+		<?php p($l->t('Gestion version')); ?> <?php p($_['appVersion']); ?>
+	</li>
 </ul>

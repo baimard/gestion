@@ -118,6 +118,25 @@
     text-decoration: none;
 }
 
+.vat-exemption-information {
+    width: 100%;
+    text-align: left;
+}
+
+.vat-exemption-information p + p {
+    margin-top: var(--gestion-spacing-sm);
+}
+
+.vat-exemption-modal-actions {
+    margin-top: var(--gestion-spacing-lg);
+    text-align: right;
+}
+
+.vat-exemption-reason-action {
+    min-width: var(--default-clickable-area, 44px);
+    margin-right: var(--gestion-spacing-xs);
+}
+
 
 /* ==========================================================================
    Navigation

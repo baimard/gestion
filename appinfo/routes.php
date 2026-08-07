@@ -31,6 +31,8 @@ return [
         ['name' => 'produit#getProduits', 'url' => '/getProduits', 'verb' => 'PROPFIND'],
         ['name' => 'produit#getProduitsById', 'url' => '/getProduitsById', 'verb' => 'POST'],
         ['name' => 'produit#insertProduit', 'url' => '/produit/insert', 'verb' => 'POST'],
+        ['name' => 'produit#getVatExemptionReasons', 'url' => '/vat-exemption-reasons', 'verb' => 'GET'],
+        ['name' => 'produit#updateVatExemptionReason', 'url' => '/produit/{id}/vat-exemption', 'verb' => 'POST'],
 
         ['name' => 'crud#duplicate', 'url' => '/duplicate', 'verb' => 'PUT'],
         ['name' => 'crud#delete', 'url' => '/delete', 'verb' => 'DELETE'],

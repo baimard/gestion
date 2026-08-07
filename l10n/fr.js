@@ -442,6 +442,15 @@ OC.L10N.register(
     "You can save all Gestion app data." : "Vous pouvez sauvegarder toutes les données de l'application GESTION",
     "Backup now!" : "Sauvegarder maintenant !",
     "You can restore a backup file for Gestion (in next release)." : "Vous pouvez restaurer une sauvegarde de fichier pour Gestion (Dans la prochaine version).",
-    "Restore now!" : "Restaurer maintenant !"
+    "Restore now!" : "Restaurer maintenant !",
+    "Close" : "Fermer",
+    "Save" : "Enregistrer",
+    "VAT exemption reason" : "Motif d’exonération de TVA",
+    "Exemption reason" : "Motif d’exonération",
+    "This line is exempt from VAT. Check that the selected exemption reason matches your situation." : "Cette ligne est exonérée de TVA. Vérifiez que le motif d’exonération sélectionné correspond à votre situation.",
+    "If you benefit from the VAT basic exemption — a common situation for micro-entrepreneurs — “VAT not applicable, art. 293 B of the French General Tax Code” is already selected. You do not need to change anything." : "Si vous bénéficiez de la franchise en base de TVA — cas fréquent pour les micro-entrepreneurs — le motif « TVA non applicable, art. 293 B du CGI » est déjà sélectionné. Vous n’avez rien à modifier.",
+    "If your exemption is based on another provision, select the corresponding reason. If in doubt, contact your accountant or the tax authorities." : "Si votre exonération repose sur une autre disposition, sélectionnez le motif correspondant. En cas de doute, rapprochez-vous de votre comptable ou de l’administration fiscale.",
+    "Unable to load VAT exemption reasons" : "Impossible de charger les motifs d’exonération de TVA",
+    "Unable to save VAT exemption reason" : "Impossible d’enregistrer le motif d’exonération de TVA"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

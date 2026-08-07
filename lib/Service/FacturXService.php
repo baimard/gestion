@@ -9,8 +9,6 @@ class FacturXService
 {
 	public const PROFILE_ID = 'urn:cen.eu:en16931:2017';
 	public const BUSINESS_PROCESS_ID = 'S1';
-	private const VAT_EXEMPTION_REASON = 'TVA non applicable, art. 293 B du CGI';
-	private const VAT_EXEMPTION_REASON_CODE = 'VATEX-FR-FRANCHISE';
 	private const VAT_CATEGORIES = ['S', 'E', 'Z', 'O', 'AE', 'G', 'K'];
 	private const FRENCH_INVOICE_NOTES = [
 		'PMT' => 'Indemnité forfaitaire de 40 euros pour frais de recouvrement due en cas de retard de paiement.',
@@ -53,6 +51,7 @@ class FacturXService
 		?object $customer = null
     ): string {
 		$customer ??= $invoice;
+		$this->assertConsistentVatExemptionReasons($products);
 
         $totals = $this->calculateTotals($products);
 
@@ -116,10 +115,16 @@ class FacturXService
 
             $key = $vatCategory . ':' . number_format($vatRate, 2);
 
-            if (!isset($vatLines[$key])) {
-                $vatLines[$key] = [
-                    'rate' => $vatRate,
+			if (!isset($vatLines[$key])) {
+				$vatLines[$key] = [
+					'rate' => $vatRate,
 					'category' => $vatCategory,
+					'exemptionReasonCode' => $vatCategory === 'E'
+						? $this->getVatExemptionReasonCode($product)
+						: null,
+					'exemptionReason' => $vatCategory === 'E'
+						? $this->getVatExemptionReason($product)
+						: null,
                     'base' => 0.0,
                     'amount' => 0.0
                 ];
@@ -222,10 +227,14 @@ XML;
 			$rate = $vat['rate'];
 			$category = $vat['category'];
 			$exemptionReason = $category === 'E'
-				? "\n    <ram:ExemptionReason>" . self::VAT_EXEMPTION_REASON . '</ram:ExemptionReason>'
+				? "\n    <ram:ExemptionReason>"
+					. htmlspecialchars((string)$vat['exemptionReason'], ENT_XML1)
+					. '</ram:ExemptionReason>'
 				: '';
 			$exemptionReasonCode = $category === 'E'
-				? "\n    <ram:ExemptionReasonCode>" . self::VAT_EXEMPTION_REASON_CODE . '</ram:ExemptionReasonCode>'
+				? "\n    <ram:ExemptionReasonCode>"
+					. htmlspecialchars((string)$vat['exemptionReasonCode'], ENT_XML1)
+					. '</ram:ExemptionReasonCode>'
 				: '';
 
             $xml .= <<<XML
@@ -264,6 +273,47 @@ XML;
 
 		// Backward compatibility for products created before categories were stored.
 		return $vatRate == 0.0 ? 'E' : 'S';
+	}
+
+	private function getVatExemptionReasonCode(object $product): string {
+		$code = trim((string)($product->vat_exemption_reason_code ?? ''));
+		if ($code === '') {
+			return VatExemptionReasonCatalog::DEFAULT_CODE;
+		}
+
+		if (!VatExemptionReasonCatalog::isValid($code)) {
+			throw new \InvalidArgumentException('Unknown VAT exemption reason code: ' . $code);
+		}
+
+		return $code;
+	}
+
+	private function getVatExemptionReason(object $product): string {
+		$code = $this->getVatExemptionReasonCode($product);
+		$reason = trim((string)($product->vat_exemption_reason ?? ''));
+
+		return $reason !== ''
+			? $reason
+			: (string)VatExemptionReasonCatalog::reasonFor($code);
+	}
+
+	private function assertConsistentVatExemptionReasons(array $products): void {
+		$reasonCodes = [];
+
+		foreach ($products as $product) {
+			$vatRate = $this->getVatRate($product);
+			if ($this->getVatCategory($product, $vatRate) !== 'E') {
+				continue;
+			}
+
+			$reasonCodes[$this->getVatExemptionReasonCode($product)] = true;
+		}
+
+		if (count($reasonCodes) > 1) {
+			throw new \InvalidArgumentException(
+				'All VAT-exempt invoice lines must use the same exemption reason.'
+			);
+		}
 	}
 
     /**

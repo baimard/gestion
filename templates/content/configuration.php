@@ -19,7 +19,7 @@
         <hr/>
         <h2><?= p($l->t('Share with ...')) ?></h2>
         <p>
-            <input list="search" type="text" id="emailInput" placeholder="Enter email">
+            <input list="search" type="text" id="emailInput" placeholder="<?= p($l->t('Enter email')) ?>">
             <datalist id="search"></datalist>
             <button id="submitEmail"><?= p($l->t('Add')) ?></button>
         </p>

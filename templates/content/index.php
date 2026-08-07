@@ -18,9 +18,9 @@
                 <th class="help-heading" title="<?php p($l->t('Enter a customer contact phone number, preferably with its international country prefix. This is contact information and is not a general mandatory invoice field in France.'));?>"><?php p($l->t('Phone number'));?></th>
                 <th class="help-heading" title="<?php p($l->t('Enter a valid customer email address used for contact and document delivery. This is not a general mandatory invoice field in France.'));?>"><?php p($l->t('Email'));?></th>
                 <th class="help-heading" title="<?php p($l->t('Enter the street and number of the customer address. In France, the buyer address and any distinct billing address must appear on invoices.'));?>"><?php p($l->t('Address'));?></th>
-                <th class="help-heading" title="<?php p($l->t('Enter the postal code for the customer address. Use the 5-digit postal code for a standard French address.'));?>">zipCode</th>
-                <th class="help-heading" title="<?php p($l->t('Enter the city or locality of the customer address. It forms part of the mandatory buyer address on French invoices.'));?>">cityName</th>
-                <th class="help-heading" title="<?php p($l->t('Enter the customer country using its ISO 3166-1 alpha-2 code, for example FR for France. Country information is required for structured electronic invoice addresses.'));?>">Country code</th>
+                <th class="help-heading" title="<?php p($l->t('Enter the postal code for the customer address. Use the 5-digit postal code for a standard French address.'));?>"><?php p($l->t('Zip code'));?></th>
+                <th class="help-heading" title="<?php p($l->t('Enter the city or locality of the customer address. It forms part of the mandatory buyer address on French invoices.'));?>"><?php p($l->t('City name'));?></th>
+                <th class="help-heading" title="<?php p($l->t('Enter the customer country using its ISO 3166-1 alpha-2 code, for example FR for France. Country information is required for structured electronic invoice addresses.'));?>"><?php p($l->t('Country code'));?></th>
                 <th class="help-heading" title="<?php p($l->t('Use this column to delete the customer record. Deletion cannot be used to replace legally required invoice retention.'));?>"><?php p($l->t('Actions'));?></th>
             </tr>
         </thead>

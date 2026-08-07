@@ -114,6 +114,7 @@ source:
 	--exclude="../$(app_name)/composer.json" \
 	--exclude="../$(app_name)/package*" \
 	--exclude="../$(app_name)/AGENTS.md" \
+	--exclude="../$(app_name)/documentation" \
 	--exclude="../$(app_name)/scripts" \
 	--exclude="../$(app_name)/tests" \
 	--exclude="../$(app_name)/translationfiles" \
@@ -142,6 +143,7 @@ prepare-appstore:
 	--exclude="/build" \
 	--exclude="/dist" \
 	--exclude="/AGENTS.md" \
+	--exclude="/documentation" \
 	--exclude="/scripts" \
 	--exclude="/tests" \
 	--exclude="/translationfiles" \

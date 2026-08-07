@@ -1,11 +1,13 @@
 <?php
 namespace OCA\Gestion\Service;
 
+use OCP\App\IAppManager;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\AppFramework\Http\TemplateResponse;
 
 class TemplateService {
 	private $userId;
+	private IAppManager $appManager;
 	private CompanyService $companyService;
 	private DataService $dataService;
 	private FileService $fileService;
@@ -14,6 +16,7 @@ class TemplateService {
 
 	public function __construct(
 		$UserId,
+		IAppManager $appManager,
 		CompanyService $companyService,
 		DataService $dataService,
 		FileService $fileService,
@@ -21,6 +24,7 @@ class TemplateService {
 		ContentSecurityPolicy $csp
 	) {
 		$this->userId = $UserId;
+		$this->appManager = $appManager;
 		$this->companyService = $companyService;
 		$this->dataService = $dataService;
 		$this->fileService = $fileService;
@@ -31,6 +35,7 @@ class TemplateService {
 	private function baseParams(): array {
 		return [
 			'path' => $this->userId,
+			'appVersion' => $this->appManager->getAppVersion('gestion'),
 			'url' => $this->navigationService->getNavigationLink(),
 			'CompaniesList' => $this->companyService->getCompaniesList(),
 			'CurrentCompany' => $this->companyService->getCurrentCompany(),

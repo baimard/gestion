@@ -133,8 +133,17 @@
 }
 
 .vat-exemption-reason-action {
-    min-width: var(--default-clickable-area, 44px);
+    min-width: 30px;
+    min-height: 30px;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
     margin-right: var(--gestion-spacing-xs);
+}
+
+.vat-exemption-reason-action .material-symbols-outlined {
+    margin-right: 0;
+    font-size: 20px;
 }
 
 
@@ -151,6 +160,13 @@
 
 .app-navigation-item {
     margin-top: 15px;
+}
+
+.gestion-version {
+    padding: var(--gestion-spacing-md);
+    color: var(--gestion-text-muted);
+    font-size: var(--gestion-font-size-small);
+    text-align: center;
 }
 
 .nav-link,

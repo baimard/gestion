@@ -118,6 +118,56 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
   }
 }
 
+button.product-header-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 30px;
+  min-width: 30px;
+  max-width: 30px;
+  height: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  margin: 0 !important;
+  padding: 2px !important;
+  border: 1px solid var(--color-border-maxcontrast) !important;
+  border-radius: 8px !important;
+  box-sizing: border-box;
+  background: var(--color-background-dark) !important;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+
+  .product-header-toggle-knob {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-main-background);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 30%);
+    transform: translateX(0);
+    transition: transform 120ms ease;
+  }
+
+  .material-symbols {
+    display: none;
+    font-size: 9px;
+    color: var(--color-primary-element);
+  }
+
+  &.active {
+    border-color: var(--color-success) !important;
+    background: var(--color-success) !important;
+
+    .product-header-toggle-knob { transform: translateX(14px); }
+    .material-symbols { display: inline-block; }
+  }
+
+  &:focus-visible { outline: 2px solid var(--color-primary-element); }
+  &:disabled { cursor: wait; opacity: .65; }
+}
+
 .gestion-version {
   padding: 12px;
   color: #5f6368;
@@ -330,8 +380,37 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
   }
 
   h2 { margin: 0; }
-  input, select { width: 100%; box-sizing: border-box; }
-  select { min-height: 220px; }
+  input { width: 100%; box-sizing: border-box; }
+}
+
+.gestion-contact-list {
+  display: grid;
+  align-content: start;
+  min-height: 220px;
+  max-height: 320px;
+  padding: 4px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-element);
+  background: var(--color-main-background);
+}
+
+.gestion-contact-list-item {
+  width: 100%;
+  min-height: 34px;
+  margin: 0 !important;
+  padding: 6px 8px !important;
+  border: 0 !important;
+  border-radius: var(--border-radius-element);
+  background: transparent !important;
+  color: var(--color-main-text) !important;
+  text-align: left;
+
+  &:hover { background: var(--color-background-hover) !important; }
+  &.active {
+    background: var(--color-primary-element) !important;
+    color: var(--color-primary-element-text) !important;
+  }
 }
 
 .gestion-contact-dialog-actions {

@@ -27,23 +27,34 @@ async function openContactImport(clientTable) {
         const dialog = document.createElement("dialog");
         dialog.className = "gestion-contact-dialog";
         const form = document.createElement("form");
-        form.method = "dialog";
         const title = document.createElement("h2");
         title.textContent = t("gestion", "Import a Nextcloud contact");
         const search = document.createElement("input");
         search.type = "search";
         search.placeholder = t("gestion", "Search contacts");
-        const select = document.createElement("select");
-        select.size = Math.min(10, contacts.length);
+        const list = document.createElement("div");
+        list.className = "gestion-contact-list";
+        let selectedContact = null;
         const render = pattern => {
-            select.replaceChildren();
+            list.replaceChildren();
+            selectedContact = null;
             contacts.filter(contact => JSON.stringify(contact).toLowerCase().includes(pattern.toLowerCase())).forEach(contact => {
-                const option = document.createElement("option");
-                option.value = contact.id;
-                option.textContent = [contact.displayName, contact.entreprise, contact.mail].filter(Boolean).join(" — ");
-                select.appendChild(option);
+                const item = document.createElement("button");
+                item.type = "button";
+                item.className = "gestion-contact-list-item";
+                item.textContent = [contact.displayName, contact.entreprise, contact.mail].filter(Boolean).join(" — ");
+                item.addEventListener("click", () => {
+                    list.querySelector(".active")?.classList.remove("active");
+                    item.classList.add("active");
+                    selectedContact = contact;
+                });
+                item.addEventListener("dblclick", () => {
+                    selectedContact = contact;
+                    importSelectedContact();
+                });
+                list.appendChild(item);
             });
-            if (select.options.length) select.selectedIndex = 0;
+            list.firstElementChild?.click();
         };
         render("");
         search.addEventListener("input", () => render(search.value));
@@ -53,34 +64,42 @@ async function openContactImport(clientTable) {
         cancel.type = "button";
         cancel.textContent = t("gestion", "Cancel");
         const submit = document.createElement("button");
-        submit.type = "submit";
+        submit.type = "button";
         submit.className = "primary";
         submit.textContent = t("gestion", "Import customer");
         actions.append(cancel, submit);
-        form.append(title, search, select, actions);
+        form.append(title, search, list, actions);
         dialog.appendChild(form);
         document.body.appendChild(dialog);
         cancel.addEventListener("click", () => dialog.close());
         dialog.addEventListener("close", () => dialog.remove(), { once: true });
-        form.addEventListener("submit", async event => {
-            event.preventDefault();
-            if (!select.value) return;
+        const importSelectedContact = async () => {
+            if (!selectedContact) {
+                showError(t("gestion", "Select a contact to import."));
+                return;
+            }
             submit.disabled = true;
+            submit.textContent = t("gestion", "Importing…");
             try {
                 const importResponse = await fetch(baseUrl + "/client/import-contact", {
                     method: "POST",
                     headers: csrfHeaders({ "Content-Type": "application/json" }),
-                    body: JSON.stringify({ id: select.value })
+                    body: JSON.stringify({ contact: selectedContact })
                 });
-                if (!importResponse.ok) throw new Error(t("gestion", "Unable to import this contact."));
+                if (!importResponse.ok) {
+                    const result = await importResponse.json().catch(() => ({}));
+                    throw new Error(result.message || t("gestion", "Unable to import this contact."));
+                }
                 dialog.close();
                 Client.loadClientDT(clientTable);
                 showSuccess(t("gestion", "Contact imported as a customer."));
             } catch (error) {
                 submit.disabled = false;
+                submit.textContent = t("gestion", "Import customer");
                 showError(error.message);
             }
-        });
+        };
+        submit.addEventListener("click", importSelectedContact);
         dialog.showModal();
         search.focus();
     } catch (error) {

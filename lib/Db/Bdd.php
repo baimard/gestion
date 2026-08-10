@@ -173,14 +173,6 @@ class Bdd {
             throw new \InvalidArgumentException('The quote does not exist.');
         }
 
-        $existingInvoices = $this->execSQLNoJsonReturn(
-            "SELECT id FROM ".$this->tableprefix."facture WHERE id_devis = ? AND id_configuration = ? ORDER BY id ASC",
-            [$devisId, $idNextcloud]
-        );
-        if (!empty($existingInvoices)) {
-            return ['id' => (int)$existingInvoices[0]['id'], 'created' => false];
-        }
-
         $last=0;
         $last = $this->lastinsertid("facture", $idNextcloud) + 1;
 
@@ -214,7 +206,7 @@ class Bdd {
             "SELECT id FROM ".$this->tableprefix."facture WHERE user_id = ? AND id_configuration = ?",
             [$last, $idNextcloud]
         );
-        return ['id' => (int)$invoice[0]['id'], 'created' => true];
+        return ['id' => (int)$invoice[0]['id']];
     }
 
     public function insertProduit($idNextcloud){

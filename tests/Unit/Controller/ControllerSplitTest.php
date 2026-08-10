@@ -147,7 +147,7 @@ class ControllerSplitTest extends TestCase {
 		$dataService->expects($this->once())
 			->method('insertFacture')
 			->with(42)
-			->willReturn(['id' => 7, 'created' => true]);
+			->willReturn(['id' => 7]);
 
 		$controller = new FactureController(
 			'gestion',
@@ -158,7 +158,7 @@ class ControllerSplitTest extends TestCase {
 		$response = $controller->insertFacture(42);
 
 		$this->assertSame(200, $response->getStatus());
-		$this->assertSame(['id' => 7, 'created' => true], $response->getData());
+		$this->assertSame(['id' => 7], $response->getData());
 	}
 
 	public function testCreateInvoiceRejectsAnUnknownQuote(): void {

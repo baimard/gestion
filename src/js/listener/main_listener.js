@@ -34,7 +34,7 @@ import {
     openVatExemptionReasonModal,
     saveVatExemptionReason,
 } from './handlers/vat_exemption_handlers.js';
-import { createInvoiceFromQuote } from './handlers/invoice_handlers.js';
+import { createInvoiceFromQuote, openInvoiceQuoteSelector } from './handlers/invoice_handlers.js';
 
 let lastKeyEventTime = 0;
 
@@ -56,6 +56,11 @@ function handleBodyClick(event) {
     const deleteAction = target.closest?.('.deleteItem');
     const productReference = target.closest?.('.product-reference-selector');
     const createInvoiceAction = target.closest?.('.createInvoiceFromQuote');
+
+    if (target.id === 'newInvoice') {
+        openInvoiceQuoteSelector();
+        return;
+    }
 
     if (createInvoiceAction) {
         actionMenu?.removeAttribute('open');

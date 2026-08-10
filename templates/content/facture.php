@@ -4,7 +4,7 @@
         <span class="material-symbols-outlined">chevron_right</span>
         <span><?php p($l->t('Invoice'));?></span>
         <span class="material-symbols-outlined">chevron_right</span>
-        <span><?php p($l->t('Invoices are created from quotes.'));?></span>
+        <button style="margin-left:3px;" type="button" id="newInvoice"><?php p($l->t('Add invoice'));?></button>
     </div>
     <table id="facture" class="display tabledt">
         <thead>

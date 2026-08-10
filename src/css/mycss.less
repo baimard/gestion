@@ -118,18 +118,20 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
   }
 }
 
-.product-header-toggle {
+button.product-header-toggle {
   position: relative;
   display: inline-flex;
   align-items: center;
-  width: 36px;
-  min-width: 36px;
-  height: 20px;
-  min-height: 20px;
+  width: 30px;
+  min-width: 30px;
+  max-width: 30px;
+  height: 16px;
+  min-height: 16px;
+  max-height: 16px;
   margin: 0 !important;
   padding: 2px !important;
   border: 1px solid var(--color-border-maxcontrast) !important;
-  border-radius: 10px !important;
+  border-radius: 8px !important;
   box-sizing: border-box;
   background: var(--color-background-dark) !important;
   cursor: pointer;
@@ -139,8 +141,8 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 14px;
-    height: 14px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: var(--color-main-background);
     box-shadow: 0 1px 2px rgb(0 0 0 / 30%);
@@ -150,7 +152,7 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
 
   .material-symbols {
     display: none;
-    font-size: 12px;
+    font-size: 9px;
     color: var(--color-primary-element);
   }
 
@@ -158,7 +160,7 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
     border-color: var(--color-success) !important;
     background: var(--color-success) !important;
 
-    .product-header-toggle-knob { transform: translateX(16px); }
+    .product-header-toggle-knob { transform: translateX(14px); }
     .material-symbols { display: inline-block; }
   }
 

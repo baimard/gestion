@@ -75,13 +75,14 @@
         <table id="produits" class="table-produit">
             <thead>
                 <tr>
+                    <th class="product-order-column" data-html2canvas-ignore aria-label="<?php p($l->t('Product order'));?>"></th>
                     <th><?php p($l->t('Reference'));?></th>
                     <th><?php p($l->t('Designation'));?></th>
                     <th><?php p($l->t('Comment'));?></th>
                     <th><?php p($l->t('Quantity'));?></th>
                     <th><?php p($l->t('Unit price without VAT'));?></th>
                     <th><?php p($l->t('Total without VAT'));?></th>
-                    <th><?php p($l->t('VAT percentage'));?></th>
+                    <th><?php p($l->t('VAT'));?></th>
                     <th><?php p($l->t('Total including VAT'));?></th>
                 </tr>
             </thead>

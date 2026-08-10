@@ -39,6 +39,7 @@ return [
         ['name' => 'crud#duplicate', 'url' => '/duplicate', 'verb' => 'PUT'],
         ['name' => 'crud#delete', 'url' => '/delete', 'verb' => 'DELETE'],
         ['name' => 'crud#drop', 'url' => '/drop', 'verb' => 'POST'],
+        ['name' => 'crud#reorderProducts', 'url' => '/reorder-products', 'verb' => 'POST'],
 
         ['name' => 'stats#getStats', 'url' => '/getStats', 'verb' => 'PROPFIND'],
         ['name' => 'stats#getAnnualTurnoverPerMonthNoVat', 'url' => '/getAnnualTurnoverPerMonthNoVat', 'verb' => 'PROPFIND'],

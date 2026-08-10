@@ -258,6 +258,64 @@ export function drop(id, callback=null, modifier=null, value='up') {
 
 }
 
+async function persistProductOrder(devisId, productQuoteIds) {
+    const response = await fetch(baseUrl + '/reorder-products', {
+        method: 'POST',
+        headers: csrfHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ devisId, productQuoteIds })
+    });
+    if (!response.ok) {
+        const result = await response.json().catch(() => ({}));
+        throw new Error(result.message || t('gestion', 'Unable to save the product order.'));
+    }
+}
+
+function bindProductDragAndDrop(tbody, devisId) {
+    if (tbody.dataset.dragBound === 'true') return;
+    tbody.dataset.dragBound = 'true';
+    let draggedRow = null;
+    let initialOrder = [];
+
+    tbody.addEventListener('dragstart', event => {
+        const handle = event.target.closest('.product-drag-handle');
+        if (!handle) return;
+        draggedRow = handle.closest('.product-quote-row');
+        initialOrder = [...tbody.querySelectorAll('.product-quote-row')].map(row => Number(row.dataset.pdid));
+        draggedRow.classList.add('dragging');
+        event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setData('text/plain', draggedRow.dataset.pdid);
+    });
+
+    tbody.addEventListener('dragover', event => {
+        const targetRow = event.target.closest('.product-quote-row');
+        if (!draggedRow || !targetRow) return;
+        event.preventDefault();
+        if (targetRow === draggedRow) return;
+        const insertAfter = event.clientY > targetRow.getBoundingClientRect().top + targetRow.offsetHeight / 2;
+        tbody.insertBefore(draggedRow, insertAfter ? targetRow.nextSibling : targetRow);
+    });
+
+    tbody.addEventListener('drop', event => {
+        if (draggedRow) event.preventDefault();
+    });
+
+    tbody.addEventListener('dragend', async () => {
+        draggedRow?.classList.remove('dragging');
+        const finalOrder = [...tbody.querySelectorAll('.product-quote-row')].map(row => Number(row.dataset.pdid));
+        draggedRow = null;
+
+        if (initialOrder.join(',') === finalOrder.join(',')) return;
+
+        try {
+            await persistProductOrder(Number(devisId), finalOrder);
+            showSuccess(t('gestion', 'Product order saved.'));
+        } catch (error) {
+            showError(error.message);
+            getProduitsById();
+        }
+    });
+}
+
 /**
  * 
  */
@@ -424,49 +482,6 @@ export function updateEditableConfiguration(myCase) {
  * @param {*} id 
  * @param {*} produitid 
  */
-export function listProduit(lp, id, produitid) {
-    fetch(baseUrl + '/getProduits', {
-        method: 'PROPFIND',
-        headers: csrfHeaders({
-            'Content-Type': 'application/json'
-        })
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error('Error: ' + response.status);
-        }
-    })
-    .then(data => {
-        var res = JSON.parse(data);
-        lp.appendChild(listeproduit_add_option('produit_devis', 'produit_id', produitid, id, t('gestion', 'Cancel')));
-        res.forEach(function(myresp) {
-            var _selected = false;
-            if (produitid == myresp.id) {
-                _selected = true;
-            }
-
-            var text_display = myresp.reference + ' ' + myresp.description + ' ' + cur.format(myresp.prix_unitaire);
-            lp.appendChild(listeproduit_add_option('produit_devis', 'produit_id', myresp.id, id,text_display,_selected));
-        });
-    })
-    .catch(error => {
-        showError(error);
-    });
-}
-
-function listeproduit_add_option(table, column, val, id, textContent, _selected=false){
-    var option = document.createElement('option');
-    option.dataset.table = table;
-    option.dataset.column = column;
-    option.dataset.val = val;
-    option.dataset.id = id;
-    option.textContent = textContent;
-    option.selected = _selected;
-    return option;
-}
-
 /**
  * Get a product in database using id
  */
@@ -510,24 +525,30 @@ export function getProduitsById() {
             const vat = parseFloat(myresp.vat || 0);
 
             if(myresp.header > 0){
-                produitsBody.innerHTML += `<tr style="background-color:rgb(198, 198, 198);">
+                produitsBody.innerHTML += `<tr class="${deleteDisable ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}" style="background-color:rgb(198, 198, 198);">
+                    <td data-html2canvas-ignore class="product-order-cell ${deleteDisable}">
+                        <button type="button" draggable="true" class="product-drag-handle" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button>
+                    </td>
                     <td COLSPAN="8">
                         <div>
-                            <div data-val="${myresp.pid}" data-id="${myresp.pdid}" class="inline selectable">${myresp.reference}</div>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" class="drop_up material-symbols ${deleteDisable}">arrow_drop_up</div>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="drop_down material-symbols ${deleteDisable}">arrow_drop_down</div>
+                            <button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector ${deleteDisable}" title="${t('gestion', 'Click here to change the product')}">
+                                <span>${myresp.reference}</span>
+                            </button>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
                         </div>
                     </td>
                 </tr>
                 `
             }else{
-                produitsBody.innerHTML += `<tr>
+                produitsBody.innerHTML += `<tr class="${deleteDisable ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}">
+                    <td data-html2canvas-ignore class="product-order-cell ${deleteDisable}">
+                        <button type="button" draggable="true" class="product-drag-handle" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button>
+                    </td>
                     <td>
                         <div>
-                            <div data-val="${myresp.pid}" data-id="${myresp.pdid}" class="inline selectable">${myresp.reference}</div>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" class="drop_up material-symbols ${deleteDisable}">arrow_drop_up</div>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="drop_down material-symbols ${deleteDisable}">arrow_drop_down</div>
+                            <button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector ${deleteDisable}" title="${t('gestion', 'Click here to change the product')}">
+                                <span>${myresp.reference}</span>
+                            </button>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
                         </div>
                     </td>
@@ -572,6 +593,10 @@ export function getProduitsById() {
                 totalTTCGlobal += totalTTC;
             }
         }); 
+
+        if (!deleteDisable) {
+            bindProductDragAndDrop(produitsBody, devis_id);
+        }
 
         const totalBody = document.getElementById('totaldevis').querySelector('tbody');
         totalBody.innerHTML = '';

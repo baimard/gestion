@@ -3,6 +3,7 @@ namespace OCA\Gestion\Controller;
 
 use OCA\Gestion\Service\DataService;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\IRequest;
 
@@ -47,6 +48,17 @@ class CrudController extends Controller {
 	#[UseSession]
 	public function drop($id, $value) {
 		return $this->dataService->drop($id, $value);
+	}
+
+	/** @NoAdminRequired */
+	#[UseSession]
+	public function reorderProducts(int $devisId, array $productQuoteIds): DataResponse {
+		try {
+			$this->dataService->reorderProducts($devisId, $productQuoteIds);
+			return new DataResponse(['status' => 'success']);
+		} catch (\InvalidArgumentException $e) {
+			return new DataResponse(['status' => 'error', 'message' => $e->getMessage()], 400);
+		}
 	}
 
 	/**

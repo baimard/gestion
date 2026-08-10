@@ -3,10 +3,12 @@ namespace OCA\Gestion\Tests\Unit\Controller;
 
 use OCA\Gestion\Controller\ClientController;
 use OCA\Gestion\Controller\ConfigurationController;
+use OCA\Gestion\Controller\CrudController;
 use OCA\Gestion\Controller\ProduitController;
 use OCA\Gestion\Controller\StatsController;
 use OCA\Gestion\Controller\ViewController;
 use OCA\Gestion\Service\CompanyService;
+use OCA\Gestion\Service\ContactImportService;
 use OCA\Gestion\Service\DataService;
 use OCA\Gestion\Service\TemplateService;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -54,7 +56,8 @@ class ControllerSplitTest extends TestCase {
 			->method('getClients')
 			->willReturn('[]');
 
-		$controller = new ClientController('gestion', $this->request, $dataService);
+		$contactImportService = $this->createMock(ContactImportService::class);
+		$controller = new ClientController('gestion', $this->request, $dataService, $contactImportService);
 
 		$this->assertSame('[]', $controller->getClients());
 	}
@@ -110,5 +113,31 @@ class ControllerSplitTest extends TestCase {
 		$response = $controller->updateVatExemptionReason('42', 'VATEX-FR-CGI261-4');
 
 		$this->assertSame($updatedReason, $response->getData());
+	}
+
+	public function testReorderProductsDelegatesToDataService(): void {
+		$dataService = $this->createMock(DataService::class);
+		$dataService->expects($this->once())
+			->method('reorderProducts')
+			->with(12, [8, 3, 5]);
+
+		$controller = new CrudController('gestion', $this->request, $dataService);
+		$response = $controller->reorderProducts(12, [8, 3, 5]);
+
+		$this->assertSame(200, $response->getStatus());
+		$this->assertSame(['status' => 'success'], $response->getData());
+	}
+
+	public function testReorderProductsRejectsAnInvalidOrder(): void {
+		$dataService = $this->createMock(DataService::class);
+		$dataService->expects($this->once())
+			->method('reorderProducts')
+			->willThrowException(new \InvalidArgumentException('Invalid order'));
+
+		$controller = new CrudController('gestion', $this->request, $dataService);
+		$response = $controller->reorderProducts(12, [8, 8]);
+
+		$this->assertSame(400, $response->getStatus());
+		$this->assertSame(['status' => 'error', 'message' => 'Invalid order'], $response->getData());
 	}
 }

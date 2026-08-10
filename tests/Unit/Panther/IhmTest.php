@@ -35,6 +35,26 @@ $client->takeScreenshot('tests/Unit/Panther/screens/index.png');
 $client->request('GET', $baseUrl . '/index.php/apps/gestion/devis');
 $client->waitFor('#devis');
 $client->takeScreenshot('tests/Unit/Panther/screens/devis.png');
+$quotePath = $client->getCrawler()->filter('.document-actions a')->attr('href');
+
+$client->request('GET', $baseUrl . '/index.php/apps/gestion/produit');
+$client->waitFor('#produit');
+$client->executeScript("if (!document.querySelector('#produit .editable[data-column=\"reference\"]')) document.getElementById('newProduit').click()");
+$client->waitFor('#produit .editable[data-column="reference"]');
+
+$client->request('GET', str_starts_with($quotePath, 'http') ? $quotePath : $baseUrl . $quotePath);
+$client->waitFor('html[data-gestion-document-ready="true"]');
+$client->executeScript("if (!document.querySelector('.product-reference-selector')) document.getElementById('devisAdd').click()");
+$client->waitFor('.product-reference-selector');
+$client->takeScreenshot('tests/Unit/Panther/screens/devisShow.png');
+
+$client->executeScript("document.querySelector('.product-reference-selector').click()");
+$client->waitForVisibility('#product_selector_modal');
+$client->waitFor('.product-selector-option');
+$client->takeScreenshot('tests/Unit/Panther/screens/productSelector.png');
+
+$client->executeScript("document.querySelector('.product-selector-option[aria-selected=\"true\"]').dispatchEvent(new MouseEvent('dblclick', { bubbles: true }))");
+$client->waitForInvisibility('#product_selector_modal');
 
 $client->request('GET', $baseUrl . '/index.php/apps/gestion/facture');
 $client->waitFor('#facture');

@@ -436,6 +436,31 @@ class Bdd {
         }
     }
 
+    public function reorderProductQuoteRows(int $devisId, array $ids, $currentCompany): void {
+        $rows = $this->selectProductQuoteRows(['devis_id' => $devisId, 'id_configuration' => $currentCompany]);
+        $currentIds = array_map('intval', array_column($rows, 'id'));
+        $requestedIds = array_map('intval', $ids);
+        $sortedCurrent = $currentIds;
+        $sortedRequested = $requestedIds;
+        sort($sortedCurrent);
+        sort($sortedRequested);
+
+        if (count($requestedIds) !== count(array_unique($requestedIds)) || $sortedCurrent !== $sortedRequested) {
+            throw new \InvalidArgumentException('The product order does not match this quote.');
+        }
+
+        $this->db->beginTransaction();
+        try {
+            foreach ($requestedIds as $position => $id) {
+                $this->updateProductQuoteOrder($id, $currentCompany, $position + 1);
+            }
+            $this->db->commit();
+        } catch (\Throwable $e) {
+            $this->db->rollBack();
+            throw $e;
+        }
+    }
+
     public function gestion_delete($table, $id, $CurrentCompany){
         if(in_array($table, $this->whiteTable, true)){
             $sql = "DELETE FROM ".$this->tableprefix.$table." WHERE id = ? AND id_configuration = ?";

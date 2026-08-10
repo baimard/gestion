@@ -10,9 +10,16 @@ import { capture, sendMail } from "./pdf";
 window.addEventListener("DOMContentLoaded", function () {
     globalConfiguration();
 
-    Client.getClientByIdDevis(document.getElementById("devisid").dataset.id);
-    getProduitsById();
+    const documentReady = Promise.all([
+        Client.getClientByIdDevis(document.getElementById("devisid").dataset.id),
+        getProduitsById(),
+    ]);
 
     var pdf = document.getElementById("pdf");
     pdf.addEventListener("click",function(){capture(saveNextcloud);});
+
+    documentReady.then(() => {
+        document.documentElement.dataset.gestionDocumentReady = "true";
+        document.dispatchEvent(new CustomEvent("gestion:document-ready"));
+    });
 });

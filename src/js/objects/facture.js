@@ -70,11 +70,18 @@ export class Facture {
       `<div class="loadSelect_listdevis" data-table="facture" data-column="id_devis" data-id="${this.id}" data-current="${this.id_devis}">${this.dnum} ${this.prenom} ${this.nom}</div>`,
       `<div class="editable" data-table="facture" data-column="version" data-id="${this.id}" style="display:inline">${this.version}</div>`,
       `<div class="editable" data-table="facture" data-column="status_paiement" data-id="${this.id}" style="display:inline">${this.status_paiement}</div>`,
-      `<div class="material-symbols">
-        <span title="${t('gestion', 'Open')}"><a href="${this.baseUrl}">open_in_new</a></span>
-        <span title="${t('gestion', 'Duplicate')}" data-modifier="facture" data-id=${this.id} data-table="facture" class="link duplicateItem">content_copy</span>
-        <span title="${t('gestion', 'Delete')}" data-modifier="facture" data-id=${this.id} data-table="facture" class="link deleteItem">delete</span>
-      </div>`
+      `<details class="document-actions">
+        <summary title="${t('gestion', 'Actions')}" aria-label="${t('gestion', 'Actions')}" class="material-symbols">more_horiz</summary>
+        <div class="document-actions-menu">
+          <a href="${this.baseUrl}" class="document-action"><span class="material-symbols">open_in_new</span><span>${t('gestion', 'Open')}</span></a>
+          <button type="button" data-url="${this.baseUrl}" class="document-action downloadDocumentPdf"><span class="material-symbols">download</span><span>${t('gestion', 'Download PDF')}</span></button>
+          <button type="button" data-url="${this.baseUrl}" class="document-action sendDocumentMail"><span class="material-symbols">mail</span><span>${t('gestion', 'Send by email')}</span></button>
+          <button type="button" data-url="${this.baseUrl}" class="document-action downloadFacturX"><span class="material-symbols">receipt_long</span><span>${t('gestion', 'Factur-X PDF + XML')}</span></button>
+          <button type="button" data-url="${this.baseUrl}" class="document-action downloadFacturXml"><span class="material-symbols">data_object</span><span>${t('gestion', 'Factur-X XML')}</span></button>
+          <button type="button" data-modifier="facture" data-id="${this.id}" data-table="facture" class="document-action duplicateItem"><span class="material-symbols">content_copy</span><span>${t('gestion', 'Duplicate')}</span></button>
+          <button type="button" data-modifier="facture" data-id="${this.id}" data-table="facture" class="document-action deleteItem"><span class="material-symbols">delete</span><span>${t('gestion', 'Delete')}</span></button>
+        </div>
+      </details>`
     ];
     return myrow;
   }

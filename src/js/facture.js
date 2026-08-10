@@ -6,10 +6,12 @@ import DataTable from "datatables.net";
 import { globalConfiguration, optionDatatable } from "./modules/mainFunction.js";
 import "./listener/main_listener";
 import { Facture } from "./objects/facture.js";
+import { bindDirectPdfDownloads } from "./pdf.js";
 // import { Devis } from './objects/devis.mjs';
 
 window.addEventListener("DOMContentLoaded", function () {
     globalConfiguration();
+    bindDirectPdfDownloads();
     var dt = new DataTable(".tabledt",optionDatatable);
     Facture.loadFactureDT(dt);
 });

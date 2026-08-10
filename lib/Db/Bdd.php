@@ -125,19 +125,19 @@ class Bdd {
         return $trace[2]['function'];
     }
 
-    public function insertClient($idNextcloud){
+    public function insertClient($idNextcloud, array $client = []){
         $sql = "INSERT INTO ".$this->tableprefix."client (id_configuration,nom,prenom,legal_one,entreprise,telephone,mail,adresse,zip_code,city_name,country_code,company_identification,vat_number) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $this->execSQLNoData($sql,array($idNextcloud,
-                                            $this->l->t('Last name'),
-                                            $this->l->t('First name'),
+                                            $client['nom'] ?? $this->l->t('Last name'),
+                                            $client['prenom'] ?? $this->l->t('First name'),
                                             $this->l->t('Limited company'),
-                                            $this->l->t('Company'),
-                                            $this->l->t('Phone number'),
-                                            $this->l->t('Email'),
-                                            $this->l->t('Address'),
-                                            $this->l->t('zip_code'),
-                                            $this->l->t('city_name'),
-                                            'FR',
+                                            $client['entreprise'] ?? $this->l->t('Company'),
+                                            $client['telephone'] ?? $this->l->t('Phone number'),
+                                            $client['mail'] ?? $this->l->t('Email'),
+                                            $client['adresse'] ?? $this->l->t('Address'),
+                                            $client['zip_code'] ?? $this->l->t('zip_code'),
+                                            $client['city_name'] ?? $this->l->t('city_name'),
+                                            $client['country_code'] ?? 'FR',
                                             '',
                                             ''
                                         )

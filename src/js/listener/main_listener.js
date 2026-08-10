@@ -50,6 +50,20 @@ function registerMainListeners() {
 
 function handleBodyClick(event) {
     const target = event.target;
+    const actionMenu = target.closest?.('.document-actions');
+    const actionMenuSummary = target.closest?.('.document-actions > summary');
+    const duplicateAction = target.closest?.('.duplicateItem');
+    const deleteAction = target.closest?.('.deleteItem');
+
+    if (actionMenuSummary) {
+        document.querySelectorAll('.document-actions[open]').forEach(menu => {
+            if (menu !== actionMenu) {
+                menu.removeAttribute('open');
+            }
+        });
+    } else if (!actionMenu) {
+        document.querySelectorAll('.document-actions[open]').forEach(menu => menu.removeAttribute('open'));
+    }
     const vatExemptionAction = target.closest?.('.vat-exemption-reason-action');
 
     if (vatExemptionAction) {
@@ -81,8 +95,9 @@ function handleBodyClick(event) {
         closeModal(target);
     }
 
-    if (target.classList.contains('duplicateItem')) {
-        duplicateItem(target);
+    if (duplicateAction) {
+        actionMenu?.removeAttribute('open');
+        duplicateItem(duplicateAction);
     }
 
     if (target.classList.contains('drop_down')) {
@@ -93,8 +108,9 @@ function handleBodyClick(event) {
         dropItem(target, 'up');
     }
 
-    if (target.classList.contains('deleteItem')) {
-        deleteItem(target);
+    if (deleteAction) {
+        actionMenu?.removeAttribute('open');
+        deleteItem(deleteAction);
     }
 
     if (target.id === 'devisAdd') {
@@ -160,6 +176,16 @@ async function handleBodyChange(event) {
 }
 
 function handleBodyKeydown(event) {
+    if (event.key === 'Escape') {
+        const openActionMenu = event.target.closest?.('.document-actions[open]');
+
+        if (openActionMenu) {
+            openActionMenu.removeAttribute('open');
+            openActionMenu.querySelector('summary')?.focus();
+            return;
+        }
+    }
+
     if (event.key !== "Enter") {
         return;
     }

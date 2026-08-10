@@ -15,7 +15,7 @@
                 <th class="help-heading" title="<?php p($l->t('Select the customer receiving the quote. For French mandatory quotes, the customer name and address must be stated.'));?>"><?php p($l->t('Customer quote'));?></th>
                 <th class="help-heading" title="<?php p($l->t('Enter the revision number of the quote, for example 1.0 or 2.0. Increase it when issuing a materially revised quote.'));?>"><?php p($l->t('Version'));?></th>
                 <th class="help-heading" title="<?php p($l->t('Enter the current quote status, for example Draft, Sent, Accepted, Rejected or Expired. An accepted quote can become binding evidence of the agreement.'));?>"><?php p($l->t('Status'));?></th>
-                <th class="help-heading" title="<?php p($l->t('Use these buttons to open, duplicate or delete the quote. Keep accepted quotes for the retention period applicable to your business.'));?>"><?php p($l->t('Actions'));?></th>
+                <th class="help-heading" title="<?php p($l->t('Use the actions menu to open, download, duplicate or delete the quote. Keep accepted quotes for the retention period applicable to your business.'));?>"><?php p($l->t('Actions'));?></th>
             </tr>
         </thead>
         <tbody>

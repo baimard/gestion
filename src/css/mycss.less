@@ -150,6 +150,72 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
   cursor: pointer; /* Change cursor to clickable */
 }
 
+.document-actions {
+  position: relative;
+  display: inline-block;
+
+  > summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--border-radius-element);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--color-background-hover);
+    }
+  }
+}
+
+.document-actions-menu {
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 190px;
+  padding: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-large);
+  background-color: var(--color-main-background);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 20%);
+}
+
+.document-action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 36px;
+  margin: 0;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: var(--border-radius-element);
+  background: transparent;
+  color: var(--color-main-text);
+  font: inherit;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-background-hover);
+  }
+
+  .material-symbols {
+    flex: 0 0 auto;
+  }
+}
+
 .menu-content {
   font-size:20px;
   margin-bottom: 10px;

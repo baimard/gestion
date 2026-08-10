@@ -94,6 +94,7 @@ export function bindDirectPdfDownloads() {
     }
 
     event.preventDefault();
+    trigger.closest(".document-actions")?.removeAttribute("open");
     trigger.dataset.loading = "true";
     trigger.setAttribute("aria-busy", "true");
 

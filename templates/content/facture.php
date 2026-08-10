@@ -17,7 +17,7 @@
                 <th class="help-heading" title="<?php p($l->t('Select the quote from which this invoice is created. This links the invoice to its accepted commercial terms and customer.'));?>"><?php p($l->t('Associated quote'));?></th>
                 <th class="help-heading" title="<?php p($l->t('Enter the internal document revision. Do not reuse or alter the legal number of an issued French invoice; issue a corrective document when required.'));?>"><?php p($l->t('Version'));?></th>
                 <th class="help-heading" title="<?php p($l->t('Enter the payment status, for example Pending, Paid, Partially paid, Overdue or Cancelled. Keep it consistent with the payment due date.'));?>"><?php p($l->t('Status'));?></th>
-                <th class="help-heading" title="<?php p($l->t('Use these buttons to open, duplicate or delete the invoice. In France, issued invoices are accounting records and must be retained; do not delete them to correct an error.'));?>"><?php p($l->t('Actions'));?></th>
+                <th class="help-heading" title="<?php p($l->t('Use the actions menu to open, download, duplicate or delete the invoice. In France, issued invoices are accounting records and must be retained; do not delete them to correct an error.'));?>"><?php p($l->t('Actions'));?></th>
             </tr>
         </thead>
         <tbody>

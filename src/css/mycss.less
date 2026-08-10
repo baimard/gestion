@@ -200,6 +200,41 @@ button.product-header-toggle {
   cursor: pointer; /* Change cursor to clickable */
 }
 
+.product-drag-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  min-height: 28px;
+  margin: 0 3px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: var(--border-radius-element);
+  background: transparent !important;
+  color: var(--color-text-maxcontrast) !important;
+  cursor: grab;
+  touch-action: none;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-background-hover) !important;
+    color: var(--color-main-text) !important;
+  }
+
+  &:active { cursor: grabbing; }
+}
+
+.product-quote-row {
+  transition: opacity 120ms ease, box-shadow 120ms ease;
+
+  &.dragging {
+    opacity: .55;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
+  }
+}
+
 .document-actions {
   position: relative;
   display: inline-block;

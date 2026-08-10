@@ -148,6 +148,10 @@ class DataService {
 		return $this->myDb->gestion_drop($id, $value, $this->currentCompany());
 	}
 
+	public function reorderProducts(int $devisId, array $productQuoteIds): void {
+		$this->myDb->reorderProductQuoteRows($devisId, $productQuoteIds, $this->currentCompany());
+	}
+
 	public function delete($table, $id) {
 		return $this->myDb->gestion_delete($table, $id, $this->currentCompany());
 	}

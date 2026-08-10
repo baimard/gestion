@@ -258,6 +258,59 @@ export function drop(id, callback=null, modifier=null, value='up') {
 
 }
 
+async function persistProductOrder(devisId, productQuoteIds) {
+    const response = await fetch(baseUrl + '/reorder-products', {
+        method: 'POST',
+        headers: csrfHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ devisId, productQuoteIds })
+    });
+    if (!response.ok) {
+        const result = await response.json().catch(() => ({}));
+        throw new Error(result.message || t('gestion', 'Unable to save the product order.'));
+    }
+}
+
+function bindProductDragAndDrop(tbody, devisId) {
+    if (tbody.dataset.dragBound === 'true') return;
+    tbody.dataset.dragBound = 'true';
+    let draggedRow = null;
+
+    tbody.addEventListener('dragstart', event => {
+        const handle = event.target.closest('.product-drag-handle');
+        if (!handle) return;
+        draggedRow = handle.closest('.product-quote-row');
+        draggedRow.classList.add('dragging');
+        event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setData('text/plain', draggedRow.dataset.pdid);
+    });
+
+    tbody.addEventListener('dragover', event => {
+        const targetRow = event.target.closest('.product-quote-row');
+        if (!draggedRow || !targetRow || targetRow === draggedRow) return;
+        event.preventDefault();
+        const insertAfter = event.clientY > targetRow.getBoundingClientRect().top + targetRow.offsetHeight / 2;
+        tbody.insertBefore(draggedRow, insertAfter ? targetRow.nextSibling : targetRow);
+    });
+
+    tbody.addEventListener('drop', async event => {
+        if (!draggedRow) return;
+        event.preventDefault();
+        const ids = [...tbody.querySelectorAll('.product-quote-row')].map(row => Number(row.dataset.pdid));
+        try {
+            await persistProductOrder(Number(devisId), ids);
+            showSuccess(t('gestion', 'Product order saved.'));
+        } catch (error) {
+            showError(error.message);
+            getProduitsById();
+        }
+    });
+
+    tbody.addEventListener('dragend', () => {
+        draggedRow?.classList.remove('dragging');
+        draggedRow = null;
+    });
+}
+
 /**
  * 
  */
@@ -510,24 +563,22 @@ export function getProduitsById() {
             const vat = parseFloat(myresp.vat || 0);
 
             if(myresp.header > 0){
-                produitsBody.innerHTML += `<tr style="background-color:rgb(198, 198, 198);">
+                produitsBody.innerHTML += `<tr class="${deleteDisable ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}" style="background-color:rgb(198, 198, 198);">
                     <td COLSPAN="8">
                         <div>
                             <div data-val="${myresp.pid}" data-id="${myresp.pdid}" class="inline selectable">${myresp.reference}</div>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" class="drop_up material-symbols ${deleteDisable}">arrow_drop_up</div>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="drop_down material-symbols ${deleteDisable}">arrow_drop_down</div>
+                            <button type="button" draggable="true" data-html2canvas-ignore class="product-drag-handle ${deleteDisable}" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
                         </div>
                     </td>
                 </tr>
                 `
             }else{
-                produitsBody.innerHTML += `<tr>
+                produitsBody.innerHTML += `<tr class="${deleteDisable ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}">
                     <td>
                         <div>
                             <div data-val="${myresp.pid}" data-id="${myresp.pdid}" class="inline selectable">${myresp.reference}</div>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" class="drop_up material-symbols ${deleteDisable}">arrow_drop_up</div>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="drop_down material-symbols ${deleteDisable}">arrow_drop_down</div>
+                            <button type="button" draggable="true" data-html2canvas-ignore class="product-drag-handle ${deleteDisable}" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
                         </div>
                     </td>
@@ -572,6 +623,10 @@ export function getProduitsById() {
                 totalTTCGlobal += totalTTC;
             }
         }); 
+
+        if (!deleteDisable) {
+            bindProductDragAndDrop(produitsBody, devis_id);
+        }
 
         const totalBody = document.getElementById('totaldevis').querySelector('tbody');
         totalBody.innerHTML = '';

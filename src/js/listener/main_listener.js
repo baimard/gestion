@@ -41,7 +41,6 @@ const HOVERABLE_CLASSES = ["editable", "loadSelect", "selectable"];
 
 function registerMainListeners() {
     document.body.addEventListener('click', handleBodyClick);
-    document.body.addEventListener('dblclick', handleBodyDoubleClick);
     document.body.addEventListener('change', handleBodyChange);
     document.body.addEventListener('keydown', handleBodyKeydown);
     document.body.addEventListener('focusout', handleBodyFocusout);
@@ -54,6 +53,12 @@ function handleBodyClick(event) {
     const actionMenuSummary = target.closest?.('.document-actions > summary');
     const duplicateAction = target.closest?.('.duplicateItem');
     const deleteAction = target.closest?.('.deleteItem');
+    const productReference = target.closest?.('.product-reference-selector');
+
+    if (productReference) {
+        showProductSelect(productReference);
+        return;
+    }
 
     if (actionMenuSummary) {
         document.querySelectorAll('.document-actions[open]').forEach(menu => {
@@ -143,12 +148,6 @@ function handleEditableOrCreationClick(event) {
     handleNewItemClick(target);
 }
 
-function handleBodyDoubleClick(event) {
-    if (event.target.classList.contains('selectable')) {
-        showProductSelect(event.target);
-    }
-}
-
 async function handleBodyChange(event) {
     const target = event.target;
 
@@ -160,7 +159,7 @@ async function handleBodyChange(event) {
         updateDateInput(target);
     }
 
-    if (target.id === 'listProduit' || target.id === 'listDevis') {
+    if (target.id === 'listDevis') {
         updateSelectedProduct(event);
     }
 

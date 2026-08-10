@@ -477,49 +477,6 @@ export function updateEditableConfiguration(myCase) {
  * @param {*} id 
  * @param {*} produitid 
  */
-export function listProduit(lp, id, produitid) {
-    fetch(baseUrl + '/getProduits', {
-        method: 'PROPFIND',
-        headers: csrfHeaders({
-            'Content-Type': 'application/json'
-        })
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error('Error: ' + response.status);
-        }
-    })
-    .then(data => {
-        var res = JSON.parse(data);
-        lp.appendChild(listeproduit_add_option('produit_devis', 'produit_id', produitid, id, t('gestion', 'Cancel')));
-        res.forEach(function(myresp) {
-            var _selected = false;
-            if (produitid == myresp.id) {
-                _selected = true;
-            }
-
-            var text_display = myresp.reference + ' ' + myresp.description + ' ' + cur.format(myresp.prix_unitaire);
-            lp.appendChild(listeproduit_add_option('produit_devis', 'produit_id', myresp.id, id,text_display,_selected));
-        });
-    })
-    .catch(error => {
-        showError(error);
-    });
-}
-
-function listeproduit_add_option(table, column, val, id, textContent, _selected=false){
-    var option = document.createElement('option');
-    option.dataset.table = table;
-    option.dataset.column = column;
-    option.dataset.val = val;
-    option.dataset.id = id;
-    option.textContent = textContent;
-    option.selected = _selected;
-    return option;
-}
-
 /**
  * Get a product in database using id
  */
@@ -564,10 +521,15 @@ export function getProduitsById() {
 
             if(myresp.header > 0){
                 produitsBody.innerHTML += `<tr class="${deleteDisable ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}" style="background-color:rgb(198, 198, 198);">
+                    <td data-html2canvas-ignore class="product-order-cell ${deleteDisable}">
+                        <button type="button" draggable="true" class="product-drag-handle" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button>
+                    </td>
                     <td COLSPAN="8">
                         <div>
-                            <div data-val="${myresp.pid}" data-id="${myresp.pdid}" class="inline selectable">${myresp.reference}</div>
-                            <button type="button" draggable="true" data-html2canvas-ignore class="product-drag-handle ${deleteDisable}" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button>
+                            <button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector ${deleteDisable}" title="${t('gestion', 'Click here to change the product')}">
+                                <strong>${myresp.reference}</strong>
+                                <small data-html2canvas-ignore>${t('gestion', 'Click here to change the product')}</small>
+                            </button>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
                         </div>
                     </td>
@@ -575,10 +537,15 @@ export function getProduitsById() {
                 `
             }else{
                 produitsBody.innerHTML += `<tr class="${deleteDisable ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}">
+                    <td data-html2canvas-ignore class="product-order-cell ${deleteDisable}">
+                        <button type="button" draggable="true" class="product-drag-handle" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button>
+                    </td>
                     <td>
                         <div>
-                            <div data-val="${myresp.pid}" data-id="${myresp.pdid}" class="inline selectable">${myresp.reference}</div>
-                            <button type="button" draggable="true" data-html2canvas-ignore class="product-drag-handle ${deleteDisable}" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button>
+                            <button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector ${deleteDisable}" title="${t('gestion', 'Click here to change the product')}">
+                                <strong>${myresp.reference}</strong>
+                                <small data-html2canvas-ignore>${t('gestion', 'Click here to change the product')}</small>
+                            </button>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
                         </div>
                     </td>

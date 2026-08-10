@@ -75,6 +75,7 @@
         <table id="produits" class="table-produit">
             <thead>
                 <tr>
+                    <th class="product-order-column" data-html2canvas-ignore aria-label="<?php p($l->t('Product order'));?>"></th>
                     <th><?php p($l->t('Reference'));?></th>
                     <th><?php p($l->t('Designation'));?></th>
                     <th><?php p($l->t('Comment'));?></th>

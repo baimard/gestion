@@ -13,6 +13,7 @@
 		<div id="app-content-wrapper">
 			<?php print_unescaped($this->inc('content/changelog')); ?>
 			<?php print_unescaped($this->inc('content/devisshow')); ?>
+			<?php print_unescaped($this->inc('modal/product_selector_modal')); ?>
 		</div>
 	</div>
 </div>

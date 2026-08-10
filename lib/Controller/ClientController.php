@@ -2,6 +2,8 @@
 namespace OCA\Gestion\Controller;
 
 use OCA\Gestion\Service\DataService;
+use OCA\Gestion\Service\ContactImportService;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\IRequest;
@@ -9,9 +11,28 @@ use OCP\IRequest;
 class ClientController extends Controller {
 	private DataService $dataService;
 
-	public function __construct($AppName, IRequest $request, DataService $dataService) {
+	public function __construct($AppName, IRequest $request, DataService $dataService, ContactImportService $contactImportService) {
 		parent::__construct($AppName, $request);
 		$this->dataService = $dataService;
+		$this->contactImportService = $contactImportService;
+	}
+	private ContactImportService $contactImportService;
+
+	/** @NoAdminRequired */
+	#[UseSession]
+	public function contacts(): DataResponse {
+		return new DataResponse($this->contactImportService->list());
+	}
+
+	/** @NoAdminRequired */
+	#[UseSession]
+	public function importContact(string $id): DataResponse {
+		$contact = $this->contactImportService->find($id);
+		if ($contact === null) {
+			return new DataResponse(['message' => 'Contact not found.'], 404);
+		}
+		$this->dataService->insertContactClient($contact);
+		return new DataResponse(['status' => 'success']);
 	}
 
 	/**

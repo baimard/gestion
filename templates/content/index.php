@@ -5,6 +5,7 @@
         <span><?php p($l->t('Customer'));?></span>
         <span class="material-symbols-outlined">chevron_right</span>
         <button style="margin-left:3px;" type="button"  id="newClient"><?php p($l->t('Add customer'));?></button>
+        <button style="margin-left:3px;" type="button" id="importContact"><span class="material-symbols">person_add</span> <?php p($l->t('Import from Contacts'));?></button>
     </div>
     <table id="client" class="display tabledt" style="font-size:11px;">
         <thead>

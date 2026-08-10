@@ -87,7 +87,7 @@ export function capture(afterCapturefunction, sourceDocument = document) {
  */
 export function bindDirectPdfDownloads() {
   document.addEventListener("click", event => {
-    const trigger = event.target.closest(".downloadDocumentPdf");
+    const trigger = event.target.closest(".downloadDocumentPdf, .downloadFacturX, .downloadFacturXml");
 
     if (!trigger || trigger.dataset.loading === "true") {
       return;
@@ -98,7 +98,14 @@ export function bindDirectPdfDownloads() {
     trigger.dataset.loading = "true";
     trigger.setAttribute("aria-busy", "true");
 
-    downloadPdfFromDetailPage(trigger.dataset.url)
+    let format = "pdf";
+    if (trigger.classList.contains("downloadFacturX")) {
+      format = "facturx";
+    } else if (trigger.classList.contains("downloadFacturXml")) {
+      format = "xml";
+    }
+
+    downloadFromDetailPage(trigger.dataset.url, format)
       .catch(error => {
         console.error("Direct PDF generation error:", error);
         showMessage(t("gestion", "Error when creating PDF."));
@@ -110,7 +117,7 @@ export function bindDirectPdfDownloads() {
   });
 }
 
-function downloadPdfFromDetailPage(detailUrl) {
+function downloadFromDetailPage(detailUrl, format) {
   showMessage(t("gestion", "Creation in progress …"));
 
   const frame = document.createElement("iframe");
@@ -131,7 +138,16 @@ function downloadPdfFromDetailPage(detailUrl) {
       }
 
       window.clearTimeout(timeout);
-      capture(null, frameDocument).then(resolve).catch(reject);
+      let generation;
+      if (format === "facturx") {
+        generation = captureFacturX(frameDocument);
+      } else if (format === "xml") {
+        generation = captureFacturXml(frameDocument);
+      } else {
+        generation = capture(null, frameDocument);
+      }
+
+      generation.then(resolve).catch(reject);
     };
 
     frame.addEventListener("load", () => {
@@ -163,25 +179,25 @@ function downloadPdfFromDetailPage(detailUrl) {
  * Génère et télécharge un PDF Factur-X (EN 16931) pour la facture courante.
  * Le fichier est aussi sauvegardé dans Nextcloud.
  */
-export function captureFacturX() {
+export function captureFacturX(sourceDocument = document) {
   showMessage(t("gestion", "Generating the electronic invoice…"));
 
-  const pdfElement  = document.getElementById("pdf");
-  const facturxBtn  = document.getElementById("facturx");
+  const pdfElement  = sourceDocument.getElementById("pdf");
+  const facturxBtn  = sourceDocument.getElementById("facturx");
   const pdfName     = pdfElement.getAttribute("data-name");
-  const folder      = document.getElementById("theFolder").value;
+  const folder      = sourceDocument.getElementById("theFolder").value;
   const pdfFolder   = pdfElement.getAttribute("data-folder");
   const factureId   = parseInt(facturxBtn.getAttribute("data-factureid"), 10);
 
   // Clone du contenu sans les boutons (data-html2canvas-ignore)
-  const element       = document.querySelector("#PDFcontent");
+  const element       = sourceDocument.querySelector("#PDFcontent");
   const clonedElement = element.cloneNode(true);
   clonedElement.querySelectorAll('[data-html2canvas-ignore]').forEach(el => el.remove());
   const htmlContent = clonedElement.outerHTML;
 
   const name = t("gestion", "INVOICE") + "_" + pdfName + "_facturx.pdf";
 
-  fetch(baseUrl + '/generateFacturX', {
+  return fetch(baseUrl + '/generateFacturX', {
     method: 'POST',
     headers: csrfHeaders({
       'Content-Type': 'application/json'
@@ -218,19 +234,19 @@ export function captureFacturX() {
  * Génère et télécharge uniquement le XML Factur-X (CII EN 16931) pour la facture courante.
  * Le fichier est aussi sauvegardé dans Nextcloud.
  */
-export function captureFacturXml() {
+export function captureFacturXml(sourceDocument = document) {
   showMessage(t("gestion", "Generating Factur-X XML…"));
 
-  const pdfElement = document.getElementById("pdf");
-  const facturxBtn = document.getElementById("facturx-xml");
+  const pdfElement = sourceDocument.getElementById("pdf");
+  const facturxBtn = sourceDocument.getElementById("facturx-xml");
   const pdfName    = pdfElement.getAttribute("data-name");
-  const folder     = document.getElementById("theFolder").value;
+  const folder     = sourceDocument.getElementById("theFolder").value;
   const pdfFolder  = pdfElement.getAttribute("data-folder");
   const factureId  = parseInt(facturxBtn.getAttribute("data-factureid"), 10);
 
   const xmlFileName = t("gestion", "INVOICE") + "_" + pdfName + "_facturx.xml";
 
-  generateFacturXmlRequest(factureId, xmlFileName, folder + "/" + pdfFolder + "/");
+  return generateFacturXmlRequest(factureId, xmlFileName, folder + "/" + pdfFolder + "/");
 }
 
 /**

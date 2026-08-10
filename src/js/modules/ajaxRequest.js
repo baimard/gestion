@@ -636,7 +636,7 @@ export function saveNextcloud(myData) {
   };
 
 export function generateFacturXmlRequest(factureId, name, folder) {
-    fetch(baseUrl + '/generateFacturXml', {
+    return fetch(baseUrl + '/generateFacturXml', {
         method: 'POST',
         headers: csrfHeaders({
             'Content-Type': 'application/json'

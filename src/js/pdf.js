@@ -243,13 +243,7 @@ function showMailConfirmation(email) {
 }
 
 function showMailSentConfirmation() {
-  const title = t("gestion", "Email sent");
-  const message = t("gestion", "The email was sent successfully.");
-  if (window.OC?.dialogs?.alert) {
-    window.OC.dialogs.alert(message, title);
-  } else {
-    window.alert(title + "\n\n" + message);
-  }
+  showMessage(t("gestion", "The email was sent successfully."));
 }
 
 function showMailPrerequisites() {

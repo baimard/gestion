@@ -241,7 +241,11 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
 }
 
 .gestion-mail-dialog {
+  position: fixed;
+  inset: 0;
   width: min(520px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  margin: auto;
   padding: 0;
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-large);

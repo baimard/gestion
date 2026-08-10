@@ -242,7 +242,7 @@ const options = {
 };
 
 
-fetch(url, options)
+return fetch(url, options)
     .then(response => response.json())
     .then(data => {
         const myresp = JSON.parse(data)[0];

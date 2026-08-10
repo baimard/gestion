@@ -474,7 +474,7 @@ export function getProduitsById() {
     const devis_id = document.getElementById('devisid').dataset.id;
     const myData = { numdevis: devis_id };
 
-    fetch(baseUrl + '/getProduitsById', {
+    return fetch(baseUrl + '/getProduitsById', {
         method: 'POST',
         headers: csrfHeaders({
             'Content-Type': 'application/json'
@@ -600,7 +600,7 @@ export function getProduitsById() {
             </tr>
         `;
 
-        getGlobal();
+        return getGlobal();
     })
     .catch(error => {
         showError(error);

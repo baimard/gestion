@@ -11,8 +11,10 @@ import { capture, captureFacturX, captureFacturXml, sendFacturXToIopole, sendMai
 window.addEventListener("DOMContentLoaded", function () {
     globalConfiguration();
 
-    Client.getClientByIdDevis(document.getElementById("devisid").dataset.id);
-    getProduitsById();
+    const documentReady = Promise.all([
+        Client.getClientByIdDevis(document.getElementById("devisid").dataset.id),
+        getProduitsById(),
+    ]);
 
     // Bouton 1 — Sauvegarder dans Nextcloud (pdf)
     var pdf = document.getElementById("pdf");
@@ -35,5 +37,9 @@ window.addEventListener("DOMContentLoaded", function () {
     if (facturxIopole) {
         facturxIopole.addEventListener("click", function(){ sendFacturXToIopole(); });
     }
-    
+
+    documentReady.then(() => {
+        document.documentElement.dataset.gestionDocumentReady = "true";
+        document.dispatchEvent(new CustomEvent("gestion:document-ready"));
+    });
 });

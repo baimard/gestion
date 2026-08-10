@@ -25,28 +25,28 @@ export function sendMail(myData) {
   });
 }
 
-export function capture(afterCapturefunction) {
+export function capture(afterCapturefunction, sourceDocument = document) {
   showMessage(t("gestion", "Creation in progress …"));
   
-  const pdfElement = document.getElementById("pdf");
+  const pdfElement = sourceDocument.getElementById("pdf");
   const pdfName = pdfElement.getAttribute("data-name");
   
-  const folder = document.getElementById("theFolder").value;
+  const folder = sourceDocument.getElementById("theFolder").value;
   const pdfFolder = pdfElement.getAttribute("data-folder");
   
-  const element = document.querySelector("#PDFcontent");
+  const element = sourceDocument.querySelector("#PDFcontent");
   const clonedElement = element.cloneNode(true);
   clonedElement.querySelectorAll('[data-html2canvas-ignore]').forEach(el => el.remove());
   const htmlContent = clonedElement.outerHTML;
   
   let name = "";
-  if (document.getElementById("factureid")) {
+  if (sourceDocument.getElementById("factureid")) {
     name = t("gestion", "INVOICE") + "_" + pdfName + ".pdf";
   } else {
     name = t("gestion", "QUOTE") + "_" + pdfName + ".pdf";
   }
   
-  fetch(baseUrl + '/generatePDF', {
+  return fetch(baseUrl + '/generatePDF', {
     method: 'POST',
     headers: csrfHeaders({
       'Content-Type': 'application/json'
@@ -75,6 +75,86 @@ export function capture(afterCapturefunction) {
   .catch(error => {
     console.error("Errors during PDF generation :", error);
     showMessage(t("gestion", "Error when creating PDF."));
+  });
+}
+
+/**
+ * Bind the direct PDF action used by quote and invoice lists.
+ *
+ * The detail page is loaded in a hidden same-origin frame because it enriches
+ * the server-rendered document with customer, product, total and configuration
+ * data before the existing PDF endpoint is called.
+ */
+export function bindDirectPdfDownloads() {
+  document.addEventListener("click", event => {
+    const trigger = event.target.closest(".downloadDocumentPdf");
+
+    if (!trigger || trigger.dataset.loading === "true") {
+      return;
+    }
+
+    event.preventDefault();
+    trigger.dataset.loading = "true";
+    trigger.setAttribute("aria-busy", "true");
+
+    downloadPdfFromDetailPage(trigger.dataset.url)
+      .catch(error => {
+        console.error("Direct PDF generation error:", error);
+        showMessage(t("gestion", "Error when creating PDF."));
+      })
+      .finally(() => {
+        delete trigger.dataset.loading;
+        trigger.removeAttribute("aria-busy");
+      });
+  });
+}
+
+function downloadPdfFromDetailPage(detailUrl) {
+  showMessage(t("gestion", "Creation in progress …"));
+
+  const frame = document.createElement("iframe");
+  frame.hidden = true;
+  frame.setAttribute("aria-hidden", "true");
+  frame.title = t("gestion", "PDF generation");
+
+  return new Promise((resolve, reject) => {
+    const timeout = window.setTimeout(() => {
+      reject(new Error("Timed out while preparing the document"));
+    }, 30000);
+
+    const documentIsReady = () => {
+      const frameDocument = frame.contentDocument;
+
+      if (frameDocument?.documentElement.dataset.gestionDocumentReady !== "true") {
+        return;
+      }
+
+      window.clearTimeout(timeout);
+      capture(null, frameDocument).then(resolve).catch(reject);
+    };
+
+    frame.addEventListener("load", () => {
+      const frameDocument = frame.contentDocument;
+
+      if (!frameDocument) {
+        window.clearTimeout(timeout);
+        reject(new Error("Unable to load the document"));
+        return;
+      }
+
+      frameDocument.addEventListener("gestion:document-ready", documentIsReady, { once: true });
+      documentIsReady();
+    }, { once: true });
+
+    frame.addEventListener("error", () => {
+      window.clearTimeout(timeout);
+      reject(new Error("Unable to load the document"));
+    }, { once: true });
+
+    frame.src = detailUrl;
+    document.body.appendChild(frame);
+  }).finally(() => {
+    frame.remove();
   });
 }
 

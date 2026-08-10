@@ -107,7 +107,7 @@ export class Client {
   static getClientByIdDevis(id) {
     const myData = { id: id };
 
-    fetch(baseUrl + '/clientbyiddevis', {
+    return fetch(baseUrl + '/clientbyiddevis', {
       method: 'POST',
       headers: csrfHeaders({
         'Content-Type': 'application/json'

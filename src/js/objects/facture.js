@@ -72,6 +72,7 @@ export class Facture {
       `<div class="editable" data-table="facture" data-column="status_paiement" data-id="${this.id}" style="display:inline">${this.status_paiement}</div>`,
       `<div class="material-symbols">
         <span title="${t('gestion', 'Open')}"><a href="${this.baseUrl}">open_in_new</a></span>
+        <span title="${t('gestion', 'Download PDF')}" aria-label="${t('gestion', 'Download PDF')}" data-url="${this.baseUrl}" class="link downloadDocumentPdf">download</span>
         <span title="${t('gestion', 'Duplicate')}" data-modifier="facture" data-id=${this.id} data-table="facture" class="link duplicateItem">content_copy</span>
         <span title="${t('gestion', 'Delete')}" data-modifier="facture" data-id=${this.id} data-table="facture" class="link deleteItem">delete</span>
       </div>`

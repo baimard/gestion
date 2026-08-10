@@ -36,6 +36,7 @@ export class Devis {
       `<div class="inline editable" data-table="devis" data-column="mentions" data-id="${this.id}" >${this.mentions}</div>`,
       `<div class="material-symbols">
         <span title="${t('gestion', 'Open')}"><a href="${this.baseUrl}">open_in_new</a></span>
+        <span title="${t('gestion', 'Download PDF')}" aria-label="${t('gestion', 'Download PDF')}" data-url="${this.baseUrl}" class="link downloadDocumentPdf">download</span>
         <span title="${t('gestion', 'Duplicate')}" data-modifier="devis" data-id=${this.id} data-table="devis" class="link duplicateItem">content_copy</span>
         <span title="${t('gestion', 'Delete')}" data-modifier="devis" data-id=${this.id} data-table="devis" class="link deleteItem">delete</span>
       </div>`

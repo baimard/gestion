@@ -56,6 +56,11 @@ $client->takeScreenshot('tests/Unit/Panther/screens/productSelector.png');
 $client->executeScript("document.querySelector('.product-selector-option[aria-selected=\"true\"]').dispatchEvent(new MouseEvent('dblclick', { bubbles: true }))");
 $client->waitForInvisibility('#product_selector_modal');
 
+$client->executeScript("document.querySelector('.createInvoiceFromQuote').click()");
+$client->waitFor('#factureid');
+$client->waitFor('html[data-gestion-document-ready="true"]');
+$client->takeScreenshot('tests/Unit/Panther/screens/factureShow.png');
+
 $client->request('GET', $baseUrl . '/index.php/apps/gestion/facture');
 $client->waitFor('#facture');
 $client->takeScreenshot('tests/Unit/Panther/screens/facture.png');

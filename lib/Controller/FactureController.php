@@ -4,6 +4,7 @@ namespace OCA\Gestion\Controller;
 use OCA\Gestion\Service\DataService;
 use OCA\Gestion\Service\TemplateService;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\IRequest;
 
@@ -43,8 +44,11 @@ class FactureController extends Controller {
 	 * @UseSession
 	 */
 	#[UseSession]
-	public function insertFacture() {
-		$datePaiement = $this->request->getParam('date_paiement');
-		return $this->dataService->insertFacture($datePaiement);
+	public function insertFacture(int $devisId): DataResponse {
+		try {
+			return new DataResponse($this->dataService->insertFacture($devisId));
+		} catch (\InvalidArgumentException $e) {
+			return new DataResponse(['message' => $e->getMessage()], 404);
+		}
 	}
 }

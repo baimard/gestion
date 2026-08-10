@@ -519,10 +519,13 @@ export function getProduitsById() {
         var res = JSON.parse(data);
 
         res.forEach(myresp => {
-            
-            console.log(myresp);
-            
             const vat = parseFloat(myresp.vat || 0);
+            const reference = deleteDisable
+                ? `<span>${myresp.reference}</span>`
+                : `<button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector" title="${t('gestion', 'Click here to change the product')}"><span>${myresp.reference}</span></button>`;
+            const deleteAction = deleteDisable
+                ? ''
+                : `<div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols">delete</div>`;
 
             if(myresp.header > 0){
                 produitsBody.innerHTML += `<tr class="${deleteDisable ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}" style="background-color:rgb(198, 198, 198);">
@@ -531,10 +534,8 @@ export function getProduitsById() {
                     </td>
                     <td COLSPAN="8">
                         <div>
-                            <button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector ${deleteDisable}" title="${t('gestion', 'Click here to change the product')}">
-                                <span>${myresp.reference}</span>
-                            </button>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
+                            ${reference}
+                            ${deleteAction}
                         </div>
                     </td>
                 </tr>
@@ -546,20 +547,18 @@ export function getProduitsById() {
                     </td>
                     <td>
                         <div>
-                            <button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector ${deleteDisable}" title="${t('gestion', 'Click here to change the product')}">
-                                <span>${myresp.reference}</span>
-                            </button>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
+                            ${reference}
+                            ${deleteAction}
                         </div>
                     </td>
                     <td>${myresp.description}</td>
                     <td>
-                        <div class="editable" data-table="produit_devis" data-column="comment" data-id="${myresp.pdid}">
+                        <div class="${deleteDisable ? '' : 'editable'}" data-table="produit_devis" data-column="comment" data-id="${myresp.pdid}">
                             ${myresp.comment.length === 0 ? '-' : myresp.comment}
                         </div>
                     </td>
                     <td>
-                        <div class="editableNumber getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id="${myresp.pdid}">
+                        <div class="${deleteDisable ? '' : 'editableNumber getProduitsById'}" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id="${myresp.pdid}">
                             ${myresp.quantite}
                         </div>
                     </td>

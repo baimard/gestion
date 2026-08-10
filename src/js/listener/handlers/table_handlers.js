@@ -8,7 +8,6 @@ import { Produit } from '../../objects/produit.js';
 const NEW_ITEM_HANDLERS = {
     newClient: Client.newClient,
     newDevis: Devis.newDevis,
-    newInvoice: Facture.newFacture,
     newProduit: Produit.newProduct,
 };
 

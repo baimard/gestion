@@ -75,6 +75,7 @@ export class Facture {
         <div class="document-actions-menu">
           <a href="${this.baseUrl}" class="document-action"><span class="material-symbols">open_in_new</span><span>${t('gestion', 'Open')}</span></a>
           <button type="button" data-url="${this.baseUrl}" class="document-action downloadDocumentPdf"><span class="material-symbols">download</span><span>${t('gestion', 'Download PDF')}</span></button>
+          <button type="button" data-url="${this.baseUrl}" class="document-action sendDocumentMail"><span class="material-symbols">mail</span><span>${t('gestion', 'Send by email')}</span></button>
           <button type="button" data-url="${this.baseUrl}" class="document-action downloadFacturX"><span class="material-symbols">receipt_long</span><span>${t('gestion', 'Factur-X PDF + XML')}</span></button>
           <button type="button" data-url="${this.baseUrl}" class="document-action downloadFacturXml"><span class="material-symbols">data_object</span><span>${t('gestion', 'Factur-X XML')}</span></button>
           <button type="button" data-modifier="facture" data-id="${this.id}" data-table="facture" class="document-action duplicateItem"><span class="material-symbols">content_copy</span><span>${t('gestion', 'Duplicate')}</span></button>

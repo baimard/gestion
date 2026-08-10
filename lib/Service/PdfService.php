@@ -233,7 +233,7 @@ class PdfService {
 		}
 	}
 
-	private function renderPdf($html): string {
+	public function renderPdf($html): string {
 
 		$mpdf = new Mpdf([
 			'mode' => 'utf-8',

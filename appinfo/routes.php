@@ -43,6 +43,8 @@ return [
         ['name' => 'stats#getServerFromMail', 'url' => '/getServerFromMail', 'verb' => 'PROPFIND'],
 
         ['name' => 'pdf#sendPDF', 'url' => '/sendPDF', 'verb' => 'POST'],
+        ['name' => 'pdf#personalMailStatus', 'url' => '/personal-mail/status', 'verb' => 'GET'],
+        ['name' => 'pdf#sendPersonalMail', 'url' => '/personal-mail/send', 'verb' => 'POST'],
         ['name' => 'pdf#savePDF', 'url' => '/savePDF', 'verb' => 'POST'],
 
         ['name' => 'admin#backup', 'url' => '/backup', 'verb' => 'GET'],

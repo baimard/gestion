@@ -2,16 +2,44 @@
 namespace OCA\Gestion\Controller;
 
 use OCA\Gestion\Service\PdfService;
+use OCA\Gestion\Service\PersonalMailService;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\IRequest;
 
 class PdfController extends Controller {
 	private PdfService $pdfService;
 
-	public function __construct($AppName, IRequest $request, PdfService $pdfService) {
+	public function __construct($AppName, IRequest $request, PdfService $pdfService, PersonalMailService $personalMailService) {
 		parent::__construct($AppName, $request);
 		$this->pdfService = $pdfService;
+		$this->personalMailService = $personalMailService;
+	}
+
+	private PersonalMailService $personalMailService;
+
+	/** @NoAdminRequired */
+	#[UseSession]
+	public function personalMailStatus(): DataResponse {
+		return new DataResponse($this->personalMailService->getStatus());
+	}
+
+	/** @NoAdminRequired */
+	#[UseSession]
+	public function sendPersonalMail(string $html, string $name, string $subject, string $body, string $to): DataResponse {
+		try {
+			$this->personalMailService->sendPdf(
+				$this->pdfService->renderPdf($html),
+				$name,
+				$subject,
+				$body,
+				$to,
+			);
+			return new DataResponse(['status' => 'success']);
+		} catch (\Throwable $e) {
+			return new DataResponse(['status' => 'error', 'message' => $e->getMessage()], 400);
+		}
 	}
 
 	/**

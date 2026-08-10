@@ -87,7 +87,7 @@ export function capture(afterCapturefunction, sourceDocument = document) {
  */
 export function bindDirectPdfDownloads() {
   document.addEventListener("click", event => {
-    const trigger = event.target.closest(".downloadDocumentPdf, .downloadFacturX, .downloadFacturXml");
+    const trigger = event.target.closest(".downloadDocumentPdf, .downloadFacturX, .downloadFacturXml, .sendDocumentMail");
 
     if (!trigger || trigger.dataset.loading === "true") {
       return;
@@ -105,16 +105,99 @@ export function bindDirectPdfDownloads() {
       format = "xml";
     }
 
-    downloadFromDetailPage(trigger.dataset.url, format)
+    const action = trigger.classList.contains("sendDocumentMail")
+      ? sendDocumentByMail(trigger.dataset.url)
+      : downloadFromDetailPage(trigger.dataset.url, format);
+
+    action
       .catch(error => {
         console.error("Direct PDF generation error:", error);
-        showMessage(t("gestion", "Error when creating PDF."));
+        showMessage(error.message || t("gestion", "The operation could not be completed."));
       })
       .finally(() => {
         delete trigger.dataset.loading;
         trigger.removeAttribute("aria-busy");
       });
   });
+}
+
+async function sendDocumentByMail(detailUrl) {
+  const statusResponse = await fetch(baseUrl + "/personal-mail/status", {
+    headers: csrfHeaders()
+  });
+  const status = statusResponse.ok ? await statusResponse.json() : { available: false };
+
+  if (!status.available) {
+    showMailPrerequisites();
+    return;
+  }
+
+  showMessage(t("gestion", "Preparing the email…"));
+  return withPreparedDocument(detailUrl, async sourceDocument => {
+    const pdfElement = sourceDocument.getElementById("pdf");
+    const pdfName = pdfElement.getAttribute("data-name");
+    const isInvoice = Boolean(sourceDocument.getElementById("factureid"));
+    const type = isInvoice ? t("gestion", "Invoice") : t("gestion", "Quote");
+    const name = (isInvoice ? t("gestion", "INVOICE") : t("gestion", "QUOTE")) + "_" + pdfName + ".pdf";
+    const recipient = sourceDocument.getElementById("mail")?.textContent?.trim() || "";
+    const element = sourceDocument.querySelector("#PDFcontent").cloneNode(true);
+    element.querySelectorAll("[data-html2canvas-ignore]").forEach(node => node.remove());
+
+    const response = await fetch(baseUrl + "/personal-mail/send", {
+      method: "POST",
+      headers: csrfHeaders({ "Content-Type": "application/json" }),
+      body: JSON.stringify({
+        html: element.outerHTML,
+        name,
+        to: recipient,
+        subject: type + " " + pdfName,
+        body: t("gestion", "Hello,\n\nPlease find your document attached.\n\nKind regards.")
+      })
+    });
+
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || t("gestion", "Email sending failed."));
+    }
+    showMessage(t("gestion", "Email sent"));
+  });
+}
+
+function showMailPrerequisites() {
+  const title = t("gestion", "Email sending unavailable");
+  const message = t("gestion", "To use this function, the Nextcloud Mail application must be installed and enabled. You must also configure a personal default email account and verify that it is connected and able to send messages.");
+
+  if (window.OC?.dialogs?.alert) {
+    window.OC.dialogs.alert(message, title);
+  } else {
+    window.alert(title + "\n\n" + message);
+  }
+}
+
+function withPreparedDocument(detailUrl, callback) {
+  const frame = document.createElement("iframe");
+  frame.hidden = true;
+  frame.setAttribute("aria-hidden", "true");
+  frame.title = t("gestion", "Document preparation");
+
+  return new Promise((resolve, reject) => {
+    const timeout = window.setTimeout(() => reject(new Error("Timed out while preparing the document")), 30000);
+    const ready = () => {
+      const sourceDocument = frame.contentDocument;
+      if (sourceDocument?.documentElement.dataset.gestionDocumentReady !== "true") return;
+      window.clearTimeout(timeout);
+      Promise.resolve(callback(sourceDocument)).then(resolve).catch(reject);
+    };
+    frame.addEventListener("load", () => {
+      const sourceDocument = frame.contentDocument;
+      if (!sourceDocument) return reject(new Error("Unable to load the document"));
+      sourceDocument.addEventListener("gestion:document-ready", ready, { once: true });
+      ready();
+    }, { once: true });
+    frame.addEventListener("error", () => reject(new Error("Unable to load the document")), { once: true });
+    frame.src = detailUrl;
+    document.body.appendChild(frame);
+  }).finally(() => frame.remove());
 }
 
 function downloadFromDetailPage(detailUrl, format) {

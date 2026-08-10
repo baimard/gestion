@@ -143,15 +143,26 @@ async function sendDocumentByMail(detailUrl) {
     const element = sourceDocument.querySelector("#PDFcontent").cloneNode(true);
     element.querySelectorAll("[data-html2canvas-ignore]").forEach(node => node.remove());
 
+    const email = await showMailConfirmation({
+      from: status.account?.address || status.account?.label || "",
+      to: recipient,
+      subject: type + " " + pdfName,
+      body: t("gestion", "Hello,\n\nPlease find your document attached.\n\nKind regards.")
+    });
+
+    if (email === null) {
+      return;
+    }
+
     const response = await fetch(baseUrl + "/personal-mail/send", {
       method: "POST",
       headers: csrfHeaders({ "Content-Type": "application/json" }),
       body: JSON.stringify({
         html: element.outerHTML,
         name,
-        to: recipient,
-        subject: type + " " + pdfName,
-        body: t("gestion", "Hello,\n\nPlease find your document attached.\n\nKind regards.")
+        to: email.to,
+        subject: email.subject,
+        body: email.body
       })
     });
 
@@ -159,8 +170,80 @@ async function sendDocumentByMail(detailUrl) {
     if (!response.ok) {
       throw new Error(result.message || t("gestion", "Email sending failed."));
     }
-    showMessage(t("gestion", "Email sent"));
+    showMailSentConfirmation();
   });
+}
+
+function showMailConfirmation(email) {
+  return new Promise(resolve => {
+    const dialog = document.createElement("dialog");
+    dialog.className = "gestion-mail-dialog";
+
+    const form = document.createElement("form");
+    form.method = "dialog";
+    form.className = "gestion-mail-dialog-form";
+
+    const title = document.createElement("h2");
+    title.textContent = t("gestion", "Send document by email");
+    form.appendChild(title);
+
+    const createField = (labelText, value, readOnly, multiline = false) => {
+      const label = document.createElement("label");
+      label.textContent = labelText;
+      const field = multiline ? document.createElement("textarea") : document.createElement("input");
+      field.value = value;
+      field.readOnly = readOnly;
+      field.required = true;
+      if (multiline) field.rows = 8;
+      label.appendChild(field);
+      form.appendChild(label);
+      return field;
+    };
+
+    createField(t("gestion", "Sender email"), email.from, true);
+    const recipient = createField(t("gestion", "Recipient email"), email.to, true);
+    const subject = createField(t("gestion", "Subject"), email.subject, false);
+    const body = createField(t("gestion", "Message"), email.body, false, true);
+
+    const actions = document.createElement("div");
+    actions.className = "gestion-mail-dialog-actions";
+    const cancel = document.createElement("button");
+    cancel.type = "button";
+    cancel.textContent = t("gestion", "Cancel");
+    const send = document.createElement("button");
+    send.type = "submit";
+    send.className = "primary";
+    send.textContent = t("gestion", "Send");
+    actions.append(cancel, send);
+    form.appendChild(actions);
+    dialog.appendChild(form);
+    document.body.appendChild(dialog);
+
+    let submitted = false;
+    cancel.addEventListener("click", () => dialog.close());
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      submitted = true;
+      dialog.close();
+    });
+    dialog.addEventListener("close", () => {
+      const result = submitted ? {
+        to: recipient.value,
+        subject: subject.value.trim(),
+        body: body.value
+      } : null;
+      dialog.remove();
+      resolve(result);
+    }, { once: true });
+
+    dialog.showModal();
+    subject.focus();
+  });
+}
+
+function showMailSentConfirmation() {
+  showMessage(t("gestion", "The email was sent successfully."));
 }
 
 function showMailPrerequisites() {

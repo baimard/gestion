@@ -27,7 +27,6 @@ async function openContactImport(clientTable) {
         const dialog = document.createElement("dialog");
         dialog.className = "gestion-contact-dialog";
         const form = document.createElement("form");
-        form.method = "dialog";
         const title = document.createElement("h2");
         title.textContent = t("gestion", "Import a Nextcloud contact");
         const search = document.createElement("input");
@@ -53,7 +52,7 @@ async function openContactImport(clientTable) {
         cancel.type = "button";
         cancel.textContent = t("gestion", "Cancel");
         const submit = document.createElement("button");
-        submit.type = "submit";
+        submit.type = "button";
         submit.className = "primary";
         submit.textContent = t("gestion", "Import customer");
         actions.append(cancel, submit);
@@ -62,25 +61,31 @@ async function openContactImport(clientTable) {
         document.body.appendChild(dialog);
         cancel.addEventListener("click", () => dialog.close());
         dialog.addEventListener("close", () => dialog.remove(), { once: true });
-        form.addEventListener("submit", async event => {
-            event.preventDefault();
+        const importSelectedContact = async () => {
             if (!select.value) return;
             submit.disabled = true;
+            submit.textContent = t("gestion", "Importing…");
             try {
                 const importResponse = await fetch(baseUrl + "/client/import-contact", {
                     method: "POST",
                     headers: csrfHeaders({ "Content-Type": "application/json" }),
                     body: JSON.stringify({ id: select.value })
                 });
-                if (!importResponse.ok) throw new Error(t("gestion", "Unable to import this contact."));
+                if (!importResponse.ok) {
+                    const result = await importResponse.json().catch(() => ({}));
+                    throw new Error(result.message || t("gestion", "Unable to import this contact."));
+                }
                 dialog.close();
                 Client.loadClientDT(clientTable);
                 showSuccess(t("gestion", "Contact imported as a customer."));
             } catch (error) {
                 submit.disabled = false;
+                submit.textContent = t("gestion", "Import customer");
                 showError(error.message);
             }
-        });
+        };
+        submit.addEventListener("click", importSelectedContact);
+        select.addEventListener("dblclick", importSelectedContact);
         dialog.showModal();
         search.focus();
     } catch (error) {

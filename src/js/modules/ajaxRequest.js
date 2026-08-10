@@ -274,11 +274,13 @@ function bindProductDragAndDrop(tbody, devisId) {
     if (tbody.dataset.dragBound === 'true') return;
     tbody.dataset.dragBound = 'true';
     let draggedRow = null;
+    let initialOrder = [];
 
     tbody.addEventListener('dragstart', event => {
         const handle = event.target.closest('.product-drag-handle');
         if (!handle) return;
         draggedRow = handle.closest('.product-quote-row');
+        initialOrder = [...tbody.querySelectorAll('.product-quote-row')].map(row => Number(row.dataset.pdid));
         draggedRow.classList.add('dragging');
         event.dataTransfer.effectAllowed = 'move';
         event.dataTransfer.setData('text/plain', draggedRow.dataset.pdid);
@@ -286,28 +288,31 @@ function bindProductDragAndDrop(tbody, devisId) {
 
     tbody.addEventListener('dragover', event => {
         const targetRow = event.target.closest('.product-quote-row');
-        if (!draggedRow || !targetRow || targetRow === draggedRow) return;
+        if (!draggedRow || !targetRow) return;
         event.preventDefault();
+        if (targetRow === draggedRow) return;
         const insertAfter = event.clientY > targetRow.getBoundingClientRect().top + targetRow.offsetHeight / 2;
         tbody.insertBefore(draggedRow, insertAfter ? targetRow.nextSibling : targetRow);
     });
 
-    tbody.addEventListener('drop', async event => {
-        if (!draggedRow) return;
-        event.preventDefault();
-        const ids = [...tbody.querySelectorAll('.product-quote-row')].map(row => Number(row.dataset.pdid));
+    tbody.addEventListener('drop', event => {
+        if (draggedRow) event.preventDefault();
+    });
+
+    tbody.addEventListener('dragend', async () => {
+        draggedRow?.classList.remove('dragging');
+        const finalOrder = [...tbody.querySelectorAll('.product-quote-row')].map(row => Number(row.dataset.pdid));
+        draggedRow = null;
+
+        if (initialOrder.join(',') === finalOrder.join(',')) return;
+
         try {
-            await persistProductOrder(Number(devisId), ids);
+            await persistProductOrder(Number(devisId), finalOrder);
             showSuccess(t('gestion', 'Product order saved.'));
         } catch (error) {
             showError(error.message);
             getProduitsById();
         }
-    });
-
-    tbody.addEventListener('dragend', () => {
-        draggedRow?.classList.remove('dragging');
-        draggedRow = null;
     });
 }
 
@@ -527,8 +532,7 @@ export function getProduitsById() {
                     <td COLSPAN="8">
                         <div>
                             <button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector ${deleteDisable}" title="${t('gestion', 'Click here to change the product')}">
-                                <strong>${myresp.reference}</strong>
-                                <small data-html2canvas-ignore>${t('gestion', 'Click here to change the product')}</small>
+                                <span>${myresp.reference}</span>
                             </button>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
                         </div>
@@ -543,8 +547,7 @@ export function getProduitsById() {
                     <td>
                         <div>
                             <button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector ${deleteDisable}" title="${t('gestion', 'Click here to change the product')}">
-                                <strong>${myresp.reference}</strong>
-                                <small data-html2canvas-ignore>${t('gestion', 'Click here to change the product')}</small>
+                                <span>${myresp.reference}</span>
                             </button>
                             <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
                         </div>

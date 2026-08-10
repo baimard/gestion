@@ -22,7 +22,6 @@
   "require-dev": {
     "dbrekelmans/bdi": "^1.0",
     "phpunit/phpunit": "^9.5",
-    "symfony/framework-bundle": "^5.4",
     "symfony/panther": "2.0.1"
   }
 }

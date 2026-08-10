@@ -18,11 +18,11 @@ Key Features:
 
 ✨ Electronic invoicing is supported in France. Gestion can generate Factur-X invoices that combine a human-readable PDF with structured electronic invoice data.
 
-Factur-X files can always be generated and downloaded without using an external platform. Each company can also select and configure a compatible approved electronic invoicing platform. Iopole is [...]
+Factur-X files can always be generated and downloaded without using an external platform. Each company can also select and configure a compatible approved electronic invoicing platform.
 
 The PDF generation system has also been redesigned to improve document layout, styling, and compatibility.
 
-Gestion integrates seamlessly with the Nextcloud ecosystem and keeps your business data under your control. A presentation video is available in the user documentation to help you discover the applica[...]
+Gestion integrates seamlessly with the Nextcloud ecosystem and keeps your business data under your control.
 
 If you require adaptations to comply with your country's regulations, please open an issue on the GitHub repository.
 

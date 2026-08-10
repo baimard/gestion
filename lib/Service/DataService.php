@@ -66,7 +66,13 @@ class DataService {
 	}
 
 	public function insertContactClient(array $client) {
-		return $this->myDb->insertClient($this->currentCompany(), $client);
+		$fields = ['nom', 'prenom', 'entreprise', 'telephone', 'mail', 'adresse', 'zip_code', 'city_name', 'country_code'];
+		$normalized = [];
+		foreach ($fields as $field) {
+			$value = $client[$field] ?? '';
+			$normalized[$field] = is_scalar($value) ? mb_substr(trim((string)$value), 0, 500) : '';
+		}
+		return $this->myDb->insertClient($this->currentCompany(), $normalized);
 	}
 
 	public function insertDevis() {

@@ -40,13 +40,14 @@ export class Produit {
       '<option value="' + value + '"' + (value === this.vat_category ? ' selected' : '') + '>' + label + '</option>'
     ).join('');
     const exemptionReasonButtonHidden = this.vat_category === 'E' ? '' : ' hidden';
+    const isHeader = String(this.header) === '1';
     let myrow = [
       '<div class="editable" data-table="produit" data-column="reference" data-id="' + this.id + '">' + this.reference + '</div>',
       '<div class="editable" data-table="produit" data-column="description" data-id="' + this.id + '">' + this.description + '</div>',
       '<div class="editableNumeric" data-table="produit" data-column="prix_unitaire" data-id="' + this.id + '">' + cur.format(this.prix_unitaire) + '</div>',
       '<div class="editable" data-table="produit" data-column="vat" data-id="' + this.id + '">' + this.vat + '%</div>',
       '<select class="editableSelect vat-category-select" data-table="produit" data-column="vat_category" data-id="' + this.id + '" data-current="' + this.vat_category + '" aria-label="' + t('gestion', 'Electronic invoice VAT category') + '">' + vatCategoryOptions + '</select>',
-      '<div class="editable" data-table="produit" data-column="header" data-id="' + this.id + '">' + this.header + '</div>',
+      '<button type="button" class="product-header-toggle' + (isHeader ? ' active' : '') + '" data-id="' + this.id + '" data-value="' + (isHeader ? '1' : '0') + '" aria-pressed="' + (isHeader ? 'true' : 'false') + '" aria-label="' + t('gestion', 'Use as a header row') + '"><span class="product-header-toggle-knob"><span class="material-symbols">check</span></span></button>',
       '<button type="button" class="vat-exemption-reason-action" data-id="' + this.id + '" data-reason-code="' + this.vat_exemption_reason_code + '" title="' + t('gestion', 'VAT exemption reason') + '" aria-label="' + t('gestion', 'VAT exemption reason') + '"' + exemptionReasonButtonHidden + '><span class="material-symbols-outlined">gavel</span></button>'
         + '<div data-modifier="produit" data-id=' + this.id + ' data-table="produit" style="display:inline-block;margin-right:0px;" class="deleteItem icon-delete"></div>',
     ];

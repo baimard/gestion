@@ -118,6 +118,54 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
   }
 }
 
+.product-header-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 36px;
+  min-width: 36px;
+  height: 20px;
+  min-height: 20px;
+  margin: 0 !important;
+  padding: 2px !important;
+  border: 1px solid var(--color-border-maxcontrast) !important;
+  border-radius: 10px !important;
+  box-sizing: border-box;
+  background: var(--color-background-dark) !important;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+
+  .product-header-toggle-knob {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-main-background);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 30%);
+    transform: translateX(0);
+    transition: transform 120ms ease;
+  }
+
+  .material-symbols {
+    display: none;
+    font-size: 12px;
+    color: var(--color-primary-element);
+  }
+
+  &.active {
+    border-color: var(--color-success) !important;
+    background: var(--color-success) !important;
+
+    .product-header-toggle-knob { transform: translateX(16px); }
+    .material-symbols { display: inline-block; }
+  }
+
+  &:focus-visible { outline: 2px solid var(--color-primary-element); }
+  &:disabled { cursor: wait; opacity: .65; }
+}
+
 .gestion-version {
   padding: 12px;
   color: #5f6368;

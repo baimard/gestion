@@ -288,8 +288,102 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
   }
 }
 
+.gestion-mail-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(520px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-large);
+  background: var(--color-main-background);
+  color: var(--color-main-text);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 28%);
+
+  &::backdrop {
+    background: rgb(0 0 0 / 45%);
+  }
+}
+
+.gestion-mail-dialog-form {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+
+  h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+  }
+
+  label {
+    display: grid;
+    gap: 5px;
+    font-weight: 600;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font: inherit;
+    font-weight: normal;
+  }
+
+  textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  input[readonly] {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-maxcontrast);
+    cursor: default;
+  }
+}
+
+.gestion-mail-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
 .menu-content {
   font-size:20px;
   margin-bottom: 10px;
   margin-left: 25px;
+}
+
+.gestion-contact-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-large);
+  background: var(--color-main-background);
+  color: var(--color-main-text);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 28%);
+
+  &::backdrop { background: rgb(0 0 0 / 45%); }
+
+  form {
+    display: grid;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  h2 { margin: 0; }
+  input, select { width: 100%; box-sizing: border-box; }
+  select { min-height: 220px; }
+}
+
+.gestion-contact-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
 }

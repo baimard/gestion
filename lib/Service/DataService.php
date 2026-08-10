@@ -65,6 +65,10 @@ class DataService {
 		return $this->myDb->insertClient($this->currentCompany());
 	}
 
+	public function insertContactClient(array $client) {
+		return $this->myDb->insertClient($this->currentCompany(), $client);
+	}
+
 	public function insertDevis() {
 		return $this->myDb->insertDevis($this->currentCompany());
 	}

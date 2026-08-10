@@ -1,7 +1,7 @@
 import { showError } from "@nextcloud/dialogs";
 import { translate as t } from '@nextcloud/l10n';
 import { generateUrl } from "@nextcloud/router";
-import { baseUrl, LoadDT, showDone } from "../modules/mainFunction.js";
+import { baseUrl, LoadDT } from "../modules/mainFunction.js";
 import { setCsrfRequestHeader } from "../modules/csrf.js";
 
 export class Facture {
@@ -63,12 +63,12 @@ export class Facture {
     ).join('');
     let myrow = [
       `<div>${this.user_id}</div>`,
-      `<div class="editable factureNum" data-table="facture" data-column="num" data-id="${this.id}">${this.num}</div>`,
-      `<div class="editable" data-table="facture" data-column="date" data-id="${this.id}">${this.date}</div>`,
+      `<div>${this.num}</div>`,
+      `<div>${this.date}</div>`,
       `<input style="margin:0;padding:0;" class="inputDate" type="date" value=${this.date_paiement} data-table="facture" data-column="date_paiement" data-id="${this.id}"/>`,
       `<select class="editableSelect" data-table="facture" data-column="type_paiement" data-id="${this.id}" aria-label="${t('gestion', 'Means of payment')}">${paymentMeansOptions}</select>`,
-      `<div class="loadSelect_listdevis" data-table="facture" data-column="id_devis" data-id="${this.id}" data-current="${this.id_devis}">${this.dnum} ${this.prenom} ${this.nom}</div>`,
-      `<div class="editable" data-table="facture" data-column="version" data-id="${this.id}" style="display:inline">${this.version}</div>`,
+      `<div>${this.dnum} ${this.prenom} ${this.nom}</div>`,
+      `<div>${this.version}</div>`,
       `<div class="editable" data-table="facture" data-column="status_paiement" data-id="${this.id}" style="display:inline">${this.status_paiement}</div>`,
       `<details class="document-actions">
         <summary title="${t('gestion', 'Actions')}" aria-label="${t('gestion', 'Actions')}" class="material-symbols">more_horiz</summary>
@@ -78,7 +78,6 @@ export class Facture {
           <button type="button" data-url="${this.baseUrl}" class="document-action sendDocumentMail"><span class="material-symbols">mail</span><span>${t('gestion', 'Send by email')}</span></button>
           <button type="button" data-url="${this.baseUrl}" class="document-action downloadFacturX"><span class="material-symbols">receipt_long</span><span>${t('gestion', 'Factur-X PDF + XML')}</span></button>
           <button type="button" data-url="${this.baseUrl}" class="document-action downloadFacturXml"><span class="material-symbols">data_object</span><span>${t('gestion', 'Factur-X XML')}</span></button>
-          <button type="button" data-modifier="facture" data-id="${this.id}" data-table="facture" class="document-action duplicateItem"><span class="material-symbols">content_copy</span><span>${t('gestion', 'Duplicate')}</span></button>
           <button type="button" data-modifier="facture" data-id="${this.id}" data-table="facture" class="document-action deleteItem"><span class="material-symbols">delete</span><span>${t('gestion', 'Delete')}</span></button>
         </div>
       </details>`
@@ -101,34 +100,6 @@ export class Facture {
       }
     };
     oReq.send();
-  }
-
-
-  /**
-   * 
-   * @param {*} dt 
-   */
-   static newFacture(dt) {
-    const paymentDate = new Date();
-    paymentDate.setMonth(paymentDate.getMonth() + 1);
-    const defaultPaymentDate = paymentDate.toLocaleDateString('en-CA');
-
-    var oReq = new XMLHttpRequest();
-    oReq.open('POST', baseUrl + '/facture/insert', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    setCsrfRequestHeader(oReq);
-    oReq.onload = function(e){
-      if (this.status == 200) {
-        showDone()
-        Facture.loadFactureDT(dt);
-      }else{
-        showError(this.response);
-      }
-    };
-    oReq.send(JSON.stringify({
-      date_paiement: defaultPaymentDate,
-      type_paiement: '30',
-    }));
   }
 
 }

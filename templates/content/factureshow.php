@@ -22,6 +22,15 @@
                 $iopoleConfigured = false;
             }
         }
+        $paymentMeans = [
+            '10' => $l->t('Cash'),
+            '20' => $l->t('Cheque'),
+            '30' => $l->t('Credit transfer'),
+            '48' => $l->t('Payment card'),
+            '58' => $l->t('SEPA credit transfer'),
+        ];
+        $paymentMeansLabel = $paymentMeans[(string)$_['facture'][0]->type_paiement]
+            ?? $_['facture'][0]->type_paiement;
     ?>
     <table id="headertable"><tr>
         <td style="text-align: center;"><span><?php p($l->t('From'));?> <?php echo $res->entreprise; ?><span><p><span><?php echo $res->prenom . " " . $res->nom; ?></span><br /><span><?php echo $res->adresse; ?></span><br /><span><?php echo trim(($res->zip_code ?? '') . ' ' . ($res->city_name ?? '')); ?></span><br /><span><?php echo $res->mail; ?></span><br /><span><?php echo $res->telephone; ?></span><br /><span><?php echo $res->legal_one; ?></span><br /><span><?php echo $res->legal_two; ?></span><br /><span><?php echo $res->vat_number ?? ''; ?></span><br /><br/></p></td>
@@ -30,19 +39,18 @@
     </tr></table>
 
     <div class="titre-centre">
-        <b><span id="factureid" class="inline"><?php echo $_['facture'][0]->num;?></span> <span data-html2canvas-ignore class="inline"><?php p($l->t('Version'));?></span> <span data-html2canvas-ignore id="factureversion" class="inline editable" data-table="facture" data-column="version" data-id="<?php echo $_['facture'][0]->id; ?>"><?php echo $_['facture'][0]->version; ?></span></b><br/>
+        <b><span id="factureid" class="inline"><?php echo $_['facture'][0]->num;?></span> <span data-html2canvas-ignore class="inline"><?php p($l->t('Version'));?></span> <span data-html2canvas-ignore id="factureversion" class="inline"><?php echo $_['facture'][0]->version; ?></span></b><br/>
         <span><?php p($l->t('Settlement date'));?> : <b><?php echo (new DateTime($_['facture'][0]->date_paiement))->format('d-m-Y');?></b>, </span><span><?php p($l->t('Date of service'));?> : <b><?php echo $_['facture'][0]->date;?></b></span><br/>
-        <span id="devisid" data-id=<?php echo $_['facture'][0]->id_devis;?>><?php p($l->t('Associated quote'));?> : <b><?php echo $_['facture'][0]->dnum;?></b>, </span><span><?php p($l->t('Means of payment'));?> : <b><?php echo $_['facture'][0]->type_paiement;?></b></span><br/>
+        <span id="devisid" data-id=<?php echo $_['facture'][0]->id_devis;?>><?php p($l->t('Associated quote'));?> : <b><?php echo $_['facture'][0]->dnum;?></b>, </span><span><?php p($l->t('Means of payment'));?> : <b><?php echo $paymentMeansLabel;?></b></span><br/>
     </div>
 
     <div class="comment"><?php echo ($_['facture'][0]->comment == "" ) ? "-" : nl2br(htmlspecialchars($_['facture'][0]->comment)); ?></div>
     <div>
-        <button id="devisAdd" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
         <button id="pdf" type="button" class="mb-2 btn btn-outline-success" data-html2canvas-ignore data-name=""><?php p($l->t('Save to Nextcloud (pdf)'));?></button>
         <button id="facturx" type="button" class="mb-2 btn btn-outline-primary" data-html2canvas-ignore data-name="" data-factureid="<?php echo $_['facture'][0]->id; ?>"><?php p($l->t('Generate electronic invoice (pdf+xml)'));?></button>
         <button id="facturx-xml" type="button" class="mb-2 btn btn-outline-info" data-html2canvas-ignore data-name="" data-factureid="<?php echo $_['facture'][0]->id; ?>"><?php p($l->t('Generate electronic part (xml)'));?></button>
         <?php if ($iopoleConfigured): ?><button id="facturx-iopole" type="button" class="mb-2 btn btn-outline-warning" data-html2canvas-ignore data-name="" data-factureid="<?php echo $_['facture'][0]->id; ?>"><?php p($l->t('Send to Iopole'));?></button><?php endif; ?>
-        <table id="produits" class="table-produit"><thead><tr><th><?php p($l->t('Reference'));?></th><th><?php p($l->t('Designation'));?></th><th><?php p($l->t('Comment'));?></th><th><?php p($l->t('Quantity'));?></th><th><?php p($l->t('Unit price without VAT'));?></th><th><?php p($l->t('Total without VAT'));?></th><th><?php p($l->t('VAT'));?></th><th><?php p($l->t('Total including VAT'));?></th></tr></thead><tbody></tbody></table>
+        <table id="produits" class="table-produit" data-type="facture"><thead><tr><th><?php p($l->t('Reference'));?></th><th><?php p($l->t('Designation'));?></th><th><?php p($l->t('Comment'));?></th><th><?php p($l->t('Quantity'));?></th><th><?php p($l->t('Unit price without VAT'));?></th><th><?php p($l->t('Total without VAT'));?></th><th><?php p($l->t('VAT'));?></th><th><?php p($l->t('Total including VAT'));?></th></tr></thead><tbody></tbody></table>
     </div>
 
     <div class="table-section-title"><?php p($l->t('VAT price per percentage'));?></div>

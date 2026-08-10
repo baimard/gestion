@@ -511,55 +511,49 @@ export function getProduitsById() {
         let totalTTCGlobal = 0;
 
         const vatGroups = {};
-        let deleteDisable = '';
-
-        if (document.getElementById('produits').dataset.type === "facture") {
-            deleteDisable = "d-none";
-        }
+        const isInvoice = document.getElementById('produits').dataset.type === 'facture';
         var res = JSON.parse(data);
 
         res.forEach(myresp => {
-            
-            console.log(myresp);
-            
             const vat = parseFloat(myresp.vat || 0);
+            const reference = isInvoice
+                ? `<span>${myresp.reference}</span>`
+                : `<button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector" title="${t('gestion', 'Click here to change the product')}"><span>${myresp.reference}</span></button>`;
+            const deleteAction = isInvoice
+                ? ''
+                : `<div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols">delete</div>`;
+            const orderCell = isInvoice
+                ? ''
+                : `<td data-html2canvas-ignore class="product-order-cell"><button type="button" draggable="true" class="product-drag-handle" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button></td>`;
 
             if(myresp.header > 0){
-                produitsBody.innerHTML += `<tr class="${deleteDisable ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}" style="background-color:rgb(198, 198, 198);">
-                    <td data-html2canvas-ignore class="product-order-cell ${deleteDisable}">
-                        <button type="button" draggable="true" class="product-drag-handle" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button>
-                    </td>
+                produitsBody.innerHTML += `<tr class="${isInvoice ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}" style="background-color:rgb(198, 198, 198);">
+                    ${orderCell}
                     <td COLSPAN="8">
                         <div>
-                            <button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector ${deleteDisable}" title="${t('gestion', 'Click here to change the product')}">
-                                <span>${myresp.reference}</span>
-                            </button>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
+                            ${reference}
+                            ${deleteAction}
                         </div>
                     </td>
                 </tr>
                 `
             }else{
-                produitsBody.innerHTML += `<tr class="${deleteDisable ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}">
-                    <td data-html2canvas-ignore class="product-order-cell ${deleteDisable}">
-                        <button type="button" draggable="true" class="product-drag-handle" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button>
-                    </td>
+                produitsBody.innerHTML += `<tr class="${isInvoice ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}">
+                    ${orderCell}
                     <td>
                         <div>
-                            <button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector ${deleteDisable}" title="${t('gestion', 'Click here to change the product')}">
-                                <span>${myresp.reference}</span>
-                            </button>
-                            <div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols ${deleteDisable}">delete</div>
+                            ${reference}
+                            ${deleteAction}
                         </div>
                     </td>
                     <td>${myresp.description}</td>
                     <td>
-                        <div class="editable" data-table="produit_devis" data-column="comment" data-id="${myresp.pdid}">
+                        <div class="${isInvoice ? '' : 'editable'}" data-table="produit_devis" data-column="comment" data-id="${myresp.pdid}">
                             ${myresp.comment.length === 0 ? '-' : myresp.comment}
                         </div>
                     </td>
                     <td>
-                        <div class="editableNumber getProduitsById" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id="${myresp.pdid}">
+                        <div class="${isInvoice ? '' : 'editableNumber getProduitsById'}" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id="${myresp.pdid}">
                             ${myresp.quantite}
                         </div>
                     </td>
@@ -594,7 +588,7 @@ export function getProduitsById() {
             }
         }); 
 
-        if (!deleteDisable) {
+        if (!isInvoice) {
             bindProductDragAndDrop(produitsBody, devis_id);
         }
 

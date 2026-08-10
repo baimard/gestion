@@ -13,7 +13,7 @@
 		<div id="app-content-wrapper">
 			<?php print_unescaped($this->inc('content/changelog')); ?>
 			<?php print_unescaped($this->inc('content/facture')); ?>
+			<?php print_unescaped($this->inc('modal/invoice_quote_selector_modal')); ?>
 		</div>
 	</div>
 </div>
-

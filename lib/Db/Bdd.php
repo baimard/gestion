@@ -164,7 +164,15 @@ class Bdd {
         return true;
     }
 
-    public function insertFacture($idNextcloud, $datePaiement = null){
+    public function insertFacture($idNextcloud, int $devisId, $datePaiement = null): array {
+        $quotes = $this->execSQLNoJsonReturn(
+            "SELECT id, date FROM ".$this->tableprefix."devis WHERE id = ? AND id_configuration = ?",
+            [$devisId, $idNextcloud]
+        );
+        if (empty($quotes)) {
+            throw new \InvalidArgumentException('The quote does not exist.');
+        }
+
         $last=0;
         $last = $this->lastinsertid("facture", $idNextcloud) + 1;
 
@@ -179,21 +187,26 @@ class Bdd {
         $sql = "INSERT INTO ".$this->tableprefix."facture
         (date,id_configuration,num,date_paiement,type_paiement,id_devis,user_id)
         VALUES
-        (?, ?, ?, ?, ?, 0, ?);";
+        (?, ?, ?, ?, ?, ?, ?);";
 
         $this->execSQLNoData(
             $sql,
             array(
-                $date->format('Y-m-d'),
+                $quotes[0]['date'],
                 $idNextcloud,
                 $pref[0]['facture_prefixe']."-".$last,
                 $paymentDate,
-                $this->l->t('Means of payment'),
+                '30',
+                $devisId,
                 $last
             )
         );
 
-        return $last;
+        $invoice = $this->execSQLNoJsonReturn(
+            "SELECT id FROM ".$this->tableprefix."facture WHERE user_id = ? AND id_configuration = ?",
+            [$last, $idNextcloud]
+        );
+        return ['id' => (int)$invoice[0]['id']];
     }
 
     public function insertProduit($idNextcloud){

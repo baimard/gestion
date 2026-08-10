@@ -40,6 +40,7 @@ export class Devis {
           <a href="${this.baseUrl}" class="document-action"><span class="material-symbols">open_in_new</span><span>${t('gestion', 'Open')}</span></a>
           <button type="button" data-url="${this.baseUrl}" class="document-action downloadDocumentPdf"><span class="material-symbols">download</span><span>${t('gestion', 'Download PDF')}</span></button>
           <button type="button" data-url="${this.baseUrl}" class="document-action sendDocumentMail"><span class="material-symbols">mail</span><span>${t('gestion', 'Send by email')}</span></button>
+          <button type="button" data-devis-id="${this.id}" class="document-action createInvoiceFromQuote"><span class="material-symbols">receipt_long</span><span>${t('gestion', 'Create invoice')}</span></button>
           <button type="button" data-modifier="devis" data-id="${this.id}" data-table="devis" class="document-action duplicateItem"><span class="material-symbols">content_copy</span><span>${t('gestion', 'Duplicate')}</span></button>
           <button type="button" data-modifier="devis" data-id="${this.id}" data-table="devis" class="document-action deleteItem"><span class="material-symbols">delete</span><span>${t('gestion', 'Delete')}</span></button>
         </div>

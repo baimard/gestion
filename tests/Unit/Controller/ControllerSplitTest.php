@@ -4,6 +4,7 @@ namespace OCA\Gestion\Tests\Unit\Controller;
 use OCA\Gestion\Controller\ClientController;
 use OCA\Gestion\Controller\ConfigurationController;
 use OCA\Gestion\Controller\CrudController;
+use OCA\Gestion\Controller\FactureController;
 use OCA\Gestion\Controller\ProduitController;
 use OCA\Gestion\Controller\StatsController;
 use OCA\Gestion\Controller\ViewController;
@@ -139,5 +140,40 @@ class ControllerSplitTest extends TestCase {
 
 		$this->assertSame(400, $response->getStatus());
 		$this->assertSame(['status' => 'error', 'message' => 'Invalid order'], $response->getData());
+	}
+
+	public function testCreateInvoiceFromQuoteDelegatesToDataService(): void {
+		$dataService = $this->createMock(DataService::class);
+		$dataService->expects($this->once())
+			->method('insertFacture')
+			->with(42)
+			->willReturn(['id' => 7]);
+
+		$controller = new FactureController(
+			'gestion',
+			$this->request,
+			$dataService,
+			$this->createMock(TemplateService::class)
+		);
+		$response = $controller->insertFacture(42);
+
+		$this->assertSame(200, $response->getStatus());
+		$this->assertSame(['id' => 7], $response->getData());
+	}
+
+	public function testCreateInvoiceRejectsAnUnknownQuote(): void {
+		$dataService = $this->createMock(DataService::class);
+		$dataService->method('insertFacture')
+			->willThrowException(new \InvalidArgumentException('The quote does not exist.'));
+
+		$controller = new FactureController(
+			'gestion',
+			$this->request,
+			$dataService,
+			$this->createMock(TemplateService::class)
+		);
+		$response = $controller->insertFacture(999);
+
+		$this->assertSame(404, $response->getStatus());
 	}
 }

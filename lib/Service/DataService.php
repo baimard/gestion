@@ -79,8 +79,8 @@ class DataService {
 		return $this->myDb->insertDevis($this->currentCompany());
 	}
 
-	public function insertFacture($datePaiement = null) {
-		return $this->myDb->insertFacture($this->currentCompany(), $datePaiement);
+	public function insertFacture(int $devisId, $datePaiement = null): array {
+		return $this->myDb->insertFacture($this->currentCompany(), $devisId, $datePaiement);
 	}
 
 	public function insertProduit() {
@@ -125,6 +125,9 @@ class DataService {
 	}
 
 	public function update($table, $column, $data, $id) {
+		if ($table === 'facture' && !in_array($column, ['date_paiement', 'type_paiement', 'status_paiement'], true)) {
+			return false;
+		}
 		return $this->myDb->gestion_update($table, $column, $data, $id, $this->currentCompany());
 	}
 
@@ -137,6 +140,9 @@ class DataService {
 	}
 
 	public function duplicate($table, $id): DataResponse {
+		if ($table === 'facture') {
+			return new DataResponse('', 403, ['Content-Type' => 'application/json']);
+		}
 		if ($this->myDb->gestion_duplicate($table, $id, $this->currentCompany())) {
 			return new DataResponse("", 200, ['Content-Type' => 'application/json']);
 		}

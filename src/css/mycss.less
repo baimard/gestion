@@ -153,14 +153,23 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
 .document-actions {
   position: relative;
   display: inline-block;
+  line-height: 1;
+  white-space: normal;
+
+  &[open] {
+    z-index: 1000;
+  }
 
   > summary {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    padding: 0;
     border-radius: var(--border-radius-element);
+    box-sizing: border-box;
     cursor: pointer;
     list-style: none;
     user-select: none;
@@ -179,40 +188,55 @@ table.dataTable.display tbody tr.even > [class*="sorting_"] {
 .document-actions-menu {
   position: absolute;
   z-index: 1000;
-  top: calc(100% + 4px);
+  top: calc(100% + 2px);
   right: 0;
-  min-width: 190px;
-  padding: 4px;
+  display: grid;
+  width: max-content;
+  min-width: 160px;
+  max-width: 210px;
+  padding: 3px;
+  gap: 1px;
   border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-large);
+  border-radius: var(--border-radius-element);
   background-color: var(--color-main-background);
-  box-shadow: 0 4px 16px rgb(0 0 0 / 20%);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 18%);
+  line-height: 1.2;
+  white-space: normal;
 }
 
-.document-action {
+.document-actions-menu .document-action {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
   width: 100%;
-  min-height: 36px;
-  margin: 0;
-  padding: 6px 10px;
-  border: 0;
+  min-width: 0;
+  min-height: 32px;
+  height: 32px;
+  margin: 0 !important;
+  padding: 4px 7px !important;
+  border: 0 !important;
   border-radius: var(--border-radius-element);
-  background: transparent;
-  color: var(--color-main-text);
+  box-sizing: border-box;
+  background: transparent !important;
+  color: var(--color-main-text) !important;
   font: inherit;
+  font-weight: normal;
   text-align: left;
+  text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
+  appearance: none;
 
   &:hover,
   &:focus-visible {
-    background-color: var(--color-background-hover);
+    background-color: var(--color-background-hover) !important;
   }
 
   .material-symbols {
     flex: 0 0 auto;
+    width: 18px;
+    font-size: 18px;
+    text-align: center;
   }
 }
 

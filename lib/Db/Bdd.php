@@ -667,14 +667,14 @@ class Bdd {
 
     private function execSQLNoJsonReturn($sql, $conditions){
         $result = $this->db->executeQuery($sql, $conditions);
-        $rows = iterator_to_array($result->iterateAssociative(), false);
+        $rows = $result->fetchAll();
         $result->closeCursor();
         return $rows;
     }
 
     private function fetchAll($query): array {
         $result = $query->executeQuery();
-        $rows = iterator_to_array($result->iterateAssociative(), false);
+        $rows = $result->fetchAll();
         $result->closeCursor();
         return $rows;
     }

@@ -1,16 +1,11 @@
-<div syle="display: none;" id="modalConfig" class="modal">
+<div style="display: none;" id="modalConfig" class="modal">
 <div class="modal-content">
 	<span class="modalClose">&times;</span>
 	<h2><?php p($l->t('Welcome to GESTION')); ?> <?php p($_['appVersion']); ?></h2>
 
-	<p style="font-size:14px;margin-bottom:20px;">
-		<b><?php p($l->t('To start with this application you need to configure your company information, follow this link')); ?></b> 
-		&#128073;<a style="font-size:20px;" href="<?php echo ($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a>
-	</p>
-
-	<p style="font-size:16px;">
-		<b><?php p($l->t('If you like my work you can:')); ?> &#129321; 
-		<a href="https://www.buymeacoffee.com/benjaminaimard"><?php p($l->t('buy me a coffee')); ?></a></b> &#129321;
+	<p style="font-size:16px;margin-bottom:20px;">
+		<?php p($l->t('Gestion is developed and maintained by its author in his free time. Your support helps keep the project active, improve the application and answer users. If Gestion is useful to you, you can support the project by buying the author a coffee. Even a €1 contribution is a meaningful gesture and helps the project move forward.')); ?>
+		<strong><a href="https://www.buymeacoffee.com/benjaminaimard" target="_blank" rel="noopener noreferrer"><?php p($l->t('Support Gestion by buying a coffee')); ?></a></strong> &#9749;
 	</p>
 
 	<p style="margin-bottom:20px;"><?php p($l->t('If you need documentation, follow this link')); ?> &#128073; 
@@ -46,14 +41,26 @@
 	<hr/>
 	<h2><?php p($l->t('Special thanks to:')); ?></h2>
 	<ul>
-		<li>Timo RAINO - <?php p($l->t('for the big work on legal notice for France')); ?></li>
+		<li><a href="https://www.avocat-rainio.com" target="_blank" rel="noopener noreferrer">Timo RAINIO</a> - <?php p($l->t('for the big work on legal notice for France')); ?></li>
 		<li><?php p($l->t('The MIAGE class at the University of Bordeaux - for the extraordinary work on the application this year')); ?></li>
 		<li>Aaron Stevens - <?php p($l->t('for the coffee ;)')); ?></li>
 		<li>@CarlKDE - <?php p($l->t('for the coffee ;)')); ?></li>
 		<li>little5bull - <?php p($l->t('for the coffee ;)')); ?></li>
 		<li>Someone - <?php p($l->t('for the coffee ;)')); ?></li>
 		<li>somerandomNCuser - <?php p($l->t('for the coffee ;)')); ?></li>
-		<li>OursSansPlus - <?php p($l->t('for the coffee ;)')); ?></li>
+		<li><a href="https://github.com/OursSansPlus" target="_blank" rel="noopener noreferrer">OursSansPlus</a> - <?php p($l->t('for the coffee ;)')); ?></li>
+	</ul>
+	<h3><?php p($l->t('GitHub contributors')); ?></h3>
+	<ul>
+		<li><a href="https://github.com/Valdnet" target="_blank" rel="noopener noreferrer">Valdnet</a></li>
+		<li><a href="https://github.com/rakekniven" target="_blank" rel="noopener noreferrer">rakekniven</a></li>
+		<li><a href="https://github.com/timkrief" target="_blank" rel="noopener noreferrer">timkrief</a></li>
+		<li><a href="https://github.com/xtofpic" target="_blank" rel="noopener noreferrer">xtofpic</a></li>
+		<li><a href="https://github.com/ByrmGkcn" target="_blank" rel="noopener noreferrer">ByrmGkcn</a></li>
+		<li><a href="https://github.com/roliverio" target="_blank" rel="noopener noreferrer">roliverio</a></li>
+		<li><a href="https://github.com/relisiuol" target="_blank" rel="noopener noreferrer">relisiuol</a></li>
+		<li><a href="https://github.com/freed40" target="_blank" rel="noopener noreferrer">freed40</a></li>
+		<li><a href="https://github.com/p-bo" target="_blank" rel="noopener noreferrer">p-bo</a></li>
 	</ul>
 </div>
 

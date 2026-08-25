@@ -35,12 +35,16 @@ import {
     saveVatExemptionReason,
 } from './handlers/vat_exemption_handlers.js';
 import { createInvoiceFromQuote, openInvoiceQuoteSelector } from './handlers/invoice_handlers.js';
+import { initializeNavigationToggle } from '../modules/navigation.js';
+import { initializeLogoResizeControls } from '../modules/logoResize.js';
 
 let lastKeyEventTime = 0;
 
 const HOVERABLE_CLASSES = ["editable", "loadSelect", "selectable"];
 
 function registerMainListeners() {
+    initializeNavigationToggle();
+    initializeLogoResizeControls();
     document.body.addEventListener('click', handleBodyClick);
     document.body.addEventListener('change', handleBodyChange);
     document.body.addEventListener('keydown', handleBodyKeydown);

@@ -51,6 +51,7 @@
 }
 
 #app {
+    position: relative;
     display: flex;
     width: 100%;
     margin-right: 20px;
@@ -150,6 +151,63 @@
 /* ==========================================================================
    Navigation
    ========================================================================== */
+
+.gestion-navigation-toggle {
+    position: absolute;
+    z-index: 110;
+    top: 8px;
+    left: 308px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    margin: 0;
+    padding: 12px;
+    border: 0;
+    border-radius: var(--gestion-radius);
+    background: transparent;
+    cursor: pointer;
+    transition: left 150ms ease;
+}
+
+.gestion-navigation-toggle::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 14px;
+    border-top: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    background: linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat;
+}
+
+.gestion-navigation-toggle:hover,
+.gestion-navigation-toggle:focus-visible {
+    background-color: var(--color-background-hover, var(--gestion-surface-alt));
+}
+
+.gestion-navigation-toggle:focus-visible {
+    outline: 2px solid var(--gestion-primary);
+    outline-offset: -2px;
+}
+
+#app.gestion-navigation-closed .gestion-navigation-toggle {
+    left: 8px;
+}
+
+#app.gestion-navigation-closed #app-navigation {
+    display: none;
+}
+
+#app.gestion-navigation-closed #app-content {
+    width: 100%;
+    margin-left: 0;
+}
+
+@media (max-width: 1024px) {
+    .gestion-navigation-toggle {
+        left: 8px;
+    }
+}
 
 .app-navigation-entry {
     display: flex;
@@ -307,6 +365,36 @@ button.electronic-invoice-help:focus-visible {
 .img-fluid {
     max-width: 100%;
     height: auto;
+}
+
+.gestion-document-logo {
+    display: inline-block;
+    width: min(100%, 320px);
+    height: auto;
+    object-fit: contain;
+}
+
+.gestion-document-logo-main {
+    width: min(100%, 160px);
+}
+
+.gestion-logo-resize-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gestion-spacing-sm);
+    margin: var(--gestion-spacing-xs) auto var(--gestion-spacing-sm);
+    color: var(--gestion-text-muted);
+    font-size: var(--gestion-font-size-small);
+}
+
+.gestion-logo-resize-control input[type='range'] {
+    width: min(220px, 50vw);
+}
+
+.gestion-logo-resize-control output {
+    min-width: 52px;
+    text-align: left;
 }
 
 .comment {

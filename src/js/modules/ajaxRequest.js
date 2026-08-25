@@ -380,8 +380,7 @@ export function isconfig() {
     .then(response => response.json())
     .then(response => {
         if (!response) {
-            var modal = document.getElementById("modalConfig");
-            modal.style.display = "block";
+            window.location.assign(OC.generateUrl('/apps/gestion/config'));
         }
     })
     .catch(error => {

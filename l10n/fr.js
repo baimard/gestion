@@ -1,6 +1,15 @@
 OC.L10N.register(
     "gestion",
     {
+    "Close navigation" : "Fermer la navigation",
+    "Open navigation" : "Ouvrir la navigation",
+    "Logo width" : "Largeur du logo",
+    "Gestion is developed and maintained by its author in his free time. Your support helps keep the project active, improve the application and answer users. If Gestion is useful to you, you can support the project by buying the author a coffee. Even a €1 contribution is a meaningful gesture and helps the project move forward." : "Gestion est développée et maintenue par son auteur sur son temps libre. Votre soutien permet de garder le projet actif, d’améliorer l’application et de répondre aux utilisateurs. Si Gestion vous est utile, vous pouvez soutenir le projet en offrant un café à son auteur. Même une contribution de 1 € est un geste qui compte et aide le projet à avancer.",
+    "Support Gestion by buying a coffee" : "Soutenir Gestion en offrant un café",
+    "GitHub contributors" : "Contributeurs GitHub",
+    "To add a header logo, use the numeric company ID shown in the company selector as the filename prefix (for example, company 1 uses 1logo_header.png). Place the file in the \".gestion\" folder at the root of Nextcloud Files and enable \"Show hidden files\" to display this folder." : "Pour ajouter un logo d’en-tête, utilisez comme préfixe du fichier l’identifiant numérique affiché dans le sélecteur d’entreprise (par exemple, l’entreprise 1 utilise 1logo_header.png). Déposez le fichier dans le dossier « .gestion » à la racine de Nextcloud Fichiers et activez « Afficher les fichiers cachés » pour voir ce dossier.",
+    "To add the main logo, use the numeric company ID shown in the company selector as the filename prefix (for example, company 1 uses 1logo.png). Place the file in the \".gestion\" folder at the root of Nextcloud Files and enable \"Show hidden files\" to display this folder." : "Pour ajouter le logo principal, utilisez comme préfixe du fichier l’identifiant numérique affiché dans le sélecteur d’entreprise (par exemple, l’entreprise 1 utilise 1logo.png). Déposez le fichier dans le dossier « .gestion » à la racine de Nextcloud Fichiers et activez « Afficher les fichiers cachés » pour voir ce dossier.",
+    "To add a footer logo, use the numeric company ID shown in the company selector as the filename prefix (for example, company 1 uses 1logo_footer.png). Place the file in the \".gestion\" folder at the root of Nextcloud Files and enable \"Show hidden files\" to display this folder." : "Pour ajouter un logo de pied de page, utilisez comme préfixe du fichier l’identifiant numérique affiché dans le sélecteur d’entreprise (par exemple, l’entreprise 1 utilise 1logo_footer.png). Déposez le fichier dans le dossier « .gestion » à la racine de Nextcloud Fichiers et activez « Afficher les fichiers cachés » pour voir ce dossier.",
     "Last name" : "Nom",
     "First name" : "Prénom",
     "Limited company" : "Siret",

@@ -31,6 +31,16 @@ body,
     height: auto;
 }
 
+.gestion-document-logo {
+    width: 320px;
+    max-width: 100%;
+    height: auto;
+}
+
+.gestion-document-logo-main {
+    width: 160px;
+}
+
 .comment {
     width: 100%;
     margin: 20px 0;

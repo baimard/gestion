@@ -446,7 +446,7 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
  * 
  * @param {*} myCase 
  */
-export function updateEditable(myCase) {
+export async function updateEditable(myCase) {
 
     let value = myCase.innerText;
 
@@ -454,7 +454,7 @@ export function updateEditable(myCase) {
         value = value.replace('%', '');
     }
 
-    updateDB(
+    const saved = await updateDB(
         myCase.dataset.table,
         myCase.dataset.column,
         value,
@@ -462,6 +462,12 @@ export function updateEditable(myCase) {
     );
 
     myCase.removeAttribute('contenteditable');
+
+    if (saved && myCase.dataset.modifier === 'getProduitsById') {
+        await getProduitsById();
+    }
+
+    return saved;
 }
 
 /**

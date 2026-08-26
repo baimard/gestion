@@ -13,19 +13,19 @@ export function initializeNavigationToggle() {
     const app = document.getElementById('app');
     const navigation = document.getElementById('app-navigation');
 
-    if (!app || !navigation || app.querySelector('.gestion-navigation-toggle')) {
+    if (!app || !navigation) {
         return;
     }
 
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'gestion-navigation-toggle';
-    button.setAttribute('aria-controls', 'app-navigation');
+    const button = app.querySelector('.gestion-navigation-toggle');
+    if (!button || button.dataset.navigationToggleInitialized === 'true') {
+        return;
+    }
+
+    button.dataset.navigationToggleInitialized = 'true';
     setNavigationState(app, button, true);
 
     button.addEventListener('click', () => {
         setNavigationState(app, button, app.classList.contains(NAVIGATION_CLOSED_CLASS));
     });
-
-    app.prepend(button);
 }

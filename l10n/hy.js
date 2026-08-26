@@ -7,8 +7,8 @@ OC.L10N.register(
     "Address" : "Հասցե",
     "New" : "Նոր",
     "Comment" : "Մեկնաբանել",
-    "Choose" : "Ընտրել",
     "Cancel" : "ընդհատել",
+    "Choose" : "Ընտրել",
     "Search" : "Search",
     "Next" : "Հաջորդ",
     "Previous" : "Նախորդ",
@@ -29,6 +29,8 @@ OC.L10N.register(
     "November" : "Նոյեմբեր",
     "December" : "Դեկտեմբեր",
     "Mail" : "Փոստ",
+    "Close" : "Փակել",
+    "Save" : "Save",
     "About" : "էջի վերաբերյալ"
 },
 "nplurals=2; plural=(n != 1);");

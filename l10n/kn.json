@@ -2,17 +2,18 @@
     "Email" : "﻿ಇ-ಅಂಚೆ",
     "Address" : "ವಿಳಾಸ",
     "New" : "﻿ಹೊಸ",
-    "Choose" : "﻿ಆಯ್ಕೆ",
     "Cancel" : "﻿ರದ್ದು",
+    "Choose" : "﻿ಆಯ್ಕೆ",
     "Disable" : "﻿ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ",
     "Enable" : "ಸಕ್ರಿಯಗೊಳಿಸು",
+    "All" : "﻿ಎಲ್ಲಾ",
     "Search" : "Search",
     "Next" : "ಮುಂದೆ",
     "Open" : "ತೆರೆಯಿರಿ",
     "Delete" : "﻿ಅಳಿಸಿ",
     "Email sent" : "ಇ-ಅಂಚೆ ಕಳುಹಿಸಲಾಗಿದೆ",
-    "Documentation" : "ದಸ್ತಾವೇಜು",
     "Send" : "﻿ಕಳುಹಿಸಿ",
+    "Documentation" : "ದಸ್ತಾವೇಜು",
     "Version" : "﻿ಆವೃತ್ತಿ",
     "January" : "﻿ಜನವರಿ",
     "February" : "﻿ಫೆಬ್ರುವರಿ",
@@ -26,6 +27,8 @@
     "October" : "﻿ಅಕ್ಟೋಬರ್",
     "November" : "﻿ನವೆಂಬರ್",
     "December" : "﻿ಡಿಸೆಂಬರ್",
-    "Mail" : "ಅಂಚೆ"
+    "Mail" : "ಅಂಚೆ",
+    "Close" : "ಮುಚ್ಚು",
+    "Save" : "Save"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

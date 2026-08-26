@@ -11,8 +11,8 @@ OC.L10N.register(
     "Next" : "Seterus",
     "Previous" : "Sebelum",
     "Delete" : "Padam",
-    "Documentation" : "Dokumentasi",
     "Send" : "Hantar",
+    "Documentation" : "Dokumentasi",
     "Date:" : "Tarikh:",
     "January" : "Januari",
     "February" : "Februari",
@@ -27,6 +27,8 @@ OC.L10N.register(
     "November" : "November",
     "December" : "Disember",
     "Mail" : "Mel",
+    "Close" : "Tutup",
+    "Save" : "Save",
     "About" : "Mengenai"
 },
 "nplurals=1; plural=0;");

@@ -5,6 +5,7 @@ import { addShareUser, configuration, createCompany, deleteCompany, delShareUser
 import { globalConfiguration, parseConfigurationResponse } from "./modules/mainFunction.js";
 import "./listener/main_listener";
 import { setCurrencyList, setFormatList } from "./modules/list.js";
+import { csrfHeaders } from "./modules/csrf.js";
 
 const providerUrl = () => OC.generateUrl('/apps/gestion/einvoice/provider');
 
@@ -124,7 +125,7 @@ async function loadElectronicInvoiceProvider() {
     try {
         const response = await fetch(providerUrl(), {
             method: 'GET',
-            headers: { 'Accept': 'application/json' }
+            headers: csrfHeaders({ 'Accept': 'application/json' })
         });
         if (!response.ok) throw new Error(await response.text());
 
@@ -162,11 +163,10 @@ async function saveElectronicInvoiceProvider() {
     try {
         const response = await fetch(providerUrl(), {
             method: 'POST',
-            headers: {
+            headers: csrfHeaders({
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'requesttoken': OC.requestToken,
-            },
+            }),
             body: JSON.stringify({ provider, credentials }),
         });
         const payload = await response.json();

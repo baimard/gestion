@@ -1,8 +1,5 @@
 <div class="menu-content" data-html2canvas-ignore>
     <?php print_unescaped($this->inc('navigation/toggle')); ?>
-    <a href="<?php echo($_['url']['index']); ?>"><span class="material-symbols-outlined">home</span></a>
-    <span class="material-symbols-outlined">chevron_right</span>
-    <a href="<?php echo($_['url']['devis']); ?>"><?php p($l->t('Quote')); ?></a>
 </div>
 <div id="PDFcontent">
     <div class="titre-centre">

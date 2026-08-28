@@ -71,6 +71,13 @@
     color: #222222;
 }
 
+.gestion-document-view {
+    position: relative;
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+}
+
 
 /* ==========================================================================
    Fenêtres modales

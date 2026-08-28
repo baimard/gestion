@@ -1,7 +1,8 @@
-<div class="menu-content" data-html2canvas-ignore>
-    <?php print_unescaped($this->inc('navigation/toggle')); ?>
-</div>
-<div id="PDFcontent">
+<div class="gestion-document-view">
+    <div class="menu-content" data-html2canvas-ignore>
+        <?php print_unescaped($this->inc('navigation/toggle')); ?>
+    </div>
+    <div id="PDFcontent">
     <div class="titre-centre">
         <span>
             <?php
@@ -62,3 +63,5 @@
     <div class="div-prix"><table id="totalglobal" class="table-prix"><thead><tr><th class="text-center"><?php p($l->t('Total without VAT'));?></th><th class="text-center"><?php p($l->t('Total VAT'));?></th><th class="text-center"><?php p($l->t('Total including VAT'));?></th></tr></thead><tbody></tbody></table></div>
     <div class="alert-info-custom"><p><span id="mentions_default"><?php p($l->t('Please set in global configuration'));?></span></p></div>
     <table class="table-mentions-signature-facture"><tr><td class="cell-mentions"><p class="mentions-titre"><?php echo $res->entreprise; ?></p><p class="mentions-ligne"><?php echo $res->adresse; ?></p><p class="mentions-ligne"><?php echo trim(($res->zip_code ?? '') . ' ' . ($res->city_name ?? '')); ?></p><p class="mentions-ligne"><?php echo $res->legal_one; ?></p><p class="mentions-ligne"><?php echo $res->legal_two; ?></p></td></tr></table>
+    </div>
+</div>

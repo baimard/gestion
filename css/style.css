@@ -548,6 +548,10 @@ button.electronic-invoice-help:focus-visible {
     border: 1px solid var(--gestion-border);
 }
 
+.table-produit {
+    table-layout: fixed;
+}
+
 .table-produit th,
 .table-prix th {
     padding: 9px 8px;
@@ -565,6 +569,24 @@ button.electronic-invoice-help:focus-visible {
     color: #222222;
     background-color: #ffffff;
     border: 1px solid var(--gestion-border);
+}
+
+.table-produit th,
+.table-produit td {
+    min-width: 0;
+    vertical-align: top;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+.table-produit td > div,
+.table-produit .product-reference-selector,
+.table-produit .product-reference-selector span {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .table-produit tbody tr:nth-child(even) td,

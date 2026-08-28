@@ -4,6 +4,7 @@ namespace OCA\Gestion\Controller;
 
 use OCA\Gestion\Service\ElectronicInvoiceProviderService;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\IRequest;
@@ -19,8 +20,10 @@ class ElectronicInvoiceProviderController extends Controller {
 
 	/**
 	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 * @UseSession
 	 */
+	#[NoCSRFRequired]
 	#[UseSession]
 	public function getConfiguration(): DataResponse {
 		return new DataResponse([

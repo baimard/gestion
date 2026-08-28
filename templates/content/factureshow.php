@@ -1,3 +1,6 @@
+<div class="menu-content" data-html2canvas-ignore>
+    <?php print_unescaped($this->inc('navigation/toggle')); ?>
+</div>
 <div id="PDFcontent">
     <div class="titre-centre">
         <span>

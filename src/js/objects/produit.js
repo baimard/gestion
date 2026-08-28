@@ -63,7 +63,7 @@ export class Produit {
     oReq.open('PROPFIND', baseUrl + '/getProduits', true);
     oReq.setRequestHeader("Content-Type", "application/json");
     setCsrfRequestHeader(oReq);
-    oReq.onload = function(e){
+    oReq.onload = function(){
       if (this.status == 200) {
         LoadDT(productDT, JSON.parse(this.response), Produit);
       }else{
@@ -81,7 +81,7 @@ export class Produit {
     var oReq = new XMLHttpRequest();
     oReq.open('POST', baseUrl + '/produit/insert', true);
     setCsrfRequestHeader(oReq);
-    oReq.onload = function(e){
+    oReq.onload = function(){
       if (this.status == 200) {
         showDone()
         Produit.loadProduitDT(dt);

@@ -59,7 +59,7 @@ export async function openInvoiceQuoteSelector() {
             list.appendChild(option);
         });
         bindQuoteSelector(list, search);
-    } catch (error) {
+    } catch {
         showError(t('gestion', 'Unable to load quotes.'));
         modal.style.display = 'none';
     }

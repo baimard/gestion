@@ -43,7 +43,6 @@ return [
 
         ['name' => 'stats#getStats', 'url' => '/getStats', 'verb' => 'PROPFIND'],
         ['name' => 'stats#getAnnualTurnoverPerMonthNoVat', 'url' => '/getAnnualTurnoverPerMonthNoVat', 'verb' => 'PROPFIND'],
-        ['name' => 'stats#getServerFromMail', 'url' => '/getServerFromMail', 'verb' => 'PROPFIND'],
 
         ['name' => 'pdf#sendPDF', 'url' => '/sendPDF', 'verb' => 'POST'],
         ['name' => 'pdf#personalMailStatus', 'url' => '/personal-mail/status', 'verb' => 'GET'],

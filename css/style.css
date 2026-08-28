@@ -153,31 +153,27 @@
    ========================================================================== */
 
 .gestion-navigation-toggle {
-    position: absolute;
-    z-index: 110;
-    top: 8px;
-    left: 308px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
     width: 44px;
     min-width: 44px;
     height: 44px;
     min-height: 44px;
     margin: 0;
-    padding: 12px;
+    padding: 10px;
     border: 0;
     border-radius: var(--gestion-radius);
     background: transparent;
     cursor: pointer;
-    transition: left 150ms ease;
+    color: currentColor;
 }
 
-.gestion-navigation-toggle::before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 14px;
-    border-top: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    background: linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat;
+.gestion-navigation-toggle .material-symbols-outlined {
+    font-size: 24px;
+    line-height: 1;
+    transition: transform 150ms ease;
 }
 
 .gestion-navigation-toggle:hover,
@@ -190,8 +186,12 @@
     outline-offset: -2px;
 }
 
-#app.gestion-navigation-closed .gestion-navigation-toggle {
-    left: 8px;
+#app #app-navigation-toggle {
+    display: none !important;
+}
+
+.gestion-navigation-toggle[aria-expanded="false"] .material-symbols-outlined {
+    transform: rotate(180deg);
 }
 
 #app.gestion-navigation-closed #app-navigation {
@@ -201,12 +201,6 @@
 #app.gestion-navigation-closed #app-content {
     width: 100%;
     margin-left: 0;
-}
-
-@media (max-width: 1024px) {
-    .gestion-navigation-toggle {
-        left: 8px;
-    }
 }
 
 .app-navigation-entry {

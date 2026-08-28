@@ -55,7 +55,7 @@ export class Client {
     var oReq = new XMLHttpRequest();
     oReq.open('POST', baseUrl + '/client/insert', true);
     setCsrfRequestHeader(oReq);
-    oReq.onload = function(e){
+    oReq.onload = function(){
       if (this.status == 200) {
         showSuccess()
         Client.loadClientDT(dt);
@@ -75,7 +75,7 @@ export class Client {
     oReq.open('PROPFIND', baseUrl + '/getClients', true);
     oReq.setRequestHeader("Content-Type", "application/json");
     setCsrfRequestHeader(oReq);
-    oReq.onload = function(e){
+    oReq.onload = function(){
       if (this.status == 200) {
         LoadDT(clientDT, JSON.parse(this.response), Client);
       }else{
@@ -94,7 +94,7 @@ export class Client {
     oReq.open('PROPFIND', baseUrl + '/getClients', true);
     oReq.setRequestHeader("Content-Type", "application/json");
     setCsrfRequestHeader(oReq);
-    oReq.onload = function(e){
+    oReq.onload = function(){
       if (this.status == 200) {
         callback(JSON.parse(this.response));
       }else{

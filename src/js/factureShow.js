@@ -2,11 +2,11 @@
 import "datatables.net-dt/css/dataTables.dataTables.css";
 import "../css/mycss.less";
 
-import { getMailServerFrom, getProduitsById, saveNextcloud, generateFacturXmlRequest } from "./modules/ajaxRequest.js";
+import { getProduitsById, saveNextcloud } from "./modules/ajaxRequest.js";
 import { globalConfiguration } from "./modules/mainFunction.js";
 import "./listener/main_listener";
 import { Client } from "./objects/client.js";
-import { capture, captureFacturX, captureFacturXml, sendFacturXToIopole, sendMail } from "./pdf";
+import { capture, captureFacturX, captureFacturXml, sendFacturXToIopole } from "./pdf";
 
 window.addEventListener("DOMContentLoaded", function () {
     globalConfiguration();

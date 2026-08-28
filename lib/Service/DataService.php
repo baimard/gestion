@@ -3,17 +3,14 @@ namespace OCA\Gestion\Service;
 
 use OCA\Gestion\Db\Bdd;
 use OCP\AppFramework\Http\DataResponse;
-use OCP\IConfig;
 use OCP\ISession;
 
 class DataService {
 	private Bdd $myDb;
-	private IConfig $config;
 	private ISession $session;
 
-	public function __construct(Bdd $myDb, IConfig $config, ISession $session) {
+	public function __construct(Bdd $myDb, ISession $session) {
 		$this->myDb = $myDb;
-		$this->config = $config;
 		$this->session = $session;
 	}
 
@@ -160,10 +157,6 @@ class DataService {
 
 	public function delete($table, $id) {
 		return $this->myDb->gestion_delete($table, $id, $this->currentCompany());
-	}
-
-	public function getServerFromMail(): DataResponse {
-		return new DataResponse(['mail' => $this->config->getSystemValue('mail_from_address') . '@' . $this->config->getSystemValue('mail_domain')], 200, ['Content-Type' => 'application/json']);
 	}
 
 	public function getStats() {

@@ -34,12 +34,4 @@ class StatsController extends Controller {
 		return $this->dataService->getAnnualTurnoverPerMonthNoVat();
 	}
 
-	/**
-	 * @NoAdminRequired
-	 * @UseSession
-	 */
-	#[UseSession]
-	public function getServerFromMail() {
-		return $this->dataService->getServerFromMail();
-	}
 }

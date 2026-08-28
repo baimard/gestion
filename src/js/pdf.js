@@ -3,28 +3,6 @@ import { baseUrl } from "./modules/mainFunction.js";
 import { generateFacturXmlRequest } from "./modules/ajaxRequest.js";
 import { csrfHeaders } from "./modules/csrf.js";
 
-export function sendMail(myData) {
-  fetch(baseUrl + "/sendPDF", {
-    method: "POST",
-    headers: csrfHeaders({
-      "Content-Type": "application/json"
-    }),
-    body: JSON.stringify(myData)
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then(() => {
-    showMessage(t("gestion", "Email sent"));
-  })
-  .catch(() => {
-    showMessage(t("gestion", "Is your global mail server configured in Nextcloud?"));
-  });
-}
-
 export function capture(afterCapturefunction, sourceDocument = document) {
   showMessage(t("gestion", "Creation in progress …"));
   

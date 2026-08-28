@@ -1,3 +1,6 @@
+<div class="menu-content" data-html2canvas-ignore>
+    <?php print_unescaped($this->inc('navigation/toggle')); ?>
+</div>
 <div id="PDFcontent">
     <div class="titre-centre">
         <span>
@@ -71,7 +74,6 @@
         <button id="devisAdd"       type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
         <button type="button" class="mb-2 btn btn-outline-primary createInvoiceFromQuote" data-devis-id="<?php echo $_['devis'][0]->devisid; ?>" data-html2canvas-ignore><?php p($l->t('Create invoice'));?></button>
         <button id="pdf"            type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore data-name=""><?php p($l->t('Save in Nextcloud'));?></button>
-        <!-- <button id="mailGestion"       type="button"   class="mb-2 btn btn-outline-success sendmail"    data-html2canvas-ignore data-name=""><?php p($l->t('Send by email'));?></button> -->
         
         <table id="produits" class="table-produit">
             <thead>

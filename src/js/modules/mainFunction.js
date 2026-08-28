@@ -1,5 +1,5 @@
 import { showSuccess } from "@nextcloud/dialogs";
-import { translate as t, translatePlural as n } from '@nextcloud/l10n'
+import { translate as t } from '@nextcloud/l10n'
 import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest.js";
 import { generateUrl } from "@nextcloud/router";
 import { csrfHeaders } from "./csrf.js";
@@ -28,7 +28,7 @@ export function parseConfigurationResponse(response) {
         }
 
         return Array.isArray(data) ? data : [];
-    } catch (error) {
+    } catch {
         return [];
     }
 }
@@ -98,36 +98,11 @@ export function configureDT() {
 }
 
 /**
- * 
- */
-export function configureShow() {
-    document.querySelectorAll('.sendmail').forEach(element => {
-        element.setAttribute('title', t('gestion', 'Your global Nextcloud mail server need to be configured'));
-    });
-}
-
-/**
  * Success message
  */
 export function showDone() {
     showSuccess(t('gestion', 'Added!'));
 }
-
-/**
- * 
- * @param {*} el 
- */
-export function checkSelect(el) {
-    const elements = el instanceof Element ? [el] : Array.from(el);
-    elements.forEach(elem => {
-        elem.querySelectorAll('option').forEach(option => {
-            if (option.value == elem.getAttribute("data-current")) {
-                option.selected = true;
-            }
-        });
-    });
-}
-
 
 export function checkSelectPurJs(el) {
     Array.from(el.options).forEach(element => {
@@ -160,7 +135,7 @@ export function LoadDT(DT, response, cls) {
  * @param {*} positionColumn 
  * @param {*} data 
  */
-export function insertRow(ID, positionRow = -1, positionColumn = -1, data){
+export function insertRow(ID, positionRow = -1, data){
     var t1 = document.getElementById(ID);
     var r = t1.insertRow(positionRow);
     insertCell(r, -1, data, "statHead");
@@ -223,7 +198,7 @@ export function getCurrency(response) {
 
     try {
         cur = new Intl.NumberFormat(locale, { style: 'currency', currency: currency, minimumFractionDigits: 2 });
-    } catch (error) {
+    } catch {
         cur = new Intl.NumberFormat(defaultCurrencyLocale, { style: 'currency', currency: defaultCurrencyCode, minimumFractionDigits: 2 });
     }
 }
@@ -289,17 +264,6 @@ export function updateNumerical(el, format_number=true){
         el.innerText=el.innerText
     }
 }
-
-/**
- * 
- */
-export function removeOptions(selectElement) {
-    
-    var i, L = selectElement.options.length - 1;
-    for(i = L; i >= 0; i--) {
-       selectElement.remove(i);
-    }
- }
 
  /**
   * 

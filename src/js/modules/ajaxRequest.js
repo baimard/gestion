@@ -1,5 +1,5 @@
 import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
-import { translate as t, translatePlural as n } from '@nextcloud/l10n'
+import { translate as t } from '@nextcloud/l10n'
 import { baseUrl, cur, getGlobal, insertCell, insertRow, modifyCell } from "./mainFunction.js";
 import { csrfHeaders, setCsrfRequestHeader } from "./csrf.js";
 
@@ -33,7 +33,7 @@ export async function updateDB(table, column, data, id) {
             showError(t('gestion', 'There is an error with the format, please check the documentation'));
             return false;
         }
-    } catch (error) {
+    } catch {
         showError(t('gestion', 'There is an error with the format, please check the documentation'));
         return false;
     }
@@ -69,7 +69,7 @@ export function updateDBConfiguration(table, column, data, id) {
             showError(t('gestion', 'There is an error with the format, please check the documentation'));
         }
     })
-    .catch(error => {
+    .catch(() => {
         showError(t('gestion', 'There is an error with the format, please check the documentation'));
     });
 }
@@ -92,7 +92,7 @@ export function createCompany() {
             showError(t('gestion', 'There is an error.'));
         }
     })
-    .catch(error => {
+    .catch(() => {
         showError(t('gestion', 'There is an error.'));
     });
 }
@@ -117,7 +117,7 @@ export function deleteCompany() {
                 showError(t('gestion', 'There is an error.'));
             }
         })
-        .catch(error => {
+        .catch(() => {
             showError(t('gestion', 'There is an error.'));
         });
     }
@@ -150,7 +150,7 @@ export function updateCurrentCompany(companyID) {
             showError(t('gestion', 'There is an error with the format, please check the documentation'));
         }
     })
-    .catch(error => {
+    .catch(() => {
         // Connection error
         showError(t('gestion', 'There is an error with the format, please check the documentation'));
     });
@@ -424,7 +424,7 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
                     total = 0;
                 }
                 curY = item.y;
-                curRow = insertRow("Statistical", -1, 0, item.y);
+                curRow = insertRow("Statistical", -1, item.y);
                 modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
                 total += Math.round(item.total);
             } else if (curRow !== null) {
@@ -474,12 +474,6 @@ export async function updateEditable(myCase) {
  * 
  * @param {*} myCase 
  */
-export function updateEditableConfiguration(myCase) {
-    updateDBConfiguration(myCase.dataset.table, myCase.dataset.column, myCase.innerText, myCase.dataset.id);
-    if (myCase.dataset.modifier === "getProduitsById") {getProduitsById();}
-    myCase.removeAttribute('contenteditable');
-}
-
 
 /**
  * 
@@ -510,7 +504,6 @@ export function getProduitsById() {
     .then(data => {
         const produitsBody = document.querySelector('#produits tbody');
         produitsBody.innerHTML = '';
-        let quantity = 0;
         let totalHTGlobal = 0;
         let totalTVAGlobal = 0;
         let totalTTCGlobal = 0;
@@ -687,21 +680,6 @@ export function generateFacturXmlRequest(factureId, name, folder) {
         console.error(error);
     });
 };
-
-export function getMailServerFrom(input) {
-    var oReq = new XMLHttpRequest();
-    oReq.open('PROPFIND', baseUrl + '/getServerFromMail', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    setCsrfRequestHeader(oReq);
-    oReq.onload = function(e){
-        if (this.status == 200) {
-            input.value = JSON.parse(this.response)['mail'];
-        }else{
-            showError(this.response);
-        }
-    };
-    oReq.send();
-}
 
 /**
  * 

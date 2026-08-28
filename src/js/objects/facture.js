@@ -90,7 +90,7 @@ export class Facture {
     oReq.open('PROPFIND', baseUrl + '/getFactures', true);
     oReq.setRequestHeader("Content-Type", "application/json");
     setCsrfRequestHeader(oReq);
-    oReq.onload = function(e){
+    oReq.onload = function(){
       if (this.status == 200) {
         LoadDT(factureDT, JSON.parse(this.response), Facture);
         // Devis.loadDevisList();

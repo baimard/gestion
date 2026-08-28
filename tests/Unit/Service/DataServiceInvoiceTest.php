@@ -3,7 +3,6 @@ namespace OCA\Gestion\Tests\Unit\Service;
 
 use OCA\Gestion\Db\Bdd;
 use OCA\Gestion\Service\DataService;
-use OCP\IConfig;
 use OCP\ISession;
 use PHPUnit\Framework\TestCase;
 
@@ -11,7 +10,7 @@ class DataServiceInvoiceTest extends TestCase {
 	private function service(Bdd $database): DataService {
 		$session = $this->createMock(ISession::class);
 		$session->method('get')->with('CurrentCompany')->willReturn(3);
-		return new DataService($database, $this->createMock(IConfig::class), $session);
+		return new DataService($database, $session);
 	}
 
 	public function testInvoicePaymentConfigurationRemainsEditable(): void {

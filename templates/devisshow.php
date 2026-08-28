@@ -4,7 +4,6 @@
 ?>
 
 <div id="app">
-	<?php print_unescaped($this->inc('navigation/toggle')); ?>
 	<div id="app-navigation">
 		<?php print_unescaped($this->inc('navigation/index')); ?>
 		<?php print_unescaped($this->inc('settings/index')); ?>

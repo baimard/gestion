@@ -1,5 +1,6 @@
 <div id="contentTable">
     <div class="menu-content">
+        <?php print_unescaped($this->inc('navigation/toggle')); ?>
         <a href="<?php echo($_['url']['index']); ?>"><span class="material-symbols-outlined">home</span></a>
         <span class="material-symbols-outlined">chevron_right</span>
         <span><?php p($l->t('Quote'));?></span>

@@ -5,4 +5,6 @@
 	aria-expanded="true"
 	aria-label="<?php p($l->t('Close navigation')); ?>"
 	title="<?php p($l->t('Close navigation')); ?>"
-></button>
+>
+	<span class="material-symbols-outlined" aria-hidden="true">menu_open</span>
+</button>

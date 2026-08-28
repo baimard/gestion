@@ -1,7 +1,7 @@
 const NAVIGATION_CLOSED_CLASS = 'gestion-navigation-closed';
+const MOBILE_NAVIGATION_QUERY = '(max-width: 1023px)';
 
-function setNavigationState(app, button, isOpen) {
-    app.classList.toggle(NAVIGATION_CLOSED_CLASS, !isOpen);
+function setButtonState(button, isOpen) {
     button.setAttribute('aria-expanded', String(isOpen));
 
     const label = t('gestion', isOpen ? 'Close navigation' : 'Open navigation');
@@ -23,9 +23,31 @@ export function initializeNavigationToggle() {
     }
 
     button.dataset.navigationToggleInitialized = 'true';
-    setNavigationState(app, button, true);
+    const mobileQuery = window.matchMedia(MOBILE_NAVIGATION_QUERY);
+    setButtonState(button, !mobileQuery.matches);
 
     button.addEventListener('click', () => {
-        setNavigationState(app, button, app.classList.contains(NAVIGATION_CLOSED_CLASS));
+        if (mobileQuery.matches) {
+            const nativeToggle = document.getElementById('app-navigation-toggle');
+            const isOpen = document.body.classList.contains('snapjs-left');
+
+            nativeToggle?.dispatchEvent(new KeyboardEvent('keypress', {
+                bubbles: true,
+                key: 'Enter',
+            }));
+            setButtonState(button, !isOpen);
+            return;
+        }
+
+        const isOpen = app.classList.contains(NAVIGATION_CLOSED_CLASS);
+        app.classList.toggle(NAVIGATION_CLOSED_CLASS, !isOpen);
+        setButtonState(button, isOpen);
+    });
+
+    mobileQuery.addEventListener('change', event => {
+        app.classList.remove(NAVIGATION_CLOSED_CLASS);
+        setButtonState(button, event.matches
+            ? document.body.classList.contains('snapjs-left')
+            : true);
     });
 }

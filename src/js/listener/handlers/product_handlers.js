@@ -2,6 +2,7 @@ import { showError } from "@nextcloud/dialogs";
 import { baseUrl, cur } from "../../modules/mainFunction.js";
 import { getProduitsById, updateDB } from "../../modules/ajaxRequest.js";
 import { csrfHeaders } from "../../modules/csrf.js";
+import { Client } from "../../objects/client.js";
 
 export function addProductToDevis() {
     const devisId = document.getElementById('devisid').dataset.id;
@@ -52,7 +53,7 @@ export async function showProductSelect(target) {
         const products = JSON.parse(await response.json());
         products.forEach(product => list.appendChild(createProductOption(product, modal.dataset.currentProductId)));
         bindProductSelector(modal, list, search);
-    } catch (error) {
+    } catch {
         showError(t('gestion', 'Unable to load products.'));
         modal.style.display = 'none';
     }
@@ -120,7 +121,7 @@ export async function updateSelectedProduct(event) {
     await updateDB(table, column, val, id);
 
     if (event.target.parentNode.className === 'selectableClient_devis') {
-        getClientByIdDevis(id);
+        Client.getClientByIdDevis(id);
     }
 
     event.target.parentNode.textContent = event.target.value;

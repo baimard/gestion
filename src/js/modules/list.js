@@ -198,43 +198,6 @@ var currency_list = {
 };
 
 /**
- * DEPRECATED
- * @param {*} currentFormat 
- * @returns 
- */
-export function getFormatList(currentFormat) {
-    var list = "";
-    var oEntries = Object.entries(format_List);
-    var oEntriesSort = oEntries.sort((a,b) => a[1].localeCompare(b[1]));
-    for (const [key, value] of oEntriesSort) {
-        if (currentFormat === key) {
-            list += "<option selected value='" + key + "'>" + value + "</option>";
-        } else {
-            list += "<option value='" + key + "'>" + value + "</option>";
-        }
-    }
-    return list;
-}
-
-/**
- * Deprecated
- */
-export function getCurrencyList(currentDevise) {
-    var list = "";
-    var oEntries = Object.entries(currency_list);
-    var oEntriesSort = oEntries.sort((a,b) => a[1].localeCompare(b[1]));
-    for (const [key, value] of oEntriesSort) {
-        if (currentDevise === key) {
-            list += "<option selected value='" + key + "'>" + value + "</option>";
-        } else {
-            list += "<option value='" + key + "'>" + value + "</option>";
-        }
-    }
-    return list;
-}
-
-
-/**
  * 
  * @param {*} currentDevise 
  * @param {*} selectObject 
@@ -271,16 +234,4 @@ export function setFormatList(currentFormat, selectObject) {
         }
         selectObject.appendChild(opt);
     }
-}
-
-export function getAutoIncrement(activate){
-    if(activate == 0){
-        return "<option selected value='0'>" + t('gestion', 'Disable') + "</option><option value='1'>" + t('gestion', 'Enable') + "</option>"
-    }else{
-        return "<option value='0'>" + t('gestion', 'Disable') + "</option><option selected value='1'>" + t('gestion', 'Enable') + "</option>"
-    }
-}
-
-export function getFormatNumber(format){
-
 }

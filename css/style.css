@@ -370,32 +370,13 @@ button.electronic-invoice-help:focus-visible {
 
 .gestion-document-logo {
     display: inline-block;
-    width: min(100%, 320px);
+    width: min(100%, var(--gestion-logo-width, 320px));
     height: auto;
     object-fit: contain;
 }
 
 .gestion-document-logo-main {
-    width: min(100%, 160px);
-}
-
-.gestion-logo-resize-control {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--gestion-spacing-sm);
-    margin: var(--gestion-spacing-xs) auto var(--gestion-spacing-sm);
-    color: var(--gestion-text-muted);
-    font-size: var(--gestion-font-size-small);
-}
-
-.gestion-logo-resize-control input[type='range'] {
-    width: min(220px, 50vw);
-}
-
-.gestion-logo-resize-control output {
-    min-width: 52px;
-    text-align: left;
+    width: min(100%, var(--gestion-logo-width, 160px));
 }
 
 .comment {

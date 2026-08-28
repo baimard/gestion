@@ -1,8 +1,12 @@
+<?php
+    $res = json_decode($_['configuration'])[0];
+    $logoWidth = max(40, min(600, (int)($res->logo_width ?? 160)));
+?>
 <div class="gestion-document-view">
     <div class="menu-content" data-html2canvas-ignore>
         <?php print_unescaped($this->inc('navigation/toggle')); ?>
     </div>
-    <div id="PDFcontent">
+    <div id="PDFcontent" style="--gestion-logo-width: <?php echo $logoWidth; ?>px;">
     <div class="titre-centre">
         <span>
             <?php
@@ -16,7 +20,6 @@
     </div>
     
     <?php
-        $res = json_decode($_['configuration'])[0];
         $provider = $res->einvoice_provider ?? '';
         $providerConfig = json_decode($res->einvoice_provider_config ?? '', true);
         $iopoleRequired = ['client_id', 'client_secret', 'customer_id', 'base_url', 'auth_url'];

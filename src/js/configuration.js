@@ -160,7 +160,7 @@ function loadConfigurationDT(response) {
         const textFields = [
             'entreprise', 'nom', 'prenom', 'adresse', 'legal_one', 'legal_two',
             'telephone', 'mail', 'tva_default', 'facture_prefixe', 'city_name',
-            'zip_code', 'vat_number', 'iban'
+            'zip_code', 'vat_number', 'iban', 'logo_width'
         ];
 
         textFields.forEach((field) => {

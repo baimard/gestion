@@ -32,13 +32,21 @@ body,
 }
 
 .gestion-document-logo {
-    width: 320px;
+    width: min(100%, 320px);
     max-width: 100%;
     height: auto;
 }
 
 .gestion-document-logo-main {
-    width: 160px;
+    width: min(100%, var(--gestion-logo-main-width, 160px));
+}
+
+.gestion-document-logo-header {
+    width: min(100%, var(--gestion-logo-header-width, 320px));
+}
+
+.gestion-document-logo-footer {
+    width: min(100%, var(--gestion-logo-footer-width, 320px));
 }
 
 .comment {

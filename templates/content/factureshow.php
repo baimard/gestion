@@ -1,12 +1,19 @@
-<div class="menu-content" data-html2canvas-ignore>
-    <?php print_unescaped($this->inc('navigation/toggle')); ?>
-</div>
-<div id="PDFcontent">
+<?php
+    $res = json_decode($_['configuration'])[0];
+    $logoWidth = max(40, min(600, (int)($res->logo_width ?? 160)));
+    $logoHeaderWidth = max(40, min(600, (int)($res->logo_header_width ?? 320)));
+    $logoFooterWidth = max(40, min(600, (int)($res->logo_footer_width ?? 320)));
+?>
+<div class="gestion-document-view">
+    <div class="menu-content" data-html2canvas-ignore>
+        <?php print_unescaped($this->inc('navigation/toggle')); ?>
+    </div>
+    <div id="PDFcontent" style="--gestion-logo-main-width: <?php echo $logoWidth; ?>px; --gestion-logo-header-width: <?php echo $logoHeaderWidth; ?>px; --gestion-logo-footer-width: <?php echo $logoFooterWidth; ?>px;">
     <div class="titre-centre">
         <span>
             <?php
                 if(isset($_['logo_header']) && $_['logo_header'] !== "nothing"){
-                    echo "<a><img alt='".$l->t('Company logo')."' class=\"img-fluid gestion-document-logo gestion-document-logo-wide\" src=\"data:image/png;base64,".$_['logo_header']."\"/></a>";
+                    echo "<a><img alt='".$l->t('Company logo')."' class=\"img-fluid gestion-document-logo gestion-document-logo-header\" src=\"data:image/png;base64,".$_['logo_header']."\"/></a>";
                 }else{
                     echo "<span style='font-size:12px' id='Company-logo' data-html2canvas-ignore><b>".$l->t('You can add your company logo here.')."</b><br/><i>".$l->t('To add a header logo, use the numeric company ID shown in the company selector as the filename prefix (for example, company 1 uses 1logo_header.png). Place the file in the ".gestion" folder at the root of Nextcloud Files and enable "Show hidden files" to display this folder.')."</i><br/><br/>".$l->t('This message will not appear on generated PDF.')."</span>";
                 }
@@ -15,7 +22,6 @@
     </div>
     
     <?php
-        $res = json_decode($_['configuration'])[0];
         $provider = $res->einvoice_provider ?? '';
         $providerConfig = json_decode($res->einvoice_provider_config ?? '', true);
         $iopoleRequired = ['client_id', 'client_secret', 'customer_id', 'base_url', 'auth_url'];
@@ -62,3 +68,5 @@
     <div class="div-prix"><table id="totalglobal" class="table-prix"><thead><tr><th class="text-center"><?php p($l->t('Total without VAT'));?></th><th class="text-center"><?php p($l->t('Total VAT'));?></th><th class="text-center"><?php p($l->t('Total including VAT'));?></th></tr></thead><tbody></tbody></table></div>
     <div class="alert-info-custom"><p><span id="mentions_default"><?php p($l->t('Please set in global configuration'));?></span></p></div>
     <table class="table-mentions-signature-facture"><tr><td class="cell-mentions"><p class="mentions-titre"><?php echo $res->entreprise; ?></p><p class="mentions-ligne"><?php echo $res->adresse; ?></p><p class="mentions-ligne"><?php echo trim(($res->zip_code ?? '') . ' ' . ($res->city_name ?? '')); ?></p><p class="mentions-ligne"><?php echo $res->legal_one; ?></p><p class="mentions-ligne"><?php echo $res->legal_two; ?></p></td></tr></table>
+    </div>
+</div>

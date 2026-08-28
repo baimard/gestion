@@ -18,5 +18,10 @@
 			autocomplete="off"
 		>
 		<div id="product_selector_list" class="product-selector-list" role="listbox"></div>
+		<div class="product-selector-actions">
+			<button type="button" id="product_selector_confirm" disabled>
+				<?php p($l->t('Add product')); ?>
+			</button>
+		</div>
 	</div>
 </div>

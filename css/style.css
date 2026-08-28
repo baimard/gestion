@@ -71,6 +71,13 @@
     color: #222222;
 }
 
+.gestion-document-view {
+    position: relative;
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+}
+
 
 /* ==========================================================================
    Fenêtres modales
@@ -303,6 +310,76 @@
     vertical-align: middle;
 }
 
+.configuration-modal-content {
+    position: relative;
+    width: min(1100px, calc(100% - 40px));
+    max-width: 1100px;
+    height: min(760px, calc(100vh - 80px));
+    padding: 20px 24px 24px;
+    overflow: hidden;
+}
+
+.configuration-modal-title {
+    margin: 0 40px 18px 0;
+}
+
+.configuration-modal-layout {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 28px;
+    height: calc(100% - 48px);
+    min-height: 0;
+}
+
+.configuration-section-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-self: start;
+}
+
+.configuration-modal-content .configuration-section-link {
+    display: block;
+    padding: 10px 14px;
+    border-radius: var(--gestion-radius);
+    color: var(--gestion-text);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.configuration-modal-content .configuration-section-link:hover,
+.configuration-modal-content .configuration-section-link:focus-visible,
+.configuration-modal-content .configuration-section-link.active {
+    background-color: var(--gestion-primary-light);
+}
+
+.configuration-sections {
+    min-width: 0;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+}
+
+.configuration-section {
+    padding-bottom: 42px;
+    scroll-margin-top: 8px;
+}
+
+.configuration-section:last-child {
+    min-height: 100%;
+    padding-bottom: 20px;
+}
+
+.configuration-section h2 {
+    margin: 0 0 16px;
+}
+
+.configuration-section .configuration-content,
+.configuration-section .einvoice-provider-field {
+    width: 100%;
+    max-width: 100%;
+}
+
 button.electronic-invoice-help {
     margin-top: 12px;
     border: 1px solid #9a6700;
@@ -369,26 +446,15 @@ button.electronic-invoice-help:focus-visible {
 }
 
 .gestion-document-logo-main {
-    width: min(100%, 160px);
+    width: min(100%, var(--gestion-logo-main-width, 160px));
 }
 
-.gestion-logo-resize-control {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--gestion-spacing-sm);
-    margin: var(--gestion-spacing-xs) auto var(--gestion-spacing-sm);
-    color: var(--gestion-text-muted);
-    font-size: var(--gestion-font-size-small);
+.gestion-document-logo-header {
+    width: min(100%, var(--gestion-logo-header-width, 320px));
 }
 
-.gestion-logo-resize-control input[type='range'] {
-    width: min(220px, 50vw);
-}
-
-.gestion-logo-resize-control output {
-    min-width: 52px;
-    text-align: left;
+.gestion-document-logo-footer {
+    width: min(100%, var(--gestion-logo-footer-width, 320px));
 }
 
 .comment {
@@ -541,6 +607,10 @@ button.electronic-invoice-help:focus-visible {
     border: 1px solid var(--gestion-border);
 }
 
+.table-produit {
+    table-layout: fixed;
+}
+
 .table-produit th,
 .table-prix th {
     padding: 9px 8px;
@@ -558,6 +628,24 @@ button.electronic-invoice-help:focus-visible {
     color: #222222;
     background-color: #ffffff;
     border: 1px solid var(--gestion-border);
+}
+
+.table-produit th,
+.table-produit td {
+    min-width: 0;
+    vertical-align: top;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+.table-produit td > div,
+.table-produit .product-reference-selector,
+.table-produit .product-reference-selector span {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .table-produit tbody tr:nth-child(even) td,
@@ -756,6 +844,26 @@ button.electronic-invoice-help:focus-visible {
     .configuration,
     #emailInput {
         width: 100%;
+    }
+
+    .configuration-modal-content {
+        height: calc(100vh - 40px);
+        padding: 16px;
+    }
+
+    .configuration-modal-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .configuration-section-navigation {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .configuration-modal-content .configuration-section-link {
+        padding: 8px 10px;
     }
 
     .table-mentions-signature-facture,

@@ -60,6 +60,8 @@ const list = document.getElementById('product_selector_list');
 const option = list.querySelector('.product-selector-option');
 return {
     modalWidth: modal.getBoundingClientRect().width,
+    listWidth: list.clientWidth,
+    optionWidth: option.getBoundingClientRect().width,
     viewportWidth: window.innerWidth,
     computedWidth: getComputedStyle(modal).width,
     computedMaxWidth: getComputedStyle(modal).maxWidth,
@@ -67,8 +69,27 @@ return {
     fontWeight: getComputedStyle(option).fontWeight,
 };
 JS);
-if ($desktopLayout['modalWidth'] < 900 || !$desktopLayout['listFits'] || (int)$desktopLayout['fontWeight'] >= 600) {
+if (
+    $desktopLayout['modalWidth'] < 900
+    || $desktopLayout['optionWidth'] < $desktopLayout['listWidth'] - 2
+    || !$desktopLayout['listFits']
+    || (int)$desktopLayout['fontWeight'] >= 600
+) {
     throw new RuntimeException('The desktop product selector layout is not usable: ' . json_encode($desktopLayout));
+}
+
+$client->manage()->window()->setSize(new WebDriverDimension(1095, 700));
+$tabletLayout = $client->executeScript(<<<'JS'
+const list = document.getElementById('product_selector_list');
+const option = list.querySelector('.product-selector-option');
+return {
+    listWidth: list.clientWidth,
+    optionWidth: option.getBoundingClientRect().width,
+    listFits: list.scrollWidth <= list.clientWidth + 1,
+};
+JS);
+if ($tabletLayout['optionWidth'] < $tabletLayout['listWidth'] - 2 || !$tabletLayout['listFits']) {
+    throw new RuntimeException('The product selector rows do not fill the list: ' . json_encode($tabletLayout));
 }
 
 $client->manage()->window()->setSize(new WebDriverDimension(390, 844));

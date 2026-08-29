@@ -14,8 +14,6 @@ OC.L10N.register(
     "Are you sure you want to delete?" : "Вы ўпэўнены, што хочаце выдаліць?",
     "Australian Dollar" : "Аўстралійскі долар",
     "Belarusian Ruble" : "Беларускі рубель",
-    "Disable" : "Адключыць",
-    "Enable" : "Уключыць",
     "All" : "Усе",
     "Search" : "Пошук",
     "Previous" : "Папярэдняя",

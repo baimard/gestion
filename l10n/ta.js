@@ -8,8 +8,6 @@ OC.L10N.register(
     "New" : "புதிய",
     "Cancel" : "இரத்து செய்க",
     "Choose" : "தெரிவுசெய்க ",
-    "Disable" : "இயலுமைப்ப",
-    "Enable" : "இயலச்செய்",
     "All" : "எல்லாம்",
     "Search" : "Search",
     "Next" : "அடுத்த",
@@ -32,6 +30,7 @@ OC.L10N.register(
     "October" : "ஐப்பசி",
     "November" : "கார்த்திகை",
     "December" : "மார்கழி",
+    "General" : "பொதுவான",
     "Close" : "மூடுக",
     "Save" : "Save",
     "About" : "பற்றி"

@@ -359,6 +359,7 @@ OC.L10N.register(
     "November" : "نوفمبر",
     "December" : "ديسمبر",
     "Total" : "المجموع",
+    "General" : "عامٌّ",
     "Loading …" : "التحميل جارٍ …",
     "Legal One" : "بيان قانوني رقم واحد",
     "Legal Two" : "بيان قانوني رقم اثنين",

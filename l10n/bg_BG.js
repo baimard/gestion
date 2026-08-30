@@ -347,6 +347,7 @@ OC.L10N.register(
     "November" : "Ноември",
     "December" : "Декември",
     "Total" : "Общо",
+    "General" : "Общи",
     "Loading …" : "Зареждане …",
     "Mail" : "Поща",
     "VAT Default" : "ДДС по подразбиране",

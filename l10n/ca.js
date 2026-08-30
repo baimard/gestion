@@ -347,6 +347,7 @@ OC.L10N.register(
     "November" : "Novembre",
     "December" : "Desembre",
     "Total" : "Total",
+    "General" : "General",
     "Loading …" : "Carregant …",
     "Mail" : "Correu",
     "Client ID" : "ID del client",

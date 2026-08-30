@@ -52,6 +52,7 @@ OC.L10N.register(
     "November" : "Лістапад",
     "December" : "Снежань",
     "Total" : "Усяго",
+    "General" : "Агульныя",
     "Loading …" : "Загрузка …",
     "Mail" : "Пошта",
     "Client ID" : "Ідэнтыфікатар кліента",

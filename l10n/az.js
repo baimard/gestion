@@ -34,6 +34,7 @@ OC.L10N.register(
     "October" : "Oktyabr",
     "November" : "Noyabr.",
     "December" : "Dekabr",
+    "General" : "Ümumi",
     "Mail" : "Məktub",
     "Client ID" : "Müştəri İD-s",
     "Client secret" : "Müxtəri sirri",

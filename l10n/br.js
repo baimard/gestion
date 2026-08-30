@@ -36,6 +36,7 @@ OC.L10N.register(
     "October" : "Here",
     "November" : "Du",
     "December" : "Kerdu",
+    "General" : "Hollek",
     "Loading …" : "O Kargañ ...",
     "Mail" : "Postel",
     "Client ID" : "ID kliant",

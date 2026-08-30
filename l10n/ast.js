@@ -76,6 +76,7 @@ OC.L10N.register(
     "November" : "Payares",
     "December" : "Avientu",
     "Total" : "Total",
+    "General" : "Xeneral",
     "Loading …" : "Cargando…",
     "Mail" : "Corréu electrónicu",
     "Client ID" : "ID de veceru",

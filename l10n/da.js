@@ -496,6 +496,7 @@ OC.L10N.register(
     "November" : "November",
     "December" : "December",
     "Total" : "Total",
+    "General" : "Generelt",
     "Loading …" : "Indlæser …",
     "Legal One" : "Juridisk",
     "Legal Two" : "Legal 2",

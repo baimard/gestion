@@ -40,6 +40,7 @@ OC.L10N.register(
     "Duplicated" : "Duplikované",
     "Nothing changed" : "Nič nebolo zmenené",
     "Are you sure you want to delete?" : "Naozaj chcete vymazať?",
+    "Drag to reorder" : "Potiahnutím zmeníte poradie",
     "Save in" : "Uložiť do",
     "There is an error" : "Nastala chyba",
     "(do not forget to show hidden folders)" : "(nezabudnite zobraziť skryté priečinky)",

@@ -40,6 +40,7 @@ OC.L10N.register(
     "Cc" : "Cc",
     "Body" : "Isi",
     "Configuration" : "Konfigurasi",
+    "Enter email" : "Masukkan email",
     "Add" : "Tambah",
     "ID" : "ID",
     "Status" : "Status",

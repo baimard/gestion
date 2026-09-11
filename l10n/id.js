@@ -10,6 +10,7 @@ OC.L10N.register(
     "Comment" : "Komentar",
     "Search contacts" : "Cari kontak",
     "Cancel" : "Membatalkan",
+    "Saved" : "Tersimpan",
     "Choose" : "Pilih",
     "Are you sure you want to delete?" : "Apakah Anda yakin ingin menghapus?",
     "Drag to reorder" : "Seret untuk mengubah urutan",
@@ -46,6 +47,7 @@ OC.L10N.register(
     "Status" : "Status",
     "Date:" : "Tanggal:",
     "Signature:" : "Tanda tangan:",
+    "Customer" : "Pelanggan",
     "Legal information" : "Informasi hukum",
     "City name" : "Nama kota",
     "Legal notice" : "Pemberitahuan hukum",
@@ -72,6 +74,7 @@ OC.L10N.register(
     "API URL" : "Tautan API",
     "Close" : "Tutup",
     "Save" : "Save",
+    "Customers" : "Pelanggan",
     "About" : "Tentang."
 },
 "nplurals=1; plural=0;");

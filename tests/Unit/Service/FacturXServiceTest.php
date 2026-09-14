@@ -94,7 +94,7 @@ class FacturXServiceTest extends TestCase {
 		$this->assertSame(3, substr_count($xml, '<ram:IncludedNote>'));
 	}
 
-	public function testBuildsSellerAndBuyerElectronicAddresses(): void {
+	public function testFallsBackToEmailElectronicAddressesWithoutFrenchIdentifiers(): void {
 		$service = new FacturXService();
 		$invoice = (object)[
 			'date' => '2026-08-06',
@@ -121,6 +121,42 @@ class FacturXServiceTest extends TestCase {
 			$xml
 		);
 		$this->assertSame(2, substr_count($xml, '<ram:URIUniversalCommunication>'));
+	}
+
+	public function testUsesFrenchSirenElectronicAddressesForPlatformRouting(): void {
+		$service = new FacturXService();
+		$invoice = (object)[
+			'date' => '2026-08-06',
+			'date_paiement' => '2026-09-06',
+			'num' => 'F-FRENCH-ENDPOINTS',
+		];
+		$company = (object)[
+			'legal_two' => 'SIREN: 891577470',
+			'mail' => 'seller@example.com',
+		];
+		$customer = (object)[
+			'company_identification' => '493845341',
+			'mail' => 'buyer@example.com',
+		];
+		$products = [(object)[
+			'description' => 'Service',
+			'prix_unitaire' => 100,
+			'quantite' => 1,
+			'vat' => 20,
+		]];
+
+		$xml = $service->buildXml($invoice, $company, $products, $customer);
+
+		$this->assertSame(2, substr_count($xml, '<ram:URIID schemeID="0225">'));
+		$this->assertStringContainsString(
+			'<ram:URIID schemeID="0225">891577470</ram:URIID>',
+			$xml
+		);
+		$this->assertStringContainsString(
+			'<ram:URIID schemeID="0225">493845341</ram:URIID>',
+			$xml
+		);
+		$this->assertStringNotContainsString('schemeID="EM"', $xml);
 	}
 
 	public function testUsesCompanyNameForBuyerWhenAvailable(): void {

@@ -360,7 +360,10 @@ XML;
         $sellerZip = htmlspecialchars($company->zip_code ?? '', ENT_XML1);
 
         $sellerCountry = htmlspecialchars($company->pays ?? 'FR', ENT_XML1);
-		$sellerEndpointXml = $this->buildElectronicAddress((string)($company->mail ?? ''));
+		$sellerEndpointXml = $this->buildElectronicAddress(
+			$sellerSiren,
+			(string)($company->mail ?? '')
+		);
 
 		$buyerCompanyName = trim((string)($customer->entreprise ?? $invoice->entreprise ?? ''));
 		$buyerPersonName = trim(
@@ -377,11 +380,14 @@ XML;
         $buyerZip = htmlspecialchars($customer->zip_code ?? '', ENT_XML1);
         $buyerCity = htmlspecialchars($customer->city_name ?? '', ENT_XML1);
         $buyerCountry = htmlspecialchars($customer->country_code ?? 'FR', ENT_XML1);
-		$buyerEndpointXml = $this->buildElectronicAddress((string)($customer->mail ?? ''));
 		$buyerCompanyId = trim($customer->company_identification ?? '');
 		$buyerVatId = htmlspecialchars(trim($customer->vat_number ?? ''), ENT_XML1);
 		$buyerSiret = ElectronicInvoiceIdentifiers::siretFrom($buyerCompanyId);
 		$buyerSiren = ElectronicInvoiceIdentifiers::sirenFrom($buyerCompanyId);
+		$buyerEndpointXml = $this->buildElectronicAddress(
+			$buyerSiren,
+			(string)($customer->mail ?? '')
+		);
 		$buyerSiretXml = $buyerSiret !== '' ? "<ram:GlobalID schemeID=\"0009\">{$buyerSiret}</ram:GlobalID>" : '';
 		$buyerSirenXml = $buyerSiren !== '' ? "<ram:SpecifiedLegalOrganization><ram:ID schemeID=\"0002\">{$buyerSiren}</ram:ID></ram:SpecifiedLegalOrganization>" : '';
         $buyerVatIdXml = $buyerVatId !== '' ? "<ram:SpecifiedTaxRegistration><ram:ID schemeID=\"VA\">{$buyerVatId}</ram:ID></ram:SpecifiedTaxRegistration>" : '';
@@ -538,8 +544,14 @@ XML;
 XML;
     }
 
-	private function buildElectronicAddress(string $email): string
+	private function buildElectronicAddress(string $siren, string $email): string
 	{
+		if ($siren !== '') {
+			$siren = htmlspecialchars($siren, ENT_XML1);
+
+			return "<ram:URIUniversalCommunication><ram:URIID schemeID=\"0225\">{$siren}</ram:URIID></ram:URIUniversalCommunication>";
+		}
+
 		$email = trim($email);
 		if ($email === '') {
 			return '';

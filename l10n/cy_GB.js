@@ -42,6 +42,7 @@ OC.L10N.register(
     "October" : "Hydref",
     "November" : "Tachwedd",
     "December" : "Rhagfyr",
+    "General" : "Cyffredinol",
     "Loading …" : "Yn llwytho …",
     "Mail" : "E-bost",
     "Close" : "Cau",

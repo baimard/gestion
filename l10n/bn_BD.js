@@ -34,6 +34,7 @@ OC.L10N.register(
     "October" : "অক্টোবর",
     "November" : "নভেম্বর",
     "December" : "ডিসেম্বর",
+    "General" : "সাধারণ",
     "Mail" : "মেইল",
     "Client ID" : "ক্লায়েন্ট পরিচিতি",
     "Close" : "বন্ধ",

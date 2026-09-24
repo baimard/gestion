@@ -18,6 +18,8 @@ OC.L10N.register(
     "Send" : "পাঠাও",
     "Documentation" : "নথিবদ্ধকরণ",
     "Version" : "ভার্সন",
+    "From" : "From",
+    "To" : "To",
     "Configuration" : "কনফিগারেসন",
     "Add" : "যোগ কর",
     "Signature:" : "স্বাক্ষর:",

@@ -122,7 +122,7 @@ OC.L10N.register(
     "Cuban Peso" : "Kubánske Peso",
     "Cape Verdean Escudo" : "Kapverdské Escudo",
     "Czech Koruna" : "Česká Koruna",
-    "Djiboutian Franc" : "Džibutský Frank",
+    "Djiboutian Franc" : "Džibutský frank",
     "Danish Krone" : "Dánska koruna",
     "Dominican Peso" : "Dominikánske Peso",
     "Algerian Dinar" : "Alžírsky Dinár",

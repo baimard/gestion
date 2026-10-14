@@ -21,6 +21,8 @@ OC.L10N.register(
     "Gestion" : "Gestion",
     "Search contacts" : "Поиск контактов",
     "Cancel" : "Отменить",
+    "Saving…" : "Сохранение…",
+    "Saved" : "Сохранено",
     "Choose work folder" : "Выбрать рабочую папку",
     "Choose" : "Выберите",
     "Please create a new product" : "Пожалуйста, создайте новый продукт",

@@ -34,6 +34,7 @@ OC.L10N.register(
     "Please create a new product" : "Creeu un producte nou",
     "Nothing changed" : "Res ha canviat",
     "Are you sure you want to delete?" : "Esteu segur que voleu suprimir?",
+    "Drag to reorder" : "Arrossega per reordenar",
     "Save in" : "Desa a",
     "There is an error" : "S'ha produït un error",
     "(do not forget to show hidden folders)" : "(no oblideu mostrar les carpetes ocultes)",

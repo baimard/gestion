@@ -366,6 +366,7 @@ OC.L10N.register(
     "Empty if not used" : "prázdne, ak nie je použité",
     "Your invoice/quote" : "Vaša faktúra/cenová ponuka",
     "Body" : "Telo",
+    "Dear," : "Dobrý deň,",
     "Attached to this email you will find a new document." : "V prílohe tohto e-mailu nájdete nový dokument.",
     "Best regards," : "S pozdravom,",
     "Configuration help" : "Pomoc s konfiguráciou",

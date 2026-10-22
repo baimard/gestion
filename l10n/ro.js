@@ -13,6 +13,8 @@ OC.L10N.register(
     "Cancel" : "Anulare",
     "Saving…" : "Se salvează…",
     "Choose" : "Alege",
+    "Are you sure you want to delete?" : "Sigur vrei să ștergi?",
+    "Drag to reorder" : "Trage pentru a reordona",
     "All" : "Toate ",
     "Search" : "Caută",
     "First" : "prima",

@@ -62,6 +62,7 @@ OC.L10N.register(
     "October" : "Octombrie",
     "November" : "Noiembrie",
     "December" : "Decembrie",
+    "Total" : "Total",
     "General" : "General",
     "Loading …" : "Se încarcă…",
     "Mail" : "Mail",
@@ -69,6 +70,7 @@ OC.L10N.register(
     "Client secret" : "Secret client",
     "Close" : "Închide",
     "Save" : "Save",
+    "Customers" : "Clienți",
     "About" : "Despre"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");

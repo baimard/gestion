@@ -14,6 +14,9 @@ jobs:
   container:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Check actor permission
         uses: skjnldsv/check-actor-permission@69e92a3c4711150929bca9fcf34448c5bf5526e7 # v3.0
@@ -73,6 +76,14 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Audit locked PHP dependencies
+        working-directory: ${{ env.APP_NAME }}
+        run: composer audit --locked
+
+      - name: Audit locked JavaScript dependencies
+        working-directory: ${{ env.APP_NAME }}
+        run: npm audit --package-lock-only --audit-level=low
+
       - name: Install Composer dependencies (no-dev)
         run: |
           cd ${{ env.APP_NAME }}
@@ -80,7 +91,7 @@ jobs:
 
       - name: Install JavaScript dependencies
         working-directory: ${{ env.APP_NAME }}
-        run: npm install
+        run: npm ci
 
       - name: Build production JavaScript
         working-directory: ${{ env.APP_NAME }}

@@ -13,6 +13,7 @@ OC.L10N.register(
     "Choose" : "Zgjidhni",
     "All" : "Të gjithë",
     "Search" : "Kërko",
+    "Showing 0 to 0 of 0 entries" : "Po shfaqen 0 deri 0 nga 0 zëra",
     "Next" : "Tjetër",
     "Previous" : "I mëparshëm",
     "Actions" : "Veprimet",

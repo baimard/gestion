@@ -14,6 +14,7 @@ OC.L10N.register(
     "Choose" : "Velja",
     "All" : "Allt",
     "Search" : "Search",
+    "Showing 0 to 0 of 0 entries" : "Sýni 0 til 0 af 0 færslum",
     "First" : "fyrsta",
     "Last" : "síðasta",
     "Next" : "Næsta",

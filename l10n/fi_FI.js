@@ -19,6 +19,7 @@ OC.L10N.register(
     "There is an error" : "Tapahtui virhe",
     "All" : "Kaikki",
     "Search" : "Etsi",
+    "Showing 0 to 0 of 0 entries" : "Näytetään 0–0 / 0 merkintää",
     "Processing …" : "Käsitellään…",
     "First" : "Ensimmäinen",
     "Last" : "Viimeinen",

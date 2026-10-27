@@ -42,6 +42,7 @@ OC.L10N.register(
     "Contact" : "Контакт",
     "Changelog" : "Листа на промени",
     "Version" : "Верзија",
+    "Releases" : "Изданија",
     "Send an email" : "Испрати е-пошта",
     "From" : "Од",
     "To" : "До",

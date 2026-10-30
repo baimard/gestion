@@ -18,6 +18,7 @@ OC.L10N.register(
     "Choose" : "Избери",
     "Save in" : "Зачувај во",
     "There is an error" : "Настана грешка",
+    "Macedonian Denar" : "Македонски денар",
     "All" : "Сите",
     "Search" : "Барај",
     "Showing 0 to 0 of 0 entries" : "Прикажани 0 до 0 од 0 записи",

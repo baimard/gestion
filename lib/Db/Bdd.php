@@ -771,8 +771,12 @@ class Bdd {
         if (!in_array($table, ['devis','facture'], true)) throw new \InvalidArgumentException('Invalid document type.');
         $this->db->beginTransaction();
         try {
-            $this->requireRecord($table, $id, $company);
+            $row = $this->requireRecord($table, $id, $company);
             $this->execSQLNoData('UPDATE ' . $this->tableprefix . $table . ' SET locked = 1 WHERE id = ? AND id_configuration = ?', [$id, $company]);
+            if ($table === 'facture') {
+                $this->requireRecord('devis', (int)$row['id_devis'], $company);
+                $this->execSQLNoData('UPDATE ' . $this->tableprefix . 'devis SET locked = 1 WHERE id = ? AND id_configuration = ?', [(int)$row['id_devis'], $company]);
+            }
             $this->db->commit();
         } catch (\Throwable $e) { $this->db->rollBack(); throw $e; }
     }

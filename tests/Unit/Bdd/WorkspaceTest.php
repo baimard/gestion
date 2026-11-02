@@ -81,6 +81,7 @@ class WorkspaceTest extends TestCase {
         $f = $this->fixture();
         $invoice = $this->db->insertFacture($this->company, $f['quote']);
         $this->db->lockDocument('facture', $invoice['id'], $this->company);
+        $this->assertSame(1, (int)json_decode($this->db->getDevis($this->company), true)[0]['locked']);
         foreach ([['devis','num',$f['quote']], ['produit_devis','quantite',$f['line']], ['produit','prix_unitaire',$f['product']], ['client','nom',$f['client']]] as [$table,$column,$id]) {
             try { $this->db->gestion_update($table,$column,'2',$id,$this->company); $this->fail('Locked mutation accepted: ' . $table); }
             catch (\DomainException $e) { $this->assertNotEmpty($e->getMessage()); }

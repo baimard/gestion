@@ -49,7 +49,10 @@ return [
         ['name' => 'pdf#sendPersonalMail', 'url' => '/personal-mail/send', 'verb' => 'POST'],
         ['name' => 'pdf#savePDF', 'url' => '/savePDF', 'verb' => 'POST'],
 
-        ['name' => 'admin#backup', 'url' => '/backup', 'verb' => 'GET'],
+        ['name' => 'admin#backup', 'url' => '/backup', 'verb' => 'POST'],
+        ['name' => 'admin#restore', 'url' => '/restore', 'verb' => 'POST'],
+        ['name' => 'crud#lockDocument', 'url' => '/documents/lock', 'verb' => 'POST'],
+        ['name' => 'crud#history', 'url' => '/history', 'verb' => 'GET'],
 
         ['name' => 'company#createCompany', 'url' => '/createCompany', 'verb' => 'PUT'],
         ['name' => 'company#deleteCompany', 'url' => '/deleteCompany', 'verb' => 'DELETE'],

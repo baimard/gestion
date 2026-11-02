@@ -16,7 +16,6 @@ module.exports =
       legalnotice: './src/js/legalnotice.js',
       adminSection: './src/js/adminSection.js',
       configuration: './src/js/configuration.js',
-      pdf: './src/js/pdf.js',
     },
     output: {
       filename: '../js/[name].app.js',

@@ -15,7 +15,7 @@
 		<ul class="app-navigation">
 			<li class="app-navigation-entry">
 				<a class="nav-link" href="<?= $_['url']['index']; ?>">
-					<NcAppNavigationItem name="Loading Item" :loading="true" /> <?php p($l->t('Customers')); ?>
+					<?php p($l->t('Customers')); ?>
 				</a>
 				<span class="nav-stats" id="statsclient">
 					<div class="loader"></div>

@@ -15,6 +15,24 @@ class CrudController extends Controller {
 		$this->dataService = $dataService;
 	}
 
+    /** @NoAdminRequired */
+    #[UseSession]
+    public function lockDocument(string $table, int $id): DataResponse {
+        return $this->result(function () use ($table, $id) { $this->dataService->lockDocument($table, $id); return new DataResponse(['locked' => true]); });
+    }
+
+    /** @NoAdminRequired */
+    #[UseSession]
+    public function history(int $before = 0): DataResponse {
+        return new DataResponse($this->dataService->history($before));
+    }
+
+    private function result(callable $action) {
+        try { return $action(); }
+        catch (\DomainException $e) { return new DataResponse(['message' => $e->getMessage()], 409); }
+        catch (\InvalidArgumentException $e) { return new DataResponse(['message' => $e->getMessage()], 400); }
+    }
+
 	/**
 	 * @NoAdminRequired
 	 * @param string $table
@@ -25,7 +43,7 @@ class CrudController extends Controller {
 	 */
 	#[UseSession]
 	public function update($table, $column, $data, $id) {
-		return $this->dataService->update($table, $column, $data, $id);
+		return $this->result(fn () => $this->dataService->update($table, $column, $data, $id));
 	}
 
 	/**
@@ -47,7 +65,7 @@ class CrudController extends Controller {
 	 */
 	#[UseSession]
 	public function drop($id, $value) {
-		return $this->dataService->drop($id, $value);
+		return $this->result(fn () => $this->dataService->drop($id, $value));
 	}
 
 	/** @NoAdminRequired */
@@ -69,6 +87,6 @@ class CrudController extends Controller {
 	 */
 	#[UseSession]
 	public function delete($table, $id) {
-		return $this->dataService->delete($table, $id);
+		return $this->result(fn () => $this->dataService->delete($table, $id));
 	}
 }

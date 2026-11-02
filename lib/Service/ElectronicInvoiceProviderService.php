@@ -4,6 +4,7 @@ namespace OCA\Gestion\Service;
 
 use OCP\IDBConnection;
 use OCP\ISession;
+use OCA\Gestion\Db\Bdd;
 
 class ElectronicInvoiceProviderService {
 	private const TABLE = 'gestion_configuration';
@@ -24,6 +25,8 @@ class ElectronicInvoiceProviderService {
 	public function __construct(
 		private IDBConnection $db,
 		private ISession $session,
+        private Bdd $myDb,
+        private $UserId,
 	) {
 	}
 
@@ -33,6 +36,7 @@ class ElectronicInvoiceProviderService {
 
 	public function getCurrentConfiguration(): array {
 		$companyId = (int)$this->session->get('CurrentCompany');
+        if ($companyId > 0 && !in_array((string)$companyId, array_map('strval', array_column($this->myDb->getCompaniesList($this->UserId), 'id')), true)) throw new \DomainException('Company access denied.');
 		if ($companyId <= 0) {
 			return ['provider' => '', 'credentials' => [], 'configured' => false];
 		}
@@ -59,6 +63,7 @@ class ElectronicInvoiceProviderService {
 
 	public function saveCurrentConfiguration(string $provider, array $credentials): array {
 		$companyId = (int)$this->session->get('CurrentCompany');
+        if ($companyId > 0 && !in_array((string)$companyId, array_map('strval', array_column($this->myDb->getCompaniesList($this->UserId), 'id')), true)) throw new \DomainException('Company access denied.');
 		if ($companyId <= 0) {
 			throw new \RuntimeException('No current company selected.');
 		}
@@ -82,6 +87,7 @@ class ElectronicInvoiceProviderService {
 			->where($qb->expr()->eq('id', $qb->createNamedParameter($companyId)))
 			->executeStatement();
 
+        $this->myDb->recordHistory($companyId, 'provider', 'configuration', $companyId, ['provider' => $provider]);
 		return [
 			'provider' => $provider,
 			'credentials' => $sanitized,

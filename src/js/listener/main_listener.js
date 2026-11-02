@@ -1,7 +1,8 @@
+import '../modules/icons.js';
+import '../modules/workspace.js';
 import { Client } from '../objects/client.js';
 import { Devis } from '../objects/devis.js';
 import {
-    applyMouseOverStyles,
     enableInlineEdit,
     isInlineEditable,
     saveEditableElement,
@@ -39,7 +40,6 @@ import { initializeNavigationToggle } from '../modules/navigation.js';
 
 let lastKeyEventTime = 0;
 
-const HOVERABLE_CLASSES = ["editable", "loadSelect", "selectable"];
 
 function registerMainListeners() {
     initializeNavigationToggle();
@@ -47,7 +47,6 @@ function registerMainListeners() {
     document.body.addEventListener('change', handleBodyChange);
     document.body.addEventListener('keydown', handleBodyKeydown);
     document.body.addEventListener('focusout', handleBodyFocusout);
-    document.body.addEventListener('mouseover', handleBodyMouseover);
 }
 
 function handleBodyClick(event) {
@@ -215,12 +214,6 @@ function handleBodyFocusout(event) {
     }
 
     saveEditableElement(event.target);
-}
-
-function handleBodyMouseover(event) {
-    if (HOVERABLE_CLASSES.some(className => event.target.classList.contains(className))) {
-        applyMouseOverStyles(event.target);
-    }
 }
 
 document.addEventListener('DOMContentLoaded', registerMainListeners);

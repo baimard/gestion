@@ -51,6 +51,7 @@ class FacturXService
 		?object $customer = null
     ): string {
 		$customer ??= $invoice;
+		$products = array_values(array_filter($products, fn ($p) => empty($p->header)));
 		$this->assertConsistentVatExemptionReasons($products);
 
         $totals = $this->calculateTotals($products);
@@ -104,9 +105,7 @@ class FacturXService
 
         foreach ($products as $product) {
 
-            $lineTotal =
-                (float)$product->prix_unitaire *
-                (float)$product->quantite;
+            $lineTotal = CommercialMath::lineTotal($product);
 
             $totalHT += $lineTotal;
 
@@ -134,6 +133,8 @@ class FacturXService
             $vatLines[$key]['amount'] += $lineTotal * $vatRate / 100;
         }
 
+        foreach ($vatLines as &$vatLine) $vatLine['amount'] = round($vatLine['base'] * $vatLine['rate'] / 100, 2);
+        unset($vatLine);
         $totalVAT = array_sum(array_column($vatLines, 'amount'));
 
         return [
@@ -154,11 +155,8 @@ class FacturXService
 
         foreach ($products as $product) {
 
-            $lineTotal = round(
-                (float)$product->prix_unitaire *
-                (float)$product->quantite,
-                4
-            );
+            $lineTotal = number_format(CommercialMath::lineTotal($product), 2, '.', '');
+            $netPrice = rtrim(rtrim(number_format(CommercialMath::netPrice($product), 10, '.', ''), '0'), '.');
 
 			$vatRate = $this->getVatRate($product);
 			$vatCategory = $this->getVatCategory($product, $vatRate);
@@ -183,7 +181,7 @@ class FacturXService
 
     <ram:SpecifiedLineTradeAgreement>
         <ram:NetPriceProductTradePrice>
-            <ram:ChargeAmount>{$product->prix_unitaire}</ram:ChargeAmount>
+            <ram:ChargeAmount>{$netPrice}</ram:ChargeAmount>
         </ram:NetPriceProductTradePrice>
     </ram:SpecifiedLineTradeAgreement>
 

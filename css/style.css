@@ -909,3 +909,97 @@ button.electronic-invoice-help:focus-visible {
         -webkit-print-color-adjust: exact;
     }
 }
+
+/* Nextcloud-native workspace: theme tokens, spacious surfaces and keyboard focus. */
+:root {
+    --gestion-text-muted: var(--color-text-maxcontrast);
+    --gestion-border: var(--color-border);
+    --gestion-border-light: var(--color-border-dark);
+    --gestion-surface: var(--color-background-hover);
+    --gestion-surface-alt: var(--color-background-dark);
+    --gestion-radius: var(--border-radius-large, 12px);
+    --gestion-info-background: var(--color-primary-element-light);
+    --gestion-info-text: var(--color-main-text);
+    --gestion-info-border: var(--color-primary-element);
+}
+#app-content { background: var(--color-main-background); color: var(--color-main-text); }
+#app-content #contentTable { padding: 20px 28px 40px; max-width: 1600px; margin-inline: auto; }
+#app .menu-content { gap: 8px; flex-wrap: wrap; padding-block: 12px; border-bottom: 1px solid var(--color-border); margin-bottom: 24px; }
+#app button, #app input, #app select { border-radius: var(--border-radius-element, 8px); }
+#app button { min-height: 40px; transition: background-color .15s, box-shadow .15s; }
+#app button:focus-visible, #app a:focus-visible, .gestion-workspace-dialog button:focus-visible { outline: 2px solid var(--color-main-text); outline-offset: 3px; }
+#app .tabledt { border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-border); border-radius: var(--border-radius-large); overflow: hidden; }
+#app .tabledt th { background: var(--color-background-hover); font-weight: 600; padding: 14px 12px; color: var(--color-main-text); }
+#app .tabledt td { padding: 12px; border-bottom: 1px solid var(--color-border); vertical-align: middle; }
+#app .tabledt tbody tr:hover td { background: var(--color-primary-element-light); }
+#app .editable:hover, #app .editableNumeric:hover, #app .editableNumber:hover { background: var(--color-background-hover); border-radius: 6px; cursor: text; }
+.gestion-management-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; padding: 24px 28px 40px; max-width: 1600px; margin-inline: auto; }
+.gestion-card { padding: 24px; border: 1px solid var(--color-border); border-radius: var(--border-radius-large, 16px); background: var(--color-main-background); color: var(--color-main-text); }
+.gestion-card h2 { margin: 0 0 12px; font-size: 20px; font-weight: 600; line-height: 1.4; }
+.gestion-card p { margin: 12px 0; line-height: 1.6; }
+.gestion-card-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: start; margin-top: 20px; }
+.gestion-file-label, #gestion-precision label { display: grid; gap: 6px; font-weight: 600; }
+.gestion-file-label input { max-width: 100%; font-weight: normal; }
+.gestion-hint { color: var(--color-text-maxcontrast); font-size: 13px; }
+#gestion-precision { display: grid; gap: 16px; margin-top: 20px; }
+#gestion-precision input { max-width: 120px; }
+#gestion-precision button { justify-self: start; }
+.gestion-document-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 16px; margin: 12px 0 24px; border: 1px solid var(--color-border); border-radius: 12px; background: var(--color-background-hover); }
+.gestion-status { display: inline-flex; align-items: center; min-height: 32px; border-radius: 100px; padding: 4px 14px; background: var(--color-primary-element-light); color: var(--color-main-text); font-weight: 600; }
+.gestion-document-toolbar[data-locked="1"] .gestion-status { border: 1px solid var(--color-success); }
+.gestion-workspace-dialog { width: min(680px, calc(100vw - 32px)); max-height: 85dvh; overflow: auto; box-sizing: border-box; padding: 28px; border: 1px solid var(--color-border); border-radius: var(--border-radius-large, 16px); background: var(--color-main-background); color: var(--color-main-text); box-shadow: 0 16px 64px #0003; }
+.gestion-workspace-dialog::backdrop { background: #0006; backdrop-filter: blur(3px); }
+.gestion-workspace-dialog h2 { font-size: 22px; line-height: 1.4; margin: 0 0 16px; }
+.gestion-workspace-dialog p { margin-block: 12px; line-height: 1.6; }
+.gestion-workspace-dialog button { min-height: 44px; }
+.gestion-history { list-style: none; padding: 0; }
+.gestion-history li { padding: 16px 0; border-bottom: 1px solid var(--color-border); overflow-wrap: anywhere; }
+.gestion-history li p { margin: 4px 0; color: var(--color-text-maxcontrast); }
+.gestion-contact-list { display: grid; gap: 6px; max-height: 45dvh; overflow: auto; margin-block: 16px; }
+.gestion-contact-list-item { text-align: start; white-space: normal; padding: 12px; height: auto; }
+.gestion-contact-list-item.active { background: var(--color-primary-element-light); border-color: var(--color-primary-element); }
+@media (max-width: 768px) {
+    #app-content #contentTable { padding: 12px; overflow-x: auto; }
+    .gestion-management-grid { padding: 12px; gap: 12px; }
+    .gestion-card, .gestion-workspace-dialog { padding: 20px; }
+    .gestion-document-toolbar { align-items: stretch; }
+    .gestion-document-toolbar button { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) { #app button { transition: none; } }
+#app { margin-right: 0; }
+#app-content { flex: 1 1 0; min-width: 0; }
+#app-content-wrapper { display: block !important; width: 100%; min-width: 0; }
+#app-navigation .app-navigation-entry a { font-size: 15px; border-radius: 8px; margin: 2px 8px; min-height: 44px; }
+#app-navigation .app-navigation-item { font-size: 12px; letter-spacing: .04em; color: var(--color-text-maxcontrast); margin-top: 16px; }
+#app .material-symbols[data-local-icon], #app .material-symbols-outlined[data-local-icon] { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin: 0 4px; font-size: 0; vertical-align: middle; }
+#app button[hidden] { display: none; }
+.gestion-management-grid { align-items: start; }
+#app .menu-content > .material-symbols-outlined { opacity: .5; }
+@media (max-width: 1023px) {
+    #app #app-navigation { display: none; }
+    #app.gestion-mobile-navigation-open #app-navigation { display: block; position: fixed; inset: 50px auto 0 0; width: 280px; z-index: 1600; box-shadow: 8px 0 40px #0003; background: var(--color-main-background); }
+    #app #app-content { width: 100%; margin-left: 0; }
+    #app .gestion-management-grid { grid-template-columns: 1fr; }
+    #app .gestion-card input[type="file"] { width: 100%; box-sizing: border-box; }
+}
+#app .gestion-settings-page .gestion-management-grid { padding: 0; }
+.gestion-page-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding: 12px 0 28px; }
+.gestion-heading-title { display: flex; align-items: center; gap: 16px; }
+.gestion-page-heading h1 { font-size: 28px; font-weight: 600; line-height: 1.3; margin: 0; }
+.gestion-page-heading p { color: var(--color-text-maxcontrast); margin-top: 4px; line-height: 1.5; }
+.gestion-page-heading .gestion-card-actions { margin: 0; }
+.gestion-settings-page .gestion-card-actions { align-items: end; }
+.gestion-settings-page #shareUsersTable { margin-top: 20px; }
+.gestion-settings-page #shareUsersTable th, .gestion-settings-page #shareUsersTable td { padding: 10px; font-size: 13px; }
+.gestion-danger-card { border-color: var(--color-error); }
+#app .gestion-danger-card button { color: var(--color-error); background: var(--color-main-background); border-color: var(--color-error); }
+#app .gestion-management-grid input { max-width: 100%; box-sizing: border-box; }
+@media (max-width: 768px) { .gestion-page-heading h1 { font-size: 24px; } .gestion-page-heading p { font-size: 14px; } .gestion-heading-title { align-items: start; } }
+#app-navigation a[aria-current="page"] { background: var(--color-primary-element-light); color: var(--color-main-text); font-weight: 600; }
+#app #app-navigation .app-navigation-entry a { font-size: 15px; }
+#app .gestion-card button:not(.primary), #app .gestion-page-heading button:not(.primary), #app .gestion-navigation-toggle { background: var(--color-background-hover); color: var(--color-main-text); border-color: var(--color-border); }
+#app .gestion-card button.primary { background: var(--color-primary-element); color: var(--color-primary-element-text); }
+.gestion-settings-page .gestion-card-actions label { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+.gestion-settings-page .gestion-card-actions label input { width: 100%; min-height: 40px; margin: 0; }
+#app .gestion-danger-card { border-color: var(--color-error-text, #a72c2c); }
+#app .gestion-danger-card button { color: var(--color-error-text, #a72c2c); border-color: var(--color-error-text, #a72c2c); }

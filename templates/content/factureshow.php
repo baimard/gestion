@@ -8,6 +8,11 @@
     <div class="menu-content" data-html2canvas-ignore>
         <?php print_unescaped($this->inc('navigation/toggle')); ?>
     </div>
+    <div class="gestion-document-toolbar" data-html2canvas-ignore data-document-lock data-table="facture" data-id="<?php p($_['facture'][0]->id); ?>" data-locked="<?php p((int)($_['facture'][0]->locked ?? 0)); ?>">
+        <span class="gestion-status"><?php p($l->t('Draft')); ?></span>
+        <button type="button" class="primary" id="lock-document"><?php p($l->t('Finalize and lock')); ?></button>
+        <button type="button" data-open-history><?php p($l->t('Change history')); ?></button>
+    </div>
     <div id="PDFcontent" style="--gestion-logo-main-width: <?php echo $logoWidth; ?>px; --gestion-logo-header-width: <?php echo $logoHeaderWidth; ?>px; --gestion-logo-footer-width: <?php echo $logoFooterWidth; ?>px;">
     <div class="titre-centre">
         <span>
@@ -59,7 +64,7 @@
         <button id="facturx" type="button" class="mb-2 btn btn-outline-primary" data-html2canvas-ignore data-name="" data-factureid="<?php echo $_['facture'][0]->id; ?>"><?php p($l->t('Generate electronic invoice (pdf+xml)'));?></button>
         <button id="facturx-xml" type="button" class="mb-2 btn btn-outline-info" data-html2canvas-ignore data-name="" data-factureid="<?php echo $_['facture'][0]->id; ?>"><?php p($l->t('Generate electronic part (xml)'));?></button>
         <?php if ($iopoleConfigured): ?><button id="facturx-iopole" type="button" class="mb-2 btn btn-outline-warning" data-html2canvas-ignore data-name="" data-factureid="<?php echo $_['facture'][0]->id; ?>"><?php p($l->t('Send to Iopole'));?></button><?php endif; ?>
-        <table id="produits" class="table-produit" data-type="facture"><thead><tr><th><?php p($l->t('Reference'));?></th><th><?php p($l->t('Designation'));?></th><th><?php p($l->t('Comment'));?></th><th><?php p($l->t('Quantity'));?></th><th><?php p($l->t('Unit price without VAT'));?></th><th><?php p($l->t('Total without VAT'));?></th><th><?php p($l->t('VAT'));?></th><th><?php p($l->t('Total including VAT'));?></th></tr></thead><tbody></tbody></table>
+        <table id="produits" class="table-produit" data-type="facture"><thead><tr><th><?php p($l->t('Reference'));?></th><th><?php p($l->t('Designation'));?></th><th><?php p($l->t('Comment'));?></th><th><?php p($l->t('Quantity'));?></th><th><?php p($l->t('Unit price without VAT'));?></th><th><?php p($l->t('Discount')); ?> (%)</th><th><?php p($l->t('Total without VAT'));?></th><th><?php p($l->t('VAT'));?></th><th><?php p($l->t('Total including VAT'));?></th></tr></thead><tbody></tbody></table>
     </div>
 
     <div class="table-section-title"><?php p($l->t('VAT price per percentage'));?></div>

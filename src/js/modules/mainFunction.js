@@ -4,7 +4,9 @@ import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest
 import { generateUrl } from "@nextcloud/router";
 import { csrfHeaders } from "./csrf.js";
 export var baseUrl = generateUrl('/apps/gestion');
-export var cur = null;
+export var cur = new Intl.NumberFormat('en', {style: 'currency', currency: 'EUR'});
+export var unitCurrency = cur;
+export var quantityFormat = new Intl.NumberFormat('en', {maximumFractionDigits: 6});
 export const defaultCurrencyCode = 'EUR';
 export const defaultCurrencyLocale = 'en-EN';
 
@@ -197,7 +199,10 @@ export function getCurrency(response) {
     const currency = normalizeCurrencyCode(myresp.devise);
 
     try {
-        cur = new Intl.NumberFormat(locale, { style: 'currency', currency: currency, minimumFractionDigits: 2 });
+        cur = new Intl.NumberFormat(locale, { style: 'currency', currency: currency, minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const precision = Math.max(0, Math.min(6, Number(myresp.price_decimals ?? 2)));
+        unitCurrency = new Intl.NumberFormat(locale, { style: 'currency', currency, minimumFractionDigits: precision, maximumFractionDigits: precision });
+        quantityFormat = new Intl.NumberFormat(locale, { maximumFractionDigits: Math.max(0, Math.min(6, Number(myresp.quantity_decimals ?? 2))) });
     } catch {
         cur = new Intl.NumberFormat(defaultCurrencyLocale, { style: 'currency', currency: defaultCurrencyCode, minimumFractionDigits: 2 });
     }
@@ -236,16 +241,6 @@ return fetch(url, options)
  * @param {*} response 
  * 
  */
-export function checkAutoIncrement(response){
-    var myresp = JSON.parse(response)[0];
-    if(myresp.auto_invoice_number==1){
-        document.querySelectorAll('.deleteItem').forEach(element => element.remove());
-        document.querySelectorAll(".factureNum").forEach(element => {
-            element.classList.remove("editable");
-        });
-    }
-}
-
 /**
  * Format number if it's monetary
  * @param {*} el 
@@ -255,13 +250,11 @@ export function updateNumerical(el, format_number=true){
     el.innerText=el.innerText.replace(',', '.').replace(/[^0-9.-]+/g,"")
     updateEditable(el);
     if (
-        el.dataset.column === "quantite") {
+        ["quantite", "discount"].includes(el.dataset.column)) {
         return;
     }
     if(format_number){
-        el.innerText=cur.format(el.innerText)
-    }else{
-        el.innerText=el.innerText
+        el.innerText=unitCurrency.format(el.innerText)
     }
 }
 

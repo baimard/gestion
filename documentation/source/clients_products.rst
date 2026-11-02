@@ -83,3 +83,15 @@ l'administration fiscale.
    Une facture Factur-X ne peut actuellement contenir qu'un seul motif
    d'exonération pour l'ensemble de ses lignes de catégorie ``E``. Harmonisez
    les motifs avant de générer le document.
+
+Importer depuis les contacts Nextcloud
+---------------------------------------
+
+Le bouton **Import from Contacts** ouvre une recherche dans les carnets auxquels
+l'utilisateur connecté a accès. Sélectionnez un contact puis confirmez : son
+identité, son entreprise, son premier e-mail, son téléphone et son adresse sont
+copiés vers un nouveau client de l'entreprise courante. Le serveur retrouve le
+contact dans vos carnets avant l'import et refuse les doublons de même e-mail ou
+de même nom/prénom/entreprise. Il s'agit d'une copie ponctuelle, sans
+synchronisation ultérieure. Si aucun carnet n'est disponible, Gestion affiche
+un message sans modifier les clients.

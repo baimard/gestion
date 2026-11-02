@@ -6,6 +6,7 @@ $projectDirectory = dirname(__DIR__);
 
 require $projectDirectory . '/vendor/autoload.php';
 require $projectDirectory . '/lib/Service/ElectronicInvoiceIdentifiers.php';
+require $projectDirectory . '/lib/Service/CommercialMath.php';
 require $projectDirectory . '/lib/Service/FacturXService.php';
 
 use OCA\Gestion\Service\FacturXService;
@@ -48,6 +49,7 @@ $products = [
 	(object)[
 		'description' => 'Consulting service',
 		'prix_unitaire' => 100,
+        'discount' => 10,
 		'quantite' => 2,
 		'vat' => 20,
 		'vat_category' => 'S',

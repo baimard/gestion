@@ -1,5 +1,5 @@
 import { showError } from "@nextcloud/dialogs";
-import { baseUrl, cur, LoadDT, showDone } from "../modules/mainFunction.js";
+import { baseUrl, unitCurrency, LoadDT, showDone } from "../modules/mainFunction.js";
 import { setCsrfRequestHeader } from "../modules/csrf.js";
 import { translate as t } from '@nextcloud/l10n';
 
@@ -44,7 +44,7 @@ export class Produit {
     let myrow = [
       '<div class="editable" data-table="produit" data-column="reference" data-id="' + this.id + '">' + this.reference + '</div>',
       '<div class="editable" data-table="produit" data-column="description" data-id="' + this.id + '">' + this.description + '</div>',
-      '<div class="editableNumeric" data-table="produit" data-column="prix_unitaire" data-id="' + this.id + '">' + cur.format(this.prix_unitaire) + '</div>',
+      '<div class="editableNumeric" data-table="produit" data-column="prix_unitaire" data-raw-value="' + Number(this.prix_unitaire) + '" data-id="' + this.id + '">' + unitCurrency.format(this.prix_unitaire) + '</div>',
       '<div class="editable" data-table="produit" data-column="vat" data-id="' + this.id + '">' + this.vat + '%</div>',
       '<select class="editableSelect vat-category-select" data-table="produit" data-column="vat_category" data-id="' + this.id + '" data-current="' + this.vat_category + '" aria-label="' + t('gestion', 'Electronic invoice VAT category') + '">' + vatCategoryOptions + '</select>',
       '<button type="button" class="product-header-toggle' + (isHeader ? ' active' : '') + '" data-id="' + this.id + '" data-value="' + (isHeader ? '1' : '0') + '" aria-pressed="' + (isHeader ? 'true' : 'false') + '" aria-label="' + t('gestion', 'Use as a header row') + '"><span class="product-header-toggle-knob"><span class="material-symbols">check</span></span></button>',

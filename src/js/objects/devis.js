@@ -12,6 +12,7 @@ export class Devis {
    */
   constructor(myresp) {
     this.id = myresp.id;
+    this.locked = Number(myresp.locked) === 1;
     this.user_id = myresp.user_id;
     this.date = ((myresp.date == null || myresp.date.length === 0) ? '-' : myresp.date);
     this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
@@ -47,6 +48,11 @@ export class Devis {
         </div>
       </details>`
     ];
+    if (this.locked) {
+      myrow = myrow.map(html => html.replaceAll('class="inputDate"', 'disabled class="inputDate"').replaceAll('inline editable', 'inline').replaceAll('loadSelect_listclient', 'locked-client'));
+      myrow[2] += `<span class="gestion-status">${t('gestion', 'Locked')}</span>`;
+      myrow[6] = myrow[6].replace(/<button[^>]*class="document-action deleteItem"[\s\S]*?<\/button>/, '');
+    }
     return myrow;
   }
 

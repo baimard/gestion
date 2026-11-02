@@ -22,20 +22,20 @@
 
 	<hr />
 	<h2><?php p($l->t('Newsletter')); ?></h2>
-	<p style="font-size:14px;"><?php p($l->t('This version focuses on electronic invoicing and prepares Gestion for the French e-invoicing transition.')); ?></p>
+	<p style="font-size:14px;"><?php p($l->t('This version adds data recovery, document protection and a refreshed Nextcloud workspace.')); ?></p>
 	<ul style="font-size:14px;margin-bottom:20px;">
-		<li><?php p($l->t('Generate a complete Factur-X invoice that combines a readable PDF with embedded structured XML data.')); ?></li>
-		<li><?php p($l->t('Export the electronic XML part separately when you need to check, archive or send only the machine-readable invoice data.')); ?></li>
-		<li><?php p($l->t('Create EN16931-compatible invoice data with invoice lines, VAT breakdowns, totals, seller and buyer addresses, VAT number and payment information.')); ?></li>
-		<li><?php p($l->t('Send electronic invoices to Iopole directly from the invoice screen when the connector is configured by your administrator.')); ?></li>
-		<li><?php p($l->t('New company and customer fields help produce better electronic invoices, including VAT number, postal code, city, country code and IBAN.')); ?></li>
-		<li><?php p($l->t('Invoices now provide dedicated actions for saving the standard PDF, generating the Factur-X PDF+XML file, generating the XML file and sending the invoice to Iopole.')); ?></li>
+        <li><?php p($l->t('Back up your companies and restore them safely into new companies.')); ?></li>
+        <li><?php p($l->t('Finalize documents and protect linked customer, product and company data.')); ?></li>
+        <li><?php p($l->t('Apply commercial discounts per line, including in PDF and Factur-X calculations.')); ?></li>
+        <li><?php p($l->t('Choose the display precision for prices and quantities without truncating stored values.')); ?></li>
+        <li><?php p($l->t('Review changes by date and author in the company history.')); ?></li>
+        <li><?php p($l->t('Import customers from accessible Nextcloud address books and detect duplicates.')); ?></li>
 	</ul>
 
 	<hr/>
 	<h2><?php p($l->t('Changelog')); ?></h2>
 	<h3><?php p($l->t('Version')); ?> <?php p($_['appVersion']); ?></h3>
-	<p style="font-size:14px;"><?php p($l->t('This version focuses on electronic invoicing and prepares Gestion for the French e-invoicing transition.')); ?></p>
+	<p style="font-size:14px;"><?php p($l->t('This version adds data recovery, document protection and a refreshed Nextcloud workspace.')); ?></p>
 	<p><a href="https://github.com/baimard/gestion/releases"><?php p($l->t('Releases')); ?></a></p>
 
 	<hr/>

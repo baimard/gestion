@@ -115,3 +115,34 @@ La construction de documentation utilisée en CI est :
    python -m pip install -r documentation/requirements.txt
    python -m sphinx -W --keep-going -b html \
        documentation/source documentation/build/html
+
+Tests du nouvel espace de gestion
+----------------------------------
+
+Les tests ``WorkspaceTest``, ``BackupFormatTest``, ``CommercialMathTest`` et
+``ContactImportServiceTest`` couvrent la restauration transactionnelle, les
+relations interentreprises, la confidentialité des identifiants, les protections
+des documents et les calculs de remise. La fixture de validation Factur-X
+contient également une ligne avec remise.
+
+Deux scénarios Playwright sont disponibles dans ``tests/Browser/``. Ils sont
+volontaires et ciblent exclusivement une instance de développement locale à
+``http://127.0.0.1:8080`` avec Chromium à ``/usr/bin/chromium``. Le scénario
+``documents.cjs`` crée une entreprise d'exemple et verrouille un devis : ne pas
+l'exécuter avec un compte ou des données de production. Les captures sont
+écrites dans ``/tmp/``. Installer Playwright dans un dossier temporaire puis
+exposer ses modules via ``NODE_PATH`` ; définir ``NEXTCLOUD_TEST_USER`` et
+``NEXTCLOUD_TEST_PASSWORD`` avant de lancer les scénarios.
+
+.. code-block:: console
+
+   npm install --prefix /tmp/gestion-browser playwright
+   NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/workspace.cjs
+   NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/documents.cjs
+
+Le nettoyage supprime uniquement les chemins d'exécution dont l'absence de
+référence a été vérifiée : export texte historique, helper de debug PHP,
+hover JavaScript remplacé par CSS, fonction d'auto-incrémentation inutilisée,
+entrée Webpack PDF redondante, ancien composant Vue non monté et police
+Google distante remplacée par les SVG locaux. Les routes publiques et les
+migrations historiques sont conservées.

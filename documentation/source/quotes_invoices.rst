@@ -67,3 +67,37 @@ Les documents affichés dans Gestion reposent sur les données courantes. Après
 émission ou acceptation, enregistrez une version PDF non modifiable dans
 Nextcloud Files et appliquez les durées de conservation exigées dans votre
 juridiction.
+
+Remises commerciales
+----------------------
+
+Dans un devis modifiable, la colonne **Discount (%)** définit une remise par
+ligne, comprise entre 0 et 100 %. Elle s'applique avant la TVA. Le montant HT de
+chaque ligne est arrondi au centime, puis les bases sont regroupées par taux de
+TVA. Les totaux web, PDF, statistiques et Factur-X utilisent la remise. Les
+lignes d'en-tête restent descriptives et ne participent pas aux totaux.
+
+Dans le XML Factur-X, le prix net de la ligne intègre la remise et correspond à
+son montant HT. Cette version ne propose pas de remise globale sur le document.
+
+Verrouillage des documents
+---------------------------
+
+Le bouton **Finalize and lock** demande une confirmation puis verrouille
+irréversiblement le devis ou la facture. Les envois par e-mail et à Iopole
+verrouillent également le document avant la tentative d'envoi : un échec de
+messagerie laisse le document verrouillé et permet une nouvelle tentative.
+
+Le verrouillage est contrôlé côté serveur, y compris pour les éditions de
+lignes et les changements d'ordre. Les produits, le client et les informations
+de l'entreprise utilisés par un document verrouillé sont protégés afin qu'un
+changement du catalogue ne modifie pas un ancien document. Pour de nouveaux
+prix, dupliquez le produit ; pour modifier une offre, dupliquez le devis. Pour
+changer l'identité de l'émetteur après verrouillage, créez une nouvelle
+configuration d'entreprise. Le statut de paiement d'une facture reste éditable.
+
+Même sans verrouillage, les produits utilisés par un devis, les clients utilisés
+par un devis et les devis liés à une facture ne peuvent pas être supprimés.
+La suppression d'un devis brouillon supprime ses lignes pour éviter les
+références orphelines. Une entreprise contenant un document verrouillé ne peut
+pas être supprimée.

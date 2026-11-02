@@ -1,5 +1,5 @@
 import { showError } from "@nextcloud/dialogs";
-import { baseUrl, cur, unescapeHtml } from "../../modules/mainFunction.js";
+import { baseUrl, unitCurrency, unescapeHtml } from "../../modules/mainFunction.js";
 import { getProduitsById, updateDB } from "../../modules/ajaxRequest.js";
 import { csrfHeaders } from "../../modules/csrf.js";
 import { Client } from "../../objects/client.js";
@@ -83,7 +83,7 @@ function createProductOption(product, currentProductId) {
     description.textContent = descriptionText;
     const price = document.createElement('span');
     price.className = 'product-selector-price';
-    price.textContent = cur.format(product.prix_unitaire);
+    price.textContent = unitCurrency.format(product.prix_unitaire);
     option.append(reference, description, price);
     return option;
 }

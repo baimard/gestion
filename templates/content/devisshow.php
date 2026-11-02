@@ -8,6 +8,11 @@
     <div class="menu-content" data-html2canvas-ignore>
         <?php print_unescaped($this->inc('navigation/toggle')); ?>
     </div>
+    <div class="gestion-document-toolbar" data-html2canvas-ignore data-document-lock data-table="devis" data-id="<?php p($_['devis'][0]->devisid); ?>" data-locked="<?php p((int)($_['devis'][0]->locked ?? 0)); ?>">
+        <span class="gestion-status"><?php p($l->t('Draft')); ?></span>
+        <button type="button" class="primary" id="lock-document"><?php p($l->t('Finalize and lock')); ?></button>
+        <button type="button" data-open-history><?php p($l->t('Change history')); ?></button>
+    </div>
     <div id="PDFcontent" style="--gestion-logo-main-width: <?php echo $logoWidth; ?>px; --gestion-logo-header-width: <?php echo $logoHeaderWidth; ?>px; --gestion-logo-footer-width: <?php echo $logoFooterWidth; ?>px;">
     <div class="titre-centre">
         <span>
@@ -90,7 +95,7 @@
                     <th><?php p($l->t('Comment'));?></th>
                     <th><?php p($l->t('Quantity'));?></th>
                     <th><?php p($l->t('Unit price without VAT'));?></th>
-                    <th><?php p($l->t('Total without VAT'));?></th>
+                    <th><?php p($l->t('Discount')); ?> (%)</th><th><?php p($l->t('Total without VAT'));?></th>
                     <th><?php p($l->t('VAT'));?></th>
                     <th><?php p($l->t('Total including VAT'));?></th>
                 </tr>

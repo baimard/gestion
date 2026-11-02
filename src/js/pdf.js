@@ -137,6 +137,8 @@ async function sendDocumentByMail(detailUrl) {
       headers: csrfHeaders({ "Content-Type": "application/json" }),
       body: JSON.stringify({
         html: element.outerHTML,
+        table: isInvoice ? 'facture' : 'devis',
+        documentId: Number(sourceDocument.getElementById(isInvoice ? 'factureid' : 'devisid').dataset.id),
         name,
         to: email.to,
         subject: email.subject,

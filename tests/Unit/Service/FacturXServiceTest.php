@@ -6,6 +6,21 @@ use OCA\Gestion\Service\FacturXService;
 use PHPUnit\Framework\TestCase;
 
 class FacturXServiceTest extends TestCase {
+    public function testDiscountsAndHeaderRowsProduceMatchingNetXmlTotals(): void {
+        $invoice = (object)['date' => '2026-11-02', 'date_paiement' => '2026-12-02', 'num' => 'DISCOUNT-1'];
+        $products = [
+            (object)['description' => 'Heading', 'header' => 1, 'prix_unitaire' => 9000, 'quantite' => 1],
+            (object)['description' => 'Service', 'prix_unitaire' => 10, 'quantite' => 3, 'discount' => 10, 'vat' => 20],
+            (object)['description' => 'Rounding', 'prix_unitaire' => 0.335, 'quantite' => 1, 'vat' => 20],
+        ];
+        $xml = (new FacturXService())->buildXml($invoice, (object)[], $products);
+        $this->assertSame(2, substr_count($xml, '<ram:IncludedSupplyChainTradeLineItem>'));
+        $this->assertStringContainsString('<ram:ChargeAmount>9</ram:ChargeAmount>', $xml);
+        $this->assertStringContainsString('<ram:LineTotalAmount>27.00</ram:LineTotalAmount>', $xml);
+        $this->assertStringContainsString('<ram:TaxBasisTotalAmount>27.34</ram:TaxBasisTotalAmount>', $xml);
+        $this->assertStringContainsString('<ram:GrandTotalAmount>32.81</ram:GrandTotalAmount>', $xml);
+    }
+
 	public function testBuildsOnlyTheEn16931Profile(): void {
 		$service = new FacturXService();
 		$invoice = (object)[

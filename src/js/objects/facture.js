@@ -40,6 +40,7 @@ export class Facture {
    */
   constructor(myresp) {
     this.id = myresp.id;
+    this.locked = Number(myresp.locked) === 1;
     this.user_id = myresp.user_id;
     this.date = ((myresp.date == null || myresp.date.length === 0) ? '-' : myresp.date);
     this.num = ((myresp.num == null || myresp.num.length === 0) ? '-' : myresp.num);
@@ -82,6 +83,12 @@ export class Facture {
         </div>
       </details>`
     ];
+    if (this.locked) {
+      myrow[1] += `<span class="gestion-status">${t('gestion', 'Locked')}</span>`;
+      myrow[3] = myrow[3].replace('<input ', '<input disabled ');
+      myrow[4] = myrow[4].replace('<select ', '<select disabled ');
+      myrow[8] = myrow[8].replace(/<button[^>]*class="document-action deleteItem"[\s\S]*?<\/button>/, '');
+    }
     return myrow;
   }
 
@@ -93,8 +100,6 @@ export class Facture {
     oReq.onload = function(){
       if (this.status == 200) {
         LoadDT(factureDT, JSON.parse(this.response), Facture);
-        // Devis.loadDevisList();
-        // configuration(checkAutoIncrement);
       }else{
         showError(this.response);
       }

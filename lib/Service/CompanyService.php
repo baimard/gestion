@@ -37,6 +37,8 @@ class CompanyService {
 	}
 
 	public function setCurrentCompany($companyID): void {
+		$allowed = array_column($this->myDb->getCompaniesList($this->userId), 'id');
+        if (!in_array((string)$companyID, array_map('strval', $allowed), true)) throw new \InvalidArgumentException('Company access denied.');
 		$this->session->set('CurrentCompany', $companyID);
 	}
 

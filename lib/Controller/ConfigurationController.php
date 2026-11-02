@@ -58,6 +58,8 @@ class ConfigurationController extends Controller {
 	 */
 	#[UseSession]
 	public function updateConfiguration($column, $data) {
-		return $this->dataService->updateConfiguration($column, $data);
+		try { return $this->dataService->updateConfiguration($column, $data); }
+        catch (\DomainException $e) { return new \OCP\AppFramework\Http\DataResponse(['message' => $e->getMessage()], 409); }
+        catch (\InvalidArgumentException $e) { return new \OCP\AppFramework\Http\DataResponse(['message' => $e->getMessage()], 400); }
 	}
 }

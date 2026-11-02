@@ -2,6 +2,7 @@
 namespace OCA\Gestion\Controller;
 
 use OCA\Gestion\Service\PdfService;
+use OCA\Gestion\Service\DataService;
 use OCA\Gestion\Service\PersonalMailService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
@@ -11,7 +12,7 @@ use OCP\IRequest;
 class PdfController extends Controller {
 	private PdfService $pdfService;
 
-	public function __construct($AppName, IRequest $request, PdfService $pdfService, PersonalMailService $personalMailService) {
+	public function __construct($AppName, IRequest $request, PdfService $pdfService, PersonalMailService $personalMailService, private DataService $dataService) {
 		parent::__construct($AppName, $request);
 		$this->pdfService = $pdfService;
 		$this->personalMailService = $personalMailService;
@@ -27,8 +28,9 @@ class PdfController extends Controller {
 
 	/** @NoAdminRequired */
 	#[UseSession]
-	public function sendPersonalMail(string $html, string $name, string $subject, string $body, string $to): DataResponse {
+	public function sendPersonalMail(string $html, string $name, string $subject, string $body, string $to, string $table, int $documentId): DataResponse {
 		try {
+            $this->dataService->lockDocument($table, $documentId);
 			$this->personalMailService->sendPdf(
 				$this->pdfService->renderPdf($html),
 				$name,
@@ -44,7 +46,6 @@ class PdfController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @param string $content
 	 * @param string $name
 	 * @param string $subject
@@ -54,13 +55,13 @@ class PdfController extends Controller {
 	 * @UseSession
 	 */
 	#[UseSession]
-	public function sendPDF($content, $name, $subject, $body, $to, $Cc) {
+	public function sendPDF($content, $name, $subject, $body, $to, $Cc, string $table, int $documentId) {
+        $this->dataService->lockDocument($table, $documentId);
 		return $this->pdfService->sendPDF($content, $name, $subject, $body, $to, $Cc);
 	}
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @param string $content
 	 * @param string $folder
 	 * @param string $name
@@ -86,7 +87,6 @@ class PdfController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @UseSession
 	 *
 	 * @param string $html
@@ -101,7 +101,6 @@ class PdfController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @UseSession
 	 *
 	 * @param int $factureId
@@ -123,6 +122,7 @@ class PdfController extends Controller {
 	 */
 	#[UseSession]
 	public function sendFacturXToIopole(string $html, string $name, int $factureId) {
+        $this->dataService->lockDocument('facture', $factureId);
 		return $this->pdfService->sendFacturXToIopole($html, $name, $factureId);
 	}
 }

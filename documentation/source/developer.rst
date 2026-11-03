@@ -125,12 +125,16 @@ relations interentreprises, la confidentialité des identifiants, les protection
 des documents et les calculs de remise. La fixture de validation Factur-X
 contient également une ligne avec remise.
 
-Deux scénarios Playwright sont disponibles dans ``tests/Browser/``. Ils sont
+Des scénarios Playwright sont disponibles dans ``tests/Browser/``. Ils sont
 volontaires et ciblent exclusivement une instance de développement locale à
 ``http://127.0.0.1:8080`` avec Chromium à ``/usr/bin/chromium``. Le scénario
 ``documents.cjs`` crée une entreprise d'exemple et verrouille un devis : ne pas
 l'exécuter avec un compte ou des données de production. Les captures sont
-écrites dans ``/tmp/``. Installer Playwright dans un dossier temporaire puis
+écrites dans ``/tmp/``. Le scénario ``documents.cjs`` écrit aussi sa référence de
+jeu de test dans ``/tmp/gestion-e2e-fixture.json`` ; ``lock-information.cjs`` la
+réutilise, crée une facture de test et intercepte tous les points d'envoi pour
+vérifier les avertissements sans contacter un destinataire ni Iopole. Le chemin
+peut être fourni dans ``NEXTCLOUD_TEST_FIXTURE``. Installer Playwright dans un dossier temporaire puis
 exposer ses modules via ``NODE_PATH`` ; définir ``NEXTCLOUD_TEST_USER`` et
 ``NEXTCLOUD_TEST_PASSWORD`` avant de lancer les scénarios.
 
@@ -139,6 +143,7 @@ exposer ses modules via ``NODE_PATH`` ; définir ``NEXTCLOUD_TEST_USER`` et
    npm install --prefix /tmp/gestion-browser playwright
    NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/workspace.cjs
    NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/documents.cjs
+   NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/lock-information.cjs
 
 Le nettoyage supprime uniquement les chemins d'exécution dont l'absence de
 référence a été vérifiée : export texte historique, helper de debug PHP,
@@ -146,3 +151,33 @@ hover JavaScript remplacé par CSS, fonction d'auto-incrémentation inutilisée,
 entrée Webpack PDF redondante, ancien composant Vue non monté et police
 Google distante remplacée par les SVG locaux. Les routes publiques et les
 migrations historiques sont conservées.
+
+
+Messages et confirmations de verrouillage
+------------------------------------------
+
+``src/js/modules/documentLockMessages.js`` rassemble les explications
+traduisibles utilisées par la confirmation manuelle, le bandeau persistant et
+les envois. Le bandeau se trouve hors de ``PDFcontent`` afin de ne pas apparaître
+dans les documents générés.
+
+Les réponses d'envoi par Mail et Iopole contiennent ``documentLocked`` :
+``true`` seulement quand la finalisation a abouti, y compris si la livraison
+échoue ensuite. L'interface évite ainsi d'affirmer un verrouillage lorsque
+l'accès ou la finalisation a été refusé. L'ancien point d'entrée ``sendPDF``
+requiert les paramètres ``table`` et ``documentId`` pour finaliser le document.
+
+Les protections de mutation exposent un message explicatif et une réponse
+``409`` pour les conflits liés au verrouillage : édition, suppression, ajout
+ou ordre des lignes, motif d'exonération et suppression d'entreprise.
+``LockInformationTest`` vérifie ces réponses avec des services de livraison
+simulés, sans envoi externe. Les confirmations e-mail/Iopole sont contrôlées
+avant toute requête d'envoi dans le navigateur.
+
+La branche autonome ``gh-pages`` conserve les sources dans ``source/`` et le
+site généré dans ``docs/``. Sa mise à jour est proposée dans une PR distincte
+ciblant cette branche ; ``make site`` reconstruit le site avec les avertissements
+Sphinx bloquants. Le workflow ``Documentation`` de master utilise quant à lui
+``documentation/source`` et publie un artefact GitHub Pages. Les deux modes de
+publication doivent être coordonnés ; fusionner une PR de documentation ne
+prouve pas à lui seul qu'un déploiement GitHub Pages a abouti.

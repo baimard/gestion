@@ -19,13 +19,13 @@ export function addProductToDevis() {
             if (response.ok) {
                 return response.json();
             }
-            throw new Error('Network response was not ok.');
+            return response.json().then(result => { throw new Error(result.message || t('gestion', 'Unable to add a product.')); });
         })
         .then(function() {
             getProduitsById();
         })
-        .catch(function() {
-            showError(t('gestion', "Please create a new product"));
+        .catch(function(error) {
+            showError(error.message || t('gestion', "Please create a new product"));
         });
 }
 

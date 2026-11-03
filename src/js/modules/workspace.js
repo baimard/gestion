@@ -1,3 +1,4 @@
+import { finalizationNotice, lockedNotice } from './documentLockMessages.js';
 import { translate as t } from '@nextcloud/l10n';
 import { generateUrl } from '@nextcloud/router';
 import { showError, showSuccess } from '@nextcloud/dialogs';
@@ -114,7 +115,7 @@ async function lockDocument(button) {
     const toolbar = button.closest('[data-document-lock]');
     const node = dialog(t('gestion', 'Finalize this document?'));
     const notice = document.createElement('p');
-    notice.textContent = t('gestion', 'This action is permanent. The document and its linked customer, products and company details will be protected against changes. Duplicate the quote or product for future changes.');
+    notice.textContent = finalizationNotice(toolbar.dataset.table === 'facture');
     const confirm = document.createElement('button');
     confirm.className = 'primary';
     confirm.textContent = t('gestion', 'Finalize and lock');
@@ -135,6 +136,17 @@ function applyLockedState() {
     toolbar.querySelector('.gestion-status').textContent = locked ? t('gestion', 'Locked document') : t('gestion', 'Draft');
     toolbar.querySelector('#lock-document').hidden = locked;
     if (!locked) return;
+    const notice = document.createElement('p');
+    notice.className = 'gestion-lock-information';
+    notice.setAttribute('role', 'status');
+    notice.textContent = lockedNotice(toolbar.dataset.table === 'facture');
+    const help = document.createElement('a');
+    help.href = 'https://baimard.github.io/gestion/document_lifecycle.html';
+    help.target = '_blank';
+    help.rel = 'noopener noreferrer';
+    help.textContent = t('gestion', 'Read the document locking guide');
+    notice.append(document.createTextNode(' '), help);
+    toolbar.append(notice);
     document.querySelectorAll('#PDFcontent .editable, #PDFcontent .editableComment, #PDFcontent .editableNumeric, #PDFcontent .editableNumber').forEach(el => {
         el.classList.remove('editable','editableComment','editableNumeric','editableNumber');
         el.removeAttribute('contenteditable');

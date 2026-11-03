@@ -68,7 +68,7 @@ export function updateDBConfiguration(table, column, data, id) {
         if (response.ok) {
             showSuccess(t('gestion', 'Modification saved'));
         } else {
-            showError(t('gestion', 'There is an error with the format, please check the documentation'));
+            showResponseError(response);
         }
     })
     .catch(() => {
@@ -116,7 +116,7 @@ export function deleteCompany() {
                 showSuccess(t('gestion', 'Company deleted'));
                 location.reload();
             } else {
-                showError(t('gestion', 'There is an error.'));
+                showResponseError(response);
             }
         })
         .catch(() => {
@@ -182,7 +182,7 @@ export function duplicateDB(table, id, callback=null, modifier=null) {
                 showSuccess(t('gestion', 'Duplicated'));
                 callback(modifier);
             } else {
-                showError(response);
+                showResponseError(response);
             }
         })
         .catch(error => {
@@ -217,7 +217,7 @@ export function deleteDB(table, id, callback=null, modifier=null) {
                 showSuccess(t('gestion', 'Modification saved'));
                 callback(modifier);
             } else {
-                showError(response);
+                showResponseError(response);
             }
         })
         .catch(error => {
@@ -251,7 +251,7 @@ export function drop(id, callback=null, modifier=null, value='up') {
         if (response.ok) {
             callback(modifier);
         } else {
-            showError(response);
+            showResponseError(response);
         }
     })
     .catch(error => {
@@ -747,3 +747,8 @@ export function delShareUser(uid){
         showError(t('gestion', 'Information : ') + data.data);
     })
 };
+
+async function showResponseError(response) {
+    const result = await response.json().catch(() => ({}));
+    showError(result.message || t('gestion', 'The operation could not be completed. Check whether the document or its linked data is locked.'));
+}

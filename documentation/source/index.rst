@@ -8,6 +8,12 @@ factures et documents dans leur propre instance Nextcloud.
 
 La documentation correspond à la version |release|.
 
+.. important::
+
+   La version 3.4.0 décrite ici est en préparation dans la PR #637. Les
+   fonctionnalités de restauration, verrouillage, remises et historique doivent
+   être utilisées avec cette version une fois intégrée et installée.
+
 Fonctionnalités principales
 ---------------------------
 
@@ -17,11 +23,14 @@ Fonctionnalités principales
 * catalogue de produits ou services avec taux et catégorie de TVA ;
 * création, duplication et suivi des devis et factures ;
 * génération et enregistrement de PDF dans Nextcloud Files ;
-* envoi des documents par e-mail avec le serveur de messagerie Nextcloud ;
+* envoi des documents par e-mail via le compte personnel Nextcloud Mail ;
 * génération de factures électroniques Factur-X au profil EN 16931 ;
 * export du XML Factur-X et envoi optionnel vers Iopole ;
 * statistiques mensuelles de chiffre d'affaires hors taxes ;
-* sauvegarde administrative des données Gestion.
+* sauvegarde et restauration JSON des entreprises détenues par l'utilisateur ;
+* verrouillage définitif des documents et protection des données liées ;
+* remises commerciales par ligne et réglage de la précision d'affichage ;
+* historique des modifications et import depuis les contacts Nextcloud.
 
 .. note::
 
@@ -38,6 +47,7 @@ Fonctionnalités principales
    configuration
    clients_products
    quotes_invoices
+   document_lifecycle
    electronic_invoicing
    other_features
    troubleshooting

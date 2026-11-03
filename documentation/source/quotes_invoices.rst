@@ -53,18 +53,28 @@ Le PDF est téléchargé par le navigateur et enregistré dans Nextcloud.
 Envoyer par e-mail
 ------------------
 
-La fenêtre d'e-mail permet de renseigner le destinataire, les copies, le sujet
-et le message. Le document généré est joint à l'envoi.
+L'action **Send by email** des listes de devis et de factures utilise le compte
+personnel par défaut de l'application **Nextcloud Mail**. Mail doit être installé,
+activé et connecté à un compte capable d'envoyer des messages. Si ces prérequis
+ne sont pas remplis, Gestion affiche une information sans lancer d'envoi.
 
-L'administrateur Nextcloud doit avoir configuré le serveur de messagerie global.
-En cas d'échec, testez d'abord l'envoi d'un e-mail depuis les paramètres
-d'administration Nextcloud.
+La confirmation affiche l'expéditeur et le destinataire en lecture seule ;
+le destinataire vient de la fiche client. Le sujet et le message restent
+modifiables. Le PDF du document est joint à l'envoi. Un avertissement explique
+le verrouillage définitif avant tentative de livraison ; fermer le dialogue
+ou utiliser **Cancel** ne lance ni envoi ni verrouillage. Voir
+:doc:`document_lifecycle` pour la conduite à tenir en cas d'échec.
+
+L'ancien point d'entrée d'envoi par le serveur SMTP global reste présent pour
+les intégrations existantes. Il exige aussi la référence du document à
+finaliser ; il ne remplace pas les prérequis Mail de l'action des listes.
 
 Conservation
 ------------
 
-Les documents affichés dans Gestion reposent sur les données courantes. Après
-émission ou acceptation, enregistrez une version PDF non modifiable dans
+Les brouillons affichés dans Gestion reposent sur les données courantes.
+Finalisez les documents prêts à être émis comme expliqué dans
+:doc:`document_lifecycle`. Après émission ou acceptation, enregistrez une version PDF non modifiable dans
 Nextcloud Files et appliquez les durées de conservation exigées dans votre
 juridiction.
 
@@ -101,3 +111,8 @@ par un devis et les devis liés à une facture ne peuvent pas être supprimés.
 La suppression d'un devis brouillon supprime ses lignes pour éviter les
 références orphelines. Une entreprise contenant un document verrouillé ne peut
 pas être supprimée.
+
+
+Pour le détail des messages, des confirmations avant envoi, des états
+brouillon/verrouillé et des solutions après un refus, consultez
+:doc:`document_lifecycle`.

@@ -561,7 +561,7 @@ class Bdd {
     }
 
     private function deleteCompanyData($idCompany, $idNextcloud){
-        if ($this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_configuration = ? AND locked = 1', [$idCompany]) || $this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'devis WHERE id_configuration = ? AND locked = 1', [$idCompany])) throw new \DomainException('A company with issued invoices cannot be deleted.');
+        if ($this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_configuration = ? AND locked = 1', [$idCompany]) || $this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'devis WHERE id_configuration = ? AND locked = 1', [$idCompany])) throw new \DomainException('A company with locked documents cannot be deleted.');
         $sql = "SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?";
         $res = $this->execSQLNoJsonReturn($sql, array($idCompany));
 

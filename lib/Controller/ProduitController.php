@@ -66,7 +66,7 @@ class ProduitController extends Controller {
 			);
 		} catch (\InvalidArgumentException $e) {
 			return new DataResponse(['message' => $e->getMessage()], 400);
-		} catch (\RuntimeException $e) {
+		} catch (\RuntimeException | \DomainException $e) {
 			return new DataResponse(['message' => $e->getMessage()], 409);
 		}
 	}

@@ -74,6 +74,8 @@ class CrudController extends Controller {
 		try {
 			$this->dataService->reorderProducts($devisId, $productQuoteIds);
 			return new DataResponse(['status' => 'success']);
+        } catch (\DomainException $e) {
+            return new DataResponse(['status' => 'error', 'message' => $e->getMessage()], 409);
 		} catch (\InvalidArgumentException $e) {
 			return new DataResponse(['status' => 'error', 'message' => $e->getMessage()], 400);
 		}

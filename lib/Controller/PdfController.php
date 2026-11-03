@@ -29,8 +29,10 @@ class PdfController extends Controller {
 	/** @NoAdminRequired */
 	#[UseSession]
 	public function sendPersonalMail(string $html, string $name, string $subject, string $body, string $to, string $table, int $documentId): DataResponse {
+        $documentLocked = false;
 		try {
             $this->dataService->lockDocument($table, $documentId);
+            $documentLocked = true;
 			$this->personalMailService->sendPdf(
 				$this->pdfService->renderPdf($html),
 				$name,
@@ -38,9 +40,9 @@ class PdfController extends Controller {
 				$body,
 				$to,
 			);
-			return new DataResponse(['status' => 'success']);
+			return new DataResponse(['status' => 'success', 'documentLocked' => true]);
 		} catch (\Throwable $e) {
-			return new DataResponse(['status' => 'error', 'message' => $e->getMessage()], 400);
+			return new DataResponse(['status' => 'error', 'message' => $e->getMessage(), 'documentLocked' => $documentLocked], 400);
 		}
 	}
 
@@ -122,7 +124,17 @@ class PdfController extends Controller {
 	 */
 	#[UseSession]
 	public function sendFacturXToIopole(string $html, string $name, int $factureId) {
-        $this->dataService->lockDocument('facture', $factureId);
-		return $this->pdfService->sendFacturXToIopole($html, $name, $factureId);
+        $documentLocked = false;
+        try {
+            $this->dataService->lockDocument('facture', $factureId);
+            $documentLocked = true;
+            $response = $this->pdfService->sendFacturXToIopole($html, $name, $factureId);
+            $data = $response->getData();
+            $data['documentLocked'] = true;
+            $response->setData($data);
+            return $response;
+        } catch (\Throwable $e) {
+            return new DataResponse(['status' => 'error', 'message' => $e->getMessage(), 'documentLocked' => $documentLocked], 400);
+        }
 	}
 }

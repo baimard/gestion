@@ -8,11 +8,11 @@ help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)"
 
 html:
-	$(SPHINXBUILD) $(SPHINXOPTS) -b html "$(SOURCEDIR)" "$(BUILDDIR)/html"
+	$(SPHINXBUILD) $(SPHINXOPTS) -d "$(BUILDDIR)/doctrees" -b html "$(SOURCEDIR)" "$(BUILDDIR)/html"
 
 site:
 	rm -rf "$(BUILDDIR)/site"
-	$(SPHINXBUILD) $(SPHINXOPTS) -E -b html "$(SOURCEDIR)" "$(BUILDDIR)/site"
+	$(SPHINXBUILD) $(SPHINXOPTS) -E -d "$(BUILDDIR)/doctrees" -b html "$(SOURCEDIR)" "$(BUILDDIR)/site"
 	touch "$(BUILDDIR)/site/.nojekyll"
 	rm -rf docs
 	mv "$(BUILDDIR)/site" docs

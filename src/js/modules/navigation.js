@@ -24,12 +24,31 @@ export function initializeNavigationToggle() {
 
     button.dataset.navigationToggleInitialized = 'true';
     const mobileQuery = window.matchMedia(MOBILE_NAVIGATION_QUERY);
-    setButtonState(button, !mobileQuery.matches);
+    const content = document.getElementById('app-content');
+    const closeButton = navigation.querySelector('.gestion-navigation-close');
+    const backdrop = document.createElement('button');
+    backdrop.type = 'button';
+    backdrop.className = 'gestion-navigation-backdrop';
+    backdrop.setAttribute('aria-label', t('gestion', 'Close navigation'));
+    backdrop.tabIndex = -1;
+    backdrop.hidden = true;
+    app.append(backdrop);
+
+    function setMobileOpen(isOpen, restoreFocus = false) {
+        app.classList.toggle('gestion-mobile-navigation-open', isOpen);
+        backdrop.hidden = !isOpen;
+        if (content) content.inert = isOpen;
+        setButtonState(button, isOpen);
+        if (isOpen) closeButton?.focus();
+        else if (restoreFocus) button.focus();
+    }
+
+    if (mobileQuery.matches) setMobileOpen(false);
+    else setButtonState(button, true);
 
     button.addEventListener('click', () => {
         if (mobileQuery.matches) {
-            const isOpen = app.classList.toggle('gestion-mobile-navigation-open');
-            setButtonState(button, isOpen);
+            setMobileOpen(!app.classList.contains('gestion-mobile-navigation-open'));
             return;
         }
 
@@ -38,17 +57,23 @@ export function initializeNavigationToggle() {
         setButtonState(button, isOpen);
     });
 
+    closeButton?.addEventListener('click', () => setMobileOpen(false, true));
+    backdrop.addEventListener('click', () => setMobileOpen(false, true));
+    navigation.addEventListener('click', event => {
+        if (mobileQuery.matches && event.target.closest('a[href], #theFolder')) {
+            setMobileOpen(false);
+        }
+    });
+
     document.addEventListener('keydown', event => {
         if (event.key === 'Escape' && app.classList.contains('gestion-mobile-navigation-open')) {
-            app.classList.remove('gestion-mobile-navigation-open');
-            setButtonState(button, false);
-            button.focus();
+            event.preventDefault();
+            setMobileOpen(false, true);
         }
     });
     mobileQuery.addEventListener('change', event => {
         app.classList.remove(NAVIGATION_CLOSED_CLASS, 'gestion-mobile-navigation-open');
-        setButtonState(button, event.matches
-            ? document.body.classList.contains('snapjs-left')
-            : true);
+        setMobileOpen(false);
+        setButtonState(button, !event.matches);
     });
 }

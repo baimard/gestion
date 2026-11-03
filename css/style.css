@@ -159,7 +159,8 @@
    Navigation
    ========================================================================== */
 
-.gestion-navigation-toggle {
+.gestion-navigation-toggle,
+.gestion-navigation-close {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -177,18 +178,22 @@
     color: currentColor;
 }
 
-.gestion-navigation-toggle .material-symbols-outlined {
+.gestion-navigation-toggle .material-symbols-outlined,
+.gestion-navigation-close .material-symbols-outlined {
     font-size: 24px;
     line-height: 1;
     transition: transform 150ms ease;
 }
 
 .gestion-navigation-toggle:hover,
-.gestion-navigation-toggle:focus-visible {
+.gestion-navigation-toggle:focus-visible,
+.gestion-navigation-close:hover,
+.gestion-navigation-close:focus-visible {
     background-color: var(--color-background-hover, var(--gestion-surface-alt));
 }
 
-.gestion-navigation-toggle:focus-visible {
+.gestion-navigation-toggle:focus-visible,
+.gestion-navigation-close:focus-visible {
     outline: 2px solid var(--gestion-primary);
     outline-offset: -2px;
 }
@@ -208,6 +213,11 @@
 #app.gestion-navigation-closed #app-content {
     width: 100%;
     margin-left: 0;
+}
+
+#app .gestion-mobile-navigation-controls,
+#app .gestion-navigation-backdrop {
+    display: none;
 }
 
 .app-navigation-entry {
@@ -1039,7 +1049,51 @@ button.electronic-invoice-help:focus-visible {
 #app .menu-content > .material-symbols-outlined { opacity: .5; }
 @media (max-width: 1023px) {
     #app #app-navigation { display: none; }
-    #app.gestion-mobile-navigation-open #app-navigation { display: block; position: fixed; inset: 50px auto 0 0; width: 280px; z-index: 1600; box-shadow: 8px 0 40px #0003; background: var(--color-main-background); }
+    #app.gestion-mobile-navigation-open #app-navigation {
+        display: block;
+        position: fixed;
+        top: var(--header-height, 50px);
+        bottom: 0;
+        inset-inline-start: 0;
+        inset-inline-end: auto;
+        width: min(300px, calc(100vw - 48px));
+        height: auto;
+        margin: 0;
+        transform: none;
+        z-index: 1600;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        box-shadow: 8px 0 40px #0003;
+        background: var(--color-main-background);
+    }
+    #app #app-navigation .gestion-mobile-navigation-controls {
+        display: flex;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4px 12px;
+        background: var(--color-main-background);
+        font-weight: 600;
+    }
+    #app.gestion-mobile-navigation-open .gestion-navigation-backdrop {
+        display: block;
+        position: fixed;
+        top: var(--header-height, 50px);
+        bottom: 0;
+        inset-inline: 0;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: #0006;
+        z-index: 1500;
+    }
+    #app #app-navigation #theFolder,
+    #app #app-navigation a > button { max-width: calc(100% - 20px); box-sizing: border-box; }
     #app #app-content { width: 100%; margin-left: 0; }
     #app .gestion-management-grid { grid-template-columns: 1fr; }
     #app .gestion-card input[type="file"] { width: 100%; box-sizing: border-box; }

@@ -1,4 +1,10 @@
 <ul class="app-navigation">
+	<li class="gestion-mobile-navigation-controls">
+		<span>Gestion</span>
+		<button type="button" class="gestion-navigation-close" aria-label="<?php p($l->t('Close navigation')); ?>" title="<?php p($l->t('Close navigation')); ?>">
+			<span class="material-symbols-outlined" aria-hidden="true">close</span>
+		</button>
+	</li>
 	<li class="app-navigation-item"><center><b><?php p($l->t('COMPANY'));?></b></center></li>
 	<li class="app-navigation-entry">
 		<select style="width:95%; margin-left:7px;" name="CurrentCompany" id="CurrentCompany-select">

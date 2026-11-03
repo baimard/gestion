@@ -78,8 +78,16 @@ class Bdd {
         return $this->execSQL($sql, array($id, $idNextcloud));
     }
 
+    private function quoteLockExpression(string $alias): string {
+        return 'CASE WHEN EXISTS (SELECT lf.id FROM ' . $this->tableprefix . 'facture lf WHERE lf.id_devis = ' . $alias . '.id AND lf.id_configuration = ' . $alias . '.id_configuration AND lf.locked = 1) THEN 1 ELSE 0 END';
+    }
+
+    public function isQuoteLocked(int $id, int $company): bool {
+        return (bool)$this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_devis = ? AND id_configuration = ? AND locked = 1', [$id, $company]);
+    }
+
     public function getDevis($idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."devis.id, ".$this->tableprefix."devis.locked, ".$this->tableprefix."devis.user_id, ".$this->tableprefix."client.entreprise, ".$this->tableprefix."client.nom, ".$this->tableprefix."client.prenom, ".$this->tableprefix."client.id as cid, ".$this->tableprefix."devis.num, ".$this->tableprefix."devis.date, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.mentions, ".$this->tableprefix."devis.delay FROM (".$this->tableprefix."devis LEFT JOIN ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration) WHERE ".$this->tableprefix."devis.id_configuration = ?;";
+        $sql = "SELECT ".$this->tableprefix."devis.id, ".$this->quoteLockExpression($this->tableprefix . 'devis')." AS locked, ".$this->tableprefix."devis.user_id, ".$this->tableprefix."client.entreprise, ".$this->tableprefix."client.nom, ".$this->tableprefix."client.prenom, ".$this->tableprefix."client.id as cid, ".$this->tableprefix."devis.num, ".$this->tableprefix."devis.date, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.mentions, ".$this->tableprefix."devis.delay FROM (".$this->tableprefix."devis LEFT JOIN ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration) WHERE ".$this->tableprefix."devis.id_configuration = ?;";
         return $this->execSQL($sql, array($idNextcloud));
     }
 
@@ -99,7 +107,7 @@ class Bdd {
     }
 
     public function getOneDevis($numdevis,$idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."devis.id as devisid, ".$this->tableprefix."devis.locked, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.comment, date, num, id_client, ".$this->tableprefix."client.id as clientid, nom, prenom, legal_one, entreprise, telephone, mail, adresse, zip_code, city_name, country_code, company_identification, vat_number, delay FROM ".$this->tableprefix."devis left join ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id WHERE ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_configuration = ?";
+        $sql = "SELECT ".$this->tableprefix."devis.id as devisid, ".$this->quoteLockExpression($this->tableprefix . 'devis')." AS locked, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.comment, date, num, id_client, ".$this->tableprefix."client.id as clientid, nom, prenom, legal_one, entreprise, telephone, mail, adresse, zip_code, city_name, country_code, company_identification, vat_number, delay FROM ".$this->tableprefix."devis left join ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id WHERE ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_configuration = ?";
         return $this->execSQL($sql, array($numdevis,$idNextcloud));
     }
 
@@ -294,7 +302,7 @@ class Bdd {
 
     private function mutateGestion_update($table, $column, $data, $id, $id_configuration) {
         if (in_array($column, self::EDITABLE[$table] ?? [], true)) {
-            if ($table !== 'facture' || $column !== 'status_paiement') $this->guardDocument($table, (int)$id, (int)$id_configuration);
+            $this->guardDocument($table, (int)$id, (int)$id_configuration);
             if ($column === 'id_client') $this->requireRecord('client', (int)$data, (int)$id_configuration);
             if ($column === 'produit_id') $this->requireRecord('produit', (int)$data, (int)$id_configuration);
             $safeData = strip_tags(preg_replace('/<br\b[^>]*>/i', "\n", html_entity_decode($data, ENT_QUOTES, 'UTF-8')));
@@ -570,7 +578,7 @@ class Bdd {
     }
 
     private function deleteCompanyData($idCompany, $idNextcloud){
-        if ($this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_configuration = ? AND locked = 1', [$idCompany]) || $this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'devis WHERE id_configuration = ? AND locked = 1', [$idCompany])) throw new \DomainException('A company with locked documents cannot be deleted.');
+        if ($this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_configuration = ? AND locked = 1', [$idCompany])) throw new \DomainException('A company with locked documents cannot be deleted.');
         $sql = "SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?";
         $res = $this->execSQLNoJsonReturn($sql, array($idCompany));
 
@@ -777,7 +785,7 @@ class Bdd {
     }
 
     private function mutateLockDocument(string $table, int $id, int $company): void {
-        if (!in_array($table, ['devis','facture'], true)) throw new \InvalidArgumentException('Invalid document type.');
+        if ($table !== 'facture') throw new \InvalidArgumentException('Only invoices can be finalized. A quote is locked by its finalized invoices.');
         $this->db->beginTransaction();
         try {
             $row = $this->requireRecord($table, $id, $company);
@@ -792,25 +800,25 @@ class Bdd {
 
     private function guardCompanyConfiguration(int $company, string $column): void {
         if (in_array($column, ['path','price_decimals','quantity_decimals','changelog'], true)) return;
-        if ($this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_configuration = ? AND locked = 1', [$company]) || $this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'devis WHERE id_configuration = ? AND locked = 1', [$company])) {
+        if ($this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_configuration = ? AND locked = 1', [$company])) {
             throw new \DomainException('Company details are used by a locked document. Create a separate company configuration for new details.');
         }
     }
 
     private function guardDocument(string $table, int $id, int $company): void {
         $row = $this->requireRecord($table, $id, $company);
-        if (($row['locked'] ?? 0) == 1) throw new \DomainException('This document is locked. Duplicate the quote to make changes.');
+        if ($table === 'facture' && ($row['locked'] ?? 0) == 1) throw new \DomainException('This document is locked. Duplicate the quote to make changes.');
         $quote = null;
         if ($table === 'produit_devis') $quote = (int)$row['devis_id'];
         if ($table === 'devis') $quote = $id;
         if ($quote !== null) {
-            $q = $this->requireRecord('devis', $quote, $company);
-            if (($q['locked'] ?? 0) == 1 || $this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_devis = ? AND id_configuration = ? AND locked = 1', [$quote,$company])) throw new \DomainException('The quote belongs to a locked document.');
+            $this->requireRecord('devis', $quote, $company);
+            if ($this->isQuoteLocked($quote, $company)) throw new \DomainException('The quote belongs to a locked document.');
         }
         if (in_array($table, ['produit','client'], true)) {
             $join = $table === 'produit' ? ' INNER JOIN ' . $this->tableprefix . 'produit_devis pd ON pd.devis_id = d.id AND pd.id_configuration = d.id_configuration' : '';
             $condition = $table === 'produit' ? 'pd.produit_id' : 'd.id_client';
-            $sql = 'SELECT d.id FROM ' . $this->tableprefix . 'devis d' . $join . ' WHERE ' . $condition . ' = ? AND d.id_configuration = ? AND (d.locked = 1 OR EXISTS (SELECT f.id FROM ' . $this->tableprefix . 'facture f WHERE f.id_devis = d.id AND f.id_configuration = d.id_configuration AND f.locked = 1))';
+            $sql = 'SELECT d.id FROM ' . $this->tableprefix . 'devis d' . $join . ' WHERE ' . $condition . ' = ? AND d.id_configuration = ? AND EXISTS (SELECT f.id FROM ' . $this->tableprefix . 'facture f WHERE f.id_devis = d.id AND f.id_configuration = d.id_configuration AND f.locked = 1)';
             if ($this->execSQLNoJsonReturn($sql, [$id,$company])) throw new \DomainException('This record is used by a locked document. Duplicate it before editing.');
         }
     }

@@ -288,7 +288,7 @@
     "SEPA credit transfer" : "Virement SEPA",
     "Select a means of payment" : "Sélectionnez un moyen de paiement",
     "Means of payment" : "Moyen de paiement",
-    "Factur-X PDF + XML" : "PDF + XML Factur-X",
+    "Factur-X PDF + XML" : "Factur-X (PDF + XML)",
     "Factur-X XML" : "XML Factur-X",
     "Subject to VAT" : "Assujetti à la TVA",
     "VAT exempt" : "Exonéré de TVA",
@@ -595,6 +595,20 @@
     "No turnover to display yet." : "Aucun chiffre d’affaires à afficher pour le moment.",
     "Unable to load statistics." : "Impossible de charger les statistiques.",
     "Help" : "Aide",
-    "Access and sharing" : "Accès et partage"
+    "Access and sharing" : "Accès et partage",
+    "Save PDF" : "Enregistrer le PDF",
+    "Draft" : "Brouillon",
+    "Locked document" : "Facture verrouillée",
+    "Finalize and lock" : "Verrouiller la facture",
+    "Discount" : "Remise",
+    "View quote locked by its invoice" : "Ouvrir le devis verrouillé par sa facture",
+    "View editable quote" : "Ouvrir le devis modifiable",
+    "Finalizing permanently locks this invoice and its linked quote. They can no longer be edited or deleted, including payment fields. Linked customer, product and company details are protected. PDF downloads remain available." : "Cette action verrouille définitivement la facture et son devis. Ils ne pourront plus être modifiés ni supprimés, y compris les informations de paiement. Le client, les produits et les coordonnées de l’entreprise sont protégés. Le téléchargement des PDF reste disponible.",
+    "Sending finalizes and permanently locks the invoice and its linked quote before the delivery attempt. If delivery fails, they remain locked and you can retry sending. Canceling does not lock or send anything." : "L’envoi verrouille définitivement la facture et son devis avant la tentative de livraison. En cas d’échec, ils restent verrouillés et vous pouvez réessayer. Annuler ne verrouille et n’envoie rien.",
+    "Sending a quote does not lock it. It remains editable unless a linked invoice is finalized. Canceling does not send anything." : "L’envoi d’un devis ne le verrouille pas. Il reste modifiable tant qu’aucune facture associée n’est finalisée. Annuler n’envoie rien.",
+    "This invoice and its linked quote are locked and cannot be edited or deleted. PDF downloads remain available." : "Cette facture et son devis sont verrouillés : ils ne peuvent plus être modifiés ni supprimés. Le téléchargement des PDF reste disponible.",
+    "This quote is locked because a linked invoice has been finalized. It cannot be edited or deleted. PDF downloads remain available." : "Ce devis est verrouillé car une facture associée a été finalisée. Il ne peut plus être modifié ni supprimé. Le téléchargement des PDF reste disponible.",
+    "The document is locked. If delivery failed, you can retry sending it. Reload the page to see its status." : "Le document est verrouillé. En cas d’échec de livraison, vous pouvez réessayer. Rechargez la page pour voir son état.",
+    "Read the document locking guide" : "Guide du verrouillage"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

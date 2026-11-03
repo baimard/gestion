@@ -1046,3 +1046,35 @@ button.electronic-invoice-help:focus-visible {
 @media (min-width: 768px) {
     #Statistical th:last-child, #Statistical td:last-child { position: sticky; inset-inline-end: 0; z-index: 1; }
 }
+
+/* Document controls stay outside the printable content and follow its scroll container. */
+.gestion-document-toolbar { position: sticky; top: 0; z-index: 100; display: block; padding: 12px; margin: 0 0 20px; background: var(--color-main-background); box-shadow: 0 4px 12px #0001; }
+.gestion-document-actions { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; overflow-x: auto; min-width: 0; padding: 2px; }
+#app .gestion-document-actions button, .gestion-document-actions .gestion-status { flex: 0 0 auto; margin: 0; white-space: nowrap; }
+.gestion-document-toolbar .gestion-locked-warning { margin: 12px 0 0; border-inline-start-color: var(--color-error-text, #a72b2b); background: color-mix(in srgb, var(--color-error-text, #a72b2b) 8%, var(--color-main-background)); color: var(--color-error-text, #a72b2b); }
+.gestion-document-toolbar .gestion-locked-warning a { color: inherit; text-decoration: underline; }
+.gestion-quote-number { display: flex; align-items: center; gap: 8px; }
+.gestion-quote-lock { display: inline-flex; align-items: center; justify-content: center; min-width: 36px; min-height: 36px; border-radius: 8px; }
+.gestion-quote-lock:hover { background: var(--color-background-hover); }
+#produits { min-width: 1000px; table-layout: auto; }
+#produits .document-col-order { width: 32px; }
+#produits .document-col-reference { width: 7em; }
+#produits .document-col-description { width: auto; }
+#produits .document-col-comment { width: 12%; }
+#produits .document-col-quantity { width: 4.5em; }
+#produits .document-col-price { width: 7.5em; }
+#produits .document-col-discount { width: 5em; }
+#produits .document-col-vat { width: 4em; }
+#produits .document-description, #produits .document-comment { text-align: start; white-space: pre-line; }
+#produits .document-amount { text-align: end; white-space: nowrap; overflow-wrap: normal; font-variant-numeric: tabular-nums; padding-inline: 6px; }
+@media print { .gestion-document-toolbar { display: none !important; } #produits { min-width: 0; } }
+
+.gestion-document-table-scroll { max-width: 100%; overflow-x: auto; }
+#produits th.document-text-heading { text-align: start; }
+#produits th.document-number-heading { text-align: end; }
+.gestion-quote-lock { color: var(--color-text-maxcontrast); }
+.gestion-quote-lock.is-locked { color: var(--color-error-text, #a72b2b); }
+
+#produits .document-amount > div, #produits .document-amount > span { white-space: nowrap; overflow-wrap: normal; }
+
+#produits th { overflow-wrap: normal; word-break: normal; font-size: 11px; }

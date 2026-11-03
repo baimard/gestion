@@ -26,7 +26,8 @@ l'aperçu, puis confirmez. La restauration crée de **nouvelles entreprises** do
 vous devenez propriétaire. Elle ne remplace ni ne supprime les données en place.
 Tous les identifiants et liens entre les enregistrements sont réattribués dans
 une transaction ; en cas d'échec, aucun import partiel n'est conservé. Les états
-de verrouillage sont conservés et les plateformes doivent être reconfigurées.
+de verrouillage des factures et la protection de leurs devis sont conservés.
+Les plateformes doivent être reconfigurées.
 
 Les anciens fichiers texte séparés par des points-virgules ne peuvent pas être
 restaurés automatiquement : ils ne conservent pas de façon fiable les colonnes,

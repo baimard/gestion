@@ -59,7 +59,8 @@ class WorkspaceTest extends TestCase {
     public function testDuplicatedLockedQuoteIsEditableAndKeepsOrderedLines(): void {
         $f = $this->fixture();
         $this->db->gestion_update('produit_devis', 'discount', '10', $f['line'], $this->company);
-        $this->db->lockDocument('devis', $f['quote'], $this->company);
+        $invoice = $this->db->insertFacture($this->company, $f['quote']);
+        $this->db->lockDocument('facture', $invoice['id'], $this->company);
         $this->assertTrue($this->db->gestion_duplicate('devis', $f['quote'], $this->company));
         $quotes = json_decode($this->db->getDevis($this->company), true);
         $copy = array_values(array_filter($quotes, fn ($q) => $q['id'] != $f['quote']))[0];
@@ -68,6 +69,35 @@ class WorkspaceTest extends TestCase {
         $this->assertCount(1, $lines);
         $this->assertSame(10.0, (float)$lines[0]['discount']);
         $this->assertTrue($this->db->gestion_update('produit_devis','quantite','5',$lines[0]['pdid'],$this->company));
+    }
+
+    public function testQuoteStaysEditableWithADraftInvoiceAndLegacyStandaloneLock(): void {
+        $f = $this->fixture();
+        $this->db->insertFacture($this->company, $f['quote']);
+        $this->connection->executeStatement('UPDATE *PREFIX*gestion_devis SET locked = 1 WHERE id = ?', [$f['quote']]);
+        $this->assertFalse($this->db->isQuoteLocked($f['quote'], $this->company));
+        $this->assertSame(0, (int)json_decode($this->db->getDevis($this->company), true)[0]['locked']);
+        $this->assertSame(0, (int)json_decode($this->db->getOneDevis($f['quote'], $this->company), true)[0]['locked']);
+        $this->assertTrue($this->db->gestion_update('devis', 'comment', 'Still editable', $f['quote'], $this->company));
+        $this->assertTrue($this->db->gestion_update('client', 'nom', 'Updated', $f['client'], $this->company));
+        $this->assertTrue($this->db->gestion_updateConfiguration('entreprise', 'Updated company', $this->company));
+    }
+
+    public function testQuoteCannotBeLockedIndependently(): void {
+        $f = $this->fixture();
+        $this->expectException(\InvalidArgumentException::class);
+        $this->db->lockDocument('devis', $f['quote'], $this->company);
+    }
+
+    public function testLockedInvoiceProtectsQuoteEvenIfItsStoredFlagIsReset(): void {
+        $f = $this->fixture();
+        $invoice = $this->db->insertFacture($this->company, $f['quote']);
+        $this->db->lockDocument('facture', $invoice['id'], $this->company);
+        $this->connection->executeStatement('UPDATE *PREFIX*gestion_devis SET locked = 0 WHERE id = ?', [$f['quote']]);
+        $this->assertSame(1, (int)json_decode($this->db->getDevis($this->company), true)[0]['locked']);
+        $this->assertSame(1, (int)json_decode($this->db->getOneDevis($f['quote'], $this->company), true)[0]['locked']);
+        $this->expectException(\DomainException::class);
+        $this->db->gestion_update('devis', 'comment', 'Blocked', $f['quote'], $this->company);
     }
 
     public function testDeletingDraftQuoteDoesNotLeaveOrphanLinesInBackup(): void {
@@ -86,7 +116,7 @@ class WorkspaceTest extends TestCase {
             try { $this->db->gestion_update($table,$column,'2',$id,$this->company); $this->fail('Locked mutation accepted: ' . $table); }
             catch (\DomainException $e) { $this->assertNotEmpty($e->getMessage()); }
         }
-        $this->assertTrue($this->db->gestion_update('facture','status_paiement','1',$invoice['id'],$this->company));
+        try { $this->db->gestion_update('facture','status_paiement','1',$invoice['id'],$this->company); $this->fail('Locked payment status accepted.'); } catch (\DomainException $e) { $this->addToAssertionCount(1); }
     }
 
     public function testReferencedProductCannotBeDeleted(): void {

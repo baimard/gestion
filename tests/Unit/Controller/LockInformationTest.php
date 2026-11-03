@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 class LockInformationTest extends TestCase {
     public function testFailedMailDeliveryReportsTheCompletedLock(): void {
         $data = $this->createMock(DataService::class);
-        $data->expects($this->once())->method('lockDocument')->with('facture', 12);
+        $data->expects($this->once())->method('prepareDocumentForSending')->with('facture', 12)->willReturn(true);
         $pdf = $this->createMock(PdfService::class);
         $pdf->method('renderPdf')->willReturn('%PDF-test');
         $mail = $this->createMock(PersonalMailService::class);
@@ -29,9 +29,22 @@ class LockInformationTest extends TestCase {
         $this->assertTrue($response->getData()['documentLocked']);
         $this->assertSame('Delivery unavailable.', $response->getData()['message']);
     }
+    public function testFailedQuoteDeliveryDoesNotFinalizeTheQuote(): void {
+        $data = $this->createMock(DataService::class);
+        $data->expects($this->once())->method('prepareDocumentForSending')->with('devis', 12)->willReturn(false);
+        $data->expects($this->never())->method('lockDocument');
+        $pdf = $this->createMock(PdfService::class);
+        $pdf->method('renderPdf')->willReturn('%PDF-test');
+        $mail = $this->createMock(PersonalMailService::class);
+        $mail->method('sendPdf')->willThrowException(new \RuntimeException('Delivery unavailable.'));
+        $response = (new PdfController('gestion', $this->createMock(IRequest::class), $pdf, $mail, $data))->sendPersonalMail('html', 'quote.pdf', 'subject', 'body', 'test@example.test', 'devis', 12);
+        $this->assertSame(400, $response->getStatus());
+        $this->assertFalse($response->getData()['documentLocked']);
+    }
+
     public function testRejectedFinalizationDoesNotClaimTheDocumentWasLocked(): void {
         $data = $this->createMock(DataService::class);
-        $data->method('lockDocument')->willThrowException(new \DomainException('Access denied.'));
+        $data->method('prepareDocumentForSending')->willThrowException(new \DomainException('Access denied.'));
         $mail = $this->createMock(PersonalMailService::class);
         $mail->expects($this->never())->method('sendPdf');
         $controller = new PdfController('gestion', $this->createMock(IRequest::class), $this->createMock(PdfService::class), $mail, $data);

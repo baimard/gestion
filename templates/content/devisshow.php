@@ -5,13 +5,14 @@
     $logoFooterWidth = max(40, min(600, (int)($res->logo_footer_width ?? 320)));
 ?>
 <div class="gestion-document-view">
-    <div class="menu-content" data-html2canvas-ignore>
-        <?php print_unescaped($this->inc('navigation/toggle')); ?>
-    </div>
     <div class="gestion-document-toolbar" data-html2canvas-ignore data-document-lock data-table="devis" data-id="<?php p($_['devis'][0]->devisid); ?>" data-locked="<?php p((int)($_['devis'][0]->locked ?? 0)); ?>">
-        <span class="gestion-status"><?php p($l->t('Draft')); ?></span>
-        <button type="button" class="primary" id="lock-document"><?php p($l->t('Finalize and lock')); ?></button>
-        <button type="button" data-open-history><?php p($l->t('Change history')); ?></button>
+        <div class="gestion-document-actions">
+            <?php print_unescaped($this->inc('navigation/toggle')); ?>
+            <button id="devisAdd"       type="button"       class="btn btn-outline-success"            data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
+            <button type="button" class="btn btn-outline-primary createInvoiceFromQuote" data-devis-id="<?php p(html_entity_decode((string)($_['devis'][0]->devisid), ENT_QUOTES, 'UTF-8')); ?>" data-html2canvas-ignore><?php p($l->t('Create invoice'));?></button>
+            <button id="pdf"            type="button"       class="btn btn-outline-success"            data-html2canvas-ignore data-name="""><?php p($l->t('Save PDF')); ?></button>
+            <button type="button" data-open-history title="<?php p($l->t('Change history')); ?>" aria-label="<?php p($l->t('Change history')); ?>"><span class="material-symbols-outlined" aria-hidden="true">history</span></button>
+        </div>
     </div>
     <div id="PDFcontent" style="--gestion-logo-main-width: <?php echo $logoWidth; ?>px; --gestion-logo-header-width: <?php echo $logoHeaderWidth; ?>px; --gestion-logo-footer-width: <?php echo $logoFooterWidth; ?>px;">
     <div class="titre-centre">
@@ -82,27 +83,39 @@
     <div id="deviscomment" class="comment editableComment" data-table="devis" data-column="comment" data-id="<?php p(html_entity_decode((string)($_['devis'][0]->devisid), ENT_QUOTES, 'UTF-8')); ?>"><?php echo ($_['devis'][0]->comment == "" ) ? "-" : nl2br(htmlspecialchars($_['devis'][0]->comment)); ?></div>
 
     <div>
-        <button id="devisAdd"       type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
-        <button type="button" class="mb-2 btn btn-outline-primary createInvoiceFromQuote" data-devis-id="<?php p(html_entity_decode((string)($_['devis'][0]->devisid), ENT_QUOTES, 'UTF-8')); ?>" data-html2canvas-ignore><?php p($l->t('Create invoice'));?></button>
-        <button id="pdf"            type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore data-name=""><?php p($l->t('Save in Nextcloud'));?></button>
-        
-        <table id="produits" class="table-produit">
+
+
+
+
+        <div class="gestion-document-table-scroll"><table id="produits" class="table-produit">
+            <colgroup>
+                <col class="document-col-order" data-html2canvas-ignore width="3%">
+                <col class="document-col-reference" width="9%">
+                <col class="document-col-description" width="31%">
+                <col class="document-col-comment" width="12%">
+                <col class="document-col-quantity" width="6%">
+                <col class="document-col-price" width="9%">
+                <col class="document-col-discount" width="6%">
+                <col class="document-col-price" width="9%">
+                <col class="document-col-vat" width="5%">
+                <col class="document-col-price" width="10%">
+            </colgroup>
             <thead>
                 <tr>
                     <th class="product-order-column" data-html2canvas-ignore aria-label="<?php p($l->t('Product order'));?>"></th>
-                    <th><?php p($l->t('Reference'));?></th>
-                    <th><?php p($l->t('Designation'));?></th>
-                    <th><?php p($l->t('Comment'));?></th>
-                    <th><?php p($l->t('Quantity'));?></th>
-                    <th><?php p($l->t('Unit price without VAT'));?></th>
-                    <th><?php p($l->t('Discount')); ?> (%)</th><th><?php p($l->t('Total without VAT'));?></th>
-                    <th><?php p($l->t('VAT'));?></th>
-                    <th><?php p($l->t('Total including VAT'));?></th>
+                    <th class="document-text-heading"><?php p($l->t('Reference'));?></th>
+                    <th class="document-text-heading"><?php p($l->t('Designation'));?></th>
+                    <th class="document-text-heading"><?php p($l->t('Comment'));?></th>
+                    <th class="document-number-heading"><?php p($l->t('Quantity'));?></th>
+                    <th class="document-number-heading"><?php p($l->t('Unit price without VAT'));?></th>
+                    <th class="document-number-heading"><?php p($l->t('Discount')); ?> (%)</th><th class="document-number-heading"><?php p($l->t('Total without VAT'));?></th>
+                    <th class="document-number-heading"><?php p($l->t('VAT'));?></th>
+                    <th class="document-number-heading"><?php p($l->t('Total including VAT'));?></th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
-        </table>
+        </table></div>
         </div>
 
         <div class="table-section-title">
@@ -123,7 +136,7 @@
                 </tbody>
             </table>
         </div>
-        
+
         <div class="table-section-title">
             <?php p($l->t('Total price')); ?>
         </div>
@@ -156,7 +169,7 @@
             ?>
         </span>
     </div>
-    
+
     <table class="table-mentions-signature">
         <tr>
             <td class="cell-mentions">

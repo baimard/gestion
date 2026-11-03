@@ -123,6 +123,7 @@ async function sendDocumentByMail(detailUrl) {
     element.querySelectorAll("[data-html2canvas-ignore]").forEach(node => node.remove());
 
     const email = await showMailConfirmation({
+      isInvoice,
       from: status.account?.address || status.account?.label || "",
       to: recipient,
       subject: type + " " + pdfName,
@@ -139,7 +140,7 @@ async function sendDocumentByMail(detailUrl) {
       body: JSON.stringify({
         html: element.outerHTML,
         table: isInvoice ? 'facture' : 'devis',
-        documentId: Number(sourceDocument.getElementById(isInvoice ? 'factureid' : 'devisid').dataset.id),
+        documentId: Number(sourceDocument.querySelector('[data-document-lock]').dataset.id),
         name,
         to: email.to,
         subject: email.subject,
@@ -174,7 +175,7 @@ function showMailConfirmation(email) {
     lockWarning.id = 'mail-lock-warning';
     form.setAttribute('aria-describedby', lockWarning.id);
     lockWarning.setAttribute('role', 'note');
-    lockWarning.textContent = sendingNotice();
+    lockWarning.textContent = sendingNotice(email.isInvoice);
     form.appendChild(lockWarning);
 
     const createField = (labelText, value, readOnly, multiline = false) => {

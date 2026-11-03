@@ -32,8 +32,7 @@ class PdfController extends Controller {
 	public function sendPersonalMail(string $html, string $name, string $subject, string $body, string $to, string $table, int $documentId): DataResponse {
         $documentLocked = false;
 		try {
-            $this->dataService->lockDocument($table, $documentId);
-            $documentLocked = true;
+            $documentLocked = $this->dataService->prepareDocumentForSending($table, $documentId);
 			$this->personalMailService->sendPdf(
 				$this->pdfService->renderPdf($html),
 				$name,
@@ -41,7 +40,7 @@ class PdfController extends Controller {
 				$body,
 				$to,
 			);
-			return new DataResponse(['status' => 'success', 'documentLocked' => true]);
+			return new DataResponse(['status' => 'success', 'documentLocked' => $documentLocked]);
 		} catch (\Throwable $e) {
 			return new DataResponse(['status' => 'error', 'message' => $e->getMessage(), 'documentLocked' => $documentLocked], 400);
 		}
@@ -59,7 +58,7 @@ class PdfController extends Controller {
 	 */
 	#[UseSession]
 	public function sendPDF($content, $name, $subject, $body, $to, $Cc, string $table, int $documentId) {
-        $this->dataService->lockDocument($table, $documentId);
+        $this->dataService->prepareDocumentForSending($table, $documentId);
 		return $this->pdfService->sendPDF($content, $name, $subject, $body, $to, $Cc);
 	}
 

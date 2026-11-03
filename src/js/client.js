@@ -1,3 +1,4 @@
+import { translate as t } from '@nextcloud/l10n';
 // import "@nextcloud/dialogs/dist/index.css";
 import "datatables.net-dt/css/dataTables.dataTables.css";
 import "../css/mycss.less";
@@ -25,12 +26,15 @@ async function openContactImport(clientTable) {
         if (contacts.length === 0) throw new Error(t("gestion", "No Nextcloud contact is available."));
 
         const dialog = document.createElement("dialog");
-        dialog.className = "gestion-contact-dialog";
+        dialog.className = "gestion-contact-dialog gestion-workspace-dialog";
         const form = document.createElement("form");
         const title = document.createElement("h2");
         title.textContent = t("gestion", "Import a Nextcloud contact");
+        title.id = "contact-import-title";
+        dialog.setAttribute("aria-labelledby", title.id);
         const search = document.createElement("input");
         search.type = "search";
+        search.setAttribute("aria-label", t("gestion", "Search contacts"));
         search.placeholder = t("gestion", "Search contacts");
         const list = document.createElement("div");
         list.className = "gestion-contact-list";
@@ -44,8 +48,9 @@ async function openContactImport(clientTable) {
                 item.className = "gestion-contact-list-item";
                 item.textContent = [contact.displayName, contact.entreprise, contact.mail].filter(Boolean).join(" — ");
                 item.addEventListener("click", () => {
-                    list.querySelector(".active")?.classList.remove("active");
+                    list.querySelectorAll(".active").forEach(el => { el.classList.remove("active"); el.setAttribute("aria-pressed", "false"); });
                     item.classList.add("active");
+                    item.setAttribute("aria-pressed", "true");
                     selectedContact = contact;
                 });
                 item.addEventListener("dblclick", () => {
@@ -84,7 +89,7 @@ async function openContactImport(clientTable) {
                 const importResponse = await fetch(baseUrl + "/client/import-contact", {
                     method: "POST",
                     headers: csrfHeaders({ "Content-Type": "application/json" }),
-                    body: JSON.stringify({ contact: selectedContact })
+                    body: JSON.stringify({ contactId: selectedContact.id })
                 });
                 if (!importResponse.ok) {
                     const result = await importResponse.json().catch(() => ({}));

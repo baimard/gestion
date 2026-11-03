@@ -19,7 +19,7 @@ class ContactImportService {
 
 		return array_values(array_map(
 			fn (array $contact): array => $this->normalize($contact),
-			$this->contacts->search('', self::PROPERTIES, ['types' => true, 'limit' => 500])
+			$this->contacts->search('', self::PROPERTIES, ['types' => true])
 		));
 	}
 
@@ -33,14 +33,16 @@ class ContactImportService {
 	}
 
 	private function normalize(array $contact): array {
-		$name = $this->values($contact['N'] ?? []);
+		$nameProperty = $contact['N'] ?? [];
+        $rawName = is_array($nameProperty) && isset($nameProperty[1]) && is_string($nameProperty[0]) ? $nameProperty : $this->firstPropertyValue($nameProperty);
+        $name = is_array($rawName) ? $rawName : explode(';', (string)$rawName);
 		$address = $this->firstPropertyValue($contact['ADR'] ?? []);
 		$addressParts = is_array($address) ? $address : explode(';', (string)$address);
 		$country = strtoupper((string)($addressParts[6] ?? ''));
 
 		return [
-			'id' => (string)($contact['id'] ?? ''),
-			'displayName' => (string)($contact['FN'] ?? trim(($name[1] ?? '') . ' ' . ($name[0] ?? ''))),
+			'id' => hash('sha256', (string)($contact['addressbook-key'] ?? '') . ':' . (string)($contact['UID'] ?? $contact['id'] ?? '')),
+			'displayName' => (string)($this->first($contact['FN'] ?? '') ?: trim(($name[1] ?? '') . ' ' . ($name[0] ?? ''))),
 			'nom' => (string)($name[0] ?? ''),
 			'prenom' => (string)($name[1] ?? ''),
 			'entreprise' => implode(' ', $this->values($contact['ORG'] ?? [])),

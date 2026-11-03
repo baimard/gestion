@@ -29,7 +29,8 @@ class CompanyController extends Controller {
 	 */
 	#[UseSession]
 	public function deleteCompany() {
-		return $this->companyService->deleteCompany();
+		try { return $this->companyService->deleteCompany(); }
+        catch (\DomainException $e) { return new \OCP\AppFramework\Http\DataResponse(['message' => $e->getMessage()], 409); }
 	}
 
 	/**

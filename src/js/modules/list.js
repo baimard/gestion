@@ -208,7 +208,7 @@ export function setCurrencyList(currentDevise, selectObject) {
     for (const [key, value] of oEntriesSort) {
         var opt = document.createElement('option');
         opt.value = key;
-        opt.innerHTML = value;
+        opt.textContent = value;
         if (currentDevise === key) {
             opt.selected = true;
         }
@@ -228,7 +228,7 @@ export function setFormatList(currentFormat, selectObject) {
     for (const [key, value] of oEntriesSort) {
         var opt = document.createElement('option');
         opt.value = key;
-        opt.innerHTML = value;
+        opt.textContent = value;
         if (currentFormat === key) {
             opt.selected = true;
         }

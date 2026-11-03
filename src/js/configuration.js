@@ -135,12 +135,17 @@ async function loadElectronicInvoiceProvider() {
 
         document.getElementById('einvoice_provider').value = config.provider || '';
         document.getElementById('iopole_client_id').value = credentials.client_id || '';
-        document.getElementById('iopole_client_secret').value = credentials.client_secret || '';
+        const secret = document.getElementById('iopole_client_secret');
+        secret.value = '';
+        secret.placeholder = config.secretStored ? t('gestion', 'Secret stored — leave empty to keep it') : '';
+        for (const id of ['einvoice_provider', 'save_einvoice_provider', 'iopole_client_id', 'iopole_client_secret', 'iopole_customer_id', 'iopole_base_url', 'iopole_auth_url']) {
+            document.getElementById(id).disabled = !config.canConfigure;
+        }
         document.getElementById('iopole_customer_id').value = credentials.customer_id || '';
         document.getElementById('iopole_base_url').value = credentials.base_url || '';
         document.getElementById('iopole_auth_url').value = credentials.auth_url || '';
         updateProviderVisibility();
-        if (status) status.textContent = config.configured ? t('gestion', 'Platform configured') : '';
+        if (status) status.textContent = !config.canConfigure ? t('gestion', 'Only the company owner can configure the electronic invoice platform.') : config.configured ? t('gestion', 'Platform configured') : '';
     } catch (error) {
         if (status) status.textContent = t('gestion', 'Unable to load platform configuration');
         console.error(error);
@@ -171,6 +176,8 @@ async function saveElectronicInvoiceProvider() {
         });
         const payload = await response.json();
         if (!response.ok) throw new Error(payload.message || 'Unable to save provider configuration');
+        document.getElementById('iopole_client_secret').value = '';
+        document.getElementById('iopole_client_secret').placeholder = payload.secretStored ? t('gestion', 'Secret stored — leave empty to keep it') : '';
         if (status) status.textContent = payload.configured || provider === ''
             ? t('gestion', 'Saved')
             : t('gestion', 'Some required fields are missing');

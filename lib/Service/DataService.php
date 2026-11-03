@@ -8,15 +8,27 @@ use OCP\ISession;
 class DataService {
 	private Bdd $myDb;
 	private ISession $session;
+    private $userId;
 
-	public function __construct(Bdd $myDb, ISession $session) {
+	public function __construct(Bdd $myDb, ISession $session, $UserId = null) {
+        $this->userId = $UserId;
 		$this->myDb = $myDb;
 		$this->session = $session;
 	}
 
 	private function currentCompany() {
-		return $this->session->get('CurrentCompany');
+		$company = $this->session->get('CurrentCompany');
+        if (!$this->userId || !in_array((string)$company, array_map('strval', array_column($this->myDb->getCompaniesList($this->userId), 'id')), true)) throw new \DomainException('Company access denied.');
+		return $company;
 	}
+
+	public function lockDocument(string $table, int $id): void {
+        $this->myDb->lockDocument($table, $id, (int)$this->currentCompany());
+    }
+
+    public function history(int $before = 0): array {
+        return $this->myDb->history((int)$this->currentCompany(), $before);
+    }
 
 	public function getClients() {
 		return $this->myDb->getClients($this->currentCompany());
@@ -69,7 +81,7 @@ class DataService {
 			$value = $client[$field] ?? '';
 			$normalized[$field] = is_scalar($value) ? mb_substr(trim((string)$value), 0, 500) : '';
 		}
-		return $this->myDb->insertClient($this->currentCompany(), $normalized);
+		return $this->myDb->importContact((int)$this->currentCompany(), $normalized);
 	}
 
 	public function insertDevis() {

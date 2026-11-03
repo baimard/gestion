@@ -28,6 +28,7 @@ export function shouldSkipInlineEdit(element) {
 }
 
 export function enableInlineEdit(element) {
+    if (element.hasAttribute('data-raw-value')) element.textContent = element.dataset.rawValue;
     element.setAttribute('contenteditable', 'true');
     element.focus();
 }
@@ -50,16 +51,4 @@ export function saveEditableElement(element, ignoreComment = false) {
     if (targetClass.includes("editable")) {
         updateEditable(element);
     }
-}
-
-export function applyMouseOverStyles(element) {
-    element.style.fontWeight = "bold";
-    element.addEventListener('mouseout', resetMouseOverStyles);
-}
-
-function resetMouseOverStyles(event) {
-    event.target.style.border = null;
-    event.target.style.padding = null;
-    event.target.style.fontWeight = null;
-    event.target.style.borderRadius = null;
 }

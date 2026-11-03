@@ -26,10 +26,14 @@ class ElectronicInvoiceProviderController extends Controller {
 	#[NoCSRFRequired]
 	#[UseSession]
 	public function getConfiguration(): DataResponse {
-		return new DataResponse([
-			'providers' => $this->providerService->getProviders(),
-			'configuration' => $this->providerService->getCurrentConfiguration(),
-		]);
+        try {
+            return new DataResponse([
+                'providers' => $this->providerService->getProviders(),
+                'configuration' => $this->providerService->getCurrentConfiguration(),
+            ]);
+        } catch (\DomainException $e) {
+            return new DataResponse(['message' => $e->getMessage()], 403);
+        }
 	}
 
 	/**
@@ -42,10 +46,12 @@ class ElectronicInvoiceProviderController extends Controller {
 			return new DataResponse(
 				$this->providerService->saveCurrentConfiguration($provider, $credentials)
 			);
-		} catch (\InvalidArgumentException $e) {
+		} catch (\DomainException $e) {
+            return new DataResponse(['message' => $e->getMessage()], 403);
+        } catch (\InvalidArgumentException $e) {
 			return new DataResponse(['message' => $e->getMessage()], 400);
 		} catch (\Throwable $e) {
-			return new DataResponse(['message' => $e->getMessage()], 500);
+			return new DataResponse(['message' => 'Unable to save platform configuration.'], 500);
 		}
 	}
 }

@@ -17,7 +17,7 @@ dist/
 .env.local
 
 # Composer
-vendor/
+/vendor
 composer.lock
 .phpunit.result.cache
 
@@ -25,6 +25,6 @@ composer.lock
 Thumbs.db
 
 # Nextcloud spécifiques (si besoin)
-js/
-css/
+/js/
+/css/
 /l10n/

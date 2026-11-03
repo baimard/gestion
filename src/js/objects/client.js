@@ -1,3 +1,4 @@
+import { escapeHtml, plainText } from "../modules/text.js";
 import { updateDB } from "../modules/ajaxRequest.js";
 import { baseUrl, checkSelectPurJs, LoadDT} from "../modules/mainFunction.js";
 import { csrfHeaders, setCsrfRequestHeader } from "../modules/csrf.js";
@@ -23,6 +24,9 @@ export class Client {
     this.zip_code = ((myresp.zip_code.length === 0) ? '-' : myresp.zip_code);
     this.city_name = ((myresp.city_name.length === 0) ? '-' : myresp.city_name);
     this.country_code = ((myresp.country_code.length === 0) ? '-' : myresp.country_code);
+    for (const key of Object.keys(this)) {
+      if (typeof this[key] === 'string' && key !== 'baseUrl') this[key] = escapeHtml(this[key]);
+    }
   }
 
   /**
@@ -123,24 +127,24 @@ export class Client {
     .then(data => {
       var dataArray = JSON.parse(data);
       dataArray.forEach(myresp => {
-        document.getElementById("nomprenom").innerHTML = `${myresp.prenom} ${myresp.nom}`;
+        document.getElementById("nomprenom").textContent = plainText(`${myresp.prenom} ${myresp.nom}`);
         document.getElementById("nomprenom").setAttribute("data-id", id);
-        document.getElementById("entreprise").innerHTML = myresp.entreprise;
-        document.getElementById("adresse").innerHTML = myresp.adresse;
+        document.getElementById("entreprise").textContent = plainText(myresp.entreprise);
+        document.getElementById("adresse").textContent = plainText(myresp.adresse);
         document.getElementById("client_city").textContent = [myresp.zip_code, myresp.city_name]
           .filter(Boolean)
           .join(" ");
         document.getElementById("country_code").textContent = myresp.country_code ?? "";
-        document.getElementById("mail").innerHTML = myresp.mail;
-        document.getElementById("telephone").innerHTML = myresp.telephone;
-        document.getElementById("legal_one").innerHTML = myresp.legal_one;
+        document.getElementById("mail").textContent = plainText(myresp.mail);
+        document.getElementById("telephone").textContent = plainText(myresp.telephone);
+        document.getElementById("legal_one").textContent = plainText(myresp.legal_one);
         const companyIdentification = document.getElementById("company_identification");
         if (companyIdentification) {
-          companyIdentification.innerHTML = myresp.company_identification;
+          companyIdentification.textContent = plainText(myresp.company_identification);
         }
         const vatNumber = document.getElementById("vat_number");
         if (vatNumber) {
-          vatNumber.innerHTML = myresp.vat_number;
+          vatNumber.textContent = plainText(myresp.vat_number);
         }
         document.getElementById("pdf").setAttribute("data-folder", myresp.num);
 
@@ -181,7 +185,7 @@ export class Client {
           );
 
           var parentElement = el.target.parentElement
-          parentElement.innerHTML = el.target.value + " " + el.target.options[el.target.selectedIndex].text;
+          parentElement.textContent = el.target.value + " " + el.target.options[el.target.selectedIndex].text;
           parentElement.dataset.current = el.target.value;
         }else{
           var parentElement = el.target.parentElement

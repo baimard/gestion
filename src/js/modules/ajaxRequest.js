@@ -1,6 +1,8 @@
+import { escapeHtml } from "./text.js";
+import { lineTotal } from './commercialMath.js';
 import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
 import { translate as t } from '@nextcloud/l10n'
-import { baseUrl, cur, getGlobal, insertCell, insertRow, modifyCell } from "./mainFunction.js";
+import { baseUrl, cur, unitCurrency, quantityFormat, getCurrency, getGlobal, insertCell, insertRow, modifyCell } from "./mainFunction.js";
 import { csrfHeaders, setCsrfRequestHeader } from "./csrf.js";
 
 /**
@@ -30,7 +32,8 @@ export async function updateDB(table, column, data, id) {
             showSuccess(t('gestion', 'Modification saved'));
             return true;
         } else {
-            showError(t('gestion', 'There is an error with the format, please check the documentation'));
+            const result = await response.json().catch(() => ({}));
+            showError(result.message || t('gestion', 'Unable to save this change.'));
             return false;
         }
     } catch {
@@ -66,7 +69,7 @@ export function updateDBConfiguration(table, column, data, id) {
         if (response.ok) {
             showSuccess(t('gestion', 'Modification saved'));
         } else {
-            showError(t('gestion', 'There is an error with the format, please check the documentation'));
+            showResponseError(response);
         }
     })
     .catch(() => {
@@ -114,7 +117,7 @@ export function deleteCompany() {
                 showSuccess(t('gestion', 'Company deleted'));
                 location.reload();
             } else {
-                showError(t('gestion', 'There is an error.'));
+                showResponseError(response);
             }
         })
         .catch(() => {
@@ -180,7 +183,7 @@ export function duplicateDB(table, id, callback=null, modifier=null) {
                 showSuccess(t('gestion', 'Duplicated'));
                 callback(modifier);
             } else {
-                showError(response);
+                showResponseError(response);
             }
         })
         .catch(error => {
@@ -215,7 +218,7 @@ export function deleteDB(table, id, callback=null, modifier=null) {
                 showSuccess(t('gestion', 'Modification saved'));
                 callback(modifier);
             } else {
-                showError(response);
+                showResponseError(response);
             }
         })
         .catch(error => {
@@ -249,7 +252,7 @@ export function drop(id, callback=null, modifier=null, value='up') {
         if (response.ok) {
             callback(modifier);
         } else {
-            showError(response);
+            showResponseError(response);
         }
     })
     .catch(error => {
@@ -461,6 +464,7 @@ export async function updateEditable(myCase) {
         myCase.dataset.id
     );
 
+    if (saved && myCase.hasAttribute('data-raw-value')) myCase.dataset.rawValue = value;
     myCase.removeAttribute('contenteditable');
 
     if (saved && myCase.dataset.modifier === 'getProduitsById') {
@@ -501,7 +505,9 @@ export function getProduitsById() {
         }
         return response.json();
     })
-    .then(data => {
+    .then(async data => {
+        const configurationResponse = await fetch(baseUrl + '/getConfiguration', {method: 'PROPFIND', headers: csrfHeaders()});
+        getCurrency(await configurationResponse.json());
         const produitsBody = document.querySelector('#produits tbody');
         produitsBody.innerHTML = '';
         let totalHTGlobal = 0;
@@ -509,10 +515,11 @@ export function getProduitsById() {
         let totalTTCGlobal = 0;
 
         const vatGroups = {};
-        const isInvoice = document.getElementById('produits').dataset.type === 'facture';
+        const isInvoice = document.getElementById('produits').dataset.type === 'facture' || document.querySelector('[data-document-lock]')?.dataset.locked === '1';
         var res = JSON.parse(data);
 
         res.forEach(myresp => {
+            for (const field of ['reference', 'description', 'comment']) myresp[field] = escapeHtml(myresp[field]);
             const vat = parseFloat(myresp.vat || 0);
             const reference = isInvoice
                 ? `<span>${myresp.reference}</span>`
@@ -527,7 +534,7 @@ export function getProduitsById() {
             if(myresp.header > 0){
                 produitsBody.innerHTML += `<tr class="${isInvoice ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}" style="background-color:rgb(198, 198, 198);">
                     ${orderCell}
-                    <td COLSPAN="8">
+                    <td COLSPAN="9">
                         <div>
                             ${reference}
                             ${deleteAction}
@@ -551,24 +558,26 @@ export function getProduitsById() {
                         </div>
                     </td>
                     <td>
-                        <div class="${isInvoice ? '' : 'editableNumber getProduitsById'}" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-id="${myresp.pdid}">
-                            ${myresp.quantite}
+                        <div class="${isInvoice ? '' : 'editableNumber getProduitsById'}" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-raw-value="${Number(myresp.quantite)}" data-id="${myresp.pdid}">
+                            ${quantityFormat.format(myresp.quantite)}
                         </div>
                     </td>
-                    <td>${cur.format(myresp.prix_unitaire)}</td>
-                    <td>${cur.format(myresp.quantite * myresp.prix_unitaire)}</td>
+                    <td>${unitCurrency.format(myresp.prix_unitaire)}</td>
+                    <td><div class="${isInvoice ? '' : 'editableNumber getProduitsById'}" data-modifier="getProduitsById" data-table="produit_devis" data-column="discount" data-id="${myresp.pdid}">${Number(myresp.discount || 0)}</div> %</td>
+                    <td>${cur.format(lineTotal(myresp))}</td>
                     <td>${vat} %</td>
-                    <td>${cur.format((myresp.quantite * myresp.prix_unitaire) * (1 + vat / 100))}</td>
+                    <td>${cur.format((lineTotal(myresp)) * (1 + vat / 100))}</td>
                 </tr>`;
 
-                const quantity = myresp.quantite;
-                const totalHT = myresp.quantite * myresp.prix_unitaire;
+                const quantity = Number(myresp.quantite);
+                const totalHT = lineTotal(myresp);
                 const totalTVA = totalHT * (vat / 100);
                 const totalTTC = totalHT + totalTVA;
 
                 if (!vatGroups[vat]) {
                     vatGroups[vat] = {
                         quantity: 0,
+                        rate: vat,
                         totalHT: 0,
                         totalTVA: 0,
                         totalTTC: 0
@@ -590,6 +599,13 @@ export function getProduitsById() {
             bindProductDragAndDrop(produitsBody, devis_id);
         }
 
+        totalTVAGlobal = 0;
+        Object.values(vatGroups).forEach(group => {
+            group.totalTVA = Math.round((group.totalHT * group.rate / 100 + Number.EPSILON) * 100) / 100;
+            group.totalTTC = group.totalHT + group.totalTVA;
+            totalTVAGlobal += group.totalTVA;
+        });
+        totalTTCGlobal = totalHTGlobal + totalTVAGlobal;
         const totalBody = document.getElementById('totaldevis').querySelector('tbody');
         totalBody.innerHTML = '';
 
@@ -684,20 +700,6 @@ export function generateFacturXmlRequest(factureId, name, folder) {
 /**
  * 
  */
-export function backup(){
-    var oReq = new XMLHttpRequest();
-    oReq.open('GET', baseUrl + '/backup', true);
-    oReq.setRequestHeader("Content-Type", "application/json");
-    setCsrfRequestHeader(oReq);
-    oReq.onload = function(){
-        if (this.status == 200) {
-            showSuccess(t('gestion', 'Save in')+' '+JSON.parse(this.response)['name']+'\n'+t('gestion','(do not forget to show hidden folders)'));
-        }else{
-            showError(this.response);
-        }
-    };
-    oReq.send();
-}
 
 export function addShareUser(email){
     var myData = {
@@ -747,3 +749,8 @@ export function delShareUser(uid){
         showError(t('gestion', 'Information : ') + data.data);
     })
 };
+
+async function showResponseError(response) {
+    const result = await response.json().catch(() => ({}));
+    showError(result.message || t('gestion', 'The operation could not be completed. Check whether the document or its linked data is locked.'));
+}

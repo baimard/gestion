@@ -1,3 +1,4 @@
+import { sendingNotice, lockedAfterSendNotice } from './modules/documentLockMessages.js';
 import { showMessage } from "@nextcloud/dialogs";
 import { baseUrl } from "./modules/mainFunction.js";
 import { generateFacturXmlRequest } from "./modules/ajaxRequest.js";
@@ -137,6 +138,8 @@ async function sendDocumentByMail(detailUrl) {
       headers: csrfHeaders({ "Content-Type": "application/json" }),
       body: JSON.stringify({
         html: element.outerHTML,
+        table: isInvoice ? 'facture' : 'devis',
+        documentId: Number(sourceDocument.getElementById(isInvoice ? 'factureid' : 'devisid').dataset.id),
         name,
         to: email.to,
         subject: email.subject,
@@ -146,9 +149,11 @@ async function sendDocumentByMail(detailUrl) {
 
     const result = await response.json();
     if (!response.ok) {
-      throw new Error(result.message || t("gestion", "Email sending failed."));
+      const lockMessage = result.documentLocked ? ' ' + lockedAfterSendNotice() : '';
+      throw new Error((result.message || t("gestion", "Email sending failed.")) + lockMessage);
     }
     showMailSentConfirmation();
+    if (result.documentLocked) showMessage(lockedAfterSendNotice());
   });
 }
 
@@ -164,6 +169,13 @@ function showMailConfirmation(email) {
     const title = document.createElement("h2");
     title.textContent = t("gestion", "Send document by email");
     form.appendChild(title);
+    const lockWarning = document.createElement("p");
+    lockWarning.className = 'gestion-lock-information';
+    lockWarning.id = 'mail-lock-warning';
+    form.setAttribute('aria-describedby', lockWarning.id);
+    lockWarning.setAttribute('role', 'note');
+    lockWarning.textContent = sendingNotice();
+    form.appendChild(lockWarning);
 
     const createField = (labelText, value, readOnly, multiline = false) => {
       const label = document.createElement("label");
@@ -355,7 +367,7 @@ export function captureFacturX(sourceDocument = document) {
   })
   .then(response => {
     if (!response.ok) {
-      return response.json().then(err => { throw new Error(err.message || "Server error"); });
+      return response.json().then(err => { throw new Error((err.message || t('gestion', 'Unable to send this invoice.')) + (err.documentLocked ? ' ' + lockedAfterSendNotice() : '')); });
     }
     return response.blob();
   })
@@ -396,7 +408,8 @@ export function captureFacturXml(sourceDocument = document) {
 /**
  * Génère le PDF Factur-X courant et l'envoie Ã  Iopole.
  */
-export function sendFacturXToIopole() {
+export async function sendFacturXToIopole() {
+  if (!await confirmIopoleSending()) return;
   showMessage(t("gestion", "Sending the electronic invoice to Iopole"));
 
   const pdfElement = document.getElementById("pdf");
@@ -411,7 +424,7 @@ export function sendFacturXToIopole() {
 
   const name = t("gestion", "INVOICE") + "_" + pdfName + "_facturx.pdf";
 
-  fetch(baseUrl + '/sendFacturXToIopole', {
+  return fetch(baseUrl + '/sendFacturXToIopole', {
     method: 'POST',
     headers: csrfHeaders({
       'Content-Type': 'application/json'
@@ -424,15 +437,47 @@ export function sendFacturXToIopole() {
   })
   .then(response => {
     if (!response.ok) {
-      return response.json().then(err => { throw new Error(err.message || "Server error"); });
+      return response.json().then(err => { throw new Error((err.message || t('gestion', 'Unable to send this invoice.')) + (err.documentLocked ? ' ' + lockedAfterSendNotice() : '')); });
     }
     return response.json();
   })
   .then(data => {
     showMessage(t("gestion", "Invoice sent to Iopole! Identifier: ") + data.iopoleInvoiceId);
+    if (data.documentLocked) showMessage(lockedAfterSendNotice());
   })
   .catch(error => {
     console.error("Iopole error:", error);
     showMessage(t("gestion", "Error sending to Iopole: ") + error.message);
+  });
+}
+
+function confirmIopoleSending() {
+  return new Promise(resolve => {
+    const dialog = document.createElement('dialog');
+    dialog.className = 'gestion-workspace-dialog';
+    dialog.setAttribute('aria-labelledby', 'iopole-confirm-title');
+    const title = document.createElement('h2');
+    title.id = 'iopole-confirm-title';
+    title.textContent = t('gestion', 'Finalize and send to Iopole?');
+    const warning = document.createElement('p');
+    warning.className = 'gestion-lock-information';
+    warning.id = 'iopole-lock-warning';
+    dialog.setAttribute('aria-describedby', warning.id);
+    warning.textContent = sendingNotice();
+    const cancel = document.createElement('button');
+    cancel.type = 'button';
+    cancel.textContent = t('gestion', 'Cancel');
+    const send = document.createElement('button');
+    send.type = 'button';
+    send.className = 'primary';
+    send.textContent = t('gestion', 'Finalize and send');
+    let confirmed = false;
+    cancel.addEventListener('click', () => dialog.close());
+    send.addEventListener('click', () => { confirmed = true; dialog.close(); });
+    dialog.addEventListener('close', () => { dialog.remove(); resolve(confirmed); }, {once:true});
+    dialog.append(title, warning, cancel, send);
+    document.body.append(dialog);
+    dialog.showModal();
+    cancel.focus();
   });
 }

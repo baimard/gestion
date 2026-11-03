@@ -1,0 +1,24 @@
+const {chromium}=require('playwright');const assert=require('node:assert/strict');const fs=require('fs');
+(async()=>{
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});const ctx=await browser.newContext({viewport:{width:1440,height:1000}});const page=await ctx.newPage();let errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://127.0.0.1:8080/index.php/apps/gestion/config');await page.locator('input[name=user]').fill(process.env.NEXTCLOUD_TEST_USER);await page.locator('input[name=password]').fill(process.env.NEXTCLOUD_TEST_PASSWORD);await page.getByRole('button',{name:'Log in',exact:true}).click();await page.waitForURL('**/apps/gestion/**');
+async function api(path,data,method='POST') {return page.evaluate(async ({path,data,method})=>{const r=await fetch(OC.generateUrl('/apps/gestion'+path),{method,headers:{'Content-Type':'application/json',requesttoken:OC.requestToken||oc_requesttoken},...(data?{body:JSON.stringify(data)}:{})});return {status:r.status,data:await r.json().catch(()=>null)}},{path,data,method})}
+assert.equal((await api('/createCompany',null,'PUT')).status,200);await page.reload();
+const company=await page.locator('#CurrentCompany-select').evaluate(el=>Math.max(...[...el.options].map(o=>Number(o.value))));
+assert.equal((await api('/updateSession',{companyID:String(company)})).status,200);await page.reload();
+await api('/isconfig',null,'GET');await api('/updateConfiguration',{column:'entreprise',data:'Workspace UI verification'});await api('/client/insert',{});await api('/produit/insert',{});await api('/devis/insert',{});
+const read=async(path)=>JSON.parse((await api(path,null,'PROPFIND')).data);
+const client=(await read('/getClients'))[0].id,product=(await read('/getProduits'))[0].id,quote=(await read('/getDevis'))[0].id;
+for(const [table,column,data,id] of [['devis','id_client',String(client),quote],['produit','prix_unitaire','10',product],['produit','vat','20',product],['produit','description','Design and consulting',product],['client','entreprise','Example customer',client]])assert.equal((await api('/update',{table,column,data,id})).status,200);
+await api('/insertProduitDevis',{id:String(quote)});const line=JSON.parse((await api('/getProduitsById',{numdevis:String(quote)})).data)[0].pdid;
+for(const [column,data]of[['quantite','3'],['discount','10']])assert.equal((await api('/update',{table:'produit_devis',column,data,id:line})).status,200);
+await page.goto('http://127.0.0.1:8080/index.php/apps/gestion/devis/'+quote+'/show');await page.waitForFunction(()=>document.documentElement.dataset.gestionDocumentReady==='true');
+const amounts=await page.locator('#totalglobal tbody td').allTextContents();if(!amounts.length){console.log('DEBUG',page.url(),errors,(await page.locator('body').innerText()).slice(-3000));await page.screenshot({path:'/tmp/gestion-gestion-document-error.png',fullPage:true});}assert.match(amounts[0],/27[.,]00/);assert.match(amounts[2],/32[.,]40/);
+assert.equal(await page.locator('[data-column=discount]').innerText(),'10');await page.screenshot({path:'/tmp/gestion-gestion-quote.png',fullPage:true});
+await page.locator('#lock-document').click();await page.locator('dialog[open]').getByRole('button',{name:'Finalize and lock',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[data-document-lock]')?.dataset.locked==='1');
+assert.equal(await page.locator('#devisAdd').isVisible(),false);assert.equal((await api('/update',{table:'produit_devis',column:'quantite',data:'4',id:line})).status,409);assert.equal((await api('/update',{table:'client',column:'nom',data:'Changed',id:client})).status,409);
+await page.goto('http://127.0.0.1:8080/index.php/apps/gestion/config');await page.locator('[data-open-history]').click();await page.locator('.gestion-history li').first().waitFor();assert.match(await page.locator('.gestion-history').innerText(),/locked/);await page.locator('dialog[open]').getByRole('button',{name:'Close',exact:true}).click();
+await page.screenshot({path:'/tmp/gestion-gestion-desktop.png',fullPage:true});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'/tmp/gestion-gestion-mobile.png',fullPage:true});
+await page.emulateMedia({colorScheme:'dark'});await page.screenshot({path:'/tmp/gestion-gestion-dark.png',fullPage:true});
+fs.writeFileSync(process.env.NEXTCLOUD_TEST_FIXTURE || '/tmp/gestion-e2e-fixture.json',JSON.stringify({company,client,product,quote,line}));assert.deepEqual(errors,[]);console.log('Browser document checks passed: persisted 10% discount, HT 27 / TTC 32.40, lock confirmation/read-only UI, server rejects linked-record mutations, attributed history, screenshots desktop/mobile/dark.');await browser.close();
+})().catch(e=>{console.error(e);process.exit(1)});

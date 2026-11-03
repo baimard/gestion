@@ -10,7 +10,8 @@ class DataServiceInvoiceTest extends TestCase {
 	private function service(Bdd $database): DataService {
 		$session = $this->createMock(ISession::class);
 		$session->method('get')->with('CurrentCompany')->willReturn(3);
-		return new DataService($database, $session);
+		$database->method('getCompaniesList')->with('test-user')->willReturn([['id' => 3]]);
+        return new DataService($database, $session, 'test-user');
 	}
 
 	public function testInvoicePaymentConfigurationRemainsEditable(): void {

@@ -87,7 +87,8 @@ export async function saveVatExemptionReason() {
         );
 
         if (!response.ok) {
-            throw new Error('Unable to save VAT exemption reason');
+            const result = await response.json().catch(() => ({}));
+            throw new Error(result.message || t('gestion', 'Unable to save VAT exemption reason'));
         }
 
         const reason = await response.json();
@@ -98,7 +99,7 @@ export async function saveVatExemptionReason() {
         showSuccess(t('gestion', 'Modification saved'));
     } catch (error) {
         console.error('Unable to save VAT exemption reason:', error);
-        showError(t('gestion', 'Unable to save VAT exemption reason'));
+        showError(error.message || t('gestion', 'Unable to save VAT exemption reason'));
     }
 }
 

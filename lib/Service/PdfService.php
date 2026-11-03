@@ -82,22 +82,7 @@ class PdfService {
 
 		try {
 
-			$mpdf = new Mpdf([
-				'mode' => 'utf-8',
-				'format' => 'A4',
-				'margin_top' => 10,
-				'margin_bottom' => 10,
-				'margin_left' => 10,
-				'margin_right' => 10,
-				'tempDir' => '/tmp',
-			]);
-
-			$css = file_get_contents(__DIR__ . '/../../css/pdf.css');
-
-			$mpdf->WriteHTML($css, \Mpdf\HTMLParserMode::HEADER_CSS);
-			$mpdf->WriteHTML($html, \Mpdf\HTMLParserMode::HTML_BODY);
-
-			$pdfContent = $mpdf->Output('', \Mpdf\Output\Destination::STRING_RETURN);
+            $pdfContent = $this->renderPdf($html);
 
 			$encoded = base64_encode($pdfContent);
 
@@ -109,6 +94,8 @@ class PdfService {
 				'application/pdf'
 			);
 
+        } catch (\InvalidArgumentException $e) {
+            return new DataResponse(['status' => 'error', 'message' => $e->getMessage()], 400);
 		} catch (\Mpdf\MpdfException $e) {
 
 			return new DataResponse([
@@ -234,6 +221,7 @@ class PdfService {
 	}
 
 	public function renderPdf($html): string {
+        $html = PdfHtmlPolicy::sanitize($html);
 
 		$mpdf = new Mpdf([
 			'mode' => 'utf-8',

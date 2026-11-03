@@ -26,9 +26,13 @@ class ClientController extends Controller {
 
 	/** @NoAdminRequired */
 	#[UseSession]
-	public function importContact(array $contact): DataResponse {
+	public function importContact(string $contactId): DataResponse {
+        $contact = $this->contactImportService->find($contactId);
+        if ($contact === null) return new DataResponse(['message' => 'Contact not found in your address books.'], 404);
+        try {
 		$this->dataService->insertContactClient($contact);
 		return new DataResponse(['status' => 'success']);
+        } catch (\DomainException $e) { return new DataResponse(['message' => $e->getMessage()], 409); }
 	}
 
 	/**

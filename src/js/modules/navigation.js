@@ -28,14 +28,8 @@ export function initializeNavigationToggle() {
 
     button.addEventListener('click', () => {
         if (mobileQuery.matches) {
-            const nativeToggle = document.getElementById('app-navigation-toggle');
-            const isOpen = document.body.classList.contains('snapjs-left');
-
-            nativeToggle?.dispatchEvent(new KeyboardEvent('keypress', {
-                bubbles: true,
-                key: 'Enter',
-            }));
-            setButtonState(button, !isOpen);
+            const isOpen = app.classList.toggle('gestion-mobile-navigation-open');
+            setButtonState(button, isOpen);
             return;
         }
 
@@ -44,8 +38,15 @@ export function initializeNavigationToggle() {
         setButtonState(button, isOpen);
     });
 
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && app.classList.contains('gestion-mobile-navigation-open')) {
+            app.classList.remove('gestion-mobile-navigation-open');
+            setButtonState(button, false);
+            button.focus();
+        }
+    });
     mobileQuery.addEventListener('change', event => {
-        app.classList.remove(NAVIGATION_CLOSED_CLASS);
+        app.classList.remove(NAVIGATION_CLOSED_CLASS, 'gestion-mobile-navigation-open');
         setButtonState(button, event.matches
             ? document.body.classList.contains('snapjs-left')
             : true);

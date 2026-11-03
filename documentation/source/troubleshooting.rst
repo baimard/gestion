@@ -6,7 +6,9 @@ Un champ n'est pas enregistré
 
 Cliquez dans la cellule, modifiez sa valeur puis validez avec **Entrée**.
 Rechargez la page pour contrôler l'enregistrement. Vérifiez également que
-l'entreprise sélectionnée est la bonne.
+l'entreprise sélectionnée est la bonne. Si un message de verrouillage apparaît,
+consultez :doc:`document_lifecycle` : un refus HTTP 409 peut protéger un
+document émis ou une fiche client/produit qui lui est liée.
 
 Le PDF n'est pas enregistré
 ----------------------------
@@ -42,7 +44,12 @@ L'envoi d'e-mail échoue
 
 Le serveur de messagerie se configure dans l'administration générale de
 Nextcloud, pas dans Gestion. Demandez à l'administrateur de tester les
-paramètres SMTP.
+paramètres SMTP. Pour l'envoi depuis le compte personnel Nextcloud Mail,
+vérifiez aussi l'installation de Mail et la connexion du compte par défaut.
+
+Si le message indique que le document a été verrouillé avant l'échec,
+rechargez sa page pour voir son état puis réessayez le même envoi après
+correction des paramètres. Il n'est pas nécessaire de le déverrouiller.
 
 Iopole n'est pas proposé dans la facture
 -----------------------------------------

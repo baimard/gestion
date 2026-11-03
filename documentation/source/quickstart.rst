@@ -69,11 +69,23 @@ changement de sélection, selon le type de champ.
 .. video:: _static/videos/facture.webm
    :width: 800
 
+6. Vérifier puis finaliser
+---------------------------
+
+#. Vérifiez le client, les informations de l'émetteur, les prix, les remises,
+   la TVA et les dates avant de confirmer.
+#. Utilisez **Finalize and lock** pour finaliser manuellement. La confirmation
+   décrit le caractère définitif de l'action.
+#. Si vous envoyez par e-mail ou à Iopole, l'écran d'envoi rappelle que la
+   finalisation intervient avant la tentative de livraison.
+
 .. important::
 
-   Une facture dépend d'un devis et reprend ses lignes. Conservez les versions
-   émises dans Nextcloud Files : une modification ultérieure du client, du devis
-   ou du catalogue peut modifier l'affichage d'un document ouvert dans Gestion.
+   Le verrouillage est définitif et s'applique aux données liées. Un échec
+   d'envoi laisse le document verrouillé, mais autorise une nouvelle tentative.
+   Annuler la confirmation n'envoie rien et ne verrouille rien. Consultez
+   :doc:`document_lifecycle` avant de finaliser votre premier document.
+   Conservez aussi les PDF/XML émis dans Nextcloud Files.
 
 .. video:: _static/videos/pdf.webm
    :width: 800

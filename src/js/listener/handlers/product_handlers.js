@@ -1,5 +1,6 @@
+import { plainText } from "../../modules/text.js";
 import { showError } from "@nextcloud/dialogs";
-import { baseUrl, cur, unescapeHtml } from "../../modules/mainFunction.js";
+import { baseUrl, unitCurrency } from "../../modules/mainFunction.js";
 import { getProduitsById, updateDB } from "../../modules/ajaxRequest.js";
 import { csrfHeaders } from "../../modules/csrf.js";
 import { Client } from "../../objects/client.js";
@@ -19,13 +20,13 @@ export function addProductToDevis() {
             if (response.ok) {
                 return response.json();
             }
-            throw new Error('Network response was not ok.');
+            return response.json().then(result => { throw new Error(result.message || t('gestion', 'Unable to add a product.')); });
         })
         .then(function() {
             getProduitsById();
         })
-        .catch(function() {
-            showError(t('gestion', "Please create a new product"));
+        .catch(function(error) {
+            showError(error.message || t('gestion', "Please create a new product"));
         });
 }
 
@@ -65,8 +66,8 @@ export async function showProductSelect(target) {
 }
 
 function createProductOption(product, currentProductId) {
-    const referenceText = unescapeHtml(String(product.reference ?? ''));
-    const descriptionText = unescapeHtml(String(product.description ?? ''));
+    const referenceText = plainText(String(product.reference ?? ''));
+    const descriptionText = plainText(String(product.description ?? ''));
     const option = document.createElement('button');
     option.type = 'button';
     option.className = 'product-selector-option';
@@ -83,7 +84,7 @@ function createProductOption(product, currentProductId) {
     description.textContent = descriptionText;
     const price = document.createElement('span');
     price.className = 'product-selector-price';
-    price.textContent = cur.format(product.prix_unitaire);
+    price.textContent = unitCurrency.format(product.prix_unitaire);
     option.append(reference, description, price);
     return option;
 }

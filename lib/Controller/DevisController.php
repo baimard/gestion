@@ -54,6 +54,7 @@ class DevisController extends Controller {
 	 */
 	#[UseSession]
 	public function insertProduitDevis($id) {
-		return $this->dataService->insertProduitDevis($id);
+		try { return $this->dataService->insertProduitDevis($id); }
+        catch (\DomainException $e) { return new \OCP\AppFramework\Http\DataResponse(['message' => $e->getMessage()], 409); }
 	}
 }

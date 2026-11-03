@@ -106,6 +106,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#generer-les-fichiers">Générer les fichiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configurer-iopole">Configurer Iopole</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#limites-et-responsabilite">Limites et responsabilité</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#securite-de-la-plateforme">Sécurité de la plateforme</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="other_features.html">Statistiques, sauvegardes et informations</a><ul>
@@ -141,6 +142,7 @@
 <li class="toctree-l2"><a class="reference internal" href="developer.html#version-et-publication">Version et publication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#tests-du-nouvel-espace-de-gestion">Tests du nouvel espace de gestion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#messages-et-confirmations-de-verrouillage">Messages et confirmations de verrouillage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#controles-de-securite">Contrôles de sécurité</a></li>
 </ul>
 </li>
 </ul>
@@ -234,6 +236,21 @@ exclusivement les URL communiquées par le fournisseur.</p>
 de facturation peuvent évoluer. Vérifiez vos obligations auprès des sources
 officielles et de vos conseillers. Un PDF classique reste disponible pour les
 entreprises non concernées par le dispositif français.</p>
+</section>
+<section id="securite-de-la-plateforme">
+<h2>Sécurité de la plateforme<a class="headerlink" href="#securite-de-la-plateforme" title="Lien vers cette rubrique"></a></h2>
+<p>Seul le propriétaire de l’entreprise peut modifier la configuration Iopole.
+Les utilisateurs qui disposent d’un partage peuvent envoyer les factures
+avec cette configuration, mais ne reçoivent pas ses identifiants. Le secret
+n’est jamais renvoyé dans les réponses de configuration, même au propriétaire.
+Un champ secret laissé vide conserve le secret enregistré ; désactiver la
+plateforme efface sa configuration.</p>
+<p>Les deux URL doivent utiliser un nom d’hôte public en HTTPS sur le port 443,
+sans identifiant intégré ni fragment. Les redirections ne sont pas suivies.
+Le client HTTP Nextcloud applique la validation TLS et sa politique réseau ;
+la protection des destinations locales doit rester activée dans les réglages
+système Nextcloud (<code class="docutils literal notranslate"><span class="pre">allow_local_remote_servers</span></code> désactivé). Une configuration
+historique avec une URL HTTP ou locale doit être corrigée avant un nouvel envoi.</p>
 </section>
 </section>
 

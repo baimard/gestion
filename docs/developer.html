@@ -105,6 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#generer-les-fichiers">Générer les fichiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#configurer-iopole">Configurer Iopole</a></li>
 <li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#limites-et-responsabilite">Limites et responsabilité</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#securite-de-la-plateforme">Sécurité de la plateforme</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="other_features.html">Statistiques, sauvegardes et informations</a><ul>
@@ -140,6 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#version-et-publication">Version et publication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tests-du-nouvel-espace-de-gestion">Tests du nouvel espace de gestion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#messages-et-confirmations-de-verrouillage">Messages et confirmations de verrouillage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#controles-de-securite">Contrôles de sécurité</a></li>
 </ul>
 </li>
 </ul>
@@ -292,6 +294,7 @@ exposer ses modules via <code class="docutils literal notranslate"><span class="
 <span class="go">NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/workspace.cjs</span>
 <span class="go">NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/documents.cjs</span>
 <span class="go">NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/lock-information.cjs</span>
+<span class="go">NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/security.cjs</span>
 </pre></div>
 </div>
 <p>Le nettoyage supprime uniquement les chemins d’exécution dont l’absence de
@@ -325,6 +328,40 @@ Sphinx bloquants. Le workflow <code class="docutils literal notranslate"><span c
 <code class="docutils literal notranslate"><span class="pre">documentation/source</span></code> et publie un artefact GitHub Pages. Les deux modes de
 publication doivent être coordonnés ; fusionner une PR de documentation ne
 prouve pas à lui seul qu’un déploiement GitHub Pages a abouti.</p>
+</section>
+<section id="controles-de-securite">
+<h2>Contrôles de sécurité<a class="headerlink" href="#controles-de-securite" title="Lien vers cette rubrique"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">audit</span> <span class="pre">--package-lock-only</span> <span class="pre">--audit-level=low</span></code> inclut les dépendances de
+construction. ESLint 10 supprime l’ancien consommateur minimatch 3 ; les
+surcharges ciblées d’ESLint, config-array et WebDAV imposent minimatch 11.0.4
+ou supérieur. Ne pas étendre une surcharge globale à des consommateurs qui
+attendent l’ancienne API fonction. <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">scripts/verify-glob-compatibility.mjs</span></code>
+vérifie le filtrage du véritable client WebDAV et la sélection des fichiers
+dans la configuration ESLint. Le workflow d’audit exécute ces contrôles et
+<code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">audit</span> <span class="pre">--locked</span></code> ; CodeQL utilise l’action v4 figée par SHA.</p>
+<p>Les valeurs métier sont échappées au point d’insertion HTML ou affectées avec
+<code class="docutils literal notranslate"><span class="pre">textContent</span></code>. Le module <code class="docutils literal notranslate"><span class="pre">text.js</span></code> prend en charge les anciennes entités
+HTML sans rendre le contenu actif. Ne pas réinsérer les résultats décodés
+dans <code class="docutils literal notranslate"><span class="pre">innerHTML</span></code>. Les champs texte restent du texte, y compris à l’import
+d’un contact. Les sauts de ligne <code class="docutils literal notranslate"><span class="pre">br</span></code> historiques sont normalisés.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PdfHtmlPolicy</span></code> limite les balises et attributs envoyés à mPDF, retire les
+commentaires/directives et les attributs actifs, refuse les feuilles de style
+et les ressources externes ou locales. Seules les images PNG/JPEG intégrées
+en base64, valides et limitées en taille, sont admises. Tous les rendus PDF
+passent par cette politique. <code class="docutils literal notranslate"><span class="pre">ProviderUrlPolicy</span></code> et le client HTTP Nextcloud
+protègent les requêtes Iopole ; aucune redirection n’est suivie et les corps
+d’erreur du fournisseur ne sont pas retournés au navigateur. Le propriétaire
+est seul autorisé à configurer les identifiants ; le secret reste côté serveur
+et n’est pas inclus dans les sauvegardes ou l’historique.</p>
+<p>Les tests <code class="docutils literal notranslate"><span class="pre">ProviderSecurityTest</span></code> couvrent l’isolation, les partages révoqués,
+le refus d’accès sans identité et l’absence de secret dans les réponses.
+<code class="docutils literal notranslate"><span class="pre">IopoleSecurityTest</span></code> utilise exclusivement un client HTTP simulé. Le scénario
+<code class="docutils literal notranslate"><span class="pre">security.cjs</span></code> intercepte les données de contact et de produit pour vérifier
+le rendu de valeurs malveillantes ; il génère un véritable PDF dans l’instance
+de test et vérifie le rejet des ressources interdites, sans livraison externe.</p>
+<p>Ces contrôles ciblent les dépendances, les accès par entreprise, les données
+rendues et les sorties réseau de Gestion. Ils ne remplacent pas un audit de
+l’instance Nextcloud, de son hébergement ou des autres applications.</p>
 </section>
 </section>
 

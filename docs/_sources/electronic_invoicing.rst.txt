@@ -71,3 +71,20 @@ La disponibilité d'une plateforme, son statut réglementaire et les exigences
 de facturation peuvent évoluer. Vérifiez vos obligations auprès des sources
 officielles et de vos conseillers. Un PDF classique reste disponible pour les
 entreprises non concernées par le dispositif français.
+
+Sécurité de la plateforme
+-------------------------
+
+Seul le propriétaire de l'entreprise peut modifier la configuration Iopole.
+Les utilisateurs qui disposent d'un partage peuvent envoyer les factures
+avec cette configuration, mais ne reçoivent pas ses identifiants. Le secret
+n'est jamais renvoyé dans les réponses de configuration, même au propriétaire.
+Un champ secret laissé vide conserve le secret enregistré ; désactiver la
+plateforme efface sa configuration.
+
+Les deux URL doivent utiliser un nom d'hôte public en HTTPS sur le port 443,
+sans identifiant intégré ni fragment. Les redirections ne sont pas suivies.
+Le client HTTP Nextcloud applique la validation TLS et sa politique réseau ;
+la protection des destinations locales doit rester activée dans les réglages
+système Nextcloud (``allow_local_remote_servers`` désactivé). Une configuration
+historique avec une URL HTTP ou locale doit être corrigée avant un nouvel envoi.

@@ -6,6 +6,7 @@ use OCA\Gestion\Service\DataService;
 use OCA\Gestion\Service\PersonalMailService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\IRequest;
 
@@ -20,13 +21,13 @@ class PdfController extends Controller {
 
 	private PersonalMailService $personalMailService;
 
-	/** @NoAdminRequired */
+	#[NoAdminRequired]
 	#[UseSession]
 	public function personalMailStatus(): DataResponse {
 		return new DataResponse($this->personalMailService->getStatus());
 	}
 
-	/** @NoAdminRequired */
+	#[NoAdminRequired]
 	#[UseSession]
 	public function sendPersonalMail(string $html, string $name, string $subject, string $body, string $to, string $table, int $documentId): DataResponse {
         $documentLocked = false;

@@ -4,6 +4,7 @@ namespace OCA\Gestion\Controller;
 use OCA\Gestion\Service\DataService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\IRequest;
 
@@ -15,13 +16,13 @@ class CrudController extends Controller {
 		$this->dataService = $dataService;
 	}
 
-    /** @NoAdminRequired */
+    #[NoAdminRequired]
     #[UseSession]
     public function lockDocument(string $table, int $id): DataResponse {
         return $this->result(function () use ($table, $id) { $this->dataService->lockDocument($table, $id); return new DataResponse(['locked' => true]); });
     }
 
-    /** @NoAdminRequired */
+    #[NoAdminRequired]
     #[UseSession]
     public function history(int $before = 0): DataResponse {
         return new DataResponse($this->dataService->history($before));
@@ -68,7 +69,7 @@ class CrudController extends Controller {
 		return $this->result(fn () => $this->dataService->drop($id, $value));
 	}
 
-	/** @NoAdminRequired */
+	#[NoAdminRequired]
 	#[UseSession]
 	public function reorderProducts(int $devisId, array $productQuoteIds): DataResponse {
 		try {

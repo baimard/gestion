@@ -7,13 +7,14 @@ use OCP\IRequest;
 use OCP\Files\IRootFolder;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 
 class AdminController extends Controller {
     public function __construct($AppName, IRequest $request, private Bdd $myDb, private IRootFolder $rootFolder, private $UserId) {
         parent::__construct($AppName, $request);
     }
 
-    /** @NoAdminRequired */
+    #[NoAdminRequired]
     public function backup(): DataResponse {
         $content = json_encode($this->myDb->exportBackup($this->UserId), JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR);
         $root = $this->rootFolder->getUserFolder($this->UserId);
@@ -23,7 +24,7 @@ class AdminController extends Controller {
         return new DataResponse(['name' => $name, 'backup' => $content]);
     }
 
-    /** @NoAdminRequired */
+    #[NoAdminRequired]
     public function restore(string $content, bool $confirm = false): DataResponse {
         try {
             $tables = BackupFormat::decode($content);

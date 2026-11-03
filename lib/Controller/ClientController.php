@@ -4,6 +4,7 @@ namespace OCA\Gestion\Controller;
 use OCA\Gestion\Service\DataService;
 use OCA\Gestion\Service\ContactImportService;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\IRequest;
@@ -18,13 +19,13 @@ class ClientController extends Controller {
 	}
 	private ContactImportService $contactImportService;
 
-	/** @NoAdminRequired */
+	#[NoAdminRequired]
 	#[UseSession]
 	public function contacts(): DataResponse {
 		return new DataResponse($this->contactImportService->list());
 	}
 
-	/** @NoAdminRequired */
+	#[NoAdminRequired]
 	#[UseSession]
 	public function importContact(string $contactId): DataResponse {
         $contact = $this->contactImportService->find($contactId);

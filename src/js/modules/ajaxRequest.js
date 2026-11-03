@@ -489,21 +489,22 @@ export function getProduitsById() {
         let totalTTCGlobal = 0;
 
         const vatGroups = {};
-        const isInvoice = document.getElementById('produits').dataset.type === 'facture' || document.querySelector('[data-document-lock]')?.dataset.locked === '1';
+        const isInvoice = document.getElementById('produits').dataset.type === 'facture';
+        const readOnly = isInvoice || document.querySelector('[data-document-lock]')?.dataset.locked === '1';
         var res = JSON.parse(data);
 
         res.forEach(myresp => {
             for (const field of ['reference', 'description', 'comment']) myresp[field] = escapeHtml(myresp[field]);
             const vat = parseFloat(myresp.vat || 0);
-            const reference = isInvoice
+            const reference = readOnly
                 ? `<span>${myresp.reference}</span>`
                 : `<button type="button" data-val="${myresp.pid}" data-id="${myresp.pdid}" class="product-reference-selector" title="${t('gestion', 'Click here to change the product')}"><span>${myresp.reference}</span></button>`;
-            const deleteAction = isInvoice
+            const deleteAction = readOnly
                 ? ''
                 : `<div data-html2canvas-ignore data-modifier="getProduitsById" data-id="${myresp.pdid}" data-table="produit_devis" class="deleteItem material-symbols">delete</div>`;
             const orderCell = isInvoice
                 ? ''
-                : `<td data-html2canvas-ignore class="product-order-cell"><button type="button" draggable="true" class="product-drag-handle" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button></td>`;
+                : readOnly ? '<td data-html2canvas-ignore class="product-order-cell"></td>' : `<td data-html2canvas-ignore class="product-order-cell"><button type="button" draggable="true" class="product-drag-handle" title="${t('gestion', 'Drag to reorder')}" aria-label="${t('gestion', 'Drag to reorder')}"><span class="material-symbols">drag_indicator</span></button></td>`;
 
             if(myresp.header > 0){
                 produitsBody.innerHTML += `<tr class="${isInvoice ? '' : 'product-quote-row'}" data-pdid="${myresp.pdid}" style="background-color:rgb(198, 198, 198);">
@@ -525,22 +526,22 @@ export function getProduitsById() {
                             ${deleteAction}
                         </div>
                     </td>
-                    <td>${myresp.description}</td>
-                    <td>
-                        <div class="${isInvoice ? '' : 'editable'}" data-table="produit_devis" data-column="comment" data-id="${myresp.pdid}">
+                    <td class="document-description">${myresp.description}</td>
+                    <td class="document-comment">
+                        <div class="${readOnly ? '' : 'editable'}" data-table="produit_devis" data-column="comment" data-id="${myresp.pdid}">
                             ${myresp.comment.length === 0 ? '-' : myresp.comment}
                         </div>
                     </td>
-                    <td>
-                        <div class="${isInvoice ? '' : 'editableNumber getProduitsById'}" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-raw-value="${Number(myresp.quantite)}" data-id="${myresp.pdid}">
+                    <td class="document-amount">
+                        <div class="${readOnly ? '' : 'editableNumber getProduitsById'}" style="display:inline;" data-modifier="getProduitsById" data-table="produit_devis" data-column="quantite" data-raw-value="${Number(myresp.quantite)}" data-id="${myresp.pdid}">
                             ${quantityFormat.format(myresp.quantite)}
                         </div>
                     </td>
-                    <td>${unitCurrency.format(myresp.prix_unitaire)}</td>
-                    <td><div class="${isInvoice ? '' : 'editableNumber getProduitsById'}" data-modifier="getProduitsById" data-table="produit_devis" data-column="discount" data-id="${myresp.pdid}">${Number(myresp.discount || 0)}</div> %</td>
-                    <td>${cur.format(lineTotal(myresp))}</td>
-                    <td>${vat} %</td>
-                    <td>${cur.format((lineTotal(myresp)) * (1 + vat / 100))}</td>
+                    <td class="document-amount">${unitCurrency.format(myresp.prix_unitaire)}</td>
+                    <td class="document-amount"><span class="${readOnly ? '' : 'editableNumber getProduitsById'}" data-modifier="getProduitsById" data-table="produit_devis" data-column="discount" data-id="${myresp.pdid}">${Number(myresp.discount || 0)}</span> %</td>
+                    <td class="document-amount">${cur.format(lineTotal(myresp))}</td>
+                    <td class="document-amount">${vat} %</td>
+                    <td class="document-amount">${cur.format((lineTotal(myresp)) * (1 + vat / 100))}</td>
                 </tr>`;
 
                 const quantity = Number(myresp.quantite);
@@ -587,10 +588,10 @@ export function getProduitsById() {
             const row = `
                 <tr>
                     <td>${vatGroups[vat].quantity}</td>
-                    <td>${cur.format(vatGroups[vat].totalHT)}</td>
-                    <td>${vat} %</td>
-                    <td>${cur.format(vatGroups[vat].totalTVA)}</td>
-                    <td>${cur.format(vatGroups[vat].totalTTC)}</td>
+                    <td class="document-amount">${cur.format(vatGroups[vat].totalHT)}</td>
+                    <td class="document-amount">${vat} %</td>
+                    <td class="document-amount">${cur.format(vatGroups[vat].totalTVA)}</td>
+                    <td class="document-amount">${cur.format(vatGroups[vat].totalTTC)}</td>
                 </tr>
             `;
 
@@ -601,9 +602,9 @@ export function getProduitsById() {
 
         totalGlobalBody.innerHTML = `
             <tr>
-                <td>${cur.format(totalHTGlobal)}</td>
-                <td>${cur.format(totalTVAGlobal)}</td>
-                <td>${cur.format(totalTTCGlobal)}</td>
+                <td class="document-amount">${cur.format(totalHTGlobal)}</td>
+                <td class="document-amount">${cur.format(totalTVAGlobal)}</td>
+                <td class="document-amount">${cur.format(totalTTCGlobal)}</td>
             </tr>
         `;
 

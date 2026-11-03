@@ -26,6 +26,17 @@ class DataService {
         $this->myDb->lockDocument($table, $id, (int)$this->currentCompany());
     }
 
+    public function prepareDocumentForSending(string $table, int $id): bool {
+        if (!in_array($table, ['devis', 'facture'], true)) throw new \InvalidArgumentException('Invalid document type.');
+        $company = (int)$this->currentCompany();
+        $this->myDb->requireRecord($table, $id, $company);
+        if ($table === 'facture') {
+            $this->myDb->lockDocument('facture', $id, $company);
+            return true;
+        }
+        return $this->myDb->isQuoteLocked($id, $company);
+    }
+
     public function history(int $before = 0): array {
         return $this->myDb->history((int)$this->currentCompany(), $before);
     }

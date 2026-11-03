@@ -128,7 +128,7 @@ contient également une ligne avec remise.
 Des scénarios Playwright sont disponibles dans ``tests/Browser/``. Ils sont
 volontaires et ciblent exclusivement une instance de développement locale à
 ``http://127.0.0.1:8080`` avec Chromium à ``/usr/bin/chromium``. Le scénario
-``documents.cjs`` crée une entreprise d'exemple et verrouille un devis : ne pas
+``documents.cjs`` crée une entreprise d'exemple et verrouille une facture avec son devis : ne pas
 l'exécuter avec un compte ou des données de production. Les captures sont
 écrites dans ``/tmp/``. Le scénario ``documents.cjs`` écrit aussi sa référence de
 jeu de test dans ``/tmp/gestion-e2e-fixture.json`` ; ``lock-information.cjs`` la
@@ -163,10 +163,15 @@ les envois. Le bandeau se trouve hors de ``PDFcontent`` afin de ne pas apparaît
 dans les documents générés.
 
 Les réponses d'envoi par Mail et Iopole contiennent ``documentLocked`` :
-``true`` seulement quand la finalisation a abouti, y compris si la livraison
-échoue ensuite. L'interface évite ainsi d'affirmer un verrouillage lorsque
+``true`` quand le document est effectivement verrouillé, y compris si la
+livraison échoue ensuite. Un devis envoyé seul reste déverrouillé ; un devis
+protégé par une facture conserve cet état. L'interface évite ainsi d'affirmer un verrouillage lorsque
 l'accès ou la finalisation a été refusé. L'ancien point d'entrée ``sendPDF``
-requiert les paramètres ``table`` et ``documentId`` pour finaliser le document.
+requiert les paramètres ``table`` et ``documentId`` pour contrôler les droits
+et finaliser une facture. ``prepareDocumentForSending`` ne finalise pas un devis.
+L’état effectif d’un devis est dérivé des factures verrouillées de la même
+entreprise, et non de son ancien indicateur isolé. Les champs de paiement sont
+également protégés après finalisation.
 
 Les protections de mutation exposent un message explicatif et une réponse
 ``409`` pour les conflits liés au verrouillage : édition, suppression, ajout

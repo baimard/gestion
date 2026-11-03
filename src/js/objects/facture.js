@@ -91,6 +91,7 @@ export class Facture {
       myrow[1] += `<span class="gestion-status">${t('gestion', 'Locked')}</span>`;
       myrow[3] = myrow[3].replace('<input ', '<input disabled ');
       myrow[4] = myrow[4].replace('<select ', '<select disabled ');
+      myrow[7] = myrow[7].replace('class="editable"', 'class="locked-payment-status"');
       myrow[8] = myrow[8].replace(/<button[^>]*class="document-action deleteItem"[\s\S]*?<\/button>/, '');
     }
     return myrow;

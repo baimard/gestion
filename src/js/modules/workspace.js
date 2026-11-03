@@ -133,11 +133,13 @@ function applyLockedState() {
     const toolbar = document.querySelector('[data-document-lock]');
     if (!toolbar) return;
     const locked = toolbar.dataset.locked === '1';
-    toolbar.querySelector('.gestion-status').textContent = locked ? t('gestion', 'Locked document') : t('gestion', 'Draft');
-    toolbar.querySelector('#lock-document').hidden = locked;
+    const status = toolbar.querySelector('.gestion-status');
+    if (status) status.textContent = locked ? t('gestion', 'Locked document') : t('gestion', 'Draft');
+    const lockButton = toolbar.querySelector('#lock-document');
+    if (lockButton) lockButton.hidden = locked;
     if (!locked) return;
     const notice = document.createElement('p');
-    notice.className = 'gestion-lock-information';
+    notice.className = 'gestion-lock-information gestion-locked-warning';
     notice.setAttribute('role', 'status');
     notice.textContent = lockedNotice(toolbar.dataset.table === 'facture');
     const help = document.createElement('a');

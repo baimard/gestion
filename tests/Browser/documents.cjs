@@ -1,24 +1,104 @@
-const {chromium}=require('playwright');const assert=require('node:assert/strict');const fs=require('fs');
-(async()=>{
-const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});const ctx=await browser.newContext({viewport:{width:1440,height:1000}});const page=await ctx.newPage();let errors=[];page.on('pageerror',e=>errors.push(e.message));
-await page.goto('http://127.0.0.1:8080/index.php/apps/gestion/config');await page.locator('input[name=user]').fill(process.env.NEXTCLOUD_TEST_USER);await page.locator('input[name=password]').fill(process.env.NEXTCLOUD_TEST_PASSWORD);await page.getByRole('button',{name:'Log in',exact:true}).click();await page.waitForURL('**/apps/gestion/**');
-async function api(path,data,method='POST') {return page.evaluate(async ({path,data,method})=>{const r=await fetch(OC.generateUrl('/apps/gestion'+path),{method,headers:{'Content-Type':'application/json',requesttoken:OC.requestToken||oc_requesttoken},...(data?{body:JSON.stringify(data)}:{})});return {status:r.status,data:await r.json().catch(()=>null)}},{path,data,method})}
-assert.equal((await api('/createCompany',null,'PUT')).status,200);await page.reload();
-const company=await page.locator('#CurrentCompany-select').evaluate(el=>Math.max(...[...el.options].map(o=>Number(o.value))));
-assert.equal((await api('/updateSession',{companyID:String(company)})).status,200);await page.reload();
-await api('/isconfig',null,'GET');await api('/updateConfiguration',{column:'entreprise',data:'Workspace UI verification'});await api('/client/insert',{});await api('/produit/insert',{});await api('/devis/insert',{});
-const read=async(path)=>JSON.parse((await api(path,null,'PROPFIND')).data);
-const client=(await read('/getClients'))[0].id,product=(await read('/getProduits'))[0].id,quote=(await read('/getDevis'))[0].id;
-for(const [table,column,data,id] of [['devis','id_client',String(client),quote],['produit','prix_unitaire','10',product],['produit','vat','20',product],['produit','description','Design and consulting',product],['client','entreprise','Example customer',client]])assert.equal((await api('/update',{table,column,data,id})).status,200);
-await api('/insertProduitDevis',{id:String(quote)});const line=JSON.parse((await api('/getProduitsById',{numdevis:String(quote)})).data)[0].pdid;
-for(const [column,data]of[['quantite','3'],['discount','10']])assert.equal((await api('/update',{table:'produit_devis',column,data,id:line})).status,200);
-await page.goto('http://127.0.0.1:8080/index.php/apps/gestion/devis/'+quote+'/show');await page.waitForFunction(()=>document.documentElement.dataset.gestionDocumentReady==='true');
-const amounts=await page.locator('#totalglobal tbody td').allTextContents();if(!amounts.length){console.log('DEBUG',page.url(),errors,(await page.locator('body').innerText()).slice(-3000));await page.screenshot({path:'/tmp/gestion-gestion-document-error.png',fullPage:true});}assert.match(amounts[0],/27[.,]00/);assert.match(amounts[2],/32[.,]40/);
-assert.equal(await page.locator('[data-column=discount]').innerText(),'10');await page.screenshot({path:'/tmp/gestion-gestion-quote.png',fullPage:true});
-await page.locator('#lock-document').click();await page.locator('dialog[open]').getByRole('button',{name:'Finalize and lock',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[data-document-lock]')?.dataset.locked==='1');
-assert.equal(await page.locator('#devisAdd').isVisible(),false);assert.equal((await api('/update',{table:'produit_devis',column:'quantite',data:'4',id:line})).status,409);assert.equal((await api('/update',{table:'client',column:'nom',data:'Changed',id:client})).status,409);
-await page.goto('http://127.0.0.1:8080/index.php/apps/gestion/config');await page.locator('[data-open-history]').click();await page.locator('.gestion-history li').first().waitFor();assert.match(await page.locator('.gestion-history').innerText(),/locked/);await page.locator('dialog[open]').getByRole('button',{name:'Close',exact:true}).click();
-await page.screenshot({path:'/tmp/gestion-gestion-desktop.png',fullPage:true});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'/tmp/gestion-gestion-mobile.png',fullPage:true});
-await page.emulateMedia({colorScheme:'dark'});await page.screenshot({path:'/tmp/gestion-gestion-dark.png',fullPage:true});
-fs.writeFileSync(process.env.NEXTCLOUD_TEST_FIXTURE || '/tmp/gestion-e2e-fixture.json',JSON.stringify({company,client,product,quote,line}));assert.deepEqual(errors,[]);console.log('Browser document checks passed: persisted 10% discount, HT 27 / TTC 32.40, lock confirmation/read-only UI, server rejects linked-record mutations, attributed history, screenshots desktop/mobile/dark.');await browser.close();
-})().catch(e=>{console.error(e);process.exit(1)});
+// Opt-in on a disposable instance. Creates a company, customer, product, quote and invoice.
+const { chromium } = require('playwright');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+(async () => {
+    const base = process.env.NEXTCLOUD_TEST_URL || 'http://127.0.0.1:8080';
+    assert.ok(process.env.NEXTCLOUD_TEST_USER && process.env.NEXTCLOUD_TEST_PASSWORD, 'Set explicit disposable-instance credentials.');
+    const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', args: ['--no-sandbox', '--disable-dev-shm-usage'] });
+    try {
+        const context = await browser.newContext({ viewport: { width: 1560, height: 950 } });
+        const page = await context.newPage();
+        const errors = [];
+        page.on('pageerror', error => errors.push(error.message));
+        await page.goto(`${base}/index.php/apps/gestion/config`);
+        await page.locator('[name=user]').fill(process.env.NEXTCLOUD_TEST_USER);
+        await page.locator('[name=password]').fill(process.env.NEXTCLOUD_TEST_PASSWORD);
+        await page.getByRole('button', { name: 'Log in', exact: true }).click();
+        await page.waitForURL('**/apps/gestion/**');
+        const api = (path, data, method = 'POST') => page.evaluate(async ({ path, data, method }) => {
+            const response = await fetch(OC.generateUrl('/apps/gestion' + path), {
+                method, headers: { 'Content-Type': 'application/json', requesttoken: OC.requestToken },
+                ...(data ? { body: JSON.stringify(data) } : {}),
+            });
+            if (response.headers.get('Content-Type')?.includes('application/pdf')) {
+                const buffer = await response.arrayBuffer();
+                return { status: response.status, pdf: new TextDecoder().decode(buffer.slice(0, 5)), bytes: buffer.byteLength };
+            }
+            return { status: response.status, data: await response.json().catch(() => null) };
+        }, { path, data, method });
+        const read = async path => JSON.parse((await api(path, null, 'PROPFIND')).data);
+        assert.equal((await api('/createCompany', null, 'PUT')).status, 200);
+        await page.reload();
+        const company = await page.locator('#CurrentCompany-select').evaluate(element => Math.max(...[...element.options].map(option => Number(option.value))));
+        await api('/updateSession', { companyID: String(company) });
+        await page.reload();
+        await api('/isconfig', null, 'GET');
+        await api('/updateConfiguration', { column: 'entreprise', data: 'Document lifecycle verification' });
+        for (const path of ['/client/insert', '/produit/insert', '/devis/insert']) assert.equal((await api(path, {})).status, 200);
+        const client = (await read('/getClients'))[0].id;
+        const product = (await read('/getProduits'))[0].id;
+        const quote = (await read('/getDevis'))[0].id;
+        const description = 'Hébergement d’un site internet sur un serveur mutualisé. Maintenance, sauvegardes et surveillance incluses. Hébergement à durée indéterminée, paiement mensuel sans engagement.';
+        for (const [table, column, data, id] of [['devis', 'id_client', String(client), quote], ['produit', 'prix_unitaire', '6', product], ['produit', 'vat', '20', product], ['produit', 'description', description, product], ['client', 'entreprise', 'Example customer', client]]) assert.equal((await api('/update', { table, column, data, id })).status, 200);
+        for (let i = 0; i < 10; i++) assert.equal((await api('/insertProduitDevis', { id: String(quote) })).status, 200);
+        const line = JSON.parse((await api('/getProduitsById', { numdevis: String(quote) })).data)[0].pdid;
+        const goQuote = async () => { await page.goto(`${base}/index.php/apps/gestion/devis/${quote}/show`); await page.waitForFunction(() => document.documentElement.dataset.gestionDocumentReady === 'true'); };
+        const html = () => page.locator('#PDFcontent').evaluate(element => { const clone = element.cloneNode(true); clone.querySelectorAll('[data-html2canvas-ignore]').forEach(node => node.remove()); return clone.outerHTML; });
+        await goQuote();
+        assert.equal(await page.locator('#lock-document').count(), 0);
+        assert.equal(await page.locator('.gestion-locked-warning').count(), 0);
+        assert.equal(await page.locator('#PDFcontent button#pdf').count(), 0);
+        const width = await page.locator('#produits tbody tr').first().evaluate(row => ({ description: row.querySelector('.document-description').getBoundingClientRect().width, price: row.querySelectorAll('.document-amount')[1].getBoundingClientRect().width }));
+        assert.ok(width.description > width.price * 3, JSON.stringify(width));
+        const delivery = await api('/personal-mail/send', { html: await html(), name: 'quote.pdf', subject: 'Test', body: 'Test', to: 'invalid-email', table: 'devis', documentId: Number(quote) });
+        assert.equal(delivery.status, 400);
+        assert.equal(delivery.data.documentLocked, false);
+        assert.equal((await api('/update', { table: 'devis', column: 'comment', data: 'Editable after unsuccessful sending', id: quote })).status, 200);
+        assert.equal((await api('/documents/lock', { table: 'devis', id: Number(quote) })).status, 400);
+        const invoice = (await api('/facture/insert', { devisId: Number(quote) })).data.id;
+        assert.ok(invoice);
+        assert.equal((await read('/getDevis'))[0].locked, 0);
+        await page.goto(`${base}/index.php/apps/gestion/devis`);
+        await page.locator('.gestion-quote-lock').first().waitFor();
+        assert.equal(await page.locator('.gestion-quote-lock.is-locked').count(), 0);
+        await page.locator('.gestion-quote-lock').first().click();
+        await page.waitForURL(`**/devis/${quote}/show`);
+        await page.goto(`${base}/index.php/apps/gestion/facture/${invoice}/show`);
+        await page.waitForFunction(() => document.documentElement.dataset.gestionDocumentReady === 'true');
+        const toolbar = page.locator('.gestion-document-toolbar');
+        assert.equal(await toolbar.locator('#pdf, #facturx, #facturx-xml, #lock-document').count(), 4);
+        await page.evaluate(() => { document.getElementById('app-content').scrollTop = 600; });
+        await page.waitForTimeout(100);
+        const position = await toolbar.boundingBox();
+        assert.ok(position.y >= 40 && position.y < 80, JSON.stringify(position));
+        await page.locator('#lock-document').click();
+        await page.locator('dialog[open] button.primary').click();
+        await page.waitForFunction(() => document.querySelector('[data-document-lock]')?.dataset.locked === '1');
+        assert.equal((await api('/update', { table: 'facture', column: 'status_paiement', data: '1', id: invoice })).status, 409);
+        assert.equal((await api('/update', { table: 'produit_devis', column: 'quantite', data: '4', id: line })).status, 409);
+        const invoicePdf = await api('/generatePDF', { html: await html(), name: 'invoice-lifecycle.pdf', folder: '/Gestion verification/' });
+        assert.equal(invoicePdf.status, 200, JSON.stringify(invoicePdf));
+        assert.equal(invoicePdf.pdf, '%PDF-');
+        await goQuote();
+        assert.equal(await page.locator('.gestion-locked-warning').count(), 1);
+        assert.match(await page.locator('.gestion-locked-warning').innerText(), /linked invoice has been finalized/);
+        assert.equal(await page.locator('#PDFcontent .editable, #PDFcontent .editableNumber, #PDFcontent .editableComment').count(), 0);
+        assert.equal(await page.locator('#produits thead th').count(), await page.locator('#produits tbody tr').first().locator('td').count());
+        const quotePdf = await api('/generatePDF', { html: await html(), name: 'quote-lifecycle.pdf', folder: '/Gestion verification/' });
+        assert.equal(quotePdf.status, 200, JSON.stringify(quotePdf));
+        assert.equal(quotePdf.pdf, '%PDF-');
+        assert.equal((await api('/update', { table: 'devis', column: 'comment', data: 'Blocked', id: quote })).status, 409);
+        await page.goto(`${base}/index.php/apps/gestion/devis`);
+        await page.locator('.gestion-quote-lock.is-locked').first().waitFor();
+        await page.locator('.gestion-quote-lock.is-locked').first().click();
+        await page.waitForURL(`**/devis/${quote}/show`);
+        await page.waitForFunction(() => document.documentElement.dataset.gestionDocumentReady === 'true');
+        await page.setViewportSize({ width: 390, height: 844 });
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+        assert.ok(await page.locator('.gestion-document-table-scroll').evaluate(element => element.scrollWidth > element.clientWidth));
+        fs.writeFileSync(process.env.NEXTCLOUD_TEST_FIXTURE || '/tmp/gestion-e2e-fixture.json', JSON.stringify({ company, client, product, quote, line, invoice }));
+        assert.deepEqual(errors, []);
+        console.log('Document checks passed: editable quote after sending/draft invoice, invoice-only finalization, sticky actions, wider designation, clickable lock states, immutable invoice/quote and downloadable PDFs, mobile scroll. No external delivery.');
+    } finally { await browser.close(); }
+})().catch(error => { console.error(error); process.exit(1); });

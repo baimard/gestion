@@ -1,19 +1,21 @@
 import { translate as t } from '@nextcloud/l10n';
 
-export function finalizationNotice(isInvoice = false) {
-    const message = t('gestion', 'This action is permanent. The document and its linked customer, products and company details will be protected against changes. Duplicate the quote or product for future changes.');
-    return isInvoice ? message + ' ' + t('gestion', 'Finalizing an invoice also locks its linked quote. The payment status remains editable.') : message;
+export function finalizationNotice() {
+    return t('gestion', 'Finalizing permanently locks this invoice and its linked quote. They can no longer be edited or deleted, including payment fields. Linked customer, product and company details are protected. PDF downloads remain available.');
 }
 
-export function sendingNotice() {
-    return t('gestion', 'Sending finalizes and permanently locks the document before the delivery attempt. Its linked data is protected, and an invoice also locks its quote. If delivery fails, the document remains locked and you can retry sending it. Canceling this dialog does not lock or send anything.');
+export function sendingNotice(isInvoice = true) {
+    return isInvoice
+        ? t('gestion', 'Sending finalizes and permanently locks the invoice and its linked quote before the delivery attempt. If delivery fails, they remain locked and you can retry sending. Canceling does not lock or send anything.')
+        : t('gestion', 'Sending a quote does not lock it. It remains editable unless a linked invoice is finalized. Canceling does not send anything.');
 }
 
 export function lockedNotice(isInvoice = false) {
-    const message = t('gestion', 'This document is locked and cannot be edited or deleted. Its linked customer, products and company details are protected. Duplicate the quote or product for future changes; create a new company configuration to change the issuer details.');
-    return isInvoice ? message + ' ' + t('gestion', 'The linked quote is also locked. The payment status remains editable.') : message;
+    return isInvoice
+        ? t('gestion', 'This invoice and its linked quote are locked and cannot be edited or deleted. PDF downloads remain available.')
+        : t('gestion', 'This quote is locked because a linked invoice has been finalized. It cannot be edited or deleted. PDF downloads remain available.');
 }
 
 export function lockedAfterSendNotice() {
-    return t('gestion', 'The document is now permanently locked. If delivery failed, you can retry sending the same document. Reload the page to see its updated status.');
+    return t('gestion', 'The document is locked. If delivery failed, you can retry sending it. Reload the page to see its status.');
 }

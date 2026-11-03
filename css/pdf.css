@@ -218,3 +218,9 @@ body,
     vertical-align: top;
     background-color: #fefefe;
 }
+
+.table-produit .document-description, .table-produit .document-comment { text-align: left; }
+.table-produit .document-amount { text-align: right; white-space: nowrap; padding-left: 4px; padding-right: 4px; font-size: 10px; }
+
+.table-produit th.document-text-heading { text-align: left; }
+.table-produit th.document-number-heading { text-align: right; }

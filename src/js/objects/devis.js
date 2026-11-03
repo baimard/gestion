@@ -36,7 +36,7 @@ export class Devis {
     let myrow = [
       `<div>${this.user_id}</div>`,
       `<input class="inputDate" type="date" value="${this.date}" data-table="devis" data-column="date" data-id="${this.id}"/>`,
-      `<div class="inline editable" data-table="devis" data-column="num" data-id="${this.id}">${this.num}</div>`,
+      `<div class="gestion-quote-number"><a href="${this.baseUrl}" class="gestion-quote-lock${this.locked ? ' is-locked' : ''}" title="${this.locked ? t('gestion', 'View quote locked by its invoice') : t('gestion', 'View editable quote')}" aria-label="${this.locked ? t('gestion', 'View quote locked by its invoice') : t('gestion', 'View editable quote')}"><span class="material-symbols-outlined" aria-hidden="true">${this.locked ? 'lock' : 'lock_open'}</span></a><div class="inline editable" data-table="devis" data-column="num" data-id="${this.id}">${this.num}</div></div>`,
       `<div class="loadSelect_listclient" data-table="devis" data-column="id_client" data-id="${this.id}" data-current="${this.cid}">${this.entreprise} - ${this.prenom} ${this.nom}</div>`,
       `<div class="inline editable" data-table="devis" data-column="version" data-id="${this.id}">${this.version}</div>`,
       `<div class="inline editable" data-table="devis" data-column="mentions" data-id="${this.id}" >${this.mentions}</div>`,
@@ -54,7 +54,6 @@ export class Devis {
     ];
     if (this.locked) {
       myrow = myrow.map(html => html.replaceAll('class="inputDate"', 'disabled class="inputDate"').replaceAll('inline editable', 'inline').replaceAll('loadSelect_listclient', 'locked-client'));
-      myrow[2] += `<span class="gestion-status">${t('gestion', 'Locked')}</span>`;
       myrow[6] = myrow[6].replace(/<button[^>]*class="document-action deleteItem"[\s\S]*?<\/button>/, '');
     }
     return myrow;

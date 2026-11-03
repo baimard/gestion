@@ -1,6 +1,8 @@
 // Local SVG icons use the same 24px geometry and theme colour as Nextcloud.
 // No font downloads or external requests are required.
 const paths = {
+    lock: 'M6 10h12v11H6zM8 10V6a4 4 0 0 1 8 0v4M12 14v3',
+    lock_open: 'M6 10h12v11H6zM8 10V6a4 4 0 0 1 8 0M12 14v3',
     more_horiz: 'M5 12h1M11 12h1M17 12h1',
     home: 'M3 10 12 3l9 7v11h-6v-7H9v7H3z',
     menu_open: 'M3 6h18M3 12h12M3 18h18m-1-9-3 3 3 3',

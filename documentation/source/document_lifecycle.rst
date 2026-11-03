@@ -5,67 +5,62 @@ Verrouillage et cycle de vie des documents
 
 .. important::
 
-   Ce guide décrit Gestion **3.4.0**, préparée dans la PR #637. Tant que cette
-   version n'est pas intégrée et installée, les nouveaux boutons et messages
-   peuvent ne pas apparaître. Les anciens documents ne sont pas
-   verrouillés automatiquement : ils peuvent être finalisés après vérification.
+   Ce guide décrit le cycle de verrouillage révisé, en préparation. Installez
+   la version contenant ce correctif pour disposer des nouveaux comportements.
 
-Reconnaître l'état d'un document
+Devis et factures
+-----------------
+
+Un **devis reste modifiable** tant qu'aucune facture associée n'est verrouillée.
+Créer une facture brouillon, télécharger le PDF ou envoyer le devis par e-mail
+ne le verrouille pas. Les anciens indicateurs de verrouillage d'un devis isolé
+ne bloquent plus son édition en l'absence de facture finalisée.
+
+Dans la liste des devis, le cadenas ouvert ou fermé indique cet état. Cliquez
+sur le cadenas pour ouvrir le devis. Un devis verrouillé affiche un message
+rouge expliquant qu'une facture associée a été finalisée. Il ne comporte pas de
+commande permettant de se verrouiller ou de se déverrouiller indépendamment.
+
+La **facture** possède la commande **Finalize and lock** (verrouiller la facture).
+Cette action fige la facture et son devis. Les deux documents ne peuvent plus
+être modifiés ni supprimés, y compris les informations et le statut de paiement.
+Le client, les produits et les coordonnées de l'émetteur utilisés sont protégés.
+
+Barre d'actions et téléchargement
 ---------------------------------
 
-**Draft** — brouillon
-   Les informations restent modifiables, sous réserve des références existantes.
-   Le bouton **Finalize and lock** permet de finaliser le document après
-   vérification. Un brouillon reprend encore les données courantes du client,
-   du catalogue et de l'entreprise.
+Les commandes PDF, Factur-X, XML, historique et verrouillage sont regroupées
+en haut du document, dans une barre qui reste visible pendant le défilement.
+Sur petit écran, faites défiler ses boutons horizontalement. La désignation
+dispose de davantage d'espace ; les colonnes numériques sont resserrées.
 
-**Locked document** — document verrouillé
-   Un message d'information explique que le document ne peut plus être modifié
-   ou supprimé. Les commandes d'édition sont retirées ou désactivées. Le serveur
-   applique aussi cette protection, indépendamment de l'affichage du navigateur.
+Les PDF restent téléchargeables après verrouillage. Les barres d'actions et
+les messages de verrouillage n'apparaissent pas dans les fichiers générés.
 
-Les libellés anglais ci-dessus correspondent aux clés de l'interface ; leur
-traduction dépend du catalogue de langue installé dans Nextcloud.
-
-Finaliser manuellement
+Verrouiller une facture
 -----------------------
 
-#. Ouvrez le devis ou la facture.
-#. Vérifiez le client, les lignes, quantités, prix, remises, TVA, dates et
-   informations de l'émetteur. Contrôlez aussi le PDF ou le XML si nécessaire.
-#. Cliquez sur **Finalize and lock**.
-#. Lisez l'avertissement : l'action est définitive et les données liées seront
-   protégées. Pour une facture, le devis associé sera aussi verrouillé.
-#. Confirmez pour appliquer le verrouillage, ou fermez le dialogue pour
-   conserver l'état précédent.
+#. Ouvrez la facture et contrôlez ses coordonnées, lignes, remises, montants,
+   TVA, dates et informations de paiement.
+#. Cliquez sur **Finalize and lock** dans la barre supérieure.
+#. Lisez l'avertissement et confirmez, ou annulez sans changer l'état.
 
 .. warning::
 
-   Il n'existe pas de bouton de déverrouillage. Une finalisation confirmée ne
-   peut pas être annulée dans Gestion. Fermer ou annuler une confirmation, avant
-   de l'avoir validée, ne verrouille pas le document.
+   La finalisation d'une facture est définitive. Il n'existe pas de bouton de
+   déverrouillage. Le devis associé est également protégé.
 
 Envoyer par e-mail ou à Iopole
--------------------------------
+--------------------------------
 
-L'envoi par e-mail affiche un avertissement dans son écran de confirmation.
-Le bouton d'envoi à Iopole ouvre également une confirmation **Finalize and send
-to Iopole?**. Dans les deux cas, le message précise que :
+L'envoi d'un **devis** ne le finalise pas. Si une facture associée le verrouille
+ultérieurement, les prochains envois ne lèvent pas cette protection.
 
-* le document est finalisé **avant** la tentative d'envoi ;
-* ses données liées sont protégées et une facture verrouille aussi son devis ;
-* un échec d'envoi conserve le verrouillage ;
-* il reste possible de réessayer d'envoyer le même document ;
-* annuler ou fermer le dialogue avant confirmation n'envoie rien et ne change
-  pas l'état du document.
-
-Après une tentative, si la finalisation a abouti, un message rappelle que le
-verrouillage est conservé, y compris en cas d'erreur de livraison. Rechargez
-la liste pour voir son état actualisé. Si la finalisation elle-même est
-refusée, le message ne prétend pas que le document a été verrouillé.
-
-Le téléchargement d'un PDF ou la génération d'un XML, sans envoi ni finalisation
-explicite, ne verrouille pas le document à lui seul.
+L'envoi d'une **facture** par e-mail ou à Iopole la finalise avant la tentative
+de livraison, après confirmation. Elle et son devis restent verrouillés même
+en cas d'échec d'envoi ; vous pouvez réessayer. Annuler le dialogue n'envoie rien
+et ne change aucun état. Les messages de résultat indiquent si le document est
+réellement verrouillé.
 
 Ce que protège le verrouillage
 --------------------------------
@@ -76,7 +71,7 @@ Ce que protège le verrouillage
 
    * - Élément
      - Conséquence
-   * - Devis et facture finalisés
+   * - Facture finalisée et devis associé
      - Modification et suppression interdites.
    * - Lignes du devis associé
      - Ajout, suppression, modification et réorganisation interdits.
@@ -87,7 +82,7 @@ Ce que protège le verrouillage
      - Identité, mentions et réglages participant au contenu des documents
        protégés. La configuration d'entreprise ne peut pas être supprimée.
    * - Statut de paiement d'une facture
-     - Reste modifiable pour suivre le règlement.
+     - Est protégé après finalisation, comme les autres informations de paiement.
    * - Dossier de sauvegarde et précision d'affichage
      - Restent configurables. Les valeurs stockées et les totaux fiscaux
        ne sont pas modifiés par la précision d'affichage.
@@ -152,8 +147,8 @@ Historique et conservation
 verrouillage dans l'entreprise courante. La finalisation d'une facture apparaît
 également comme un verrouillage du devis associé.
 
-Une restauration JSON conserve les états verrouillés dans les nouvelles
-entreprises créées : elle n'est pas une fonction de déverrouillage. Consultez
+Une restauration JSON conserve les factures verrouillées et la protection de
+leurs devis dans les nouvelles entreprises créées. Consultez
 :doc:`other_features` pour les éléments inclus et exclus des sauvegardes.
 
 Conservez les PDF et XML émis dans Nextcloud Files, ainsi qu'une sauvegarde

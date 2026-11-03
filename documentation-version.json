@@ -1,0 +1,8 @@
+{
+  "version": "3.4.0",
+  "status": "prepared-not-released",
+  "source_branch": "codex/issue-635",
+  "source_commit": "b22d4819f627bfbab70562c10770810004336e6b",
+  "application_pull_request": "https://github.com/baimard/gestion/pull/637",
+  "documentation_issue": "https://github.com/baimard/gestion/issues/638"
+}

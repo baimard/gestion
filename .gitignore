@@ -11,3 +11,6 @@ build/
 
 # OS
 .DS_Store
+
+# Sphinx caches are not public website assets
+**/.doctrees/

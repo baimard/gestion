@@ -1,0 +1,2 @@
+# Generated Sphinx output keeps the upstream theme formatting.
+docs/** linguist-generated=true -whitespace

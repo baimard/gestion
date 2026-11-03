@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verrouillage et cycle de vie des documents &mdash; Gestion 3.4.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=386f8cd2"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=e6b791cb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Facturation électronique et Factur-X" href="electronic_invoicing.html" />
+    <link rel="prev" title="Devis, factures, PDF et e-mails" href="quotes_invoices.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Gestion pour Nextcloud
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide utilisateur</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation et mise à jour</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#compatibilite">Compatibilité</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-depuis-le-store">Installation depuis le store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-manuelle">Installation manuelle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#mise-a-jour">Mise à jour</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Démarrage rapide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#configurer-l-entreprise">1. Configurer l’entreprise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-un-client">2. Créer un client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-un-produit-ou-un-service">3. Créer un produit ou un service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-le-devis">4. Créer le devis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-la-facture">5. Créer la facture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#verifier-puis-finaliser">6. Vérifier puis finaliser</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration des entreprises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#creer-et-selectionner-une-entreprise">Créer et sélectionner une entreprise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#informations-generales">Informations générales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#identifiants-francais">Identifiants français</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#dossier-de-sauvegarde">Dossier de sauvegarde</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#logos">Logos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#partage">Partage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#suppression">Suppression</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clients_products.html">Clients, produits et TVA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#clients">Clients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#produits-et-services">Produits et services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#categories-de-tva">Catégories de TVA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#motif-d-exoneration-pour-la-categorie-e">Motif d’exonération pour la catégorie E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#importer-depuis-les-contacts-nextcloud">Importer depuis les contacts Nextcloud</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quotes_invoices.html">Devis, factures, PDF et e-mails</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#devis">Devis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#factures">Factures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#generer-un-pdf">Générer un PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#envoyer-par-e-mail">Envoyer par e-mail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#conservation">Conservation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#remises-commerciales">Remises commerciales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#verrouillage-des-documents">Verrouillage des documents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Verrouillage et cycle de vie des documents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#reconnaitre-l-etat-d-un-document">Reconnaître l’état d’un document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finaliser-manuellement">Finaliser manuellement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#envoyer-par-e-mail-ou-a-iopole">Envoyer par e-mail ou à Iopole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ce-que-protege-le-verrouillage">Ce que protège le verrouillage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modifier-une-nouvelle-offre-sans-toucher-a-l-original">Modifier une nouvelle offre sans toucher à l’original</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comprendre-les-messages-de-refus">Comprendre les messages de refus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#historique-et-conservation">Historique et conservation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="electronic_invoicing.html">Facturation électronique et Factur-X</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#preparer-les-donnees">Préparer les données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#generer-les-fichiers">Générer les fichiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#configurer-iopole">Configurer Iopole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#limites-et-responsabilite">Limites et responsabilité</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#securite-de-la-plateforme">Sécurité de la plateforme</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="other_features.html">Statistiques, sauvegardes et informations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#statistiques">Statistiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#sauvegarde-et-restauration">Sauvegarde et restauration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#historique-des-modifications">Historique des modifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#reglage-des-decimales">Réglage des décimales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#notice-legale">Notice légale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#a-propos-et-version">À propos et version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Dépannage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#un-champ-n-est-pas-enregistre">Un champ n’est pas enregistré</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#le-pdf-n-est-pas-enregistre">Le PDF n’est pas enregistré</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#les-logos-n-apparaissent-pas">Les logos n’apparaissent pas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#la-facture-factur-x-est-refusee">La facture Factur-X est refusée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#l-envoi-d-e-mail-echoue">L’envoi d’e-mail échoue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#iopole-n-est-pas-propose-dans-la-facture">Iopole n’est pas proposé dans la facture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#mode-maintenance-nextcloud">Mode maintenance Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#obtenir-de-l-aide">Obtenir de l’aide</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Développement</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Documentation développeur</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#environnement">Environnement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#commandes-courantes">Commandes courantes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#tests-panther">Tests Panther</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#base-de-donnees">Base de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#traductions">Traductions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#version-et-publication">Version et publication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#tests-du-nouvel-espace-de-gestion">Tests du nouvel espace de gestion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#messages-et-confirmations-de-verrouillage">Messages et confirmations de verrouillage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#controles-de-securite">Contrôles de sécurité</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Gestion pour Nextcloud</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Verrouillage et cycle de vie des documents</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/document_lifecycle.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="verrouillage-et-cycle-de-vie-des-documents">
+<span id="cycle-de-vie-documents"></span><h1>Verrouillage et cycle de vie des documents<a class="headerlink" href="#verrouillage-et-cycle-de-vie-des-documents" title="Lien vers cette rubrique"></a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Ce guide décrit Gestion <strong>3.4.0</strong>, préparée dans la PR #637. Tant que cette
+version n’est pas intégrée et installée, les nouveaux boutons et messages
+peuvent ne pas apparaître. Les anciens documents ne sont pas
+verrouillés automatiquement : ils peuvent être finalisés après vérification.</p>
+</div>
+<section id="reconnaitre-l-etat-d-un-document">
+<h2>Reconnaître l’état d’un document<a class="headerlink" href="#reconnaitre-l-etat-d-un-document" title="Lien vers cette rubrique"></a></h2>
+<dl class="simple">
+<dt><strong>Draft</strong> — brouillon</dt><dd><p>Les informations restent modifiables, sous réserve des références existantes.
+Le bouton <strong>Finalize and lock</strong> permet de finaliser le document après
+vérification. Un brouillon reprend encore les données courantes du client,
+du catalogue et de l’entreprise.</p>
+</dd>
+<dt><strong>Locked document</strong> — document verrouillé</dt><dd><p>Un message d’information explique que le document ne peut plus être modifié
+ou supprimé. Les commandes d’édition sont retirées ou désactivées. Le serveur
+applique aussi cette protection, indépendamment de l’affichage du navigateur.</p>
+</dd>
+</dl>
+<p>Les libellés anglais ci-dessus correspondent aux clés de l’interface ; leur
+traduction dépend du catalogue de langue installé dans Nextcloud.</p>
+</section>
+<section id="finaliser-manuellement">
+<h2>Finaliser manuellement<a class="headerlink" href="#finaliser-manuellement" title="Lien vers cette rubrique"></a></h2>
+<ol class="arabic simple">
+<li><p>Ouvrez le devis ou la facture.</p></li>
+<li><p>Vérifiez le client, les lignes, quantités, prix, remises, TVA, dates et
+informations de l’émetteur. Contrôlez aussi le PDF ou le XML si nécessaire.</p></li>
+<li><p>Cliquez sur <strong>Finalize and lock</strong>.</p></li>
+<li><p>Lisez l’avertissement : l’action est définitive et les données liées seront
+protégées. Pour une facture, le devis associé sera aussi verrouillé.</p></li>
+<li><p>Confirmez pour appliquer le verrouillage, ou fermez le dialogue pour
+conserver l’état précédent.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Il n’existe pas de bouton de déverrouillage. Une finalisation confirmée ne
+peut pas être annulée dans Gestion. Fermer ou annuler une confirmation, avant
+de l’avoir validée, ne verrouille pas le document.</p>
+</div>
+</section>
+<section id="envoyer-par-e-mail-ou-a-iopole">
+<h2>Envoyer par e-mail ou à Iopole<a class="headerlink" href="#envoyer-par-e-mail-ou-a-iopole" title="Lien vers cette rubrique"></a></h2>
+<p>L’envoi par e-mail affiche un avertissement dans son écran de confirmation.
+Le bouton d’envoi à Iopole ouvre également une confirmation <strong>Finalize and send
+to Iopole?</strong>. Dans les deux cas, le message précise que :</p>
+<ul class="simple">
+<li><p>le document est finalisé <strong>avant</strong> la tentative d’envoi ;</p></li>
+<li><p>ses données liées sont protégées et une facture verrouille aussi son devis ;</p></li>
+<li><p>un échec d’envoi conserve le verrouillage ;</p></li>
+<li><p>il reste possible de réessayer d’envoyer le même document ;</p></li>
+<li><p>annuler ou fermer le dialogue avant confirmation n’envoie rien et ne change
+pas l’état du document.</p></li>
+</ul>
+<p>Après une tentative, si la finalisation a abouti, un message rappelle que le
+verrouillage est conservé, y compris en cas d’erreur de livraison. Rechargez
+la liste pour voir son état actualisé. Si la finalisation elle-même est
+refusée, le message ne prétend pas que le document a été verrouillé.</p>
+<p>Le téléchargement d’un PDF ou la génération d’un XML, sans envoi ni finalisation
+explicite, ne verrouille pas le document à lui seul.</p>
+</section>
+<section id="ce-que-protege-le-verrouillage">
+<h2>Ce que protège le verrouillage<a class="headerlink" href="#ce-que-protege-le-verrouillage" title="Lien vers cette rubrique"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Élément</p></th>
+<th class="head"><p>Conséquence</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Devis et facture finalisés</p></td>
+<td><p>Modification et suppression interdites.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lignes du devis associé</p></td>
+<td><p>Ajout, suppression, modification et réorganisation interdits.</p></td>
+</tr>
+<tr class="row-even"><td><p>Client et produits référencés</p></td>
+<td><p>Leurs informations ne peuvent plus être modifiées si elles sont
+utilisées par un document verrouillé.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Informations de l’entreprise émettrice</p></td>
+<td><p>Identité, mentions et réglages participant au contenu des documents
+protégés. La configuration d’entreprise ne peut pas être supprimée.</p></td>
+</tr>
+<tr class="row-even"><td><p>Statut de paiement d’une facture</p></td>
+<td><p>Reste modifiable pour suivre le règlement.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dossier de sauvegarde et précision d’affichage</p></td>
+<td><p>Restent configurables. Les valeurs stockées et les totaux fiscaux
+ne sont pas modifiés par la précision d’affichage.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Le verrouillage protège les références utilisées par le document ; il ne crée
+pas un catalogue séparé pour chaque facture. Cela explique pourquoi un produit
+ou une fiche client peut être protégé alors que vous l’ouvrez depuis une autre
+page de Gestion.</p>
+</section>
+<section id="modifier-une-nouvelle-offre-sans-toucher-a-l-original">
+<h2>Modifier une nouvelle offre sans toucher à l’original<a class="headerlink" href="#modifier-une-nouvelle-offre-sans-toucher-a-l-original" title="Lien vers cette rubrique"></a></h2>
+<ul class="simple">
+<li><p><strong>Quantité, remise ou contenu d’une offre</strong> : dupliquez le devis, puis
+modifiez le nouveau brouillon. L’original reste verrouillé.</p></li>
+<li><p><strong>Prix ou description d’un produit</strong> : dupliquez le produit et utilisez la
+copie dans le nouveau devis.</p></li>
+<li><p><strong>Coordonnées du client</strong> : créez une nouvelle fiche client ou dupliquez-la
+lorsque cette action est disponible, puis associez-la au nouveau devis.</p></li>
+<li><p><strong>Identité ou coordonnées de l’émetteur</strong> : créez une nouvelle configuration
+d’entreprise pour les futurs documents.</p></li>
+<li><p><strong>Échec de messagerie ou d’Iopole</strong> : corrigez les paramètres d’envoi et
+réessayez avec le document déjà verrouillé.</p></li>
+</ul>
+<p>Un duplicata ne remplace pas un document émis. Pour corriger une facture déjà
+émise, appliquez la procédure comptable et réglementaire adaptée avec votre
+conseiller ; ce guide ne présente pas de mécanisme de déverrouillage ou d’avoir
+automatique.</p>
+</section>
+<section id="comprendre-les-messages-de-refus">
+<h2>Comprendre les messages de refus<a class="headerlink" href="#comprendre-les-messages-de-refus" title="Lien vers cette rubrique"></a></h2>
+<dl class="simple">
+<dt><strong>This document is locked…</strong></dt><dd><p>Le document lui-même est finalisé. Dupliquez le devis pour préparer une
+nouvelle offre.</p>
+</dd>
+<dt><strong>The quote belongs to a locked document.</strong></dt><dd><p>Le devis est utilisé par une facture verrouillée. Les lignes et données de
+ce devis sont également protégées.</p>
+</dd>
+<dt><strong>This record is used by a locked document…</strong></dt><dd><p>Le client ou le produit est référencé par un document finalisé. Créez une
+nouvelle fiche ou dupliquez le produit pour vos changements futurs.</p>
+</dd>
+<dt><strong>Company details are used by a locked document…</strong></dt><dd><p>Les informations de l’émetteur sont protégées. Utilisez une nouvelle
+configuration d’entreprise pour changer cette identité.</p>
+</dd>
+<dt><strong>This record is still referenced by another document.</strong></dt><dd><p>Une suppression est refusée parce qu’un produit, client ou devis reste
+utilisé, même sans verrouillage explicite. Vérifiez les références ;
+ne supprimez pas les données nécessaires à la conservation des documents.</p>
+</dd>
+</dl>
+<p>Ces refus correspondent généralement à une réponse HTTP <code class="docutils literal notranslate"><span class="pre">409</span></code>. Une référence
+invalide ou une donnée ne faisant pas partie de l’entreprise courante peut être
+refusée séparément. Un utilisateur dont le partage a été retiré ne récupère pas
+l’accès en restaurant son ancienne session.</p>
+</section>
+<section id="historique-et-conservation">
+<h2>Historique et conservation<a class="headerlink" href="#historique-et-conservation" title="Lien vers cette rubrique"></a></h2>
+<p><strong>Change history</strong> permet de consulter l’auteur, la date et les événements de
+verrouillage dans l’entreprise courante. La finalisation d’une facture apparaît
+également comme un verrouillage du devis associé.</p>
+<p>Une restauration JSON conserve les états verrouillés dans les nouvelles
+entreprises créées : elle n’est pas une fonction de déverrouillage. Consultez
+<a class="reference internal" href="other_features.html"><span class="doc">Statistiques, sauvegardes et informations</span></a> pour les éléments inclus et exclus des sauvegardes.</p>
+<p>Conservez les PDF et XML émis dans Nextcloud Files, ainsi qu’une sauvegarde
+complète de l’instance selon vos obligations. Le verrouillage de Gestion ne
+remplace ni une archive légale certifiée ni la protection des fichiers et logos
+contre des modifications effectuées directement dans Nextcloud Files.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="quotes_invoices.html" class="btn btn-neutral float-left" title="Devis, factures, PDF et e-mails" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="electronic_invoicing.html" class="btn btn-neutral float-right" title="Facturation électronique et Factur-X" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2021-2026, Benjamin AIMARD.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

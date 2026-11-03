@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devis, factures, PDF et e-mails &mdash; Gestion 3.4.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=386f8cd2"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=e6b791cb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Verrouillage et cycle de vie des documents" href="document_lifecycle.html" />
+    <link rel="prev" title="Clients, produits et TVA" href="clients_products.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Gestion pour Nextcloud
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide utilisateur</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation et mise à jour</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#compatibilite">Compatibilité</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-depuis-le-store">Installation depuis le store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-manuelle">Installation manuelle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#mise-a-jour">Mise à jour</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Démarrage rapide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#configurer-l-entreprise">1. Configurer l’entreprise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-un-client">2. Créer un client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-un-produit-ou-un-service">3. Créer un produit ou un service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-le-devis">4. Créer le devis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-la-facture">5. Créer la facture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#verifier-puis-finaliser">6. Vérifier puis finaliser</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration des entreprises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#creer-et-selectionner-une-entreprise">Créer et sélectionner une entreprise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#informations-generales">Informations générales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#identifiants-francais">Identifiants français</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#dossier-de-sauvegarde">Dossier de sauvegarde</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#logos">Logos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#partage">Partage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#suppression">Suppression</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clients_products.html">Clients, produits et TVA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#clients">Clients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#produits-et-services">Produits et services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#categories-de-tva">Catégories de TVA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#motif-d-exoneration-pour-la-categorie-e">Motif d’exonération pour la catégorie E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#importer-depuis-les-contacts-nextcloud">Importer depuis les contacts Nextcloud</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Devis, factures, PDF et e-mails</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#devis">Devis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#factures">Factures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generer-un-pdf">Générer un PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#envoyer-par-e-mail">Envoyer par e-mail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conservation">Conservation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remises-commerciales">Remises commerciales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verrouillage-des-documents">Verrouillage des documents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="document_lifecycle.html">Verrouillage et cycle de vie des documents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#reconnaitre-l-etat-d-un-document">Reconnaître l’état d’un document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#finaliser-manuellement">Finaliser manuellement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#envoyer-par-e-mail-ou-a-iopole">Envoyer par e-mail ou à Iopole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#ce-que-protege-le-verrouillage">Ce que protège le verrouillage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#modifier-une-nouvelle-offre-sans-toucher-a-l-original">Modifier une nouvelle offre sans toucher à l’original</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#comprendre-les-messages-de-refus">Comprendre les messages de refus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#historique-et-conservation">Historique et conservation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="electronic_invoicing.html">Facturation électronique et Factur-X</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#preparer-les-donnees">Préparer les données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#generer-les-fichiers">Générer les fichiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#configurer-iopole">Configurer Iopole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#limites-et-responsabilite">Limites et responsabilité</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#securite-de-la-plateforme">Sécurité de la plateforme</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="other_features.html">Statistiques, sauvegardes et informations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#statistiques">Statistiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#sauvegarde-et-restauration">Sauvegarde et restauration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#historique-des-modifications">Historique des modifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#reglage-des-decimales">Réglage des décimales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#notice-legale">Notice légale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#a-propos-et-version">À propos et version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Dépannage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#un-champ-n-est-pas-enregistre">Un champ n’est pas enregistré</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#le-pdf-n-est-pas-enregistre">Le PDF n’est pas enregistré</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#les-logos-n-apparaissent-pas">Les logos n’apparaissent pas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#la-facture-factur-x-est-refusee">La facture Factur-X est refusée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#l-envoi-d-e-mail-echoue">L’envoi d’e-mail échoue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#iopole-n-est-pas-propose-dans-la-facture">Iopole n’est pas proposé dans la facture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#mode-maintenance-nextcloud">Mode maintenance Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#obtenir-de-l-aide">Obtenir de l’aide</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Développement</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Documentation développeur</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#environnement">Environnement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#commandes-courantes">Commandes courantes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#tests-panther">Tests Panther</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#base-de-donnees">Base de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#traductions">Traductions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#version-et-publication">Version et publication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#tests-du-nouvel-espace-de-gestion">Tests du nouvel espace de gestion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#messages-et-confirmations-de-verrouillage">Messages et confirmations de verrouillage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#controles-de-securite">Contrôles de sécurité</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Gestion pour Nextcloud</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Devis, factures, PDF et e-mails</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/quotes_invoices.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="devis-factures-pdf-et-e-mails">
+<h1>Devis, factures, PDF et e-mails<a class="headerlink" href="#devis-factures-pdf-et-e-mails" title="Lien vers cette rubrique"></a></h1>
+<section id="devis">
+<h2>Devis<a class="headerlink" href="#devis" title="Lien vers cette rubrique"></a></h2>
+<p>La liste des devis permet de créer, ouvrir, dupliquer ou supprimer un devis.
+Les colonnes principales sont la date d’émission, le numéro, le client associé,
+la version et le statut.</p>
+<p>Dans le détail du devis, utilisez <strong>Ajouter produit</strong> pour créer une ligne.
+Sélectionnez ensuite le produit, adaptez la quantité et ajoutez un commentaire
+si nécessaire. Les flèches permettent de réordonner les lignes.</p>
+<div  class="sphinx-contrib-video-container align-left"><video controls="True" preload="auto" width="800"><source src="_images/devis.webm" type="video/webm"></video></div></section>
+<section id="factures">
+<h2>Factures<a class="headerlink" href="#factures" title="Lien vers cette rubrique"></a></h2>
+<p>Une facture est associée à un devis. La liste permet de définir le numéro, la
+date de prestation, la date d’échéance, le moyen de paiement, le devis associé,
+la version et le statut de paiement.</p>
+<p>Moyens de paiement structurés :</p>
+<ul class="simple">
+<li><p>espèces ;</p></li>
+<li><p>chèque ;</p></li>
+<li><p>virement ;</p></li>
+<li><p>carte ;</p></li>
+<li><p>virement SEPA.</p></li>
+</ul>
+<p>Ces choix sont convertis en codes normalisés dans Factur-X.</p>
+<div  class="sphinx-contrib-video-container align-left"><video controls="True" preload="auto" width="800"><source src="_images/facture.webm" type="video/webm"></video></div></section>
+<section id="generer-un-pdf">
+<h2>Générer un PDF<a class="headerlink" href="#generer-un-pdf" title="Lien vers cette rubrique"></a></h2>
+<p>Depuis un devis ou une facture :</p>
+<ol class="arabic simple">
+<li><p>vérifiez le dossier de sauvegarde dans la navigation ;</p></li>
+<li><p>ouvrez le document ;</p></li>
+<li><p>contrôlez les lignes, les totaux, les coordonnées et les mentions ;</p></li>
+<li><p>cliquez sur <strong>Enregistrer dans Nextcloud (PDF)</strong>.</p></li>
+</ol>
+<p>Le PDF est téléchargé par le navigateur et enregistré dans Nextcloud.</p>
+<div  class="sphinx-contrib-video-container align-left"><video controls="True" preload="auto" width="800"><source src="_images/pdf.webm" type="video/webm"></video></div></section>
+<section id="envoyer-par-e-mail">
+<h2>Envoyer par e-mail<a class="headerlink" href="#envoyer-par-e-mail" title="Lien vers cette rubrique"></a></h2>
+<p>L’action <strong>Send by email</strong> des listes de devis et de factures utilise le compte
+personnel par défaut de l’application <strong>Nextcloud Mail</strong>. Mail doit être installé,
+activé et connecté à un compte capable d’envoyer des messages. Si ces prérequis
+ne sont pas remplis, Gestion affiche une information sans lancer d’envoi.</p>
+<p>La confirmation affiche l’expéditeur et le destinataire en lecture seule ;
+le destinataire vient de la fiche client. Le sujet et le message restent
+modifiables. Le PDF du document est joint à l’envoi. Un avertissement explique
+le verrouillage définitif avant tentative de livraison ; fermer le dialogue
+ou utiliser <strong>Cancel</strong> ne lance ni envoi ni verrouillage. Voir
+<a class="reference internal" href="document_lifecycle.html"><span class="doc">Verrouillage et cycle de vie des documents</span></a> pour la conduite à tenir en cas d’échec.</p>
+<p>L’ancien point d’entrée d’envoi par le serveur SMTP global reste présent pour
+les intégrations existantes. Il exige aussi la référence du document à
+finaliser ; il ne remplace pas les prérequis Mail de l’action des listes.</p>
+</section>
+<section id="conservation">
+<h2>Conservation<a class="headerlink" href="#conservation" title="Lien vers cette rubrique"></a></h2>
+<p>Les brouillons affichés dans Gestion reposent sur les données courantes.
+Finalisez les documents prêts à être émis comme expliqué dans
+<a class="reference internal" href="document_lifecycle.html"><span class="doc">Verrouillage et cycle de vie des documents</span></a>. Après émission ou acceptation, enregistrez une version PDF non modifiable dans
+Nextcloud Files et appliquez les durées de conservation exigées dans votre
+juridiction.</p>
+</section>
+<section id="remises-commerciales">
+<h2>Remises commerciales<a class="headerlink" href="#remises-commerciales" title="Lien vers cette rubrique"></a></h2>
+<p>Dans un devis modifiable, la colonne <strong>Discount (%)</strong> définit une remise par
+ligne, comprise entre 0 et 100 %. Elle s’applique avant la TVA. Le montant HT de
+chaque ligne est arrondi au centime, puis les bases sont regroupées par taux de
+TVA. Les totaux web, PDF, statistiques et Factur-X utilisent la remise. Les
+lignes d’en-tête restent descriptives et ne participent pas aux totaux.</p>
+<p>Dans le XML Factur-X, le prix net de la ligne intègre la remise et correspond à
+son montant HT. Cette version ne propose pas de remise globale sur le document.</p>
+</section>
+<section id="verrouillage-des-documents">
+<h2>Verrouillage des documents<a class="headerlink" href="#verrouillage-des-documents" title="Lien vers cette rubrique"></a></h2>
+<p>Le bouton <strong>Finalize and lock</strong> demande une confirmation puis verrouille
+irréversiblement le devis ou la facture. Les envois par e-mail et à Iopole
+verrouillent également le document avant la tentative d’envoi : un échec de
+messagerie laisse le document verrouillé et permet une nouvelle tentative.</p>
+<p>Le verrouillage est contrôlé côté serveur, y compris pour les éditions de
+lignes et les changements d’ordre. Les produits, le client et les informations
+de l’entreprise utilisés par un document verrouillé sont protégés afin qu’un
+changement du catalogue ne modifie pas un ancien document. Pour de nouveaux
+prix, dupliquez le produit ; pour modifier une offre, dupliquez le devis. Pour
+changer l’identité de l’émetteur après verrouillage, créez une nouvelle
+configuration d’entreprise. Le statut de paiement d’une facture reste éditable.</p>
+<p>Même sans verrouillage, les produits utilisés par un devis, les clients utilisés
+par un devis et les devis liés à une facture ne peuvent pas être supprimés.
+La suppression d’un devis brouillon supprime ses lignes pour éviter les
+références orphelines. Une entreprise contenant un document verrouillé ne peut
+pas être supprimée.</p>
+<p>Pour le détail des messages, des confirmations avant envoi, des états
+brouillon/verrouillé et des solutions après un refus, consultez
+<a class="reference internal" href="document_lifecycle.html"><span class="doc">Verrouillage et cycle de vie des documents</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="clients_products.html" class="btn btn-neutral float-left" title="Clients, produits et TVA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="document_lifecycle.html" class="btn btn-neutral float-right" title="Verrouillage et cycle de vie des documents" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2021-2026, Benjamin AIMARD.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

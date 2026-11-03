@@ -42,6 +42,9 @@ class NonAdminMiddlewareTest extends TestCase {
         foreach ($middlewareClass->getConstructor()->getParameters() as $parameter) {
             if (array_key_exists($parameter->getName(), $overrides)) {
                 $arguments[] = $overrides[$parameter->getName()];
+            } elseif ($parameter->getName() === 'middlewareUtils') {
+                // Nextcloud 34 delegates annotation/attribute checks to this real helper.
+                $arguments[] = \OCP\Server::get($parameter->getType()->getName());
             } else {
                 // Use the installed Nextcloud version's dependencies. Group mocks deny all admin rights.
                 $arguments[] = $this->createMock($parameter->getType()->getName());

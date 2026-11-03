@@ -35,6 +35,16 @@ Ces choix sont convertis en codes normalisés dans Factur-X.
 .. video:: _static/videos/facture.webm
    :width: 800
 
+Coordonnées sur les documents
+--------------------------------
+
+À partir de la version 3.4.2, les coordonnées sont regroupées dans un tableau
+**Émetteur / Destinataire**, commun aux devis et aux factures, à l'écran et dans
+les PDF. Le logo est redimensionné dans le bloc de l'entreprise pour préserver
+la lecture des coordonnées. Les adresses conservent leurs retours à la ligne
+et les champs vides n'ajoutent pas de lignes blanches.
+Sur mobile, les deux blocs s'affichent l'un sous l'autre.
+
 Générer un PDF
 --------------
 

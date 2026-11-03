@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Verrouillage et cycle de vie des documents &mdash; Gestion 3.4.0</title>
+  <title>Verrouillage et cycle de vie des documents &mdash; Gestion 3.4.1</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=386f8cd2"></script>
+      <script src="_static/documentation_options.js?v=9c1708cb"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -91,8 +91,9 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Verrouillage et cycle de vie des documents</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#reconnaitre-l-etat-d-un-document">Reconnaître l’état d’un document</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#finaliser-manuellement">Finaliser manuellement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#devis-et-factures">Devis et factures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#barre-d-actions-et-telechargement">Barre d’actions et téléchargement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verrouiller-une-facture">Verrouiller une facture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#envoyer-par-e-mail-ou-a-iopole">Envoyer par e-mail ou à Iopole</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ce-que-protege-le-verrouillage">Ce que protège le verrouillage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modifier-une-nouvelle-offre-sans-toucher-a-l-original">Modifier une nouvelle offre sans toucher à l’original</a></li>
@@ -175,65 +176,56 @@
 <span id="cycle-de-vie-documents"></span><h1>Verrouillage et cycle de vie des documents<a class="headerlink" href="#verrouillage-et-cycle-de-vie-des-documents" title="Lien vers cette rubrique"></a></h1>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Ce guide décrit Gestion <strong>3.4.0</strong>, préparée dans la PR #637. Tant que cette
-version n’est pas intégrée et installée, les nouveaux boutons et messages
-peuvent ne pas apparaître. Les anciens documents ne sont pas
-verrouillés automatiquement : ils peuvent être finalisés après vérification.</p>
+<p>Ce guide décrit le cycle de verrouillage révisé, en préparation. Installez
+la version contenant ce correctif pour disposer des nouveaux comportements.</p>
 </div>
-<section id="reconnaitre-l-etat-d-un-document">
-<h2>Reconnaître l’état d’un document<a class="headerlink" href="#reconnaitre-l-etat-d-un-document" title="Lien vers cette rubrique"></a></h2>
-<dl class="simple">
-<dt><strong>Draft</strong> — brouillon</dt><dd><p>Les informations restent modifiables, sous réserve des références existantes.
-Le bouton <strong>Finalize and lock</strong> permet de finaliser le document après
-vérification. Un brouillon reprend encore les données courantes du client,
-du catalogue et de l’entreprise.</p>
-</dd>
-<dt><strong>Locked document</strong> — document verrouillé</dt><dd><p>Un message d’information explique que le document ne peut plus être modifié
-ou supprimé. Les commandes d’édition sont retirées ou désactivées. Le serveur
-applique aussi cette protection, indépendamment de l’affichage du navigateur.</p>
-</dd>
-</dl>
-<p>Les libellés anglais ci-dessus correspondent aux clés de l’interface ; leur
-traduction dépend du catalogue de langue installé dans Nextcloud.</p>
+<section id="devis-et-factures">
+<h2>Devis et factures<a class="headerlink" href="#devis-et-factures" title="Lien vers cette rubrique"></a></h2>
+<p>Un <strong>devis reste modifiable</strong> tant qu’aucune facture associée n’est verrouillée.
+Créer une facture brouillon, télécharger le PDF ou envoyer le devis par e-mail
+ne le verrouille pas. Les anciens indicateurs de verrouillage d’un devis isolé
+ne bloquent plus son édition en l’absence de facture finalisée.</p>
+<p>Dans la liste des devis, le cadenas ouvert ou fermé indique cet état. Cliquez
+sur le cadenas pour ouvrir le devis. Un devis verrouillé affiche un message
+rouge expliquant qu’une facture associée a été finalisée. Il ne comporte pas de
+commande permettant de se verrouiller ou de se déverrouiller indépendamment.</p>
+<p>La <strong>facture</strong> possède la commande <strong>Finalize and lock</strong> (verrouiller la facture).
+Cette action fige la facture et son devis. Les deux documents ne peuvent plus
+être modifiés ni supprimés, y compris les informations et le statut de paiement.
+Le client, les produits et les coordonnées de l’émetteur utilisés sont protégés.</p>
 </section>
-<section id="finaliser-manuellement">
-<h2>Finaliser manuellement<a class="headerlink" href="#finaliser-manuellement" title="Lien vers cette rubrique"></a></h2>
+<section id="barre-d-actions-et-telechargement">
+<h2>Barre d’actions et téléchargement<a class="headerlink" href="#barre-d-actions-et-telechargement" title="Lien vers cette rubrique"></a></h2>
+<p>Les commandes PDF, Factur-X, XML, historique et verrouillage sont regroupées
+en haut du document, dans une barre qui reste visible pendant le défilement.
+Sur petit écran, faites défiler ses boutons horizontalement. La désignation
+dispose de davantage d’espace ; les colonnes numériques sont resserrées.</p>
+<p>Les PDF restent téléchargeables après verrouillage. Les barres d’actions et
+les messages de verrouillage n’apparaissent pas dans les fichiers générés.</p>
+</section>
+<section id="verrouiller-une-facture">
+<h2>Verrouiller une facture<a class="headerlink" href="#verrouiller-une-facture" title="Lien vers cette rubrique"></a></h2>
 <ol class="arabic simple">
-<li><p>Ouvrez le devis ou la facture.</p></li>
-<li><p>Vérifiez le client, les lignes, quantités, prix, remises, TVA, dates et
-informations de l’émetteur. Contrôlez aussi le PDF ou le XML si nécessaire.</p></li>
-<li><p>Cliquez sur <strong>Finalize and lock</strong>.</p></li>
-<li><p>Lisez l’avertissement : l’action est définitive et les données liées seront
-protégées. Pour une facture, le devis associé sera aussi verrouillé.</p></li>
-<li><p>Confirmez pour appliquer le verrouillage, ou fermez le dialogue pour
-conserver l’état précédent.</p></li>
+<li><p>Ouvrez la facture et contrôlez ses coordonnées, lignes, remises, montants,
+TVA, dates et informations de paiement.</p></li>
+<li><p>Cliquez sur <strong>Finalize and lock</strong> dans la barre supérieure.</p></li>
+<li><p>Lisez l’avertissement et confirmez, ou annulez sans changer l’état.</p></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>Il n’existe pas de bouton de déverrouillage. Une finalisation confirmée ne
-peut pas être annulée dans Gestion. Fermer ou annuler une confirmation, avant
-de l’avoir validée, ne verrouille pas le document.</p>
+<p>La finalisation d’une facture est définitive. Il n’existe pas de bouton de
+déverrouillage. Le devis associé est également protégé.</p>
 </div>
 </section>
 <section id="envoyer-par-e-mail-ou-a-iopole">
 <h2>Envoyer par e-mail ou à Iopole<a class="headerlink" href="#envoyer-par-e-mail-ou-a-iopole" title="Lien vers cette rubrique"></a></h2>
-<p>L’envoi par e-mail affiche un avertissement dans son écran de confirmation.
-Le bouton d’envoi à Iopole ouvre également une confirmation <strong>Finalize and send
-to Iopole?</strong>. Dans les deux cas, le message précise que :</p>
-<ul class="simple">
-<li><p>le document est finalisé <strong>avant</strong> la tentative d’envoi ;</p></li>
-<li><p>ses données liées sont protégées et une facture verrouille aussi son devis ;</p></li>
-<li><p>un échec d’envoi conserve le verrouillage ;</p></li>
-<li><p>il reste possible de réessayer d’envoyer le même document ;</p></li>
-<li><p>annuler ou fermer le dialogue avant confirmation n’envoie rien et ne change
-pas l’état du document.</p></li>
-</ul>
-<p>Après une tentative, si la finalisation a abouti, un message rappelle que le
-verrouillage est conservé, y compris en cas d’erreur de livraison. Rechargez
-la liste pour voir son état actualisé. Si la finalisation elle-même est
-refusée, le message ne prétend pas que le document a été verrouillé.</p>
-<p>Le téléchargement d’un PDF ou la génération d’un XML, sans envoi ni finalisation
-explicite, ne verrouille pas le document à lui seul.</p>
+<p>L’envoi d’un <strong>devis</strong> ne le finalise pas. Si une facture associée le verrouille
+ultérieurement, les prochains envois ne lèvent pas cette protection.</p>
+<p>L’envoi d’une <strong>facture</strong> par e-mail ou à Iopole la finalise avant la tentative
+de livraison, après confirmation. Elle et son devis restent verrouillés même
+en cas d’échec d’envoi ; vous pouvez réessayer. Annuler le dialogue n’envoie rien
+et ne change aucun état. Les messages de résultat indiquent si le document est
+réellement verrouillé.</p>
 </section>
 <section id="ce-que-protege-le-verrouillage">
 <h2>Ce que protège le verrouillage<a class="headerlink" href="#ce-que-protege-le-verrouillage" title="Lien vers cette rubrique"></a></h2>
@@ -248,7 +240,7 @@ explicite, ne verrouille pas le document à lui seul.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Devis et facture finalisés</p></td>
+<tr class="row-even"><td><p>Facture finalisée et devis associé</p></td>
 <td><p>Modification et suppression interdites.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Lignes du devis associé</p></td>
@@ -263,7 +255,7 @@ utilisées par un document verrouillé.</p></td>
 protégés. La configuration d’entreprise ne peut pas être supprimée.</p></td>
 </tr>
 <tr class="row-even"><td><p>Statut de paiement d’une facture</p></td>
-<td><p>Reste modifiable pour suivre le règlement.</p></td>
+<td><p>Est protégé après finalisation, comme les autres informations de paiement.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dossier de sauvegarde et précision d’affichage</p></td>
 <td><p>Restent configurables. Les valeurs stockées et les totaux fiscaux
@@ -325,8 +317,8 @@ l’accès en restaurant son ancienne session.</p>
 <p><strong>Change history</strong> permet de consulter l’auteur, la date et les événements de
 verrouillage dans l’entreprise courante. La finalisation d’une facture apparaît
 également comme un verrouillage du devis associé.</p>
-<p>Une restauration JSON conserve les états verrouillés dans les nouvelles
-entreprises créées : elle n’est pas une fonction de déverrouillage. Consultez
+<p>Une restauration JSON conserve les factures verrouillées et la protection de
+leurs devis dans les nouvelles entreprises créées. Consultez
 <a class="reference internal" href="other_features.html"><span class="doc">Statistiques, sauvegardes et informations</span></a> pour les éléments inclus et exclus des sauvegardes.</p>
 <p>Conservez les PDF et XML émis dans Nextcloud Files, ainsi qu’une sauvegarde
 complète de l’instance selon vos obligations. Le verrouillage de Gestion ne

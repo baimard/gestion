@@ -61,7 +61,8 @@ ne sont pas remplis, Gestion affiche une information sans lancer d'envoi.
 La confirmation affiche l'expéditeur et le destinataire en lecture seule ;
 le destinataire vient de la fiche client. Le sujet et le message restent
 modifiables. Le PDF du document est joint à l'envoi. Un avertissement explique
-le verrouillage définitif avant tentative de livraison ; fermer le dialogue
+le verrouillage définitif d'une facture et de son devis avant tentative de
+livraison ; un envoi de devis seul ne le verrouille pas. Fermer le dialogue
 ou utiliser **Cancel** ne lance ni envoi ni verrouillage. Voir
 :doc:`document_lifecycle` pour la conduite à tenir en cas d'échec.
 
@@ -93,18 +94,21 @@ son montant HT. Cette version ne propose pas de remise globale sur le document.
 Verrouillage des documents
 ---------------------------
 
-Le bouton **Finalize and lock** demande une confirmation puis verrouille
-irréversiblement le devis ou la facture. Les envois par e-mail et à Iopole
-verrouillent également le document avant la tentative d'envoi : un échec de
-messagerie laisse le document verrouillé et permet une nouvelle tentative.
+Le bouton **Finalize and lock**, réservé à la facture, demande une confirmation
+puis verrouille la facture et son devis. Le devis reste modifiable tant qu'aucune
+facture liée n'est finalisée. Le cadenas de la liste des devis permet d'ouvrir
+le document et reflète cet état ; un message rouge indique le verrouillage lié
+à une facture.
 
-Le verrouillage est contrôlé côté serveur, y compris pour les éditions de
-lignes et les changements d'ordre. Les produits, le client et les informations
-de l'entreprise utilisés par un document verrouillé sont protégés afin qu'un
-changement du catalogue ne modifie pas un ancien document. Pour de nouveaux
-prix, dupliquez le produit ; pour modifier une offre, dupliquez le devis. Pour
-changer l'identité de l'émetteur après verrouillage, créez une nouvelle
-configuration d'entreprise. Le statut de paiement d'une facture reste éditable.
+Les envois d'une facture par e-mail ou à Iopole la verrouillent avant la tentative
+de livraison. Un échec ne lève pas cette protection. Les envois d'un devis ne le
+verrouillent pas. Le téléchargement des PDF reste disponible dans tous les cas.
+
+Le serveur interdit les modifications et suppressions après verrouillage,
+y compris le statut de paiement. Les fiches client, produits et informations
+de l'entreprise liées sont également protégées. Pour une nouvelle offre,
+dupliquez le devis ou le produit ; utilisez une nouvelle configuration pour
+changer l'identité de l'émetteur.
 
 Même sans verrouillage, les produits utilisés par un devis, les clients utilisés
 par un devis et les devis liés à une facture ne peuvent pas être supprimés.

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Devis, factures, PDF et e-mails &mdash; Gestion 3.4.1</title>
+  <title>Devis, factures, PDF et e-mails &mdash; Gestion 3.4.2</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=9c1708cb"></script>
+      <script src="_static/documentation_options.js?v=abef82a1"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -83,6 +83,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Devis, factures, PDF et e-mails</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#devis">Devis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#factures">Factures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coordonnees-sur-les-documents">Coordonnées sur les documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#generer-un-pdf">Générer un PDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#envoyer-par-e-mail">Envoyer par e-mail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conservation">Conservation</a></li>
@@ -198,6 +199,15 @@ la version et le statut de paiement.</p>
 </ul>
 <p>Ces choix sont convertis en codes normalisés dans Factur-X.</p>
 <div  class="sphinx-contrib-video-container align-left"><video controls="True" preload="auto" width="800"><source src="_images/facture.webm" type="video/webm"></video></div></section>
+<section id="coordonnees-sur-les-documents">
+<h2>Coordonnées sur les documents<a class="headerlink" href="#coordonnees-sur-les-documents" title="Lien vers cette rubrique"></a></h2>
+<p>À partir de la version 3.4.2, les coordonnées sont regroupées dans un tableau
+<strong>Émetteur / Destinataire</strong>, commun aux devis et aux factures, à l’écran et dans
+les PDF. Le logo est redimensionné dans le bloc de l’entreprise pour préserver
+la lecture des coordonnées. Les adresses conservent leurs retours à la ligne
+et les champs vides n’ajoutent pas de lignes blanches.
+Sur mobile, les deux blocs s’affichent l’un sous l’autre.</p>
+</section>
 <section id="generer-un-pdf">
 <h2>Générer un PDF<a class="headerlink" href="#generer-un-pdf" title="Lien vers cette rubrique"></a></h2>
 <p>Depuis un devis ou une facture :</p>

@@ -29,16 +29,16 @@
     <table id="headertable">
         <tr>
             <td style="text-align: center;">
-                <span><?php p($l->t('From'));?> <?php echo $res->entreprise; ?><span>
+                <span><?php p($l->t('From'));?> <?php p(html_entity_decode((string)($res->entreprise), ENT_QUOTES, 'UTF-8')); ?><span>
                 <p>
-                    <span><?php echo $res->prenom . " " . $res->nom; ?></span><br />
-                    <span><?php echo $res->adresse; ?></span><br />
-                    <span><?php echo trim(($res->zip_code ?? '') . ' ' . ($res->city_name ?? '')); ?></span><br />
-                    <span><?php echo $res->mail; ?></span><br />
-                    <span><?php echo $res->telephone; ?></span><br/>
-                    <span><?php echo $res->legal_one; ?></span><br />
-                    <span><?php echo $res->legal_two; ?></span><br />
-                    <span><?php echo $res->vat_number ?? ''; ?></span><br />
+                    <span><?php p(html_entity_decode((string)($res->prenom . " " . $res->nom), ENT_QUOTES, 'UTF-8')); ?></span><br />
+                    <span><?php p(html_entity_decode((string)($res->adresse), ENT_QUOTES, 'UTF-8')); ?></span><br />
+                    <span><?php p(html_entity_decode((string)(trim(($res->zip_code ?? '') . ' ' . ($res->city_name ?? ''))), ENT_QUOTES, 'UTF-8')); ?></span><br />
+                    <span><?php p(html_entity_decode((string)($res->mail), ENT_QUOTES, 'UTF-8')); ?></span><br />
+                    <span><?php p(html_entity_decode((string)($res->telephone), ENT_QUOTES, 'UTF-8')); ?></span><br/>
+                    <span><?php p(html_entity_decode((string)($res->legal_one), ENT_QUOTES, 'UTF-8')); ?></span><br />
+                    <span><?php p(html_entity_decode((string)($res->legal_two), ENT_QUOTES, 'UTF-8')); ?></span><br />
+                    <span><?php p(html_entity_decode((string)($res->vat_number ?? ''), ENT_QUOTES, 'UTF-8')); ?></span><br />
                     <br/>
                 </p>
             </td>
@@ -70,20 +70,20 @@
 
 
     <div class="titre-centre">
-        <b><span id="devisid" class="inline editable" data-table="devis" data-column="num" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->num; ?></span></b>
+        <b><span id="devisid" class="inline editable" data-table="devis" data-column="num" data-id="<?php p(html_entity_decode((string)($_['devis'][0]->devisid), ENT_QUOTES, 'UTF-8')); ?>"><?php p(html_entity_decode((string)($_['devis'][0]->num), ENT_QUOTES, 'UTF-8')); ?></span></b>
         <span data-html2canvas-ignore class="inline"><?php p($l->t('Version'));?></span>
-        <span data-html2canvas-ignore id="devisversion" class="inline editable" data-table="devis" data-column="version" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo $_['devis'][0]->version; ?></span>
-        <span id="delay" class="inline editable" data-table="devis" data-column="delay" data-id="<?php echo $_['devis'][0]->devisid; ?>">
-            <?php echo ($_['devis'][0]->delay == "" ) ? p($l->t('Offer valid for 1 month from: ')) : $_['devis'][0]->delay ;?>
+        <span data-html2canvas-ignore id="devisversion" class="inline editable" data-table="devis" data-column="version" data-id="<?php p(html_entity_decode((string)($_['devis'][0]->devisid), ENT_QUOTES, 'UTF-8')); ?>"><?php p(html_entity_decode((string)($_['devis'][0]->version), ENT_QUOTES, 'UTF-8')); ?></span>
+        <span id="delay" class="inline editable" data-table="devis" data-column="delay" data-id="<?php p(html_entity_decode((string)($_['devis'][0]->devisid), ENT_QUOTES, 'UTF-8')); ?>">
+            <?php p(html_entity_decode($_['devis'][0]->delay ?: $l->t('Offer valid for 1 month from: '), ENT_QUOTES, 'UTF-8')); ?>
         </span>
         <span class="inline"><?php echo (new DateTime($_['devis'][0]->date))->format('d-m-Y'); ?></span>
     </div>
 
-    <div id="deviscomment" class="comment editableComment" data-table="devis" data-column="comment" data-id="<?php echo $_['devis'][0]->devisid; ?>"><?php echo ($_['devis'][0]->comment == "" ) ? "-" : nl2br(htmlspecialchars($_['devis'][0]->comment)); ?></div>
+    <div id="deviscomment" class="comment editableComment" data-table="devis" data-column="comment" data-id="<?php p(html_entity_decode((string)($_['devis'][0]->devisid), ENT_QUOTES, 'UTF-8')); ?>"><?php echo ($_['devis'][0]->comment == "" ) ? "-" : nl2br(htmlspecialchars($_['devis'][0]->comment)); ?></div>
 
     <div>
         <button id="devisAdd"       type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore><?php p($l->t('Add product'));?></button>
-        <button type="button" class="mb-2 btn btn-outline-primary createInvoiceFromQuote" data-devis-id="<?php echo $_['devis'][0]->devisid; ?>" data-html2canvas-ignore><?php p($l->t('Create invoice'));?></button>
+        <button type="button" class="mb-2 btn btn-outline-primary createInvoiceFromQuote" data-devis-id="<?php p(html_entity_decode((string)($_['devis'][0]->devisid), ENT_QUOTES, 'UTF-8')); ?>" data-html2canvas-ignore><?php p($l->t('Create invoice'));?></button>
         <button id="pdf"            type="button"       class="mb-2 btn btn-outline-success"            data-html2canvas-ignore data-name=""><?php p($l->t('Save in Nextcloud'));?></button>
         
         <table id="produits" class="table-produit">
@@ -160,11 +160,11 @@
     <table class="table-mentions-signature">
         <tr>
             <td class="cell-mentions">
-                <p class="mentions-titre"><?php echo $res->entreprise; ?></p>
-                <p class="mentions-ligne"><?php echo $res->adresse; ?></p>
-                <p class="mentions-ligne"><?php echo trim(($res->zip_code ?? '') . ' ' . ($res->city_name ?? '')); ?></p>
-                <p class="mentions-ligne"><?php echo $res->legal_one; ?></p>
-                <p class="mentions-ligne"><?php echo $res->legal_two; ?></p>
+                <p class="mentions-titre"><?php p(html_entity_decode((string)($res->entreprise), ENT_QUOTES, 'UTF-8')); ?></p>
+                <p class="mentions-ligne"><?php p(html_entity_decode((string)($res->adresse), ENT_QUOTES, 'UTF-8')); ?></p>
+                <p class="mentions-ligne"><?php p(html_entity_decode((string)(trim(($res->zip_code ?? '') . ' ' . ($res->city_name ?? ''))), ENT_QUOTES, 'UTF-8')); ?></p>
+                <p class="mentions-ligne"><?php p(html_entity_decode((string)($res->legal_one), ENT_QUOTES, 'UTF-8')); ?></p>
+                <p class="mentions-ligne"><?php p(html_entity_decode((string)($res->legal_two), ENT_QUOTES, 'UTF-8')); ?></p>
             </td>
 
             <td class="cell-signature">

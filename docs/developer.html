@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentation développeur &mdash; Gestion 3.4.0</title>
+  <title>Documentation développeur &mdash; Gestion 3.4.1</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=386f8cd2"></script>
+      <script src="_static/documentation_options.js?v=9c1708cb"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -90,8 +90,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="document_lifecycle.html">Verrouillage et cycle de vie des documents</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#reconnaitre-l-etat-d-un-document">Reconnaître l’état d’un document</a></li>
-<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#finaliser-manuellement">Finaliser manuellement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#devis-et-factures">Devis et factures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#barre-d-actions-et-telechargement">Barre d’actions et téléchargement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#verrouiller-une-facture">Verrouiller une facture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#envoyer-par-e-mail-ou-a-iopole">Envoyer par e-mail ou à Iopole</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#ce-que-protege-le-verrouillage">Ce que protège le verrouillage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#modifier-une-nouvelle-offre-sans-toucher-a-l-original">Modifier une nouvelle offre sans toucher à l’original</a></li>
@@ -281,7 +282,7 @@ contient également une ligne avec remise.</p>
 <p>Des scénarios Playwright sont disponibles dans <code class="docutils literal notranslate"><span class="pre">tests/Browser/</span></code>. Ils sont
 volontaires et ciblent exclusivement une instance de développement locale à
 <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8080</span></code> avec Chromium à <code class="docutils literal notranslate"><span class="pre">/usr/bin/chromium</span></code>. Le scénario
-<code class="docutils literal notranslate"><span class="pre">documents.cjs</span></code> crée une entreprise d’exemple et verrouille un devis : ne pas
+<code class="docutils literal notranslate"><span class="pre">documents.cjs</span></code> crée une entreprise d’exemple et verrouille une facture avec son devis : ne pas
 l’exécuter avec un compte ou des données de production. Les captures sont
 écrites dans <code class="docutils literal notranslate"><span class="pre">/tmp/</span></code>. Le scénario <code class="docutils literal notranslate"><span class="pre">documents.cjs</span></code> écrit aussi sa référence de
 jeu de test dans <code class="docutils literal notranslate"><span class="pre">/tmp/gestion-e2e-fixture.json</span></code> ; <code class="docutils literal notranslate"><span class="pre">lock-information.cjs</span></code> la
@@ -311,10 +312,15 @@ traduisibles utilisées par la confirmation manuelle, le bandeau persistant et
 les envois. Le bandeau se trouve hors de <code class="docutils literal notranslate"><span class="pre">PDFcontent</span></code> afin de ne pas apparaître
 dans les documents générés.</p>
 <p>Les réponses d’envoi par Mail et Iopole contiennent <code class="docutils literal notranslate"><span class="pre">documentLocked</span></code> :
-<code class="docutils literal notranslate"><span class="pre">true</span></code> seulement quand la finalisation a abouti, y compris si la livraison
-échoue ensuite. L’interface évite ainsi d’affirmer un verrouillage lorsque
+<code class="docutils literal notranslate"><span class="pre">true</span></code> quand le document est effectivement verrouillé, y compris si la
+livraison échoue ensuite. Un devis envoyé seul reste déverrouillé ; un devis
+protégé par une facture conserve cet état. L’interface évite ainsi d’affirmer un verrouillage lorsque
 l’accès ou la finalisation a été refusé. L’ancien point d’entrée <code class="docutils literal notranslate"><span class="pre">sendPDF</span></code>
-requiert les paramètres <code class="docutils literal notranslate"><span class="pre">table</span></code> et <code class="docutils literal notranslate"><span class="pre">documentId</span></code> pour finaliser le document.</p>
+requiert les paramètres <code class="docutils literal notranslate"><span class="pre">table</span></code> et <code class="docutils literal notranslate"><span class="pre">documentId</span></code> pour contrôler les droits
+et finaliser une facture. <code class="docutils literal notranslate"><span class="pre">prepareDocumentForSending</span></code> ne finalise pas un devis.
+L’état effectif d’un devis est dérivé des factures verrouillées de la même
+entreprise, et non de son ancien indicateur isolé. Les champs de paiement sont
+également protégés après finalisation.</p>
 <p>Les protections de mutation exposent un message explicatif et une réponse
 <code class="docutils literal notranslate"><span class="pre">409</span></code> pour les conflits liés au verrouillage : édition, suppression, ajout
 ou ordre des lignes, motif d’exonération et suppression d’entreprise.

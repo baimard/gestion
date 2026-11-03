@@ -10,9 +10,9 @@ La documentation correspond à la version |release|.
 
 .. important::
 
-   La version 3.4.0 décrite ici est en préparation dans la PR #637. Les
-   fonctionnalités de restauration, verrouillage, remises et historique doivent
-   être utilisées avec cette version une fois intégrée et installée.
+   Les ajustements du cycle de verrouillage décrits ici sont disponibles à
+   partir de la version 3.4.1. Installez cette version pour en bénéficier ;
+   les anciennes installations peuvent présenter d'autres commandes.
 
 Fonctionnalités principales
 ---------------------------

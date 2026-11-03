@@ -18,7 +18,7 @@ class DataService {
 
 	private function currentCompany() {
 		$company = $this->session->get('CurrentCompany');
-        if ($this->userId !== null && !in_array((string)$company, array_map('strval', array_column($this->myDb->getCompaniesList($this->userId), 'id')), true)) throw new \DomainException('Company access denied.');
+        if (!$this->userId || !in_array((string)$company, array_map('strval', array_column($this->myDb->getCompaniesList($this->userId), 'id')), true)) throw new \DomainException('Company access denied.');
 		return $company;
 	}
 

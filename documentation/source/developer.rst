@@ -144,6 +144,7 @@ exposer ses modules via ``NODE_PATH`` ; définir ``NEXTCLOUD_TEST_USER`` et
    NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/workspace.cjs
    NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/documents.cjs
    NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/lock-information.cjs
+   NODE_PATH=/tmp/gestion-browser/node_modules node tests/Browser/security.cjs
 
 Le nettoyage supprime uniquement les chemins d'exécution dont l'absence de
 référence a été vérifiée : export texte historique, helper de debug PHP,
@@ -181,3 +182,43 @@ Sphinx bloquants. Le workflow ``Documentation`` de master utilise quant à lui
 ``documentation/source`` et publie un artefact GitHub Pages. Les deux modes de
 publication doivent être coordonnés ; fusionner une PR de documentation ne
 prouve pas à lui seul qu'un déploiement GitHub Pages a abouti.
+
+
+Contrôles de sécurité
+----------------------
+
+``npm audit --package-lock-only --audit-level=low`` inclut les dépendances de
+construction. ESLint 10 supprime l'ancien consommateur minimatch 3 ; les
+surcharges ciblées d'ESLint, config-array et WebDAV imposent minimatch 11.0.4
+ou supérieur. Ne pas étendre une surcharge globale à des consommateurs qui
+attendent l'ancienne API fonction. ``node scripts/verify-glob-compatibility.mjs``
+vérifie le filtrage du véritable client WebDAV et la sélection des fichiers
+dans la configuration ESLint. Le workflow d'audit exécute ces contrôles et
+``composer audit --locked`` ; CodeQL utilise l'action v4 figée par SHA.
+
+Les valeurs métier sont échappées au point d'insertion HTML ou affectées avec
+``textContent``. Le module ``text.js`` prend en charge les anciennes entités
+HTML sans rendre le contenu actif. Ne pas réinsérer les résultats décodés
+dans ``innerHTML``. Les champs texte restent du texte, y compris à l'import
+d'un contact. Les sauts de ligne ``br`` historiques sont normalisés.
+
+``PdfHtmlPolicy`` limite les balises et attributs envoyés à mPDF, retire les
+commentaires/directives et les attributs actifs, refuse les feuilles de style
+et les ressources externes ou locales. Seules les images PNG/JPEG intégrées
+en base64, valides et limitées en taille, sont admises. Tous les rendus PDF
+passent par cette politique. ``ProviderUrlPolicy`` et le client HTTP Nextcloud
+protègent les requêtes Iopole ; aucune redirection n'est suivie et les corps
+d'erreur du fournisseur ne sont pas retournés au navigateur. Le propriétaire
+est seul autorisé à configurer les identifiants ; le secret reste côté serveur
+et n'est pas inclus dans les sauvegardes ou l'historique.
+
+Les tests ``ProviderSecurityTest`` couvrent l'isolation, les partages révoqués,
+le refus d'accès sans identité et l'absence de secret dans les réponses.
+``IopoleSecurityTest`` utilise exclusivement un client HTTP simulé. Le scénario
+``security.cjs`` intercepte les données de contact et de produit pour vérifier
+le rendu de valeurs malveillantes ; il génère un véritable PDF dans l'instance
+de test et vérifie le rejet des ressources interdites, sans livraison externe.
+
+Ces contrôles ciblent les dépendances, les accès par entreprise, les données
+rendues et les sorties réseau de Gestion. Ils ne remplacent pas un audit de
+l'instance Nextcloud, de son hébergement ou des autres applications.

@@ -1,3 +1,4 @@
+import { escapeHtml } from "../modules/text.js";
 import { generateUrl } from "@nextcloud/router";
 import { updateDB } from "../modules/ajaxRequest.js";
 import { baseUrl, checkSelectPurJs, LoadDT, showDone } from "../modules/mainFunction.js";
@@ -23,6 +24,9 @@ export class Devis {
     this.version = ((myresp.version == null || myresp.version.length === 0) ? '-' : myresp.version);
     this.mentions = ((myresp.mentions == null || myresp.mentions.length === 0) ? '-' : myresp.mentions);
     this.baseUrl = generateUrl(`/apps/gestion/devis/${this.id}/show`);
+    for (const key of Object.keys(this)) {
+      if (typeof this[key] === 'string' && key !== 'baseUrl') this[key] = escapeHtml(this[key]);
+    }
   }
 
   /**
@@ -31,7 +35,7 @@ export class Devis {
   getDTRow() {
     let myrow = [
       `<div>${this.user_id}</div>`,
-      `<input class="inputDate" type="date" value=${this.date} data-table="devis" data-column="date" data-id="${this.id}"/>`,
+      `<input class="inputDate" type="date" value="${this.date}" data-table="devis" data-column="date" data-id="${this.id}"/>`,
       `<div class="inline editable" data-table="devis" data-column="num" data-id="${this.id}">${this.num}</div>`,
       `<div class="loadSelect_listclient" data-table="devis" data-column="id_client" data-id="${this.id}" data-current="${this.cid}">${this.entreprise} - ${this.prenom} ${this.nom}</div>`,
       `<div class="inline editable" data-table="devis" data-column="version" data-id="${this.id}">${this.version}</div>`,
@@ -129,7 +133,7 @@ export class Devis {
           );
 
           var parentElement = el.target.parentElement;
-          parentElement.innerHTML = el.target.options[el.target.selectedIndex].text;
+          parentElement.textContent = el.target.options[el.target.selectedIndex].text;
           parentElement.dataset.current = el.target.value;
         }else{
           var parentElement = el.target.parentElement

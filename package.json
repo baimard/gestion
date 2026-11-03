@@ -35,7 +35,7 @@
     "css-loader": "^7.1.2",
     "datatables.net": "^2.3.4",
     "datatables.net-dt": "^2.3.4",
-    "eslint": "^9.39.4",
+    "eslint": "^10.14.0",
     "file-loader": "^6.2.0",
     "globals": "^14.0.0",
     "less": "^4.4.2",
@@ -48,5 +48,16 @@
     "style-loader": "^4.0.0",
     "webpack": "^5.105.1",
     "webpack-cli": "^6.0.1"
+  },
+  "overrides": {
+    "eslint": {
+      "minimatch": "^11.0.4"
+    },
+    "@eslint/config-array": {
+      "minimatch": "^11.0.4"
+    },
+    "webdav": {
+      "minimatch": "^11.0.4"
+    }
   }
 }

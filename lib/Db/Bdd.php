@@ -36,7 +36,16 @@ class Bdd {
 
     public function getConfiguration($idNextcloud){
         $sql = "SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?";
-        return $this->execSQL($sql, array($idNextcloud));
+        $rows = $this->execSQLNoJsonReturn($sql, array($idNextcloud));
+        foreach ($rows as &$row) {
+            $credentials = json_decode((string)($row['einvoice_provider_config'] ?? ''), true);
+            $row['einvoice_configured'] = ($row['einvoice_provider'] ?? '') === 'iopole' && is_array($credentials);
+            foreach (['client_id', 'client_secret', 'customer_id', 'base_url', 'auth_url'] as $key) {
+                if (!is_string($credentials[$key] ?? null) || trim($credentials[$key]) === '') $row['einvoice_configured'] = false;
+            }
+            unset($row['einvoice_provider_config']);
+        }
+        return json_encode($rows);
     }
 
     public function getCompaniesList($User){
@@ -288,7 +297,7 @@ class Bdd {
             if ($table !== 'facture' || $column !== 'status_paiement') $this->guardDocument($table, (int)$id, (int)$id_configuration);
             if ($column === 'id_client') $this->requireRecord('client', (int)$data, (int)$id_configuration);
             if ($column === 'produit_id') $this->requireRecord('produit', (int)$data, (int)$id_configuration);
-            $safeData = strip_tags(html_entity_decode($data, ENT_QUOTES, 'UTF-8'), '<br>');
+            $safeData = strip_tags(preg_replace('/<br\b[^>]*>/i', "\n", html_entity_decode($data, ENT_QUOTES, 'UTF-8')));
             $safeData = rtrim($safeData);
             $safeData = $this->normalizeColumnData($column, $safeData);
 

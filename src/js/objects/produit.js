@@ -1,3 +1,4 @@
+import { escapeHtml } from "../modules/text.js";
 import { showError } from "@nextcloud/dialogs";
 import { baseUrl, unitCurrency, LoadDT, showDone } from "../modules/mainFunction.js";
 import { setCsrfRequestHeader } from "../modules/csrf.js";
@@ -30,6 +31,9 @@ export class Produit {
     this.vat_exemption_reason_code = myresp.vat_exemption_reason_code
       ?? (this.vat_category === 'E' ? DEFAULT_VAT_EXEMPTION_REASON_CODE : '');
     this.header = myresp.header;
+    for (const key of Object.keys(this)) {
+      if (typeof this[key] === 'string' && key !== 'baseUrl') this[key] = escapeHtml(this[key]);
+    }
   }
 
   /**

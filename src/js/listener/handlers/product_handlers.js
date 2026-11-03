@@ -1,5 +1,6 @@
+import { plainText } from "../../modules/text.js";
 import { showError } from "@nextcloud/dialogs";
-import { baseUrl, unitCurrency, unescapeHtml } from "../../modules/mainFunction.js";
+import { baseUrl, unitCurrency } from "../../modules/mainFunction.js";
 import { getProduitsById, updateDB } from "../../modules/ajaxRequest.js";
 import { csrfHeaders } from "../../modules/csrf.js";
 import { Client } from "../../objects/client.js";
@@ -65,8 +66,8 @@ export async function showProductSelect(target) {
 }
 
 function createProductOption(product, currentProductId) {
-    const referenceText = unescapeHtml(String(product.reference ?? ''));
-    const descriptionText = unescapeHtml(String(product.description ?? ''));
+    const referenceText = plainText(String(product.reference ?? ''));
+    const descriptionText = plainText(String(product.description ?? ''));
     const option = document.createElement('button');
     option.type = 'button';
     option.className = 'product-selector-option';

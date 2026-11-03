@@ -1,3 +1,4 @@
+import { plainText } from "./text.js";
 import { showSuccess } from "@nextcloud/dialogs";
 import { translate as t } from '@nextcloud/l10n'
 import { configuration, getStats, isconfig, updateEditable } from "./ajaxRequest.js";
@@ -168,7 +169,7 @@ export function insertCell(row, positionColumn = -1, data, className="statData")
  */
 export function modifyCell(r, positionColumn = -1, data){
     var cell = r.cells[positionColumn];
-    cell.innerHTML = data;
+    cell.textContent = data;
 }
 
 /**
@@ -227,9 +228,8 @@ return fetch(url, options)
     .then(data => {
         const myresp = JSON.parse(data)[0];
 
-        let mentionsDefault = myresp.mentions_default;
-        mentionsDefault = mentionsDefault.replace(/\n/g, '<br/>');
-        document.getElementById('mentions_default').innerHTML = unescapeHtml(mentionsDefault);
+        document.getElementById('mentions_default').textContent = plainText(myresp.mentions_default);
+        document.getElementById('mentions_default').style.whiteSpace = 'pre-line';
     })
     .catch(error => {
         console.error('Error fetching data:', error);
@@ -256,13 +256,4 @@ export function updateNumerical(el, format_number=true){
     if(format_number){
         el.innerText=unitCurrency.format(el.innerText)
     }
-}
-
- /**
-  * 
-  */
- export function unescapeHtml(escapedHtml) {
-    const textArea = document.createElement("textarea");
-    textArea.innerHTML = escapedHtml;
-    return textArea.value;
 }

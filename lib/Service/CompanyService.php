@@ -20,19 +20,23 @@ class CompanyService {
 	}
 
 	public function getCurrentCompany() {
-		return $this->session->get('CurrentCompany');
+		$company = $this->session->get('CurrentCompany');
+        if (empty($company)) return '';
+        if (!$this->userId || !in_array((string)$company, array_map('strval', array_column($this->myDb->getCompaniesList($this->userId), 'id')), true)) throw new \DomainException('Company access denied.');
+        return $company;
 	}
 
 	public function getCompaniesList() {
 		$companiesList = $this->myDb->getCompaniesList($this->userId);
 
 		if (
-			(empty($this->session->get('CurrentCompany')) || $this->session->get('CurrentCompany') == '')
+			!in_array((string)$this->session->get('CurrentCompany'), array_map('strval', array_column($companiesList, 'id')), true)
 			&& !empty($companiesList)
 		) {
 			$this->setCurrentCompany($companiesList[0]['id']);
 		}
 
+        if (empty($companiesList)) $this->session->set('CurrentCompany', '');
 		return $companiesList;
 	}
 
@@ -63,7 +67,7 @@ class CompanyService {
 		$shareUsers = [];
 
 		if ($this->session->get('CurrentCompany') != '') {
-			foreach ($this->myDb->getUsersShared($this->session->get('CurrentCompany')) as $user) {
+			foreach ($this->myDb->getUsersShared($this->getCurrentCompany()) as $user) {
 				$shareUsers[] = $this->userManager->get($user['id_nextcloud']);
 			}
 		}

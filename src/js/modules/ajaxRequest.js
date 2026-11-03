@@ -1,3 +1,4 @@
+import { escapeHtml } from "./text.js";
 import { lineTotal } from './commercialMath.js';
 import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
 import { translate as t } from '@nextcloud/l10n'
@@ -518,6 +519,7 @@ export function getProduitsById() {
         var res = JSON.parse(data);
 
         res.forEach(myresp => {
+            for (const field of ['reference', 'description', 'comment']) myresp[field] = escapeHtml(myresp[field]);
             const vat = parseFloat(myresp.vat || 0);
             const reference = isInvoice
                 ? `<span>${myresp.reference}</span>`

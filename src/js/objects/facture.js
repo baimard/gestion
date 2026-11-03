@@ -1,3 +1,4 @@
+import { escapeHtml } from "../modules/text.js";
 import { showError } from "@nextcloud/dialogs";
 import { translate as t } from '@nextcloud/l10n';
 import { generateUrl } from "@nextcloud/router";
@@ -53,6 +54,9 @@ export class Facture {
     this.status_paiement = ((myresp.status_paiement == null || myresp.status_paiement.length === 0) ? '-' : myresp.status_paiement);
     this.id_devis = ((myresp.id_devis == null || myresp.id_devis.length === 0) ? '-' : myresp.id_devis);
     this.baseUrl = generateUrl(`/apps/gestion/facture/${this.id}/show`);
+    for (const key of Object.keys(this)) {
+      if (typeof this[key] === 'string' && key !== 'baseUrl') this[key] = escapeHtml(this[key]);
+    }
   }
 
   /**
@@ -66,7 +70,7 @@ export class Facture {
       `<div>${this.user_id}</div>`,
       `<div>${this.num}</div>`,
       `<div>${this.date}</div>`,
-      `<input style="margin:0;padding:0;" class="inputDate" type="date" value=${this.date_paiement} data-table="facture" data-column="date_paiement" data-id="${this.id}"/>`,
+      `<input style="margin:0;padding:0;" class="inputDate" type="date" value="${this.date_paiement}" data-table="facture" data-column="date_paiement" data-id="${this.id}"/>`,
       `<select class="editableSelect" data-table="facture" data-column="type_paiement" data-id="${this.id}" aria-label="${t('gestion', 'Means of payment')}">${paymentMeansOptions}</select>`,
       `<div>${this.dnum} ${this.prenom} ${this.nom}</div>`,
       `<div>${this.version}</div>`,

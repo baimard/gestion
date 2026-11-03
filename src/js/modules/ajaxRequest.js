@@ -1,8 +1,9 @@
+import { renderTurnover } from "./statistics.js";
 import { escapeHtml } from "./text.js";
 import { lineTotal } from './commercialMath.js';
 import { showMessage, showSuccess, showError } from "@nextcloud/dialogs";
 import { translate as t } from '@nextcloud/l10n'
-import { baseUrl, cur, unitCurrency, quantityFormat, getCurrency, getGlobal, insertCell, insertRow, modifyCell } from "./mainFunction.js";
+import { baseUrl, cur, unitCurrency, quantityFormat, getCurrency, getGlobal } from "./mainFunction.js";
 import { csrfHeaders, setCsrfRequestHeader } from "./csrf.js";
 
 /**
@@ -409,39 +410,12 @@ export function getAnnualTurnoverPerMonthNoVat(cur) {
             throw new Error('Error: ' + response.status);
         }
     })
-    .then(data => {
-        var res = JSON.parse(data);
-        var curY = "";
-        var curRow = null;
-        var total = 0;
-        var tableBody = document.querySelector("#Statistical tbody");
-
-        if (tableBody) {
-            tableBody.innerHTML = "";
-        }
-
-        res.forEach(function(item) {
-            if (curY !== item.y) {
-                if (curRow !== null) {
-                    insertCell(curRow, -1, cur.format(total));
-                    total = 0;
-                }
-                curY = item.y;
-                curRow = insertRow("Statistical", -1, item.y);
-                modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
-                total += Math.round(item.total);
-            } else if (curRow !== null) {
-                modifyCell(curRow, (item.m), cur.format(Math.round(item.total)));
-                total += Math.round(item.total);
-            }
-        });
-
-        if (curRow !== null) {
-            insertCell(curRow, -1, cur.format(total));
-        }
-    })
-    .catch(error => {
-        showError(error);
+    .then(data => renderTurnover(JSON.parse(data), cur))
+    .catch(() => {
+        const status = document.getElementById('statistics-status');
+        status.hidden = false;
+        status.textContent = t('gestion', 'Unable to load statistics.');
+        status.setAttribute('role', 'alert');
     });
 }
 

@@ -17,6 +17,9 @@ const paths = {
     gavel: 'm14 3 7 7-4 4-7-7zM3 20l10-10M2 22h12',
     drag_indicator: 'M9 5v1M15 5v1M9 11v1M15 11v1M9 17v1M15 17v1',
     person_add: 'M9 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8M2 21v-3c0-6 14-6 14 0v3M20 6v8M16 10h8',
+    tune: 'M3 6h7m4 0h7M3 12h3m4 0h11M3 18h11m4 0h3M10 3v6M6 9v6M14 15v6',
+    history: 'M3 4v5h5M3 9a9 9 0 1 1 0 7M12 7v5l3 2',
+    bar_chart: 'M4 20V10h4v10M10 20V4h4v16M16 20V7h4v13',
     store: 'M3 10h18v11H3zM2 10l2-7h16l2 7M9 21v-7h6v7',
 };
 function replaceIcons(root) {

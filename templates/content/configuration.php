@@ -17,7 +17,7 @@
             <button type="button" class="primary" id="open_configuration_modal"><?php p($l->t('Edit company details')); ?></button>
         </section>
         <section class="gestion-card">
-            <div class="gestion-card-heading"><span class="gestion-section-icon material-symbols-outlined" aria-hidden="true">person_add</span><h2><?php p($l->t('Share with ...')); ?></h2></div>
+            <div class="gestion-card-heading"><span class="gestion-section-icon material-symbols-outlined" aria-hidden="true">person_add</span><h2><?php p($l->t('Access and sharing')); ?></h2></div>
             <p><?php p($l->t('Give another Nextcloud user access to this company.')); ?></p>
             <div class="gestion-card-actions gestion-share-form">
                 <label for="emailInput"><?php p($l->t('Email')); ?><input list="search" type="email" id="emailInput" placeholder="<?php p($l->t('Enter email')); ?>"></label>
@@ -58,7 +58,7 @@
         <section class="gestion-card gestion-danger-card">
             <div class="gestion-card-heading"><span class="gestion-section-icon material-symbols-outlined" aria-hidden="true">delete</span><h2><?php p($l->t('Delete company')); ?></h2></div>
             <p><?php p($l->t('Deletion is permanent. Companies with finalized documents are protected. Download a backup before deleting a company.')); ?></p>
-            <button type="button" id="deleteCompany"><?php p($l->t('Delete Company')); ?></button>
+            <button type="button" id="deleteCompany"><?php p($l->t('Delete company')); ?></button>
         </section>
     </div>
 </div>

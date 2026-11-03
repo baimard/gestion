@@ -596,6 +596,7 @@ OC.L10N.register(
     "Loading statistics…" : "Chargement des statistiques…",
     "No turnover to display yet." : "Aucun chiffre d’affaires à afficher pour le moment.",
     "Unable to load statistics." : "Impossible de charger les statistiques.",
-    "Help" : "Aide"
+    "Help" : "Aide",
+    "Access and sharing" : "Accès et partage"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

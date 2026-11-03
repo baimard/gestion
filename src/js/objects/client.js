@@ -4,6 +4,18 @@ import { baseUrl, checkSelectPurJs, LoadDT} from "../modules/mainFunction.js";
 import { csrfHeaders, setCsrfRequestHeader } from "../modules/csrf.js";
 import { showSuccess, showError } from "@nextcloud/dialogs";
 
+// Keep address line breaks in the browser and in the HTML sent to mPDF.
+function setDocumentPartyLine(id, value) {
+  const element = document.getElementById(id);
+  if (!element) return;
+  const lines = plainText(value).trim().split(/\r\n|\r|\n/);
+  element.replaceChildren();
+  lines.forEach((line, index) => {
+    if (index > 0) element.append(document.createElement("br"));
+    element.append(document.createTextNode(line));
+  });
+}
+
 export class Client {
 
   /**
@@ -127,25 +139,22 @@ export class Client {
     .then(data => {
       var dataArray = JSON.parse(data);
       dataArray.forEach(myresp => {
-        document.getElementById("nomprenom").textContent = plainText(`${myresp.prenom} ${myresp.nom}`);
+        setDocumentPartyLine("nomprenom", [myresp.prenom, myresp.nom].filter(Boolean).join(" "));
         document.getElementById("nomprenom").setAttribute("data-id", id);
-        document.getElementById("entreprise").textContent = plainText(myresp.entreprise);
-        document.getElementById("adresse").textContent = plainText(myresp.adresse);
-        document.getElementById("client_city").textContent = [myresp.zip_code, myresp.city_name]
+        setDocumentPartyLine("entreprise", myresp.entreprise);
+        setDocumentPartyLine("adresse", myresp.adresse);
+        setDocumentPartyLine("client_city", [myresp.zip_code, myresp.city_name]
           .filter(Boolean)
-          .join(" ");
-        document.getElementById("country_code").textContent = myresp.country_code ?? "";
-        document.getElementById("mail").textContent = plainText(myresp.mail);
-        document.getElementById("telephone").textContent = plainText(myresp.telephone);
-        document.getElementById("legal_one").textContent = plainText(myresp.legal_one);
-        const companyIdentification = document.getElementById("company_identification");
-        if (companyIdentification) {
-          companyIdentification.textContent = plainText(myresp.company_identification);
-        }
-        const vatNumber = document.getElementById("vat_number");
-        if (vatNumber) {
-          vatNumber.textContent = plainText(myresp.vat_number);
-        }
+          .join(" "));
+        setDocumentPartyLine("country_code", myresp.country_code);
+        setDocumentPartyLine("mail", myresp.mail);
+        setDocumentPartyLine("telephone", myresp.telephone);
+        setDocumentPartyLine("legal_one", myresp.legal_one);
+        setDocumentPartyLine("company_identification", myresp.company_identification);
+        setDocumentPartyLine("vat_number", myresp.vat_number);
+        document.querySelectorAll("#headertable .document-party-section").forEach(section => {
+          section.style.display = section.textContent.trim() ? "" : "none";
+        });
         document.getElementById("pdf").setAttribute("data-folder", myresp.num);
 
         const factureEl = document.getElementById("factureid");

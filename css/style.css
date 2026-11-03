@@ -523,52 +523,136 @@ button.electronic-invoice-help:focus-visible {
 
 #headertable {
     width: 100%;
-    margin: 0;
+    margin: 16px 0 24px;
     font-size: var(--gestion-font-size-normal);
     text-align: left;
-    border-collapse: collapse;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
-#headertable tbody,
-#headertable tr,
-#headertable td {
-    color: #000000;
-    background-color: #ffffff;
-}
-
-#headertable td {
-    width: 33.333%;
-    padding: 10px;
-    vertical-align: top;
-}
-
-#headertable thead th {
-    padding: 12px;
+#headertable > thead > tr > th {
+    width: 50%;
+    padding: 10px 20px;
+    color: #15566b;
+    background: #edf5fa;
+    border: 1px solid #d5e0e8;
+    font-size: 12px;
     font-weight: 600;
+    text-align: left;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.08em;
 }
 
-#headertable td button {
-    padding: 8px 12px;
-    color: #ffffff;
-    background-color: var(--gestion-danger);
+#headertable > tbody > tr > .document-party {
+    width: 50%;
+    padding: 20px;
+    color: #222222;
+    background: #ffffff;
+    border: 1px solid #d5e0e8;
+    border-top: 0;
+    vertical-align: top;
+    text-align: left;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+#headertable > thead > tr > th:first-child { border-top-left-radius: 8px; }
+#headertable > thead > tr > th:last-child { border-top-right-radius: 8px; }
+#headertable > tbody > tr > td:first-child { border-bottom-left-radius: 8px; }
+#headertable > tbody > tr > td:last-child { border-bottom-right-radius: 8px; }
+#headertable > thead > tr > th + th,
+#headertable > tbody > tr > td + td { border-left: 0; }
+
+#headertable .document-party-identity {
+    width: 100%;
+    margin: 0;
     border: 0;
-    border-radius: var(--gestion-radius);
-    cursor: pointer;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
-#headertable td button:hover {
-    background-color: var(--gestion-danger-hover);
+#headertable .document-party-identity td {
+    padding: 0;
+    border: 0;
+    background: #ffffff;
+    vertical-align: top;
+    white-space: normal;
 }
 
-#headertable td a {
-    color: var(--gestion-primary);
-    text-decoration: none;
+#headertable .document-party-logo {
+    width: 96px;
+    padding-left: 12px;
+    text-align: right;
 }
 
-#headertable td a:hover {
-    text-decoration: underline;
+.document-party-name,
+.document-party-line {
+    display: block;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.document-party-name {
+    margin-bottom: 4px;
+    color: #183447;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.document-party-name:empty,
+.document-party-line:empty {
+    display: none;
+}
+
+.document-party-section { margin-top: 12px; }
+
+.document-logo-help {
+    margin: -12px 0 24px;
+    color: #5f6368;
+    font-size: 12px;
+}
+
+.document-logo-help summary { cursor: pointer; }
+.document-logo-help p { margin-top: 8px; }
+
+@media screen and (max-width: 700px) {
+    #headertable,
+    #headertable > tbody,
+    #headertable > tbody > tr {
+        display: block;
+    }
+
+    #headertable > thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    #headertable > tbody > tr > .document-party {
+        display: block;
+        width: auto;
+        padding: 16px;
+        border: 1px solid #d5e0e8;
+        border-radius: 0;
+    }
+
+    #headertable > tbody > tr > .document-party:first-child { border-radius: 8px 8px 0 0; }
+    #headertable > tbody > tr > .document-party:last-child { border-top: 0; border-radius: 0 0 8px 8px; }
+
+    #headertable > tbody > tr > .document-party::before {
+        display: block;
+        margin-bottom: 12px;
+        color: #15566b;
+        content: attr(data-party-label);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
 }
 
 

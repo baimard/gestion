@@ -5,6 +5,8 @@ OC.L10N.register(
     "First name" : "Prénom",
     "Limited company" : "Siret",
     "Company" : "Société",
+    "Issuer" : "Émetteur",
+    "Recipient" : "Destinataire",
     "Phone number" : "Téléphone",
     "Email" : "E-mail",
     "Address" : "Adresse",

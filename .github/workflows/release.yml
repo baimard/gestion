@@ -1,6 +1,9 @@
 name: Publish in GitHub Package Registry
 
 on:
+  push:
+    tags:
+      - '[0-9]*.[0-9]*.[0-9]*'
   workflow_dispatch:
     inputs:
       release_tag:
@@ -24,13 +27,19 @@ jobs:
           require: write
 
       - name: Set app env
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          REQUESTED_RELEASE_TAG: ${{ inputs.release_tag }}
         run: |
           echo "APP_NAME=${GITHUB_REPOSITORY##*/}" >> "$GITHUB_ENV"
-          if [ "${{ github.event_name }}" = "release" ]; then
-            echo "APP_VERSION=${{ github.event.release.tag_name }}" >> "$GITHUB_ENV"
-          else
-            echo "APP_VERSION=${{ inputs.release_tag }}" >> "$GITHUB_ENV"
-          fi
+          case "$GITHUB_EVENT_NAME" in
+            release) APP_VERSION="$RELEASE_TAG" ;;
+            push) APP_VERSION="$GITHUB_REF_NAME" ;;
+            workflow_dispatch) APP_VERSION="$REQUESTED_RELEASE_TAG" ;;
+            *) exit 1 ;;
+          esac
+          [[ "$APP_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          echo "APP_VERSION=$APP_VERSION" >> "$GITHUB_ENV"
 
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2

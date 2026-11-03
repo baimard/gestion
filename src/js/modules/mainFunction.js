@@ -132,47 +132,6 @@ export function LoadDT(DT, response, cls) {
 }
 
 /**
- * 
- * @param {*} ID 
- * @param {*} positionRow 
- * @param {*} positionColumn 
- * @param {*} data 
- */
-export function insertRow(ID, positionRow = -1, data){
-    var t1 = document.getElementById(ID);
-    var r = t1.insertRow(positionRow);
-    insertCell(r, -1, data, "statHead");
-
-    //Ajout de toutes les colonnes
-    for (let i = 1; i < 13; i++) {
-        insertCell(r, -1, cur.format(0));
-    }
-    return r;
-}
-/**
- * 
- * @param {*} row
- * @param {*} positionColumn 
- * @param {*} data 
- */
-export function insertCell(row, positionColumn = -1, data, className="statData"){
-    var c = row.insertCell(positionColumn);
-    c.appendChild(document.createTextNode(data));
-    c.setAttribute("class", className);
-}
-
-/**
- * 
- * @param {*} r 
- * @param {*} positionColumn 
- * @param {*} data 
- */
-export function modifyCell(r, positionColumn = -1, data){
-    var cell = r.cells[positionColumn];
-    cell.textContent = data;
-}
-
-/**
  * Load the PDF save folder for the current company.
  *
  * @param {*} response

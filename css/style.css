@@ -54,7 +54,7 @@
     position: relative;
     display: flex;
     width: 100%;
-    margin-right: 20px;
+    margin-right: 0;
 }
 
 #formulaire {
@@ -401,7 +401,9 @@ button.electronic-invoice-help:focus-visible {
 }
 
 #emailInput {
-    width: 30%;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .editable[contenteditable="true"] {
@@ -471,30 +473,6 @@ button.electronic-invoice-help:focus-visible {
 /* ==========================================================================
    Statistiques
    ========================================================================== */
-
-#Statistical {
-    table-layout: auto;
-    white-space: pre-wrap;
-    border-collapse: collapse;
-}
-
-#Statistical th {
-    width: 100px;
-    padding: var(--gestion-spacing-sm);
-    color: var(--color-primary-text, #ffffff);
-    text-align: center;
-    background-color: var(--gestion-primary-light);
-    border: 1px solid var(--gestion-border);
-}
-
-.statHead {
-    text-align: center;
-}
-
-.statData {
-    text-align: right;
-}
-
 
 /* ==========================================================================
    Tableau de partage
@@ -1005,3 +983,66 @@ button.electronic-invoice-help:focus-visible {
 #app .gestion-danger-card button { color: var(--color-error-text, #a72c2c); border-color: var(--color-error-text, #a72c2c); }
 .gestion-lock-information { padding: 12px 16px; margin-block: 12px; border-inline-start: 3px solid var(--color-primary-element); border-radius: 6px; background: var(--color-primary-element-light); color: var(--color-main-text); line-height: 1.6; }
 .gestion-document-toolbar .gestion-lock-information { flex-basis: 100%; margin-bottom: 0; }
+
+/* Company settings and statistics share the same page and card rhythm. */
+#app-content #contentTable.gestion-settings-page,
+#app-content #contentTable.gestion-statistics-page { max-width: 1280px; box-sizing: border-box; }
+.gestion-settings-page .gestion-management-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+.gestion-settings-page .gestion-card { min-width: 0; display: flex; flex-direction: column; padding: 28px; }
+.gestion-card-heading { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.gestion-card .gestion-card-heading h2 { margin: 0; font-size: 18px; line-height: 1.4; }
+#app .gestion-section-icon.material-symbols-outlined, .gestion-card-heading .gestion-section-icon { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 40px; width: 40px; height: 40px; margin: 0; border-radius: 12px; background: var(--color-primary-element-light); color: var(--color-primary-element); }
+.gestion-settings-page .gestion-card > p { color: var(--color-text-maxcontrast); margin: 16px 0 20px; }
+.gestion-settings-page .gestion-card > button { align-self: flex-start; margin: auto 0 0; max-width: 100%; height: auto; padding: 10px 18px; white-space: normal; }
+.gestion-settings-page .gestion-card-actions { margin-top: 0; }
+.gestion-settings-page .gestion-share-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 12px; }
+.gestion-settings-page .gestion-share-form label { min-width: 0; }
+#app .gestion-settings-page #emailInput { width: 100%; max-width: none; min-width: 0; margin: 0; min-height: 44px; }
+.gestion-settings-page .gestion-share-form button { margin: 0; min-height: 44px; }
+.gestion-settings-page #shareUsers { min-width: 0; margin-top: 20px; }
+.gestion-settings-page #shareUsersTable { table-layout: fixed; width: 100%; margin: 0; }
+.gestion-settings-page #shareUsersTable th,
+.gestion-settings-page #shareUsersTable td { overflow-wrap: anywhere; white-space: normal; font-size: 13px; padding: 12px 8px; }
+.gestion-settings-page #shareUsersTable th:last-child,
+.gestion-settings-page #shareUsersTable td:last-child { width: 100px; text-align: end; }
+.gestion-settings-page #shareUsersTable thead th { background: var(--color-background-hover); color: var(--color-text-maxcontrast); text-transform: none; letter-spacing: normal; }
+.gestion-sharing-empty { padding: 16px; border-radius: 10px; background: var(--color-background-hover); color: var(--color-text-maxcontrast); font-size: 13px; line-height: 1.5; margin: 0; }
+.gestion-settings-page #gestion-precision { margin: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.gestion-settings-page #gestion-precision label { min-width: 0; font-size: 13px; }
+.gestion-settings-page #gestion-precision input { width: 100%; max-width: none; margin: 4px 0 0; min-height: 44px; }
+.gestion-settings-page #gestion-precision button { grid-column: 1 / -1; margin: 0; }
+.gestion-settings-page .gestion-file-label { min-width: 0; font-size: 13px; }
+.gestion-settings-page .gestion-file-label input { width: 100%; min-width: 0; box-sizing: border-box; padding: 8px; margin: 4px 0 0; background: var(--color-background-hover); border: 1px solid var(--color-border); font-size: 12px; }
+.gestion-settings-page .gestion-file-label input::file-selector-button { border: 0; border-radius: 6px; padding: 7px 10px; margin-inline-end: 10px; background: var(--color-main-background); color: var(--color-main-text); font: inherit; cursor: pointer; }
+#app .gestion-settings-page .gestion-danger-card { border-color: var(--color-border); }
+#app .gestion-danger-card .gestion-section-icon { color: var(--color-error-text, #a72b2b); background: var(--color-background-hover); }
+#app .gestion-danger-card #deleteCompany { color: var(--color-error-text, #a72b2b); background: var(--color-main-background); border-color: var(--color-error-text, #a72b2b); }
+.gestion-statistics-card { min-width: 0; padding: 28px; }
+.gestion-statistics-card > .gestion-hint { margin: 14px 0 24px; }
+.gestion-statistics-scroll { max-width: 100%; overflow-x: auto; border: 1px solid var(--color-border); border-radius: 12px; scrollbar-gutter: stable; }
+.gestion-statistics-scroll:focus-visible { outline: 2px solid var(--color-primary-element); outline-offset: 3px; }
+#Statistical { width: 100%; min-width: 1320px; border-collapse: separate; border-spacing: 0; font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+#Statistical th, #Statistical td { padding: 16px 14px; text-align: end; border-bottom: 1px solid var(--color-border); background: var(--color-main-background); }
+#Statistical thead th { background: var(--color-background-hover); color: var(--color-text-maxcontrast); font-weight: 600; }
+#Statistical th:first-child { position: sticky; inset-inline-start: 0; z-index: 1; text-align: start; border-inline-end: 1px solid var(--color-border); }
+#Statistical th:last-child, #Statistical td:last-child { font-weight: 600; background: var(--color-background-hover); border-inline-start: 1px solid var(--color-border); }
+#Statistical tbody tr:last-child > * { border-bottom: 0; }
+#Statistical tbody tr:hover > * { background: var(--color-primary-element-light); }
+#Statistical .gestion-zero-amount { color: var(--color-text-maxcontrast); }
+.gestion-statistics-status { padding: 48px 20px; text-align: center; color: var(--color-text-maxcontrast); background: var(--color-background-hover); border-radius: 12px; }
+#app [hidden] { display: none; }
+@media (max-width: 1100px) {
+    .gestion-settings-page .gestion-management-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+    .gestion-settings-page .gestion-card, .gestion-statistics-card { padding: 20px; }
+    .gestion-settings-page .gestion-share-form { grid-template-columns: minmax(0, 1fr); }
+    .gestion-settings-page .gestion-share-form button { justify-self: start; }
+    .gestion-settings-page #gestion-precision { grid-template-columns: minmax(0, 1fr); }
+    .gestion-statistics-card .gestion-card-heading h2 { font-size: 16px; }
+    #Statistical { min-width: 1220px; }
+}
+
+@media (min-width: 768px) {
+    #Statistical th:last-child, #Statistical td:last-child { position: sticky; inset-inline-end: 0; z-index: 1; }
+}

@@ -1,5 +1,5 @@
 <section class="gestion-card" aria-labelledby="backup-heading">
-    <h2 id="backup-heading"><?php p($l->t('Backups and recovery')); ?></h2>
+    <div class="gestion-card-heading"><span class="gestion-section-icon material-symbols-outlined" aria-hidden="true">download</span><h2 id="backup-heading"><?php p($l->t('Backups and recovery')); ?></h2></div>
     <p><?php p($l->t('Download a backup of companies you own. Restore it into new companies without replacing existing data.')); ?></p>
     <div class="gestion-card-actions">
         <button type="button" class="primary" data-backup><?php p($l->t('Download a backup')); ?></button>

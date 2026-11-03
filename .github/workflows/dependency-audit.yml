@@ -26,9 +26,10 @@ jobs:
           node-version: '24'
       - name: Install locked frontend dependencies without lifecycle scripts
         run: npm ci --ignore-scripts
-      - name: Verify minimatch consumers and frontend lint
+      - name: Verify frontend behavior and lint
         run: |
           node scripts/verify-glob-compatibility.mjs
+          node scripts/verify-statistics.mjs
           npm run lint
       - name: Audit locked dependencies, including frontend build dependencies
         run: npm audit --package-lock-only --audit-level=low

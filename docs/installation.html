@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation et mise à jour &mdash; Gestion 3.4.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=386f8cd2"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=e6b791cb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Démarrage rapide" href="quickstart.html" />
+    <link rel="prev" title="Gestion pour Nextcloud" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Gestion pour Nextcloud
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide utilisateur</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation et mise à jour</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#compatibilite">Compatibilité</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-depuis-le-store">Installation depuis le store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-manuelle">Installation manuelle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mise-a-jour">Mise à jour</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Démarrage rapide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#configurer-l-entreprise">1. Configurer l’entreprise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-un-client">2. Créer un client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-un-produit-ou-un-service">3. Créer un produit ou un service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-le-devis">4. Créer le devis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#creer-la-facture">5. Créer la facture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#verifier-puis-finaliser">6. Vérifier puis finaliser</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration des entreprises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#creer-et-selectionner-une-entreprise">Créer et sélectionner une entreprise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#informations-generales">Informations générales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#identifiants-francais">Identifiants français</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#dossier-de-sauvegarde">Dossier de sauvegarde</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#logos">Logos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#partage">Partage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#suppression">Suppression</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clients_products.html">Clients, produits et TVA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#clients">Clients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#produits-et-services">Produits et services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#categories-de-tva">Catégories de TVA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#motif-d-exoneration-pour-la-categorie-e">Motif d’exonération pour la catégorie E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clients_products.html#importer-depuis-les-contacts-nextcloud">Importer depuis les contacts Nextcloud</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quotes_invoices.html">Devis, factures, PDF et e-mails</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#devis">Devis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#factures">Factures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#generer-un-pdf">Générer un PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#envoyer-par-e-mail">Envoyer par e-mail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#conservation">Conservation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#remises-commerciales">Remises commerciales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quotes_invoices.html#verrouillage-des-documents">Verrouillage des documents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="document_lifecycle.html">Verrouillage et cycle de vie des documents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#reconnaitre-l-etat-d-un-document">Reconnaître l’état d’un document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#finaliser-manuellement">Finaliser manuellement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#envoyer-par-e-mail-ou-a-iopole">Envoyer par e-mail ou à Iopole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#ce-que-protege-le-verrouillage">Ce que protège le verrouillage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#modifier-une-nouvelle-offre-sans-toucher-a-l-original">Modifier une nouvelle offre sans toucher à l’original</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#comprendre-les-messages-de-refus">Comprendre les messages de refus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#historique-et-conservation">Historique et conservation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="electronic_invoicing.html">Facturation électronique et Factur-X</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#preparer-les-donnees">Préparer les données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#generer-les-fichiers">Générer les fichiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#configurer-iopole">Configurer Iopole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electronic_invoicing.html#limites-et-responsabilite">Limites et responsabilité</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="other_features.html">Statistiques, sauvegardes et informations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#statistiques">Statistiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#sauvegarde-et-restauration">Sauvegarde et restauration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#historique-des-modifications">Historique des modifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#reglage-des-decimales">Réglage des décimales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#notice-legale">Notice légale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_features.html#a-propos-et-version">À propos et version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Dépannage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#un-champ-n-est-pas-enregistre">Un champ n’est pas enregistré</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#le-pdf-n-est-pas-enregistre">Le PDF n’est pas enregistré</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#les-logos-n-apparaissent-pas">Les logos n’apparaissent pas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#la-facture-factur-x-est-refusee">La facture Factur-X est refusée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#l-envoi-d-e-mail-echoue">L’envoi d’e-mail échoue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#iopole-n-est-pas-propose-dans-la-facture">Iopole n’est pas proposé dans la facture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#mode-maintenance-nextcloud">Mode maintenance Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#obtenir-de-l-aide">Obtenir de l’aide</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Développement</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Documentation développeur</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#environnement">Environnement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#commandes-courantes">Commandes courantes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#tests-panther">Tests Panther</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#base-de-donnees">Base de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#traductions">Traductions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#version-et-publication">Version et publication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#tests-du-nouvel-espace-de-gestion">Tests du nouvel espace de gestion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#messages-et-confirmations-de-verrouillage">Messages et confirmations de verrouillage</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Gestion pour Nextcloud</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation et mise à jour</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-et-mise-a-jour">
+<h1>Installation et mise à jour<a class="headerlink" href="#installation-et-mise-a-jour" title="Lien vers cette rubrique"></a></h1>
+<section id="compatibilite">
+<h2>Compatibilité<a class="headerlink" href="#compatibilite" title="Lien vers cette rubrique"></a></h2>
+<p>La compatibilité exacte est déclarée dans <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code>. Pour la version
+3.4.0, Gestion requiert PHP 8 ou plus récent et utilise la base de données
+configurée par Nextcloud.</p>
+</section>
+<section id="installation-depuis-le-store">
+<h2>Installation depuis le store<a class="headerlink" href="#installation-depuis-le-store" title="Lien vers cette rubrique"></a></h2>
+<ol class="arabic simple">
+<li><p>Connectez-vous avec un compte administrateur Nextcloud.</p></li>
+<li><p>Ouvrez <strong>Applications</strong>.</p></li>
+<li><p>Recherchez <strong>Gestion</strong> dans la catégorie organisation ou bureautique.</p></li>
+<li><p>Cliquez sur <strong>Télécharger et activer</strong>.</p></li>
+<li><p>Ouvrez Gestion et configurez votre première entreprise.</p></li>
+</ol>
+<div  class="sphinx-contrib-video-container align-left"><video controls="True" preload="auto" width="800"><source src="_images/installation.webm" type="video/webm"></video></div></section>
+<section id="installation-manuelle">
+<h2>Installation manuelle<a class="headerlink" href="#installation-manuelle" title="Lien vers cette rubrique"></a></h2>
+<p>Placez l’application dans le répertoire <code class="docutils literal notranslate"><span class="pre">apps/gestion</span></code> de Nextcloud, puis
+installez ses dépendances et compilez les ressources :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /var/www/nextcloud/apps/gestion</span>
+<span class="go">composer install --no-dev --prefer-dist --optimize-autoloader</span>
+<span class="go">npm ci</span>
+<span class="go">npm run build</span>
+<span class="go">sudo -u www-data php /var/www/nextcloud/occ app:enable gestion</span>
+</pre></div>
+</div>
+<p>Adaptez les chemins et l’utilisateur du serveur web à votre installation.</p>
+</section>
+<section id="mise-a-jour">
+<h2>Mise à jour<a class="headerlink" href="#mise-a-jour" title="Lien vers cette rubrique"></a></h2>
+<ol class="arabic">
+<li><p>Sauvegardez Nextcloud, sa base de données et son répertoire de données.</p></li>
+<li><p>Mettez à jour l’application depuis le store ou remplacez son code.</p></li>
+<li><p>Exécutez les commandes de mise à niveau Nextcloud si elles sont demandées.</p></li>
+<li><p>Contrôlez les migrations :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -u www-data php occ migrations:status gestion</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ouvrez Gestion et vérifiez une entreprise, un devis et une facture.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Ne modifiez pas directement les tables <code class="docutils literal notranslate"><span class="pre">gestion_*</span></code>. Les changements de
+schéma sont appliqués par les migrations Nextcloud et sont conçus pour les
+différents moteurs de base de données pris en charge.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="index.html" class="btn btn-neutral float-left" title="Gestion pour Nextcloud" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Démarrage rapide" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2021-2026, Benjamin AIMARD.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

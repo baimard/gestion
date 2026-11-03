@@ -5,8 +5,8 @@ Verrouillage et cycle de vie des documents
 
 .. important::
 
-   Ce guide décrit le cycle de verrouillage révisé, en préparation. Installez
-   la version contenant ce correctif pour disposer des nouveaux comportements.
+   Ce guide décrit le cycle de verrouillage révisé de la version 3.4.1.
+   Installez cette version pour disposer des nouveaux comportements.
 
 Devis et factures
 -----------------

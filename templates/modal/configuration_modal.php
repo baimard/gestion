@@ -51,9 +51,20 @@
 				<section id="configuration-logos" class="configuration-section" tabindex="-1">
 					<h2><?php p($l->t('Logos'));?></h2>
 					<p><?php p($l->t('Set the width used for each logo in quotes, invoices and generated PDFs.'));?></p>
+					<p><?php p($l->t('A maximum height of 0 means automatic height. Images are resized to fit both limits without being stretched.'));?></p>
+					<p><?php p($l->t('Logo proportions are preserved. Large main logos appear above the address table. On small screens, logos shrink to fit the available space.'));?></p>
+					<div class="configuration-logo-dimensions">
 					<div class="configuration-global"><label class="configuration" for="logo_header_width"><?php p($l->t('Header logo width'));?></label><input type="number" min="40" max="600" step="10" id="logo_header_width" class="configuration-content editableConfiguration" data-table="configuration" data-column="logo_header_width" data-id="" /> px</div>
+					<div class="configuration-global"><label class="configuration" for="logo_header_height"><?php p($l->t('Header logo maximum height'));?></label><input type="number" min="0" max="600" step="10" id="logo_header_height" class="configuration-content editableConfiguration" data-table="configuration" data-column="logo_header_height" data-id="" /> px</div>
+					</div>
+					<div class="configuration-logo-dimensions">
 					<div class="configuration-global"><label class="configuration" for="logo_width"><?php p($l->t('Main logo width'));?></label><input type="number" min="40" max="600" step="10" id="logo_width" class="configuration-content editableConfiguration" data-table="configuration" data-column="logo_width" data-id="" /> px</div>
+					<div class="configuration-global"><label class="configuration" for="logo_height"><?php p($l->t('Main logo maximum height'));?></label><input type="number" min="0" max="600" step="10" id="logo_height" class="configuration-content editableConfiguration" data-table="configuration" data-column="logo_height" data-id="" /> px</div>
+					</div>
+					<div class="configuration-logo-dimensions">
 					<div class="configuration-global"><label class="configuration" for="logo_footer_width"><?php p($l->t('Footer logo width'));?></label><input type="number" min="40" max="600" step="10" id="logo_footer_width" class="configuration-content editableConfiguration" data-table="configuration" data-column="logo_footer_width" data-id="" /> px</div>
+					<div class="configuration-global"><label class="configuration" for="logo_footer_height"><?php p($l->t('Footer logo maximum height'));?></label><input type="number" min="0" max="600" step="10" id="logo_footer_height" class="configuration-content editableConfiguration" data-table="configuration" data-column="logo_footer_height" data-id="" /> px</div>
+					</div>
 				</section>
 			</div>
 		</div>

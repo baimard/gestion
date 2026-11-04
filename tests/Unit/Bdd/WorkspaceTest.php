@@ -37,6 +37,37 @@ class WorkspaceTest extends TestCase {
         return compact('client', 'product', 'quote', 'line');
     }
 
+    public function testLogoDimensionsPersistAndSurviveBackupRestoration(): void {
+        foreach (['logo_height', 'logo_header_height', 'logo_footer_height'] as $field) {
+            $this->assertSame(0, (int)json_decode($this->db->getConfiguration($this->company), true)[0][$field]);
+            $this->assertTrue($this->db->gestion_updateConfiguration($field, '180', $this->company));
+        }
+        $this->db->gestion_updateConfiguration('logo_width', '320', $this->company);
+        $backup = $this->db->exportBackup($this->owner);
+        $restored = $this->db->restoreBackup(BackupFormat::decode(json_encode($backup)), $this->owner);
+        $config = json_decode($this->db->getConfiguration($restored[0]), true)[0];
+        $this->assertSame(320, (int)$config['logo_width']);
+        foreach (['logo_height', 'logo_header_height', 'logo_footer_height'] as $field) $this->assertSame(180, (int)$config[$field]);
+        foreach ($backup['tables']['configuration'] as &$row) {
+            unset($row['logo_height'], $row['logo_header_height'], $row['logo_footer_height']);
+        }
+        unset($row);
+        $legacy = $this->db->restoreBackup(BackupFormat::decode(json_encode($backup)), $this->owner);
+        $this->assertSame(0, (int)json_decode($this->db->getConfiguration($legacy[0]), true)[0]['logo_height']);
+    }
+
+    public function testInvalidLogoMaximumHeightIsRejected(): void {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->db->gestion_updateConfiguration('logo_height', '601', $this->company);
+    }
+
+    public function testBackupRejectsInvalidLogoMaximumHeight(): void {
+        $backup = $this->db->exportBackup($this->owner);
+        $backup['tables']['configuration'][0]['logo_height'] = -1;
+        $this->expectException(\InvalidArgumentException::class);
+        BackupFormat::decode(json_encode($backup));
+    }
+
     public function testRestoreRemapsEveryRelationWithoutReplacingOriginals(): void {
         $fixture = $this->fixture();
         $this->db->gestion_update('produit_devis', 'discount', '15', $fixture['line'], $this->company);

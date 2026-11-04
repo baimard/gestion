@@ -27,7 +27,7 @@ class Bdd {
                                 IL10N $l, $UserId = null, ?\OCP\IConfig $config = null) {
         $this->config = $config ?? \OCP\Server::get(\OCP\IConfig::class);
         $this->actor = $UserId;
-        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment", "user_id", "facture_prefixe", "id_configuration", "delay", "header","vat", "vat_category", "vat_number", "zip_code", "city_name", "country_code","iban", "company_identification", "logo_width", "logo_header_width", "logo_footer_width", "price_decimals", "quantity_decimals", "discount" );
+        $this->whiteColumn = array("date", "num", "id_client", "entreprise", "nom", "prenom", "legal_one", "telephone", "mail", "adresse", "produit_id", "quantite", "date_paiement", "type_paiement", "id_devis", "reference", "description", "prix_unitaire", "legal_two", "path", "tva_default", "mentions_default", "version", "mentions", "comment", "status_paiement", "devise", "auto_invoice_number", "changelog", "format", "comment", "user_id", "facture_prefixe", "id_configuration", "delay", "header","vat", "vat_category", "vat_number", "zip_code", "city_name", "country_code","iban", "company_identification", "logo_width", "logo_header_width", "logo_footer_width", "logo_height", "logo_header_height", "logo_footer_height", "price_decimals", "quantity_decimals", "discount" );
         $this->whiteTable = array("client", "devis", "produit_devis", "facture", "produit", "configuration");
         $this->tableprefix = '*PREFIX*' ."gestion_";
         $this->db = $db;
@@ -414,6 +414,11 @@ class Bdd {
 
         if ($column === 'country_code') {
             return substr($data, 0, 5);
+        }
+
+        if (in_array($column, ['logo_height', 'logo_header_height', 'logo_footer_height'], true)) {
+            if (!ctype_digit((string)$data) || (int)$data > 600) throw new \InvalidArgumentException('Logo maximum height must be between 0 and 600.');
+            return (int)$data;
         }
 
         if (in_array($column, ['logo_width', 'logo_header_width', 'logo_footer_width'], true)) {

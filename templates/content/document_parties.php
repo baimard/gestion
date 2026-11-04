@@ -8,19 +8,15 @@
         [$company->legal_one ?? '', $company->legal_two ?? '', $company->vat_number ?? ''],
     ];
     $hasMainLogo = isset($_['logo']) && $_['logo'] !== 'nothing';
-    // Keep a literal width for mPDF and leave room for the company identity.
-    $mainLogoWidth = max(40, min(96, (int)($company->logo_width ?? 160)));
-    $mainLogoHeight = $mainLogoWidth;
-    if ($hasMainLogo) {
-        $logoBytes = base64_decode($_['logo'], true);
-        $logoSize = $logoBytes === false ? false : @getimagesizefromstring($logoBytes);
-        if ($logoSize && $logoSize[0] > 0 && $logoSize[1] > 0) {
-            $scale = min($mainLogoWidth / $logoSize[0], 96 / $logoSize[1]);
-            $mainLogoWidth = max(1, (int)round($logoSize[0] * $scale));
-            $mainLogoHeight = max(1, (int)round($logoSize[1] * $scale));
-        }
-    }
+    // Honour the configured width; large logos get their own branding area.
+    [$mainLogoWidth, $mainLogoHeight] = \OCA\Gestion\Service\DocumentLogoSize::fit(
+        $_['logo'] ?? '', (int)($company->logo_width ?? 160), (int)($company->logo_height ?? 0)
+    );
+    $standaloneMainLogo = $mainLogoWidth > 160 || $mainLogoHeight > 160;
 ?>
+<?php if ($hasMainLogo && $standaloneMainLogo): ?>
+    <?php print_unescaped($this->inc('content/document_banner', ['logoPosition' => 'main'])); ?>
+<?php endif; ?>
 <table id="headertable" class="document-parties">
     <colgroup><col width="50%"><col width="50%"></colgroup>
     <thead>
@@ -48,8 +44,8 @@
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </td>
-                        <?php if ($hasMainLogo): ?>
-                            <td class="document-party-logo" width="96">
+                        <?php if ($hasMainLogo && !$standaloneMainLogo): ?>
+                            <td class="document-party-logo" width="<?php echo $mainLogoWidth; ?>" style="width: <?php echo $mainLogoWidth; ?>px;">
                                 <img class="gestion-document-logo" width="<?php echo $mainLogoWidth; ?>" height="<?php echo $mainLogoHeight; ?>" style="width: <?php echo $mainLogoWidth; ?>px; height: <?php echo $mainLogoHeight; ?>px;" alt="<?php p($l->t('Company logo')); ?>" src="data:image/png;base64,<?php p($_['logo']); ?>">
                             </td>
                         <?php endif; ?>

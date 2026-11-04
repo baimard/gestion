@@ -79,6 +79,7 @@ export class Facture {
         <summary title="${t('gestion', 'Actions')}" aria-label="${t('gestion', 'Actions')}" class="material-symbols">more_horiz</summary>
         <div class="document-actions-menu">
           <a href="${this.baseUrl}" class="document-action"><span class="material-symbols">open_in_new</span><span>${t('gestion', 'Open')}</span></a>
+          ${this.locked ? '' : `<button type="button" data-lock-invoice="${this.id}" data-document-label="${this.num}" class="document-action"><span class="material-symbols">lock</span><span>${t('gestion', 'Finalize and lock')}</span></button>`}
           <button type="button" data-url="${this.baseUrl}" class="document-action downloadDocumentPdf"><span class="material-symbols">download</span><span>${t('gestion', 'Download PDF')}</span></button>
           <button type="button" data-url="${this.baseUrl}" class="document-action sendDocumentMail"><span class="material-symbols">mail</span><span>${t('gestion', 'Send by email')}</span></button>
           <button type="button" data-url="${this.baseUrl}" class="document-action downloadFacturX"><span class="material-symbols">receipt_long</span><span>${t('gestion', 'Factur-X PDF + XML')}</span></button>

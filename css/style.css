@@ -1034,7 +1034,21 @@ button.electronic-invoice-help:focus-visible {
 .gestion-document-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 16px; margin: 12px 0 24px; border: 1px solid var(--color-border); border-radius: 12px; background: var(--color-background-hover); }
 .gestion-status { display: inline-flex; align-items: center; min-height: 32px; border-radius: 100px; padding: 4px 14px; background: var(--color-primary-element-light); color: var(--color-main-text); font-weight: 600; }
 .gestion-document-toolbar[data-locked="1"] .gestion-status { border: 1px solid var(--color-success); }
-.gestion-workspace-dialog { width: min(680px, calc(100vw - 32px)); max-height: 85dvh; overflow: auto; box-sizing: border-box; padding: 28px; border: 1px solid var(--color-border); border-radius: var(--border-radius-large, 16px); background: var(--color-main-background); color: var(--color-main-text); box-shadow: 0 16px 64px #0003; }
+.gestion-workspace-dialog {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(680px, calc(100vw - 32px));
+    max-height: 85dvh;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-large, 16px);
+    background: var(--color-main-background);
+    color: var(--color-main-text);
+    box-shadow: 0 16px 64px #0003;
+}
 .gestion-workspace-dialog::backdrop { background: #0006; backdrop-filter: blur(3px); }
 .gestion-workspace-dialog h2 { font-size: 22px; line-height: 1.4; margin: 0 0 16px; }
 .gestion-workspace-dialog p { margin-block: 12px; line-height: 1.6; }

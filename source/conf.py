@@ -7,7 +7,7 @@ copyright = '2021-2026, Benjamin AIMARD'
 author = 'Benjamin AIMARD'
 
 # Standalone gh-pages branch: application metadata lives on master.
-release = '3.4.5'
+release = '3.4.6'
 version = release
 
 extensions = ['sphinx_rtd_theme', 'sphinxcontrib.video']

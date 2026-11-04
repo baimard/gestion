@@ -164,3 +164,7 @@ choisissez **Verrouiller la facture**. La confirmation précise que la facture
 et son devis associé deviennent non modifiables. Fermer ou annuler cette
 confirmation ne verrouille rien. Une facture déjà verrouillée ne propose plus
 cette action ; les téléchargements PDF restent accessibles.
+
+Depuis la version 3.4.6, cette confirmation est centrée dans l'écran, sur
+ordinateur comme sur mobile. Si l'écran est trop bas, faites défiler le contenu
+de la fenêtre pour accéder aux boutons de fermeture et de confirmation.

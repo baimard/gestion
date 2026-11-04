@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuration des entreprises &mdash; Gestion 3.4.4</title>
+  <title>Configuration des entreprises &mdash; Gestion 3.4.5</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=c41e9675"></script>
+      <script src="_static/documentation_options.js?v=6066126c"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -100,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#modifier-une-nouvelle-offre-sans-toucher-a-l-original">Modifier une nouvelle offre sans toucher à l’original</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#comprendre-les-messages-de-refus">Comprendre les messages de refus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#historique-et-conservation">Historique et conservation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#verrouiller-depuis-la-liste-des-factures">Verrouiller depuis la liste des factures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="electronic_invoicing.html">Facturation électronique et Factur-X</a><ul>
@@ -233,11 +234,18 @@ images PNG dans le dossier <code class="docutils literal notranslate"><span clas
 </ul>
 <p>L’identifiant de l’entreprise apparaît dans le sélecteur de la navigation, par
 exemple <code class="docutils literal notranslate"><span class="pre">id</span> <span class="pre">:</span> <span class="pre">2</span></code>.</p>
-<p>À partir de la version 3.4.4, le logo principal est placé à droite de l’ensemble
-des coordonnées de l’entreprise. Il conserve ses proportions dans une zone de 96 × 96 pixels au
-maximum, sans repousser l’adresse sous le logo. Les logos d’en-tête et de pied
-de page sont facultatifs : lorsqu’ils sont absents, aucun espace n’est réservé
-dans le document. Ces règles s’appliquent à l’écran et aux PDF.</p>
+<p>Dans <strong>Mon entreprise → Modifier les informations → Logos</strong>, réglez la largeur
+souhaitée pour chacun des trois logos, entre 40 et 600 pixels, et sa hauteur
+maximale entre 0 et 600 pixels. <strong>0</strong> conserve une hauteur automatique. Si une
+hauteur maximale est définie, le logo est ajusté aux deux limites sans être
+déformé ; sa largeur affichée peut donc être réduite. Le logo
+principal respecte ce réglage, y compris au-delà de 96 pixels.</p>
+<p>Un logo principal compact reste à droite des coordonnées complètes. S’il
+nécessite plus de place, il apparaît au-dessus du tableau, sans repousser
+l’adresse sous le nom. Sur un écran étroit, les logos se réduisent à la place
+disponible. Les logos d’en-tête et de pied de page sont facultatifs : aucun
+espace ne leur est réservé lorsqu’ils sont absents. Les réglages s’appliquent
+aux devis, factures et PDF.</p>
 </section>
 <section id="partage">
 <h2>Partage<a class="headerlink" href="#partage" title="Lien vers cette rubrique"></a></h2>

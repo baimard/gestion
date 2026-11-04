@@ -155,3 +155,12 @@ Conservez les PDF et XML émis dans Nextcloud Files, ainsi qu'une sauvegarde
 complète de l'instance selon vos obligations. Le verrouillage de Gestion ne
 remplace ni une archive légale certifiée ni la protection des fichiers et logos
 contre des modifications effectuées directement dans Nextcloud Files.
+
+Verrouiller depuis la liste des factures
+----------------------------------------
+
+Dans la liste **Factures**, ouvrez le menu **…** à droite de la ligne puis
+choisissez **Verrouiller la facture**. La confirmation précise que la facture
+et son devis associé deviennent non modifiables. Fermer ou annuler cette
+confirmation ne verrouille rien. Une facture déjà verrouillée ne propose plus
+cette action ; les téléchargements PDF restent accessibles.

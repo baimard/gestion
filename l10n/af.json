@@ -13,6 +13,7 @@
     "Search" : "Soek",
     "Next" : "Volgende",
     "Previous" : "Vorige",
+    "Close" : "Close",
     "Actions" : "Aksies",
     "Open" : "Open",
     "Delete" : "Skrap",
@@ -25,8 +26,8 @@
     "Releases" : "Vrystellings",
     "From" : "Van",
     "To" : "Aan",
-    "Share with ..." : "Deel met …",
     "Add" : "Voeg toe",
+    "Save" : "Save",
     "ID" : "ID",
     "Status" : "Status",
     "City name" : "Stadnaam",
@@ -35,8 +36,6 @@
     "Loading …" : "Laai …",
     "Mail" : "Pos",
     "Client ID" : "Klant-ID",
-    "Close" : "Close",
-    "Save" : "Save",
     "About" : "Oor"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

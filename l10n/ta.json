@@ -10,11 +10,14 @@
     "Search" : "Search",
     "Next" : "அடுத்த",
     "Previous" : "முன்தைய",
+    "Close" : "மூடுக",
     "Actions" : "செயல்கள்",
     "Delete" : "நீக்குக",
     "Documentation" : "ஆவணமாக்கல்",
-    "Configuration" : "தகவமைப்பு",
+    "Help" : "உதவி",
     "Add" : "சேர்க்க",
+    "Remove" : "அகற்றுக",
+    "Save" : "Save",
     "Signature:" : "கையொப்பம்:",
     "January" : "தை",
     "February" : "மாசி",
@@ -29,8 +32,6 @@
     "November" : "கார்த்திகை",
     "December" : "மார்கழி",
     "General" : "பொதுவான",
-    "Close" : "மூடுக",
-    "Save" : "Save",
     "About" : "பற்றி"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

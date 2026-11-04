@@ -14,6 +14,7 @@
     "Showing 0 to 0 of 0 entries" : "Mostrando 0 a 0 de 0 entradas",
     "Next" : "Siguiente",
     "Previous" : "Anterior",
+    "Close" : "Cerrar",
     "Actions" : "Acciones",
     "Open" : "Abrir",
     "Send by email" : "Enviar por correo electrónico",
@@ -26,11 +27,12 @@
     "Changelog" : "Bitácora de cambios",
     "Version" : "Versión",
     "Releases" : "Lanzamientos",
-    "Configuration" : "Configuración",
     "Add" : "Agregar",
+    "Save" : "Save",
     "ID" : "ID",
     "Status" : "Estatus",
     "Signature:" : "Firma:",
+    "Recipient" : "Recipiente",
     "City name" : "Nombre de ciudad",
     "Legal notice" : "Aviso legal",
     "Header" : "Encabezado",
@@ -52,8 +54,6 @@
     "Mail" : "Correo Electrónico",
     "Client ID" : "ID del cliente",
     "Client secret" : "Secreto del cliente",
-    "Close" : "Cerrar",
-    "Save" : "Save",
     "About" : "Acerca de"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

@@ -14,6 +14,8 @@
     "Search" : "Search",
     "Next" : "Next",
     "Previous" : "Previous",
+    "Close" : "Close",
+    "Draft" : "Draft",
     "Actions" : "Actions",
     "Open" : "Open",
     "Duplicate" : "Duplicate",
@@ -32,12 +34,14 @@
     "To" : "To",
     "Cc" : "Cc",
     "Body" : "Body",
-    "Configuration" : "Configuration",
     "Add" : "Add",
+    "Remove" : "Remove",
+    "Save" : "Save",
     "ID" : "ID",
     "Status" : "Status",
     "Date:" : "Date:",
     "Signature:" : "Signature:",
+    "Issuer" : "Issuer",
     "City name" : "City name",
     "Legal notice" : "Legal notice",
     "Header" : "Header",
@@ -59,8 +63,6 @@
     "Mail" : "წერილი",
     "Client ID" : "Client ID",
     "Client secret" : "Client secret",
-    "Close" : "Close",
-    "Save" : "Save",
     "About" : "About"
 },"pluralForm" :"nplurals=2; plural=(n!=1);"
 }

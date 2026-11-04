@@ -12,6 +12,7 @@
     "Search" : "Chwilio",
     "Next" : "Nesaf",
     "Previous" : "Blaenorol",
+    "Close" : "Cau",
     "Actions" : "Gweithredoedd",
     "Open" : "Ar Agor",
     "Delete" : "Dileu",
@@ -23,10 +24,12 @@
     "Changelog" : "Cofnod newid",
     "Version" : "Fersiwn",
     "Releases" : "Ryddhadau",
+    "Save" : "Save",
     "ID" : "ID",
     "Status" : "Statws",
     "Date:" : "Dyddiad:",
     "Signature:" : "Llofnod:",
+    "Recipient" : "Derbynnydd",
     "Year" : "Blwyddyn",
     "January" : "Ionawr",
     "February" : "Chwefror",
@@ -43,8 +46,6 @@
     "General" : "Cyffredinol",
     "Loading …" : "Yn llwytho …",
     "Mail" : "E-bost",
-    "Close" : "Cau",
-    "Save" : "Save",
     "About" : "Ynghylch"
 },"pluralForm" :"nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3;"
 }

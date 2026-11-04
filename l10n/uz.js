@@ -13,6 +13,7 @@ OC.L10N.register(
     "Showing 0 to 0 of 0 entries" : "0 ta yozuvdan 0 dan 0 gacha koʻrsatilmoqda",
     "Next" : "Keyingisi",
     "Previous" : "Oldingi",
+    "Close" : "Yopish",
     "Actions" : "Actions",
     "Open" : "Ochish",
     "Duplicate" : "Nusxa",
@@ -25,7 +26,10 @@ OC.L10N.register(
     "Send an email" : "Elektron pochta xabarini yuboring",
     "From" : "Dan",
     "To" : "Gacha",
+    "Help" : "Yordam",
     "Add" : "Add",
+    "Remove" : "O'chirish",
+    "Save" : "Saqlash",
     "Status" : "Status",
     "Date:" : "Sana:",
     "City name" : "Shahar nomi",
@@ -36,8 +40,6 @@ OC.L10N.register(
     "Loading …" : "Yuklanmoqda…",
     "Mail" : "Mail",
     "Client ID" : "Mijoz identifikatori",
-    "Close" : "Yopish",
-    "Save" : "Saqlash",
     "About" : "About"
 },
 "nplurals=1; plural=0;");

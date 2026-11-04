@@ -14,6 +14,7 @@ OC.L10N.register(
     "Showing 0 to 0 of 0 entries" : "Prikazano 0 do 0 od 0 unosa",
     "Next" : "Sljedeće",
     "Previous" : "Prethodno",
+    "Close" : "Zatvori",
     "Actions" : "Radnje",
     "Delete" : "Obriši",
     "Send" : "Pošalji",
@@ -21,6 +22,7 @@ OC.L10N.register(
     "Version" : "Verzija",
     "Releases" : "Izdanja",
     "Add" : "Dodaj",
+    "Save" : "Save",
     "Status" : "Status",
     "January" : "Januar",
     "February" : "Februar",
@@ -35,8 +37,6 @@ OC.L10N.register(
     "November" : "Novembar",
     "December" : "Decembar",
     "Total" : "Ukupno",
-    "Mail" : "E-Pošta",
-    "Close" : "Zatvori",
-    "Save" : "Save"
+    "Mail" : "E-Pošta"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);");

@@ -15,6 +15,7 @@ OC.L10N.register(
     "Search" : "ค้นหา",
     "Next" : "ถัดไป",
     "Previous" : "ก่อนหน้า",
+    "Close" : "ปิด",
     "Actions" : "การกระทำ",
     "Open" : "เปิด",
     "Delete" : "ลบ",
@@ -22,7 +23,9 @@ OC.L10N.register(
     "Documentation" : "เอกสารประกอบ",
     "Changelog" : "บันทึกการเปลี่ยนแปลง",
     "Version" : "รุ่น",
-    "Configuration" : "การกำหนดค่า",
+    "Help" : "ช่วยเหลือ",
+    "Remove" : "ลบออก",
+    "Save" : "Save",
     "ID" : "ID",
     "Status" : "สถานะ",
     "Signature:" : "ลายเซ็นต์:",
@@ -45,8 +48,6 @@ OC.L10N.register(
     "Mail" : "จดหมาย",
     "Client ID" : "รหัสไคลเอ็นต์",
     "Client secret" : "ข้อมูลลับไคลเอ็นต์",
-    "Close" : "ปิด",
-    "Save" : "Save",
     "About" : "เกี่ยวกับ"
 },
 "nplurals=1; plural=0;");

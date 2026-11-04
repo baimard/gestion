@@ -13,6 +13,7 @@
     "Search" : "Serĉi",
     "Next" : "Sekva",
     "Previous" : "Antaŭa",
+    "Close" : "Malfermi",
     "Actions" : "Agoj",
     "Open" : "Malfermi",
     "Delete" : "Forigi",
@@ -27,11 +28,12 @@
     "Send an email" : "Sendi retmesaĝon",
     "From" : "De",
     "To" : "Al",
-    "Configuration" : "Agordo",
+    "Save" : "Save",
     "ID" : "Identigilo",
     "Status" : "Stato",
     "Date:" : "Dato:",
     "Signature:" : "Subskribo:",
+    "Recipient" : "Ricevonto",
     "City name" : "Urbonomo",
     "Legal notice" : "Leĝa regularo",
     "Header" : "Kapo",
@@ -53,8 +55,6 @@
     "Mail" : "Retpoŝtilo",
     "Client ID" : "Klientidentigilo",
     "Client secret" : "Klientosekreto",
-    "Close" : "Malfermi",
-    "Save" : "Save",
     "About" : "Pri"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

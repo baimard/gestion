@@ -12,9 +12,11 @@ OC.L10N.register(
     "Search" : "Search",
     "Next" : "Հաջորդ",
     "Previous" : "Նախորդ",
+    "Close" : "Փակել",
     "Delete" : "հեռացնել",
     "Send" : "Ուղարկել",
     "Version" : "Տարբերակ",
+    "Save" : "Save",
     "January" : "Հունվար",
     "February" : "Փետրվար",
     "March" : "Մարտ",
@@ -29,8 +31,6 @@ OC.L10N.register(
     "December" : "Դեկտեմբեր",
     "General" : "Ընդհանուր",
     "Mail" : "Փոստ",
-    "Close" : "Փակել",
-    "Save" : "Save",
     "About" : "էջի վերաբերյալ"
 },
 "nplurals=2; plural=(n != 1);");

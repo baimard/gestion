@@ -27,6 +27,8 @@
     "Last" : "Последна",
     "Next" : "Следна",
     "Previous" : "Предходна",
+    "Close" : "Затвори",
+    "Draft" : "Шаблон",
     "Actions" : "Акции",
     "Open" : "Отвори",
     "Duplicate" : "Дуплирај",
@@ -46,12 +48,14 @@
     "From" : "Од",
     "To" : "До",
     "Cc" : "Cc",
-    "Configuration" : "Конфигурација",
+    "My company" : "Моја компанија",
+    "Help" : "Помош",
     "Add" : "Додади",
+    "Remove" : "Отстрани ",
+    "Save" : "Save",
     "ID" : "ID",
     "Status" : "Статус",
     "Add product" : "Додади производ",
-    "Save in Nextcloud" : "Зачувај во Cloud",
     "Quantity" : "Количина",
     "Unit price without VAT" : "Единица цена без ДДВ",
     "Total without VAT" : "Вкупно без ДДВ",
@@ -89,11 +93,8 @@
     "Mail" : "Електронска пошта",
     "Client ID" : "Клиент ИД",
     "Client secret" : "Тајна на клиент",
-    "Close" : "Затвори",
-    "Save" : "Save",
     "INFORMATION" : "ИНФОРМАЦИЈА",
     "Save folder" : "Папка за зачувување",
-    "About" : "За",
-    "My company" : "Моја компанија"
+    "About" : "За"
 },"pluralForm" :"nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
 }

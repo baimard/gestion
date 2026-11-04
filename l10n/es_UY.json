@@ -12,6 +12,7 @@
     "Search" : "Buscar",
     "Next" : "Siguiente",
     "Previous" : "Anterior",
+    "Close" : "Close",
     "Actions" : "Acciones",
     "Delete" : "Borrar",
     "Subject" : "Asunto",
@@ -23,11 +24,13 @@
     "Version" : "Versión",
     "Releases" : "Lanzamientos",
     "Send an email" : "Enviar correo electrónico",
-    "Configuration" : "Configuración",
     "Add" : "Guardar",
+    "Save" : "Save",
     "ID" : "ID",
     "Status" : "Estatus",
     "Signature:" : "Firma:",
+    "Issuer" : "Quien levanta",
+    "Recipient" : "Destinatario",
     "City name" : "Ciudad",
     "Header" : "Encabezado",
     "January" : "Enero",
@@ -47,8 +50,6 @@
     "Mail" : "Correo",
     "Client ID" : "ID del cliente",
     "Client secret" : "Secreto del cliente",
-    "Close" : "Close",
-    "Save" : "Save",
     "About" : "Acerca"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

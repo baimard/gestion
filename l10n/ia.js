@@ -13,12 +13,13 @@ OC.L10N.register(
     "Search" : "Cercar",
     "Next" : "Sequente",
     "Previous" : "Previe",
+    "Close" : "Clauder",
     "Actions" : "Actiones",
     "Delete" : "Deler",
     "Send" : "Inviar",
     "Documentation" : "Documentation",
     "Version" : "Version",
-    "Configuration" : "Configuration",
+    "Save" : "Save",
     "January" : "Januario",
     "February" : "Februario",
     "March" : "Martio",
@@ -34,8 +35,6 @@ OC.L10N.register(
     "Total" : "Total",
     "General" : "General",
     "Mail" : "Posta",
-    "Close" : "Clauder",
-    "Save" : "Save",
     "About" : "A proposito"
 },
 "nplurals=2; plural=(n != 1);");

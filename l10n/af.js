@@ -15,6 +15,7 @@ OC.L10N.register(
     "Search" : "Soek",
     "Next" : "Volgende",
     "Previous" : "Vorige",
+    "Close" : "Close",
     "Actions" : "Aksies",
     "Open" : "Open",
     "Delete" : "Skrap",
@@ -27,8 +28,8 @@ OC.L10N.register(
     "Releases" : "Vrystellings",
     "From" : "Van",
     "To" : "Aan",
-    "Share with ..." : "Deel met …",
     "Add" : "Voeg toe",
+    "Save" : "Save",
     "ID" : "ID",
     "Status" : "Status",
     "City name" : "Stadnaam",
@@ -37,8 +38,6 @@ OC.L10N.register(
     "Loading …" : "Laai …",
     "Mail" : "Pos",
     "Client ID" : "Klant-ID",
-    "Close" : "Close",
-    "Save" : "Save",
     "About" : "Oor"
 },
 "nplurals=2; plural=(n != 1);");

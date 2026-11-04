@@ -17,6 +17,8 @@
     "Search" : "Search",
     "Next" : "Weider",
     "Previous" : "Zeréck",
+    "Close" : "Zoumaachen",
+    "Customers" : "Clienten",
     "Actions" : "Aktiounen",
     "Open" : "Op",
     "Delete" : "Läschen",
@@ -27,8 +29,10 @@
     "Documentation" : "Dokumentatioun",
     "Contact" : "Kontakt",
     "Version" : "Versioun",
-    "Configuration" : "Konfiguratioun",
+    "Help" : "Hëllef",
     "Add" : "Dobäisetzen",
+    "Remove" : "Ewechhuelen",
+    "Save" : "Save",
     "Status" : "Status",
     "Quantity" : "Quantitéit",
     "Signature:" : "Signatur:",
@@ -50,9 +54,6 @@
     "General" : "Allgemeng",
     "Mail" : "Mail",
     "Client ID" : "Client ID",
-    "Close" : "Zoumaachen",
-    "Save" : "Save",
-    "Customers" : "Clienten",
     "About" : "Iwwer"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

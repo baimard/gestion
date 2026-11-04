@@ -12,6 +12,7 @@
     "Search" : "ძიება",
     "Next" : "შემდეგი",
     "Previous" : "წინა",
+    "Close" : "დახურვა",
     "Actions" : "მოქმედებები",
     "Delete" : "წაშლა",
     "Subject" : "სათაური",
@@ -23,10 +24,13 @@
     "Version" : "ვერსია",
     "Releases" : "რელიზები",
     "Send an email" : "ელ-წერილის გაგზავნა",
-    "Configuration" : "კონფიგურაცია",
+    "Help" : "დახმარება",
+    "Save" : "Save",
     "ID" : "ID",
     "Status" : "სტატუსი",
     "Signature:" : "ხელმოწერა:",
+    "Issuer" : "გამცემი",
+    "Recipient" : "მიმღები",
     "City name" : "ქალაქის სახელი",
     "Header" : "დასათაურება",
     "January" : "იანვარი",
@@ -46,8 +50,6 @@
     "Mail" : "ფოსტა",
     "Client ID" : "კლიენტის ID",
     "Client secret" : "კლიენტის საიდუმლო",
-    "Close" : "დახურვა",
-    "Save" : "Save",
     "About" : "შესახებ"
 },"pluralForm" :"nplurals=2; plural=(n!=1);"
 }

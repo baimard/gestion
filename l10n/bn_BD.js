@@ -13,6 +13,7 @@ OC.L10N.register(
     "Search" : "Search",
     "Next" : "পরবর্তী",
     "Previous" : "পূর্ববর্তী",
+    "Close" : "বন্ধ",
     "Actions" : "পদক্ষেপসমূহ",
     "Delete" : "মুছে",
     "Send" : "পাঠাও",
@@ -20,8 +21,8 @@ OC.L10N.register(
     "Version" : "ভার্সন",
     "From" : "From",
     "To" : "To",
-    "Configuration" : "কনফিগারেসন",
     "Add" : "যোগ কর",
+    "Save" : "Save",
     "Signature:" : "স্বাক্ষর:",
     "City name" : "শহর",
     "January" : "জানুয়ারি",
@@ -39,8 +40,6 @@ OC.L10N.register(
     "General" : "সাধারণ",
     "Mail" : "মেইল",
     "Client ID" : "ক্লায়েন্ট পরিচিতি",
-    "Close" : "বন্ধ",
-    "Save" : "Save",
     "About" : "সমপরকে"
 },
 "nplurals=2; plural=(n != 1);");

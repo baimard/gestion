@@ -15,6 +15,7 @@ OC.L10N.register(
     "Search" : "සොයන්න",
     "Next" : "ඊළඟ",
     "Previous" : "පෙර",
+    "Close" : "වසන්න",
     "Actions" : "ක්‍රියාමාර්ග",
     "Open" : "විවෘත",
     "Delete" : "Delete",
@@ -22,7 +23,10 @@ OC.L10N.register(
     "Send" : "යවන්න",
     "Version" : "අනුවාදය",
     "Body" : "අන්තර්ගතය",
+    "Help" : "උපකාර",
     "Add" : "එකතු කරන්න",
+    "Remove" : "ඉවත් කරන්න",
+    "Save" : "Save",
     "Date:" : "දිනය:",
     "City name" : "නගරයේ නම",
     "Year" : "වර්ෂය",
@@ -41,8 +45,6 @@ OC.L10N.register(
     "General" : "සමාන්‍යය",
     "Loading …" : "පූරණය වෙමින් …",
     "Mail" : "තැපෑල",
-    "Close" : "වසන්න",
-    "Save" : "Save",
     "About" : "පිළිබඳව"
 },
 "nplurals=2; plural=(n != 1);");

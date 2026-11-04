@@ -12,6 +12,7 @@ OC.L10N.register(
     "Search" : "Axtarış",
     "Next" : "Növbəti",
     "Previous" : "Əvvələ",
+    "Close" : "Bağla",
     "Actions" : "İşlər",
     "Delete" : "Sil",
     "Subject" : "Mövzu",
@@ -19,7 +20,7 @@ OC.L10N.register(
     "Documentation" : "Sənədlər",
     "Changelog" : "Dəyişikliklər jurnalı",
     "Version" : "Versiya",
-    "Configuration" : "Konfiqurasiya",
+    "Save" : "Save",
     "Status" : "Status",
     "Signature:" : "İmza:",
     "January" : "Yanvar",
@@ -38,8 +39,6 @@ OC.L10N.register(
     "Mail" : "Məktub",
     "Client ID" : "Müştəri İD-s",
     "Client secret" : "Müxtəri sirri",
-    "Close" : "Bağla",
-    "Save" : "Save",
     "About" : "Haqqında"
 },
 "nplurals=2; plural=(n != 1);");

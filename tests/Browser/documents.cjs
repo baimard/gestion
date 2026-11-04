@@ -84,7 +84,7 @@ const fs = require('node:fs');
         assert.ok(position.y >= 40 && position.y < 80, JSON.stringify(position));
         await toolbar.locator('#lock-document').click();
         await assertDialogCentered();
-        await page.keyboard.press('Escape');
+        await page.locator('dialog[open] button:not(.primary)').click();
         await page.goto(`${base}/index.php/apps/gestion/facture`);
         const listLock = page.locator(`[data-lock-invoice="${invoice}"]`);
         await listLock.locator('xpath=ancestor::details').locator('summary').click();

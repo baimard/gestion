@@ -68,8 +68,8 @@ images PNG dans le dossier ``.gestion`` à la racine de vos fichiers :
 L'identifiant de l'entreprise apparaît dans le sélecteur de la navigation, par
 exemple ``id : 2``.
 
-Le logo principal est placé à droite de l'ensemble des coordonnées de
-l'entreprise. Il conserve ses proportions dans une zone de 96 × 96 pixels au
+À partir de la version 3.4.4, le logo principal est placé à droite de l'ensemble
+des coordonnées de l'entreprise. Il conserve ses proportions dans une zone de 96 × 96 pixels au
 maximum, sans repousser l'adresse sous le logo. Les logos d'en-tête et de pied
 de page sont facultatifs : lorsqu'ils sont absents, aucun espace n'est réservé
 dans le document. Ces règles s'appliquent à l'écran et aux PDF.

@@ -6,6 +6,6 @@
 ?>
 <?php if ($bannerLogo !== 'nothing' && $bannerLogo !== ''): ?>
     <div class="titre-centre">
-        <img class="img-fluid gestion-document-logo gestion-document-logo-<?php p($bannerPosition); ?>" width="<?php echo $bannerWidth; ?>" style="width: <?php echo $bannerWidth; ?>px; height: auto;" alt="<?php p($l->t($bannerPosition === 'footer' ? 'footer image' : 'Company logo')); ?>" src="data:image/png;base64,<?php p($bannerLogo); ?>">
+        <img class="img-fluid gestion-document-logo gestion-document-logo-<?php p($bannerPosition); ?>" width="<?php echo $bannerWidth; ?>" style="width: <?php echo $bannerWidth; ?>px; height: auto;" alt="<?php p($bannerPosition === 'footer' ? $l->t('footer image') : $l->t('Company logo')); ?>" src="data:image/png;base64,<?php p($bannerLogo); ?>">
     </div>
 <?php endif; ?>

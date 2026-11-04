@@ -7,6 +7,12 @@ Gestion permet à un même utilisateur de gérer plusieurs entreprises. Le
 sélecteur situé en haut de la navigation définit l'entreprise courante ; les
 clients, produits, devis, factures et réglages affichés lui appartiennent.
 
+Sur mobile, le bouton de navigation ouvre le menu latéral. Choisissez ensuite
+la rubrique souhaitée. La croix, une pression sur la zone assombrie ou la
+touche Échap referment le menu. Le contenu du menu peut défiler pour atteindre
+les réglages situés en bas. Ce comportement est corrigé à partir de la version
+3.4.3 pour que le menu reste visible avec les styles mobiles de Nextcloud.
+
 Créer et sélectionner une entreprise
 ------------------------------------
 
@@ -61,6 +67,12 @@ images PNG dans le dossier ``.gestion`` à la racine de vos fichiers :
 
 L'identifiant de l'entreprise apparaît dans le sélecteur de la navigation, par
 exemple ``id : 2``.
+
+À partir de la version 3.4.4, le logo principal est placé à droite de l'ensemble
+des coordonnées de l'entreprise. Il conserve ses proportions dans une zone de 96 × 96 pixels au
+maximum, sans repousser l'adresse sous le logo. Les logos d'en-tête et de pied
+de page sont facultatifs : lorsqu'ils sont absents, aucun espace n'est réservé
+dans le document. Ces règles s'appliquent à l'écran et aux PDF.
 
 Partage
 -------

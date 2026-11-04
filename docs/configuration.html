@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuration des entreprises &mdash; Gestion 3.4.2</title>
+  <title>Configuration des entreprises &mdash; Gestion 3.4.4</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=abef82a1"></script>
+      <script src="_static/documentation_options.js?v=c41e9675"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -178,6 +178,11 @@
 <p>Gestion permet à un même utilisateur de gérer plusieurs entreprises. Le
 sélecteur situé en haut de la navigation définit l’entreprise courante ; les
 clients, produits, devis, factures et réglages affichés lui appartiennent.</p>
+<p>Sur mobile, le bouton de navigation ouvre le menu latéral. Choisissez ensuite
+la rubrique souhaitée. La croix, une pression sur la zone assombrie ou la
+touche Échap referment le menu. Le contenu du menu peut défiler pour atteindre
+les réglages situés en bas. Ce comportement est corrigé à partir de la version
+3.4.3 pour que le menu reste visible avec les styles mobiles de Nextcloud.</p>
 <section id="creer-et-selectionner-une-entreprise">
 <h2>Créer et sélectionner une entreprise<a class="headerlink" href="#creer-et-selectionner-une-entreprise" title="Lien vers cette rubrique"></a></h2>
 <p>Ouvrez <strong>Mon entreprise</strong>, puis utilisez <strong>Créer une nouvelle entreprise</strong>.
@@ -228,6 +233,11 @@ images PNG dans le dossier <code class="docutils literal notranslate"><span clas
 </ul>
 <p>L’identifiant de l’entreprise apparaît dans le sélecteur de la navigation, par
 exemple <code class="docutils literal notranslate"><span class="pre">id</span> <span class="pre">:</span> <span class="pre">2</span></code>.</p>
+<p>À partir de la version 3.4.4, le logo principal est placé à droite de l’ensemble
+des coordonnées de l’entreprise. Il conserve ses proportions dans une zone de 96 × 96 pixels au
+maximum, sans repousser l’adresse sous le logo. Les logos d’en-tête et de pied
+de page sont facultatifs : lorsqu’ils sont absents, aucun espace n’est réservé
+dans le document. Ces règles s’appliquent à l’écran et aux PDF.</p>
 </section>
 <section id="partage">
 <h2>Partage<a class="headerlink" href="#partage" title="Lien vers cette rubrique"></a></h2>

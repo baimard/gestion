@@ -38,6 +38,13 @@ final class BackupFormat {
             }
             if (isset($row['discount'])) CommercialMath::discount($row['discount']);
         }
+        foreach ($tables['configuration'] as $row) {
+            foreach (['logo_height', 'logo_header_height', 'logo_footer_height'] as $field) {
+                if (array_key_exists($field, $row) && (!ctype_digit((string)$row[$field]) || (int)$row[$field] > 600)) {
+                    throw new \InvalidArgumentException('Logo maximum height must be between 0 and 600.');
+                }
+            }
+        }
         return $tables;
     }
 }

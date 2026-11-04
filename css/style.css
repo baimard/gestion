@@ -380,6 +380,17 @@
     padding-bottom: 20px;
 }
 
+.configuration-logo-dimensions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: start;
+}
+
+@media (max-width: 700px) {
+    .configuration-logo-dimensions { grid-template-columns: 1fr; }
+}
+
 .configuration-section h2 {
     margin: 0 0 16px;
 }
@@ -591,8 +602,12 @@ button.electronic-invoice-help:focus-visible {
 }
 
 #headertable .document-party-logo {
-    width: 96px;
     padding-left: 12px;
+    text-align: right;
+}
+
+.gestion-document-branding {
+    margin-bottom: 12px;
     text-align: right;
 }
 

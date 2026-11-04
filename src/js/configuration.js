@@ -199,7 +199,7 @@ function loadConfigurationDT(response) {
             'entreprise', 'nom', 'prenom', 'adresse', 'legal_one', 'legal_two',
             'telephone', 'mail', 'tva_default', 'facture_prefixe', 'city_name',
             'zip_code', 'vat_number', 'iban', 'logo_width', 'logo_header_width',
-            'logo_footer_width'
+            'logo_footer_width', 'logo_height', 'logo_header_height', 'logo_footer_height'
         ];
 
         textFields.forEach((field) => {

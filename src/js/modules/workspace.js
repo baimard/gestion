@@ -112,19 +112,35 @@ async function restoreBackup(input) {
 }
 
 async function lockDocument(button) {
+    if (button.disabled) return;
     const toolbar = button.closest('[data-document-lock]');
-    const node = dialog(t('gestion', 'Finalize this document?'));
+    const table = button.dataset.lockInvoice ? 'facture' : toolbar?.dataset.table;
+    const id = Number(button.dataset.lockInvoice || toolbar?.dataset.id);
+    if (table !== 'facture' || !Number.isInteger(id) || id < 1) return;
+    button.disabled = true;
+    const label = button.dataset.documentLabel || document.getElementById('factureid')?.textContent.trim();
+    const node = dialog(label ? t('gestion', 'Finalize invoice {number}?', {number: label}) : t('gestion', 'Finalize this document?'));
+    let pending = false;
+    node.addEventListener('close', () => { if (!pending) button.disabled = false; });
     const notice = document.createElement('p');
-    notice.textContent = finalizationNotice(toolbar.dataset.table === 'facture');
+    notice.textContent = finalizationNotice(true);
     const confirm = document.createElement('button');
     confirm.className = 'primary';
     confirm.textContent = t('gestion', 'Finalize and lock');
     confirm.addEventListener('click', async () => {
+        if (pending) return;
+        pending = true;
         confirm.disabled = true;
         try {
-            await request('/documents/lock', {table: toolbar.dataset.table, id: Number(toolbar.dataset.id)});
+            await request('/documents/lock', {table, id});
+            node.close();
             location.reload();
-        } catch (error) { showError(error.message); confirm.disabled = false; }
+        } catch (error) {
+            pending = false;
+            showError(error.message);
+            confirm.disabled = false;
+            if (!node.open) button.disabled = false;
+        }
     });
     node.append(notice, confirm);
 }
@@ -159,6 +175,44 @@ function applyLockedState() {
 
 document.addEventListener('DOMContentLoaded', () => {
     applyLockedState();
+    // Keep action menus outside table clipping, including on the final row.
+    let openActions = null;
+    const closeActions = () => {
+        if (openActions) openActions.removeAttribute('open');
+    };
+    document.addEventListener('toggle', event => {
+        const details = event.target;
+        if (!details.matches?.('.document-actions')) return;
+        const menu = details.querySelector('.document-actions-menu');
+        if (!menu) return;
+        if (!details.open) {
+            if (typeof menu.hidePopover === 'function' && menu.matches(':popover-open')) menu.hidePopover();
+            if (openActions === details) openActions = null;
+            return;
+        }
+        if (openActions && openActions !== details) closeActions();
+        openActions = details;
+        menu.classList.add('document-actions-menu-floating');
+        menu.style.maxHeight = `${Math.max(44, innerHeight - 16)}px`;
+        if (typeof menu.showPopover === 'function') {
+            menu.popover = 'manual';
+            if (!menu.matches(':popover-open')) menu.showPopover();
+        }
+        const trigger = details.querySelector('summary').getBoundingClientRect();
+        const size = menu.getBoundingClientRect();
+        menu.style.left = `${Math.max(8, Math.min(trigger.right - size.width, innerWidth - size.width - 8))}px`;
+        menu.style.top = `${Math.max(8, trigger.bottom + size.height + 4 <= innerHeight - 8 ? trigger.bottom + 4 : trigger.top - size.height - 4)}px`;
+    }, true);
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && openActions) {
+            openActions.querySelector('summary').focus();
+            closeActions();
+        }
+    });
+    window.addEventListener('resize', closeActions);
+    document.addEventListener('scroll', event => {
+        if (openActions && !openActions.querySelector('.document-actions-menu').contains(event.target)) closeActions();
+    }, true);
     document.querySelectorAll('#app-navigation a[href]').forEach(link => {
         if (new URL(link.href).pathname === location.pathname) link.setAttribute('aria-current','page');
     });
@@ -171,6 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('[data-restore-file]')?.addEventListener('change', event => restoreBackup(event.target).catch(error => showError(error.message)));
     document.querySelectorAll('[data-open-history]').forEach(button => button.addEventListener('click', () => showHistory().catch(error => showError(error.message))));
     document.getElementById('lock-document')?.addEventListener('click', event => lockDocument(event.currentTarget));
+    document.addEventListener('click', event => {
+        const button = event.target.closest('[data-lock-invoice]');
+        if (button) lockDocument(button).catch(error => { button.disabled = false; showError(error.message); });
+    });
     const precisionForm = document.getElementById('gestion-precision');
     if (precisionForm) {
         fetch(generateUrl('/apps/gestion/getConfiguration'), {method:'PROPFIND',headers:csrfHeaders()}).then(r => r.json()).then(result => {

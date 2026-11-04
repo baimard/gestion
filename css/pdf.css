@@ -107,8 +107,12 @@ body,
 }
 
 #headertable .document-party-logo {
-    width: 96px;
     padding-left: 10px;
+    text-align: right;
+}
+
+.gestion-document-branding {
+    margin-bottom: 12px;
     text-align: right;
 }
 

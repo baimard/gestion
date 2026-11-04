@@ -10,6 +10,16 @@
     $hasMainLogo = isset($_['logo']) && $_['logo'] !== 'nothing';
     // Keep a literal width for mPDF and leave room for the company identity.
     $mainLogoWidth = max(40, min(96, (int)($company->logo_width ?? 160)));
+    $mainLogoHeight = $mainLogoWidth;
+    if ($hasMainLogo) {
+        $logoBytes = base64_decode($_['logo'], true);
+        $logoSize = $logoBytes === false ? false : @getimagesizefromstring($logoBytes);
+        if ($logoSize && $logoSize[0] > 0 && $logoSize[1] > 0) {
+            $scale = min($mainLogoWidth / $logoSize[0], 96 / $logoSize[1]);
+            $mainLogoWidth = max(1, (int)round($logoSize[0] * $scale));
+            $mainLogoHeight = max(1, (int)round($logoSize[1] * $scale));
+        }
+    }
 ?>
 <table id="headertable" class="document-parties">
     <colgroup><col width="50%"><col width="50%"></colgroup>
@@ -27,24 +37,24 @@
                         <td>
                             <div class="document-party-name"><?php p($decodePartyValue($company->entreprise ?? '')); ?></div>
                             <?php if ($companyContact !== ''): ?><div class="document-party-line"><?php p($companyContact); ?></div><?php endif; ?>
+                            <?php foreach ($companySections as $section): ?>
+                                <?php $lines = array_filter(array_map($decodePartyValue, $section), static fn (string $line): bool => $line !== ''); ?>
+                                <?php if ($lines !== []): ?>
+                                    <div class="document-party-section">
+                                        <?php foreach ($lines as $line): ?>
+                                            <div class="document-party-line"><?php print_unescaped(nl2br(htmlspecialchars($line, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'))); ?></div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                         </td>
                         <?php if ($hasMainLogo): ?>
                             <td class="document-party-logo" width="96">
-                                <img class="gestion-document-logo" width="<?php echo $mainLogoWidth; ?>" style="width: <?php echo $mainLogoWidth; ?>px; height: auto;" alt="<?php p($l->t('Company logo')); ?>" src="data:image/png;base64,<?php p($_['logo']); ?>">
+                                <img class="gestion-document-logo" width="<?php echo $mainLogoWidth; ?>" height="<?php echo $mainLogoHeight; ?>" style="width: <?php echo $mainLogoWidth; ?>px; height: <?php echo $mainLogoHeight; ?>px;" alt="<?php p($l->t('Company logo')); ?>" src="data:image/png;base64,<?php p($_['logo']); ?>">
                             </td>
                         <?php endif; ?>
                     </tr>
                 </table>
-                <?php foreach ($companySections as $section): ?>
-                    <?php $lines = array_filter(array_map($decodePartyValue, $section), static fn (string $line): bool => $line !== ''); ?>
-                    <?php if ($lines !== []): ?>
-                        <div class="document-party-section">
-                            <?php foreach ($lines as $line): ?>
-                                <div class="document-party-line"><?php print_unescaped(nl2br(htmlspecialchars($line, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'))); ?></div>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
-                <?php endforeach; ?>
             </td>
             <td width="50%" class="document-party" aria-labelledby="document-recipient" data-party-label="<?php p($l->t('Recipient')); ?>">
                 <div id="entreprise" class="document-party-name"></div>

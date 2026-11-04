@@ -1,9 +1,6 @@
 <?php
     $res = json_decode($_['configuration'])[0];
     $iopoleConfigured = (bool)($res->einvoice_configured ?? false);
-    $logoWidth = max(40, min(600, (int)($res->logo_width ?? 160)));
-    $logoHeaderWidth = max(40, min(600, (int)($res->logo_header_width ?? 320)));
-    $logoFooterWidth = max(40, min(600, (int)($res->logo_footer_width ?? 320)));
 ?>
 <div class="gestion-document-view">
     <div class="gestion-document-toolbar" data-html2canvas-ignore data-document-lock data-table="facture" data-id="<?php p($_['facture'][0]->id); ?>" data-locked="<?php p((int)($_['facture'][0]->locked ?? 0)); ?>">
@@ -18,18 +15,8 @@
             <button type="button" class="primary" id="lock-document"><?php p($l->t('Finalize and lock')); ?></button>
         </div>
     </div>
-    <div id="PDFcontent" style="--gestion-logo-main-width: <?php echo $logoWidth; ?>px; --gestion-logo-header-width: <?php echo $logoHeaderWidth; ?>px; --gestion-logo-footer-width: <?php echo $logoFooterWidth; ?>px;">
-    <div class="titre-centre">
-        <span>
-            <?php
-                if(isset($_['logo_header']) && $_['logo_header'] !== "nothing"){
-                    echo "<a><img alt='".$l->t('Company logo')."' class=\"img-fluid gestion-document-logo gestion-document-logo-header\" src=\"data:image/png;base64,".$_['logo_header']."\"/></a>";
-                }else{
-                    echo "<span style='font-size:12px' id='Company-logo' data-html2canvas-ignore><b>".$l->t('You can add your company logo here.')."</b><br/><i>".$l->t('To add a header logo, use the numeric company ID shown in the company selector as the filename prefix (for example, company 1 uses 1logo_header.png). Place the file in the ".gestion" folder at the root of Nextcloud Files and enable "Show hidden files" to display this folder.')."</i><br/><br/>".$l->t('This message will not appear on generated PDF.')."</span>";
-                }
-            ?>
-        </span>
-    </div>
+    <div id="PDFcontent">
+    <?php print_unescaped($this->inc('content/document_banner', ['logoPosition' => 'header'])); ?>
 
     <?php
         $paymentMeans = [

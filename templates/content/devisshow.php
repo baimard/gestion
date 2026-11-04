@@ -1,8 +1,5 @@
 <?php
     $res = json_decode($_['configuration'])[0];
-    $logoWidth = max(40, min(600, (int)($res->logo_width ?? 160)));
-    $logoHeaderWidth = max(40, min(600, (int)($res->logo_header_width ?? 320)));
-    $logoFooterWidth = max(40, min(600, (int)($res->logo_footer_width ?? 320)));
 ?>
 <div class="gestion-document-view">
     <div class="gestion-document-toolbar" data-html2canvas-ignore data-document-lock data-table="devis" data-id="<?php p($_['devis'][0]->devisid); ?>" data-locked="<?php p((int)($_['devis'][0]->locked ?? 0)); ?>">
@@ -14,18 +11,8 @@
             <button type="button" data-open-history title="<?php p($l->t('Change history')); ?>" aria-label="<?php p($l->t('Change history')); ?>"><span class="material-symbols-outlined" aria-hidden="true">history</span></button>
         </div>
     </div>
-    <div id="PDFcontent" style="--gestion-logo-main-width: <?php echo $logoWidth; ?>px; --gestion-logo-header-width: <?php echo $logoHeaderWidth; ?>px; --gestion-logo-footer-width: <?php echo $logoFooterWidth; ?>px;">
-    <div class="titre-centre">
-        <span>
-            <?php
-                if(isset($_['logo_header']) && $_['logo_header'] !== "nothing"){
-                    echo "<a><img alt='".$l->t('Company logo')."' class=\"img-fluid gestion-document-logo gestion-document-logo-header\" src=\"data:image/png;base64,".$_['logo_header']."\"/></a>";
-                }else{
-                    echo "<span style='font-size:12px' id='Company-logo' data-html2canvas-ignore><b>".$l->t('You can add your company logo here.')."</b><br/><i>".$l->t('To add a header logo, use the numeric company ID shown in the company selector as the filename prefix (for example, company 1 uses 1logo_header.png). Place the file in the ".gestion" folder at the root of Nextcloud Files and enable "Show hidden files" to display this folder.')."</i><br/><br/>".$l->t('This message will not appear on generated PDF.')."</span>";
-                }
-            ?>
-        </span>
-    </div>
+    <div id="PDFcontent">
+    <?php print_unescaped($this->inc('content/document_banner', ['logoPosition' => 'header'])); ?>
 
     <?php print_unescaped($this->inc('content/document_parties')); ?>
 
@@ -118,17 +105,7 @@
         <p><span id="mentions_default"><?php p($l->t('Please set in global configuration'));?></span></p>
     </div>
 
-    <div class="titre-centre">
-        <span>
-            <?php
-                if(isset($_['logo_footer']) && $_['logo_footer'] !== "nothing"){
-                    echo "<a><img alt='".$l->t('footer image')."' class=\"img-fluid gestion-document-logo gestion-document-logo-footer\" src=\"data:image/png;base64,".$_['logo_footer']."\"/></a>";
-                }else{
-                    echo "<span style='font-size:12px;' id='footer-logo' data-html2canvas-ignore><b>".$l->t('You can add your footer logo here.')."</b><br/><i>".$l->t('To add a footer logo, use the numeric company ID shown in the company selector as the filename prefix (for example, company 1 uses 1logo_footer.png). Place the file in the ".gestion" folder at the root of Nextcloud Files and enable "Show hidden files" to display this folder.')."</i><br/><br/>".$l->t('This message will not appear on generated PDF.')."</span>";
-                }
-            ?>
-        </span>
-    </div>
+    <?php print_unescaped($this->inc('content/document_banner', ['logoPosition' => 'footer'])); ?>
 
     <table class="table-mentions-signature">
         <tr>

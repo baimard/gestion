@@ -11,6 +11,16 @@ const fs = require('node:fs');
         const page = await context.newPage();
         const errors = [];
         page.on('pageerror', error => errors.push(error.message));
+        const assertDialogCentered = async () => {
+            const box = await page.locator('dialog[open]').evaluate(element => {
+                const rect = element.getBoundingClientRect();
+                return { x: rect.x, y: rect.y, width: rect.width, height: rect.height, viewportWidth: innerWidth, viewportHeight: innerHeight, overflow: element.scrollWidth > element.clientWidth };
+            });
+            assert.ok(Math.abs(box.x + box.width / 2 - box.viewportWidth / 2) <= 2, `Dialog horizontal centering: ${JSON.stringify(box)}`);
+            assert.ok(Math.abs(box.y + box.height / 2 - box.viewportHeight / 2) <= 2, `Dialog vertical centering: ${JSON.stringify(box)}`);
+            assert.ok(box.x >= 15 && box.y >= 15 && box.x + box.width <= box.viewportWidth - 15 && box.y + box.height <= box.viewportHeight - 15, `Dialog viewport bounds: ${JSON.stringify(box)}`);
+            assert.equal(box.overflow, false, 'Dialog has no horizontal overflow');
+        };
         await page.goto(`${base}/index.php/apps/gestion/config`);
         await page.locator('[name=user]').fill(process.env.NEXTCLOUD_TEST_USER);
         await page.locator('[name=password]').fill(process.env.NEXTCLOUD_TEST_PASSWORD);
@@ -72,6 +82,9 @@ const fs = require('node:fs');
         await page.waitForTimeout(100);
         const position = await toolbar.boundingBox();
         assert.ok(position.y >= 40 && position.y < 80, JSON.stringify(position));
+        await toolbar.locator('#lock-document').click();
+        await assertDialogCentered();
+        await page.keyboard.press('Escape');
         await page.goto(`${base}/index.php/apps/gestion/facture`);
         const listLock = page.locator(`[data-lock-invoice="${invoice}"]`);
         await listLock.locator('xpath=ancestor::details').locator('summary').click();
@@ -81,8 +94,14 @@ const fs = require('node:fs');
             return rect && button.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2));
         }, invoice);
         await listLock.click();
+        await assertDialogCentered();
+        for (const viewport of [{ width: 390, height: 844 }, { width: 844, height: 390 }, { width: 320, height: 568 }]) {
+            await page.setViewportSize(viewport);
+            await assertDialogCentered();
+        }
         await page.locator('dialog[open] button:not(.primary)').click();
         assert.equal((await read('/getDevis'))[0].locked, 0);
+        await page.setViewportSize({ width: 1560, height: 950 });
         await listLock.locator('xpath=ancestor::details').locator('summary').click();
         await listLock.click();
         await Promise.all([page.waitForEvent('domcontentloaded'), page.locator('dialog[open] button.primary').click()]);
@@ -115,6 +134,6 @@ const fs = require('node:fs');
         assert.ok(await page.locator('.gestion-document-table-scroll').evaluate(element => element.scrollWidth > element.clientWidth));
         fs.writeFileSync(process.env.NEXTCLOUD_TEST_FIXTURE || '/tmp/gestion-e2e-fixture.json', JSON.stringify({ company, client, product, quote, line, invoice }));
         assert.deepEqual(errors, []);
-        console.log('Document checks passed: editable quote after sending/draft invoice, invoice-only finalization, sticky actions, wider designation, clickable lock states, immutable invoice/quote and downloadable PDFs, mobile scroll. No external delivery.');
+        console.log('Document checks passed: centered confirmation on desktop and mobile, editable quote after sending/draft invoice, invoice-only finalization, sticky actions, wider designation, clickable lock states, immutable invoice/quote and downloadable PDFs, mobile scroll. No external delivery.');
     } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exit(1); });

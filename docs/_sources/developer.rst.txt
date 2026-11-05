@@ -67,17 +67,41 @@ Tests Panther
 Les tests utilisent les variables suivantes :
 
 ``NEXTCLOUD_BASE_URL``
-   URL de l'instance, par défaut ``http://dev.cybercorp.fr``.
+   URL de l'instance, par défaut ``http://127.0.0.1:8080``.
 
 ``NEXTCLOUD_TEST_USER``
-   Compte Nextcloud de test, par défaut ``nextcloud``.
+   Compte Nextcloud de test obligatoire.
 
 ``NEXTCLOUD_TEST_PASSWORD``
    Mot de passe du compte de test.
 
+``NEXTCLOUD_TEST_COMPANY_ID``
+   Identifiant de la société de démonstration, affiché par le script de préparation.
+   Permet de sélectionner la même société dans la nouvelle session Panther.
+
+``NEXTCLOUD_SERVER_ROOT``
+   Chemin du serveur Nextcloud, à préciser si l'application utilise un lien
+   symbolique ou se trouve hors du dossier ``apps`` / ``custom_apps``.
+
+``GECKODRIVER_PATH``
+   Chemin facultatif de GeckoDriver. Par défaut : ``drivers/geckodriver``
+   dans le dépôt. Firefox doit être installé.
+
 Le scénario ``tests/Unit/Panther/IhmTest.php`` régénère les images dans
 ``tests/Unit/Panther/screens/``. Utilisez exclusivement une instance et un
-compte de test : certains scénarios créent puis suppriment des données.
+compte de test : le scénario ajoute une facture au devis de démonstration.
+
+Pour préparer des données fictives reproductibles, créez un compte dédié dont
+l'identifiant commence par ``gestion-store-demo-`` et utilisez
+``tests/Browser/seed-store-demo.cjs`` avec les mêmes variables. Comme les autres
+scénarios navigateur, ce script nécessite Playwright via ``NODE_PATH`` et Chromium
+(``CHROMIUM_PATH`` facultatif). Il crée des clients, produits, devis et factures,
+dont deux verrouillées ; utilisez une instance jetable. Il n'envoie aucun document.
+
+Exécutez ensuite ``make testPanther`` depuis le dépôt. Les images référencées par
+les éléments ``screenshot`` de ``appinfo/info.xml`` sont celles du store Nextcloud.
+Elles deviennent accessibles aux URL publiques après fusion sur ``master`` ; le
+cache du store peut retarder leur actualisation.
 
 Base de données
 ---------------

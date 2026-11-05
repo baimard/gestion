@@ -19,6 +19,7 @@ OC.L10N.register(
     "Send" : "Inviar",
     "Documentation" : "Documentation",
     "Version" : "Version",
+    "Help" : "Adjuta",
     "Save" : "Save",
     "January" : "Januario",
     "February" : "Februario",

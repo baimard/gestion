@@ -20,6 +20,7 @@ OC.L10N.register(
     "Documentation" : "Sənədlər",
     "Changelog" : "Dəyişikliklər jurnalı",
     "Version" : "Versiya",
+    "Help" : "Kömək",
     "Save" : "Save",
     "Status" : "Status",
     "Signature:" : "İmza:",

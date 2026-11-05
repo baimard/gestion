@@ -21,6 +21,7 @@ OC.L10N.register(
     "Version" : "ভার্সন",
     "From" : "From",
     "To" : "To",
+    "Help" : "সহায়িকা",
     "Add" : "যোগ কর",
     "Save" : "Save",
     "Signature:" : "স্বাক্ষর:",

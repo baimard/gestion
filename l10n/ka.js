@@ -36,6 +36,7 @@ OC.L10N.register(
     "To" : "To",
     "Cc" : "Cc",
     "Body" : "Body",
+    "Help" : "დახმარება",
     "Add" : "Add",
     "Remove" : "Remove",
     "Save" : "Save",

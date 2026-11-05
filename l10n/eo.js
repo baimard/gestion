@@ -30,6 +30,7 @@ OC.L10N.register(
     "Send an email" : "Sendi retmesaĝon",
     "From" : "De",
     "To" : "Al",
+    "Help" : "Helpo",
     "Save" : "Save",
     "ID" : "Identigilo",
     "Status" : "Stato",

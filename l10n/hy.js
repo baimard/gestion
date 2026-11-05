@@ -16,6 +16,7 @@ OC.L10N.register(
     "Delete" : "հեռացնել",
     "Send" : "Ուղարկել",
     "Version" : "Տարբերակ",
+    "Help" : "Օգնություն",
     "Save" : "Save",
     "January" : "Հունվար",
     "February" : "Փետրվար",

@@ -46,6 +46,7 @@ OC.L10N.register(
     "To" : "Hingga",
     "Cc" : "Cc",
     "Body" : "Isi",
+    "Help" : "Bantuan",
     "Enter email" : "Masukkan email",
     "Add" : "Tambah",
     "Remove" : "Hapus",

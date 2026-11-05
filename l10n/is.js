@@ -42,6 +42,7 @@ OC.L10N.register(
     "Cc" : "Afrit (Cc)",
     "Body" : "Meginmál",
     "My company" : "Fyrirtækið mitt",
+    "Help" : "Hjálp",
     "Enter email" : "Settu inn tölvupóstfang",
     "Add" : "Bæta við",
     "Remove" : "Fjarlægja",

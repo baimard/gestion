@@ -26,6 +26,7 @@ OC.L10N.register(
     "Version" : "Versión",
     "Releases" : "Lanzamientos",
     "Send an email" : "Enviar correo electrónico",
+    "Help" : "Ayuda",
     "Add" : "Guardar",
     "Save" : "Save",
     "ID" : "ID",

@@ -26,6 +26,7 @@ OC.L10N.register(
     "Changelog" : "Cofnod newid",
     "Version" : "Fersiwn",
     "Releases" : "Ryddhadau",
+    "Help" : "Cymorth",
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "Statws",

@@ -19,6 +19,7 @@ OC.L10N.register(
     "Send" : "Kas",
     "Documentation" : "Diellvadur",
     "Version" : "Stumm",
+    "Help" : "Skoazell",
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "Statud",

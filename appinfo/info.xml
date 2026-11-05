@@ -29,7 +29,7 @@ If you require adaptations to comply with your country's regulations, please ope
 [![Donate](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-yellow.svg)](https://www.buymeacoffee.com/benjaminaimard)
 
 ]]></description>
-    <version>3.4.6</version>
+    <version>3.4.7</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>
@@ -40,13 +40,15 @@ If you require adaptations to comply with your country's regulations, please ope
     <discussion>https://github.com/baimard/gestion/discussions</discussion>
     <bugs>https://github.com/baimard/gestion/issues</bugs>
     <repository>https://github.com/baimard/gestion</repository>
-    <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/index.png">https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/about.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/config.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/devis.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/facture.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/produit.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/selectFolder.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/baimard/gestion/master/tests/Unit/Panther/screens/statistique.png</screenshot>
+    <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/3.4.7/tests/Unit/Panther/screens/config.png">https://raw.githubusercontent.com/baimard/gestion/3.4.7/tests/Unit/Panther/screens/config.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.4.7/tests/Unit/Panther/screens/index.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.4.7/tests/Unit/Panther/screens/devis.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.4.7/tests/Unit/Panther/screens/devisShow.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.4.7/tests/Unit/Panther/screens/facture.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.4.7/tests/Unit/Panther/screens/factureShow.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.4.7/tests/Unit/Panther/screens/produit.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.4.7/tests/Unit/Panther/screens/statistique.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.4.7/tests/Unit/Panther/screens/productSelectorMobile.png</screenshot>
     <donation>https://www.buymeacoffee.com/benjaminaimard</donation>
     <dependencies>
         <nextcloud min-version="32" max-version="35"/>

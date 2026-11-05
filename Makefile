@@ -203,7 +203,7 @@ validate-facturx:
 
 .PHONY: testPanther
 testPanther:
-	killall geckodriver; php tests/Unit/Panther/IhmTest.php
+	php tests/Unit/Panther/IhmTest.php
 
 translate:
 	./translationtool.phar convert-po-files

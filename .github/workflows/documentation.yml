@@ -7,13 +7,23 @@ on:
     paths:
       - 'documentation/**'
       - '.github/workflows/documentation.yml'
+    tags:
+      - '[0-9]*.[0-9]*.[0-9]*'
+      - 'v[0-9]*.[0-9]*.[0-9]*'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'documentation/**'
+      - '.github/workflows/documentation.yml'
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: github-pages
+  group: ${{ github.event_name == 'pull_request' && format('documentation-pr-{0}', github.event.pull_request.number) || 'github-pages' }}
   cancel-in-progress: true
 
 jobs:
@@ -23,6 +33,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.ref || 'master' }}
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -34,21 +48,19 @@ jobs:
       - name: Install documentation dependencies
         run: python -m pip install --requirement documentation/requirements.txt
 
-      - name: Build documentation
-        run: >
-          python -m sphinx
-          -W
-          --keep-going
-          -b html
-          documentation/source
-          documentation/build/html
+      - name: Test versioned publication
+        run: python -m unittest discover -s documentation -p 'test_*.py'
+
+      - name: Build versioned documentation
+        run: python documentation/build_versions.py
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: documentation/build/html
+          path: documentation/build/versions
 
   deploy:
+    if: github.event_name != 'pull_request'
     permissions:
       pages: write
       id-token: write

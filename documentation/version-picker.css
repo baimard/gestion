@@ -1,0 +1,27 @@
+.gestion-doc-versions {
+    box-sizing: border-box;
+    width: 300px;
+    max-width: 100%;
+    padding: 14px 20px;
+    border-bottom: 1px solid #555;
+    color: #fff;
+}
+.gestion-doc-versions label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+}
+.gestion-doc-versions select {
+    width: 100%;
+    min-height: 40px;
+    padding: 8px;
+    border: 1px solid #b7c9d6;
+    border-radius: 6px;
+    color: #183447;
+    background: #fff;
+    font: inherit;
+}
+.gestion-doc-versions select:focus-visible { outline: 3px solid #72c9ff; outline-offset: 2px; }
+.gestion-doc-versions noscript a { color: #a6dcff; }

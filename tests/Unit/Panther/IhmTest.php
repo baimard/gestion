@@ -41,10 +41,10 @@ $client->waitFor('#header');
 $client->request('GET', $baseUrl . '/index.php/apps/gestion/config');
 $client->waitFor('.gestion-settings-page');
 $client->waitFor('#CurrentCompany-select option');
-if ($client->getCrawler()->filter('#gestion-announcement')->count()) {
-    $client->waitForVisibility('#gestion-announcement');
-    $client->executeScript("document.querySelector('[data-dismiss-announcement]').click()");
-    $client->waitForInvisibility('#gestion-announcement');
+if ($client->getCrawler()->filter('#modalConfig[data-announcement-version]:not([data-announcement-version=""])')->count()) {
+    $client->waitForVisibility('#modalConfig');
+    $client->executeScript("document.querySelector('#modalConfig .modalClose').click()");
+    $client->waitForInvisibility('#modalConfig');
 }
 if ($companyId = getenv('NEXTCLOUD_TEST_COMPANY_ID')) {
     if (!ctype_digit($companyId)) throw new RuntimeException('Invalid demo company id.');

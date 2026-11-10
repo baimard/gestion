@@ -1931,3 +1931,6 @@ msgstr "Vos retours aideront à concevoir cette intégration et à la tester en 
 
 msgid "Join the beta testing"
 msgstr "Participer aux bêta-tests"
+
+msgid "Beta testing is open only to users based in France."
+msgstr "Les bêta-tests sont réservés aux utilisateurs situés en France."

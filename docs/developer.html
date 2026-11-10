@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentation développeur &mdash; Gestion 3.4.7</title>
+  <title>Documentation développeur &mdash; Gestion 3.4.8</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=f3e61c1f"></script>
+      <script src="_static/documentation_options.js?v=1bfcbfdd"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -141,7 +141,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#tests-panther">Tests Panther</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#base-de-donnees">Base de données</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#traductions">Traductions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#version-et-publication">Version et publication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-et-publication">Version et publication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#annonce-a-tous-les-utilisateurs">Annonce à tous les utilisateurs</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#tests-du-nouvel-espace-de-gestion">Tests du nouvel espace de gestion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#messages-et-confirmations-de-verrouillage">Messages et confirmations de verrouillage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#controles-de-securite">Contrôles de sécurité</a></li>
@@ -283,6 +286,23 @@ PR fonctionnelle.</p>
 </section>
 <section id="version-et-publication">
 <h2>Version et publication<a class="headerlink" href="#version-et-publication" title="Lien vers cette rubrique"></a></h2>
+<section id="annonce-a-tous-les-utilisateurs">
+<h3>Annonce à tous les utilisateurs<a class="headerlink" href="#annonce-a-tous-les-utilisateurs" title="Lien vers cette rubrique"></a></h3>
+<p>La version <code class="docutils literal notranslate"><span class="pre">3.4.8</span></code> prépare un appel à bêta-testeurs pour l’application Qonto,
+en vue d’une intégration complète avec Gestion. L’annonce apparaît à l’ouverture
+de Gestion dès cette version, pour chaque utilisateur authentifié, même lorsque
+plusieurs personnes partagent la même société. Le bouton de participation ouvre
+le logiciel de messagerie ; Gestion n’envoie pas d’e-mail automatiquement.</p>
+<p>Le déclencheur est <code class="docutils literal notranslate"><span class="pre">AnnouncementService::VERSION</span></code>. Pour une future annonce,
+choisissez une nouvelle version, adaptez le texte traduisible dans
+<code class="docutils literal notranslate"><span class="pre">templates/content/changelog.php</span></code> et publiez une version de Gestion au moins
+égale au déclencheur. Un simple correctif ultérieur ne réaffiche pas l’annonce
+aux utilisateurs qui l’ont déjà fermée. Aucun tag ni aucune publication du store
+n’est nécessaire pour préparer ces changements sur <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+<p>L’acquittement est enregistré dans les préférences de l’utilisateur seulement
+après fermeture et confirmation du serveur, par une requête authentifiée avec
+protection CSRF. Recharger la page sans fermer le message ne le marque pas comme
+lu. Ce mécanisme est distinct de l’ancien champ <code class="docutils literal notranslate"><span class="pre">changelog</span></code> des sociétés.</p>
 <p>La source de vérité de la version est <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code>. L’interface et la
 documentation Sphinx lisent cette valeur automatiquement. Lors d’une
 publication, vérifiez également les métadonnées du paquet et le tag Git.</p>
@@ -292,6 +312,7 @@ publication, vérifiez également les métadonnées du paquet et le tag Git.</p>
 <span class="go">    documentation/source documentation/build/html</span>
 </pre></div>
 </div>
+</section>
 </section>
 <section id="tests-du-nouvel-espace-de-gestion">
 <h2>Tests du nouvel espace de gestion<a class="headerlink" href="#tests-du-nouvel-espace-de-gestion" title="Lien vers cette rubrique"></a></h2>

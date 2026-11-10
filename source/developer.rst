@@ -128,6 +128,27 @@ PR fonctionnelle.
 Version et publication
 ----------------------
 
+Annonce à tous les utilisateurs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+La version ``3.4.8`` prépare un appel à bêta-testeurs pour l'application Qonto,
+en vue d'une intégration complète avec Gestion. L'annonce apparaît à l'ouverture
+de Gestion dès cette version, pour chaque utilisateur authentifié, même lorsque
+plusieurs personnes partagent la même société. Le bouton de participation ouvre
+le logiciel de messagerie ; Gestion n'envoie pas d'e-mail automatiquement.
+
+Le déclencheur est ``AnnouncementService::VERSION``. Pour une future annonce,
+choisissez une nouvelle version, adaptez le texte traduisible dans
+``templates/content/changelog.php`` et publiez une version de Gestion au moins
+égale au déclencheur. Un simple correctif ultérieur ne réaffiche pas l'annonce
+aux utilisateurs qui l'ont déjà fermée. Aucun tag ni aucune publication du store
+n'est nécessaire pour préparer ces changements sur ``master``.
+
+L'acquittement est enregistré dans les préférences de l'utilisateur seulement
+après fermeture et confirmation du serveur, par une requête authentifiée avec
+protection CSRF. Recharger la page sans fermer le message ne le marque pas comme
+lu. Ce mécanisme est distinct de l'ancien champ ``changelog`` des sociétés.
+
 La source de vérité de la version est ``appinfo/info.xml``. L'interface et la
 documentation Sphinx lisent cette valeur automatiquement. Lors d'une
 publication, vérifiez également les métadonnées du paquet et le tag Git.

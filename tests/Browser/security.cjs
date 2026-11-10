@@ -1,3 +1,4 @@
+const dismissAnnouncement = require('./dismiss-announcement.cjs');
 // Opt-in against a disposable Nextcloud instance after documents.cjs created its fixture.
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
@@ -20,6 +21,7 @@ const fs = require('node:fs');
         await page.locator('[name=password]').fill(process.env.NEXTCLOUD_TEST_PASSWORD);
         await page.getByRole('button', { name: 'Log in', exact: true }).click();
         await page.waitForURL('**/apps/gestion/**');
+        await dismissAnnouncement(page);
         const api = (path, data, method = 'POST') => page.evaluate(async ({ path, data, method }) => {
             const response = await fetch(OC.generateUrl('/apps/gestion' + path), {
                 method, headers: { 'Content-Type': 'application/json', requesttoken: OC.requestToken },

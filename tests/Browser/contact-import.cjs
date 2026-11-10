@@ -1,3 +1,4 @@
+const dismissAnnouncement = require('./dismiss-announcement.cjs');
 // Run against a disposable instance with a standard user and an accessible fixture contact.
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
@@ -21,6 +22,7 @@ const assert = require('node:assert/strict');
         await page.locator('[name=password]').fill(password);
         await page.getByRole('button', { name: 'Log in', exact: true }).click();
         await page.waitForURL('**/apps/gestion/**');
+        await dismissAnnouncement(page);
         const profile = await page.evaluate(async () => (await (await fetch('/ocs/v2.php/cloud/user?format=json', { headers: { 'OCS-APIRequest': 'true', requesttoken: OC.requestToken } })).json()).ocs.data);
         assert.ok(Array.isArray(profile.groups) && !profile.groups.includes('admin'), 'This regression must run as a non-administrator.');
         const api = (path, data, method = 'POST', invalidToken = false) => page.evaluate(async ({ path, data, method, invalidToken }) => {

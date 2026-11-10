@@ -1,3 +1,4 @@
+const dismissAnnouncement = require('./dismiss-announcement.cjs');
 const {chromium}=require('playwright');const fs=require('fs');const assert=require('node:assert/strict');
 (async()=>{
  const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
@@ -5,6 +6,7 @@ const {chromium}=require('playwright');const fs=require('fs');const assert=requi
  const page=await ctx.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:8080/index.php/apps/gestion/config');
  if(page.url().includes('login')){await page.locator('input[name=user]').fill(process.env.NEXTCLOUD_TEST_USER);await page.locator('input[name=password]').fill(process.env.NEXTCLOUD_TEST_PASSWORD);await page.getByRole('button',{name:'Log in',exact:true}).click();await page.waitForURL('**/apps/gestion/**');}
+await dismissAnnouncement(page);
  await page.waitForTimeout(600);
  await page.locator('input[name=price_decimals]').fill('4');await page.locator('#gestion-precision button').click();
  await page.waitForTimeout(400);await page.reload();await page.waitForTimeout(500);assert.equal(await page.locator('input[name=price_decimals]').inputValue(),'4');

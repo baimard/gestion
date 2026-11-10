@@ -132,7 +132,11 @@ Annonce à tous les utilisateurs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 La version ``3.4.8`` prépare un appel à bêta-testeurs pour l'application Qonto,
-en vue d'une intégration complète avec Gestion. L'annonce apparaît à l'ouverture
+en vue d'une intégration complète avec Gestion. Les bêta-tests sont réservés à la
+France. Le texte source est en anglais et passe par ``$l->t()`` pour Transifex.
+L'annonce est intégrée à la fenêtre habituelle ``modalConfig`` de bienvenue,
+newsletter et historique des versions, et reste consultable via **À propos**.
+Cette fenêtre apparaît automatiquement à l'ouverture
 de Gestion dès cette version, pour chaque utilisateur authentifié, même lorsque
 plusieurs personnes partagent la même société. Le bouton de participation ouvre
 le logiciel de messagerie ; Gestion n'envoie pas d'e-mail automatiquement.

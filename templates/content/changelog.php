@@ -1,20 +1,17 @@
-<?php if (!empty($_['announcementVersion'])): ?>
-<dialog id="gestion-announcement" class="gestion-workspace-dialog" data-announcement-version="<?php p($_['announcementVersion']); ?>" aria-labelledby="gestion-announcement-title" aria-describedby="gestion-announcement-description">
-    <h2 id="gestion-announcement-title"><?php p($l->t('Qonto application: beta testers wanted')); ?></h2>
-    <div id="gestion-announcement-description">
-        <p><?php p($l->t('I am looking for beta testers for the Qonto application, with the aim of fully integrating it with Gestion.')); ?></p>
-        <p><?php p($l->t('Your feedback will help shape the integration and test real-world workflows. If you would like to take part, contact me and tell me how you use Qonto and Gestion.')); ?></p>
-    </div>
-    <div class="gestion-announcement-actions">
-        <a class="button primary" href="mailto:contact@cybercorp.fr?subject=Gestion%20-%20Qonto%20beta%20testing"><?php p($l->t('Join the beta testing')); ?></a>
-        <button type="button" data-dismiss-announcement autofocus><?php p($l->t('Close')); ?></button>
-    </div>
-</dialog>
-<?php endif; ?>
-<div style="display: none;" id="modalConfig" class="modal">
+<div style="display: none;" id="modalConfig" class="modal" data-announcement-version="<?php p($_['announcementVersion'] ?? ''); ?>" role="dialog" aria-modal="true" aria-labelledby="gestion-release-title">
 <div class="modal-content">
-	<span class="modalClose">&times;</span>
-	<h2><?php p($l->t('Welcome to GESTION')); ?> <?php p($_['appVersion']); ?></h2>
+	<span class="modalClose" role="button" tabindex="0" aria-label="<?php p($l->t('Close')); ?>">&times;</span>
+	<h2 id="gestion-release-title"><?php p($l->t('Welcome to GESTION')); ?> <?php p($_['appVersion']); ?></h2>
+
+    <section id="gestion-announcement" aria-labelledby="gestion-announcement-title" style="font-size:14px;margin-bottom:20px;">
+        <h3 id="gestion-announcement-title"><?php p($l->t('Qonto application: beta testers wanted')); ?></h3>
+        <p><?php p($l->t('I am looking for beta testers for the Qonto application, with the aim of fully integrating it with Gestion.')); ?></p>
+        <p><strong><?php p($l->t('Beta testing is open only to users based in France.')); ?></strong></p>
+        <p><?php p($l->t('Your feedback will help shape the integration and test real-world workflows. If you would like to take part, contact me and tell me how you use Qonto and Gestion.')); ?></p>
+        <p><a href="mailto:contact@cybercorp.fr?subject=Gestion%20-%20Qonto%20beta%20testing"><?php p($l->t('Join the beta testing')); ?></a></p>
+    </section>
+
+	<hr />
 
 	<p style="font-size:16px;margin-bottom:20px;">
 		<?php p($l->t('Gestion is developed and maintained by its author in his free time. Your support helps keep the project active, improve the application and answer users. If Gestion is useful to you, you can support the project by buying the author a coffee. Even a €1 contribution is a meaningful gesture and helps the project move forward.')); ?>

@@ -10,6 +10,7 @@ import {
 } from './handlers/editable_handlers.js';
 import {
     closeModal,
+    initializeReleaseAnnouncement,
     openAboutModal,
     openFolderPicker,
     updateCurrentCompanySelection,
@@ -217,3 +218,4 @@ function handleBodyFocusout(event) {
 }
 
 document.addEventListener('DOMContentLoaded', registerMainListeners);
+document.addEventListener('DOMContentLoaded', initializeReleaseAnnouncement);

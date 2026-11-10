@@ -38,7 +38,7 @@ class RoutePermissionsTest extends TestCase {
 
     public function sessionRoutes(): array {
         $cases = [];
-        foreach (['Client' => ['contacts', 'importContact'], 'Admin' => ['backup', 'restore'], 'Crud' => ['lockDocument', 'history', 'reorderProducts'], 'Pdf' => ['personalMailStatus', 'sendPersonalMail']] as $controller => $methods) {
+        foreach (['Client' => ['contacts', 'importContact'], 'Admin' => ['backup', 'restore'], 'Crud' => ['lockDocument', 'history', 'reorderProducts'], 'Pdf' => ['personalMailStatus', 'sendPersonalMail'], 'Announcement' => ['acknowledge']] as $controller => $methods) {
             foreach ($methods as $method) $cases[$controller . '::' . $method] = ['OCA\\Gestion\\Controller\\' . $controller . 'Controller', $method];
         }
         return $cases;

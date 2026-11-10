@@ -1053,6 +1053,8 @@ button.electronic-invoice-help:focus-visible {
 .gestion-workspace-dialog h2 { font-size: 22px; line-height: 1.4; margin: 0 0 16px; }
 .gestion-workspace-dialog p { margin-block: 12px; line-height: 1.6; }
 .gestion-workspace-dialog button { min-height: 44px; }
+.gestion-announcement-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; margin-top: 20px; }
+.gestion-announcement-actions .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 16px; border-radius: var(--border-radius-element, 8px); text-decoration: none; }
 .gestion-history { list-style: none; padding: 0; }
 .gestion-history li { padding: 16px 0; border-bottom: 1px solid var(--color-border); overflow-wrap: anywhere; }
 .gestion-history li p { margin: 4px 0; color: var(--color-text-maxcontrast); }

@@ -1,6 +1,10 @@
 OC.L10N.register(
     "gestion",
     {
+    "Qonto application: beta testers wanted" : "Application Qonto : recherche de bêta-testeurs",
+    "I am looking for beta testers for the Qonto application, with the aim of fully integrating it with Gestion." : "Je recherche des bêta-testeurs pour l’application Qonto, en vue de son intégration complète avec Gestion.",
+    "Your feedback will help shape the integration and test real-world workflows. If you would like to take part, contact me and tell me how you use Qonto and Gestion." : "Vos retours aideront à concevoir cette intégration et à la tester en conditions réelles. Pour participer, contactez-moi en précisant votre utilisation de Qonto et de Gestion.",
+    "Join the beta testing" : "Participer aux bêta-tests",
     "Last name" : "Nom",
     "First name" : "Prénom",
     "Limited company" : "Siret",

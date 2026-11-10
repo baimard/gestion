@@ -1,3 +1,4 @@
+const dismissAnnouncement = require('./dismiss-announcement.cjs');
 // Opt-in: creates fictional data only in a dedicated disposable store-demo account.
 const { chromium, request } = require('playwright');
 const assert = require('node:assert/strict');
@@ -15,6 +16,7 @@ const assert = require('node:assert/strict');
         await page.locator('[name=password]').fill(password);
         await page.locator('button[type=submit]').click();
         await page.waitForURL('**/apps/gestion/**');
+        await dismissAnnouncement(page);
         const api = (path, data, method = 'POST') => page.evaluate(async ({ path, data, method }) => {
             const response = await fetch(OC.generateUrl('/apps/gestion' + path), {
                 method, headers: { 'Content-Type': 'application/json', requesttoken: OC.requestToken },

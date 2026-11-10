@@ -174,6 +174,32 @@ function applyLockedState() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const announcement = document.getElementById('gestion-announcement');
+    if (announcement) {
+        const close = announcement.querySelector('[data-dismiss-announcement]');
+        const dismiss = async () => {
+            if (close.disabled) return;
+            close.disabled = true;
+            try {
+                await request('/announcements/acknowledge', {version: announcement.dataset.announcementVersion});
+                announcement.close();
+                announcement.remove();
+            } catch {
+                close.disabled = false;
+                showError(t('gestion', 'The operation could not be completed.'));
+            }
+        };
+        close.addEventListener('click', dismiss);
+        announcement.addEventListener('cancel', event => { event.preventDefault(); dismiss(); });
+        announcement.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                event.stopPropagation();
+                dismiss();
+            }
+        });
+        announcement.showModal();
+    }
     applyLockedState();
     // Keep action menus outside table clipping, including on the final row.
     let openActions = null;

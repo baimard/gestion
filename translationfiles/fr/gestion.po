@@ -1919,3 +1919,15 @@ msgstr "Une hauteur maximale de 0 signifie une hauteur automatique. Les images s
 
 msgid "Logo proportions are preserved. Large main logos appear above the address table. On small screens, logos shrink to fit the available space."
 msgstr "Les proportions des logos sont conservées. Les grands logos principaux apparaissent au-dessus du tableau des coordonnées. Sur petit écran, les logos sont réduits à la place disponible."
+
+msgid "Qonto application: beta testers wanted"
+msgstr "Application Qonto : recherche de bêta-testeurs"
+
+msgid "I am looking for beta testers for the Qonto application, with the aim of fully integrating it with Gestion."
+msgstr "Je recherche des bêta-testeurs pour l’application Qonto, en vue de son intégration complète avec Gestion."
+
+msgid "Your feedback will help shape the integration and test real-world workflows. If you would like to take part, contact me and tell me how you use Qonto and Gestion."
+msgstr "Vos retours aideront à concevoir cette intégration et à la tester en conditions réelles. Pour participer, contactez-moi en précisant votre utilisation de Qonto et de Gestion."
+
+msgid "Join the beta testing"
+msgstr "Participer aux bêta-tests"

@@ -41,6 +41,11 @@ $client->waitFor('#header');
 $client->request('GET', $baseUrl . '/index.php/apps/gestion/config');
 $client->waitFor('.gestion-settings-page');
 $client->waitFor('#CurrentCompany-select option');
+if ($client->getCrawler()->filter('#gestion-announcement')->count()) {
+    $client->waitForVisibility('#gestion-announcement');
+    $client->executeScript("document.querySelector('[data-dismiss-announcement]').click()");
+    $client->waitForInvisibility('#gestion-announcement');
+}
 if ($companyId = getenv('NEXTCLOUD_TEST_COMPANY_ID')) {
     if (!ctype_digit($companyId)) throw new RuntimeException('Invalid demo company id.');
     $status = $client->executeAsyncScript(<<<'JS'

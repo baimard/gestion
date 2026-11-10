@@ -1,3 +1,4 @@
+const dismissAnnouncement = require('./dismiss-announcement.cjs');
 // Opt-in read-only navigation checks on a disposable Nextcloud instance.
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
@@ -16,6 +17,7 @@ const assert = require('node:assert/strict');
         await page.locator('[name=password]').fill(process.env.NEXTCLOUD_TEST_PASSWORD);
         await page.locator('button[type=submit]').click();
         await page.waitForURL('**/apps/gestion/**');
+        await dismissAnnouncement(page);
         const toggle = page.locator('.gestion-navigation-toggle');
         const navigation = page.locator('#app-navigation');
         const close = page.locator('.gestion-navigation-close');

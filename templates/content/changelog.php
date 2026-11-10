@@ -1,3 +1,16 @@
+<?php if (!empty($_['announcementVersion'])): ?>
+<dialog id="gestion-announcement" class="gestion-workspace-dialog" data-announcement-version="<?php p($_['announcementVersion']); ?>" aria-labelledby="gestion-announcement-title" aria-describedby="gestion-announcement-description">
+    <h2 id="gestion-announcement-title"><?php p($l->t('Qonto application: beta testers wanted')); ?></h2>
+    <div id="gestion-announcement-description">
+        <p><?php p($l->t('I am looking for beta testers for the Qonto application, with the aim of fully integrating it with Gestion.')); ?></p>
+        <p><?php p($l->t('Your feedback will help shape the integration and test real-world workflows. If you would like to take part, contact me and tell me how you use Qonto and Gestion.')); ?></p>
+    </div>
+    <div class="gestion-announcement-actions">
+        <a class="button primary" href="mailto:contact@cybercorp.fr?subject=Gestion%20-%20Qonto%20beta%20testing"><?php p($l->t('Join the beta testing')); ?></a>
+        <button type="button" data-dismiss-announcement autofocus><?php p($l->t('Close')); ?></button>
+    </div>
+</dialog>
+<?php endif; ?>
 <div style="display: none;" id="modalConfig" class="modal">
 <div class="modal-content">
 	<span class="modalClose">&times;</span>

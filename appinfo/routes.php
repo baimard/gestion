@@ -7,6 +7,7 @@ return [
         ['name' => 'view#produit', 'url' => '/produit', 'verb' => 'GET'],
         ['name' => 'configuration#config', 'url' => '/config', 'verb' => 'GET'],
         ['name' => 'configuration#isConfig', 'url' => '/isconfig', 'verb' => 'GET'],
+        ['name' => 'announcement#acknowledge', 'url' => '/announcements/acknowledge', 'verb' => 'POST'],
         ['name' => 'view#statistique', 'url' => '/statistique', 'verb' => 'GET'],
         ['name' => 'view#legalnotice', 'url' => '/legalnotice', 'verb' => 'GET'],
         ['name' => 'view#france', 'url' => '/legalnotice/france', 'verb' => 'GET'],

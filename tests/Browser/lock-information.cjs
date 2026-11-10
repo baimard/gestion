@@ -1,3 +1,4 @@
+const dismissAnnouncement = require('./dismiss-announcement.cjs');
 const {chromium}=require('playwright');const fs=require('fs');const assert=require('node:assert/strict');
 (async()=>{
 const fixture=JSON.parse(fs.readFileSync(process.env.NEXTCLOUD_TEST_FIXTURE || '/tmp/gestion-e2e-fixture.json'));
@@ -8,6 +9,7 @@ await context.route('**/personal-mail/status',r=>r.fulfill({json:{available:true
 await context.route('**/personal-mail/send',r=>{mailRequests++;return r.fulfill({status:400,json:{message:'Simulated delivery failure.',documentLocked:true}})});
 await context.route('**/sendFacturXToIopole',r=>{iopoleRequests++;return r.fulfill({status:400,json:{message:'Simulated platform failure.',documentLocked:true}})});
 await page.goto('http://127.0.0.1:8080/index.php/apps/gestion/config');if(page.url().includes('login')){await page.locator('[name=user]').fill(process.env.NEXTCLOUD_TEST_USER);await page.locator('[name=password]').fill(process.env.NEXTCLOUD_TEST_PASSWORD);await page.getByRole('button',{name:'Log in',exact:true}).click();await page.waitForURL('**/apps/gestion/**');}
+await dismissAnnouncement(page);
 await page.evaluate(async id=>{await fetch(OC.generateUrl('/apps/gestion/updateSession'),{method:'POST',headers:{'Content-Type':'application/json',requesttoken:OC.requestToken||oc_requesttoken},body:JSON.stringify({companyID:String(id)})})},fixture.company);
 await page.goto(`http://127.0.0.1:8080/index.php/apps/gestion/devis/${fixture.quote}/show`);await page.waitForFunction(()=>document.documentElement.dataset.gestionDocumentReady==='true');
 assert.match(await page.locator('.gestion-document-toolbar [role=status]').innerText(),/cannot be edited or deleted/);

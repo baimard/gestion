@@ -21,7 +21,8 @@ class TemplateService {
 		DataService $dataService,
 		FileService $fileService,
 		NavigationService $navigationService,
-		ContentSecurityPolicy $csp
+		ContentSecurityPolicy $csp,
+        private AnnouncementService $announcementService
 	) {
 		$this->userId = $UserId;
 		$this->appManager = $appManager;
@@ -36,6 +37,7 @@ class TemplateService {
 		return [
 			'path' => $this->userId,
 			'appVersion' => $this->appManager->getAppVersion('gestion'),
+            'announcementVersion' => $this->announcementService->pendingVersion(),
 			'url' => $this->navigationService->getNavigationLink(),
 			'CompaniesList' => $this->companyService->getCompaniesList(),
 			'CurrentCompany' => $this->companyService->getCurrentCompany(),

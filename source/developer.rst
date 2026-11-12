@@ -162,8 +162,15 @@ La construction de documentation utilisée en CI est :
 .. code-block:: console
 
    python -m pip install -r documentation/requirements.txt
-   python -m sphinx -W --keep-going -b html \
-       documentation/source documentation/build/html
+   git fetch origin --tags
+   python -m unittest discover -s documentation -p 'test_*.py'
+   python documentation/build_versions.py
+
+Le workflow ``Documentation`` publie ``documentation/build/versions`` sur
+GitHub Pages depuis ``master``. Le guide :doc:`documentation_versions`
+décrit le sélecteur, les archives et la distinction entre une version stable
+publiée et la documentation de développement. La construction d'une pull request
+vérifie le site sans le publier.
 
 Tests du nouvel espace de gestion
 ----------------------------------

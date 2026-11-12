@@ -51,6 +51,7 @@ Fonctionnalités principales
    electronic_invoicing
    other_features
    troubleshooting
+   documentation_versions
 
 .. toctree::
    :maxdepth: 2

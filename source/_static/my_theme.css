@@ -1,3 +1,47 @@
 .wy-nav-content {
-    max-width: 100% !important;
+    max-width: 64rem;
+}
+
+/* Videos must stay in the document flow: the theme floats .align-left,
+   which otherwise places the next section beside the preceding tutorial. */
+.rst-content .sphinx-contrib-video-container,
+.rst-content figure,
+.rst-content .figure {
+    float: none;
+    clear: both;
+    max-width: 100%;
+    margin: 1.5rem 0 2rem;
+}
+
+.rst-content video {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 8px;
+    background: #202020;
+}
+
+.rst-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.rst-content img.align-left,
+.rst-content img.align-right {
+    display: block;
+    float: none;
+    margin: 1.5rem 0;
+}
+
+/* Keep long links and inline paths inside the reading column on mobile.
+   Code blocks retain their own horizontal scrolling. */
+.rst-content a,
+.rst-content code.literal {
+    overflow-wrap: anywhere;
+}
+
+.rst-content code.literal,
+.rst-content code.literal .pre {
+    white-space: normal;
 }

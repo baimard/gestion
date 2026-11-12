@@ -37,26 +37,28 @@ def decorate(versions, stable):
     for site in sites:
         for page in site['pages']:
             file = OUTPUT / site['path'] / page
-            options, links = [], []
+            links = []
             for version in versions:
                 destination = page if page in version['pages'] else 'index.html'
                 url = os.path.relpath(OUTPUT / version['path'] / destination, file.parent)
                 label = html.escape(version['label'])
-                selected = ' selected' if version['id'] == site['id'] else ''
-                options.append(f'<option value="{html.escape(url, quote=True)}"{selected}>{label}</option>')
-                links.append(f'<a href="{html.escape(url, quote=True)}">{label}</a>')
-            picker = ('<nav class="gestion-doc-versions" aria-label="Version de la documentation">'
-                      '<label for="gestion-doc-version">Version de la documentation</label>'
-                      '<select id="gestion-doc-version">' + ''.join(options) + '</select>'
-                      '<noscript>' + ' · '.join(links) + '</noscript></nav>')
+                current = ' aria-current="page"' if version['id'] == site['id'] else ''
+                links.append(f'<li><a href="{html.escape(url, quote=True)}"{current}>{label}</a></li>')
+            picker = ('<details class="gestion-doc-versions">'
+                      '<summary aria-label="Choisir la version de la documentation">Version : '
+                      + html.escape(site['label']) + '</summary>'
+                      '<nav aria-label="Version de la documentation"><ul>'
+                      + ''.join(links) + '</ul></nav></details>')
             prefix = os.path.relpath(OUTPUT, file.parent).replace(os.sep, '/')
             resources = (f'<link rel="stylesheet" href="{prefix}/_version-picker.css">'
                          f'<script defer src="{prefix}/_version-picker.js"></script>')
             content = file.read_text()
             content = content.replace('</head>', resources + '</head>', 1)
-            marker = '<div class="wy-menu wy-menu-vertical"'
-            if marker in content:
-                content = content.replace(marker, picker + marker, 1)
+            sidebar = r'(<nav\b[^>]*class="wy-nav-side"[^>]*>.*?)(</nav>)'
+            if re.search(sidebar, content, flags=re.DOTALL):
+                # Outside the scrolling menu, pinned to the bottom of the sidebar.
+                content = re.sub(sidebar, lambda m: m[1] + picker + m[2],
+                                 content, count=1, flags=re.DOTALL)
             else:
                 content = re.sub(r'(<body\b[^>]*>)', lambda m: m[0] + picker, content, count=1)
             file.write_text(content)

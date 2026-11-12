@@ -1,27 +1,37 @@
+/* Keep the version switcher visible below the independently scrolling TOC. */
+.wy-nav-side { padding-bottom: 52px; }
 .gestion-doc-versions {
     box-sizing: border-box;
-    width: 300px;
-    max-width: 100%;
-    padding: 14px 20px;
-    border-bottom: 1px solid #555;
-    color: #fff;
-}
-.gestion-doc-versions label {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #fff;
-}
-.gestion-doc-versions select {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    min-height: 40px;
-    padding: 8px;
-    border: 1px solid #b7c9d6;
-    border-radius: 6px;
-    color: #183447;
-    background: #fff;
-    font: inherit;
+    color: #fff;
+    background: #272525;
+    border-top: 1px solid #555;
+    z-index: 1;
 }
-.gestion-doc-versions select:focus-visible { outline: 3px solid #72c9ff; outline-offset: 2px; }
-.gestion-doc-versions noscript a { color: #a6dcff; }
+.gestion-doc-versions summary {
+    min-height: 52px;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+.gestion-doc-versions nav {
+    position: absolute;
+    bottom: 100%;
+    width: 100%;
+    max-height: calc(100vh - 110px);
+    max-height: calc(100dvh - 110px);
+    overflow-y: auto;
+    background: #272525;
+    border-top: 1px solid #555;
+    box-shadow: 0 -6px 18px #0003;
+}
+.gestion-doc-versions ul { margin: 0; padding: 8px 0; list-style: none; }
+.gestion-doc-versions a { display: block; padding: 10px 20px; color: #ddd; }
+.gestion-doc-versions a[aria-current="page"] { color: #72c9ff; font-weight: 700; }
+.gestion-doc-versions a:hover { color: #fff; background: #454242; }
+.gestion-doc-versions summary:focus-visible,
+.gestion-doc-versions a:focus-visible { outline: 3px solid #72c9ff; outline-offset: -3px; }

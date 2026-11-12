@@ -1,22 +1,15 @@
-/* All destinations are rendered at build time, including missing-page fallbacks. */
+/* Native details and links also work without JavaScript. */
 document.addEventListener('DOMContentLoaded', () => {
-    const picker = document.getElementById('gestion-doc-version');
-    if (picker) {
-        picker.addEventListener('change', () => {
-            const selectedDestination = picker.value;
+    const picker = document.querySelector('.gestion-doc-versions');
+    if (!picker) return;
 
-            let parsedDestination;
-            try {
-                parsedDestination = new URL(selectedDestination, window.location.origin);
-            } catch {
-                return;
-            }
-
-            const isHttp = parsedDestination.protocol === 'http:' || parsedDestination.protocol === 'https:';
-            const isSameOrigin = parsedDestination.origin === window.location.origin;
-            if (isHttp && isSameOrigin) {
-                window.location.assign(parsedDestination.href);
-            }
-        });
-    }
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && picker.open) {
+            picker.open = false;
+            picker.querySelector('summary').focus();
+        }
+    });
+    document.addEventListener('click', (event) => {
+        if (!picker.contains(event.target)) picker.open = false;
+    });
 });

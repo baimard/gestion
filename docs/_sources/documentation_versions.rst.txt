@@ -1,9 +1,11 @@
 Choisir la version de la documentation
 ======================================
 
-Le menu **Version de la documentation**, dans la navigation, permet de lire
+Le lien **Version : …**, fixé en bas à gauche de la navigation, permet de lire
 le guide correspondant à la version de Gestion installée sur votre Nextcloud.
-Sur mobile, ouvrez d'abord le menu de navigation.
+Cliquez dessus pour ouvrir la liste des versions vers le haut, puis choisissez
+votre version. Sur mobile, ouvrez d'abord le menu de navigation : le lien reste
+en bas du panneau, même après un défilement du sommaire.
 
 * **Stable** ouvre la documentation de la dernière version disponible parmi
   les versions archivées.
@@ -14,7 +16,17 @@ Sur mobile, ouvrez d'abord le menu de navigation.
 En changeant de version, vous restez sur le même sujet s'il existe dans le
 guide choisi. Sinon, la page d'accueil de cette version s'ouvre.
 Les anciennes adresses du site continuent à ouvrir la documentation stable.
-Sans JavaScript, des liens vers les versions restent disponibles dans le menu.
+Le sélecteur et ses liens fonctionnent aussi sans JavaScript. Il est utilisable
+au clavier : Entrée ouvre la liste et Tab permet de parcourir les versions.
+
+Versions actuelles
+------------------
+
+La dernière version publiée est **3.4.7** : c'est celle du choix **Stable**.
+Les guides de **3.4.0 à 3.4.7** restent consultables individuellement.
+La documentation **Développement** prépare **3.4.8**, notamment l'annonce
+de recherche de bêta-testeurs de l'application Qonto, réservée à la France.
+Cette préparation ne constitue pas une publication de l'application.
 
 Versions conservées
 -------------------
@@ -54,3 +66,6 @@ Pour vérifier localement :
    python -m http.server --directory documentation/build/versions
 
 Le fichier ``versions.json`` récapitule les versions et leurs commits sources.
+Le déploiement public utilise l'artefact de ce workflow depuis ``master``.
+La branche ``gh-pages`` conserve une copie des guides ; sa mise à jour seule
+ne remplace pas le site multiversion publié par le workflow.

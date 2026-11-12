@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Choisir la version de la documentation &mdash; Gestion 3.4.2</title>
+  <title>Choisir la version de la documentation &mdash; Gestion 3.4.8</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=abef82a1"></script>
+      <script src="_static/documentation_options.js?v=1bfcbfdd"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -100,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#modifier-une-nouvelle-offre-sans-toucher-a-l-original">Modifier une nouvelle offre sans toucher à l’original</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#comprendre-les-messages-de-refus">Comprendre les messages de refus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#historique-et-conservation">Historique et conservation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#verrouiller-depuis-la-liste-des-factures">Verrouiller depuis la liste des factures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="electronic_invoicing.html">Facturation électronique et Factur-X</a><ul>
@@ -132,6 +133,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Choisir la version de la documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#versions-actuelles">Versions actuelles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#versions-conservees">Versions conservées</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#publication-pour-les-mainteneurs">Publication pour les mainteneurs</a></li>
 </ul>
@@ -146,7 +148,10 @@
 <li class="toctree-l2"><a class="reference internal" href="developer.html#tests-panther">Tests Panther</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#base-de-donnees">Base de données</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#traductions">Traductions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer.html#version-et-publication">Version et publication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#version-et-publication">Version et publication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer.html#annonce-a-tous-les-utilisateurs">Annonce à tous les utilisateurs</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#tests-du-nouvel-espace-de-gestion">Tests du nouvel espace de gestion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#messages-et-confirmations-de-verrouillage">Messages et confirmations de verrouillage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#controles-de-securite">Contrôles de sécurité</a></li>
@@ -180,9 +185,11 @@
              
   <section id="choisir-la-version-de-la-documentation">
 <h1>Choisir la version de la documentation<a class="headerlink" href="#choisir-la-version-de-la-documentation" title="Lien vers cette rubrique"></a></h1>
-<p>Le menu <strong>Version de la documentation</strong>, dans la navigation, permet de lire
+<p>Le lien <strong>Version : …</strong>, fixé en bas à gauche de la navigation, permet de lire
 le guide correspondant à la version de Gestion installée sur votre Nextcloud.
-Sur mobile, ouvrez d’abord le menu de navigation.</p>
+Cliquez dessus pour ouvrir la liste des versions vers le haut, puis choisissez
+votre version. Sur mobile, ouvrez d’abord le menu de navigation : le lien reste
+en bas du panneau, même après un défilement du sommaire.</p>
 <ul class="simple">
 <li><p><strong>Stable</strong> ouvre la documentation de la dernière version disponible parmi
 les versions archivées.</p></li>
@@ -193,7 +200,16 @@ peuvent ne pas encore être disponibles sur votre installation.</p></li>
 <p>En changeant de version, vous restez sur le même sujet s’il existe dans le
 guide choisi. Sinon, la page d’accueil de cette version s’ouvre.
 Les anciennes adresses du site continuent à ouvrir la documentation stable.
-Sans JavaScript, des liens vers les versions restent disponibles dans le menu.</p>
+Le sélecteur et ses liens fonctionnent aussi sans JavaScript. Il est utilisable
+au clavier : Entrée ouvre la liste et Tab permet de parcourir les versions.</p>
+<section id="versions-actuelles">
+<h2>Versions actuelles<a class="headerlink" href="#versions-actuelles" title="Lien vers cette rubrique"></a></h2>
+<p>La dernière version publiée est <strong>3.4.7</strong> : c’est celle du choix <strong>Stable</strong>.
+Les guides de <strong>3.4.0 à 3.4.7</strong> restent consultables individuellement.
+La documentation <strong>Développement</strong> prépare <strong>3.4.8</strong>, notamment l’annonce
+de recherche de bêta-testeurs de l’application Qonto, réservée à la France.
+Cette préparation ne constitue pas une publication de l’application.</p>
+</section>
 <section id="versions-conservees">
 <h2>Versions conservées<a class="headerlink" href="#versions-conservees" title="Lien vers cette rubrique"></a></h2>
 <p>L’archivage commence avec Gestion 3.4.0. Les versions antérieures ne sont pas
@@ -224,7 +240,10 @@ déployer le site public.</p>
 <span class="go">python -m http.server --directory documentation/build/versions</span>
 </pre></div>
 </div>
-<p>Le fichier <code class="docutils literal notranslate"><span class="pre">versions.json</span></code> récapitule les versions et leurs commits sources.</p>
+<p>Le fichier <code class="docutils literal notranslate"><span class="pre">versions.json</span></code> récapitule les versions et leurs commits sources.
+Le déploiement public utilise l’artefact de ce workflow depuis <code class="docutils literal notranslate"><span class="pre">master</span></code>.
+La branche <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> conserve une copie des guides ; sa mise à jour seule
+ne remplace pas le site multiversion publié par le workflow.</p>
 </section>
 </section>
 

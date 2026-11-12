@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentation développeur &mdash; Gestion 3.4.2</title>
+  <title>Documentation développeur &mdash; Gestion 3.4.8</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=abef82a1"></script>
+      <script src="_static/documentation_options.js?v=1bfcbfdd"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -99,6 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#modifier-une-nouvelle-offre-sans-toucher-a-l-original">Modifier une nouvelle offre sans toucher à l’original</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#comprendre-les-messages-de-refus">Comprendre les messages de refus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#historique-et-conservation">Historique et conservation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#verrouiller-depuis-la-liste-des-factures">Verrouiller depuis la liste des factures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="electronic_invoicing.html">Facturation électronique et Factur-X</a><ul>
@@ -131,6 +132,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="documentation_versions.html">Choisir la version de la documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation_versions.html#versions-actuelles">Versions actuelles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_versions.html#versions-conservees">Versions conservées</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_versions.html#publication-pour-les-mainteneurs">Publication pour les mainteneurs</a></li>
 </ul>
@@ -145,7 +147,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#tests-panther">Tests Panther</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#base-de-donnees">Base de données</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#traductions">Traductions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#version-et-publication">Version et publication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-et-publication">Version et publication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#annonce-a-tous-les-utilisateurs">Annonce à tous les utilisateurs</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#tests-du-nouvel-espace-de-gestion">Tests du nouvel espace de gestion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#messages-et-confirmations-de-verrouillage">Messages et confirmations de verrouillage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#controles-de-securite">Contrôles de sécurité</a></li>
@@ -234,16 +239,35 @@ PostgreSQL et SQLite.</p>
 <h2>Tests Panther<a class="headerlink" href="#tests-panther" title="Lien vers cette rubrique"></a></h2>
 <p>Les tests utilisent les variables suivantes :</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_BASE_URL</span></code></dt><dd><p>URL de l’instance, par défaut <code class="docutils literal notranslate"><span class="pre">http://dev.cybercorp.fr</span></code>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_BASE_URL</span></code></dt><dd><p>URL de l’instance, par défaut <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8080</span></code>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_TEST_USER</span></code></dt><dd><p>Compte Nextcloud de test, par défaut <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_TEST_USER</span></code></dt><dd><p>Compte Nextcloud de test obligatoire.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_TEST_PASSWORD</span></code></dt><dd><p>Mot de passe du compte de test.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_TEST_COMPANY_ID</span></code></dt><dd><p>Identifiant de la société de démonstration, affiché par le script de préparation.
+Permet de sélectionner la même société dans la nouvelle session Panther.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_SERVER_ROOT</span></code></dt><dd><p>Chemin du serveur Nextcloud, à préciser si l’application utilise un lien
+symbolique ou se trouve hors du dossier <code class="docutils literal notranslate"><span class="pre">apps</span></code> / <code class="docutils literal notranslate"><span class="pre">custom_apps</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">GECKODRIVER_PATH</span></code></dt><dd><p>Chemin facultatif de GeckoDriver. Par défaut : <code class="docutils literal notranslate"><span class="pre">drivers/geckodriver</span></code>
+dans le dépôt. Firefox doit être installé.</p>
 </dd>
 </dl>
 <p>Le scénario <code class="docutils literal notranslate"><span class="pre">tests/Unit/Panther/IhmTest.php</span></code> régénère les images dans
 <code class="docutils literal notranslate"><span class="pre">tests/Unit/Panther/screens/</span></code>. Utilisez exclusivement une instance et un
-compte de test : certains scénarios créent puis suppriment des données.</p>
+compte de test : le scénario ajoute une facture au devis de démonstration.</p>
+<p>Pour préparer des données fictives reproductibles, créez un compte dédié dont
+l’identifiant commence par <code class="docutils literal notranslate"><span class="pre">gestion-store-demo-</span></code> et utilisez
+<code class="docutils literal notranslate"><span class="pre">tests/Browser/seed-store-demo.cjs</span></code> avec les mêmes variables. Comme les autres
+scénarios navigateur, ce script nécessite Playwright via <code class="docutils literal notranslate"><span class="pre">NODE_PATH</span></code> et Chromium
+(<code class="docutils literal notranslate"><span class="pre">CHROMIUM_PATH</span></code> facultatif). Il crée des clients, produits, devis et factures,
+dont deux verrouillées ; utilisez une instance jetable. Il n’envoie aucun document.</p>
+<p>Exécutez ensuite <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">testPanther</span></code> depuis le dépôt. Les images référencées par
+les éléments <code class="docutils literal notranslate"><span class="pre">screenshot</span></code> de <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> sont celles du store Nextcloud.
+Elles deviennent accessibles aux URL publiques après fusion sur <code class="docutils literal notranslate"><span class="pre">master</span></code> ; le
+cache du store peut retarder leur actualisation.</p>
 </section>
 <section id="base-de-donnees">
 <h2>Base de données<a class="headerlink" href="#base-de-donnees" title="Lien vers cette rubrique"></a></h2>
@@ -268,15 +292,43 @@ PR fonctionnelle.</p>
 </section>
 <section id="version-et-publication">
 <h2>Version et publication<a class="headerlink" href="#version-et-publication" title="Lien vers cette rubrique"></a></h2>
+<section id="annonce-a-tous-les-utilisateurs">
+<h3>Annonce à tous les utilisateurs<a class="headerlink" href="#annonce-a-tous-les-utilisateurs" title="Lien vers cette rubrique"></a></h3>
+<p>La version <code class="docutils literal notranslate"><span class="pre">3.4.8</span></code> prépare un appel à bêta-testeurs pour l’application Qonto,
+en vue d’une intégration complète avec Gestion. Les bêta-tests sont réservés à la
+France. Le texte source est en anglais et passe par <code class="docutils literal notranslate"><span class="pre">$l-&gt;t()</span></code> pour Transifex.
+L’annonce est intégrée à la fenêtre habituelle <code class="docutils literal notranslate"><span class="pre">modalConfig</span></code> de bienvenue,
+newsletter et historique des versions, et reste consultable via <strong>À propos</strong>.
+Cette fenêtre apparaît automatiquement à l’ouverture
+de Gestion dès cette version, pour chaque utilisateur authentifié, même lorsque
+plusieurs personnes partagent la même société. Le bouton de participation ouvre
+le logiciel de messagerie ; Gestion n’envoie pas d’e-mail automatiquement.</p>
+<p>Le déclencheur est <code class="docutils literal notranslate"><span class="pre">AnnouncementService::VERSION</span></code>. Pour une future annonce,
+choisissez une nouvelle version, adaptez le texte traduisible dans
+<code class="docutils literal notranslate"><span class="pre">templates/content/changelog.php</span></code> et publiez une version de Gestion au moins
+égale au déclencheur. Un simple correctif ultérieur ne réaffiche pas l’annonce
+aux utilisateurs qui l’ont déjà fermée. Aucun tag ni aucune publication du store
+n’est nécessaire pour préparer ces changements sur <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+<p>L’acquittement est enregistré dans les préférences de l’utilisateur seulement
+après fermeture et confirmation du serveur, par une requête authentifiée avec
+protection CSRF. Recharger la page sans fermer le message ne le marque pas comme
+lu. Ce mécanisme est distinct de l’ancien champ <code class="docutils literal notranslate"><span class="pre">changelog</span></code> des sociétés.</p>
 <p>La source de vérité de la version est <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code>. L’interface et la
 documentation Sphinx lisent cette valeur automatiquement. Lors d’une
 publication, vérifiez également les métadonnées du paquet et le tag Git.</p>
 <p>La construction de documentation utilisée en CI est :</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m pip install -r documentation/requirements.txt</span>
-<span class="go">python -m sphinx -W --keep-going -b html \</span>
-<span class="go">    documentation/source documentation/build/html</span>
+<span class="go">git fetch origin --tags</span>
+<span class="go">python -m unittest discover -s documentation -p 'test_*.py'</span>
+<span class="go">python documentation/build_versions.py</span>
 </pre></div>
 </div>
+<p>Le workflow <code class="docutils literal notranslate"><span class="pre">Documentation</span></code> publie <code class="docutils literal notranslate"><span class="pre">documentation/build/versions</span></code> sur
+GitHub Pages depuis <code class="docutils literal notranslate"><span class="pre">master</span></code>. Le guide <a class="reference internal" href="documentation_versions.html"><span class="doc">Choisir la version de la documentation</span></a>
+décrit le sélecteur, les archives et la distinction entre une version stable
+publiée et la documentation de développement. La construction d’une pull request
+vérifie le site sans le publier.</p>
+</section>
 </section>
 <section id="tests-du-nouvel-espace-de-gestion">
 <h2>Tests du nouvel espace de gestion<a class="headerlink" href="#tests-du-nouvel-espace-de-gestion" title="Lien vers cette rubrique"></a></h2>

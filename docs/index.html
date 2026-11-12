@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gestion pour Nextcloud &mdash; Gestion 3.4.2</title>
+  <title>Gestion pour Nextcloud &mdash; Gestion 3.4.8</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=27bdb456" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=abef82a1"></script>
+      <script src="_static/documentation_options.js?v=1bfcbfdd"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -99,6 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#modifier-une-nouvelle-offre-sans-toucher-a-l-original">Modifier une nouvelle offre sans toucher à l’original</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#comprendre-les-messages-de-refus">Comprendre les messages de refus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#historique-et-conservation">Historique et conservation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#verrouiller-depuis-la-liste-des-factures">Verrouiller depuis la liste des factures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="electronic_invoicing.html">Facturation électronique et Factur-X</a><ul>
@@ -131,6 +132,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="documentation_versions.html">Choisir la version de la documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation_versions.html#versions-actuelles">Versions actuelles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_versions.html#versions-conservees">Versions conservées</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_versions.html#publication-pour-les-mainteneurs">Publication pour les mainteneurs</a></li>
 </ul>
@@ -145,7 +147,10 @@
 <li class="toctree-l2"><a class="reference internal" href="developer.html#tests-panther">Tests Panther</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#base-de-donnees">Base de données</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#traductions">Traductions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer.html#version-et-publication">Version et publication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#version-et-publication">Version et publication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer.html#annonce-a-tous-les-utilisateurs">Annonce à tous les utilisateurs</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#tests-du-nouvel-espace-de-gestion">Tests du nouvel espace de gestion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#messages-et-confirmations-de-verrouillage">Messages et confirmations de verrouillage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer.html#controles-de-securite">Contrôles de sécurité</a></li>
@@ -183,7 +188,7 @@
 Nextcloud. Elle s’adresse principalement aux indépendants, micro-entreprises et
 petites structures qui souhaitent conserver leurs clients, produits, devis,
 factures et documents dans leur propre instance Nextcloud.</p>
-<p>La documentation correspond à la version 3.4.2.</p>
+<p>La documentation correspond à la version 3.4.8.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Les ajustements du cycle de verrouillage décrits ici sont disponibles à
@@ -271,6 +276,7 @@ les mentions légales dépendent de votre activité et de votre pays.</p>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#modifier-une-nouvelle-offre-sans-toucher-a-l-original">Modifier une nouvelle offre sans toucher à l’original</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#comprendre-les-messages-de-refus">Comprendre les messages de refus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#historique-et-conservation">Historique et conservation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_lifecycle.html#verrouiller-depuis-la-liste-des-factures">Verrouiller depuis la liste des factures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="electronic_invoicing.html">Facturation électronique et Factur-X</a><ul>
@@ -303,6 +309,7 @@ les mentions légales dépendent de votre activité et de votre pays.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="documentation_versions.html">Choisir la version de la documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation_versions.html#versions-actuelles">Versions actuelles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_versions.html#versions-conservees">Versions conservées</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_versions.html#publication-pour-les-mainteneurs">Publication pour les mainteneurs</a></li>
 </ul>

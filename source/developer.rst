@@ -67,17 +67,41 @@ Tests Panther
 Les tests utilisent les variables suivantes :
 
 ``NEXTCLOUD_BASE_URL``
-   URL de l'instance, par défaut ``http://dev.cybercorp.fr``.
+   URL de l'instance, par défaut ``http://127.0.0.1:8080``.
 
 ``NEXTCLOUD_TEST_USER``
-   Compte Nextcloud de test, par défaut ``nextcloud``.
+   Compte Nextcloud de test obligatoire.
 
 ``NEXTCLOUD_TEST_PASSWORD``
    Mot de passe du compte de test.
 
+``NEXTCLOUD_TEST_COMPANY_ID``
+   Identifiant de la société de démonstration, affiché par le script de préparation.
+   Permet de sélectionner la même société dans la nouvelle session Panther.
+
+``NEXTCLOUD_SERVER_ROOT``
+   Chemin du serveur Nextcloud, à préciser si l'application utilise un lien
+   symbolique ou se trouve hors du dossier ``apps`` / ``custom_apps``.
+
+``GECKODRIVER_PATH``
+   Chemin facultatif de GeckoDriver. Par défaut : ``drivers/geckodriver``
+   dans le dépôt. Firefox doit être installé.
+
 Le scénario ``tests/Unit/Panther/IhmTest.php`` régénère les images dans
 ``tests/Unit/Panther/screens/``. Utilisez exclusivement une instance et un
-compte de test : certains scénarios créent puis suppriment des données.
+compte de test : le scénario ajoute une facture au devis de démonstration.
+
+Pour préparer des données fictives reproductibles, créez un compte dédié dont
+l'identifiant commence par ``gestion-store-demo-`` et utilisez
+``tests/Browser/seed-store-demo.cjs`` avec les mêmes variables. Comme les autres
+scénarios navigateur, ce script nécessite Playwright via ``NODE_PATH`` et Chromium
+(``CHROMIUM_PATH`` facultatif). Il crée des clients, produits, devis et factures,
+dont deux verrouillées ; utilisez une instance jetable. Il n'envoie aucun document.
+
+Exécutez ensuite ``make testPanther`` depuis le dépôt. Les images référencées par
+les éléments ``screenshot`` de ``appinfo/info.xml`` sont celles du store Nextcloud.
+Elles deviennent accessibles aux URL publiques après fusion sur ``master`` ; le
+cache du store peut retarder leur actualisation.
 
 Base de données
 ---------------
@@ -104,6 +128,31 @@ PR fonctionnelle.
 Version et publication
 ----------------------
 
+Annonce à tous les utilisateurs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+La version ``3.4.8`` prépare un appel à bêta-testeurs pour l'application Qonto,
+en vue d'une intégration complète avec Gestion. Les bêta-tests sont réservés à la
+France. Le texte source est en anglais et passe par ``$l->t()`` pour Transifex.
+L'annonce est intégrée à la fenêtre habituelle ``modalConfig`` de bienvenue,
+newsletter et historique des versions, et reste consultable via **À propos**.
+Cette fenêtre apparaît automatiquement à l'ouverture
+de Gestion dès cette version, pour chaque utilisateur authentifié, même lorsque
+plusieurs personnes partagent la même société. Le bouton de participation ouvre
+le logiciel de messagerie ; Gestion n'envoie pas d'e-mail automatiquement.
+
+Le déclencheur est ``AnnouncementService::VERSION``. Pour une future annonce,
+choisissez une nouvelle version, adaptez le texte traduisible dans
+``templates/content/changelog.php`` et publiez une version de Gestion au moins
+égale au déclencheur. Un simple correctif ultérieur ne réaffiche pas l'annonce
+aux utilisateurs qui l'ont déjà fermée. Aucun tag ni aucune publication du store
+n'est nécessaire pour préparer ces changements sur ``master``.
+
+L'acquittement est enregistré dans les préférences de l'utilisateur seulement
+après fermeture et confirmation du serveur, par une requête authentifiée avec
+protection CSRF. Recharger la page sans fermer le message ne le marque pas comme
+lu. Ce mécanisme est distinct de l'ancien champ ``changelog`` des sociétés.
+
 La source de vérité de la version est ``appinfo/info.xml``. L'interface et la
 documentation Sphinx lisent cette valeur automatiquement. Lors d'une
 publication, vérifiez également les métadonnées du paquet et le tag Git.
@@ -113,8 +162,15 @@ La construction de documentation utilisée en CI est :
 .. code-block:: console
 
    python -m pip install -r documentation/requirements.txt
-   python -m sphinx -W --keep-going -b html \
-       documentation/source documentation/build/html
+   git fetch origin --tags
+   python -m unittest discover -s documentation -p 'test_*.py'
+   python documentation/build_versions.py
+
+Le workflow ``Documentation`` publie ``documentation/build/versions`` sur
+GitHub Pages depuis ``master``. Le guide :doc:`documentation_versions`
+décrit le sélecteur, les archives et la distinction entre une version stable
+publiée et la documentation de développement. La construction d'une pull request
+vérifie le site sans le publier.
 
 Tests du nouvel espace de gestion
 ----------------------------------

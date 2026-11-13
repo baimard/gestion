@@ -1,6 +1,7 @@
 // Opt-in on a disposable Nextcloud instance, with two ordinary test accounts.
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
+const french = require('../../l10n/fr.json').translations;
 
 (async () => {
     const base = process.env.NEXTCLOUD_TEST_URL || 'http://127.0.0.1:8080';
@@ -45,7 +46,7 @@ const assert = require('node:assert/strict');
         assert.equal(await a.locator('dialog#gestion-announcement').count(),0);
         assert.equal(await a.locator('#modalConfig #gestion-announcement').count(),1);
         assert.match(await a.locator('#modalConfig h2').first().innerText(), /GESTION.*3\.4\.8/);
-        assert.match(await a.locator('#gestion-announcement').innerText(), /réservés aux utilisateurs situés en France/);
+        assert.ok((await a.locator('#gestion-announcement').innerText()).includes(french['Beta testing is open only to users based in France.']));
         assert.match(await a.locator('#gestion-announcement a').getAttribute('href'), /^mailto:contact@cybercorp\.fr\?/);
         await modalFits(a);
         await a.locator('#modalConfig .modalClose').focus();

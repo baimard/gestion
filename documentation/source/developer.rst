@@ -131,7 +131,7 @@ Version et publication
 Annonce à tous les utilisateurs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-La version ``3.4.8`` prépare un appel à bêta-testeurs pour l'application Qonto,
+La version ``3.4.8`` introduit un appel à bêta-testeurs pour l'application Qonto,
 en vue d'une intégration complète avec Gestion. Les bêta-tests sont réservés à la
 France. Le texte source est en anglais et passe par ``$l->t()`` pour Transifex.
 L'annonce est intégrée à la fenêtre habituelle ``modalConfig`` de bienvenue,

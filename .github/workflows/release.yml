@@ -115,7 +115,7 @@ jobs:
         id: server-checkout
         run: |
           NCVERSION='${{ fromJSON(steps.appinfo.outputs.result).nextcloud.min-version }}'
-          wget --quiet --timeout=30 --tries=2 "https://download.nextcloud.com/server/releases/latest-$NCVERSION.zip"
+          timeout 120 wget --quiet --timeout=30 --tries=2 "https://download.nextcloud.com/server/releases/latest-$NCVERSION.zip"
           unzip latest-$NCVERSION.zip
 
       - name: Checkout compatible server stable branch fallback

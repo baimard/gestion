@@ -11,13 +11,19 @@ class JsTest extends PantherTestCase {
     private string $password;
 
     public function setUp(): void {
+        $username = getenv('NEXTCLOUD_TEST_USER');
+        $password = getenv('NEXTCLOUD_TEST_PASSWORD');
+        if (!$username || !$password) {
+            $this->markTestSkipped('Set NEXTCLOUD_TEST_USER and NEXTCLOUD_TEST_PASSWORD for a disposable Nextcloud test account.');
+        }
+
         parent::setUp();
         $this->url = rtrim(
-            getenv('NEXTCLOUD_BASE_URL') ?: 'http://dev.cybercorp.fr',
+            getenv('NEXTCLOUD_BASE_URL') ?: 'http://127.0.0.1:8080',
             '/'
         );
-        $this->username = getenv('NEXTCLOUD_TEST_USER') ?: 'nextcloud';
-        $this->password = getenv('NEXTCLOUD_TEST_PASSWORD') ?: 'Gestion-Panther-2026!';
+        $this->username = $username;
+        $this->password = $password;
     }
 
     public function testClient(): void {

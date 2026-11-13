@@ -123,7 +123,7 @@ jobs:
       run: make verify-js-production
       if: ${{ steps.recovery.outputs.needed == 'true' }}
     - name: Checkout server ${{ fromJSON(steps.appinfo.outputs.result).nextcloud.min-version }}
-      continue-on-error: 'true'
+      continue-on-error: true
       id: server-checkout
       run: |
         NCVERSION='${{ fromJSON(steps.appinfo.outputs.result).nextcloud.min-version }}'

@@ -13,7 +13,7 @@ class WorkspaceTest extends TestCase {
     private string $owner;
 
     protected function setUp(): void {
-        $this->connection = \OC::$server->getDatabaseConnection();
+        $this->connection = \OCP\Server::get(\OCP\IDBConnection::class);
         $this->connection->beginTransaction();
         $l = $this->createMock(IL10N::class);
         $l->method('t')->willReturnCallback(fn ($text) => $text);

@@ -64,6 +64,14 @@ Commandes courantes
 Tests Panther
 -------------
 
+Les scénarios de connexion ``tests/Unit/Ihm/JsTest.php``,
+``tests/Unit/Panther/IhmTest.php`` et ``tests/Unit/Panther/initAppTest.php``
+exigent des identifiants fournis par variables d'environnement. Aucun compte
+de secours n'est utilisé. Sans les deux identifiants, ``JsTest`` est ignoré
+par PHPUnit et les scripts autonomes s'arrêtent avant d'ouvrir un navigateur.
+Utilisez exclusivement une instance et un compte jetables de test ; ne
+commitez jamais leurs identifiants dans le dépôt.
+
 Les tests utilisent les variables suivantes :
 
 ``NEXTCLOUD_BASE_URL``
@@ -73,7 +81,7 @@ Les tests utilisent les variables suivantes :
    Compte Nextcloud de test obligatoire.
 
 ``NEXTCLOUD_TEST_PASSWORD``
-   Mot de passe du compte de test.
+   Mot de passe obligatoire du compte de test.
 
 ``NEXTCLOUD_TEST_COMPANY_ID``
    Identifiant de la société de démonstration, affiché par le script de préparation.

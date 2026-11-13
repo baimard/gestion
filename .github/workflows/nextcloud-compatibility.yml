@@ -86,7 +86,7 @@ jobs:
 
       - name: Run PHP unit and database tests
         working-directory: nextcloud/apps/gestion
-        run: vendor/bin/phpunit --colors=always --testdox tests/Unit/Controller tests/Unit/Bdd tests/Unit/Service
+        run: vendor/bin/phpunit --colors=always --testdox --testsuite Controller,Bdd,Service
 
       - name: Check Nextcloud logs
         if: always()

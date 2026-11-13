@@ -15,7 +15,7 @@ class ProviderSecurityTest extends TestCase {
     private string $owner;
     private array $credentials = ['client_id'=>'fixture-id','client_secret'=>'never-return-this-secret','customer_id'=>'fixture-customer','base_url'=>'https://api.example.com','auth_url'=>'https://auth.example.com/token'];
     protected function setUp(): void {
-        $this->connection = \OC::$server->getDatabaseConnection();
+        $this->connection = \OCP\Server::get(\OCP\IDBConnection::class);
         $this->connection->beginTransaction();
         $l = $this->createMock(IL10N::class);
         $this->owner = 'security-test-'.bin2hex(random_bytes(6));

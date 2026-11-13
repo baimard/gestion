@@ -1,10 +1,13 @@
 {
   "version": "3.4.8",
-  "status": "prepared-not-released",
+  "status": "released",
   "source_branch": "master",
-  "source_commit": "ab93437ef173d746b09db810353231cc463cd289",
-  "documentation_issue": "https://github.com/baimard/gestion/issues/687",
-  "application_pull_request": "https://github.com/baimard/gestion/pull/684",
+  "source_commit": "86aa768d0f55510c362958318cbc1beba29a15c3",
+  "documentation_issue": "https://github.com/baimard/gestion/issues/695",
+  "application_pull_request": "https://github.com/baimard/gestion/pull/694",
   "version_pull_request": "https://github.com/baimard/gestion/pull/680",
-  "documentation_pull_request": "https://github.com/baimard/gestion/pull/657"
+  "documentation_pull_request": "https://github.com/baimard/gestion/pull/696",
+  "release_url": "https://github.com/baimard/gestion/releases/tag/3.4.8",
+  "publication_workflow_run": "https://github.com/baimard/gestion/actions/runs/43382419533",
+  "published_at": "2026-11-13T07:02:44Z"
 }

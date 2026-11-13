@@ -55,9 +55,11 @@ page et les outils de construction sont communs pour conserver un sélecteur
 fonctionnel sur les anciennes pages. Les tags publiés doivent être conservés.
 
 La publication est déclenchée par une modification de la documentation sur
-``master``, un nouveau tag de version ou une release publiée. Elle peut aussi
-être relancée manuellement. Les pull requests vérifient la construction sans
-déployer le site public.
+``master`` ou par la fin réussie du workflow de publication de l'application.
+Elle peut aussi être relancée manuellement depuis ``master``. Les événements
+de tag et de release vérifient la construction ; le déploiement public part
+de ``master`` pour respecter la protection de l'environnement GitHub Pages.
+Les pull requests vérifient la construction sans déployer le site public.
 
 Pour vérifier localement :
 

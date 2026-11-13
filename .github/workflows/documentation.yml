@@ -17,6 +17,9 @@ on:
       - '.github/workflows/documentation.yml'
   release:
     types: [published]
+  workflow_run:
+    workflows: ['Publish in GitHub Package Registry']
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -28,6 +31,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
 
     steps:
@@ -60,7 +64,9 @@ jobs:
           path: documentation/build/versions
 
   deploy:
-    if: github.event_name != 'pull_request'
+    # Pages permits deployments from master. Tag events still validate builds;
+    # workflow_run publishes from the default branch after a successful release.
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
     permissions:
       pages: write
       id-token: write

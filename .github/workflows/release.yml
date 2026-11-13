@@ -115,16 +115,17 @@ jobs:
         id: server-checkout
         run: |
           NCVERSION='${{ fromJSON(steps.appinfo.outputs.result).nextcloud.min-version }}'
-          wget --quiet https://download.nextcloud.com/server/releases/latest-$NCVERSION.zip
+          wget --quiet --timeout=30 --tries=2 "https://download.nextcloud.com/server/releases/latest-$NCVERSION.zip"
           unzip latest-$NCVERSION.zip
 
-      - name: Checkout server master fallback
+      - name: Checkout compatible server stable branch fallback
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         if: ${{ steps.server-checkout.outcome != 'success' }}
         with:
           persist-credentials: false
           submodules: true
           repository: nextcloud/server
+          ref: stable${{ fromJSON(steps.appinfo.outputs.result).nextcloud.min-version }}
           path: nextcloud
 
       - name: Package and sign app

@@ -68,3 +68,14 @@ officiels applicables.
 Le bouton **À propos** affiche les nouveautés et les liens du projet. La version
 installée apparaît aussi au bas de la navigation. Ces deux valeurs proviennent
 automatiquement de ``appinfo/info.xml``.
+
+Depuis **3.4.8**, un appel à bêta-testeurs pour l'application Qonto apparaît
+dans la fenêtre habituelle des nouveautés. Les bêta-tests sont réservés aux
+utilisateurs situés en France, en vue d'une intégration complète avec Gestion.
+Le message s'affiche pour chaque utilisateur et reste consultable dans
+**À propos** après sa fermeture.
+
+Le bouton de participation ouvre votre logiciel de messagerie pour contacter
+l'auteur. Aucun message n'est envoyé automatiquement. Si vous rechargez la
+page sans fermer l'annonce, elle reste à lire ; sa fermeture est mémorisée
+individuellement, y compris pour les utilisateurs d'une entreprise partagée.

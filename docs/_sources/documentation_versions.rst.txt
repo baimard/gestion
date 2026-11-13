@@ -22,11 +22,15 @@ au clavier : Entrée ouvre la liste et Tab permet de parcourir les versions.
 Versions actuelles
 ------------------
 
-La dernière version publiée est **3.4.7** : c'est celle du choix **Stable**.
-Les guides de **3.4.0 à 3.4.7** restent consultables individuellement.
-La documentation **Développement** prépare **3.4.8**, notamment l'annonce
-de recherche de bêta-testeurs de l'application Qonto, réservée à la France.
-Cette préparation ne constitue pas une publication de l'application.
+Le choix **Stable** indique automatiquement le numéro de la dernière version
+publiée. Les guides restent consultables individuellement à partir de **3.4.0**.
+La publication de **3.4.8** ajoute son guide et fait passer le choix Stable à
+cette version, sans remplacer les archives précédentes.
+
+Depuis **3.4.8**, Gestion présente l'annonce de recherche de bêta-testeurs de
+l'application Qonto, réservée à la France. Le choix **Développement** reste lié
+à la branche principale : ses évolutions peuvent précéder une publication dans
+le store Nextcloud.
 
 Versions conservées
 -------------------
@@ -51,9 +55,11 @@ page et les outils de construction sont communs pour conserver un sélecteur
 fonctionnel sur les anciennes pages. Les tags publiés doivent être conservés.
 
 La publication est déclenchée par une modification de la documentation sur
-``master``, un nouveau tag de version ou une release publiée. Elle peut aussi
-être relancée manuellement. Les pull requests vérifient la construction sans
-déployer le site public.
+``master`` ou par la fin réussie du workflow de publication de l'application.
+Elle peut aussi être relancée manuellement depuis ``master``. Les événements
+de tag et de release vérifient la construction ; le déploiement public part
+de ``master`` pour respecter la protection de l'environnement GitHub Pages.
+Les pull requests vérifient la construction sans déployer le site public.
 
 Pour vérifier localement :
 

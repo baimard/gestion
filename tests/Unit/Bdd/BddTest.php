@@ -17,7 +17,7 @@ class BddTest extends TestCase {
 
 	public function setUp(): void{
 		parent::setUp();
-		$myDb = \OC::$server->getDatabaseConnection();
+		$myDb = \OCP\Server::get(\OCP\IDBConnection::class);
 		$l =  $this->createMock('OCP\IL10N');
 		$this->db = new Bdd($myDb,$l);
 

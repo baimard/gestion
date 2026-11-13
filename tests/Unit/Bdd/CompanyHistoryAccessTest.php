@@ -16,7 +16,7 @@ class CompanyHistoryAccessTest extends TestCase {
     private int $foreignCompany;
 
     protected function setUp(): void {
-        $this->connection = \OC::$server->getDatabaseConnection();
+        $this->connection = \OCP\Server::get(\OCP\IDBConnection::class);
         $this->connection->beginTransaction();
         $this->owner = 'history-owner-' . bin2hex(random_bytes(6));
         $this->other = 'history-other-' . bin2hex(random_bytes(6));

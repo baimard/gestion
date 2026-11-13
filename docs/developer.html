@@ -237,13 +237,20 @@ PostgreSQL et SQLite.</p>
 </section>
 <section id="tests-panther">
 <h2>Tests Panther<a class="headerlink" href="#tests-panther" title="Lien vers cette rubrique"></a></h2>
+<p>Les scénarios de connexion <code class="docutils literal notranslate"><span class="pre">tests/Unit/Ihm/JsTest.php</span></code>,
+<code class="docutils literal notranslate"><span class="pre">tests/Unit/Panther/IhmTest.php</span></code> et <code class="docutils literal notranslate"><span class="pre">tests/Unit/Panther/initAppTest.php</span></code>
+exigent des identifiants fournis par variables d’environnement. Aucun compte
+de secours n’est utilisé. Sans les deux identifiants, <code class="docutils literal notranslate"><span class="pre">JsTest</span></code> est ignoré
+par PHPUnit et les scripts autonomes s’arrêtent avant d’ouvrir un navigateur.
+Utilisez exclusivement une instance et un compte jetables de test ; ne
+commitez jamais leurs identifiants dans le dépôt.</p>
 <p>Les tests utilisent les variables suivantes :</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_BASE_URL</span></code></dt><dd><p>URL de l’instance, par défaut <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8080</span></code>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_TEST_USER</span></code></dt><dd><p>Compte Nextcloud de test obligatoire.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_TEST_PASSWORD</span></code></dt><dd><p>Mot de passe du compte de test.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_TEST_PASSWORD</span></code></dt><dd><p>Mot de passe obligatoire du compte de test.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_TEST_COMPANY_ID</span></code></dt><dd><p>Identifiant de la société de démonstration, affiché par le script de préparation.
 Permet de sélectionner la même société dans la nouvelle session Panther.</p>

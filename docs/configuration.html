@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuration des entreprises &mdash; Gestion 3.4.9</title>
+  <title>Configuration des entreprises &mdash; Gestion 3.5.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=1b391ab7" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=bf843bc4"></script>
+      <script src="_static/documentation_options.js?v=49bac68b"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -68,6 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#identifiants-francais">Identifiants français</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dossier-de-sauvegarde">Dossier de sauvegarde</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logos">Logos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#profils-d-emetteur">Profils d’émetteur</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#partage">Partage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#suppression">Suppression</a></li>
 </ul>
@@ -255,6 +256,28 @@ l’adresse sous le nom. Sur un écran étroit, les logos se réduisent à la pl
 disponible. Les logos d’en-tête et de pied de page sont facultatifs : aucun
 espace ne leur est réservé lorsqu’ils sont absents. Les réglages s’appliquent
 aux devis, factures et PDF.</p>
+</section>
+<section id="profils-d-emetteur">
+<h2>Profils d’émetteur<a class="headerlink" href="#profils-d-emetteur" title="Lien vers cette rubrique"></a></h2>
+<p>Dans <strong>Mon entreprise</strong>, ouvrez <strong>Profils d’émetteur</strong> pour créer, par exemple,
+un profil <strong>Expert de justice</strong> et un profil <strong>Cybercorp</strong>. Le propriétaire de
+l’entreprise renseigne un nom de profil, puis les coordonnées de
+correspondance et le logo souhaités. Un logo PNG peut peser jusqu’à 256 Kio
+et mesurer jusqu’à 1 200 pixels de côté. Les champs laissés vides reprennent
+les valeurs de l’entreprise. Un logo de profil remplace les logos habituels
+du document.</p>
+<p>Dans un devis, choisissez le profil puis cliquez sur <strong>Appliquer</strong>. Les
+factures liées reprennent le profil du devis. Les coordonnées de
+correspondance apparaissent sur l’aperçu et dans le PDF. Le nom légal, les
+identifiants de l’entreprise et les données légales du XML Factur-X proviennent
+de la fiche entreprise. Le client reste sélectionné dans le devis.</p>
+<p>Les utilisateurs qui ont accès à l’entreprise peuvent choisir les profils
+existants. Une fois qu’une facture est finalisée, le profil utilisé et le
+devis lié sont protégés. Créez un autre profil pour utiliser de nouvelles
+coordonnées sur vos prochains devis. Un profil doit être détaché de tous les
+devis avant de pouvoir être supprimé.</p>
+<p>Les sauvegardes JSON incluent les profils, leurs logos et leur association
+aux devis.</p>
 </section>
 <section id="partage">
 <h2>Partage<a class="headerlink" href="#partage" title="Lien vers cette rubrique"></a></h2>

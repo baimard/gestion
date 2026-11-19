@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentation développeur &mdash; Gestion 3.4.9</title>
+  <title>Documentation développeur &mdash; Gestion 3.5.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=1b391ab7" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=bf843bc4"></script>
+      <script src="_static/documentation_options.js?v=49bac68b"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -67,6 +67,7 @@
 <li class="toctree-l2"><a class="reference internal" href="configuration.html#identifiants-francais">Identifiants français</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html#dossier-de-sauvegarde">Dossier de sauvegarde</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html#logos">Logos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#profils-d-emetteur">Profils d’émetteur</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html#partage">Partage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html#suppression">Suppression</a></li>
 </ul>
@@ -269,12 +270,13 @@ compte de test : le scénario ajoute une facture au devis de démonstration.</p>
 l’identifiant commence par <code class="docutils literal notranslate"><span class="pre">gestion-store-demo-</span></code> et utilisez
 <code class="docutils literal notranslate"><span class="pre">tests/Browser/seed-store-demo.cjs</span></code> avec les mêmes variables. Comme les autres
 scénarios navigateur, ce script nécessite Playwright via <code class="docutils literal notranslate"><span class="pre">NODE_PATH</span></code> et Chromium
-(<code class="docutils literal notranslate"><span class="pre">CHROMIUM_PATH</span></code> facultatif). Il crée des clients, produits, devis et factures,
-dont deux verrouillées ; utilisez une instance jetable. Il n’envoie aucun document.</p>
+(<code class="docutils literal notranslate"><span class="pre">CHROMIUM_PATH</span></code> facultatif). Il crée deux profils d’émetteur, des clients,
+des produits, des devis et des factures, dont deux verrouillées. Utilisez une
+instance jetable. Il n’envoie aucun document.</p>
 <p>Exécutez ensuite <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">testPanther</span></code> depuis le dépôt. Les images référencées par
 les éléments <code class="docutils literal notranslate"><span class="pre">screenshot</span></code> de <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> sont celles du store Nextcloud.
-Elles deviennent accessibles aux URL publiques après fusion sur <code class="docutils literal notranslate"><span class="pre">master</span></code> ; le
-cache du store peut retarder leur actualisation.</p>
+Les URL des captures pointent vers le tag de la version publiée. Le cache du
+store peut retarder leur actualisation.</p>
 </section>
 <section id="base-de-donnees">
 <h2>Base de données<a class="headerlink" href="#base-de-donnees" title="Lien vers cette rubrique"></a></h2>

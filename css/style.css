@@ -1245,3 +1245,68 @@ button.electronic-invoice-help:focus-visible {
 #produits .document-amount > div, #produits .document-amount > span { white-space: nowrap; overflow-wrap: normal; }
 
 #produits th { overflow-wrap: normal; word-break: normal; font-size: 11px; }
+
+.gestion-sender-profiles {
+    grid-column: 1 / -1;
+}
+.gestion-sender-profile + .gestion-sender-profile {
+    margin-block-start: 12px;
+}
+.gestion-sender-profile summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding-block: 8px;
+}
+.gestion-sender-profile form {
+    display: grid;
+    gap: 10px;
+}
+@media (min-width: 900px) {
+    .gestion-sender-profile form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+        gap: 12px 24px;
+    }
+    .gestion-sender-profile form > :is(small, .gestion-card-actions, [data-profile-status]) {
+        grid-column: 1 / -1;
+    }
+}
+.gestion-sender-profile label:not(.gestion-sender-logo-reset) {
+    display: grid;
+    gap: 4px;
+}
+.gestion-sender-profile input:not([type="checkbox"]),
+.gestion-sender-profile textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+}
+.gestion-sender-logo {
+    max-width: 100px;
+    max-height: 64px;
+    object-fit: contain;
+}
+.gestion-sender-logo-reset {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.gestion-sender-choice {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 12px;
+}
+.gestion-sender-choice select {
+    max-width: min(60vw, 260px);
+}
+.gestion-sender-choice label {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+[data-profile-status]:empty {
+    display: none;
+}

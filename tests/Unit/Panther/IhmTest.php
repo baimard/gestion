@@ -59,6 +59,7 @@ JS, [$companyId]);
     $client->request('GET', $baseUrl . '/index.php/apps/gestion/config');
     $client->waitFor('.gestion-settings-page');
 }
+$client->executeScript("const profile = document.querySelector('.gestion-sender-profile'); if (profile) profile.open = true;");
 capture($client, 'config.png');
 
 $client->request('GET', $baseUrl . '/index.php/apps/gestion');

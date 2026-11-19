@@ -27,10 +27,20 @@ final class BackupFormat {
             if (!in_array($name, self::TABLES, true)) throw new \InvalidArgumentException('Unknown backup table.');
             $indices[$name] = array_column($rows, null, 'id');
         }
+        $senderProfiles = [];
+        foreach ($tables['configuration'] as $row) {
+            $stored = $row['sender_profiles'] ?? null;
+            if ($stored !== null && !is_string($stored)) throw new \InvalidArgumentException('Invalid sender profiles.');
+            $senderProfiles[$row['id']] = SenderProfile::decode($stored);
+        }
         foreach (self::TABLES as $name) foreach ($tables[$name] as $row) {
             if ($name === 'configuration') continue;
             $company = $row['id_configuration'] ?? 0;
             if (!isset($indices['configuration'][$company])) throw new \InvalidArgumentException('Missing company.');
+            $profile = $row['sender_profile'] ?? '';
+            if ($name === 'devis' && $profile !== '' && (!is_string($profile) || !isset($senderProfiles[$company][$profile]))) {
+                throw new \InvalidArgumentException('Invalid sender profile reference.');
+            }
             $refs = ['devis' => ['id_client' => 'client'], 'facture' => ['id_devis' => 'devis'], 'produit_devis' => ['devis_id' => 'devis', 'produit_id' => 'produit']][$name] ?? [];
             foreach ($refs as $field => $target) {
                 if ($name === 'devis' && (int)($row[$field] ?? 0) === 0) continue;

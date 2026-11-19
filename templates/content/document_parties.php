@@ -1,11 +1,19 @@
 <?php
     $company = json_decode($_['configuration'])[0];
     $decodePartyValue = static fn ($value): string => trim(html_entity_decode((string)$value, ENT_QUOTES, 'UTF-8'));
-    $companyContact = $decodePartyValue(($company->prenom ?? '') . ' ' . ($company->nom ?? ''));
+    $sender = $_['senderProfile'] ?? [];
+    $companyContact = ($sender['contact'] ?? '') !== ''
+        ? $sender['contact'] : $decodePartyValue(($company->prenom ?? '') . ' ' . ($company->nom ?? ''));
     $companySections = [
-        [$company->adresse ?? '', trim(($company->zip_code ?? '') . ' ' . ($company->city_name ?? ''))],
-        [$company->mail ?? '', $company->telephone ?? ''],
-        [$company->legal_one ?? '', $company->legal_two ?? '', $company->vat_number ?? ''],
+        ($sender['address'] ?? '') !== '' ? [$l->t('Correspondence address'), $sender['address']] : [
+            $decodePartyValue($company->adresse ?? ''),
+            $decodePartyValue(($company->zip_code ?? '') . ' ' . ($company->city_name ?? '')),
+        ],
+        [
+            ($sender['email'] ?? '') !== '' ? $sender['email'] : $decodePartyValue($company->mail ?? ''),
+            ($sender['phone'] ?? '') !== '' ? $sender['phone'] : $decodePartyValue($company->telephone ?? ''),
+        ],
+        array_map($decodePartyValue, [$company->legal_one ?? '', $company->legal_two ?? '', $company->vat_number ?? '']),
     ];
     $hasMainLogo = isset($_['logo']) && $_['logo'] !== 'nothing';
     // Honour the configured width; large logos get their own branding area.
@@ -34,7 +42,7 @@
                             <div class="document-party-name"><?php p($decodePartyValue($company->entreprise ?? '')); ?></div>
                             <?php if ($companyContact !== ''): ?><div class="document-party-line"><?php p($companyContact); ?></div><?php endif; ?>
                             <?php foreach ($companySections as $section): ?>
-                                <?php $lines = array_filter(array_map($decodePartyValue, $section), static fn (string $line): bool => $line !== ''); ?>
+                                <?php $lines = array_filter($section, static fn (string $line): bool => $line !== ''); ?>
                                 <?php if ($lines !== []): ?>
                                     <div class="document-party-section">
                                         <?php foreach ($lines as $line): ?>

@@ -1,4 +1,4 @@
-// import "@nextcloud/dialogs/dist/index.css";
+import { initializeSenderProfiles } from './modules/senderProfiles.js';
 import "../css/mycss.less";
 
 import { addShareUser, configuration, createCompany, deleteCompany, delShareUser, updateDBConfiguration} from "./modules/ajaxRequest.js";
@@ -10,6 +10,7 @@ import { csrfHeaders } from "./modules/csrf.js";
 const providerUrl = () => OC.generateUrl('/apps/gestion/einvoice/provider');
 
 document.addEventListener('DOMContentLoaded', function() {
+    initializeSenderProfiles();
     globalConfiguration(false);
     initializeConfigurationSectionNavigation();
 

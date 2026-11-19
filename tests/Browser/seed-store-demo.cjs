@@ -37,9 +37,37 @@ const assert = require('node:assert/strict');
         await page.reload();
         await api('/isconfig', null, 'GET');
         const year = new Date().getUTCFullYear();
-        for (const [column, data] of Object.entries({ entreprise: 'Atelier Horizon', prenom: 'Alex', nom: 'Morgan', adresse: '12 rue des Ateliers', zip_code: '33000', city_name: 'Bordeaux', mail: 'hello@atelier-horizon.example', telephone: '+33 0 00 00 00 00', legal_one: 'Demo company — fictional data', legal_two: '', vat_number: '', mentions_default: 'Payment by bank transfer within 30 days.', facture_prefixe: `INV-${year}-`, auto_invoice_number: '1', logo_width: '96', logo_height: '96' })) {
+        for (const [column, data] of Object.entries({ entreprise: 'Atelier Horizon', prenom: 'Alex', nom: 'Morgan', adresse: '12 rue des Ateliers', zip_code: '33000', city_name: 'Bordeaux', mail: 'hello@atelier-horizon.example', telephone: '+33 0 00 00 00 00', legal_one: 'Demo company — fictional data', legal_two: '', vat_number: '', mentions_default: 'Payment by bank transfer within 30 days.', facture_prefixe: `INV-${year}`, auto_invoice_number: '1', logo_width: '96', logo_height: '96' })) {
             await api('/updateConfiguration', { column, data });
         }
+        const makeLogo = (initial, background, foreground) => page.evaluate(({ initial, background, foreground }) => {
+            const canvas = document.createElement('canvas');
+            canvas.width = 192;
+            canvas.height = 192;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = background;
+            ctx.fillRect(0, 0, 192, 192);
+            ctx.fillStyle = foreground;
+            ctx.font = 'bold 100px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(initial, 96, 132);
+            return canvas.toDataURL('image/png').split(',')[1];
+        }, { initial, background, foreground });
+        await api('/sender-profiles', { company, id: '', profile: {
+            label: 'Digital studio', contact: 'Alex Morgan · Digital studio',
+            address: '12 rue des Ateliers\n33000 Bordeaux', email: 'studio@atelier-horizon.example',
+            phone: '+33 0 00 00 00 00', logo: await makeLogo('H', '#e7f3fc', '#00679e'),
+        } });
+        await api('/sender-profiles', { company, id: '', profile: {
+            label: 'Expert services', contact: 'Alex Morgan · Expert services',
+            address: '8 place des Arts\n33000 Bordeaux', email: 'expert@atelier-horizon.example',
+            phone: '+33 0 00 00 00 01', logo: await makeLogo('E', '#e6f3ef', '#155e53'),
+        } });
+        await page.reload();
+        const profiles = await page.locator('[data-sender-profile][data-id]:not([data-id=""])').evaluateAll(forms =>
+            Object.fromEntries(forms.map(form => [form.querySelector('[name="label"]').value, form.dataset.id])),
+        );
+        assert.ok(profiles['Expert services'] && profiles['Digital studio']);
         const clients = [];
         const names = [['Northwood Studio', 'Emma', 'Reed'], ['Bluebird Consulting', 'Noah', 'Martin'], ['Studio Juniper', 'Mia', 'Laurent'], ['Lumen Atelier', 'Leo', 'Bernard'], ['Oak & Co', 'Alice', 'Moreau'], ['Riverstone Agency', 'Oscar', 'Petit']];
         for (const [entreprise, prenom, nom] of names) {
@@ -67,7 +95,8 @@ const assert = require('node:assert/strict');
             await api('/devis/insert', {});
             const quote = Math.max(...(await read('/getDevis')).map(r => Number(r.id)));
             const date = `${year - (i < 12 ? 1 : 0)}-${String(i % 12 + 1).padStart(2, '0')}-15`;
-            await update('devis', quote, { id_client: String(clients[i % clients.length]), num: `QUO-${date.slice(0, 4)}-${String(i + 1).padStart(3, '0')}`, date, version: '1.0', delay: '30', comment: 'A tailored digital experience for your business.', mentions: 'Ready to send' });
+            await update('devis', quote, { id_client: String(clients[i % clients.length]), num: `QUO-${date.slice(0, 4)}-${String(i + 1).padStart(3, '0')}`, date, version: '1.0', delay: 'Offer valid for 30 days from:', comment: 'A tailored digital experience for your business.', mentions: 'Ready to send' });
+            await api('/devis/' + quote + '/sender-profile', { company, id: i % 2 ? profiles['Digital studio'] : profiles['Expert services'] });
             for (let j = 0; j < 2; j++) {
                 await api('/insertProduitDevis', { id: String(quote) });
                 const lines = JSON.parse(await api('/getProduitsById', { numdevis: String(quote) }));
@@ -81,12 +110,7 @@ const assert = require('node:assert/strict');
             }
         }
         for (const id of invoices.slice(0, 2)) await api('/documents/lock', { table: 'facture', id: Number(id) });
-        const logo = await page.evaluate(() => {
-            const canvas = document.createElement('canvas'); canvas.width = 192; canvas.height = 192;
-            const ctx = canvas.getContext('2d'); ctx.fillStyle = '#e7f3fc'; ctx.fillRect(0, 0, 192, 192);
-            ctx.fillStyle = '#00679e'; ctx.font = 'bold 100px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('H', 96, 132);
-            return canvas.toDataURL('image/png').split(',')[1];
-        });
+        const logo = await makeLogo('H', '#e7f3fc', '#00679e');
         const dav = await request.newContext({ httpCredentials: { username: user, password } });
         try {
             const folder = base + '/remote.php/dav/files/' + encodeURIComponent(user) + '/.gestion/';
@@ -94,6 +118,6 @@ const assert = require('node:assert/strict');
             assert.ok((await dav.put(folder + company + 'logo.png', { data: Buffer.from(logo, 'base64'), headers: { 'Content-Type': 'image/png' } })).ok());
         } finally { await dav.dispose(); }
         console.log(`NEXTCLOUD_TEST_COMPANY_ID=${company}`);
-        console.log('Fictional store demo ready: 6 customers, 6 products, 25 quotes, 24 invoices, two years of statistics. No external delivery.');
+        console.log('Fictional store demo ready: two sender profiles, 6 customers, 6 products, 25 quotes and 24 invoices.');
     } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

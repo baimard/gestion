@@ -50,6 +50,10 @@ class CompanyService {
 		$this->myDb->createCompany($this->userId);
 	}
 
+    public function ownsCompany(int $company): bool {
+        return $this->userId && in_array($company, array_map('intval', array_column($this->myDb->getCompaniesOwner($this->userId), 'id')), true);
+    }
+
 	public function deleteCompany(): DataResponse {
 		if ($this->myDb->deleteCompany($this->session->get('CurrentCompany'), $this->userId)) {
 			$this->session->set('CurrentCompany', '');

@@ -103,13 +103,14 @@ Pour préparer des données fictives reproductibles, créez un compte dédié do
 l'identifiant commence par ``gestion-store-demo-`` et utilisez
 ``tests/Browser/seed-store-demo.cjs`` avec les mêmes variables. Comme les autres
 scénarios navigateur, ce script nécessite Playwright via ``NODE_PATH`` et Chromium
-(``CHROMIUM_PATH`` facultatif). Il crée des clients, produits, devis et factures,
-dont deux verrouillées ; utilisez une instance jetable. Il n'envoie aucun document.
+(``CHROMIUM_PATH`` facultatif). Il crée deux profils d'émetteur, des clients,
+des produits, des devis et des factures, dont deux verrouillées. Utilisez une
+instance jetable. Il n'envoie aucun document.
 
 Exécutez ensuite ``make testPanther`` depuis le dépôt. Les images référencées par
 les éléments ``screenshot`` de ``appinfo/info.xml`` sont celles du store Nextcloud.
-Elles deviennent accessibles aux URL publiques après fusion sur ``master`` ; le
-cache du store peut retarder leur actualisation.
+Les URL des captures pointent vers le tag de la version publiée. Le cache du
+store peut retarder leur actualisation.
 
 Base de données
 ---------------

@@ -23,5 +23,10 @@
     "dbrekelmans/bdi": "^1.0",
     "phpunit/phpunit": "^9.5",
     "symfony/panther": "^2.4"
+  },
+  "config": {
+    "platform": {
+      "php": "8.3.0"
+    }
   }
 }

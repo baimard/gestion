@@ -82,6 +82,32 @@ disponible. Les logos d'en-tête et de pied de page sont facultatifs : aucun
 espace ne leur est réservé lorsqu'ils sont absents. Les réglages s'appliquent
 aux devis, factures et PDF.
 
+Profils d'émetteur
+------------------
+
+Dans **Mon entreprise**, ouvrez **Profils d'émetteur** pour créer, par exemple,
+un profil **Expert de justice** et un profil **Cybercorp**. Le propriétaire de
+l'entreprise renseigne un nom de profil, puis les coordonnées de
+correspondance et le logo souhaités. Un logo PNG peut peser jusqu'à 256 Kio
+et mesurer jusqu'à 1 200 pixels de côté. Les champs laissés vides reprennent
+les valeurs de l'entreprise. Un logo de profil remplace les logos habituels
+du document.
+
+Dans un devis, choisissez le profil puis cliquez sur **Appliquer**. Les
+factures liées reprennent le profil du devis. Les coordonnées de
+correspondance apparaissent sur l'aperçu et dans le PDF. Le nom légal, les
+identifiants de l'entreprise et les données légales du XML Factur-X proviennent
+de la fiche entreprise. Le client reste sélectionné dans le devis.
+
+Les utilisateurs qui ont accès à l'entreprise peuvent choisir les profils
+existants. Une fois qu'une facture est finalisée, le profil utilisé et le
+devis lié sont protégés. Créez un autre profil pour utiliser de nouvelles
+coordonnées sur vos prochains devis. Un profil doit être détaché de tous les
+devis avant de pouvoir être supprimé.
+
+Les sauvegardes JSON incluent les profils, leurs logos et leur association
+aux devis.
+
 Partage
 -------
 

@@ -6,6 +6,7 @@ use OCP\IDBConnection;
 use OCP\IL10N;
 use OCA\Gestion\Service\CommercialMath;
 use OCA\Gestion\Service\BackupFormat;
+use OCA\Gestion\Service\SenderProfile;
 
 class Bdd {
     private IDBConnection $db;
@@ -43,7 +44,7 @@ class Bdd {
             foreach (['client_id', 'client_secret', 'customer_id', 'base_url', 'auth_url'] as $key) {
                 if (!is_string($credentials[$key] ?? null) || trim($credentials[$key]) === '') $row['einvoice_configured'] = false;
             }
-            unset($row['einvoice_provider_config']);
+            unset($row['einvoice_provider_config'], $row['sender_profiles']);
         }
         return json_encode($rows);
     }
@@ -56,6 +57,71 @@ class Bdd {
     public function getCompaniesOwner($User){
         $sql = "SELECT id FROM ".$this->tableprefix."configuration WHERE id_nextcloud = ?";
         return $this->execSQLNoJsonReturn($sql, array($User));
+    }
+
+    public function getSenderProfiles(int $company): array {
+        $rows = $this->execSQLNoJsonReturn(
+            'SELECT sender_profiles FROM ' . $this->tableprefix . 'configuration WHERE id = ?', [$company]
+        );
+        return SenderProfile::decode($rows[0]['sender_profiles'] ?? null);
+    }
+
+    public function saveSenderProfile(int $company, string $owner, string $id, ?array $input): void {
+        $this->companyMutation($company, function () use ($company, $owner, $id, $input): void {
+            $row = $this->requireRecord('configuration', $company, $company);
+            if ($row['id_nextcloud'] !== $owner) {
+                throw new \DomainException('Only the company owner can manage sender profiles.');
+            }
+            $profiles = SenderProfile::decode($row['sender_profiles'] ?? null);
+            if ($id !== '' && !isset($profiles[$id])) {
+                throw new \InvalidArgumentException('Sender profile not found.');
+            }
+            if ($id !== '') {
+                $condition = $input === null ? '' : ' AND ' . $this->quoteLockExpression('d') . ' = 1';
+                $references = $this->execSQLNoJsonReturn(
+                    'SELECT d.id FROM ' . $this->tableprefix . 'devis d WHERE d.id_configuration = ? AND d.sender_profile = ?' . $condition,
+                    [$company, $id]
+                );
+                if ($references) {
+                    throw new \DomainException($input === null
+                        ? 'This sender profile is still used by a quote.'
+                        : 'A finalized document uses this sender profile. Create a new profile for different details.');
+                }
+            }
+            if ($input === null) {
+                if ($id === '') throw new \InvalidArgumentException('Sender profile not found.');
+                $label = $profiles[$id]['label'];
+                unset($profiles[$id]);
+                $action = 'delete';
+            } else {
+                if ($id === '' && count($profiles) >= SenderProfile::MAX_COUNT) {
+                    throw new \InvalidArgumentException('A company can have up to 12 sender profiles.');
+                }
+                $action = $id === '' ? 'create' : 'update';
+                $id = $id === '' ? bin2hex(random_bytes(16)) : $id;
+                $input['logo'] ??= $profiles[$id]['logo'] ?? '';
+                $profiles[$id] = SenderProfile::validate($input);
+                $label = $profiles[$id]['label'];
+            }
+            $this->db->executeStatement(
+                'UPDATE ' . $this->tableprefix . 'configuration SET sender_profiles = ? WHERE id = ?',
+                [json_encode($profiles, JSON_THROW_ON_ERROR), $company]
+            );
+            $this->recordHistory($company, $action, 'configuration', $company, ['sender_profile' => $label]);
+        });
+    }
+
+    public function setQuoteSenderProfile(int $company, int $quote, string $id): void {
+        $this->companyMutation($company, function () use ($company, $quote, $id): void {
+            $this->guardDocument('devis', $quote, $company);
+            if ($id !== '' && !isset($this->getSenderProfiles($company)[$id])) {
+                throw new \InvalidArgumentException('Sender profile not found.');
+            }
+            $this->execSQLNoData(
+                'UPDATE ' . $this->tableprefix . 'devis SET sender_profile = ? WHERE id = ? AND id_configuration = ?',
+                [$id === '' ? null : $id, $quote, $company]
+            );
+        });
     }
 
     public function getUsersShared($idConfiguration){
@@ -97,7 +163,7 @@ class Bdd {
     }
 
     public function getOneFacture($numfacture, $idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."facture.id," . $this->tableprefix . "facture.locked," . $this->tableprefix . "facture.version," . $this->tableprefix . "facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, comment, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, legal_one, mail, adresse, zip_code, city_name, country_code, company_identification, vat_number FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_configuration = ".$this->tableprefix."devis.id_configuration) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration WHERE ".$this->tableprefix."facture.id = ? AND ".$this->tableprefix."facture.id_configuration = ?";
+        $sql = "SELECT ".$this->tableprefix."facture.id," . $this->tableprefix . "facture.locked," . $this->tableprefix . "facture.version," . $this->tableprefix . "facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, ".$this->tableprefix."devis.sender_profile, comment, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, legal_one, mail, adresse, zip_code, city_name, country_code, company_identification, vat_number FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_configuration = ".$this->tableprefix."devis.id_configuration) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration WHERE ".$this->tableprefix."facture.id = ? AND ".$this->tableprefix."facture.id_configuration = ?";
         return $this->execSQL($sql, array($numfacture, $idNextcloud));
     }
 
@@ -107,7 +173,7 @@ class Bdd {
     }
 
     public function getOneDevis($numdevis,$idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."devis.id as devisid, ".$this->quoteLockExpression($this->tableprefix . 'devis')." AS locked, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.comment, date, num, id_client, ".$this->tableprefix."client.id as clientid, nom, prenom, legal_one, entreprise, telephone, mail, adresse, zip_code, city_name, country_code, company_identification, vat_number, delay FROM ".$this->tableprefix."devis left join ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id WHERE ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_configuration = ?";
+        $sql = "SELECT ".$this->tableprefix."devis.id as devisid, ".$this->tableprefix."devis.sender_profile, ".$this->quoteLockExpression($this->tableprefix . 'devis')." AS locked, ".$this->tableprefix."devis.version, ".$this->tableprefix."devis.comment, date, num, id_client, ".$this->tableprefix."client.id as clientid, nom, prenom, legal_one, entreprise, telephone, mail, adresse, zip_code, city_name, country_code, company_identification, vat_number, delay FROM ".$this->tableprefix."devis left join ".$this->tableprefix."client on id_client = ".$this->tableprefix."client.id WHERE ".$this->tableprefix."devis.id = ? AND ".$this->tableprefix."devis.id_configuration = ?";
         return $this->execSQL($sql, array($numdevis,$idNextcloud));
     }
 
@@ -741,7 +807,11 @@ class Bdd {
                     unset($row['id']);
                     foreach ($row as $field => $value) {
                         if (preg_match('/secret|token|password|einvoice_provider_config/i', $field)) { unset($row[$field]); continue; }
-                        if (is_string($value)) $row[$field] = strip_tags(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));
+                        if ($table === 'configuration' && $field === 'sender_profiles') {
+                            $row[$field] = json_encode(SenderProfile::decode($value), JSON_THROW_ON_ERROR);
+                        } elseif (is_string($value)) {
+                            $row[$field] = strip_tags(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));
+                        }
                     }
                     if ($table === 'configuration') {
                         $row['id_nextcloud'] = $owner;

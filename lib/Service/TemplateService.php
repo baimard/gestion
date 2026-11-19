@@ -1,6 +1,7 @@
 <?php
 namespace OCA\Gestion\Service;
 
+use OCA\Gestion\Db\Bdd;
 use OCP\App\IAppManager;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -22,7 +23,8 @@ class TemplateService {
 		FileService $fileService,
 		NavigationService $navigationService,
 		ContentSecurityPolicy $csp,
-        private AnnouncementService $announcementService
+        private AnnouncementService $announcementService,
+        private Bdd $db
 	) {
 		$this->userId = $UserId;
 		$this->appManager = $appManager;
@@ -54,10 +56,17 @@ class TemplateService {
 
 	public function config(): TemplateResponse {
 		$this->companyService->ensureConfigExists();
+        $params = $this->baseParams();
+        $company = (int)$params['CurrentCompany'];
+        $canManageProfiles = $company > 0 && $this->companyService->ownsCompany($company);
 
 		$response = new TemplateResponse('gestion', 'configuration', array_merge(
-			$this->baseParams(),
-			['shareUsers' => $this->companyService->getShareUsers()]
+			$params,
+			[
+                'shareUsers' => $this->companyService->getShareUsers(),
+                'canManageSenderProfiles' => $canManageProfiles,
+                'senderProfiles' => $canManageProfiles ? $this->db->getSenderProfiles($company) : [],
+            ]
 		));
 
 		$response->setContentSecurityPolicy($this->csp);
@@ -65,28 +74,37 @@ class TemplateService {
 	}
 
 	public function devisshow($numdevis): TemplateResponse {
-		$devis = $this->dataService->getOneDevis($numdevis);
+		$devis = json_decode($this->dataService->getOneDevis($numdevis));
 		$produits = $this->dataService->getProduitsById($numdevis);
 
 		return new TemplateResponse('gestion', 'devisshow', array_merge([
 			'configuration' => $this->dataService->getConfiguration(),
-			'devis' => json_decode($devis),
+			'devis' => $devis,
 			'produit' => json_decode($produits),
-			'logo' => $this->fileService->getLogo($this->companyService->getCurrentCompany() . 'logo.png'),
-			'logo_header' => $this->fileService->getLogo($this->companyService->getCurrentCompany() . 'logo_header.png'),
-			'logo_footer' => $this->fileService->getLogo($this->companyService->getCurrentCompany() . 'logo_footer.png'),
-		], $this->baseParams()));
+		], $this->documentSender($devis[0]->sender_profile ?? '', true), $this->baseParams()));
 	}
 
 	public function factureshow($numfacture): TemplateResponse {
-		$facture = $this->dataService->getOneFacture($numfacture);
+		$facture = json_decode($this->dataService->getOneFacture($numfacture));
 
 		return new TemplateResponse('gestion', 'factureshow', array_merge([
 			'configuration' => $this->dataService->getConfiguration(),
-			'facture' => json_decode($facture),
-			'logo' => $this->fileService->getLogo($this->companyService->getCurrentCompany() . 'logo.png'),
-			'logo_header' => $this->fileService->getLogo($this->companyService->getCurrentCompany() . 'logo_header.png'),
-			'logo_footer' => $this->fileService->getLogo($this->companyService->getCurrentCompany() . 'logo_footer.png'),
-		], $this->baseParams()));
+			'facture' => $facture,
+		], $this->documentSender($facture[0]->sender_profile ?? '', false), $this->baseParams()));
 	}
+
+    private function documentSender(string $id, bool $showChoices): array {
+        $company = (int)$this->companyService->getCurrentCompany();
+        $profiles = $showChoices || $id !== '' ? $this->db->getSenderProfiles($company) : [];
+        $profile = $profiles[$id] ?? [];
+        $logo = $profile['logo'] ?? '';
+        return [
+            'senderProfileId' => $id,
+            'senderProfile' => $profile,
+            'senderChoices' => $showChoices ? array_map(static fn (array $entry): string => $entry['label'], $profiles) : [],
+            'logo' => $logo !== '' ? $logo : $this->fileService->getLogo($company . 'logo.png'),
+            'logo_header' => $logo !== '' ? 'nothing' : $this->fileService->getLogo($company . 'logo_header.png'),
+            'logo_footer' => $logo !== '' ? 'nothing' : $this->fileService->getLogo($company . 'logo_footer.png'),
+        ];
+    }
 }

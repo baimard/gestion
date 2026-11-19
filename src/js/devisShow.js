@@ -1,3 +1,4 @@
+import { initializeSenderProfiles } from './modules/senderProfiles.js';
 import "datatables.net-dt/css/dataTables.dataTables.css";
 import "../css/mycss.less";
 
@@ -8,6 +9,7 @@ import { Client } from "./objects/client.js";
 import { capture } from "./pdf";
 
 window.addEventListener("DOMContentLoaded", function () {
+    initializeSenderProfiles();
     globalConfiguration();
 
     const documentReady = Promise.all([

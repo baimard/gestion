@@ -15,6 +15,9 @@
             <button type="button" class="primary" id="lock-document"><?php p($l->t('Finalize and lock')); ?></button>
         </div>
     </div>
+    <?php if (!empty($_['senderProfile'])): ?>
+        <p class="gestion-sender-choice" data-html2canvas-ignore><?php p($l->t('Sender profile')); ?> · <?php p($_['senderProfile']['label']); ?></p>
+    <?php endif; ?>
     <div id="PDFcontent">
     <?php print_unescaped($this->inc('content/document_banner', ['logoPosition' => 'header'])); ?>
 

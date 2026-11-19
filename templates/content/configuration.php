@@ -11,6 +11,9 @@
         </div>
     </header>
     <div class="gestion-management-grid">
+        <?php if ($_['canManageSenderProfiles'] ?? false): ?>
+            <?php print_unescaped($this->inc('content/sender_profiles')); ?>
+        <?php endif; ?>
         <section class="gestion-card">
             <div class="gestion-card-heading"><span class="gestion-section-icon material-symbols-outlined" aria-hidden="true">store</span><h2><?php p($l->t('Company details')); ?></h2></div>
             <p><?php p($l->t('Manage your identity, billing information, electronic invoicing and document appearance.')); ?></p>

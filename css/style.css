@@ -1246,6 +1246,9 @@ button.electronic-invoice-help:focus-visible {
 
 #produits th { overflow-wrap: normal; word-break: normal; font-size: 11px; }
 
+.gestion-sender-profiles {
+    grid-column: 1 / -1;
+}
 .gestion-sender-profile + .gestion-sender-profile {
     margin-block-start: 12px;
 }
@@ -1257,6 +1260,16 @@ button.electronic-invoice-help:focus-visible {
 .gestion-sender-profile form {
     display: grid;
     gap: 10px;
+}
+@media (min-width: 900px) {
+    .gestion-sender-profile form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+        gap: 12px 24px;
+    }
+    .gestion-sender-profile form > :is(small, .gestion-card-actions, [data-profile-status]) {
+        grid-column: 1 / -1;
+    }
 }
 .gestion-sender-profile label:not(.gestion-sender-logo-reset) {
     display: grid;
@@ -1273,6 +1286,11 @@ button.electronic-invoice-help:focus-visible {
     max-height: 64px;
     object-fit: contain;
 }
+.gestion-sender-logo-reset {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 .gestion-sender-choice {
     display: flex;
     flex-wrap: wrap;
@@ -1282,6 +1300,12 @@ button.electronic-invoice-help:focus-visible {
 }
 .gestion-sender-choice select {
     max-width: min(60vw, 260px);
+}
+.gestion-sender-choice label {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
 }
 [data-profile-status]:empty {
     display: none;

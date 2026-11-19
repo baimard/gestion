@@ -1,6 +1,6 @@
-<section class="gestion-card" aria-labelledby="sender-profiles-heading">
+<section class="gestion-card gestion-sender-profiles" aria-labelledby="sender-profiles-heading">
     <div class="gestion-card-heading">
-        <span class="gestion-section-icon material-symbols-outlined" aria-hidden="true">badge</span>
+        <span class="gestion-section-icon material-symbols-outlined" aria-hidden="true">mail</span>
         <h2 id="sender-profiles-heading"><?php p($l->t('Sender profiles')); ?></h2>
     </div>
     <p><?php p($l->t('Set up different contacts and logos for this company. Choose a profile on a quote to use it on the quote and its invoices.')); ?></p>

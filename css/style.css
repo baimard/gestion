@@ -468,10 +468,6 @@ button.electronic-invoice-help:focus-visible {
     object-fit: contain;
 }
 
-.gestion-document-logo-main {
-    width: min(100%, var(--gestion-logo-main-width, 160px));
-}
-
 .gestion-document-logo-header {
     width: min(100%, var(--gestion-logo-header-width, 320px));
 }
@@ -606,9 +602,9 @@ button.electronic-invoice-help:focus-visible {
     text-align: right;
 }
 
-.gestion-document-branding {
+.document-party-stacked-logo {
     margin-bottom: 12px;
-    text-align: right;
+    text-align: start;
 }
 
 .document-party-name,
@@ -680,6 +676,17 @@ button.electronic-invoice-help:focus-visible {
     }
 }
 
+@media screen and (max-width: 520px) {
+    #headertable .document-party-identity tr {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #headertable .document-party-identity .document-party-logo {
+        max-width: 100%;
+        padding: 0 0 12px;
+        text-align: start;
+    }
+}
 
 /* ==========================================================================
    Styles communs des tableaux de devis
@@ -1215,8 +1222,8 @@ button.electronic-invoice-help:focus-visible {
 }
 
 /* Document controls stay outside the printable content and follow its scroll container. */
-.gestion-document-toolbar { position: sticky; top: 0; z-index: 100; display: block; padding: 12px; margin: 0 0 20px; background: var(--color-main-background); box-shadow: 0 4px 12px #0001; }
-.gestion-document-actions { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; overflow-x: auto; min-width: 0; padding: 2px; }
+.gestion-document-toolbar { position: sticky; top: 0; z-index: 100; align-items: center; padding: 12px; margin: 0 0 20px; background: var(--color-main-background); box-shadow: 0 4px 12px #0001; }
+.gestion-document-actions { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; overflow-x: auto; min-width: 0; max-width: 100%; padding: 2px; }
 #app .gestion-document-actions button, .gestion-document-actions .gestion-status { flex: 0 0 auto; margin: 0; white-space: nowrap; }
 .gestion-document-toolbar .gestion-locked-warning { margin: 12px 0 0; border-inline-start-color: var(--color-error-text, #a72b2b); background: color-mix(in srgb, var(--color-error-text, #a72b2b) 8%, var(--color-main-background)); color: var(--color-error-text, #a72b2b); }
 .gestion-document-toolbar .gestion-locked-warning a { color: inherit; text-decoration: underline; }
@@ -1296,7 +1303,8 @@ button.electronic-invoice-help:focus-visible {
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
-    margin: 8px 12px;
+    max-width: 100%;
+    margin: 2px 0;
 }
 .gestion-sender-choice select {
     max-width: min(60vw, 260px);
@@ -1309,6 +1317,11 @@ button.electronic-invoice-help:focus-visible {
 }
 [data-profile-status]:empty {
     display: none;
+}
+[data-profile-status] {
+    flex-basis: 100%;
+    margin: 0;
+    overflow-wrap: anywhere;
 }
 
 .gestion-company-logo-upload {

@@ -37,10 +37,6 @@ body,
     height: auto;
 }
 
-.gestion-document-logo-main {
-    width: min(100%, var(--gestion-logo-main-width, 160px));
-}
-
 .gestion-document-logo-header {
     width: min(100%, var(--gestion-logo-header-width, 320px));
 }
@@ -111,9 +107,9 @@ body,
     text-align: right;
 }
 
-.gestion-document-branding {
+.document-party-stacked-logo {
     margin-bottom: 12px;
-    text-align: right;
+    text-align: left;
 }
 
 .document-party-name,

@@ -15,16 +15,17 @@
         ],
         array_map($decodePartyValue, [$company->legal_one ?? '', $company->legal_two ?? '', $company->vat_number ?? '']),
     ];
-    $hasMainLogo = isset($_['logo']) && $_['logo'] !== 'nothing';
-    // Honour the configured width; large logos get their own branding area.
+    $logo = $_['logo'] ?? 'nothing';
+    $hasMainLogo = $logo !== 'nothing' && $logo !== '';
+    // The issuer occupies half of the printable page.
     [$mainLogoWidth, $mainLogoHeight] = \OCA\Gestion\Service\DocumentLogoSize::fit(
-        $_['logo'] ?? '', (int)($company->logo_width ?? 160), (int)($company->logo_height ?? 0)
+        $logo, min(300, (int)($company->logo_width ?? 160)), min(240, (int)($company->logo_height ?? 0) ?: 240)
     );
-    $standaloneMainLogo = $mainLogoWidth > 160 || $mainLogoHeight > 160;
+    $stackedLogo = $mainLogoWidth > 160 || $mainLogoHeight > 160;
+    $renderLogo = static function () use ($logo, $mainLogoWidth, $mainLogoHeight, $l): void { ?>
+        <img class="gestion-document-logo gestion-document-logo-main" width="<?php echo $mainLogoWidth; ?>" height="<?php echo $mainLogoHeight; ?>" style="width: <?php echo $mainLogoWidth; ?>px; height: auto;" alt="<?php p($l->t('Company logo')); ?>" src="data:image/png;base64,<?php p($logo); ?>">
+    <?php };
 ?>
-<?php if ($hasMainLogo && $standaloneMainLogo): ?>
-    <?php print_unescaped($this->inc('content/document_banner', ['logoPosition' => 'main'])); ?>
-<?php endif; ?>
 <table id="headertable" class="document-parties">
     <colgroup><col width="50%"><col width="50%"></colgroup>
     <thead>
@@ -36,6 +37,9 @@
     <tbody>
         <tr>
             <td width="50%" class="document-party" aria-labelledby="document-issuer" data-party-label="<?php p($l->t('Issuer')); ?>">
+                <?php if ($hasMainLogo && $stackedLogo): ?>
+                    <div class="document-party-stacked-logo"><?php $renderLogo(); ?></div>
+                <?php endif; ?>
                 <table class="document-party-identity" role="presentation">
                     <tr>
                         <td>
@@ -52,9 +56,9 @@
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </td>
-                        <?php if ($hasMainLogo && !$standaloneMainLogo): ?>
+                        <?php if ($hasMainLogo && !$stackedLogo): ?>
                             <td class="document-party-logo" width="<?php echo $mainLogoWidth; ?>" style="width: <?php echo $mainLogoWidth; ?>px;">
-                                <img class="gestion-document-logo" width="<?php echo $mainLogoWidth; ?>" height="<?php echo $mainLogoHeight; ?>" style="width: <?php echo $mainLogoWidth; ?>px; height: <?php echo $mainLogoHeight; ?>px;" alt="<?php p($l->t('Company logo')); ?>" src="data:image/png;base64,<?php p($_['logo']); ?>">
+                                <?php $renderLogo(); ?>
                             </td>
                         <?php endif; ?>
                     </tr>

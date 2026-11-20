@@ -58,15 +58,20 @@ dossier, dans un sous-dossier propre au document.
 Logos
 -----
 
-Activez l'affichage des fichiers cachés dans Nextcloud Files, puis placez les
-images PNG dans le dossier ``.gestion`` à la racine de vos fichiers :
+Dans **Mon entreprise → Modifier les informations → Logos**, choisissez le logo
+principal, d'en-tête ou de pied de page. Le propriétaire peut y importer un
+PNG ou un JPEG de 5 Mio maximum et de 20 mégapixels au plus. Gestion prépare un
+PNG de 1 200 pixels de côté au maximum et de 256 Kio au plus, en conservant
+les proportions et la transparence. Pour les nouveaux imports, le côté le
+plus long doit mesurer au moins 64 pixels et le plus court au moins 16 pixels,
+y compris après redimensionnement.
 
-* ``<identifiant-entreprise>logo.png`` pour le logo principal ;
-* ``<identifiant-entreprise>logo_header.png`` pour l'en-tête ;
-* ``<identifiant-entreprise>logo_footer.png`` pour le pied de page.
-
-L'identifiant de l'entreprise apparaît dans le sélecteur de la navigation, par
-exemple ``id : 2``.
+Les logos sont enregistrés dans le dossier caché ``.gestion`` de Nextcloud
+Files. Les fichiers déposés manuellement restent utilisables dans la limite de
+5 Mio et de 20 mégapixels. Gestion prépare leur version optimisée à l'affichage
+et conserve le fichier original. Les anciens petits logos restent affichés.
+Les noms reconnus pour une entreprise d'identifiant ``2`` sont par exemple
+``2logo.png``, ``2logo_header.png`` et ``2logo_footer.png``.
 
 Dans **Mon entreprise → Modifier les informations → Logos**, réglez la largeur
 souhaitée pour chacun des trois logos, entre 40 et 600 pixels, et sa hauteur
@@ -88,8 +93,8 @@ Profils d'émetteur
 Dans **Mon entreprise**, ouvrez **Profils d'émetteur** pour créer, par exemple,
 un profil **Expert de justice** et un profil **Cybercorp**. Le propriétaire de
 l'entreprise renseigne un nom de profil, puis les coordonnées de
-correspondance et le logo souhaités. Un logo PNG peut peser jusqu'à 256 Kio
-et mesurer jusqu'à 1 200 pixels de côté. Les champs laissés vides reprennent
+correspondance et le logo souhaités. Les mêmes formats, limites et règles de
+redimensionnement automatique s'appliquent. Les champs laissés vides reprennent
 les valeurs de l'entreprise. Un logo de profil remplace les logos habituels
 du document.
 

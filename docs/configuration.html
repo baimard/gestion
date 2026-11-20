@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuration des entreprises &mdash; Gestion 3.5.0</title>
+  <title>Configuration des entreprises &mdash; Gestion 3.5.1</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=1b391ab7" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=49bac68b"></script>
+      <script src="_static/documentation_options.js?v=edc24292"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -235,15 +235,19 @@ dossier, dans un sous-dossier propre au document.</p>
 </section>
 <section id="logos">
 <h2>Logos<a class="headerlink" href="#logos" title="Lien vers cette rubrique"></a></h2>
-<p>Activez l’affichage des fichiers cachés dans Nextcloud Files, puis placez les
-images PNG dans le dossier <code class="docutils literal notranslate"><span class="pre">.gestion</span></code> à la racine de vos fichiers :</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;identifiant-entreprise&gt;logo.png</span></code> pour le logo principal ;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;identifiant-entreprise&gt;logo_header.png</span></code> pour l’en-tête ;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;identifiant-entreprise&gt;logo_footer.png</span></code> pour le pied de page.</p></li>
-</ul>
-<p>L’identifiant de l’entreprise apparaît dans le sélecteur de la navigation, par
-exemple <code class="docutils literal notranslate"><span class="pre">id</span> <span class="pre">:</span> <span class="pre">2</span></code>.</p>
+<p>Dans <strong>Mon entreprise → Modifier les informations → Logos</strong>, choisissez le logo
+principal, d’en-tête ou de pied de page. Le propriétaire peut y importer un
+PNG ou un JPEG de 5 Mio maximum et de 20 mégapixels au plus. Gestion prépare un
+PNG de 1 200 pixels de côté au maximum et de 256 Kio au plus, en conservant
+les proportions et la transparence. Pour les nouveaux imports, le côté le
+plus long doit mesurer au moins 64 pixels et le plus court au moins 16 pixels,
+y compris après redimensionnement.</p>
+<p>Les logos sont enregistrés dans le dossier caché <code class="docutils literal notranslate"><span class="pre">.gestion</span></code> de Nextcloud
+Files. Les fichiers déposés manuellement restent utilisables dans la limite de
+5 Mio et de 20 mégapixels. Gestion prépare leur version optimisée à l’affichage
+et conserve le fichier original. Les anciens petits logos restent affichés.
+Les noms reconnus pour une entreprise d’identifiant <code class="docutils literal notranslate"><span class="pre">2</span></code> sont par exemple
+<code class="docutils literal notranslate"><span class="pre">2logo.png</span></code>, <code class="docutils literal notranslate"><span class="pre">2logo_header.png</span></code> et <code class="docutils literal notranslate"><span class="pre">2logo_footer.png</span></code>.</p>
 <p>Dans <strong>Mon entreprise → Modifier les informations → Logos</strong>, réglez la largeur
 souhaitée pour chacun des trois logos, entre 40 et 600 pixels, et sa hauteur
 maximale entre 0 et 600 pixels. <strong>0</strong> conserve une hauteur automatique. Si une
@@ -262,8 +266,8 @@ aux devis, factures et PDF.</p>
 <p>Dans <strong>Mon entreprise</strong>, ouvrez <strong>Profils d’émetteur</strong> pour créer, par exemple,
 un profil <strong>Expert de justice</strong> et un profil <strong>Cybercorp</strong>. Le propriétaire de
 l’entreprise renseigne un nom de profil, puis les coordonnées de
-correspondance et le logo souhaités. Un logo PNG peut peser jusqu’à 256 Kio
-et mesurer jusqu’à 1 200 pixels de côté. Les champs laissés vides reprennent
+correspondance et le logo souhaités. Les mêmes formats, limites et règles de
+redimensionnement automatique s’appliquent. Les champs laissés vides reprennent
 les valeurs de l’entreprise. Un logo de profil remplace les logos habituels
 du document.</p>
 <p>Dans un devis, choisissez le profil puis cliquez sur <strong>Appliquer</strong>. Les

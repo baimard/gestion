@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Devis, factures, PDF et e-mails &mdash; Gestion 3.5.2</title>
+  <title>Devis, factures, PDF et e-mails &mdash; Gestion 3.5.3</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=1b391ab7" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=da3ac8f8"></script>
+      <script src="_static/documentation_options.js?v=7e424ce1"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -204,11 +204,12 @@ la version et le statut de paiement.</p>
 <ul class="simple">
 <li><p>espèces ;</p></li>
 <li><p>chèque ;</p></li>
-<li><p>virement ;</p></li>
 <li><p>carte ;</p></li>
 <li><p>virement SEPA.</p></li>
 </ul>
-<p>Ces choix sont convertis en codes normalisés dans Factur-X.</p>
+<p>Les anciens choix <strong>Virement</strong> et <strong>Virement SEPA</strong> sont regroupés dans
+la liste. Les brouillons utilisent le code virement SEPA dans Factur-X.
+Les factures déjà finalisées conservent leur code d’origine dans les exports.</p>
 <div  class="sphinx-contrib-video-container align-left"><video controls="True" preload="auto" width="800"><source src="_images/facture.webm" type="video/webm"></video></div></section>
 <section id="coordonnees-sur-les-documents">
 <h2>Coordonnées sur les documents<a class="headerlink" href="#coordonnees-sur-les-documents" title="Lien vers cette rubrique"></a></h2>
@@ -275,11 +276,14 @@ le document et reflète cet état ; un message rouge indique le verrouillage li�
 <p>Les envois d’une facture par e-mail ou à Iopole la verrouillent avant la tentative
 de livraison. Un échec ne lève pas cette protection. Les envois d’un devis ne le
 verrouillent pas. Le téléchargement des PDF reste disponible dans tous les cas.</p>
-<p>Le serveur interdit les modifications et suppressions après verrouillage,
-y compris le statut de paiement. Les fiches client, produits et informations
-de l’entreprise liées sont également protégées. Pour une nouvelle offre,
-dupliquez le devis ou le produit ; utilisez une nouvelle configuration pour
-changer l’identité de l’émetteur.</p>
+<p>Le verrouillage protège le contenu des documents, leur suppression ainsi que
+les fiches client, produits et informations de l’entreprise liées. Dans les
+listes <strong>Devis</strong> et <strong>Factures</strong>, cliquez sur la cellule <strong>État</strong> pour mettre
+à jour le suivi, par exemple <strong>Accepté</strong> ou <strong>Payé</strong>, même après la
+finalisation. Le statut figure dans l’historique des modifications. La date
+d’échéance et le moyen de paiement de la facture restent verrouillés.</p>
+<p>Pour une nouvelle offre, dupliquez le devis ou le produit. Utilisez une
+nouvelle configuration pour changer l’identité de l’émetteur.</p>
 <p>Même sans verrouillage, les produits utilisés par un devis, les clients utilisés
 par un devis et les devis liés à une facture ne peuvent pas être supprimés.
 La suppression d’un devis brouillon supprime ses lignes pour éviter les

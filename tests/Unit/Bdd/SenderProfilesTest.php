@@ -33,7 +33,11 @@ class SenderProfilesTest extends TestCase {
     }
 
     public function testProfileFollowsInvoiceAndRestoredQuoteAndIsProtectedAfterFinalization(): void {
-        $this->db->saveSenderProfile($this->company, $this->owner, '', ['label' => 'Expert', 'contact' => 'Jane Doe']);
+        $this->db->saveSenderProfile($this->company, $this->owner, '', [
+            'label' => 'Expert',
+            'contact' => 'Jane Doe',
+            'hide_company_logos' => true,
+        ]);
         $profile = array_key_first($this->db->getSenderProfiles($this->company));
         $this->db->insertDevis($this->company);
         $quote = (int)json_decode($this->db->getDevis($this->company))[0]->id;
@@ -51,6 +55,7 @@ class SenderProfilesTest extends TestCase {
         $restoredQuote = json_decode($this->db->getDevis($restored))[0]->id;
         $this->assertSame($profile, json_decode($this->db->getOneDevis($restoredQuote, $restored))[0]->sender_profile);
         $this->assertSame('Jane Doe', $this->db->getSenderProfiles($restored)[$profile]['contact']);
+        $this->assertTrue($this->db->getSenderProfiles($restored)[$profile]['hide_company_logos']);
 
         $this->db->lockDocument('facture', $invoice, $this->company);
         foreach ([

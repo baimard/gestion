@@ -213,9 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('scroll', event => {
         if (openActions && !openActions.querySelector('.document-actions-menu').contains(event.target)) closeActions();
     }, true);
-    document.querySelectorAll('#app-navigation a[href]').forEach(link => {
-        if (new URL(link.href).pathname === location.pathname) link.setAttribute('aria-current','page');
-    });
     const action = async (button, operation) => {
         button.disabled = true;
         try { await operation(); } catch (error) { showError(error.message); }

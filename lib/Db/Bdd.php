@@ -6,6 +6,7 @@ use OCP\IDBConnection;
 use OCP\IL10N;
 use OCA\Gestion\Service\CommercialMath;
 use OCA\Gestion\Service\BackupFormat;
+use OCA\Gestion\Service\InvoicePaymentMeans;
 use OCA\Gestion\Service\LogoImage;
 use OCA\Gestion\Service\SenderProfile;
 
@@ -105,6 +106,7 @@ class Bdd {
                     $input['logo'] = base64_encode(LogoImage::prepareUpload($input['logo']));
                 }
                 $input['logo'] ??= $profiles[$id]['logo'] ?? '';
+                $input['hide_company_logos'] ??= $profiles[$id]['hide_company_logos'] ?? false;
                 $profiles[$id] = SenderProfile::validate($input);
                 $label = $profiles[$id]['label'];
             }
@@ -164,7 +166,11 @@ class Bdd {
 
     public function getFactures($idNextcloud){
         $sql = "SELECT ".$this->tableprefix."facture.id, ".$this->tableprefix."facture.locked, ".$this->tableprefix."facture.user_id, ".$this->tableprefix."facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, ".$this->tableprefix."facture.version, status_paiement FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_configuration = ".$this->tableprefix."devis.id_configuration) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration  WHERE ".$this->tableprefix."facture.id_configuration = ?";
-        return $this->execSQL($sql, array($idNextcloud));
+        $rows = $this->execSQLNoJsonReturn($sql, [$idNextcloud]);
+        foreach ($rows as &$row) {
+            $row['type_paiement'] = InvoicePaymentMeans::normalizeTransfer((string)$row['type_paiement']);
+        }
+        return $this->rowsToJson($rows);
     }
 
     public function getOneFacture($numfacture, $idNextcloud){
@@ -304,7 +310,7 @@ class Bdd {
                 $idNextcloud,
                 $pref[0]['facture_prefixe']."-".$last,
                 $paymentDate,
-                '30',
+                InvoicePaymentMeans::SEPA,
                 $devisId,
                 $last
             )
@@ -373,12 +379,20 @@ class Bdd {
 
     private function mutateGestion_update($table, $column, $data, $id, $id_configuration) {
         if (in_array($column, self::EDITABLE[$table] ?? [], true)) {
-            $this->guardDocument($table, (int)$id, (int)$id_configuration);
+            // The list statuses are internal tracking fields and do not appear in documents.
+            if (($table === 'devis' && $column === 'mentions') || ($table === 'facture' && $column === 'status_paiement')) {
+                $this->requireRecord($table, (int)$id, (int)$id_configuration);
+            } else {
+                $this->guardDocument($table, (int)$id, (int)$id_configuration);
+            }
             if ($column === 'id_client') $this->requireRecord('client', (int)$data, (int)$id_configuration);
             if ($column === 'produit_id') $this->requireRecord('produit', (int)$data, (int)$id_configuration);
             $safeData = strip_tags(preg_replace('/<br\b[^>]*>/i', "\n", html_entity_decode($data, ENT_QUOTES, 'UTF-8')));
             $safeData = rtrim($safeData);
             $safeData = $this->normalizeColumnData($column, $safeData);
+            if ($table === 'facture' && $column === 'type_paiement') {
+                $safeData = InvoicePaymentMeans::normalizeTransfer($safeData);
+            }
 
             $sql = "UPDATE " . $this->tableprefix . $table . " SET $column = ? WHERE id = ? AND id_configuration = ?";
             $this->execSQLNoData($sql, array($safeData, $id, $id_configuration));
@@ -869,6 +883,16 @@ class Bdd {
         $this->db->beginTransaction();
         try {
             $row = $this->requireRecord($table, $id, $company);
+            if ((int)$row['locked'] === 0) {
+                $paymentMeans = (string)$row['type_paiement'];
+                $normalized = InvoicePaymentMeans::normalizeTransfer($paymentMeans);
+                if ($normalized !== $paymentMeans) {
+                    $this->execSQLNoData(
+                        'UPDATE ' . $this->tableprefix . 'facture SET type_paiement = ? WHERE id = ? AND id_configuration = ?',
+                        [$normalized, $id, $company]
+                    );
+                }
+            }
             $this->execSQLNoData('UPDATE ' . $this->tableprefix . $table . ' SET locked = 1 WHERE id = ? AND id_configuration = ?', [$id, $company]);
             if ($table === 'facture') {
                 $this->requireRecord('devis', (int)$row['id_devis'], $company);

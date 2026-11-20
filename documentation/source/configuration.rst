@@ -6,6 +6,9 @@ Configuration des entreprises
 Gestion permet à un même utilisateur de gérer plusieurs entreprises. Le
 sélecteur situé en haut de la navigation définit l'entreprise courante ; les
 clients, produits, devis, factures et réglages affichés lui appartiennent.
+La section **Gestion** regroupe les clients, devis, factures et produits.
+La section **Information** donne accès aux statistiques et aux mentions
+légales.
 
 Sur mobile, le bouton de navigation ouvre le menu latéral. Choisissez ensuite
 la rubrique souhaitée. La croix, une pression sur la zone assombrie ou la
@@ -97,13 +100,20 @@ l'entreprise renseigne un nom de profil, puis les coordonnées de
 correspondance et le logo souhaités. Les mêmes formats, limites et règles de
 redimensionnement automatique s'appliquent. Les champs laissés vides reprennent
 les valeurs de l'entreprise. Un logo de profil remplace les logos habituels
-du document.
+du document. La ligne de chaque profil indique s'il possède un logo
+personnalisé, utilise ceux de l'entreprise ou s'affiche sans logo. Ouvrez le
+profil pour voir l'aperçu du logo enregistré. Pour le retirer, cochez **Remove profile logo**
+(retirer le logo du profil), puis cliquez sur **Enregistrer**. Le profil est
+conservé et ses documents modifiables reprennent les logos de l'entreprise.
+Pour masquer ces derniers, cochez aussi **Hide company logos when this profile
+has no logo**, puis enregistrez.
 
 Dans la barre d'actions d'un devis, choisissez le profil puis cliquez sur
 **Appliquer**. Les factures liées reprennent le profil et l'indiquent dans
-leur barre d'actions. Les coordonnées de correspondance apparaissent sur l'aperçu et dans le PDF. Le nom légal, les
-identifiants de l'entreprise et les données légales du XML Factur-X proviennent
-de la fiche entreprise. Le client reste sélectionné dans le devis.
+leur barre d'actions. Les coordonnées de correspondance apparaissent sur
+l'aperçu et dans le PDF. Le nom légal, les identifiants de l'entreprise et les
+données légales du XML Factur-X proviennent de la fiche entreprise. Le client
+reste sélectionné dans le devis.
 
 Les utilisateurs qui ont accès à l'entreprise peuvent choisir les profils
 existants. Une fois qu'une facture est finalisée, le profil utilisé et le

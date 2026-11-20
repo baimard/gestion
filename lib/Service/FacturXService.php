@@ -395,7 +395,11 @@ XML;
 
         $invoiceNumber = htmlspecialchars($invoice->num, ENT_XML1);
 
-		$paymentCode = $this->getPaymentMeansCode((string)($invoice->type_paiement ?? ''));
+		$paymentMeans = (string)($invoice->type_paiement ?? '');
+		if (empty($invoice->locked)) {
+			$paymentMeans = InvoicePaymentMeans::normalizeTransfer($paymentMeans);
+		}
+		$paymentCode = $this->getPaymentMeansCode($paymentMeans);
 		$paymentMethod = self::PAYMENT_MEANS[$paymentCode] ?? '';
 		$paymentMeansXml = $this->buildPaymentMeans($paymentCode, (string)($company->iban ?? ''));
 		$paymentDescriptionXml = $paymentMethod !== ''

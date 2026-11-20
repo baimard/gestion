@@ -1,73 +1,60 @@
-<ul class="app-navigation">
-	<li class="gestion-mobile-navigation-controls">
-		<span>Gestion</span>
-		<button type="button" class="gestion-navigation-close" aria-label="<?php p($l->t('Close navigation')); ?>" title="<?php p($l->t('Close navigation')); ?>">
-			<span class="material-symbols-outlined" aria-hidden="true">close</span>
-		</button>
-	</li>
-	<li class="app-navigation-item"><center><b><?php p($l->t('COMPANY'));?></b></center></li>
-	<li class="app-navigation-entry">
-		<select style="width:95%; margin-left:7px;" name="CurrentCompany" id="CurrentCompany-select">
-			<?php foreach ($_['CompaniesList'] as $value): ?>
-				<option value="<?= htmlspecialchars($value['id']) ?>" 
-						<?= ((int)$value['id'] === (int)$_['CurrentCompany']) ? 'selected' : '' ?>>
-					<?= 'id : ' .htmlspecialchars($value['id']) . ' - ' . htmlspecialchars($value['entreprise']) ?>
-				</option>
-			<?php endforeach; ?>
-		</select>
-	</li>
-	<li class="app-navigation-item"><center><b>GESTION</b></center></li>
-	<li class="app-navigation-entry">
-		<ul class="app-navigation">
-			<li class="app-navigation-entry">
-				<a class="nav-link" href="<?= $_['url']['index']; ?>">
-					<?php p($l->t('Customers')); ?>
-				</a>
-				<span class="nav-stats" id="statsclient">
-					<div class="loader"></div>
-				</span>
-			</li>
-			<li class="app-navigation-entry">
-				<a class="nav-link" href="<?= $_['url']['devis']; ?>">
-					<?php p($l->t('Quotes')); ?>
-				</a>
-				<span class="nav-stats" id="statsdevis">
-					<div class="loader"></div>
-				</span>
-			</li>
-			<li class="app-navigation-entry">
-				<a class="nav-link" href="<?= $_['url']['facture']; ?>">
-					<?= $l->t('Invoices'); ?>
-				</a>
-				<span class="nav-stats" id="statsfacture">
-					<div class="loader"></div>
-				</span>
-			</li>
-			<li class="app-navigation-entry">
-				<a class="nav-link" href="<?= $_['url']['produit']; ?>">
-					<?= $l->t('Products'); ?>
-				</a>
-				<span class="nav-stats" id="statsproduit">
-					<div class="loader"></div>
-				</span>
-			</li>
-		</ul>
-	</li>
-	<li class="app-navigation-item"><center><b><?= p($l->t('INFORMATION'));?></b></center></li>
-	<li class="app-navigation-entry">
-		<ul class="app-navigation">
-			<li class="app-navigation-entry"><a href="<?= ($_['url']['statistique']); ?>"><?= p($l->t('Statistics'));?></a></li>
-			<li class="app-navigation-entry"><a href="<?= ($_['url']['legalnotice']); ?>"><?= p($l->t('Legal notice'));?></a></li>
-		</ul>
-	</li>
-	<li class="app-navigation-item"><center><b><?= p($l->t('Save folder'));?></b></center></li>
-	<li class="app-navigation-entry">
-		<input style="margin-left:10px;width:270px;" id="theFolder" type="text" placeholder="<?= p($l->t('Please choose a folder'));?>">
-	</li>
-	
-	<li><center><a href="#"><button id="about" style="margin-left:10px;width:270px;"><?php p($l->t('About'));?></button></a></center></li>
-	<li><center><a href="<?= ($_['url']['config']); ?>"><button style="margin-left:10px;width:270px;"><?php p($l->t('My company'));?></button></a></center></li>
-	<li class="gestion-version">
-		<?php p($l->t('Gestion version')); ?> <?php p($_['appVersion']); ?>
-	</li>
-</ul>
+<nav class="gestion-nav" aria-label="<?php p($l->t('Gestion')); ?>">
+    <div class="gestion-mobile-navigation-controls">
+        <span>Gestion</span>
+        <button type="button" class="gestion-navigation-close" aria-label="<?php p($l->t('Close navigation')); ?>" title="<?php p($l->t('Close navigation')); ?>">
+            <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+    </div>
+
+    <div class="gestion-nav-section">
+        <label class="gestion-nav-heading" for="CurrentCompany-select"><?php p($l->t('COMPANY')); ?></label>
+        <select name="CurrentCompany" id="CurrentCompany-select">
+            <?php foreach ($_['CompaniesList'] as $value): ?>
+                <option value="<?php p($value['id']); ?>" <?php if ((int)$value['id'] === (int)$_['CurrentCompany']) echo 'selected'; ?>>
+                    <?php p('id : ' . $value['id'] . ' - ' . $value['entreprise']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+
+    <div class="gestion-nav-section">
+        <h2 class="gestion-nav-heading" id="gestion-nav-documents"><?php p($l->t('Gestion')); ?></h2>
+        <ul class="gestion-nav-list" aria-labelledby="gestion-nav-documents">
+            <?php
+                $links = [
+                    'index' => [$l->t('Customers'), 'statsclient'],
+                    'devis' => [$l->t('Quotes'), 'statsdevis'],
+                    'facture' => [$l->t('Invoices'), 'statsfacture'],
+                    'produit' => [$l->t('Products'), 'statsproduit'],
+                ];
+            ?>
+            <?php foreach ($links as $route => [$label, $counter]): ?>
+                <li>
+                    <a class="gestion-nav-link" href="<?php p($_['url'][$route]); ?>" <?php if (in_array($route, ['devis', 'facture'], true)) echo 'data-navigation-descendants'; ?>>
+                        <?php p($label); ?>
+                        <span class="gestion-nav-count" id="<?php p($counter); ?>"></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+    <div class="gestion-nav-section">
+        <h2 class="gestion-nav-heading" id="gestion-nav-information"><?php p($l->t('INFORMATION')); ?></h2>
+        <ul class="gestion-nav-list" aria-labelledby="gestion-nav-information">
+            <li><a class="gestion-nav-link" href="<?php p($_['url']['statistique']); ?>"><?php p($l->t('Statistics')); ?></a></li>
+            <li><a class="gestion-nav-link" href="<?php p($_['url']['legalnotice']); ?>"><?php p($l->t('Legal notice')); ?></a></li>
+        </ul>
+    </div>
+
+    <div class="gestion-nav-section">
+        <label class="gestion-nav-heading" for="theFolder"><?php p($l->t('Save folder')); ?></label>
+        <input id="theFolder" type="text" placeholder="<?php p($l->t('Please choose a folder')); ?>">
+    </div>
+
+    <div class="gestion-nav-footer">
+        <a class="gestion-nav-link" href="<?php p($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a>
+        <button class="gestion-nav-link" type="button" id="about"><?php p($l->t('About')); ?></button>
+    </div>
+    <p class="gestion-version"><?php p($l->t('Gestion version')); ?> <?php p($_['appVersion']); ?></p>
+</nav>

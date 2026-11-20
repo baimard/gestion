@@ -39,7 +39,7 @@ export class Devis {
       `<div class="gestion-quote-number"><a href="${this.baseUrl}" class="gestion-quote-lock${this.locked ? ' is-locked' : ''}" title="${this.locked ? t('gestion', 'View quote locked by its invoice') : t('gestion', 'View editable quote')}" aria-label="${this.locked ? t('gestion', 'View quote locked by its invoice') : t('gestion', 'View editable quote')}"><span class="material-symbols-outlined" aria-hidden="true">${this.locked ? 'lock' : 'lock_open'}</span></a><div class="inline editable" data-table="devis" data-column="num" data-id="${this.id}">${this.num}</div></div>`,
       `<div class="loadSelect_listclient" data-table="devis" data-column="id_client" data-id="${this.id}" data-current="${this.cid}">${this.entreprise} - ${this.prenom} ${this.nom}</div>`,
       `<div class="inline editable" data-table="devis" data-column="version" data-id="${this.id}">${this.version}</div>`,
-      `<div class="inline editable" data-table="devis" data-column="mentions" data-id="${this.id}" >${this.mentions}</div>`,
+      `<div class="editable" data-table="devis" data-column="mentions" data-id="${this.id}">${this.mentions}</div>`,
       `<details class="document-actions">
         <summary title="${t('gestion', 'Actions')}" aria-label="${t('gestion', 'Actions')}" class="material-symbols">more_horiz</summary>
         <div class="document-actions-menu">

@@ -10,7 +10,6 @@ export class Facture {
   static PAYMENT_MEANS = [
     ['10', t('gestion', 'Cash')],
     ['20', t('gestion', 'Cheque')],
-    ['30', t('gestion', 'Credit transfer')],
     ['48', t('gestion', 'Payment card')],
     ['58', t('gestion', 'SEPA credit transfer')],
   ];
@@ -25,11 +24,8 @@ export class Facture {
       cash: '10',
       cheque: '20',
       check: '20',
-      bank: '30',
-      'credit transfer': '30',
       card: '48',
       'payment card': '48',
-      'sepa credit transfer': '58',
     };
 
     return legacyPaymentMeans[paymentMeans.toLowerCase()] ?? '';
@@ -92,7 +88,6 @@ export class Facture {
       myrow[1] += `<span class="gestion-status">${t('gestion', 'Locked')}</span>`;
       myrow[3] = myrow[3].replace('<input ', '<input disabled ');
       myrow[4] = myrow[4].replace('<select ', '<select disabled ');
-      myrow[7] = myrow[7].replace('class="editable"', 'class="locked-payment-status"');
       myrow[8] = myrow[8].replace(/<button[^>]*class="document-action deleteItem"[\s\S]*?<\/button>/, '');
     }
     return myrow;

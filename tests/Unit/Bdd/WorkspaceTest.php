@@ -143,11 +143,46 @@ class WorkspaceTest extends TestCase {
         $invoice = $this->db->insertFacture($this->company, $f['quote']);
         $this->db->lockDocument('facture', $invoice['id'], $this->company);
         $this->assertSame(1, (int)json_decode($this->db->getDevis($this->company), true)[0]['locked']);
-        foreach ([['devis','num',$f['quote']], ['produit_devis','quantite',$f['line']], ['produit','prix_unitaire',$f['product']], ['client','nom',$f['client']]] as [$table,$column,$id]) {
+        foreach ([['devis','num',$f['quote']], ['facture','date_paiement',$invoice['id']], ['facture','type_paiement',$invoice['id']], ['produit_devis','quantite',$f['line']], ['produit','prix_unitaire',$f['product']], ['client','nom',$f['client']]] as [$table,$column,$id]) {
             try { $this->db->gestion_update($table,$column,'2',$id,$this->company); $this->fail('Locked mutation accepted: ' . $table); }
             catch (\DomainException $e) { $this->assertNotEmpty($e->getMessage()); }
         }
-        try { $this->db->gestion_update('facture','status_paiement','1',$invoice['id'],$this->company); $this->fail('Locked payment status accepted.'); } catch (\DomainException $e) { $this->addToAssertionCount(1); }
+    }
+
+    public function testLockedDocumentStatusesRemainEditableWithinTheCompany(): void {
+        $f = $this->fixture();
+        $invoice = $this->db->insertFacture($this->company, $f['quote']);
+        $this->db->lockDocument('facture', $invoice['id'], $this->company);
+        $this->assertTrue($this->db->gestion_update('devis', 'mentions', 'Accepté', $f['quote'], $this->company));
+        $this->assertTrue($this->db->gestion_update('facture', 'status_paiement', 'Payé', $invoice['id'], $this->company));
+        $this->assertSame('Accepté', $this->db->requireRecord('devis', $f['quote'], $this->company)['mentions']);
+        $this->assertSame('Payé', $this->db->requireRecord('facture', $invoice['id'], $this->company)['status_paiement']);
+        $this->assertSame(1, (int)$this->db->requireRecord('facture', $invoice['id'], $this->company)['locked']);
+        $changes = json_decode($this->db->history($this->company)[0]['changes'], true);
+        $this->assertSame('status_paiement', $changes['field']);
+        $this->assertSame('Payé', $changes['after']);
+
+        $this->db->createCompany($this->owner . '-other');
+        $otherCompany = (int)$this->db->getCompaniesOwner($this->owner . '-other')[0]['id'];
+        $this->expectException(\InvalidArgumentException::class);
+        $this->db->gestion_update('facture', 'status_paiement', 'Pending', $invoice['id'], $otherCompany);
+    }
+
+    public function testTransfersUseSepaWithHistoricalInvoiceCodesPreserved(): void {
+        $f = $this->fixture();
+        $invoice = $this->db->insertFacture($this->company, $f['quote'])['id'];
+        $this->assertSame('58', $this->db->requireRecord('facture', $invoice, $this->company)['type_paiement']);
+        $this->db->gestion_update('facture', 'type_paiement', 'Virement', $invoice, $this->company);
+        $this->assertSame('58', $this->db->requireRecord('facture', $invoice, $this->company)['type_paiement']);
+
+        $this->connection->executeStatement('UPDATE *PREFIX*gestion_facture SET type_paiement = ? WHERE id = ?', ['30', $invoice]);
+        $this->assertSame('58', json_decode($this->db->getFactures($this->company), true)[0]['type_paiement']);
+        $this->db->lockDocument('facture', $invoice, $this->company);
+        $this->assertSame('58', $this->db->requireRecord('facture', $invoice, $this->company)['type_paiement']);
+
+        $this->connection->executeStatement('UPDATE *PREFIX*gestion_facture SET type_paiement = ? WHERE id = ?', ['30', $invoice]);
+        $this->db->lockDocument('facture', $invoice, $this->company);
+        $this->assertSame('30', $this->db->requireRecord('facture', $invoice, $this->company)['type_paiement']);
     }
 
     public function testReferencedProductCannotBeDeleted(): void {

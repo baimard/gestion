@@ -253,7 +253,7 @@ class FacturXServiceTest extends TestCase {
 			'date' => '2026-08-06',
 			'date_paiement' => '2026-09-06',
 			'num' => 'F-TRANSFER',
-			'type_paiement' => '58',
+			'type_paiement' => '30',
 		];
 		$company = (object)['iban' => 'FR76 3000 6000 0112 3456 7890 189'];
 		$products = [(object)[
@@ -267,6 +267,10 @@ class FacturXServiceTest extends TestCase {
 
 		$this->assertStringContainsString('<ram:TypeCode>58</ram:TypeCode>', $xml);
 		$this->assertStringContainsString('<ram:IBANID>FR7630006000011234567890189</ram:IBANID>', $xml);
+
+		$invoice->locked = 1;
+		$lockedXml = $service->buildXml($invoice, $company, $products);
+		$this->assertStringContainsString('<ram:TypeCode>30</ram:TypeCode>', $lockedXml);
 	}
 
 	public function testIgnoresUnsupportedFreeTextPaymentMeans(): void {

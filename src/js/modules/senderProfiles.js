@@ -26,13 +26,23 @@ async function save(form, path, payload) {
 export function initializeSenderProfiles() {
     for (const form of document.querySelectorAll('[data-sender-profile]')) {
         const { company, id } = form.dataset;
+        const logoFile = form.elements.namedItem('logo_file');
+        const removeLogo = form.elements.namedItem('remove_logo');
+        if (removeLogo) {
+            removeLogo.addEventListener('change', () => {
+                if (removeLogo.checked) logoFile.value = '';
+            });
+            logoFile.addEventListener('change', () => {
+                if (logoFile.files.length) removeLogo.checked = false;
+            });
+        }
         form.addEventListener('submit', event => {
             event.preventDefault();
-            const { label, contact, address, email, phone, logo_file: file, remove_logo: removeLogo } = Object.fromEntries(new FormData(form));
+            const { label, contact, address, email, phone, logo_file: file, remove_logo: remove, hide_company_logos: hideCompanyLogos } = Object.fromEntries(new FormData(form));
             save(form, '/sender-profiles', async () => {
-                const profile = { label, contact, address, email, phone };
+                const profile = { label, contact, address, email, phone, hide_company_logos: Boolean(hideCompanyLogos) };
                 if (file.size) profile.logo = await readLogo(file);
-                else if (removeLogo) profile.logo = '';
+                else if (remove) profile.logo = '';
                 return { company: Number(company), id, profile };
             });
         });

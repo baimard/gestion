@@ -78,13 +78,14 @@ souhaitée pour chacun des trois logos, entre 40 et 600 pixels, et sa hauteur
 maximale entre 0 et 600 pixels. **0** conserve une hauteur automatique. Si une
 hauteur maximale est définie, le logo est ajusté aux deux limites sans être
 déformé ; sa largeur affichée peut donc être réduite. Le logo
-principal respecte ce réglage, y compris au-delà de 96 pixels.
+principal est limité à 300 pixels de large et 240 pixels de haut pour tenir
+dans le bloc Émetteur du PDF.
 
-Un logo principal compact reste à droite des coordonnées complètes. S'il
-nécessite plus de place, il apparaît au-dessus du tableau, sans repousser
-l'adresse sous le nom. Sur un écran étroit, les logos se réduisent à la place
-disponible. Les logos d'en-tête et de pied de page sont facultatifs : aucun
-espace ne leur est réservé lorsqu'ils sont absents. Les réglages s'appliquent
+Le logo principal reste dans le bloc Émetteur. Il s'affiche à droite des
+coordonnées s'il est compact, ou au-dessus s'il est grand ou si l'écran est
+étroit. Les logos se réduisent à la place disponible. Les logos d'en-tête et de
+pied de page sont facultatifs. Lorsqu'ils sont absents, l'espace reste libre
+pour les coordonnées et les autres sections. Les réglages s'appliquent
 aux devis, factures et PDF.
 
 Profils d'émetteur
@@ -98,9 +99,9 @@ redimensionnement automatique s'appliquent. Les champs laissés vides reprennent
 les valeurs de l'entreprise. Un logo de profil remplace les logos habituels
 du document.
 
-Dans un devis, choisissez le profil puis cliquez sur **Appliquer**. Les
-factures liées reprennent le profil du devis. Les coordonnées de
-correspondance apparaissent sur l'aperçu et dans le PDF. Le nom légal, les
+Dans la barre d'actions d'un devis, choisissez le profil puis cliquez sur
+**Appliquer**. Les factures liées reprennent le profil et l'indiquent dans
+leur barre d'actions. Les coordonnées de correspondance apparaissent sur l'aperçu et dans le PDF. Le nom légal, les
 identifiants de l'entreprise et les données légales du XML Factur-X proviennent
 de la fiche entreprise. Le client reste sélectionné dans le devis.
 

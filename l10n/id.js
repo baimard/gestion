@@ -53,6 +53,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "Status",
+    "Apply" : "Terapkan",
     "Date:" : "Tanggal:",
     "Signature:" : "Tanda tangan:",
     "Issuer" : "Penerbit",

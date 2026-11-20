@@ -73,6 +73,7 @@ OC.L10N.register(
     "Add quote" : "Rnu abder",
     "ID" : "Asulay",
     "Status" : "Addad",
+    "Apply" : "Snes",
     "Quantity" : "Tasmekta",
     "Total price" : "Tasqamt tamatut",
     "Date:" : "Azemz:",

@@ -36,6 +36,7 @@ OC.L10N.register(
     "Remove" : "Ewechhuelen",
     "Save" : "Save",
     "Status" : "Status",
+    "Apply" : "Uwenden",
     "Quantity" : "Quantitéit",
     "Signature:" : "Signatur:",
     "Customer" : "Client",

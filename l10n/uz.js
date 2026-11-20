@@ -31,6 +31,7 @@ OC.L10N.register(
     "Remove" : "O'chirish",
     "Save" : "Saqlash",
     "Status" : "Status",
+    "Apply" : "Qo'llash",
     "Date:" : "Sana:",
     "City name" : "Shahar nomi",
     "Year" : "Yil",

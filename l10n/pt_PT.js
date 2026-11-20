@@ -321,6 +321,7 @@ OC.L10N.register(
     "Customer quote" : "Cotação de cliente",
     "Status" : "Estado",
     "Add product" : "Adicionar produto ",
+    "Apply" : "Aplicar",
     "Quantity" : "Quantidade",
     "Unit price without VAT" : "Preço de unidade sem IVA",
     "Total without VAT" : "Total sem IVA ",

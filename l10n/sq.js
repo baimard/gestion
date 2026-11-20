@@ -36,6 +36,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "Statusi",
+    "Apply" : "Apliko",
     "Signature:" : "Nënshkrim:",
     "Issuer" : "Lëshuesi",
     "Recipient" : "Marrës",

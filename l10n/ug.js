@@ -326,6 +326,7 @@ OC.L10N.register(
     "Customer quote" : "خېرىدارلارنىڭ سۆزى",
     "Status" : "ھالەت",
     "Add product" : "مەھسۇلات قوشۇڭ",
+    "Apply" : "ئىلتىماس قىلىڭ",
     "Quantity" : "سانى",
     "Unit price without VAT" : "بىرلىك باھاسى قوشۇلما قىممەت بېجى يوق",
     "Total without VAT" : "قوشۇلما قىممەت بېجى يوق",

@@ -43,6 +43,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "Estatus",
+    "Apply" : "Aplicar",
     "Date:" : "Fecha:",
     "Signature:" : "Firma:",
     "Issuer" : "Quien levanta",

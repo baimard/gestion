@@ -42,6 +42,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "Estat",
+    "Apply" : "Aplicar",
     "Date:" : "Data :",
     "Signature:" : "Signatura :",
     "Legal notice" : "Avís legal",

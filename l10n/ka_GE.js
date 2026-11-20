@@ -30,6 +30,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "სტატუსი",
+    "Apply" : "გამოყენება",
     "Signature:" : "ხელმოწერა:",
     "Issuer" : "გამცემი",
     "Recipient" : "მიმღები",

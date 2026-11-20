@@ -325,6 +325,7 @@ OC.L10N.register(
     "Customer quote" : "ໃບສະເໜີລາຄາລູກຄ້າ",
     "Status" : "ສະຖານະ",
     "Add product" : "ເພີ່ມສິນຄ້າ",
+    "Apply" : "Apply",
     "Quantity" : "ຈຳນວນ",
     "Unit price without VAT" : "ລາຄາຕໍ່ໜ່ວຍ (ບໍ່ລວມອາກອນ)",
     "Total without VAT" : "ລວມ (ບໍ່ລວມອາກອນ)",

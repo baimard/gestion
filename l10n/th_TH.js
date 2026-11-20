@@ -28,6 +28,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "สถานะ",
+    "Apply" : "นำไปใช้",
     "Signature:" : "ลายเซ็นต์:",
     "City name" : "ชื่อเมือง",
     "Header" : "ส่วนหัว",

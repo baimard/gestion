@@ -325,6 +325,7 @@ OC.L10N.register(
     "Customer quote" : "Nukuu ya mteja",
     "Status" : "Wadhifa/hadhi/hali",
     "Add product" : "Ongeza bidhaa",
+    "Apply" : "Omba",
     "Quantity" : "Kiasi",
     "Unit price without VAT" : "Bei ya kitengo bila VAT",
     "Total without VAT" : "Jumla bila VAT",

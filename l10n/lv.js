@@ -41,6 +41,7 @@ OC.L10N.register(
     "Remove" : "Noņemt",
     "Save" : "Save",
     "Status" : "Status",
+    "Apply" : "Apstiprināt",
     "Date:" : "Datums:",
     "Signature:" : "Paraksts:",
     "Issuer" : "Izdevējs",

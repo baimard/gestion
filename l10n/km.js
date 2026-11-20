@@ -20,6 +20,7 @@ OC.L10N.register(
     "Help" : "ជំនួយ",
     "Add" : "បន្ថែម",
     "Save" : "Save",
+    "Apply" : "អនុវត្ត",
     "Signature:" : "ហត្ថលេខា:",
     "Year" : "ឆ្នាំ",
     "January" : "ខែមករា",

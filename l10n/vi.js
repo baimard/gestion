@@ -39,6 +39,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "Trạng thái",
+    "Apply" : "Áp dụng",
     "Date:" : "Ngày:",
     "Signature:" : "Chữ ký :",
     "Recipient" : "Người nhận",

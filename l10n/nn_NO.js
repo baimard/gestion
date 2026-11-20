@@ -30,6 +30,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "Status",
+    "Apply" : "Anvend",
     "Quantity" : "Tal",
     "Signature:" : "Signatur:",
     "Recipient" : "Mottakar",

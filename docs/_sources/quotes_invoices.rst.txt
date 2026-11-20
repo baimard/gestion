@@ -26,11 +26,12 @@ Moyens de paiement structurés :
 
 * espèces ;
 * chèque ;
-* virement ;
 * carte ;
 * virement SEPA.
 
-Ces choix sont convertis en codes normalisés dans Factur-X.
+Les anciens choix **Virement** et **Virement SEPA** sont regroupés dans
+la liste. Les brouillons utilisent le code virement SEPA dans Factur-X.
+Les factures déjà finalisées conservent leur code d'origine dans les exports.
 
 .. video:: _static/videos/facture.webm
    :width: 800
@@ -114,11 +115,15 @@ Les envois d'une facture par e-mail ou à Iopole la verrouillent avant la tentat
 de livraison. Un échec ne lève pas cette protection. Les envois d'un devis ne le
 verrouillent pas. Le téléchargement des PDF reste disponible dans tous les cas.
 
-Le serveur interdit les modifications et suppressions après verrouillage,
-y compris le statut de paiement. Les fiches client, produits et informations
-de l'entreprise liées sont également protégées. Pour une nouvelle offre,
-dupliquez le devis ou le produit ; utilisez une nouvelle configuration pour
-changer l'identité de l'émetteur.
+Le verrouillage protège le contenu des documents, leur suppression ainsi que
+les fiches client, produits et informations de l'entreprise liées. Dans les
+listes **Devis** et **Factures**, cliquez sur la cellule **État** pour mettre
+à jour le suivi, par exemple **Accepté** ou **Payé**, même après la
+finalisation. Le statut figure dans l'historique des modifications. La date
+d'échéance et le moyen de paiement de la facture restent verrouillés.
+
+Pour une nouvelle offre, dupliquez le devis ou le produit. Utilisez une
+nouvelle configuration pour changer l'identité de l'émetteur.
 
 Même sans verrouillage, les produits utilisés par un devis, les clients utilisés
 par un devis et les devis liés à une facture ne peuvent pas être supprimés.

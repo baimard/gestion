@@ -1,0 +1,1 @@
+<small class="gestion-logo-upload-hint"><?php p($l->t('PNG or JPEG up to 5 MiB and 20 megapixels. The image is reduced automatically with its proportions preserved. Minimum size: 64 pixels on the longest side and 16 on the shortest.')); ?></small>

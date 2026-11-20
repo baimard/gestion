@@ -1310,3 +1310,27 @@ button.electronic-invoice-help:focus-visible {
 [data-profile-status]:empty {
     display: none;
 }
+
+.gestion-company-logo-upload {
+    display: grid;
+    gap: 10px;
+    margin: 18px 0;
+    padding: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-large, 12px);
+}
+.gestion-company-logo-upload label {
+    display: grid;
+    gap: 4px;
+}
+.gestion-company-logo-upload input,
+.gestion-company-logo-upload select {
+    max-width: 100%;
+    min-width: 0;
+}
+.gestion-company-logo-upload button {
+    justify-self: start;
+}
+.gestion-company-logo-upload [role="status"]:empty {
+    display: none;
+}

@@ -98,13 +98,14 @@ class TemplateService {
         $profiles = $showChoices || $id !== '' ? $this->db->getSenderProfiles($company) : [];
         $profile = $profiles[$id] ?? [];
         $logo = $profile['logo'] ?? '';
+        $owner = $logo === '' && $company > 0 ? $this->db->requireRecord('configuration', $company, $company)['id_nextcloud'] : null;
         return [
             'senderProfileId' => $id,
             'senderProfile' => $profile,
             'senderChoices' => $showChoices ? array_map(static fn (array $entry): string => $entry['label'], $profiles) : [],
-            'logo' => $logo !== '' ? $logo : $this->fileService->getLogo($company . 'logo.png'),
-            'logo_header' => $logo !== '' ? 'nothing' : $this->fileService->getLogo($company . 'logo_header.png'),
-            'logo_footer' => $logo !== '' ? 'nothing' : $this->fileService->getLogo($company . 'logo_footer.png'),
+            'logo' => $logo !== '' ? $logo : $this->fileService->getLogo($company . 'logo.png', $owner),
+            'logo_header' => $logo !== '' ? 'nothing' : $this->fileService->getLogo($company . 'logo_header.png', $owner),
+            'logo_footer' => $logo !== '' ? 'nothing' : $this->fileService->getLogo($company . 'logo_footer.png', $owner),
         ];
     }
 }

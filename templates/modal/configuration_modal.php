@@ -53,6 +53,23 @@
 					<p><?php p($l->t('Set the width used for each logo in quotes, invoices and generated PDFs.'));?></p>
 					<p><?php p($l->t('A maximum height of 0 means automatic height. Images are resized to fit both limits without being stretched.'));?></p>
 					<p><?php p($l->t('Logo proportions are preserved. Large main logos appear above the address table. On small screens, logos shrink to fit the available space.'));?></p>
+                    <?php if ($_['canManageSenderProfiles'] ?? false): ?>
+                        <form class="gestion-company-logo-upload" method="post" data-company-logo data-company="<?php p($_['CurrentCompany']); ?>">
+                            <label><?php p($l->t('Logo position')); ?>
+                                <select name="position">
+                                    <option value="main"><?php p($l->t('Main logo')); ?></option>
+                                    <option value="header"><?php p($l->t('Header logo')); ?></option>
+                                    <option value="footer"><?php p($l->t('Footer logo')); ?></option>
+                                </select>
+                            </label>
+                            <label><?php p($l->t('Choose a logo')); ?>
+                                <input name="logo_file" type="file" accept="image/png,image/jpeg" required>
+                            </label>
+                            <?php print_unescaped($this->inc('content/logo_upload_hint')); ?>
+                            <button type="submit" class="primary"><?php p($l->t('Save logo')); ?></button>
+                            <p role="status"></p>
+                        </form>
+                    <?php endif; ?>
 					<div class="configuration-logo-dimensions">
 					<div class="configuration-global"><label class="configuration" for="logo_header_width"><?php p($l->t('Header logo width'));?></label><input type="number" min="40" max="600" step="10" id="logo_header_width" class="configuration-content editableConfiguration" data-table="configuration" data-column="logo_header_width" data-id="" /> px</div>
 					<div class="configuration-global"><label class="configuration" for="logo_header_height"><?php p($l->t('Header logo maximum height'));?></label><input type="number" min="0" max="600" step="10" id="logo_header_height" class="configuration-content editableConfiguration" data-table="configuration" data-column="logo_header_height" data-id="" /> px</div>

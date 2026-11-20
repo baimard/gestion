@@ -6,7 +6,6 @@ namespace OCA\Gestion\Service;
 
 final class SenderProfile {
     public const MAX_COUNT = 12;
-    public const MAX_LOGO_BYTES = 262144;
 
     public static function validate(array $input): array {
         $profile = [];
@@ -22,15 +21,15 @@ final class SenderProfile {
         }
 
         $logo = $input['logo'] ?? '';
-        if (!is_string($logo) || strlen($logo) > 4 * (int)ceil(self::MAX_LOGO_BYTES / 3)) {
-            throw new \InvalidArgumentException('Choose a PNG logo under 256 KiB, up to 1200 × 1200 pixels.');
+        if (!is_string($logo) || strlen($logo) > 4 * (int)ceil(LogoImage::MAX_OUTPUT_BYTES / 3)) {
+            throw new \InvalidArgumentException('Invalid stored sender profile logo.');
         }
         if ($logo !== '') {
             $bytes = base64_decode($logo, true);
             $size = $bytes === false ? false : @getimagesizefromstring($bytes);
-            if (!$size || strlen($bytes) > self::MAX_LOGO_BYTES || $size[2] !== IMAGETYPE_PNG
+            if (!$size || strlen($bytes) > LogoImage::MAX_OUTPUT_BYTES || $size[2] !== IMAGETYPE_PNG
                 || $size[0] < 1 || $size[1] < 1 || $size[0] > 1200 || $size[1] > 1200) {
-                throw new \InvalidArgumentException('Choose a PNG logo under 256 KiB, up to 1200 × 1200 pixels.');
+                throw new \InvalidArgumentException('Invalid stored sender profile logo.');
             }
             $logo = base64_encode($bytes);
         }

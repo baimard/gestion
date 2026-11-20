@@ -12,7 +12,7 @@ await page.goto('http://127.0.0.1:8080/index.php/apps/gestion/config');if(page.u
 await dismissAnnouncement(page);
 await page.evaluate(async id=>{await fetch(OC.generateUrl('/apps/gestion/updateSession'),{method:'POST',headers:{'Content-Type':'application/json',requesttoken:OC.requestToken||oc_requesttoken},body:JSON.stringify({companyID:String(id)})})},fixture.company);
 await page.goto(`http://127.0.0.1:8080/index.php/apps/gestion/devis/${fixture.quote}/show`);await page.waitForFunction(()=>document.documentElement.dataset.gestionDocumentReady==='true');
-assert.match(await page.locator('.gestion-document-toolbar [role=status]').innerText(),/cannot be edited or deleted/);
+assert.match(await page.locator('.gestion-document-toolbar [role=status]').innerText(),/update its status from the quotes list/);
 assert.equal(await page.locator('.gestion-document-toolbar a').getAttribute('href'),'https://baimard.github.io/gestion/document_lifecycle.html');
 assert.equal(await page.locator('#PDFcontent .gestion-lock-information').count(),0);
 await page.goto('http://127.0.0.1:8080/index.php/apps/gestion/devis');await page.locator('.document-actions').first().locator('summary').click();await page.locator('.sendDocumentMail').first().click();await page.locator('dialog[open] #mail-lock-warning').waitFor();

@@ -220,34 +220,82 @@
     display: none;
 }
 
-.app-navigation-entry {
+.gestion-nav {
+    padding: 8px 12px;
+}
+.gestion-nav-section {
+    margin-block-end: 12px;
+}
+.gestion-nav-section + .gestion-nav-section,
+.gestion-nav-footer {
+    border-block-start: 1px solid var(--color-border);
+    padding-block-start: 8px;
+}
+#app-navigation .gestion-nav-heading {
+    display: block;
+    margin: 0 0 4px;
+    padding: 4px 10px;
+    color: var(--color-main-text);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+#app-navigation .gestion-nav :is(select, input) {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+.gestion-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#app-navigation .gestion-nav .gestion-nav-link {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 15px;
+    gap: 8px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 40px;
+    margin: 0;
+    padding: 6px 10px;
+    border: 0;
+    border-inline-start: 3px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--color-main-text);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: start;
 }
-
-.app-navigation-item {
-    margin-top: 15px;
+#app-navigation .gestion-nav .gestion-nav-link:hover {
+    background: var(--color-background-hover);
 }
-
+#app-navigation .gestion-nav .gestion-nav-link[aria-current] {
+    border-inline-start-color: var(--color-primary-element);
+    background: var(--color-primary-element-light);
+    font-weight: 700;
+}
+.gestion-nav-count {
+    padding-inline: 7px;
+    border-radius: 10px;
+    background: var(--color-background-dark);
+    color: var(--color-text-maxcontrast);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+}
+.gestion-nav-count:empty {
+    display: none;
+}
 .gestion-version {
-    padding: var(--gestion-spacing-md);
-    color: var(--gestion-text-muted);
-    font-size: var(--gestion-font-size-small);
+    margin: 8px 0;
+    color: var(--color-text-maxcontrast);
+    font-size: 12px;
     text-align: center;
-}
-
-.nav-link,
-.nav-stats {
-    display: flex;
-    align-items: center;
-}
-
-#app-navigation:not(.vue) > ul > li > a,
-#app-navigation:not(.vue) > ul > li > ul > li > a {
-    padding: 0 20px;
-    font-size: 20px;
 }
 
 [class^="icon-"],
@@ -1077,8 +1125,6 @@ button.electronic-invoice-help:focus-visible {
 #app { margin-right: 0; }
 #app-content { flex: 1 1 0; min-width: 0; }
 #app-content-wrapper { display: block !important; width: 100%; min-width: 0; }
-#app-navigation .app-navigation-entry a { font-size: 15px; border-radius: 8px; margin: 2px 8px; min-height: 44px; }
-#app-navigation .app-navigation-item { font-size: 12px; letter-spacing: .04em; color: var(--color-text-maxcontrast); margin-top: 16px; }
 #app .material-symbols[data-local-icon], #app .material-symbols-outlined[data-local-icon] { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin: 0 4px; font-size: 0; vertical-align: middle; }
 #app button[hidden] { display: none; }
 .gestion-management-grid { align-items: start; }
@@ -1128,8 +1174,7 @@ button.electronic-invoice-help:focus-visible {
         background: #0006;
         z-index: 1500;
     }
-    #app #app-navigation #theFolder,
-    #app #app-navigation a > button { max-width: calc(100% - 20px); box-sizing: border-box; }
+    #app-navigation .gestion-nav .gestion-nav-link { min-height: 44px; }
     #app #app-content { width: 100%; margin-left: 0; }
     #app .gestion-management-grid { grid-template-columns: 1fr; }
     #app .gestion-card input[type="file"] { width: 100%; box-sizing: border-box; }
@@ -1147,8 +1192,6 @@ button.electronic-invoice-help:focus-visible {
 #app .gestion-danger-card button { color: var(--color-error); background: var(--color-main-background); border-color: var(--color-error); }
 #app .gestion-management-grid input { max-width: 100%; box-sizing: border-box; }
 @media (max-width: 768px) { .gestion-page-heading h1 { font-size: 24px; } .gestion-page-heading p { font-size: 14px; } .gestion-heading-title { align-items: start; } }
-#app-navigation a[aria-current="page"] { background: var(--color-primary-element-light); color: var(--color-main-text); font-weight: 600; }
-#app #app-navigation .app-navigation-entry a { font-size: 15px; }
 #app .gestion-card button:not(.primary), #app .gestion-page-heading button:not(.primary), #app .gestion-navigation-toggle { background: var(--color-background-hover); color: var(--color-main-text); border-color: var(--color-border); }
 #app .gestion-card button.primary { background: var(--color-primary-element); color: var(--color-primary-element-text); }
 .gestion-settings-page .gestion-card-actions label { display: flex; flex-direction: column; gap: 6px; width: 100%; }
@@ -1288,15 +1331,40 @@ button.electronic-invoice-help:focus-visible {
     width: 100%;
     min-width: 0;
 }
+.gestion-sender-logo-status {
+    margin-inline-start: 8px;
+    color: var(--color-text-maxcontrast);
+    font-size: 12px;
+    font-weight: 400;
+}
+.gestion-sender-logo-field {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+}
+.gestion-sender-logo-saved {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+}
 .gestion-sender-logo {
-    max-width: 100px;
-    max-height: 64px;
+    box-sizing: border-box;
+    width: 80px;
+    height: 64px;
+    flex: 0 0 auto;
+    padding: 4px;
+    border-radius: 4px;
+    background: #fff;
     object-fit: contain;
 }
 .gestion-sender-logo-reset {
     display: flex;
     align-items: center;
     gap: 8px;
+    min-height: 36px;
 }
 .gestion-sender-choice {
     display: flex;

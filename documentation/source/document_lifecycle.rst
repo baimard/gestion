@@ -22,9 +22,10 @@ rouge expliquant qu'une facture associée a été finalisée. Il ne comporte pas
 commande permettant de se verrouiller ou de se déverrouiller indépendamment.
 
 La **facture** possède la commande **Finalize and lock** (verrouiller la facture).
-Cette action fige la facture et son devis. Les deux documents ne peuvent plus
-être modifiés ni supprimés, y compris les informations et le statut de paiement.
-Le client, les produits et les coordonnées de l'émetteur utilisés sont protégés.
+Cette action fige le contenu de la facture et de son devis et empêche leur
+suppression. Le client, les produits et les coordonnées de l'émetteur
+utilisés sont protégés. Les états de suivi restent modifiables depuis les
+listes.
 
 Barre d'actions et téléchargement
 ---------------------------------
@@ -81,8 +82,9 @@ Ce que protège le verrouillage
    * - Informations de l'entreprise émettrice
      - Identité, mentions et réglages participant au contenu des documents
        protégés. La configuration d'entreprise ne peut pas être supprimée.
-   * - Statut de paiement d'une facture
-     - Est protégé après finalisation, comme les autres informations de paiement.
+   * - État du devis et statut de paiement de la facture
+     - Restent modifiables dans la liste. La date d'échéance et le moyen de
+       paiement restent protégés.
    * - Dossier de sauvegarde et précision d'affichage
      - Restent configurables. Les valeurs stockées et les totaux fiscaux
        ne sont pas modifiés par la précision d'affichage.

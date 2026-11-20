@@ -34,6 +34,11 @@ final class SenderProfile {
             $logo = base64_encode($bytes);
         }
         $profile['logo'] = $logo;
+        $hideCompanyLogos = $input['hide_company_logos'] ?? false;
+        if (!is_bool($hideCompanyLogos)) {
+            throw new \InvalidArgumentException('Invalid sender profile logo preference.');
+        }
+        $profile['hide_company_logos'] = $hideCompanyLogos;
         return $profile;
     }
 

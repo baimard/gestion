@@ -7,6 +7,7 @@ $projectDirectory = dirname(__DIR__);
 require $projectDirectory . '/vendor/autoload.php';
 require $projectDirectory . '/lib/Service/ElectronicInvoiceIdentifiers.php';
 require $projectDirectory . '/lib/Service/CommercialMath.php';
+require $projectDirectory . '/lib/Service/InvoicePaymentMeans.php';
 require $projectDirectory . '/lib/Service/FacturXService.php';
 
 use OCA\Gestion\Service\FacturXService;

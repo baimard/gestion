@@ -23,6 +23,17 @@ export function initializeNavigationToggle() {
     }
 
     button.dataset.navigationToggleInitialized = 'true';
+    // Nextcloud can serve the same route with or without index.php in the URL.
+    const routePath = path => path.replace(/\/index\.php(?=\/)/, '').replace(/\/$/, '');
+    const currentPath = routePath(location.pathname);
+    navigation.querySelectorAll('a.gestion-nav-link').forEach(link => {
+        const path = routePath(new URL(link.href).pathname);
+        if (path === currentPath) link.setAttribute('aria-current', 'page');
+        else if (link.hasAttribute('data-navigation-descendants') && currentPath.startsWith(path + '/')) {
+            link.setAttribute('aria-current', 'location');
+        }
+    });
+
     const mobileQuery = window.matchMedia(MOBILE_NAVIGATION_QUERY);
     const content = document.getElementById('app-content');
     const closeButton = navigation.querySelector('.gestion-navigation-close');
@@ -60,7 +71,7 @@ export function initializeNavigationToggle() {
     closeButton?.addEventListener('click', () => setMobileOpen(false, true));
     backdrop.addEventListener('click', () => setMobileOpen(false, true));
     navigation.addEventListener('click', event => {
-        if (mobileQuery.matches && event.target.closest('a[href], #theFolder')) {
+        if (mobileQuery.matches && event.target.closest('a[href], #about, #theFolder')) {
             setMobileOpen(false);
         }
     });

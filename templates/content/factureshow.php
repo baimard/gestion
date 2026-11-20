@@ -29,8 +29,11 @@
             '48' => $l->t('Payment card'),
             '58' => $l->t('SEPA credit transfer'),
         ];
-        $paymentMeansLabel = $paymentMeans[(string)$_['facture'][0]->type_paiement]
-            ?? $_['facture'][0]->type_paiement;
+        $paymentCode = (string)$_['facture'][0]->type_paiement;
+        if (empty($_['facture'][0]->locked)) {
+            $paymentCode = \OCA\Gestion\Service\InvoicePaymentMeans::normalizeTransfer($paymentCode);
+        }
+        $paymentMeansLabel = $paymentMeans[$paymentCode] ?? $paymentCode;
     ?>
     <?php print_unescaped($this->inc('content/document_parties')); ?>
 

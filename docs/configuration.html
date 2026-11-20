@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuration des entreprises &mdash; Gestion 3.5.1</title>
+  <title>Configuration des entreprises &mdash; Gestion 3.5.2</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=1b391ab7" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=edc24292"></script>
+      <script src="_static/documentation_options.js?v=da3ac8f8"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=e6b791cb"></script>
@@ -253,12 +253,13 @@ souhaitée pour chacun des trois logos, entre 40 et 600 pixels, et sa hauteur
 maximale entre 0 et 600 pixels. <strong>0</strong> conserve une hauteur automatique. Si une
 hauteur maximale est définie, le logo est ajusté aux deux limites sans être
 déformé ; sa largeur affichée peut donc être réduite. Le logo
-principal respecte ce réglage, y compris au-delà de 96 pixels.</p>
-<p>Un logo principal compact reste à droite des coordonnées complètes. S’il
-nécessite plus de place, il apparaît au-dessus du tableau, sans repousser
-l’adresse sous le nom. Sur un écran étroit, les logos se réduisent à la place
-disponible. Les logos d’en-tête et de pied de page sont facultatifs : aucun
-espace ne leur est réservé lorsqu’ils sont absents. Les réglages s’appliquent
+principal est limité à 300 pixels de large et 240 pixels de haut pour tenir
+dans le bloc Émetteur du PDF.</p>
+<p>Le logo principal reste dans le bloc Émetteur. Il s’affiche à droite des
+coordonnées s’il est compact, ou au-dessus s’il est grand ou si l’écran est
+étroit. Les logos se réduisent à la place disponible. Les logos d’en-tête et de
+pied de page sont facultatifs. Lorsqu’ils sont absents, l’espace reste libre
+pour les coordonnées et les autres sections. Les réglages s’appliquent
 aux devis, factures et PDF.</p>
 </section>
 <section id="profils-d-emetteur">
@@ -270,9 +271,9 @@ correspondance et le logo souhaités. Les mêmes formats, limites et règles de
 redimensionnement automatique s’appliquent. Les champs laissés vides reprennent
 les valeurs de l’entreprise. Un logo de profil remplace les logos habituels
 du document.</p>
-<p>Dans un devis, choisissez le profil puis cliquez sur <strong>Appliquer</strong>. Les
-factures liées reprennent le profil du devis. Les coordonnées de
-correspondance apparaissent sur l’aperçu et dans le PDF. Le nom légal, les
+<p>Dans la barre d’actions d’un devis, choisissez le profil puis cliquez sur
+<strong>Appliquer</strong>. Les factures liées reprennent le profil et l’indiquent dans
+leur barre d’actions. Les coordonnées de correspondance apparaissent sur l’aperçu et dans le PDF. Le nom légal, les
 identifiants de l’entreprise et les données légales du XML Factur-X proviennent
 de la fiche entreprise. Le client reste sélectionné dans le devis.</p>
 <p>Les utilisateurs qui ont accès à l’entreprise peuvent choisir les profils

@@ -38,7 +38,7 @@ class SenderProfileController extends Controller {
         } catch (\DomainException $e) {
             return new DataResponse(['message' => $this->l->t('A quote uses this profile. Keep it for existing documents or create another profile.')], 409);
         } catch (\InvalidArgumentException $e) {
-            return new DataResponse(['message' => $this->l->t('Check the profile name, contact details, PNG limits and the maximum of 12 profiles.')], 400);
+            return new DataResponse(['message' => $this->l->t('Check the profile name, contact details, logo requirements and the maximum of 12 profiles.')], 400);
         }
     }
 

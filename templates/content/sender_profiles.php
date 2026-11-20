@@ -30,9 +30,10 @@
                     <label class="gestion-sender-logo-reset"><input type="checkbox" name="remove_logo"><?php p($l->t('Use company logos again')); ?></label>
                 <?php endif; ?>
                 <label><?php p($l->t('Sender profile logo')); ?>
-                    <input name="logo_file" type="file" accept="image/png">
+                    <input name="logo_file" type="file" accept="image/png,image/jpeg">
                 </label>
-                <small><?php p($l->t('PNG, up to 256 KiB and 1200 × 1200 pixels. Blank contact fields use company defaults.')); ?></small>
+                <?php print_unescaped($this->inc('content/logo_upload_hint')); ?>
+                <small><?php p($l->t('Blank contact fields use company defaults.')); ?></small>
                 <div class="gestion-card-actions">
                     <button type="submit" class="primary"><?php p($l->t('Save')); ?></button>
                     <?php if ($id !== ''): ?><button type="button" data-delete-profile><?php p($l->t('Delete')); ?></button><?php endif; ?>

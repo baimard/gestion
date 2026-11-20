@@ -84,6 +84,6 @@
 <?php if (!$hasMainLogo): ?>
     <details class="document-logo-help" data-html2canvas-ignore>
         <summary><?php p($l->t('You can add your company logo here.')); ?></summary>
-        <p><?php p($l->t('To add the main logo, use the numeric company ID shown in the company selector as the filename prefix (for example, company 1 uses 1logo.png). Place the file in the ".gestion" folder at the root of Nextcloud Files and enable "Show hidden files" to display this folder.')); ?></p>
+        <p><?php p($l->t('To add the main logo, open My company, edit the company details and select Logos.')); ?></p>
     </details>
 <?php endif; ?>

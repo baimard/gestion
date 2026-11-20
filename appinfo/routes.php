@@ -19,6 +19,7 @@ return [
         ['name' => 'crud#update', 'url' => '/update', 'verb' => 'POST'],
         ['name' => 'configuration#updateConfiguration', 'url' => '/updateConfiguration', 'verb' => 'POST'],
         ['name' => 'senderProfile#save', 'url' => '/sender-profiles', 'verb' => 'POST'],
+        ['name' => 'companyLogo#save', 'url' => '/company-logo', 'verb' => 'POST'],
         ['name' => 'senderProfile#select', 'url' => '/devis/{quote}/sender-profile', 'verb' => 'POST'],
         ['name' => 'client#insertClient', 'url' => '/client/insert', 'verb' => 'POST'],
         ['name' => 'client#contacts', 'url' => '/client/contacts', 'verb' => 'GET'],

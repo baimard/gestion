@@ -6,6 +6,7 @@ use OCP\IDBConnection;
 use OCP\IL10N;
 use OCA\Gestion\Service\CommercialMath;
 use OCA\Gestion\Service\BackupFormat;
+use OCA\Gestion\Service\LogoImage;
 use OCA\Gestion\Service\SenderProfile;
 
 class Bdd {
@@ -99,6 +100,10 @@ class Bdd {
                 }
                 $action = $id === '' ? 'create' : 'update';
                 $id = $id === '' ? bin2hex(random_bytes(16)) : $id;
+                if (isset($input['logo']) && $input['logo'] !== '') {
+                    if (!is_string($input['logo'])) throw new \InvalidArgumentException('Invalid logo upload.');
+                    $input['logo'] = base64_encode(LogoImage::prepareUpload($input['logo']));
+                }
                 $input['logo'] ??= $profiles[$id]['logo'] ?? '';
                 $profiles[$id] = SenderProfile::validate($input);
                 $label = $profiles[$id]['label'];

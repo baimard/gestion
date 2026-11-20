@@ -1,4 +1,5 @@
 import { csrfHeaders } from './csrf.js';
+import { readLogo } from './logoUpload.js';
 
 async function save(form, path, payload) {
     const status = form.querySelector('[data-profile-status]');
@@ -22,15 +23,6 @@ async function save(form, path, payload) {
     }
 }
 
-function readLogo(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result.split(',', 2)[1]);
-        reader.onerror = () => reject(new Error(t('gestion', 'Unable to read the logo file.')));
-        reader.readAsDataURL(file);
-    });
-}
-
 export function initializeSenderProfiles() {
     for (const form of document.querySelectorAll('[data-sender-profile]')) {
         const { company, id } = form.dataset;
@@ -39,7 +31,6 @@ export function initializeSenderProfiles() {
             const { label, contact, address, email, phone, logo_file: file, remove_logo: removeLogo } = Object.fromEntries(new FormData(form));
             save(form, '/sender-profiles', async () => {
                 const profile = { label, contact, address, email, phone };
-                if (file.size > 262144) throw new Error(t('gestion', 'Choose a PNG logo under 256 KiB, up to 1200 × 1200 pixels.'));
                 if (file.size) profile.logo = await readLogo(file);
                 else if (removeLogo) profile.logo = '';
                 return { company: Number(company), id, profile };

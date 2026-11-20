@@ -1,4 +1,5 @@
 import { initializeSenderProfiles } from './modules/senderProfiles.js';
+import { initializeCompanyLogoUpload } from './modules/logoUpload.js';
 import "../css/mycss.less";
 
 import { addShareUser, configuration, createCompany, deleteCompany, delShareUser, updateDBConfiguration} from "./modules/ajaxRequest.js";
@@ -11,6 +12,7 @@ const providerUrl = () => OC.generateUrl('/apps/gestion/einvoice/provider');
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeSenderProfiles();
+    initializeCompanyLogoUpload();
     globalConfiguration(false);
     initializeConfigurationSectionNavigation();
 

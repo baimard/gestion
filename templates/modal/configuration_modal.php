@@ -52,7 +52,7 @@
 					<h2><?php p($l->t('Logos'));?></h2>
 					<p><?php p($l->t('Set the width used for each logo in quotes, invoices and generated PDFs.'));?></p>
 					<p><?php p($l->t('A maximum height of 0 means automatic height. Images are resized to fit both limits without being stretched.'));?></p>
-					<p><?php p($l->t('The main logo stays with the issuer details. It fits within 300 × 240 pixels and shrinks further on small screens.'));?></p>
+					<p><?php p($l->t('The main logo is centered between the issuer and recipient. It fits within 300 × 240 pixels and shrinks further on small screens.'));?></p>
                     <?php if ($_['canManageSenderProfiles'] ?? false): ?>
                         <form class="gestion-company-logo-upload" method="post" data-company-logo data-company="<?php p($_['CurrentCompany']); ?>">
                             <label><?php p($l->t('Logo position')); ?>

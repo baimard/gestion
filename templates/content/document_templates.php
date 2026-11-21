@@ -46,16 +46,20 @@
                             <ol class="gestion-template-block-list" data-block-list>
                                 <?php foreach ($template['layout'] as $block): ?>
                                     <?php $required = in_array($block['id'], $requiredBlocks, true); ?>
-                                    <li data-template-block="<?php p($block['id']); ?>" data-required="<?php p($required ? 'true' : 'false'); ?>">
-                                        <span class="material-symbols-outlined gestion-template-drag" aria-hidden="true">drag_indicator</span>
+                                    <?php $embedded = $block['id'] === 'main_logo'; ?>
+                                    <li data-template-block="<?php p($block['id']); ?>" data-required="<?php p($required ? 'true' : 'false'); ?>" data-embedded="<?php p($embedded ? 'true' : 'false'); ?>">
+                                        <span class="material-symbols-outlined gestion-template-drag" aria-hidden="true"><?php p($embedded ? 'image' : 'drag_indicator'); ?></span>
                                         <span class="gestion-template-block-name"><?php p($_['templateBlocks'][$block['id']]); ?></span>
                                         <?php if ($required): ?><span class="gestion-template-required"><?php p($l->t('Required')); ?></span><?php endif; ?>
+                                        <?php if ($embedded): ?><span class="gestion-template-required"><?php p($l->t('Inside address block')); ?></span><?php endif; ?>
                                         <label>
                                             <input type="checkbox" data-block-visible <?php if ($block['visible']) echo 'checked'; ?> <?php if ($required || empty($_['canManageTemplates'])) echo 'disabled'; ?>>
                                             <span><?php p($l->t('Visible')); ?></span>
                                         </label>
-                                        <button type="button" data-move="up" title="<?php p($l->t('Move up')); ?>" aria-label="<?php p($l->t('Move up')); ?>" <?php if (empty($_['canManageTemplates'])) echo 'disabled'; ?>><span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span></button>
-                                        <button type="button" data-move="down" title="<?php p($l->t('Move down')); ?>" aria-label="<?php p($l->t('Move down')); ?>" <?php if (empty($_['canManageTemplates'])) echo 'disabled'; ?>><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></button>
+                                        <?php if (!$embedded): ?>
+                                            <button type="button" data-move="up" title="<?php p($l->t('Move up')); ?>" aria-label="<?php p($l->t('Move up')); ?>" <?php if (empty($_['canManageTemplates'])) echo 'disabled'; ?>><span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span></button>
+                                            <button type="button" data-move="down" title="<?php p($l->t('Move down')); ?>" aria-label="<?php p($l->t('Move down')); ?>" <?php if (empty($_['canManageTemplates'])) echo 'disabled'; ?>><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></button>
+                                        <?php endif; ?>
                                     </li>
                                 <?php endforeach; ?>
                             </ol>

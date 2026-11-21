@@ -28,6 +28,7 @@ const paths = {
     description: 'M6 2h8l4 4v16H6zM14 2v5h4M9 12h6M9 16h6',
     arrow_upward: 'M12 20V5m-6 6 6-6 6 6',
     arrow_downward: 'M12 4v15m-6-6 6 6 6-6',
+    image: 'M4 4h16v16H4zM7 16l3-3 2 2 3-4 3 5M9 9h.01',
 };
 function replaceIcons(root) {
     const nodes = root.matches?.('.material-symbols,.material-symbols-outlined') ? [root] : [];

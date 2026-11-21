@@ -82,6 +82,7 @@ final class DocumentTemplateService {
         return [
             'header_logo' => $this->l->t('Header logo'),
             'parties' => $this->l->t('Issuer and recipient'),
+            'main_logo' => $this->l->t('Main logo between issuer and recipient'),
             'details' => $this->l->t('Document details'),
             'comment' => $this->l->t('Comment'),
             'products' => $this->l->t('Products'),

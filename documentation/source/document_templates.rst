@@ -15,6 +15,11 @@ pour changer leur ordre. Les blocs facultatifs peuvent être masqués. Les blocs
 **Totaux généraux** restent obligatoires afin que le document conserve ses
 informations commerciales essentielles.
 
+Les zones de logo sont indépendantes. Vous pouvez masquer le logo d'en-tête,
+le logo principal centré entre l'émetteur et le destinataire, ou le logo de
+pied de page sans supprimer les images enregistrées dans l'entreprise. Le logo
+principal reste ancré dans le bloc d'adresses afin de conserver son centrage.
+
 La prévisualisation schématique montre l'ordre de lecture qui sera utilisé dans
 la page du devis ou de la facture et dans le PDF généré. Après avoir enregistré
 le modèle, ouvrez un document réel pour contrôler le résultat avec ses données.

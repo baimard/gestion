@@ -14,14 +14,18 @@ function refreshEditor(editor) {
     const blocks = [...editor.querySelectorAll('[data-template-block]')];
     const preview = editor.querySelector('[data-template-preview]');
     const readOnly = editor.dataset.canManage !== 'true';
+    const movableBlocks = blocks.filter(block => block.dataset.embedded !== 'true');
     preview.replaceChildren();
 
-    blocks.forEach((block, index) => {
-        block.querySelector('[data-move="up"]').disabled = readOnly || index === 0;
-        block.querySelector('[data-move="down"]').disabled = readOnly || index === blocks.length - 1;
+    blocks.forEach(block => {
+        const index = movableBlocks.indexOf(block);
+        const moveUp = block.querySelector('[data-move="up"]');
+        const moveDown = block.querySelector('[data-move="down"]');
+        if (moveUp) moveUp.disabled = readOnly || index === 0;
+        if (moveDown) moveDown.disabled = readOnly || index === movableBlocks.length - 1;
         const visible = block.dataset.required === 'true' || block.querySelector('[data-block-visible]').checked;
         block.classList.toggle('is-hidden', !visible);
-        if (!visible) return;
+        if (!visible || block.dataset.embedded === 'true') return;
         const previewBlock = document.createElement('div');
         previewBlock.className = `gestion-template-preview-block preview-${block.dataset.templateBlock}`;
         previewBlock.textContent = block.querySelector('.gestion-template-block-name').textContent;
@@ -32,11 +36,14 @@ function refreshEditor(editor) {
 function moveBlock(editor, button) {
     const block = button.closest('[data-template-block]');
     const direction = button.dataset.move;
-    if (direction === 'up' && block.previousElementSibling) {
-        block.parentElement.insertBefore(block, block.previousElementSibling);
-    } else if (direction === 'down' && block.nextElementSibling) {
-        block.parentElement.insertBefore(block.nextElementSibling, block);
-    }
+    const movableBlocks = [...block.parentElement.children].filter(item => item.dataset.embedded !== 'true');
+    const index = movableBlocks.indexOf(block);
+    const target = direction === 'up' ? movableBlocks[index - 1] : movableBlocks[index + 1];
+    if (!target) return;
+    block.parentElement.insertBefore(block, direction === 'up' ? target : target.nextElementSibling);
+    const parties = block.parentElement.querySelector('[data-template-block="parties"]');
+    const embeddedLogo = block.parentElement.querySelector('[data-template-block="main_logo"]');
+    if (parties && embeddedLogo) parties.after(embeddedLogo);
     refreshEditor(editor);
     block.focus?.();
 }

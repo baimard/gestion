@@ -18,7 +18,8 @@ final class DocumentTemplatePolicyTest extends TestCase {
         $this->assertTrue($layout[0]['visible']);
         $this->assertFalse($layout[1]['visible']);
         $this->assertContains(['id' => 'details', 'visible' => true], $layout);
-        $this->assertContains(['id' => 'header_logo', 'visible' => false], $layout);
+        $this->assertContains(['id' => 'header_logo', 'visible' => true], $layout);
+        $this->assertContains(['id' => 'main_logo', 'visible' => true], $layout);
     }
 
     /** @dataProvider invalidLayouts */

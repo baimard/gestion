@@ -16,7 +16,7 @@
         array_map($decodePartyValue, [$company->legal_one ?? '', $company->legal_two ?? '', $company->vat_number ?? '']),
     ];
     $logo = $_['logo'] ?? 'nothing';
-    $hasMainLogo = $logo !== 'nothing' && $logo !== '';
+    $hasMainLogo = !empty($_['showMainLogo']) && $logo !== 'nothing' && $logo !== '';
     [$mainLogoWidth, $mainLogoHeight] = \OCA\Gestion\Service\DocumentLogoSize::fit(
         $logo, min(300, (int)($company->logo_width ?? 160)), min(240, (int)($company->logo_height ?? 0) ?: 240)
     );

@@ -16,12 +16,12 @@ final class DocumentTemplatePolicy {
 
     private const DEFAULTS = [
         'quote' => [
-            'header_logo', 'parties', 'details', 'comment', 'products',
+            'header_logo', 'parties', 'main_logo', 'details', 'comment', 'products',
             'vat_totals', 'grand_totals', 'legal_notice', 'footer_logo',
             'issuer_details', 'signature',
         ],
         'invoice' => [
-            'header_logo', 'parties', 'details', 'comment', 'products',
+            'header_logo', 'parties', 'main_logo', 'details', 'comment', 'products',
             'vat_totals', 'grand_totals', 'legal_notice', 'footer_logo',
             'issuer_details',
         ],
@@ -95,7 +95,7 @@ final class DocumentTemplatePolicy {
 
         foreach (self::DEFAULTS[$type] as $id) {
             if (!isset($seen[$id])) {
-                $normalized[] = ['id' => $id, 'visible' => in_array($id, self::REQUIRED, true)];
+                $normalized[] = ['id' => $id, 'visible' => self::defaultVisibility($type, $id)];
             }
         }
         return $normalized;

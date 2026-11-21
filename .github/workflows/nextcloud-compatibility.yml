@@ -50,14 +50,7 @@ jobs:
       - name: Download Nextcloud ${{ matrix.nextcloud }}
         run: |
           release_url="https://download.nextcloud.com/server/releases/latest-${{ matrix.nextcloud }}.zip"
-          if ! curl --fail --location --retry 3 --output nextcloud.zip "$release_url"; then
-            # Nextcloud 35 is declared compatible before its final release. Use
-            # its official beta until the latest-35 archive becomes available.
-            test '${{ matrix.nextcloud }}' = '35'
-            curl --fail --location --retry 3 \
-              --output nextcloud.zip \
-              'https://download.nextcloud.com/server/prereleases/nextcloud-35.0.0beta1.zip'
-          fi
+          curl --fail --location --retry 3 --output nextcloud.zip "$release_url"
           unzip -q nextcloud.zip
 
       - name: Checkout Gestion

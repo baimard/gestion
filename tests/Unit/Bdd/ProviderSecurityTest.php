@@ -5,6 +5,10 @@ use OCA\Gestion\Service\ElectronicInvoiceProviderService;
 use OCA\Gestion\Service\DataService;
 use OCA\Gestion\Service\CompanyService;
 use OCP\IL10N;
+use OCP\Security\ICrypto;
+use OCP\Server;
+use OCA\Gestion\Migration\Version36000Date20261121110000;
+use OCP\Migration\IOutput;
 use OCP\ISession;
 use OCP\IUserManager;
 use PHPUnit\Framework\TestCase;
@@ -30,13 +34,37 @@ class ProviderSecurityTest extends TestCase {
         return $session;
     }
     private function provider(string $user): ElectronicInvoiceProviderService {
-        return new ElectronicInvoiceProviderService($this->connection, $this->session(), $this->db, $user);
+        return new ElectronicInvoiceProviderService($this->connection, $this->session(), $this->db, $user, Server::get(ICrypto::class));
     }
+    private function storedConfiguration(): string {
+        $q = $this->connection->getQueryBuilder();
+        return $q->select('einvoice_provider_config')->from('gestion_configuration')
+            ->where($q->expr()->eq('id', $q->createNamedParameter($this->company)))
+            ->executeQuery()->fetchOne();
+    }
+
+    public function testLegacySecretIsMigratedOnceAndStillWorks(): void {
+        $q = $this->connection->getQueryBuilder();
+        $q->update('gestion_configuration')
+            ->set('einvoice_provider', $q->createNamedParameter('iopole'))
+            ->set('einvoice_provider_config', $q->createNamedParameter(json_encode($this->credentials)))
+            ->where($q->expr()->eq('id', $q->createNamedParameter($this->company)))->executeStatement();
+        $migration = new Version36000Date20261121110000($this->connection, Server::get(ICrypto::class));
+        $output = $this->createMock(IOutput::class);
+        $migration->postSchemaChange($output, static fn () => null, []);
+        $encrypted = $this->storedConfiguration();
+        $this->assertStringNotContainsString($this->credentials['client_secret'], $encrypted);
+        $migration->postSchemaChange($output, static fn () => null, []);
+        $this->assertSame($encrypted, $this->storedConfiguration());
+        $this->assertSame($this->credentials, $this->provider($this->owner)->requireProvider('iopole'));
+    }
+
     public function testSecretIsNeverExposedAndEmptyInputPreservesIt(): void {
         $service = $this->provider($this->owner);
         $response = $service->saveCurrentConfiguration('iopole', $this->credentials);
         $this->assertTrue($response['configured']);
         $this->assertTrue($response['secretStored']);
+        $this->assertStringNotContainsString($this->credentials['client_secret'], $this->storedConfiguration());
         $this->assertArrayNotHasKey('client_secret', $response['credentials']);
         $this->assertStringNotContainsString('never-return-this-secret', $this->db->getConfiguration($this->company));
         $this->assertArrayNotHasKey('einvoice_provider_config', json_decode($this->db->getConfiguration($this->company), true)[0]);

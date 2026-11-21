@@ -24,6 +24,11 @@ const paths = {
     history: 'M3 4v5h5M3 9a9 9 0 1 1 0 7M12 7v5l3 2',
     bar_chart: 'M4 20V10h4v10M10 20V4h4v16M16 20V7h4v13',
     store: 'M3 10h18v11H3zM2 10l2-7h16l2 7M9 21v-7h6v7',
+    verified_user: 'M12 2 20 5v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5zM8 12l2.5 2.5L16 9',
+    description: 'M6 2h8l4 4v16H6zM14 2v5h4M9 12h6M9 16h6',
+    arrow_upward: 'M12 20V5m-6 6 6-6 6 6',
+    arrow_downward: 'M12 4v15m-6-6 6 6 6-6',
+    image: 'M4 4h16v16H4zM7 16l3-3 2 2 3-4 3 5M9 9h.01',
 };
 function replaceIcons(root) {
     const nodes = root.matches?.('.material-symbols,.material-symbols-outlined') ? [root] : [];

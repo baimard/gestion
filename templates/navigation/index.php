@@ -54,6 +54,10 @@
 
     <div class="gestion-nav-footer">
         <a class="gestion-nav-link" href="<?php p($_['url']['config']); ?>"><?php p($l->t('My company')); ?></a>
+        <a class="gestion-nav-link gestion-nav-templates" href="<?php p($_['url']['templates']); ?>">
+            <?php p($l->t('Templates')); ?>
+            <span class="gestion-beta-badge"><?php p($l->t('Beta')); ?></span>
+        </a>
         <button class="gestion-nav-link" type="button" id="about"><?php p($l->t('About')); ?></button>
     </div>
     <p class="gestion-version"><?php p($l->t('Gestion version')); ?> <?php p($_['appVersion']); ?></p>

@@ -272,6 +272,18 @@
     font-weight: 500;
     text-align: start;
 }
+#app-navigation .gestion-nav .gestion-nav-templates {
+    justify-content: flex-start;
+}
+.gestion-beta-badge {
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: var(--color-primary-element);
+    color: var(--color-primary-element-text);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+}
 #app-navigation .gestion-nav .gestion-nav-link:hover {
     background: var(--color-background-hover);
 }
@@ -1412,4 +1424,48 @@ button.electronic-invoice-help:focus-visible {
 }
 .gestion-company-logo-upload [role="status"]:empty {
     display: none;
+}
+
+/* Safe document template editor. */
+.gestion-template-page { max-width: 1440px; box-sizing: border-box; }
+.gestion-template-security { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 24px; padding: 16px 18px; border: 1px solid var(--color-border); border-radius: 12px; background: var(--color-primary-element-light); }
+.gestion-template-security > .material-symbols-outlined { color: var(--color-primary-element); }
+.gestion-template-security p { margin: 4px 0 0; color: var(--color-text-maxcontrast); line-height: 1.5; }
+.gestion-template-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+.gestion-template-editor { min-width: 0; padding: 24px; }
+.gestion-template-editor .gestion-card-heading { align-items: flex-start; }
+.gestion-template-editor .gestion-card-heading p { margin: 3px 0 0; color: var(--color-text-maxcontrast); line-height: 1.4; }
+.gestion-template-workspace { display: grid; grid-template-columns: minmax(420px, 1fr) minmax(280px, .72fr); gap: 24px; margin-top: 24px; }
+.gestion-template-workspace h3 { margin: 0 0 10px; font-size: 15px; }
+.gestion-template-block-list { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+.gestion-template-block-list li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto auto auto; gap: 7px; align-items: center; min-height: 44px; padding: 5px 7px; border: 1px solid var(--color-border); border-radius: 9px; background: var(--color-main-background); }
+.gestion-template-block-list li.is-hidden { opacity: .55; }
+.gestion-template-drag { color: var(--color-text-maxcontrast); font-size: 20px; }
+.gestion-template-block-name { min-width: 0; overflow-wrap: anywhere; font-size: 13px; font-weight: 600; }
+.gestion-template-required { padding: 2px 6px; border-radius: 999px; background: var(--color-background-hover); color: var(--color-text-maxcontrast); font-size: 10px; text-transform: uppercase; }
+.gestion-template-block-list label { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; }
+#app .gestion-template-block-list button { width: 34px; min-width: 34px; height: 34px; min-height: 34px; margin: 0; padding: 0; }
+.gestion-template-block-list button .material-symbols-outlined { font-size: 18px; }
+.gestion-template-sheet { display: grid; gap: 5px; min-height: 480px; padding: 20px 16px; border: 1px solid var(--color-border); border-radius: 6px; background: #fff; box-shadow: 0 12px 30px #00000014; color: #222; align-content: start; }
+.gestion-template-preview-block { display: flex; align-items: center; justify-content: center; min-height: 30px; padding: 7px; border: 1px dashed #8fa6b8; border-radius: 4px; background: #f3f7fa; color: #385369; font-size: 11px; text-align: center; }
+.gestion-template-preview-block.preview-parties { min-height: 84px; }
+.gestion-template-preview-block.preview-products { min-height: 110px; }
+.gestion-template-preview-block.preview-header_logo, .gestion-template-preview-block.preview-footer_logo { min-height: 24px; }
+.gestion-template-preview-block.preview-comment, .gestion-template-preview-block.preview-legal_notice { min-height: 42px; }
+.gestion-template-css-label { display: grid; gap: 4px; margin-top: 24px; }
+.gestion-template-css-label span, .gestion-template-css-help { color: var(--color-text-maxcontrast); font-size: 13px; line-height: 1.5; }
+.gestion-template-editor textarea { box-sizing: border-box; width: 100%; margin: 8px 0 0; resize: vertical; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; line-height: 1.5; tab-size: 2; }
+.gestion-template-css-help { margin-top: 10px; }
+.gestion-template-css-help summary { cursor: pointer; color: var(--color-main-text); font-weight: 600; }
+.gestion-template-css-help code { display: inline-block; margin: 2px; padding: 2px 5px; border-radius: 4px; background: var(--color-background-hover); color: var(--color-main-text); }
+.gestion-template-editor .gestion-card-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 20px; }
+.gestion-template-editor [data-template-status] { flex: 1 1 100%; min-height: 1.5em; margin: 0; color: var(--color-text-maxcontrast); }
+.gestion-template-empty { padding: 30px; border: 1px dashed var(--color-border); border-radius: 12px; color: var(--color-text-maxcontrast); text-align: center; }
+@media (max-width: 900px) { .gestion-template-workspace { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 720px) {
+    .gestion-template-editor { padding: 18px; }
+    .gestion-template-workspace { grid-template-columns: minmax(0, 1fr); }
+    .gestion-template-block-list li { grid-template-columns: auto minmax(0, 1fr) auto auto; }
+    .gestion-template-block-list label, .gestion-template-required { grid-row: 2; }
+    .gestion-template-sheet { min-height: 360px; }
 }

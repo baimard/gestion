@@ -91,14 +91,13 @@ class PdfController extends Controller {
 	 * @NoAdminRequired
 	 * @UseSession
 	 *
-	 * @param string $html
 	 * @param string $name
 	 * @param string $folder
 	 * @param int $factureId
 	 */
 	#[UseSession]
-	public function generateFacturX(string $html, string $name, string $folder, int $factureId) {
-		return $this->pdfService->generateFacturX($html, $name, $folder, $factureId);
+	public function generateFacturX(string $name, string $folder, int $factureId) {
+		return $this->pdfService->generateFacturX($name, $folder, $factureId);
 	}
 
 	/**
@@ -118,17 +117,16 @@ class PdfController extends Controller {
 	 * @NoAdminRequired
 	 * @UseSession
 	 *
-	 * @param string $html
 	 * @param string $name
 	 * @param int $factureId
 	 */
 	#[UseSession]
-	public function sendFacturXToIopole(string $html, string $name, int $factureId) {
+	public function sendFacturXToIopole(string $name, int $factureId) {
         $documentLocked = false;
         try {
             $this->dataService->lockDocument('facture', $factureId);
             $documentLocked = true;
-            $response = $this->pdfService->sendFacturXToIopole($html, $name, $factureId);
+            $response = $this->pdfService->sendFacturXToIopole($name, $factureId);
             $data = $response->getData();
             $data['documentLocked'] = true;
             $response->setData($data);

@@ -98,12 +98,13 @@ class FacturXService
     /**
      * Calculate totals and VAT
      */
-    private function calculateTotals(array $products): array
+    public function calculateTotals(array $products): array
     {
         $vatLines = [];
         $totalHT = 0.0;
 
         foreach ($products as $product) {
+            if (!empty($product->header)) continue;
 
             $lineTotal = CommercialMath::lineTotal($product);
 
@@ -124,13 +125,14 @@ class FacturXService
 					'exemptionReason' => $vatCategory === 'E'
 						? $this->getVatExemptionReason($product)
 						: null,
+                    'quantity' => 0.0,
                     'base' => 0.0,
                     'amount' => 0.0
                 ];
             }
 
             $vatLines[$key]['base'] += $lineTotal;
-            $vatLines[$key]['amount'] += $lineTotal * $vatRate / 100;
+            $vatLines[$key]['quantity'] += (float)$product->quantite;
         }
 
         foreach ($vatLines as &$vatLine) $vatLine['amount'] = round($vatLine['base'] * $vatLine['rate'] / 100, 2);
@@ -161,12 +163,7 @@ class FacturXService
 			$vatRate = $this->getVatRate($product);
 			$vatCategory = $this->getVatCategory($product, $vatRate);
 
-            $designation = htmlspecialchars(
-                $product->description
-                    ?? $product->reference
-                    ?? '',
-                ENT_XML1
-            );
+            $designation = self::xmlText($product->description ?? $product->reference ?? '');
 
             $xml .= <<<XML
 
@@ -332,9 +329,16 @@ XML;
 
     
 
-    /**
-     * Build complete XML document
-     */
+    /** Older company, product and customer records contain HTML-encoded text. */
+    private static function xmlText(string $value): string {
+        return htmlspecialchars(html_entity_decode($value, ENT_QUOTES, 'UTF-8'), ENT_XML1 | ENT_SUBSTITUTE, 'UTF-8');
+    }
+
+    public static function currency(object $company): string {
+        $currency = strtoupper(trim((string)($company->devise ?? '')));
+        return preg_match('/^[A-Z]{3}$/D', $currency) ? $currency : 'EUR';
+    }
+
     private function buildDocument(
         object $invoice,
         object $company,
@@ -349,13 +353,13 @@ XML;
 		string $sellerSiren
     ): string {
 
-        $sellerName = htmlspecialchars($company->entreprise ?? '', ENT_XML1);
+        $sellerName = self::xmlText($company->entreprise ?? '');
 
-        $sellerAddress = htmlspecialchars($company->adresse ?? '', ENT_XML1);
+        $sellerAddress = self::xmlText($company->adresse ?? '');
 
-        $sellerCity = htmlspecialchars($company->city_name ?? '', ENT_XML1);
+        $sellerCity = self::xmlText($company->city_name ?? '');
 
-        $sellerZip = htmlspecialchars($company->zip_code ?? '', ENT_XML1);
+        $sellerZip = self::xmlText($company->zip_code ?? '');
 
         $sellerCountry = htmlspecialchars($company->pays ?? 'FR', ENT_XML1);
 		$sellerEndpointXml = $this->buildElectronicAddress(
@@ -369,14 +373,11 @@ XML;
 			. ' '
 			. (string)($customer->nom ?? $invoice->nom ?? '')
 		);
-		$buyerName = htmlspecialchars(
-			$buyerCompanyName !== '' ? $buyerCompanyName : $buyerPersonName,
-			ENT_XML1
-		);
+		$buyerName = self::xmlText($buyerCompanyName !== '' ? $buyerCompanyName : $buyerPersonName);
 
-        $buyerAddress = htmlspecialchars($customer->adresse ?? '', ENT_XML1);
-        $buyerZip = htmlspecialchars($customer->zip_code ?? '', ENT_XML1);
-        $buyerCity = htmlspecialchars($customer->city_name ?? '', ENT_XML1);
+        $buyerAddress = self::xmlText($customer->adresse ?? '');
+        $buyerZip = self::xmlText($customer->zip_code ?? '');
+        $buyerCity = self::xmlText($customer->city_name ?? '');
         $buyerCountry = htmlspecialchars($customer->country_code ?? 'FR', ENT_XML1);
 		$buyerCompanyId = trim($customer->company_identification ?? '');
 		$buyerVatId = htmlspecialchars(trim($customer->vat_number ?? ''), ENT_XML1);
@@ -393,7 +394,8 @@ XML;
 		$sellerSirenXml = $sellerSiren !== '' ? "<ram:SpecifiedLegalOrganization><ram:ID schemeID=\"0002\">{$sellerSiren}</ram:ID></ram:SpecifiedLegalOrganization>" : '';
 		$sellerVatIdXml = $sellerVatId !== '' ? "<ram:SpecifiedTaxRegistration><ram:ID schemeID=\"VA\">{$sellerVatId}</ram:ID></ram:SpecifiedTaxRegistration>" : '';
 
-        $invoiceNumber = htmlspecialchars($invoice->num, ENT_XML1);
+        $currency = self::currency($company);
+        $invoiceNumber = self::xmlText($invoice->num);
 
 		$paymentMeans = (string)($invoice->type_paiement ?? '');
 		if (empty($invoice->locked)) {
@@ -513,7 +515,7 @@ XML;
 
             <ram:PaymentReference>{$invoiceNumber}</ram:PaymentReference>
 
-            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+            <ram:InvoiceCurrencyCode>{$currency}</ram:InvoiceCurrencyCode>
 
             {$paymentMeansXml}
 
@@ -532,7 +534,7 @@ XML;
 
                 <ram:LineTotalAmount>{$totalHT}</ram:LineTotalAmount>
                 <ram:TaxBasisTotalAmount>{$totalHT}</ram:TaxBasisTotalAmount>
-                <ram:TaxTotalAmount currencyID="EUR">{$totalVAT}</ram:TaxTotalAmount>
+                <ram:TaxTotalAmount currencyID="{$currency}">{$totalVAT}</ram:TaxTotalAmount>
                 <ram:GrandTotalAmount>{$totalTTC}</ram:GrandTotalAmount>
                 <ram:DuePayableAmount>{$totalTTC}</ram:DuePayableAmount>
 

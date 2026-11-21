@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        nextcloud: ['32', '33', '34', '35']
+        nextcloud: ['34', '35']
 
     services:
       database:
@@ -50,14 +50,7 @@ jobs:
       - name: Download Nextcloud ${{ matrix.nextcloud }}
         run: |
           release_url="https://download.nextcloud.com/server/releases/latest-${{ matrix.nextcloud }}.zip"
-          if ! curl --fail --location --retry 3 --output nextcloud.zip "$release_url"; then
-            # Nextcloud 35 is declared compatible before its final release. Use
-            # its official beta until the latest-35 archive becomes available.
-            test '${{ matrix.nextcloud }}' = '35'
-            curl --fail --location --retry 3 \
-              --output nextcloud.zip \
-              'https://download.nextcloud.com/server/prereleases/nextcloud-35.0.0beta1.zip'
-          fi
+          curl --fail --location --retry 3 --output nextcloud.zip "$release_url"
           unzip -q nextcloud.zip
 
       - name: Checkout Gestion
@@ -81,6 +74,8 @@ jobs:
             --database-pass=nextcloud \
             --admin-user=admin \
             --admin-pass=admin
+          php occ status --output=json | jq -er --arg major '${{ matrix.nextcloud }}' \
+            'select(.installed and ((.version | split(".")[0]) == $major)) | .versionstring'
           php occ app:enable gestion
           php occ app:list --enabled | grep -F -- '- gestion:'
 

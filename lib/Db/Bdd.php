@@ -6,6 +6,7 @@ use OCP\IDBConnection;
 use OCP\IL10N;
 use OCA\Gestion\Service\CommercialMath;
 use OCA\Gestion\Service\BackupFormat;
+use OCA\Gestion\Service\DocumentTemplatePolicy;
 use OCA\Gestion\Service\InvoicePaymentMeans;
 use OCA\Gestion\Service\LogoImage;
 use OCA\Gestion\Service\SenderProfile;
@@ -66,6 +67,37 @@ class Bdd {
             'SELECT sender_profiles FROM ' . $this->tableprefix . 'configuration WHERE id = ?', [$company]
         );
         return SenderProfile::decode($rows[0]['sender_profiles'] ?? null);
+    }
+
+    /** @return array<string, mixed> */
+    public function getDocumentTemplateConfiguration(int $company): array {
+        $row = $this->requireRecord('configuration', $company, $company);
+        return [
+            'quote_template_layout' => $row['quote_template_layout'] ?? null,
+            'invoice_template_layout' => $row['invoice_template_layout'] ?? null,
+            'quote_template_css' => $row['quote_template_css'] ?? '',
+            'invoice_template_css' => $row['invoice_template_css'] ?? '',
+        ];
+    }
+
+    public function saveDocumentTemplate(int $company, string $owner, string $type, string $layout, string $css): void {
+        if (!in_array($type, ['quote', 'invoice'], true)) {
+            throw new \InvalidArgumentException('Invalid document template type.');
+        }
+        $this->companyMutation($company, function () use ($company, $owner, $type, $layout, $css): void {
+            $row = $this->requireRecord('configuration', $company, $company);
+            if (!hash_equals((string)$row['id_nextcloud'], $owner)) {
+                throw new \DomainException('Only the company owner can manage document templates.');
+            }
+            $this->db->executeStatement(
+                'UPDATE ' . $this->tableprefix . 'configuration SET ' . $type . '_template_layout = ?, ' . $type . '_template_css = ? WHERE id = ?',
+                [$layout, $css, $company]
+            );
+            $this->recordHistory($company, 'update', 'configuration', $company, [
+                'document_template' => $type,
+                'custom_css' => $css !== '',
+            ]);
+        });
     }
 
     public function saveSenderProfile(int $company, string $owner, string $id, ?array $input): void {
@@ -174,7 +206,7 @@ class Bdd {
     }
 
     public function getOneFacture($numfacture, $idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."facture.id," . $this->tableprefix . "facture.locked," . $this->tableprefix . "facture.version," . $this->tableprefix . "facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, ".$this->tableprefix."devis.sender_profile, comment, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, legal_one, mail, adresse, zip_code, city_name, country_code, company_identification, vat_number FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_configuration = ".$this->tableprefix."devis.id_configuration) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration WHERE ".$this->tableprefix."facture.id = ? AND ".$this->tableprefix."facture.id_configuration = ?";
+        $sql = "SELECT ".$this->tableprefix."facture.id," . $this->tableprefix . "facture.locked," . $this->tableprefix . "facture.version," . $this->tableprefix . "facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, ".$this->tableprefix."devis.sender_profile, comment, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, legal_one, mail, telephone, adresse, zip_code, city_name, country_code, company_identification, vat_number FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_configuration = ".$this->tableprefix."devis.id_configuration) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration WHERE ".$this->tableprefix."facture.id = ? AND ".$this->tableprefix."facture.id_configuration = ?";
         return $this->execSQL($sql, array($numfacture, $idNextcloud));
     }
 
@@ -668,36 +700,21 @@ class Bdd {
     }
 
     private function deleteCompanyData($idCompany, $idNextcloud){
-        if ($this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_configuration = ? AND locked = 1', [$idCompany])) throw new \DomainException('A company with locked documents cannot be deleted.');
-        $sql = "SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?";
-        $res = $this->execSQLNoJsonReturn($sql, array($idCompany));
-
-        if ($res[0]['id_nextcloud'] == $idNextcloud){
-            $sql = "DELETE FROM ".$this->tableprefix."configuration WHERE id = ? AND id_nextcloud = ?";
-            $this->execSQLNoData($sql, array($idCompany, $idNextcloud));
-
-            $sql = "DELETE FROM ".$this->tableprefix."client WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            $sql = "DELETE FROM ".$this->tableprefix."devis WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            $sql = "DELETE FROM ".$this->tableprefix."facture WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            $sql = "DELETE FROM ".$this->tableprefix."produit WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            $sql = "DELETE FROM ".$this->tableprefix."produit_devis WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            $sql = "DELETE FROM ".$this->tableprefix."conf_share WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            return true;
-        }else{
+        $owner = $this->execSQLNoJsonReturn('SELECT id_nextcloud FROM ' . $this->tableprefix . 'configuration WHERE id = ?', [$idCompany]);
+        if (!is_string($idNextcloud) || $idNextcloud === '' || ($owner[0]['id_nextcloud'] ?? null) !== $idNextcloud) {
             return false;
         }
+        if ($this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_configuration = ? AND locked = 1', [$idCompany])) {
+            throw new \DomainException('A company with locked documents cannot be deleted.');
+        }
+        $deleted = $this->db->executeStatement('DELETE FROM ' . $this->tableprefix . 'configuration WHERE id = ? AND id_nextcloud = ?', [$idCompany, $idNextcloud]);
+        if ($deleted !== 1) {
+            return false;
+        }
+        foreach (['produit_devis', 'facture', 'devis', 'produit', 'client', 'conf_share', 'history'] as $table) {
+            $this->db->executeStatement('DELETE FROM ' . $this->tableprefix . $table . ' WHERE id_configuration = ?', [$idCompany]);
+        }
+        return true;
     }
 
     public function isConfig($idConfiguration,$idNextcloud){
@@ -826,7 +843,20 @@ class Bdd {
                     unset($row['id']);
                     foreach ($row as $field => $value) {
                         if (preg_match('/secret|token|password|einvoice_provider_config/i', $field)) { unset($row[$field]); continue; }
-                        if ($table === 'configuration' && $field === 'sender_profiles') {
+                        if ($table === 'configuration' && in_array($field, ['quote_template_layout', 'invoice_template_layout'], true)) {
+                            $type = str_starts_with($field, 'quote_') ? 'quote' : 'invoice';
+                            try {
+                                $row[$field] = json_encode(DocumentTemplatePolicy::normalizeLayout($type, (string)$value), JSON_THROW_ON_ERROR);
+                            } catch (\InvalidArgumentException | \JsonException) {
+                                $row[$field] = json_encode(DocumentTemplatePolicy::defaultLayout($type), JSON_THROW_ON_ERROR);
+                            }
+                        } elseif ($table === 'configuration' && in_array($field, ['quote_template_css', 'invoice_template_css'], true)) {
+                            try {
+                                $row[$field] = DocumentTemplatePolicy::sanitizeCss((string)$value);
+                            } catch (\InvalidArgumentException) {
+                                $row[$field] = '';
+                            }
+                        } elseif ($table === 'configuration' && $field === 'sender_profiles') {
                             $row[$field] = json_encode(SenderProfile::decode($value), JSON_THROW_ON_ERROR);
                         } elseif (is_string($value)) {
                             $row[$field] = strip_tags(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));

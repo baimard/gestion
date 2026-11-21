@@ -38,7 +38,7 @@ Translations are maintained with help from the Transifex team. Thank you to ever
 According to the app metadata, Gestion targets:
 
 - PHP 8 or newer;
-- Nextcloud 32 to 35;
+- Nextcloud 34 or 35 for Gestion 3.6;
 - a Nextcloud-compatible database, such as MariaDB/MySQL or PostgreSQL.
 
 The main dependencies are managed with Composer for PHP and npm/Webpack for JavaScript and CSS assets.
@@ -222,10 +222,9 @@ vendor/bin/phpunit --colors=always --testdox
 ```
 
 Pull requests targeting `master` automatically run the Controller, Bdd, and
-Service test suites against every supported Nextcloud major version (32 to 35)
-with MariaDB. The same compatibility workflow can also be started manually from
-the GitHub Actions page. Until Nextcloud 35 has a final release, the workflow
-uses its official beta archive as a compatibility target.
+Service test suites against both supported Nextcloud major versions (34 and 35)
+with MariaDB and the latest stable release of each major version. The same
+compatibility workflow can also be started manually from the GitHub Actions page.
 
 UI tests may require Firefox, GeckoDriver, and a properly initialized Nextcloud test instance. The `protocole_tests.sh` script documents a historical scenario for starting MariaDB/Nextcloud containers and loading test datasets.
 

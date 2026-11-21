@@ -52,7 +52,7 @@ If you require adaptations to comply with your country's regulations, please ope
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.5.3/tests/Unit/Panther/screens/productSelectorMobile.png</screenshot>
     <donation>https://www.buymeacoffee.com/benjaminaimard</donation>
     <dependencies>
-        <nextcloud min-version="32" max-version="35"/>
+        <nextcloud min-version="34" max-version="35"/>
         <php min-version="8"/>
     </dependencies>
     <settings>

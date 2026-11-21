@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        nextcloud: ['32', '33', '34', '35']
+        nextcloud: ['34', '35']
 
     services:
       database:
@@ -81,6 +81,8 @@ jobs:
             --database-pass=nextcloud \
             --admin-user=admin \
             --admin-pass=admin
+          php occ status --output=json | jq -er --arg major '${{ matrix.nextcloud }}' \
+            'select(.installed and ((.version | split(".")[0]) == $major)) | .versionstring'
           php occ app:enable gestion
           php occ app:list --enabled | grep -F -- '- gestion:'
 

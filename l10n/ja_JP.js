@@ -88,6 +88,7 @@ OC.L10N.register(
     "Client ID" : "クライアント ID",
     "Client secret" : "クライアントシークレット",
     "API URL" : "APIのURL",
+    "Header logo" : "ヘッダーロゴ",
     "INFORMATION" : "情報",
     "Save folder" : "フォルダーを保存",
     "About" : "詳細"

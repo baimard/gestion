@@ -383,6 +383,7 @@ OC.L10N.register(
     "Client ID" : "Client ID",
     "Client secret" : "Client secret",
     "API URL" : "API URL",
+    "Header logo" : "Header logo",
     "COMPANY" : "ບໍລິສັດ",
     "Products" : "ສິນຄ້າ",
     "INFORMATION" : "ຂໍ້ມູນ",

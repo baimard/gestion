@@ -300,6 +300,7 @@ OC.L10N.register(
     "Client ID" : "ID Odjemalca",
     "Client secret" : "Skrivni ključ odjemalca",
     "API URL" : "Naslov URL API",
+    "Header logo" : "Logotip glave",
     "Products" : "Izdelki",
     "INFORMATION" : "Podrobnosti",
     "Save folder" : "Shrani mapo",

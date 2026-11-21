@@ -82,6 +82,7 @@ OC.L10N.register(
     "Client ID" : "클라이언트 ID",
     "Client secret" : "클라이언트 비밀 값",
     "API URL" : "API URL",
+    "Header logo" : "머리글 로고",
     "About" : "정보"
 },
 "nplurals=1; plural=0;");

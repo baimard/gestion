@@ -84,6 +84,7 @@ OC.L10N.register(
     "Client ID" : "Client ID",
     "Client secret" : "Client secret",
     "API URL" : "Tautan API",
+    "Header logo" : "Logo header",
     "About" : "Tentang."
 },
 "nplurals=1; plural=0;");

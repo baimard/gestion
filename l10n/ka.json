@@ -64,6 +64,7 @@
     "Mail" : "წერილი",
     "Client ID" : "Client ID",
     "Client secret" : "Client secret",
+    "Header logo" : "Header logo",
     "About" : "About"
 },"pluralForm" :"nplurals=2; plural=(n!=1);"
 }

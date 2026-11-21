@@ -294,6 +294,7 @@ OC.L10N.register(
     "Client ID" : "Client-ID",
     "Client secret" : "Clientgeheim",
     "API URL" : "API URL",
+    "Header logo" : "Top logo",
     "Products" : "Producten",
     "INFORMATION" : "INFORMATIE",
     "Save folder" : "Map om op te slaan",

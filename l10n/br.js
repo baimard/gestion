@@ -23,6 +23,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "Statud",
+    "Apply" : "Lakaat",
     "Date:" : "Deiziad:",
     "Signature:" : "Sinadenn :",
     "Legal notice" : "Meneg lezenn",

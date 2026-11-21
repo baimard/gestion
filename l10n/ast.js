@@ -49,6 +49,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "ID",
     "Status" : "Estáu",
+    "Apply" : "Aplicar",
     "Quantity" : "CANTIDÁ",
     "Unit price without VAT" : "Preciu unitariu ensin IVA",
     "Total without VAT" : "Total ensin IVA",

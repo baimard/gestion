@@ -26,6 +26,7 @@ OC.L10N.register(
     "Remove" : "Ukloni",
     "Save" : "Save",
     "Status" : "Status",
+    "Apply" : "Primijeni",
     "January" : "Januar",
     "February" : "Februar",
     "March" : "Mart",

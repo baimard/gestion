@@ -66,6 +66,7 @@ OC.L10N.register(
     "Mail" : "წერილი",
     "Client ID" : "Client ID",
     "Client secret" : "Client secret",
+    "Header logo" : "Header logo",
     "About" : "About"
 },
 "nplurals=2; plural=(n!=1);");

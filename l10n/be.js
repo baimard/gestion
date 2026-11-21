@@ -45,6 +45,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "Ідэнтыфікатар",
     "Status" : "Статус",
+    "Apply" : "Прымяніць",
     "Date:" : "Дата:",
     "City name" : "Назва горада",
     "Year" : "Год",

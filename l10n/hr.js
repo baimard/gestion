@@ -115,6 +115,7 @@ OC.L10N.register(
     "Client ID" : "ID klijenta",
     "Client secret" : "Tajni ključ klijenta",
     "API URL" : "URL API-ja",
+    "Header logo" : "Logotip zaglavlja",
     "INFORMATION" : "INFORMACIJE",
     "Save folder" : "Spremi mapu",
     "About" : "Informacije"

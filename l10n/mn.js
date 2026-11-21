@@ -70,6 +70,7 @@ OC.L10N.register(
     "Mail" : "Цахим шуудан",
     "Client ID" : "–•—ç—Ä—ç–≥–ª—ç–≥—á–∏–π–Ω ID",
     "Client secret" : "Клиентийн нууц",
+    "Header logo" : "Толгой хэсгийн лого",
     "About" : "Тухай"
 },
 "nplurals=2; plural=(n != 1);");

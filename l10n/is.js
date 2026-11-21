@@ -78,6 +78,7 @@ OC.L10N.register(
     "Mail" : "Póstur",
     "Client ID" : "Biðlaraauðkenni",
     "Client secret" : "Leynilykill biðlara",
+    "Header logo" : "Táknmerki í haus",
     "INFORMATION" : "UPPLÝSINGAR",
     "Save folder" : "Vista möppu",
     "About" : "Um hugbúnaðinn"

@@ -97,6 +97,7 @@ OC.L10N.register(
     "Mail" : "Електронска пошта",
     "Client ID" : "Клиент ИД",
     "Client secret" : "Тајна на клиент",
+    "Header logo" : "Лого на заглавие",
     "INFORMATION" : "ИНФОРМАЦИЈА",
     "Save folder" : "Папка за зачувување",
     "About" : "За"

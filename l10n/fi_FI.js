@@ -98,6 +98,7 @@ OC.L10N.register(
     "Client ID" : "Asiakas-ID",
     "Client secret" : "Asiakassalasana",
     "API URL" : "Rajapinnan URL",
+    "Header logo" : "Otsakelogo",
     "INFORMATION" : "TIEDOT",
     "Save folder" : "Tallenna kansio",
     "About" : "Tietoja"

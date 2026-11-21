@@ -384,6 +384,7 @@ OC.L10N.register(
     "Client ID" : "Ідентифікатор клієнта",
     "Client secret" : "Ключ клієнта",
     "API URL" : "Посилання API",
+    "Header logo" : "Логотип заголовка",
     "COMPANY" : "КОМПАНІЯ",
     "Products" : "Продукти",
     "INFORMATION" : "ІНФОРМАЦІЯ",

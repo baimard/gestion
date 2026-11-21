@@ -66,6 +66,7 @@
     "Mail" : "דואר",
     "Client ID" : "מזהה לקו",
     "Client secret" : "סוד לקוח",
+    "Header logo" : "לוגו כותרת",
     "INFORMATION" : "מידע",
     "About" : "על אודות"
 },"pluralForm" :"nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;"

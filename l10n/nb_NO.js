@@ -374,6 +374,7 @@ OC.L10N.register(
     "Client ID" : "Klient-ID",
     "Client secret" : "Klient-hemmelighet",
     "API URL" : "API URL",
+    "Header logo" : "Header logo",
     "COMPANY" : "SELSKAP",
     "Products" : "Produkter",
     "INFORMATION" : "INFORMASJON",

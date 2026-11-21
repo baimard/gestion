@@ -157,6 +157,7 @@ OC.L10N.register(
     "Client ID" : "客户端 ID",
     "Client secret" : "客户端 secret",
     "API URL" : "API URL",
+    "Header logo" : "顶栏图标",
     "COMPANY" : "公司",
     "Products" : "产品",
     "INFORMATION" : "信息",

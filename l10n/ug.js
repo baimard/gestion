@@ -385,6 +385,7 @@ OC.L10N.register(
     "Client ID" : "خېرىدار ID",
     "Client secret" : "خېرىدار مەخپىيەتلىكى",
     "API URL" : "API URL",
+    "Header logo" : "بەت بەلگىسى",
     "COMPANY" : "شىركەت",
     "Products" : "مەھسۇلاتلار",
     "INFORMATION" : "ئۇچۇر",

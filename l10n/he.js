@@ -68,6 +68,7 @@ OC.L10N.register(
     "Mail" : "דואר",
     "Client ID" : "מזהה לקו",
     "Client secret" : "סוד לקוח",
+    "Header logo" : "לוגו כותרת",
     "INFORMATION" : "מידע",
     "About" : "על אודות"
 },

@@ -399,6 +399,7 @@ OC.L10N.register(
     "Client ID" : "شناسه Client",
     "Client secret" : "رمز کلاینت",
     "API URL" : "URL API",
+    "Header logo" : "لوگوی هدر",
     "COMPANY" : "شرکت",
     "Products" : "محصولات",
     "INFORMATION" : "اطلاعات",

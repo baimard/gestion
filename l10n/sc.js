@@ -108,6 +108,7 @@ OC.L10N.register(
     "Client ID" : "ID cliente",
     "Client secret" : "Segretu de su cliente",
     "API URL" : "API URL",
+    "Header logo" : "Logo de intestatzione",
     "INFORMATION" : "INFORMATZIONE",
     "Save folder" : "Sarva cartella",
     "About" : "In contu de"

@@ -383,6 +383,7 @@ OC.L10N.register(
     "Client ID" : "Kitambulisho cha mteja",
     "Client secret" : "Siri ya mteja",
     "API URL" : "URL ya API",
+    "Header logo" : "Nembo ya kichwa",
     "COMPANY" : "KAMPUNI",
     "Products" : "Bidhaa",
     "INFORMATION" : "TAARIFA",

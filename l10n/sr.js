@@ -385,6 +385,7 @@ OC.L10N.register(
     "Client ID" : "ID клијента",
     "Client secret" : "Тајна клијента",
     "API URL" : "API URL",
+    "Header logo" : "Лого заглавља",
     "COMPANY" : "КОМПАНИЈА",
     "Products" : "Производи",
     "INFORMATION" : "ИНФОРМАЦИЈЕ",

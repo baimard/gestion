@@ -168,6 +168,7 @@ OC.L10N.register(
     "Client ID" : "客戶端 ID",
     "Client secret" : "客戶端密碼",
     "API URL" : "API URL",
+    "Header logo" : "頁首標誌",
     "Products" : "產品",
     "INFORMATION" : "細節",
     "Save folder" : "儲存資料夾",

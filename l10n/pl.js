@@ -363,6 +363,7 @@ OC.L10N.register(
     "Client ID" : "Identyfikator klienta",
     "Client secret" : "Tajny klucz klienta",
     "API URL" : "Adres URL interfejsu API",
+    "Header logo" : "Logo nagłówka",
     "Products" : "Produkty",
     "INFORMATION" : "INFORMACJA",
     "Save folder" : "Zapisz katalog",

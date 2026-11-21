@@ -378,6 +378,7 @@ OC.L10N.register(
     "Client ID" : "Bezeroaren IDa",
     "Client secret" : "Bezeroaren sekretua",
     "API URL" : "API URLa",
+    "Header logo" : "Goiburuaren logoa",
     "COMPANY" : "ENPRESA",
     "Products" : "Produktuak",
     "INFORMATION" : "INFORMAZIOA",

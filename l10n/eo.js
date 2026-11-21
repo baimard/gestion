@@ -34,6 +34,7 @@ OC.L10N.register(
     "Save" : "Save",
     "ID" : "Identigilo",
     "Status" : "Stato",
+    "Apply" : "Validigi",
     "Date:" : "Dato:",
     "Signature:" : "Subskribo:",
     "Recipient" : "Ricevonto",

@@ -63,6 +63,7 @@ OC.L10N.register(
     "Loading …" : "Đang tải...",
     "Mail" : "Thư",
     "Client ID" : "ID khách hàng",
+    "Header logo" : "Logo đầu trang",
     "About" : "Giới thiệu"
 },
 "nplurals=1; plural=0;");

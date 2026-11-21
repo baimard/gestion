@@ -399,6 +399,7 @@ OC.L10N.register(
     "Client ID" : "ID de cliente",
     "Client secret" : "Segredo do cliente",
     "API URL" : "URL da API",
+    "Header logo" : "Logotipo da cabeceira",
     "COMPANY" : "EMPRESA",
     "Products" : "Produtos",
     "INFORMATION" : "INFORMACIÓN",

@@ -57,7 +57,7 @@ class LockInformationTest extends TestCase {
         $pdf = $this->createMock(PdfService::class);
         $pdf->method('sendFacturXToIopole')->willReturn(new DataResponse(['message' => 'Platform rejected document.'], 400));
         $controller = new PdfController('gestion', $this->createMock(IRequest::class), $pdf, $this->createMock(PersonalMailService::class), $data);
-        $response = $controller->sendFacturXToIopole('html','invoice.pdf',12);
+        $response = $controller->sendFacturXToIopole('invoice.pdf',12);
         $this->assertSame(400, $response->getStatus());
         $this->assertTrue($response->getData()['documentLocked']);
     }

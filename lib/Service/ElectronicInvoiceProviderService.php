@@ -4,6 +4,7 @@ namespace OCA\Gestion\Service;
 
 use OCP\IDBConnection;
 use OCP\ISession;
+use OCP\Security\ICrypto;
 use OCA\Gestion\Db\Bdd;
 
 class ElectronicInvoiceProviderService {
@@ -20,6 +21,7 @@ class ElectronicInvoiceProviderService {
         private ISession $session,
         private Bdd $myDb,
         private $UserId,
+        private ICrypto $crypto,
     ) {
     }
 
@@ -58,7 +60,7 @@ class ElectronicInvoiceProviderService {
         $config['canConfigure'] = $this->canConfigure($companyId);
         $config['secretStored'] = $config['canConfigure'] && !empty($config['credentials']['client_secret']);
         if (!$config['canConfigure']) $config['credentials'] = [];
-        unset($config['credentials']['client_secret']);
+        unset($config['credentials']['client_secret'], $config['credentials']['secret_encrypted']);
         return $config;
     }
 
@@ -78,7 +80,11 @@ class ElectronicInvoiceProviderService {
             // An empty password input means keep the stored secret; disabling the provider clears it.
             if ($sanitized['client_secret'] === '' && $previous['provider'] === $provider) {
                 $sanitized['client_secret'] = $previous['credentials']['client_secret'] ?? '';
+                if (($previous['credentials']['secret_encrypted'] ?? false) === true) {
+                    $sanitized['secret_encrypted'] = true;
+                }
             }
+            $sanitized = ProviderSecret::protect($sanitized, $this->crypto);
             foreach (['base_url', 'auth_url'] as $key) {
                 if ($sanitized[$key] !== '') ProviderUrlPolicy::validate($sanitized[$key]);
             }
@@ -86,7 +92,7 @@ class ElectronicInvoiceProviderService {
         $qb = $this->db->getQueryBuilder();
         $qb->update(self::TABLE)
             ->set('einvoice_provider', $qb->createNamedParameter($provider))
-            ->set('einvoice_provider_config', $qb->createNamedParameter(json_encode($sanitized, JSON_UNESCAPED_SLASHES)))
+            ->set('einvoice_provider_config', $qb->createNamedParameter(json_encode($sanitized, JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)))
             ->where($qb->expr()->eq('id', $qb->createNamedParameter($companyId)))
             ->executeStatement();
         $this->myDb->recordHistory($companyId, 'provider', 'configuration', $companyId, ['provider' => $provider]);
@@ -98,7 +104,13 @@ class ElectronicInvoiceProviderService {
         if ($config['provider'] !== $provider || !$config['configured']) {
             throw new \RuntimeException('The electronic invoice provider ' . $provider . ' is not configured for the current company.');
         }
-        return $config['credentials'];
+        $credentials = $config['credentials'];
+        if (($credentials['secret_encrypted'] ?? false) !== true) {
+            throw new \RuntimeException('The electronic invoice credentials require migration.');
+        }
+        $credentials['client_secret'] = $this->crypto->decrypt($credentials['client_secret']);
+        unset($credentials['secret_encrypted']);
+        return $credentials;
     }
 
     private function isComplete(string $provider, array $credentials): bool {

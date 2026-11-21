@@ -206,7 +206,7 @@ class Bdd {
     }
 
     public function getOneFacture($numfacture, $idNextcloud){
-        $sql = "SELECT ".$this->tableprefix."facture.id," . $this->tableprefix . "facture.locked," . $this->tableprefix . "facture.version," . $this->tableprefix . "facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, ".$this->tableprefix."devis.sender_profile, comment, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, legal_one, mail, adresse, zip_code, city_name, country_code, company_identification, vat_number FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_configuration = ".$this->tableprefix."devis.id_configuration) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration WHERE ".$this->tableprefix."facture.id = ? AND ".$this->tableprefix."facture.id_configuration = ?";
+        $sql = "SELECT ".$this->tableprefix."facture.id," . $this->tableprefix . "facture.locked," . $this->tableprefix . "facture.version," . $this->tableprefix . "facture.num, ".$this->tableprefix."facture.date, ".$this->tableprefix."devis.num as dnum, ".$this->tableprefix."devis.sender_profile, comment, date_paiement, type_paiement, id_devis, nom, prenom, entreprise, legal_one, mail, telephone, adresse, zip_code, city_name, country_code, company_identification, vat_number FROM (".$this->tableprefix."facture LEFT JOIN ".$this->tableprefix."devis on ".$this->tableprefix."facture.id_devis = ".$this->tableprefix."devis.id AND ".$this->tableprefix."facture.id_configuration = ".$this->tableprefix."devis.id_configuration) LEFT JOIN ".$this->tableprefix."client on ".$this->tableprefix."devis.id_client = ".$this->tableprefix."client.id AND ".$this->tableprefix."devis.id_configuration = ".$this->tableprefix."client.id_configuration WHERE ".$this->tableprefix."facture.id = ? AND ".$this->tableprefix."facture.id_configuration = ?";
         return $this->execSQL($sql, array($numfacture, $idNextcloud));
     }
 
@@ -700,36 +700,21 @@ class Bdd {
     }
 
     private function deleteCompanyData($idCompany, $idNextcloud){
-        if ($this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_configuration = ? AND locked = 1', [$idCompany])) throw new \DomainException('A company with locked documents cannot be deleted.');
-        $sql = "SELECT * FROM ".$this->tableprefix."configuration WHERE id = ?";
-        $res = $this->execSQLNoJsonReturn($sql, array($idCompany));
-
-        if ($res[0]['id_nextcloud'] == $idNextcloud){
-            $sql = "DELETE FROM ".$this->tableprefix."configuration WHERE id = ? AND id_nextcloud = ?";
-            $this->execSQLNoData($sql, array($idCompany, $idNextcloud));
-
-            $sql = "DELETE FROM ".$this->tableprefix."client WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            $sql = "DELETE FROM ".$this->tableprefix."devis WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            $sql = "DELETE FROM ".$this->tableprefix."facture WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            $sql = "DELETE FROM ".$this->tableprefix."produit WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            $sql = "DELETE FROM ".$this->tableprefix."produit_devis WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            $sql = "DELETE FROM ".$this->tableprefix."conf_share WHERE id_configuration = ?";
-            $this->execSQLNoData($sql, array($idCompany));
-
-            return true;
-        }else{
+        $owner = $this->execSQLNoJsonReturn('SELECT id_nextcloud FROM ' . $this->tableprefix . 'configuration WHERE id = ?', [$idCompany]);
+        if (!is_string($idNextcloud) || $idNextcloud === '' || ($owner[0]['id_nextcloud'] ?? null) !== $idNextcloud) {
             return false;
         }
+        if ($this->execSQLNoJsonReturn('SELECT id FROM ' . $this->tableprefix . 'facture WHERE id_configuration = ? AND locked = 1', [$idCompany])) {
+            throw new \DomainException('A company with locked documents cannot be deleted.');
+        }
+        $deleted = $this->db->executeStatement('DELETE FROM ' . $this->tableprefix . 'configuration WHERE id = ? AND id_nextcloud = ?', [$idCompany, $idNextcloud]);
+        if ($deleted !== 1) {
+            return false;
+        }
+        foreach (['produit_devis', 'facture', 'devis', 'produit', 'client', 'conf_share', 'history'] as $table) {
+            $this->db->executeStatement('DELETE FROM ' . $this->tableprefix . $table . ' WHERE id_configuration = ?', [$idCompany]);
+        }
+        return true;
     }
 
     public function isConfig($idConfiguration,$idNextcloud){

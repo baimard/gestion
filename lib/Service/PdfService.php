@@ -23,7 +23,8 @@ class PdfService {
 		FileService $fileService,
 		DataService $dataService,
 		IopoleService $iopoleService,
-		FacturXService $facturXService
+		FacturXService $facturXService,
+		private TemplateService $templates
 	) {
 		$this->mailer = $mailer;
 		$this->fileService = $fileService;
@@ -106,7 +107,6 @@ class PdfService {
 	}
 
 	public function generateFacturX(
-		string $html,
 		string $name,
 		string $folder,
 		int $factureId
@@ -114,18 +114,10 @@ class PdfService {
 
 		try {
 
-			$facturxXml = $this->buildFacturXml($factureId);
-
-			if ($facturxXml instanceof DataResponse) {
-				return $facturxXml;
+			$facturxPdfContent = $this->buildFacturX($factureId, true);
+			if ($facturxPdfContent instanceof DataResponse) {
+				return $facturxPdfContent;
 			}
-
-			$pdfContent = $this->renderPdf($html);
-
-			$facturxPdfContent = $this->facturXService->generateFacturXPdf(
-				$pdfContent,
-				$facturxXml
-			);
 
 			$cleanName = html_entity_decode($name);
 
@@ -151,17 +143,16 @@ class PdfService {
 	}
 
 	public function sendFacturXToIopole(
-		string $html,
 		string $name,
 		int $factureId
 	): DataResponse {
 
 		try {
 
-			$facturxPdfContent = $this->buildFacturXPdfContent(
-				$html,
-				$factureId
-			);
+			$facturxPdfContent = $this->buildFacturX($factureId, true);
+			if ($facturxPdfContent instanceof DataResponse) {
+				return $facturxPdfContent;
+			}
 
 			$payload = $this->iopoleService->sendInvoice(
 				$facturxPdfContent,
@@ -191,7 +182,7 @@ class PdfService {
 
 		try {
 
-			$facturxXml = $this->buildFacturXml($factureId);
+			$facturxXml = $this->buildFacturX($factureId, false);
 
 			if ($facturxXml instanceof DataResponse) {
 				return $facturxXml;
@@ -241,25 +232,7 @@ class PdfService {
 		return $mpdf->Output('', \Mpdf\Output\Destination::STRING_RETURN);
 	}
 
-	private function buildFacturXPdfContent(
-		string $html,
-		int $factureId
-	): string {
-		$facturxXml = $this->buildFacturXml($factureId);
-
-		if ($facturxXml instanceof DataResponse) {
-			throw new Exception($facturxXml->getData()['message'] ?? 'Unable to build Factur-X XML.');
-		}
-
-		$pdfContent = $this->renderPdf($html);
-
-		return $this->facturXService->generateFacturXPdf(
-			$pdfContent,
-			$facturxXml
-		);
-	}
-
-	private function buildFacturXml(int $factureId) {
+	private function buildFacturX(int $factureId, bool $includePdf): string|DataResponse {
 		$factureRows = json_decode(
 			$this->dataService->getOneFacture($factureId)
 		);
@@ -276,14 +249,16 @@ class PdfService {
 
 		$invoice = $factureRows[0];
 		$products = json_decode(
-			$this->dataService->getProduitsById($invoice->id_devis)
+			$this->dataService->getProduitsById($invoice->id_devis), false, 512, JSON_THROW_ON_ERROR
 		);
 
-		return $this->facturXService->buildXml(
-			$invoice,
-			$configRows[0],
-			$products ?? [],
-			$invoice
-		);
+		$company = $configRows[0];
+		$xml = $this->facturXService->buildXml($invoice, $company, $products);
+		if (!$includePdf) {
+			return $xml;
+		}
+		$totals = $this->facturXService->calculateTotals($products);
+		$html = $this->templates->invoicePrintHtml($invoice, $company, $products, $totals);
+		return $this->facturXService->generateFacturXPdf($this->renderPdf($html), $xml);
 	}
 }

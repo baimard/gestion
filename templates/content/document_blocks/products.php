@@ -10,6 +10,10 @@
             <?php if ($_['documentKind'] === 'quote'): ?><th class="product-order-column" data-html2canvas-ignore aria-label="<?php p($l->t('Product order')); ?>"></th><?php endif; ?>
             <th class="document-text-heading"><?php p($l->t('Reference')); ?></th><th class="document-text-heading"><?php p($l->t('Designation')); ?></th><th class="document-text-heading"><?php p($l->t('Comment')); ?></th><th class="document-number-heading"><?php p($l->t('Quantity')); ?></th><th class="document-number-heading"><?php p($l->t('Unit price without VAT')); ?></th><th class="document-number-heading"><?php p($l->t('Discount')); ?> (%)</th><th class="document-number-heading"><?php p($l->t('Total without VAT')); ?></th><th class="document-number-heading"><?php p($l->t('VAT')); ?></th><th class="document-number-heading"><?php p($l->t('Total including VAT')); ?></th>
         </tr></thead>
-        <tbody></tbody>
+        <tbody>
+            <?php if (isset($_['printRows'])) print_unescaped($this->inc('content/document_blocks/print_rows', [
+                'rows' => $_['printRows']['products'], 'productRows' => true,
+            ])); ?>
+        </tbody>
     </table>
 </div>

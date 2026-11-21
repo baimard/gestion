@@ -1,1 +1,1 @@
-<div class="alert-info-custom"><p><span id="mentions_default"><?php p($l->t('Please set in global configuration')); ?></span></p></div>
+<div class="alert-info-custom"><p><span id="mentions_default"><?php p(isset($_['printInvoice']) ? html_entity_decode((string)(json_decode($_['configuration'])[0]->mentions_default ?? ''), ENT_QUOTES, 'UTF-8') : $l->t('Please set in global configuration')); ?></span></p></div>

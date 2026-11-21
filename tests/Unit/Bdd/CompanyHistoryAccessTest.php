@@ -33,6 +33,20 @@ class CompanyHistoryAccessTest extends TestCase {
         $session->method('get')->with('CurrentCompany')->willReturn($company);
         return new DataService($this->db, $session, $user);
     }
+    public function testOnlyExactOwnerCanDeleteCompanyAndClients(): void {
+        $owner = '0' . random_int(1000000, 9999999);
+        $other = substr($owner, 1);
+        $this->db->createCompany($owner);
+        $id = (int)$this->db->getCompaniesOwner($owner)[0]['id'];
+        $this->db->addShareUser($id, $other);
+        $this->db->insertClient($id);
+        self::assertFalse($this->db->deleteCompany($id, $other));
+        self::assertCount(1, json_decode($this->db->getClients($id), true));
+        self::assertTrue($this->db->deleteCompany($id, $owner));
+        self::assertSame([], json_decode($this->db->getClients($id), true));
+        self::assertSame([], $this->db->getCompaniesOwner($owner));
+    }
+
     public function testHistoryContainsOnlyTheCurrentAuthorizedCompany(): void {
         $history = $this->service($this->owner, $this->company)->history();
         $this->assertNotEmpty($history);

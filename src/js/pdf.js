@@ -346,12 +346,6 @@ export function captureFacturX(sourceDocument = document) {
   const pdfFolder   = pdfElement.getAttribute("data-folder");
   const factureId   = parseInt(facturxBtn.getAttribute("data-factureid"), 10);
 
-  // Clone du contenu sans les boutons (data-html2canvas-ignore)
-  const element       = sourceDocument.querySelector("#PDFcontent");
-  const clonedElement = element.cloneNode(true);
-  clonedElement.querySelectorAll('[data-html2canvas-ignore]').forEach(el => el.remove());
-  const htmlContent = clonedElement.outerHTML;
-
   const name = t("gestion", "INVOICE") + "_" + pdfName + "_facturx.pdf";
 
   return fetch(baseUrl + '/generateFacturX', {
@@ -360,7 +354,6 @@ export function captureFacturX(sourceDocument = document) {
       'Content-Type': 'application/json'
     }),
     body: JSON.stringify({
-      html:      htmlContent,
       name:      name,
       folder:    folder + "/" + pdfFolder + "/",
       factureId: factureId
@@ -418,11 +411,6 @@ export async function sendFacturXToIopole() {
   const pdfName = pdfElement.getAttribute("data-name");
   const factureId = parseInt(facturxBtn.getAttribute("data-factureid"), 10);
 
-  const element = document.querySelector("#PDFcontent");
-  const clonedElement = element.cloneNode(true);
-  clonedElement.querySelectorAll('[data-html2canvas-ignore]').forEach(el => el.remove());
-  const htmlContent = clonedElement.outerHTML;
-
   const name = t("gestion", "INVOICE") + "_" + pdfName + "_facturx.pdf";
 
   return fetch(baseUrl + '/sendFacturXToIopole', {
@@ -431,7 +419,6 @@ export async function sendFacturXToIopole() {
       'Content-Type': 'application/json'
     }),
     body: JSON.stringify({
-      html: htmlContent,
       name: name,
       factureId: factureId
     })

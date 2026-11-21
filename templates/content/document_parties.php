@@ -56,27 +56,27 @@
                 </td>
             <?php endif; ?>
             <td width="<?php p($partyShare); ?>%" class="document-party" aria-labelledby="document-recipient" data-party-label="<?php p($l->t('Recipient')); ?>">
-                <div id="entreprise" class="document-party-name"></div>
-                <div id="nomprenom" class="document-party-line" data-id="0" data-table="devis" data-column="id_client"></div>
+                <div id="entreprise" class="document-party-name"><?php p($decodePartyValue($_['printInvoice']->entreprise ?? '')); ?></div>
+                <div id="nomprenom" class="document-party-line" data-id="0" data-table="devis" data-column="id_client"><?php p($decodePartyValue(($_['printInvoice']->prenom ?? '') . ' ' . ($_['printInvoice']->nom ?? ''))); ?></div>
                 <div class="document-party-section">
-                    <div id="adresse" class="document-party-line"></div>
-                    <div id="client_city" class="document-party-line"></div>
-                    <div id="country_code" class="document-party-line"></div>
+                    <div id="adresse" class="document-party-line"><?php p($decodePartyValue($_['printInvoice']->adresse ?? '')); ?></div>
+                    <div id="client_city" class="document-party-line"><?php p($decodePartyValue(($_['printInvoice']->zip_code ?? '') . ' ' . ($_['printInvoice']->city_name ?? ''))); ?></div>
+                    <div id="country_code" class="document-party-line"><?php p($decodePartyValue($_['printInvoice']->country_code ?? '')); ?></div>
                 </div>
                 <div class="document-party-section">
-                    <div id="mail" class="document-party-line"></div>
-                    <div id="telephone" class="document-party-line"></div>
+                    <div id="mail" class="document-party-line"><?php p($decodePartyValue($_['printInvoice']->mail ?? '')); ?></div>
+                    <div id="telephone" class="document-party-line"><?php p($decodePartyValue($_['printInvoice']->telephone ?? '')); ?></div>
                 </div>
                 <div class="document-party-section">
-                    <div id="legal_one" class="document-party-line"></div>
-                    <div id="company_identification" class="document-party-line"></div>
-                    <div id="vat_number" class="document-party-line"></div>
+                    <div id="legal_one" class="document-party-line"><?php p($decodePartyValue($_['printInvoice']->legal_one ?? '')); ?></div>
+                    <div id="company_identification" class="document-party-line"><?php p($decodePartyValue($_['printInvoice']->company_identification ?? '')); ?></div>
+                    <div id="vat_number" class="document-party-line"><?php p($decodePartyValue($_['printInvoice']->vat_number ?? '')); ?></div>
                 </div>
             </td>
         </tr>
     </tbody>
 </table>
-<?php if (!$hasMainLogo): ?>
+<?php if (!$hasMainLogo && !isset($_['printInvoice'])): ?>
     <details class="document-logo-help" data-html2canvas-ignore>
         <summary><?php p($l->t('You can add your company logo here.')); ?></summary>
         <p><?php p($l->t('To add the main logo, open My company, edit the company details and select Logos.')); ?></p>

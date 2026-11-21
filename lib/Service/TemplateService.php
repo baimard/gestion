@@ -106,6 +106,19 @@ class TemplateService {
 		], $this->documentSender($facture[0]->sender_profile ?? '', false), $this->baseParams()));
 	}
 
+    public function invoicePrintHtml(object $invoice, object $company, array $products, array $totals): string {
+        $params = array_merge($this->documentSender($invoice->sender_profile ?? '', false), [
+            'documentKind' => 'invoice',
+            'documentTemplate' => $this->documentTemplateService->forDocument('invoice'),
+            'configuration' => json_encode([$company], JSON_THROW_ON_ERROR),
+            'facture' => [$invoice],
+            'printInvoice' => $invoice,
+            'printRows' => InvoicePrintRows::fromInvoice($company, $products, $totals),
+        ]);
+        $response = new TemplateResponse('gestion', 'content/document_layout', $params, TemplateResponse::RENDER_AS_BLANK);
+        return '<div id="PDFcontent" class="gestion-document-custom">' . $response->render() . '</div>';
+    }
+
     private function documentSender(string $id, bool $showChoices): array {
         $company = (int)$this->companyService->getCurrentCompany();
         $profiles = $showChoices || $id !== '' ? $this->db->getSenderProfiles($company) : [];

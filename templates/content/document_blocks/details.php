@@ -18,7 +18,7 @@
         $paymentMeansLabel = $paymentMeans[$paymentCode] ?? $paymentCode;
     ?>
     <div class="titre-centre">
-        <b><span id="factureid" class="inline"><?php p(html_entity_decode((string)$_['facture'][0]->num, ENT_QUOTES, 'UTF-8')); ?></span> <span data-html2canvas-ignore class="inline"><?php p($l->t('Version')); ?></span> <span data-html2canvas-ignore id="factureversion" class="inline"><?php p(html_entity_decode((string)$_['facture'][0]->version, ENT_QUOTES, 'UTF-8')); ?></span></b><br>
+        <b><span id="factureid" class="inline"><?php p(html_entity_decode((string)$_['facture'][0]->num, ENT_QUOTES, 'UTF-8')); ?></span> <?php if (!isset($_['printInvoice'])): ?><span data-html2canvas-ignore class="inline"><?php p($l->t('Version')); ?></span> <span data-html2canvas-ignore id="factureversion" class="inline"><?php p(html_entity_decode((string)$_['facture'][0]->version, ENT_QUOTES, 'UTF-8')); ?></span><?php endif; ?></b><br>
         <span><?php p($l->t('Settlement date')); ?> : <b><?php p((new DateTime($_['facture'][0]->date_paiement))->format('d-m-Y')); ?></b>, </span><span><?php p($l->t('Date of service')); ?> : <b><?php p(html_entity_decode((string)$_['facture'][0]->date, ENT_QUOTES, 'UTF-8')); ?></b></span><br>
         <span id="devisid" data-id="<?php p((string)$_['facture'][0]->id_devis); ?>"><?php p($l->t('Associated quote')); ?> : <b><?php p(html_entity_decode((string)$_['facture'][0]->dnum, ENT_QUOTES, 'UTF-8')); ?></b>, </span><span><?php p($l->t('Means of payment')); ?> : <b><?php p(html_entity_decode((string)$paymentMeansLabel, ENT_QUOTES, 'UTF-8')); ?></b></span><br>
     </div>

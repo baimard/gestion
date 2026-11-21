@@ -187,8 +187,11 @@ return fetch(url, options)
     .then(data => {
         const myresp = JSON.parse(data)[0];
 
-        document.getElementById('mentions_default').textContent = plainText(myresp.mentions_default);
-        document.getElementById('mentions_default').style.whiteSpace = 'pre-line';
+        const mentions = document.getElementById('mentions_default');
+        if (mentions) {
+            mentions.textContent = plainText(myresp.mentions_default);
+            mentions.style.whiteSpace = 'pre-line';
+        }
     })
     .catch(error => {
         console.error('Error fetching data:', error);

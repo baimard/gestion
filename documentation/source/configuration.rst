@@ -10,6 +10,10 @@ La section **Gestion** regroupe les clients, devis, factures et produits.
 La section **Information** donne accès aux statistiques et aux mentions
 légales.
 
+Le lien **Modèles**, situé entre **Mon entreprise** et **À propos**, configure
+l'ordre des blocs et le style des devis et factures. Consultez
+:doc:`document_templates`.
+
 Sur mobile, le bouton de navigation ouvre le menu latéral. Choisissez ensuite
 la rubrique souhaitée. La croix, une pression sur la zone assombrie ou la
 touche Échap referment le menu. Le contenu du menu peut défiler pour atteindre

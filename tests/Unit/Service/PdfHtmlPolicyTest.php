@@ -33,4 +33,13 @@ class PdfHtmlPolicyTest extends TestCase {
         $this->assertStringNotContainsString('file:', $safe);
         $this->assertStringNotContainsString('javascript:', $safe);
     }
+
+    public function testRetainsOnlyValidatedScopedTemplateCss(): void {
+        $css = '#PDFcontent.gestion-document-custom .block-products th { color: #123; }';
+        $safe = PdfHtmlPolicy::sanitize('<style class="gestion-document-custom-css">'.$css.'</style><div id="PDFcontent" class="gestion-document-custom">Document</div>');
+        $this->assertStringContainsString($css, $safe);
+
+        $this->expectException(\InvalidArgumentException::class);
+        PdfHtmlPolicy::sanitize('<style class="gestion-document-custom-css">body { color: red; }</style>');
+    }
 }

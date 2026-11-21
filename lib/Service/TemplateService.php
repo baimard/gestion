@@ -24,7 +24,8 @@ class TemplateService {
 		NavigationService $navigationService,
 		ContentSecurityPolicy $csp,
         private AnnouncementService $announcementService,
-        private Bdd $db
+        private Bdd $db,
+        private DocumentTemplateService $documentTemplateService,
 	) {
 		$this->userId = $UserId;
 		$this->appManager = $appManager;
@@ -73,6 +74,16 @@ class TemplateService {
 		return $response;
 	}
 
+	public function documentTemplates(): TemplateResponse {
+		$this->companyService->ensureConfigExists();
+		$response = new TemplateResponse('gestion', 'document_templates', array_merge(
+			$this->baseParams(),
+			$this->documentTemplateService->pageData()
+		));
+		$response->setContentSecurityPolicy($this->csp);
+		return $response;
+	}
+
 	public function devisshow($numdevis): TemplateResponse {
 		$devis = json_decode($this->dataService->getOneDevis($numdevis));
 		$produits = $this->dataService->getProduitsById($numdevis);
@@ -81,6 +92,7 @@ class TemplateService {
 			'configuration' => $this->dataService->getConfiguration(),
 			'devis' => $devis,
 			'produit' => json_decode($produits),
+			'documentTemplate' => $this->documentTemplateService->forDocument('quote'),
 		], $this->documentSender($devis[0]->sender_profile ?? '', true), $this->baseParams()));
 	}
 
@@ -90,6 +102,7 @@ class TemplateService {
 		return new TemplateResponse('gestion', 'factureshow', array_merge([
 			'configuration' => $this->dataService->getConfiguration(),
 			'facture' => $facture,
+			'documentTemplate' => $this->documentTemplateService->forDocument('invoice'),
 		], $this->documentSender($facture[0]->sender_profile ?? '', false), $this->baseParams()));
 	}
 

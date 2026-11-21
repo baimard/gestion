@@ -5,7 +5,7 @@ namespace OCA\Gestion\Service;
 
 /** Restrict mPDF input to document markup and embedded raster logos. */
 final class PdfHtmlPolicy {
-    private const TAGS = ['html','body','head','div','span','p','br','hr','b','strong','i','em','u','small','s','sub','sup','h1','h2','h3','h4','h5','h6','table','thead','tbody','tfoot','tr','th','td','colgroup','col','ul','ol','li','img','a','center','caption','button'];
+    private const TAGS = ['html','body','head','style','div','span','p','br','hr','b','strong','i','em','u','small','s','sub','sup','h1','h2','h3','h4','h5','h6','table','thead','tbody','tfoot','tr','th','td','colgroup','col','ul','ol','li','img','a','center','caption','button'];
     private const ATTRIBUTES = ['class','id','style','width','height','align','valign','colspan','rowspan','scope','alt','title','border','cellpadding','cellspacing','src','href'];
     public static function sanitize(string $html): string {
         if (strlen($html) > 20 * 1024 * 1024) throw new \InvalidArgumentException('The PDF content exceeds 20 MB.');
@@ -17,11 +17,17 @@ final class PdfHtmlPolicy {
                 if ($child instanceof \DOMElement) {
                     $tag = strtolower($child->tagName);
                     if (!in_array($tag, self::TAGS, true)) throw new \InvalidArgumentException('Unsupported markup in PDF content.');
+                    if ($tag === 'style') {
+                        if ($child->getAttribute('class') !== 'gestion-document-custom-css' || $child->attributes->length !== 1) {
+                            throw new \InvalidArgumentException('Only validated document template CSS is allowed.');
+                        }
+                        DocumentTemplatePolicy::validateScopedCss($child->textContent);
+                    }
                     foreach (iterator_to_array($child->attributes) as $attribute) {
                         $name = strtolower($attribute->name);
                         if (!in_array($name, self::ATTRIBUTES, true)) { $child->removeAttributeNode($attribute); continue; }
                         $value = $attribute->value;
-                        if ($name === 'style' && preg_match('/url\s*\(|@|\\\\|\/\*|expression\s*\(/i', $value)) throw new \InvalidArgumentException('External resources are not allowed in PDF styles.');
+                        if ($name === 'style' && preg_match('/(?:url|image-set|src|element|paint|expression)\s*\(|@|\\\\|\/\*|<|>|behavior\s*:|-moz-binding/i', $value)) throw new \InvalidArgumentException('External resources are not allowed in PDF styles.');
                         if ($name === 'src') {
                             if ($tag !== 'img' || !preg_match('~^data:image/(png|jpeg);base64,([A-Za-z0-9+/=\s]+)$~D', $value, $m)) throw new \InvalidArgumentException('PDF images must be embedded PNG or JPEG logos.');
                             $bytes = base64_decode($m[2], true);

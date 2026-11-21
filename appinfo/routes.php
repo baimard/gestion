@@ -7,6 +7,8 @@ return [
         ['name' => 'view#produit', 'url' => '/produit', 'verb' => 'GET'],
         ['name' => 'configuration#config', 'url' => '/config', 'verb' => 'GET'],
         ['name' => 'configuration#isConfig', 'url' => '/isconfig', 'verb' => 'GET'],
+        ['name' => 'documentTemplate#index', 'url' => '/templates', 'verb' => 'GET'],
+        ['name' => 'documentTemplate#save', 'url' => '/templates/{type}', 'verb' => 'POST'],
         ['name' => 'announcement#acknowledge', 'url' => '/announcements/acknowledge', 'verb' => 'POST'],
         ['name' => 'view#statistique', 'url' => '/statistique', 'verb' => 'GET'],
         ['name' => 'view#legalnotice', 'url' => '/legalnotice', 'verb' => 'GET'],

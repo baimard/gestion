@@ -581,8 +581,8 @@ export function getProduitsById() {
             totalTVAGlobal += group.totalTVA;
         });
         totalTTCGlobal = totalHTGlobal + totalTVAGlobal;
-        const totalBody = document.getElementById('totaldevis').querySelector('tbody');
-        totalBody.innerHTML = '';
+        const totalBody = document.getElementById('totaldevis')?.querySelector('tbody');
+        if (totalBody) totalBody.innerHTML = '';
 
         Object.keys(vatGroups).forEach(vat => {
             const row = `
@@ -595,7 +595,7 @@ export function getProduitsById() {
                 </tr>
             `;
 
-            totalBody.insertAdjacentHTML('beforeend', row);
+            totalBody?.insertAdjacentHTML('beforeend', row);
         });
 
         const totalGlobalBody = document.getElementById('totalglobal').querySelector('tbody');

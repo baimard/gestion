@@ -45,6 +45,7 @@ Fonctionnalités principales
    installation
    quickstart
    configuration
+   document_templates
    clients_products
    quotes_invoices
    document_lifecycle

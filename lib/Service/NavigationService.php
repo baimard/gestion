@@ -17,6 +17,7 @@ class NavigationService {
 			"facture" => $this->urlGenerator->linkToRouteAbsolute("gestion.view.facture"),
 			"produit" => $this->urlGenerator->linkToRouteAbsolute("gestion.view.produit"),
 			"config" => $this->urlGenerator->linkToRouteAbsolute("gestion.configuration.config"),
+			"templates" => $this->urlGenerator->linkToRouteAbsolute("gestion.documentTemplate.index"),
 			"isConfig" => $this->urlGenerator->linkToRouteAbsolute("gestion.configuration.isConfig"),
 			"statistique" => $this->urlGenerator->linkToRouteAbsolute("gestion.view.statistique"),
 			"legalnotice" => $this->urlGenerator->linkToRouteAbsolute("gestion.view.legalnotice"),

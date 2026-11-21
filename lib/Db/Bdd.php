@@ -6,6 +6,7 @@ use OCP\IDBConnection;
 use OCP\IL10N;
 use OCA\Gestion\Service\CommercialMath;
 use OCA\Gestion\Service\BackupFormat;
+use OCA\Gestion\Service\DocumentTemplatePolicy;
 use OCA\Gestion\Service\InvoicePaymentMeans;
 use OCA\Gestion\Service\LogoImage;
 use OCA\Gestion\Service\SenderProfile;
@@ -66,6 +67,37 @@ class Bdd {
             'SELECT sender_profiles FROM ' . $this->tableprefix . 'configuration WHERE id = ?', [$company]
         );
         return SenderProfile::decode($rows[0]['sender_profiles'] ?? null);
+    }
+
+    /** @return array<string, mixed> */
+    public function getDocumentTemplateConfiguration(int $company): array {
+        $row = $this->requireRecord('configuration', $company, $company);
+        return [
+            'quote_template_layout' => $row['quote_template_layout'] ?? null,
+            'invoice_template_layout' => $row['invoice_template_layout'] ?? null,
+            'quote_template_css' => $row['quote_template_css'] ?? '',
+            'invoice_template_css' => $row['invoice_template_css'] ?? '',
+        ];
+    }
+
+    public function saveDocumentTemplate(int $company, string $owner, string $type, string $layout, string $css): void {
+        if (!in_array($type, ['quote', 'invoice'], true)) {
+            throw new \InvalidArgumentException('Invalid document template type.');
+        }
+        $this->companyMutation($company, function () use ($company, $owner, $type, $layout, $css): void {
+            $row = $this->requireRecord('configuration', $company, $company);
+            if (!hash_equals((string)$row['id_nextcloud'], $owner)) {
+                throw new \DomainException('Only the company owner can manage document templates.');
+            }
+            $this->db->executeStatement(
+                'UPDATE ' . $this->tableprefix . 'configuration SET ' . $type . '_template_layout = ?, ' . $type . '_template_css = ? WHERE id = ?',
+                [$layout, $css, $company]
+            );
+            $this->recordHistory($company, 'update', 'configuration', $company, [
+                'document_template' => $type,
+                'custom_css' => $css !== '',
+            ]);
+        });
     }
 
     public function saveSenderProfile(int $company, string $owner, string $id, ?array $input): void {
@@ -826,7 +858,20 @@ class Bdd {
                     unset($row['id']);
                     foreach ($row as $field => $value) {
                         if (preg_match('/secret|token|password|einvoice_provider_config/i', $field)) { unset($row[$field]); continue; }
-                        if ($table === 'configuration' && $field === 'sender_profiles') {
+                        if ($table === 'configuration' && in_array($field, ['quote_template_layout', 'invoice_template_layout'], true)) {
+                            $type = str_starts_with($field, 'quote_') ? 'quote' : 'invoice';
+                            try {
+                                $row[$field] = json_encode(DocumentTemplatePolicy::normalizeLayout($type, (string)$value), JSON_THROW_ON_ERROR);
+                            } catch (\InvalidArgumentException | \JsonException) {
+                                $row[$field] = json_encode(DocumentTemplatePolicy::defaultLayout($type), JSON_THROW_ON_ERROR);
+                            }
+                        } elseif ($table === 'configuration' && in_array($field, ['quote_template_css', 'invoice_template_css'], true)) {
+                            try {
+                                $row[$field] = DocumentTemplatePolicy::sanitizeCss((string)$value);
+                            } catch (\InvalidArgumentException) {
+                                $row[$field] = '';
+                            }
+                        } elseif ($table === 'configuration' && $field === 'sender_profiles') {
                             $row[$field] = json_encode(SenderProfile::decode($value), JSON_THROW_ON_ERROR);
                         } elseif (is_string($value)) {
                             $row[$field] = strip_tags(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));

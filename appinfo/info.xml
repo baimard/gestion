@@ -30,7 +30,7 @@ If you require adaptations to comply with your country's regulations, please ope
 [![Donate](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-yellow.svg)](https://www.buymeacoffee.com/benjaminaimard)
 
 ]]></description>
-    <version>3.5.3</version>
+    <version>3.5.4</version>
     <licence>agpl</licence>
     <author mail="benjamin@cybercorp.fr" homepage="https://github.com/baimard">Benjamin AIMARD</author>
     <namespace>Gestion</namespace>
@@ -42,8 +42,8 @@ If you require adaptations to comply with your country's regulations, please ope
     <bugs>https://github.com/baimard/gestion/issues</bugs>
     <repository>https://github.com/baimard/gestion</repository>
     <screenshot small-thumbnail="https://raw.githubusercontent.com/baimard/gestion/3.5.3/tests/Unit/Panther/screens/config.png">https://raw.githubusercontent.com/baimard/gestion/3.5.3/tests/Unit/Panther/screens/config.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.5.3/tests/Unit/Panther/screens/devisShow.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.5.3/tests/Unit/Panther/screens/factureShow.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.5.4/tests/Unit/Panther/screens/devisShow.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.5.4/tests/Unit/Panther/screens/factureShow.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.5.3/tests/Unit/Panther/screens/index.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.5.3/tests/Unit/Panther/screens/devis.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/baimard/gestion/3.5.3/tests/Unit/Panther/screens/facture.png</screenshot>

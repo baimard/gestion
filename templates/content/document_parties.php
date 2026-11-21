@@ -17,54 +17,45 @@
     ];
     $logo = $_['logo'] ?? 'nothing';
     $hasMainLogo = $logo !== 'nothing' && $logo !== '';
-    // The issuer occupies half of the printable page.
     [$mainLogoWidth, $mainLogoHeight] = \OCA\Gestion\Service\DocumentLogoSize::fit(
         $logo, min(300, (int)($company->logo_width ?? 160)), min(240, (int)($company->logo_height ?? 0) ?: 240)
     );
-    $stackedLogo = $mainLogoWidth > 160 || $mainLogoHeight > 160;
-    $renderLogo = static function () use ($logo, $mainLogoWidth, $mainLogoHeight, $l): void { ?>
-        <img class="gestion-document-logo gestion-document-logo-main" width="<?php echo $mainLogoWidth; ?>" height="<?php echo $mainLogoHeight; ?>" style="width: <?php echo $mainLogoWidth; ?>px; height: auto;" alt="<?php p($l->t('Company logo')); ?>" src="data:image/png;base64,<?php p($logo); ?>">
-    <?php };
+    // A4 with 10 mm margins on each side has about 718 printable pixels at 96 dpi.
+    $logoShare = $hasMainLogo ? (int)ceil(($mainLogoWidth + 16) / (190 * 96 / 25.4) * 100) : 0;
+    $partyShare = (100 - $logoShare) / 2;
 ?>
-<table id="headertable" class="document-parties">
-    <colgroup><col width="50%"><col width="50%"></colgroup>
+<table id="headertable" class="document-parties<?php if ($hasMainLogo) echo ' document-parties-with-logo'; ?>">
     <thead>
         <tr>
-            <th id="document-issuer" scope="col"><?php p($l->t('Issuer')); ?></th>
-            <th id="document-recipient" scope="col"><?php p($l->t('Recipient')); ?></th>
+            <th id="document-issuer" class="document-party-heading" scope="col" width="<?php p($partyShare); ?>%"><?php p($l->t('Issuer')); ?></th>
+            <?php if ($hasMainLogo): ?>
+                <th class="document-party-logo-heading" width="<?php p($logoShare); ?>%" style="--document-logo-column-width: <?php p($mainLogoWidth + 24); ?>px;" aria-hidden="true"></th>
+            <?php endif; ?>
+            <th id="document-recipient" class="document-party-heading" scope="col" width="<?php p($partyShare); ?>%"><?php p($l->t('Recipient')); ?></th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td width="50%" class="document-party" aria-labelledby="document-issuer" data-party-label="<?php p($l->t('Issuer')); ?>">
-                <?php if ($hasMainLogo && $stackedLogo): ?>
-                    <div class="document-party-stacked-logo"><?php $renderLogo(); ?></div>
-                <?php endif; ?>
-                <table class="document-party-identity" role="presentation">
-                    <tr>
-                        <td>
-                            <div class="document-party-name"><?php p($decodePartyValue($company->entreprise ?? '')); ?></div>
-                            <?php if ($companyContact !== ''): ?><div class="document-party-line"><?php p($companyContact); ?></div><?php endif; ?>
-                            <?php foreach ($companySections as $section): ?>
-                                <?php $lines = array_filter($section, static fn (string $line): bool => $line !== ''); ?>
-                                <?php if ($lines !== []): ?>
-                                    <div class="document-party-section">
-                                        <?php foreach ($lines as $line): ?>
-                                            <div class="document-party-line"><?php print_unescaped(nl2br(htmlspecialchars($line, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'))); ?></div>
-                                        <?php endforeach; ?>
-                                    </div>
-                                <?php endif; ?>
+            <td width="<?php p($partyShare); ?>%" class="document-party" aria-labelledby="document-issuer" data-party-label="<?php p($l->t('Issuer')); ?>">
+                <div class="document-party-name"><?php p($decodePartyValue($company->entreprise ?? '')); ?></div>
+                <?php if ($companyContact !== ''): ?><div class="document-party-line"><?php p($companyContact); ?></div><?php endif; ?>
+                <?php foreach ($companySections as $section): ?>
+                    <?php $lines = array_filter($section, static fn (string $line): bool => $line !== ''); ?>
+                    <?php if ($lines !== []): ?>
+                        <div class="document-party-section">
+                            <?php foreach ($lines as $line): ?>
+                                <div class="document-party-line"><?php print_unescaped(nl2br(htmlspecialchars($line, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'))); ?></div>
                             <?php endforeach; ?>
-                        </td>
-                        <?php if ($hasMainLogo && !$stackedLogo): ?>
-                            <td class="document-party-logo" width="<?php echo $mainLogoWidth; ?>" style="width: <?php echo $mainLogoWidth; ?>px;">
-                                <?php $renderLogo(); ?>
-                            </td>
-                        <?php endif; ?>
-                    </tr>
-                </table>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </td>
-            <td width="50%" class="document-party" aria-labelledby="document-recipient" data-party-label="<?php p($l->t('Recipient')); ?>">
+            <?php if ($hasMainLogo): ?>
+                <td class="document-party-logo" width="<?php p($logoShare); ?>%">
+                    <img class="gestion-document-logo gestion-document-logo-main" width="<?php p($mainLogoWidth); ?>" height="<?php p($mainLogoHeight); ?>" style="width: <?php p($mainLogoWidth); ?>px; height: auto;" alt="<?php p($l->t('Company logo')); ?>" src="data:image/png;base64,<?php p($logo); ?>">
+                </td>
+            <?php endif; ?>
+            <td width="<?php p($partyShare); ?>%" class="document-party" aria-labelledby="document-recipient" data-party-label="<?php p($l->t('Recipient')); ?>">
                 <div id="entreprise" class="document-party-name"></div>
                 <div id="nomprenom" class="document-party-line" data-id="0" data-table="devis" data-column="id_client"></div>
                 <div class="document-party-section">

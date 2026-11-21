@@ -63,8 +63,7 @@ body,
     border-collapse: collapse;
 }
 
-#headertable th {
-    width: 50%;
+#headertable .document-party-heading {
     padding: 9px 14px;
     color: #15566b;
     background-color: #edf5fa;
@@ -77,7 +76,6 @@ body,
 }
 
 #headertable .document-party {
-    width: 50%;
     padding: 14px;
     color: #222222;
     background-color: #ffffff;
@@ -87,29 +85,18 @@ body,
     line-height: 1.5;
 }
 
-#headertable .document-party-identity {
-    width: 100%;
-    margin: 0;
-    border: 0;
-    border-collapse: collapse;
-}
-
-#headertable .document-party-identity td {
+#headertable .document-party-logo-heading {
     padding: 0;
     border: 0;
-    color: #222222;
-    background-color: #ffffff;
-    vertical-align: top;
+    background-color: transparent;
 }
 
 #headertable .document-party-logo {
-    padding-left: 10px;
-    text-align: right;
-}
-
-.document-party-stacked-logo {
-    margin-bottom: 12px;
-    text-align: left;
+    padding: 0 4px;
+    border: 0;
+    background-color: transparent;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .document-party-name,

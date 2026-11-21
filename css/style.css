@@ -597,7 +597,7 @@ button.electronic-invoice-help:focus-visible {
 }
 
 #headertable > thead > tr > th {
-    width: 50%;
+    width: auto;
     padding: 10px 20px;
     color: #15566b;
     background: #edf5fa;
@@ -610,7 +610,6 @@ button.electronic-invoice-help:focus-visible {
 }
 
 #headertable > tbody > tr > .document-party {
-    width: 50%;
     padding: 20px;
     color: #222222;
     background: #ffffff;
@@ -626,33 +625,34 @@ button.electronic-invoice-help:focus-visible {
 #headertable > thead > tr > th:last-child { border-top-right-radius: 8px; }
 #headertable > tbody > tr > td:first-child { border-bottom-left-radius: 8px; }
 #headertable > tbody > tr > td:last-child { border-bottom-right-radius: 8px; }
-#headertable > thead > tr > th + th,
-#headertable > tbody > tr > td + td { border-left: 0; }
+#headertable:not(.document-parties-with-logo) > thead > tr > th + th,
+#headertable:not(.document-parties-with-logo) > tbody > tr > td + td { border-left: 0; }
+#headertable.document-parties-with-logo #document-issuer { border-top-right-radius: 8px; }
+#headertable.document-parties-with-logo #document-recipient { border-top-left-radius: 8px; }
+#headertable.document-parties-with-logo > tbody > tr > .document-party:first-child { border-bottom-right-radius: 8px; }
+#headertable.document-parties-with-logo > tbody > tr > .document-party:last-child { border-bottom-left-radius: 8px; }
 
-#headertable .document-party-identity {
-    width: 100%;
-    margin: 0;
+#headertable > thead > tr > .document-party-logo-heading,
+#headertable > tbody > tr > .document-party-logo {
     border: 0;
-    border-collapse: collapse;
-    table-layout: fixed;
+    background: transparent;
 }
 
-#headertable .document-party-identity td {
+#headertable > thead > tr > .document-party-logo-heading {
+    width: min(44%, var(--document-logo-column-width));
     padding: 0;
-    border: 0;
-    background: #ffffff;
-    vertical-align: top;
-    white-space: normal;
 }
 
-#headertable .document-party-logo {
-    padding-left: 12px;
-    text-align: right;
+#headertable > tbody > tr > .document-party-logo {
+    padding: 0 8px;
+    text-align: center;
+    vertical-align: middle;
 }
 
-.document-party-stacked-logo {
-    margin-bottom: 12px;
-    text-align: start;
+#headertable .gestion-document-logo-main {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .document-party-name,
@@ -711,6 +711,16 @@ button.electronic-invoice-help:focus-visible {
 
     #headertable > tbody > tr > .document-party:first-child { border-radius: 8px 8px 0 0; }
     #headertable > tbody > tr > .document-party:last-child { border-top: 0; border-radius: 0 0 8px 8px; }
+    #headertable.document-parties-with-logo > tbody > tr > .document-party {
+        border: 1px solid #d5e0e8;
+        border-radius: 8px;
+    }
+
+    #headertable > tbody > tr > .document-party-logo {
+        display: block;
+        width: auto;
+        padding: 12px 8px;
+    }
 
     #headertable > tbody > tr > .document-party::before {
         display: block;
@@ -721,18 +731,6 @@ button.electronic-invoice-help:focus-visible {
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-    }
-}
-
-@media screen and (max-width: 520px) {
-    #headertable .document-party-identity tr {
-        display: flex;
-        flex-direction: column-reverse;
-    }
-    #headertable .document-party-identity .document-party-logo {
-        max-width: 100%;
-        padding: 0 0 12px;
-        text-align: start;
     }
 }
 

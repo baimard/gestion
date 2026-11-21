@@ -82,12 +82,13 @@ maximale entre 0 et 600 pixels. **0** conserve une hauteur automatique. Si une
 hauteur maximale est définie, le logo est ajusté aux deux limites sans être
 déformé ; sa largeur affichée peut donc être réduite. Le logo
 principal est limité à 300 pixels de large et 240 pixels de haut pour tenir
-dans le bloc Émetteur du PDF.
+entre les deux blocs d'adresse du PDF.
 
-Le logo principal reste dans le bloc Émetteur. Il s'affiche à droite des
-coordonnées s'il est compact, ou au-dessus s'il est grand ou si l'écran est
-étroit. Les logos se réduisent à la place disponible. Les logos d'en-tête et de
-pied de page sont facultatifs. Lorsqu'ils sont absents, l'espace reste libre
+Le logo principal est centré entre l'émetteur et le destinataire, sur le
+document et dans le PDF. Sur un écran étroit, le logo s'affiche entre les deux
+blocs d'adresse empilés. Les logos se réduisent à la place disponible.
+Les logos d'en-tête et de pied de page sont facultatifs. Lorsqu'ils sont
+absents, l'espace reste libre
 pour les coordonnées et les autres sections. Les réglages s'appliquent
 aux devis, factures et PDF.
 

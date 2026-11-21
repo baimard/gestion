@@ -272,6 +272,18 @@
     font-weight: 500;
     text-align: start;
 }
+#app-navigation .gestion-nav .gestion-nav-templates {
+    justify-content: flex-start;
+}
+.gestion-beta-badge {
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: var(--color-primary-element);
+    color: var(--color-primary-element-text);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+}
 #app-navigation .gestion-nav .gestion-nav-link:hover {
     background: var(--color-background-hover);
 }

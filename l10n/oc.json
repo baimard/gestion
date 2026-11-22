@@ -8,6 +8,7 @@
     "New" : "Nòu",
     "Comment" : "Comentaris",
     "Reference" : "Referéncia",
+    "Legal notice" : "Avís legal",
     "Search contacts" : "Cercar pels contactes",
     "Cancel" : "Anullar",
     "Choose" : "Causir",
@@ -43,7 +44,7 @@
     "Apply" : "Aplicar",
     "Date:" : "Data :",
     "Signature:" : "Signatura :",
-    "Legal notice" : "Avís legal",
+    "Visible" : "Visible",
     "Year" : "Annada",
     "January" : "Genièr",
     "February" : "Febrièr",
@@ -61,6 +62,8 @@
     "Loading …" : "Cargament…",
     "Mail" : "Mail",
     "Client ID" : "ID client",
+    "Templates" : "Modèls",
+    "Beta" : "Bèta",
     "About" : "A prepaus"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

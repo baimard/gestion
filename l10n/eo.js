@@ -9,6 +9,8 @@ OC.L10N.register(
     "Address" : "Adreso",
     "New" : "Nova",
     "Comment" : "Komento",
+    "Header logo" : "Paĝokapa emblemo",
+    "Legal notice" : "Leĝa regularo",
     "Cancel" : "Nuligi",
     "Choose" : "Elekti",
     "All" : "Ĉiuj",
@@ -38,8 +40,8 @@ OC.L10N.register(
     "Date:" : "Dato:",
     "Signature:" : "Subskribo:",
     "Recipient" : "Ricevonto",
+    "Move down" : "Movi malsupren",
     "City name" : "Urbonomo",
-    "Legal notice" : "Leĝa regularo",
     "Header" : "Kapo",
     "January" : "Januaro",
     "February" : "Februaro",
@@ -59,6 +61,7 @@ OC.L10N.register(
     "Mail" : "Retpoŝtilo",
     "Client ID" : "Klientidentigilo",
     "Client secret" : "Klientosekreto",
+    "Templates" : "Ŝablonoj",
     "About" : "Pri"
 },
 "nplurals=2; plural=(n != 1);");

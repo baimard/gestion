@@ -30,6 +30,8 @@ OC.L10N.register(
     "Status" : "สถานะ",
     "Apply" : "นำไปใช้",
     "Signature:" : "ลายเซ็นต์:",
+    "Required" : "จำเป็น",
+    "Visible" : "มองเห็นได้",
     "City name" : "ชื่อเมือง",
     "Header" : "ส่วนหัว",
     "Year" : "ปี",
@@ -49,6 +51,7 @@ OC.L10N.register(
     "Mail" : "จดหมาย",
     "Client ID" : "รหัสไคลเอ็นต์",
     "Client secret" : "ข้อมูลลับไคลเอ็นต์",
+    "Templates" : "เทมเพลต",
     "About" : "เกี่ยวกับ"
 },
 "nplurals=1; plural=0;");

@@ -37,6 +37,8 @@
     "Apply" : "Uwenden",
     "Quantity" : "Quantitéit",
     "Signature:" : "Signatur:",
+    "Required" : "Noutwendeg",
+    "Visible" : "Siichtbar",
     "Customer" : "Client",
     "City name" : "Stadnumm",
     "Product" : "Produit",
@@ -55,6 +57,7 @@
     "General" : "Allgemeng",
     "Mail" : "Mail",
     "Client ID" : "Client ID",
+    "Templates" : "Virlagen",
     "About" : "Iwwer"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

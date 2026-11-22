@@ -22,6 +22,8 @@ OC.L10N.register(
     "Help" : "Adjuta",
     "Save" : "Save",
     "Apply" : "Applicar",
+    "Required" : "Requirite",
+    "Visible" : "Visibile",
     "January" : "Januario",
     "February" : "Februario",
     "March" : "Martio",

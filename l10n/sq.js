@@ -40,6 +40,10 @@ OC.L10N.register(
     "Signature:" : "Nënshkrim:",
     "Issuer" : "Lëshuesi",
     "Recipient" : "Marrës",
+    "Required" : "E domosdoshme",
+    "Visible" : "I dukshëm",
+    "Move up" : "Lëviz lart",
+    "Move down" : "Lëviz poshtë",
     "City name" : "Emri i qytetit",
     "Header" : "Header",
     "January" : "Janar",
@@ -59,6 +63,7 @@ OC.L10N.register(
     "Mail" : "Posta",
     "Client ID" : "ID klienti",
     "Client secret" : "E fshehtë klienti",
+    "Templates" : "Shabllone",
     "About" : "Rreth "
 },
 "nplurals=2; plural=(n != 1);");

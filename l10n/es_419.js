@@ -8,6 +8,7 @@ OC.L10N.register(
     "Address" : "Dirección",
     "New" : "Nuevo",
     "Comment" : "Comentario",
+    "Header logo" : "Logo del encabezado",
     "Cancel" : "Cancelar",
     "Choose" : "Seleccionar",
     "All" : "Todos",

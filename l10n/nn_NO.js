@@ -34,6 +34,9 @@ OC.L10N.register(
     "Quantity" : "Tal",
     "Signature:" : "Signatur:",
     "Recipient" : "Mottakar",
+    "Required" : "Nødvendig",
+    "Move up" : "Flytt opp",
+    "Move down" : "Flytt ned",
     "City name" : "Bynamn",
     "Year" : "År",
     "January" : "Januar",
@@ -52,6 +55,7 @@ OC.L10N.register(
     "General" : "Generelt",
     "Mail" : "Post",
     "Client ID" : "Klient-ID",
+    "Templates" : "Malar",
     "About" : "Om"
 },
 "nplurals=2; plural=(n != 1);");

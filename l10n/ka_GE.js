@@ -34,6 +34,8 @@ OC.L10N.register(
     "Signature:" : "ხელმოწერა:",
     "Issuer" : "გამცემი",
     "Recipient" : "მიმღები",
+    "Required" : "სავალდებულო",
+    "Visible" : "ჩანს",
     "City name" : "ქალაქის სახელი",
     "Header" : "დასათაურება",
     "January" : "იანვარი",

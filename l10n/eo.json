@@ -7,6 +7,8 @@
     "Address" : "Adreso",
     "New" : "Nova",
     "Comment" : "Komento",
+    "Header logo" : "Paĝokapa emblemo",
+    "Legal notice" : "Leĝa regularo",
     "Cancel" : "Nuligi",
     "Choose" : "Elekti",
     "All" : "Ĉiuj",
@@ -36,8 +38,8 @@
     "Date:" : "Dato:",
     "Signature:" : "Subskribo:",
     "Recipient" : "Ricevonto",
+    "Move down" : "Movi malsupren",
     "City name" : "Urbonomo",
-    "Legal notice" : "Leĝa regularo",
     "Header" : "Kapo",
     "January" : "Januaro",
     "February" : "Februaro",
@@ -57,6 +59,7 @@
     "Mail" : "Retpoŝtilo",
     "Client ID" : "Klientidentigilo",
     "Client secret" : "Klientosekreto",
+    "Templates" : "Ŝablonoj",
     "About" : "Pri"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

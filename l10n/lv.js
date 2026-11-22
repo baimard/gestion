@@ -46,6 +46,10 @@ OC.L10N.register(
     "Signature:" : "Paraksts:",
     "Issuer" : "Izdevējs",
     "Recipient" : "Saņēmējs",
+    "Required" : "Nepieciešams",
+    "Visible" : "Redzams",
+    "Move up" : "Pārvietot augšup",
+    "Move down" : "Pārvietot lejup",
     "City name" : "Pilsētas nosaukums",
     "Year" : "Gads",
     "January" : "Janvāris",
@@ -65,6 +69,8 @@ OC.L10N.register(
     "Loading …" : "Ielādē…",
     "Mail" : "E-pasts",
     "Client ID" : "Klienta ID",
+    "Templates" : "Veidnes",
+    "Beta" : "Beta",
     "About" : "Par"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);");

@@ -9,6 +9,7 @@ OC.L10N.register(
     "Address" : "Dirección",
     "New" : "Nuevo",
     "Comment" : "Comentario",
+    "Legal notice" : "Aviso legal",
     "Cancel" : "Cancelar",
     "Choose" : "Elige",
     "All" : "Todos",
@@ -39,8 +40,9 @@ OC.L10N.register(
     "Signature:" : "Firma:",
     "Issuer" : "Quien levanta",
     "Recipient" : "Recipiente",
+    "Required" : "Requerido",
+    "Move down" : "Mover hacia abajo",
     "City name" : "Nombre de ciudad",
-    "Legal notice" : "Aviso legal",
     "Header" : "Encabezado",
     "Year" : "Año",
     "January" : "Enero",
@@ -60,6 +62,7 @@ OC.L10N.register(
     "Mail" : "Correo Electrónico",
     "Client ID" : "ID del cliente",
     "Client secret" : "Secreto del cliente",
+    "Templates" : "Plantillas",
     "About" : "Acerca de"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

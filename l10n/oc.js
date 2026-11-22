@@ -10,6 +10,7 @@ OC.L10N.register(
     "New" : "Nòu",
     "Comment" : "Comentaris",
     "Reference" : "Referéncia",
+    "Legal notice" : "Avís legal",
     "Search contacts" : "Cercar pels contactes",
     "Cancel" : "Anullar",
     "Choose" : "Causir",
@@ -45,7 +46,7 @@ OC.L10N.register(
     "Apply" : "Aplicar",
     "Date:" : "Data :",
     "Signature:" : "Signatura :",
-    "Legal notice" : "Avís legal",
+    "Visible" : "Visible",
     "Year" : "Annada",
     "January" : "Genièr",
     "February" : "Febrièr",
@@ -63,6 +64,8 @@ OC.L10N.register(
     "Loading …" : "Cargament…",
     "Mail" : "Mail",
     "Client ID" : "ID client",
+    "Templates" : "Modèls",
+    "Beta" : "Bèta",
     "About" : "A prepaus"
 },
 "nplurals=2; plural=(n > 1);");

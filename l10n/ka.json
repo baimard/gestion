@@ -6,6 +6,8 @@
     "Address" : "Address",
     "New" : "New",
     "Comment" : "Comment",
+    "Header logo" : "Header logo",
+    "Legal notice" : "Legal notice",
     "Search contacts" : "კონტაქტების ძებნა",
     "Cancel" : "Cancel",
     "Choose" : "Choose",
@@ -43,8 +45,10 @@
     "Date:" : "Date:",
     "Signature:" : "Signature:",
     "Issuer" : "Issuer",
+    "Visible" : "Visible",
+    "Move up" : "Move up",
+    "Move down" : "Move down",
     "City name" : "City name",
-    "Legal notice" : "Legal notice",
     "Header" : "Header",
     "Year" : "Year",
     "January" : "January",
@@ -64,7 +68,8 @@
     "Mail" : "წერილი",
     "Client ID" : "Client ID",
     "Client secret" : "Client secret",
-    "Header logo" : "Header logo",
+    "Templates" : "Templates",
+    "Beta" : "Beta",
     "About" : "About"
 },"pluralForm" :"nplurals=2; plural=(n!=1);"
 }

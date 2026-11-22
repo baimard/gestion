@@ -35,6 +35,7 @@ OC.L10N.register(
     "Signature:" : "Firma:",
     "Issuer" : "Quien levanta",
     "Recipient" : "Destinatario",
+    "Required" : "Requerido",
     "City name" : "Ciudad",
     "Header" : "Encabezado",
     "January" : "Enero",

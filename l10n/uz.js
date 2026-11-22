@@ -33,6 +33,8 @@ OC.L10N.register(
     "Status" : "Status",
     "Apply" : "Qo'llash",
     "Date:" : "Sana:",
+    "Move up" : "Yuqoriga ko'chirish",
+    "Move down" : "Pastga ko'chirish",
     "City name" : "Shahar nomi",
     "Year" : "Yil",
     "January" : "January",
@@ -41,6 +43,7 @@ OC.L10N.register(
     "Loading …" : "Yuklanmoqda…",
     "Mail" : "Mail",
     "Client ID" : "Mijoz identifikatori",
+    "Templates" : "Shablonlar",
     "About" : "About"
 },
 "nplurals=1; plural=0;");

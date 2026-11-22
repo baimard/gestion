@@ -7,6 +7,8 @@
     "Address" : "כתובת",
     "New" : "חדש",
     "Comment" : "הערה",
+    "Header logo" : "לוגו כותרת",
+    "Legal notice" : "הצהרה משפטית",
     "Cancel" : "ביטול",
     "Choose" : "בחר",
     "All" : "הכול",
@@ -43,8 +45,10 @@
     "Date:" : "בתאריך:",
     "Signature:" : "חתימה:",
     "Issuer" : "מנפיק",
+    "Required" : "נדרש",
+    "Visible" : "גלוי",
+    "Move down" : "להוריד למטה",
     "City name" : "שם העיר",
-    "Legal notice" : "הצהרה משפטית",
     "Header" : "כותרת",
     "Contact name" : "שם איש הקשר",
     "Year" : "שנה",
@@ -66,8 +70,9 @@
     "Mail" : "דואר",
     "Client ID" : "מזהה לקו",
     "Client secret" : "סוד לקוח",
-    "Header logo" : "לוגו כותרת",
     "INFORMATION" : "מידע",
+    "Templates" : "תבניות",
+    "Beta" : "בטא",
     "About" : "על אודות"
 },"pluralForm" :"nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;"
 }

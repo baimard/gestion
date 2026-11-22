@@ -39,6 +39,8 @@ OC.L10N.register(
     "Apply" : "Uwenden",
     "Quantity" : "Quantitéit",
     "Signature:" : "Signatur:",
+    "Required" : "Noutwendeg",
+    "Visible" : "Siichtbar",
     "Customer" : "Client",
     "City name" : "Stadnumm",
     "Product" : "Produit",
@@ -57,6 +59,7 @@ OC.L10N.register(
     "General" : "Allgemeng",
     "Mail" : "Mail",
     "Client ID" : "Client ID",
+    "Templates" : "Virlagen",
     "About" : "Iwwer"
 },
 "nplurals=2; plural=(n != 1);");

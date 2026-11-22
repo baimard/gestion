@@ -31,6 +31,8 @@
     "Status" : "Status",
     "Apply" : "Qo'llash",
     "Date:" : "Sana:",
+    "Move up" : "Yuqoriga ko'chirish",
+    "Move down" : "Pastga ko'chirish",
     "City name" : "Shahar nomi",
     "Year" : "Yil",
     "January" : "January",
@@ -39,6 +41,7 @@
     "Loading …" : "Yuklanmoqda…",
     "Mail" : "Mail",
     "Client ID" : "Mijoz identifikatori",
+    "Templates" : "Shablonlar",
     "About" : "About"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

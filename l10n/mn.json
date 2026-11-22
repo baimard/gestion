@@ -7,6 +7,8 @@
     "Address" : "хаяг",
     "New" : "Шинэ",
     "Comment" : "undefined",
+    "Header logo" : "Толгой хэсгийн лого",
+    "Legal notice" : "Хуулийн мэдэгдэл",
     "Search contacts" : "Харилцагч хайх",
     "Cancel" : "болиулах",
     "Saved" : "Хадгалах",
@@ -47,7 +49,11 @@
     "Apply" : "хэрэглэх",
     "Date:" : "Огноо:",
     "Recipient" : "–•“Ø–ª—ç—ç–Ω –∞–≤–∞–≥—á",
-    "Legal notice" : "Хуулийн мэдэгдэл",
+    "Blocks" : "Блокууд",
+    "Required" : "Шаардлагатай",
+    "Visible" : "Харагдах",
+    "Move up" : "Дээшлүүлэх",
+    "Move down" : "Доошлуулах",
     "Header" : "Толгойн мэдээ",
     "Year" : "Жил",
     "January" : "1-р сар",
@@ -68,7 +74,8 @@
     "Mail" : "Цахим шуудан",
     "Client ID" : "–•—ç—Ä—ç–≥–ª—ç–≥—á–∏–π–Ω ID",
     "Client secret" : "Клиентийн нууц",
-    "Header logo" : "Толгой хэсгийн лого",
+    "Templates" : "Загварууд",
+    "Beta" : "Бета",
     "About" : "Тухай"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

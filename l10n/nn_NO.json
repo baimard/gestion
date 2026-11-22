@@ -32,6 +32,9 @@
     "Quantity" : "Tal",
     "Signature:" : "Signatur:",
     "Recipient" : "Mottakar",
+    "Required" : "Nødvendig",
+    "Move up" : "Flytt opp",
+    "Move down" : "Flytt ned",
     "City name" : "Bynamn",
     "Year" : "År",
     "January" : "Januar",
@@ -50,6 +53,7 @@
     "General" : "Generelt",
     "Mail" : "Post",
     "Client ID" : "Klient-ID",
+    "Templates" : "Malar",
     "About" : "Om"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

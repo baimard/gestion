@@ -331,6 +331,10 @@ OC.L10N.register(
     "Issuer" : "Издател",
     "Recipient" : "Получател",
     "You can add your company logo here." : "Може да добавите фирменото си лого тук.",
+    "Required" : "Препоръчително",
+    "Visible" : "Видимо",
+    "Move up" : "Преместване нагоре",
+    "Move down" : "Преместване  надолу",
     "Add invoice" : "Добавяне на фактура",
     "Invoice number" : "Номер на фактура",
     "Payment date" : "Дата за плащане",
@@ -369,6 +373,8 @@ OC.L10N.register(
     "INFORMATION" : "ИНФОРМАЦИЯ",
     "Save folder" : "Запис на папка",
     "Please choose a folder" : "Моля, изберете папка",
+    "Templates" : "Шаблони",
+    "Beta" : "Бета",
     "About" : "Относно"
 },
 "nplurals=2; plural=(n != 1);");

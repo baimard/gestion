@@ -62,6 +62,9 @@ OC.L10N.register(
     "Signature:" : "Robla:",
     "Issuer" : "Emisor",
     "You can add your company logo here." : "Equí pues amestar el logotipu de la to compaña",
+    "Visible" : "Visible",
+    "Move up" : "Xubir",
+    "Move down" : "Baxar",
     "Add invoice" : "Amestar una factura",
     "Payment date" : "Data del pagu",
     "Customer" : "Veceru",
@@ -92,6 +95,8 @@ OC.L10N.register(
     "INFORMATION" : "INFORMACIÓN",
     "Save folder" : "Guardar la carpeta",
     "Please choose a folder" : "Escueyi una carpeta",
+    "Templates" : "Plantíes",
+    "Beta" : "Beta",
     "About" : "Tocante a"
 },
 "nplurals=2; plural=(n != 1);");

@@ -348,7 +348,11 @@ OC.L10N.register(
     "Recipient" : "Destinatario",
     "You can add your company logo here." : "Aquí puede añadir el logotipo de su empresa.",
     "Blocks" : "Bloques",
+    "Required" : "Requerido",
+    "Visible" : "Visible",
+    "Move up" : "Mover hacia arriba",
     "Move down" : "Mover hacia abajo",
+    "Save template" : "Guardar plantilla",
     "Add invoice" : "Añadir factura",
     "Invoice number" : "Número de factura",
     "Payment date" : "Fecha de pago",
@@ -395,6 +399,7 @@ OC.L10N.register(
     "Save folder" : "Directorio de guardado",
     "Please choose a folder" : "Por favor, elija una carpeta",
     "Templates" : "Plantillas",
+    "Beta" : "Beta",
     "About" : "Acerca de"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

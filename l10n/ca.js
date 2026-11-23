@@ -331,6 +331,10 @@ OC.L10N.register(
     "Issuer" : "Emissor",
     "Recipient" : "Destinatari",
     "You can add your company logo here." : "Podeu afegir el logotip de la vostra empresa aquí.",
+    "Blocks" : "Blocs",
+    "Required" : "Obligatori",
+    "Visible" : "Visible",
+    "Move up" : "Mou amunt",
     "Move down" : "Mou avall",
     "Add invoice" : "Afegeix factura",
     "Invoice number" : "Nombre de factura",
@@ -369,6 +373,8 @@ OC.L10N.register(
     "INFORMATION" : "INFORMACIÓ",
     "Save folder" : "Desa la carpeta",
     "Please choose a folder" : "Si us plau, trieu una carpeta",
+    "Templates" : "Plantilles",
+    "Beta" : "Beta",
     "About" : "Quant a"
 },
 "nplurals=2; plural=(n != 1);");

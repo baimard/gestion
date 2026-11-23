@@ -357,6 +357,7 @@ OC.L10N.register(
     "You can add your company logo here." : "می‌توانید لوگوی شرکت خود را اینجا اضافه کنید.",
     "Blocks" : "بلوک‌ها",
     "Required" : "اجباری",
+    "Visible" : "قابل مشاهده",
     "Move up" : "انتقال به بالا",
     "Move down" : "انتقال به پایین",
     "Add invoice" : "افزودن فاکتور",

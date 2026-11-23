@@ -35,6 +35,8 @@ OC.L10N.register(
     "ID" : "ID",
     "Status" : "Status",
     "Recipient" : "Ontvanger",
+    "Required" : "Vereis",
+    "Visible" : "Sigbaar",
     "City name" : "Stadnaam",
     "Total" : "Totaal",
     "Loading …" : "Laai …",

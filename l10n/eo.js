@@ -40,6 +40,8 @@ OC.L10N.register(
     "Date:" : "Dato:",
     "Signature:" : "Subskribo:",
     "Recipient" : "Ricevonto",
+    "Required" : "Nepra",
+    "Visible" : "Videbla",
     "Move down" : "Movi malsupren",
     "City name" : "Urbonomo",
     "Header" : "Kapo",
@@ -62,6 +64,7 @@ OC.L10N.register(
     "Client ID" : "Klientidentigilo",
     "Client secret" : "Klientosekreto",
     "Templates" : "Ŝablonoj",
+    "Beta" : "Beta",
     "About" : "Pri"
 },
 "nplurals=2; plural=(n != 1);");

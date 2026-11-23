@@ -38,6 +38,7 @@ OC.L10N.register(
     "Issuer" : "Quien levanta",
     "Recipient" : "Destinatario",
     "Required" : "Requerido",
+    "Visible" : "Visible",
     "City name" : "Ciudad",
     "Header" : "Encabezado",
     "January" : "Enero",

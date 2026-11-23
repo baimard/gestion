@@ -41,6 +41,8 @@ OC.L10N.register(
     "Issuer" : "Quien levanta",
     "Recipient" : "Recipiente",
     "Required" : "Requerido",
+    "Visible" : "Visible",
+    "Move up" : "Mover hacia arriba",
     "Move down" : "Mover hacia abajo",
     "City name" : "Nombre de ciudad",
     "Header" : "Encabezado",
@@ -63,6 +65,7 @@ OC.L10N.register(
     "Client ID" : "ID del cliente",
     "Client secret" : "Secreto del cliente",
     "Templates" : "Plantillas",
+    "Beta" : "Beta",
     "About" : "Acerca de"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

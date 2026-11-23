@@ -38,6 +38,8 @@
     "Date:" : "Dato:",
     "Signature:" : "Subskribo:",
     "Recipient" : "Ricevonto",
+    "Required" : "Nepra",
+    "Visible" : "Videbla",
     "Move down" : "Movi malsupren",
     "City name" : "Urbonomo",
     "Header" : "Kapo",
@@ -60,6 +62,7 @@
     "Client ID" : "Klientidentigilo",
     "Client secret" : "Klientosekreto",
     "Templates" : "Ŝablonoj",
+    "Beta" : "Beta",
     "About" : "Pri"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

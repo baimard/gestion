@@ -481,6 +481,7 @@ OC.L10N.register(
     "You can add your company logo here." : "Sa saad oma äriühingu logo lisada siia",
     "Blocks" : "Plokid",
     "Required" : "Kohustuslik",
+    "Visible" : "Nähtav",
     "Move up" : "Liiguta ülespoole",
     "Move down" : "Liiguta allapoole",
     "Save template" : "Salvesta mall",

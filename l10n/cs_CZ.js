@@ -371,6 +371,9 @@ OC.L10N.register(
     "Recipient" : "Adresát",
     "You can add your company logo here." : "Sem je možné přidat logo vaší společnosti.",
     "Blocks" : "Bloky",
+    "Required" : "Vyžadováno",
+    "Visible" : "Viditelný",
+    "Move up" : "Přesunout nahoru",
     "Move down" : "Přesunout dolů",
     "Add invoice" : "Přidat fakturu",
     "Invoice number" : "Číslo faktury",
@@ -436,6 +439,7 @@ OC.L10N.register(
     "Save folder" : "Složka pro ukládání",
     "Please choose a folder" : "Zvolte složku",
     "Templates" : "Šablony",
+    "Beta" : "Vývojové",
     "About" : "O aplikaci",
     "Gestion version" : "Verze Gestion"
 },

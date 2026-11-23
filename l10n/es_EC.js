@@ -331,6 +331,7 @@ OC.L10N.register(
     "Recipient" : "Destinatario",
     "You can add your company logo here." : "Puedes agregar aquí el logo de tu empresa.",
     "Required" : "Requerido",
+    "Visible" : "Visible",
     "Move up" : "Mover arriba",
     "Move down" : "Mover abajo",
     "Add invoice" : "Agregar factura",
@@ -370,6 +371,7 @@ OC.L10N.register(
     "Save folder" : "Guardar carpeta",
     "Please choose a folder" : "Por favor, elige una carpeta",
     "Templates" : "Plantillas",
+    "Beta" : "Beta",
     "About" : "Acerca de"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

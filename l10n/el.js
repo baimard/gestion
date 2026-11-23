@@ -348,7 +348,11 @@ OC.L10N.register(
     "Recipient" : "Παραλήπτης",
     "You can add your company logo here." : "Μπορείτε να προσθέσετε το λογότυπο της εταιρίας σας εδώ.",
     "Blocks" : "Μπλοκ",
+    "Required" : "Απαιτείται",
+    "Visible" : "Ορατός",
+    "Move up" : "Μετακίνηση επάνω",
     "Move down" : "Μετακίνηση κάτω",
+    "Save template" : "Αποθήκευση προτύπου",
     "Add invoice" : "Προσθήκη τιμολογίου",
     "Invoice number" : "Αριθμός τιμολογίου",
     "Payment date" : "Ημερομηνία πληρωμής",
@@ -395,6 +399,7 @@ OC.L10N.register(
     "Save folder" : "Φάκελος αποθήκευσης",
     "Please choose a folder" : "Παρακαλώ επιλέξτε έναν φάκελο",
     "Templates" : "Πρότυπα",
+    "Beta" : "Δοκιμαστικό",
     "About" : "Σχετικά με"
 },
 "nplurals=2; plural=(n != 1);");

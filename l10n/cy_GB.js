@@ -35,6 +35,8 @@ OC.L10N.register(
     "Date:" : "Dyddiad:",
     "Signature:" : "Llofnod:",
     "Recipient" : "Derbynnydd",
+    "Required" : "Angen",
+    "Visible" : "Gweladwy",
     "Year" : "Blwyddyn",
     "January" : "Ionawr",
     "February" : "Chwefror",

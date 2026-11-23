@@ -24,6 +24,7 @@ OC.L10N.register(
     "Save" : "Save",
     "Status" : "Status",
     "Signature:" : "İmza:",
+    "Visible" : "Görünən",
     "January" : "Yanvar",
     "February" : "Fevral",
     "March" : "Mart",

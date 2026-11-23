@@ -342,6 +342,7 @@ OC.L10N.register(
     "You can add your company logo here." : "Hemen zure enpresaren logoa gehi dezakezu.",
     "Blocks" : "Blokeak",
     "Required" : "Beharrezkoa",
+    "Visible" : "Ikusgai",
     "Move up" : "Eraman gora",
     "Move down" : "Eraman behera",
     "Add invoice" : "Gehitu faktura",

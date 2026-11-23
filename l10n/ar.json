@@ -338,6 +338,11 @@
     "Issuer" : "المُصدِر",
     "Recipient" : "المتلقي",
     "You can add your company logo here." : "يمكنك إضافة شعار شركتك من هنا.",
+    "Blocks" : "كُتَل",
+    "Required" : "مطلوب",
+    "Visible" : "مرئيّ",
+    "Move up" : "نقلٌ للأعلي",
+    "Move down" : "نقلٌ للأسفل",
     "Add invoice" : "إضافة فاتورة",
     "Invoice number" : "رقم الفاتورة",
     "Payment date" : "تاريخ الدفع",
@@ -383,6 +388,8 @@
     "INFORMATION" : "معلومة",
     "Save folder" : "حفظ مُجلّد",
     "Please choose a folder" : "الرجاء اختيار مجلد",
+    "Templates" : "القوالب",
+    "Beta" : "تجريبي",
     "About" : "عن"
 },"pluralForm" :"nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;"
 }

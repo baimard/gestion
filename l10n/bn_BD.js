@@ -25,6 +25,7 @@ OC.L10N.register(
     "Add" : "যোগ কর",
     "Save" : "Save",
     "Signature:" : "স্বাক্ষর:",
+    "Visible" : "দর্শনযোগ্য",
     "City name" : "শহর",
     "January" : "জানুয়ারি",
     "February" : "ফেব্রুয়ারি",
